@@ -83,3 +83,19 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+// CUSTOM CONSTANTS
+defined('THIRD_PARTY')      OR define('THIRD_PARTY', '/application/third_party/');
+defined('DOCUMENTOS_PATH')      OR define('DOCUMENTOS_PATH', '/application/third_party/documentos');
+defined('PUBLIC_PATH')      OR define('PUBLIC_PATH', 'public/');
+defined('UPLOAD_PATH')      OR define('UPLOAD_PATH', 'uploads/');
+defined('META_DEPARA')      OR define('META_DEPARA', 300);
+defined('ONCOPROD')      OR define('ONCOPROD', '12,111,112,115,120,123,126');
+defined('ONCOEXO')      OR define('ONCOEXO', '15,25');
+
+
+# Alertas default do sistema
+defined('notify_create') OR define('notify_create', 'Registro criado com sucesso.');
+defined('notify_update') OR define('notify_update', 'Registro atualizado com sucesso.');
+defined('notify_delete') OR define('notify_delete', 'Registro deletado com sucesso.');
+defined('notify_failed') OR define('notify_failed', 'Não foi possível realizar a ação. Tente novamente.');

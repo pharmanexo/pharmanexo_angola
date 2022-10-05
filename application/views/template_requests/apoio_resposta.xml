@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cot="http://cotacao.fornecedores.client.webservice.apoio.com.br/">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cot:post>
+            <!--Optional:-->
+            <usuario>%USUARIO%</usuario>
+            <!--Optional:-->
+            <senha>%SENHA%</senha>
+            <!--Optional:-->
+            <operacao>%OPERACAO%</operacao>
+            <!--Optional:-->
+            <xml>
+               %XML%
+            </xml>
+        </cot:post>
+    </soapenv:Body>
+</soapenv:Envelope>

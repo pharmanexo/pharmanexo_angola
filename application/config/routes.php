@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 | Please see the user guide for complete details:
 |
-|	https://codeigniter.com/userguide3/general/routing.html
+|	https://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -49,6 +49,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
-$route['404_override'] = '';
+$route['default_controller'] = 'dashboard';
+
+$route['quem-somos'] = 'marketplace/informativos/quem_somos';
+$route['politica-de-seguranca'] = 'marketplace/informativos/seguranca';
+$route['termos-de-uso'] = 'marketplace/informativos/termos_uso';
+$route['fale-conosco'] = 'marketplace/informativos/fale_conosco';
+$route['linhas/hospitalar'] = 'marketplace/catalogo';
+$route['Pedido'] = 'marketplace/pedidos';
+$route['busca-ativa'] = 'marketplace/busca_ativa';
+$route['faq'] = 'marketplace/FAQ';
+$route['integracoes'] = 'admin/relatorios/integracoes';
+$route['mix'] = 'admin/relatorios/mix';
+
+$route['fornecedor/estoque/produtos_vencer/(:num)/(:num)'] = 'fornecedor/estoque/produtos_vencer/index/$1/$2';
+
+
+$route['admin/fornecedores'] = 'admin/fornecedores/fornecedores';
+$route['admin/configuracoes'] = 'admin/configuracoes/configuracoes';
+$route['admin/representantes'] = 'admin/representantes/representantes';
+$route['admin/notificacoes'] = 'admin/notificacoes/notificacoes';
+$route['fornecedor/notificacoes'] = 'fornecedor/notificacoes/notificacoes';
+
+$route['404_override'] = 'errors/error_404';
 $route['translate_uri_dashes'] = FALSE;

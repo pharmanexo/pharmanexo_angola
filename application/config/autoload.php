@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('database', 'session', 'template', 'form_validation', 'templateMP' => 'tmp', 'templateRep' => 'tmp_rep', 'Ci_datatables' => 'datatable', 'Ci_select2' => 'select2', 'Auditor' => 'auditor', 'Notify' => 'notify',  'Export' => 'export', 'Price' => 'price', 'Tom_ticket' => 'ticket');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array();
+$autoload['helper'] = array('url', 'custom', 'form');
 
 /*
 | -------------------------------------------------------------------
