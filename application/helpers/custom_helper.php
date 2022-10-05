@@ -367,3 +367,10 @@ if (!function_exists('ticketstatus')) {
 
     }
 }
+
+if (!function_exists('env')) {
+    function env($name)
+    {
+        return $_SERVER[$name];
+    }
+}

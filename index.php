@@ -36,6 +36,21 @@
  * @filesource
  */
 
+
+if (file_exists('.env.local')){
+    $envs = explode("\n", file_get_contents('.env.local'));
+}else{
+    $envs = explode("\n", file_get_contents('.env'));
+}
+
+foreach ($envs as $env){
+    $variavel = explode("=", $env);
+
+    if (!empty($variavel)){
+        $_SERVER[trim($variavel[0])] = trim($variavel[1]);
+    }
+}
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT
