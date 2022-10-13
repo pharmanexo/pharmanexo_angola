@@ -10,6 +10,7 @@ class Login extends CI_Controller
         $this->load->model("m_login");
         $this->load->model("m_rota", 'rota');
         $this->load->model("m_grupo_usuario_rota", "grupo_usuario_rota");
+        $this->load->model("m_representante", 'rep');
         $this->load->model('m_fornecedor', 'fornecedor');
         $this->load->model('m_estados', 'estado');
         $this->load->model('m_usuarios', 'usuario');
@@ -21,6 +22,10 @@ class Login extends CI_Controller
     public function index()
     {
         $data['frm_action'] = "{$this->route}logar";
+        $data['frm_integranexo'] = "{$this->route}logarIntegranexo";
+        $data['frm_representante'] = "{$this->route}logarRepresentante";
+        $data['frm_distribuidor'] = "{$this->route}logarDistribuidor";
+        $data['frm_compracoletiva'] = "{$this->route}logarCompraColetiva";
         $data['frm_novasenha'] = "{$this->route}recuperar_senha";
         // TEMPLATE
         $data['header'] = $this->template->header([
@@ -323,6 +328,141 @@ class Login extends CI_Controller
 
         $this->output->set_content_type('application/json')->set_output(json_encode($warning));
     }
+
+    public function logarRepresentante()
+    {
+        $post = $this->input->post();
+
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array('secret' => '6LcSlLkUAAAAACT-qSeWEd0nrNRzgYJaUqwHuZkR', 'response' => $post['token']);
+
+        $options = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+        $responseKeys = json_decode($response, true);
+        header('Content-type: application/json');
+
+        if ($responseKeys["success"]) {
+
+            $score = $responseKeys['score'];
+
+            if ($score > 0.5) {
+                unset($post['token']);
+
+                $consulta = $this->rep->login($post);
+                if (isset($consulta['id'])) $consulta['id_representante'] = $consulta['id'];
+
+                if (!empty($consulta) && $consulta != false) {
+
+                    $consulta['empresas'] = $this->rep->get_empresas($consulta['id']);
+
+                    $consulta['logado'] = 1;
+
+
+                    if (!empty($consulta['empresas']))
+                    {
+                        if (count($consulta['empresas']) > 1) {
+                            $this->session->set_userdata($consulta);
+                            $warning = ['type' => 'success', 'action' => 'empresas'];
+                        } else {
+                            $fornecedor = $consulta['empresas'][0];
+
+                            $session_data = [
+
+                                'id_fornecedor' => $fornecedor['id'],
+                                'razao_social' => $fornecedor['razao_social'],
+                                'cnpj' => $fornecedor['cnpj'],
+                                "integracao" => $fornecedor['integracao'],
+                                "id_tipo_venda" => $fornecedor['id_tipo_venda'],
+                                "id_estado" => $this->estado->find("id", "uf = '{$fornecedor['estado']}'", TRUE)['id'],
+                                'logo' => $fornecedor['logo'],
+                                'comissao' => 3.0,
+                                'estados' => $this->db->query("SELECT id_estado from fornecedores_estados where id_fornecedor = {$fornecedor['id']}")->row_array(),
+                            ];
+
+                            // Session para identificar que é o representante que esta logado
+                            $session_data['id_representante'] = 1;
+
+                            $this->session->set_userdata(array_merge($consulta, $session_data));
+
+                            $this->auditor->setlog("Login", 'login', json_encode($consulta));
+
+                            $warning = ['type' => 'success', 'action' => '/representantes/dashboard'];
+                        }
+                    }else{
+                        $warning = ['type' => 'error', 'message' => 'Nenhum distribuidor associado'];
+                    }
+                }else{
+                    $warning = ['type' => 'error', 'message' => 'Dados inválidos, verique e tente novamente.'];
+                }
+
+            } else {
+                $warning = ['type' => 'error', 'message' => 'No Score'];
+            }
+        } else {
+            $warning = ['type' => 'error', 'message' => 'No captch'];
+        }
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($warning));
+    }
+
+    public function logarCompraColetiva(){
+
+        if ($this->input->method() == 'post'){
+
+            $post = $this->input->post();
+            $db2 = $this->load->database('adesao', TRUE);
+            $comp = $db2->select('*')->where('cnpj', $post['loginCompraColetiva'])->get('compradores')->row_array();
+
+            if (!empty($comp)) {
+                if ($comp['situacao'] == '1'){
+                    if (password_verify($post['senhaCompraColetiva'], $comp['senha'])) {
+                        unset($comp['senhaCompraColetiva']);
+                        $_SESSION['validLogin'] = true;
+                        $this->session->set_userdata('dados', $comp);
+
+                        if ($comp['completo'] == 1){
+                            redirect(base_url('compra-coletiva/produtos'));
+                        }else{
+                            redirect(base_url('compra-coletiva/cadastro/dados'));
+                        }
+                    } else {
+                        $warn = [
+                            'type' => 'error',
+                            'message' => 'Dados inválidos, tente novamente.'
+                        ];
+                    }
+                }else{
+                    $warn = [
+                        'type' => 'warning',
+                        'message' => 'Seu cadastro está aguardando aprovação do administrador.'
+                    ];
+                }
+                $this->session->set_userdata('warning', $warn);
+
+                redirect($this->route);
+
+            }else{
+                $warn = [
+                    'type' => 'error',
+                    'message' => 'Não encontramos este usuário.'
+                ];
+
+                $this->session->set_userdata('warning', $warn);
+
+                redirect($this->route);
+            }
+        }
+
+
+    }
+
 
     public function logout()
     {

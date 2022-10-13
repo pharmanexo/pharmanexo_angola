@@ -51,6 +51,21 @@ class MY_Controller extends CI_Controller
     }
 }
 
+class Adesao extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (!isset($_SESSION['dados']) || $_SESSION['validLogin'] == false ){
+            redirect(base_url());
+        }
+
+
+    }
+
+}
+
 class Admin_controller extends CI_Controller
 {
     public function __construct()
