@@ -1,4 +1,5 @@
 USE cotacoes_sintese;
+SET FOREIGN_KEY_CHECKS=0;
 
 CREATE TABLE IF NOT EXISTS cotacoes
 (
