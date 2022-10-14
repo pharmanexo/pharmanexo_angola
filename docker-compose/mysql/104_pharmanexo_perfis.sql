@@ -1,0 +1,7 @@
+INSERT INTO pharmanexo.perfis (id, titulo, id_rotas, data_criacao) VALUES (3, 'Master', '119,212,214,213,236,161,168,167,203,218,204,232,233,234,237,241,256,122,154,123,134,158,132,173,133,177,120,190,121,191,136,174,175,128,124,125,129,235,130,156,170,187,188,178,160,231,221,257,251,252,253,254,255,179,137,180,181,184,206,185,186,189', '2020-07-15 11:52:18');
+INSERT INTO pharmanexo.perfis (id, titulo, id_rotas, data_criacao) VALUES (4, 'Diretor Comercial', '119,232,233,234,237,212,213,214,236,177,120,121,136,174,175,176,124,125,129,130,156,170,178', '2020-07-15 14:28:04');
+INSERT INTO pharmanexo.perfis (id, titulo, id_rotas, data_criacao) VALUES (5, 'Supervisão', '123,120,119,177,122', '2020-07-15 14:30:08');
+INSERT INTO pharmanexo.perfis (id, titulo, id_rotas, data_criacao) VALUES (6, 'Financeiro', '119,124,178,177', '2020-07-15 14:30:24');
+INSERT INTO pharmanexo.perfis (id, titulo, id_rotas, data_criacao) VALUES (7, 'Representante', '119,122,123,124,156,178', '2020-07-15 14:36:16');
+INSERT INTO pharmanexo.perfis (id, titulo, id_rotas, data_criacao) VALUES (8, 'Comercial', '119,256,241,232,233,234,237,212,214,213', '2020-07-15 14:36:57');
+INSERT INTO pharmanexo.perfis (id, titulo, id_rotas, data_criacao) VALUES (9, 'Suporte', '119,120,190,121,191,136,174,175,176,128,137,180,181,184,185,186,189', '2020-09-21 16:30:00');

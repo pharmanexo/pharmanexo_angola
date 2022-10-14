@@ -96,7 +96,6 @@ $db['default'] = array(
     'save_queries' => TRUE
 );
 
-
 $db['adesao'] = array(
     'dsn'	=> '',
     'hostname' => $_SERVER['DB_HOST'],
