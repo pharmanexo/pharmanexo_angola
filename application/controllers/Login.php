@@ -412,6 +412,145 @@ class Login extends CI_Controller
         $this->output->set_content_type('application/json')->set_output(json_encode($warning));
     }
 
+    public function logarDistribuidor()
+    {
+
+        $post = $this->input->post();
+
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $data = array('secret' => '6LcSlLkUAAAAACT-qSeWEd0nrNRzgYJaUqwHuZkR', 'response' => $post['token']);
+
+        $options = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context = stream_context_create($options);
+        $response = file_get_contents($url, false, $context);
+        $responseKeys = json_decode($response, true);
+        header('Content-type: application/json');
+
+        if ($responseKeys["success"]) {
+
+            $score = $responseKeys['score'];
+
+            if ($score > 0.5) {
+
+                unset($post['token']);
+
+                # Autentica o usuario
+                $consulta = $this->m_login->logar($post);
+
+                # Verifica se o retorno da autenticação não deu error
+                if ( !isset($consulta['error']) ) {
+
+                    $this->auditor->setlog("Login", 'login', []);
+
+                    if ($consulta['logado'] == '1') {
+
+                        $warning = ['type' => 'error', 'message' => 'Já existe um sessão ativa para este usuário.'];
+                    } else {
+
+                        /* atualiza usuario logado */
+                        # $this->db->query("UPDATE usuarios set logado = 1 WHERE id = {$consulta['id']}");
+
+                        if (isset($consulta['administrador']) && $consulta['administrador'] == 1) {
+                            $userdata = [
+                                'logado' => '1',
+                                'mc' => '0',
+                                'id_usuario' => $consulta['id'],
+                                "tipo_usuario" => $consulta['tipo_usuario'],
+                                "administrador" => $consulta['administrador'],
+                                "nome" => $consulta['nome'],
+                                "tipo" => 1,
+                                "nivel" => $consulta['nivel'],
+                                "email" => $consulta['email'],
+                                "foto" => $consulta['foto'],
+                                "routes" => $this->rota->rotasAdmin($consulta['nivel']),
+                            ];
+
+                            $this->session->set_userdata($userdata);
+
+                            $warning = ['type' => 'success', 'action' => 'dashboard'];
+                        } else {
+
+                            if (!empty($consulta)) {
+
+                                $this->session->set_userdata('empresas', $consulta['empresas']);
+
+                                $userdata = [
+                                    'logado' => '1',
+                                    'mc' => '0',
+                                    'id_usuario' => $consulta['id'],
+                                    "tipo_usuario" => $consulta['tipo_usuario'],
+                                    "nome" => $consulta['nome'],
+                                    "email" => $consulta['email'],
+                                    "foto" => $consulta['foto'],
+                                    "usuario_sintese" => $consulta['usuario_sintese'],
+                                ];
+
+                                $this->session->set_userdata($userdata);
+
+                                if (count($consulta['empresas']) > 1) {
+                                    $warning = ['type' => 'success', 'action' => 'empresas'];
+                                } else {
+                                    $fornecedor = $this->fornecedor->findById($consulta['empresas'][0]['id']);
+                                    // $comissionamento = $this->comissionamento->find("comissao", "id_fornecedor = {$fornecedor['id']}", TRUE);
+
+                                    $usuario_fornecedor = $this->db->select("*")->from('usuarios_fornecedores')->where("id_usuario = {$consulta['id']} and id_fornecedor = {$fornecedor['id']}")->get()->row_array();
+
+                                    $session_data = [
+                                        'id_fornecedor' => $fornecedor['id'],
+                                        'razao_social' => $fornecedor['razao_social'],
+                                        'nome_fantasia' => $fornecedor['nome_fantasia'],
+                                        'cnpj' => $fornecedor['cnpj'],
+                                        'id_matriz' => $fornecedor['id_matriz'],
+                                        "integracao" => $fornecedor['integracao'],
+                                        "tipo_empresa" => $fornecedor['tipo'],
+                                        "id_tipo_venda" => $fornecedor['id_tipo_venda'],
+                                        "id_estado" => $this->estado->find("id", "uf = '{$fornecedor['estado']}'", TRUE)['id'],
+                                        'logo' => $fornecedor['logo'],
+                                        'comissao' => 3.00,
+                                        'estados' => $this->db->query("SELECT id_estado from fornecedores_estados where id_fornecedor = {$fornecedor['id']}")->row_array(),
+                                        'routes' => $this->grupo_usuario_rota->get_routes_fornecedor($fornecedor['id'], $usuario_fornecedor['tipo']),
+                                        'compra_distribuidor' => $fornecedor['compra_distribuidor'],
+                                        'grupo' => $usuario_fornecedor['tipo'],
+                                        'credencial_bionexo' => $fornecedor['credencial_bionexo']
+                                    ];
+
+                                    unset($_SESSION['empresas']);
+
+                                    if (isset($session_data)) {
+                                        $this->session->set_userdata($session_data);
+                                    }
+
+                                    $warning = ['type' => 'success', 'action' => 'dashboard'];
+                                }
+                            } else {
+                                $this->session->set_userdata("logado", "0");
+                                $this->session->set_userdata("mc", "0");//menu controle
+                                #$this->session->set_flashdata("mensagem", "Usuário/Senha incorretos.");
+                                $warning = ['type' => 'error', 'message' => 'Dados incorretos'];
+                            }
+                        }
+                    }
+                } else {
+
+                    $warning = ['type' => 'error', 'message' => $consulta['message']];
+                }
+            } else {
+                $warning = ['type' => 'error', 'message' => 'No Score'];
+            }
+        } else {
+            $warning = ['type' => 'error', 'message' => 'No captch'];
+        }
+
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($warning));
+    }
+
     public function logarCompraColetiva(){
 
         if ($this->input->method() == 'post'){

@@ -68,11 +68,16 @@
             -ms-filter: blur(3px);
             filter: blur(3px);
         }
-        body.modal-open .borda{
+        .input-label{
+            margin-left: -370px;
+            font-size: 15px;
+        }
+        .modal-content {
             border-radius: 30px;
         }
-        body.modal-open .modal-title{
-            font-size: 25px;
+        .modal-title{
+            font-size: 30px;
+            margin-top: -20px;
         }
         .btnpharma{
 

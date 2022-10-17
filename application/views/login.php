@@ -47,148 +47,42 @@ if (isset($header)) echo $header;
             </div>
             <div class="col-12 col-lg-6 d-flex justify-content-center bg-light formColumn">
 
-                <div class="container" style="margin-top: 40px; margin-left: -30px">
+                <div class="container" style="margin-top: 150px; margin-left: -80px;">
                     <div class="row justify-content-md-center">
-                        <div class="col col-lg-2 mx-4">
+                        <div class="col col-lg-6 mx-4">
                             <a id="acessoIntegranexo" data-toggle="modal" data-target="#modalIntegranexo">
                                 <img src="<?php echo ASSETS_PATH ?>/img/integranexo.jpg"
                                      alt="Integranexo"
-                                     width="120" height="120">
+                                     width="250" height="250">
                             </a>
                         </div>
-                        <div class="col col-lg-2 mx-4">
+                        <div class="col col-lg-3 mx-4">
                             <a id="acessoRepresentante" data-toggle="modal" data-target="#modalRepresentante">
                                 <img src="<?php echo ASSETS_PATH ?>/img/representantes.jpg"
                                      alt="Representantes"
-                                     width="120" height="120">
+                                     width="250" height="250">
                             </a>
                         </div>
-                        <div class="col col-lg-2 mx-4">
+                    </div>
+                    <div class="row justify-content-md-center mt-4">
+                        <div class="col col-lg-6 mx-4">
                             <a id="acessoDistribuidor" data-toggle="modal" data-target="#modalDistribuidor">
                                 <img src="<?php echo ASSETS_PATH ?>/img/distribuidor.jpg"
                                      alt="Distribuidor"
-                                     width="120" height="120">
+                                     width="250" height="250">
                             </a>
                         </div>
-                        <div class="col col-lg-2 mx-4">
+                        <div class="col col-lg-3 mx-4">
                             <a id="acessoCompraColetiva" data-toggle="modal" data-target="#modalCompraColetiva">
                                 <img src="<?php echo ASSETS_PATH ?>/img/compracoletiva.jpg"
                                      alt="Compra Coletiva"
-                                     width="120" height="120">
+                                     width="250" height="250">
                             </a>
                         </div>
                     </div>
 
                 </div>
 
-
-                <!-- card login -->
-                <div class="card text-center shadow position-absolute " style=" min-width: 400px; margin-top: 250px"
-                     id="telaLogin">
-                    <div class="card-body px-5">
-                        <h3>Acesso ao Sistema</h3>
-                        <p class="small">Informe suas crendeciais de acesso.</p>
-                        <form id="form" method="post" class="frmLogin" action="<?php echo $frm_action; ?>">
-                            <div class="form-group">
-                                <div class="input-group mb-3 mt-5">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                    </div>
-                                    <input id="login" type="text" class="form-control input-sm" name="login"
-                                           placeholder="Digite seu Login" maxlength="50" required="true">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text "><i class="fa fa-key"></i></span>
-                                    </div>
-                                    <input id="senha" type="password" class="form-control input-sm senha" name="senha"
-                                           placeholder="Digite sua Senha" maxlength="20" required="true">
-                                    <div class="input-group-append">
-                                        <div class="input-group-text olho" id="olho"><i class="fas fa-eye"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div style="margin-top:25px" class="form-group">
-                                <!-- Acesso ao sistema -->
-                                <div class="col-12 controls" style="margin-top:25px;">
-                                    <button type="submit" id="postbut" class="btn btn-primary px-3 "
-                                            style="width:200px">
-                                        <i class="fas fa-check"></i> Acessar Sistema
-                                    </button>
-                                </div>
-                                <!-- Recuperação de senha -->
-                                <div class="col-12 controls" style="margin-top:25px;">
-                                    <span style="padding-top: 10px;"><a id="esqueceuSenha" style="text-decoration:none">Esqueceu sua senha?</a></span>
-                                </div>
-
-                            </div>
-                        </form>
-
-                        <?php $mensagem = $this->session->flashdata("mensagem"); ?>
-                        <?php if (!empty($mensagem)) : ?>
-                            <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
-                        <?php endif; ?>
-                    </div>
-                </div>
-
-                <!-- card nova senha-->
-                <div class="card text-center position-absolute shadow"
-                     style=" margin-top: 100px; opacity: 0;"
-                     id="telaNovaSenha">
-                    <div class="card-body">
-                        <form id="formRecuperarSenha" method="post" action="<?php echo $frm_novasenha; ?>">
-                            <h3>Perdeu sua senha? </h3>
-                            <p class="small">Não tem problema, informe o e-mail cadastrado e iremos te ajudar a
-                                recuperar
-                                seua senha.</p>
-                            <!-- <div class="form-group">
-                                 <div class="input-group mb-3 mt-5">
-                                     <div class="input-group-prepend border-0">
-                                         <span class="input-group-text border-right-0"><i class="fa fa-user"></i></span>
-                                     </div>
-                                     <input id="cnpj" type="text" class="form-control border-left-0 input-sm" name="cnpj" placeholder="Digite seu CNPJ" maxlength="50" required="true">
-                                 </div>
-                             </div>-->
-                            <div class="form-group">
-                                <div class="input-group mb-3 mt-5">
-                                    <div class="input-group-prepend border-0">
-                                        <span class="input-group-text border-right-0"><i
-                                                    class="fa fa-envelope"></i></span>
-                                    </div>
-                                    <input id="loginUser" type="text" class="form-control border-left-0 input-sm"
-                                           placeholder="Digite seu E-mail/Login" maxlength="50" required="true">
-                                </div>
-                            </div>
-                            <div style="margin-top:25px" class="form-group">
-                                <!-- Button -->
-                                <div class="col-12 controls" style="margin-top:25px;">
-                                    <button type="submit" id="btnRecuperarSenha" form="formRecuperarSenha"
-                                            class="btn btn-success " style="width:200px">
-                                        Recuperar Senha
-                                    </button>
-                                </div>
-
-                                <div class="col-12 controls" style="margin-top:25px;">
-                                <span style="padding-top: 10px;">
-                                    <a id="voltarLogin"
-                                       href="<?php echo base_url('login') ?>"
-                                       style="text-decoration:none">Voltar para o login
-                                    </a>
-                                </span>
-                                </div>
-                            </div>
-                        </form>
-
-                        <?php $mensagem = $this->session->flashdata("mensagem"); ?>
-                        <?php if (!empty($mensagem)) : ?>
-                            <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
-                        <?php endif; ?>
-                    </div>
-                </div>
                 <!-- Cadastre-se -->
                 <div class="mb-4 w-100" hidden style="margin-top:10px; margin-bottom:10px;">
                     <h5 class=" mx-auto text-center"> Não tem acesso? Cadastre-se...</h5>
@@ -222,62 +116,119 @@ if (isset($header)) echo $header;
 <div class="modal fade text-center" id="modalIntegranexo" tabindex="-1" role="dialog" aria-labelledby="modalIntegranexo"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content borda align-content-center">
+        <div class="modal-content align-content-center" style="box-shadow:0px 3px 6px 4px #0041a0;">
             <div class="modal-header text-center">
-                <h3 class="modal-title w-100">Portal Integranexo</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h3 class="modal-title w-100" style="margin-top: 10px; position: absolute; left: 2px;">
+                    Portal Pharmanexo</h3>
             </div>
             <div class="modal-body">
-                <p class="small">Para acessar o portal Integranexo é necessário digitar o login e senha.</p>
-                <form id="formIntegranexo" method="post" class="frmLoginIntegranexo"
-                      action="<?php echo $frm_integranexo; ?>">
-
+                <form id="form" method="post" class="frmLogin" action="<?php echo $frm_action; ?>">
                     <div class="form-group">
                         <div class="input-group mb-3 mt-5">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input id="emailRIntegranexo" type="text" class="form-control input-sm"
-                                   name="email"
+                            <input id="login" type="text" class="form-control input-sm" name="login"
                                    placeholder="Digite seu Login" maxlength="50" required="true">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text "><i class="fa fa-key"></i></span>
                             </div>
-                            <input id="senhaIntegranexo" type="password" class="form-control input-sm senha"
-                                   name="senha" placeholder="Digite sua Senha" maxlength="20"
-                                   required="true">
+                            <input id="senha" type="password" class="form-control input-sm senha" name="senha"
+                                   placeholder="Digite sua Senha" maxlength="20" required="true">
                             <div class="input-group-append">
                                 <div class="input-group-text olho" id="olho"><i class="fas fa-eye"></i></div>
                             </div>
                         </div>
                     </div>
 
-                    <div style="margin-top:25px" class="form-group">
 
+                    <div style="margin-top:25px" class="form-group">
+                        <!-- Acesso ao sistema -->
                         <div class="col-12 controls" style="margin-top:25px;">
-                            <button type="submit" id="postIntegranexo" class="btn btn-primary px-3 "
+                            <button type="submit" id="postbut" class="btn btn-primary px-3 "
                                     style="width:200px">
                                 <i class="fas fa-check"></i> Acessar Sistema
                             </button>
                         </div>
-
+                        <!-- Cadastro -->
                         <div class="col-12 controls" style="margin-top:25px;">
-                                <span style="padding-top: 10px;">
-                                    <a id="esqueceuSenhaRepresentante"
-                                       style="text-decoration:none">Esqueceu sua senha?
-                                    </a>
-                                </span>
+                            <button type="submit" id="cadPharmanexo" class="btn btn-secondary px-3 "
+                                    style="width:150px">
+                                <i class="fas fa-paperclip"></i> Cadastre-se
+                            </button>
+                        </div>
+                        <!-- Recuperação de senha -->
+                        <div class="col-12 controls" style="margin-top:25px;">
+                            <span style="padding-top: 10px;">
+                                <a data-toggle="modal"
+                                   data-dismiss="modal"
+                                   data-target="#modalNovaSenha"
+                                   style="text-decoration:none">Esqueceu sua senha?
+                                </a>
+                            </span>
                         </div>
 
                     </div>
+                </form>
 
+                <?php $mensagem = $this->session->flashdata("mensagem"); ?>
+                <?php if (!empty($mensagem)) : ?>
+                    <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal nova senha-->
+<div class="modal fade text-center" id="modalNovaSenha" tabindex="-1" role="dialog"
+     aria-labelledby="modalNovaSenha"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content align-content-center">
+            <div class="modal-header text-center">
+                <h3 class="modal-title w-100"
+                    style="margin-top: 5px;
+                    position: absolute;
+                    left: 0px;">
+                    Recuperação de Senha</h3>
+            </div>
+            <div class="modal-body" style="margin-top: 40px">
+                <form id="formRecuperarSenha" method="post" action="<?php echo $frm_novasenha; ?>">
+                    <h3>Perdeu sua senha? </h3>
+                    <p class="small">Não tem problema, informe o e-mail cadastrado e iremos te ajudar a
+                        recuperar sua senha.</p>
+                    <!-- <div class="form-group">
+                         <div class="input-group mb-3 mt-5">
+                             <div class="input-group-prepend border-0">
+                                 <span class="input-group-text border-right-0"><i class="fa fa-user"></i></span>
+                             </div>
+                             <input id="cnpj" type="text" class="form-control border-left-0 input-sm" name="cnpj" placeholder="Digite seu CNPJ" maxlength="50" required="true">
+                         </div>
+                     </div>-->
+                    <div class="form-group">
+                        <div class="input-group mb-3 mt-5">
+                            <div class="input-group-prepend border-0">
+                                        <span class="input-group-text border-right-0"><i
+                                                    class="fa fa-envelope"></i></span>
+                            </div>
+                            <input id="loginUser" type="text" class="form-control border-left-0 input-sm"
+                                   placeholder="Digite seu E-mail/Login" maxlength="50" required="true">
+                        </div>
+                    </div>
+                    <div style="margin-top:25px" class="form-group">
+                        <!-- Button -->
+                        <div class="col-12 controls" style="margin-top:25px;">
+                            <button type="submit" id="btnRecuperarSenha" form="formRecuperarSenha"
+                                    class="btn btn-success " style="width:200px">
+                                Recuperar Senha
+                            </button>
+                        </div>
+                    </div>
                 </form>
 
                 <?php $mensagem = $this->session->flashdata("mensagem"); ?>
@@ -290,18 +241,16 @@ if (isset($header)) echo $header;
 </div>
 
 <!-- Modal login Representante -->
-<div class="modal fade text-center" id="modalRepresentante" tabindex="-1" role="dialog" aria-labelledby="modalRepresentante"
+<div class="modal fade text-center" id="modalRepresentante" tabindex="-1" role="dialog"
+     aria-labelledby="modalRepresentante"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content borda align-content-center">
+        <div class="modal-content align-content-center" style="box-shadow:0px 3px 6px 4px #008701;">
             <div class="modal-header text-center">
-                <h3 class="modal-title w-100">Portal do Representante</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h3 class="modal-title w-100" style="margin-top: 10px; position: absolute; left: 2px;">
+                    Portal do Representante</h3>
             </div>
             <div class="modal-body">
-                <p class="small">Para acessar o sistema Pharmanexo é necessário digitar o login e senha.</p>
                 <form id="formRepresentante" method="post" class="frmLoginRepresentante"
                       action="<?php echo $frm_representante; ?>">
 
@@ -340,9 +289,19 @@ if (isset($header)) echo $header;
                         </div>
 
                         <div class="col-12 controls" style="margin-top:25px;">
+                            <button type="submit" id="cadRepresentante" class="btn btn-secondary px-3 "
+                                    style="width:150px">
+                                <i class="fas fa-paperclip"></i> Cadastre-se
+                            </button>
+                        </div>
+
+                        <div class="col-12 controls" style="margin-top:25px;">
                                 <span style="padding-top: 10px;">
                                     <a id="esqueceuSenhaRepresentante"
-                                       style="text-decoration:none">Esqueceu sua senha?
+                                       style="text-decoration:none"
+                                       data-toggle="modal"
+                                       data-dismiss="modal"
+                                       data-target="#modalNovaSenha">Esqueceu sua senha?
                                     </a>
                                 </span>
                         </div>
@@ -361,18 +320,16 @@ if (isset($header)) echo $header;
 </div>
 
 <!-- Modal login Distribuidor -->
-<div class="modal fade text-center" id="modalDistribuidor" tabindex="-1" role="dialog" aria-labelledby="modalDistribuidor"
+<div class="modal fade text-center" id="modalDistribuidor" tabindex="-1" role="dialog"
+     aria-labelledby="modalDistribuidor"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content borda align-content-center">
+        <div class="modal-content align-content-center" style="box-shadow:0px 3px 6px 4px #fd7401;">
             <div class="modal-header text-center">
-                <h3 class="modal-title w-100">Portal do Distribuidor</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h3 class="modal-title w-100" style="margin-top: 10px;position: absolute;left: 0px;">
+                    Portal do Distribuidor</h3>
             </div>
             <div class="modal-body">
-                <p class="small">Para acessar o sistema Pharmanexo é necessário digitar o login e senha.</p>
                 <form id="formDistribuidor" method="post" class="frmLoginDistribuidor"
                       action="<?php echo $frm_distribuidor; ?>">
 
@@ -411,9 +368,19 @@ if (isset($header)) echo $header;
                         </div>
 
                         <div class="col-12 controls" style="margin-top:25px;">
+                            <button type="submit" id="cadDistribuidor" class="btn btn-secondary px-3 "
+                                    style="width:150px">
+                                <i class="fas fa-paperclip"></i> Cadastre-se
+                            </button>
+                        </div>
+
+                        <div class="col-12 controls" style="margin-top:25px;">
                                 <span style="padding-top: 10px;">
                                     <a id="esqueceuSenhaDistribuidor"
-                                       style="text-decoration:none">Esqueceu sua senha?
+                                       style="text-decoration:none"
+                                       data-toggle="modal"
+                                       data-dismiss="modal"
+                                       data-target="#modalNovaSenha">Esqueceu sua senha?
                                     </a>
                                 </span>
                         </div>
@@ -432,18 +399,16 @@ if (isset($header)) echo $header;
 </div>
 
 <!-- Modal login Compra Coletiva -->
-<div class="modal fade text-center" id="modalCompraColetiva" tabindex="-1" role="dialog" aria-labelledby="modalCompraColetiva"
+<div class="modal fade text-center" id="modalCompraColetiva" tabindex="-1" role="dialog"
+     aria-labelledby="modalCompraColetiva"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content borda align-content-center">
+        <div class="modal-content align-content-center" style="box-shadow:0px 3px 6px 4px #da0e59;">
             <div class="modal-header text-center">
-                <h3 class="modal-title w-100">Portal de Compras Coletivas</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <h3 class="modal-title w-100" style="margin-top: 10px; position: absolute; left: 0px;">
+                    Portal de Compras Coletivas</h3>
             </div>
-            <div class="modal-body">
-                <p class="small">Para acessar o sistema Pharmanexo é necessário digitar o login e senha.</p>
+            <div class="modal-body" style="margin-top: 10px">
                 <form id="formCompraColetiva" method="post" class="frmLoginCompraColetiva"
                       action="<?php echo $frm_compracoletiva; ?>">
 
@@ -452,7 +417,8 @@ if (isset($header)) echo $header;
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-user"></i></span>
                             </div>
-                            <input type="text" name="loginCompraColetiva" id="loginCompraColetiva" value="" required="true" data-inputmask="cnpj" class="form-control">
+                            <input type="text" name="loginCompraColetiva" id="loginCompraColetiva" value=""
+                                   required="true" data-inputmask="cnpj" class="form-control">
 
                         </div>
                     </div>
@@ -481,9 +447,19 @@ if (isset($header)) echo $header;
                         </div>
 
                         <div class="col-12 controls" style="margin-top:25px;">
+                            <button type="submit" id="cadCompraColetiva" class="btn btn-secondary px-3 "
+                                    style="width:150px">
+                                <i class="fas fa-paperclip"></i> Cadastre-se
+                            </button>
+                        </div>
+
+                        <div class="col-12 controls" style="margin-top:25px;">
                                 <span style="padding-top: 10px;">
-                                    <a id="esqueceuSenhaRepresentante"
-                                       style="text-decoration:none">Esqueceu sua senha?
+                                    <a id="esqueceuSenhaCC"
+                                       style="text-decoration:none"
+                                       data-toggle="modal"
+                                       data-dismiss="modal"
+                                       data-target="#modalNovaSenhaCC">Esqueceu sua senha?
                                     </a>
                                 </span>
                         </div>
@@ -501,6 +477,52 @@ if (isset($header)) echo $header;
     </div>
 </div>
 
+<!-- Modal nova senha Compra Coletiva -->
+<div class="modal fade text-center" id="modalNovaSenhaCC" tabindex="-1" role="dialog"
+     aria-labelledby="modalNovaSenha"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content align-content-center">
+            <div class="modal-header text-center">
+                <h3 class="modal-title w-100"
+                    style="margin-top: 5px;
+                    position: absolute;
+                    left: 0px;">
+                    Recuperação de Senha</h3>
+            </div>
+            <div class="modal-body" style="margin-top: 40px">
+                <form id="formRecuperarSenha" method="post" action="<?php echo $frm_novasenha; ?>">
+                    <h3>Perdeu sua senha? </h3>
+                    <p class="small">Não tem problema, informe o CNPJ cadastrado e iremos te ajudar a
+                        recuperar sua senha.</p>
+                    <div class="form-group">
+                        <div class="input-group mb-3 mt-5">
+                            <div class="input-group-prepend border-0">
+                                <span class="input-group-text border-right-0"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input id="cnpj" type="text" class="form-control border-left-0 input-sm" name="cnpj"
+                                   placeholder="Digite seu CNPJ" maxlength="50" required="true">
+                        </div>
+                    </div>
+                    <div style="margin-top:25px" class="form-group">
+                        <!-- Button -->
+                        <div class="col-12 controls" style="margin-top:25px;">
+                            <button type="submit" id="btnRecuperarSenha" form="formRecuperarSenha"
+                                    class="btn btn-success " style="width:200px">
+                                Recuperar Senha
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <?php $mensagem = $this->session->flashdata("mensagem"); ?>
+                <?php if (!empty($mensagem)) : ?>
+                    <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php if (isset($scripts)) echo $scripts; ?>
 <script src="https://www.google.com/recaptcha/api.js?render=6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn"></script>
@@ -508,54 +530,12 @@ if (isset($header)) echo $header;
 
     $(function () {
 
-        $('#telaNovaSenha').css('top', '-800px').css('opacity', '0');
-
-        $( ".olho" ).mousedown(function() {
+        $(".olho").mousedown(function () {
             $(".senha").attr("type", "text");
         });
 
-        $( ".olho" ).mouseup(function() {
+        $(".olho").mouseup(function () {
             $(".senha").attr("type", "password");
-        });
-
-        $('#esqueceuSenha').click(function (e) {
-            e.preventDefault();
-
-            $("#telaLogin").animate({
-                opacity: 0,
-                duration: 50,
-                top: '-800'
-            }, 1500, function () {
-                // Animation complete.
-            });
-
-            $("#telaNovaSenha").css('border-radius', '30px').animate({
-                opacity: 1,
-                duration: 50,
-                top: '150'
-            }, 1500, function () {
-                // Animation complete.
-            });
-        });
-
-        $('#voltarLogin').click(function (e) {
-            e.preventDefault();
-
-            $("#telaNovaSenha").animate({
-                opacity: 0,
-                duration: 50,
-                top: '-800'
-            }, 1500, function () {
-                // Animation complete.
-            });
-
-            $("#telaLogin").animate({
-                opacity: 1,
-                duration: 50,
-                top: '1'
-            }, 1500, function () {
-                // Animation complete.
-            });
         });
 
         $('#form').submit(function (e) {
@@ -592,6 +572,40 @@ if (isset($header)) echo $header;
             });
         });
 
+        $('#formDistribuidor').submit(function (e) {
+
+            $('#postDistribuidor').html("<i class='fa fa-spin fa-spinner'></i> Validando Dados... ").attr('disabled', true);
+            // we stoped it
+            e.preventDefault();
+            var login = $('#emailDistribuidor').val();
+            var senha = $('#senhaDistribuidor').val();
+            // needs for recaptacha ready
+            grecaptcha.ready(function () {
+                // do request for recaptcha token
+                // response is promise with passed token
+                grecaptcha.execute('6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn', {action: 'login'}).then(function (token) {
+                    // add token to form
+                    $('#formDistribuidor').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+                    $.post($('#formDistribuidor').attr('action'), {login: login, senha: senha, token: token}, function (result) {
+                        if (result.type === 'success') {
+                            if (result.action === 'empresas') {
+                                Pace.start();
+
+                                window.location = '<?php echo base_url('login/selecionar_empresa'); ?>'
+                            } else {
+
+                                Pace.start();
+                                window.location = 'dashboard';
+                            }
+                        } else {
+                            $('#postDistribuidor').html("<i class='fas fa-check'></i> Acessar Sistema ").attr('disabled', false);
+                            formWarning(result)
+                        }
+                    });
+                });
+            });
+        });
+
         $('#formRepresentante').submit(function (e) {
 
             $('#postRepresentante').html("<i class='fa fa-spin fa-spinner'></i> Validando Dados... ").attr('disabled', true);
@@ -606,13 +620,17 @@ if (isset($header)) echo $header;
                 grecaptcha.execute('6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn', {action: 'login'}).then(function (token) {
                     // add token to form
                     $('#formRepresentante').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
-                    $.post($('#formRepresentante').attr('action'), {email: email, senha: senha, token: token}, function (result) {
+                    $.post($('#formRepresentante').attr('action'), {
+                        email: email,
+                        senha: senha,
+                        token: token
+                    }, function (result) {
                         if (result.type === 'success') {
-                            if (result.action === 'empresas'){
+                            if (result.action === 'empresas') {
                                 Pace.start();
 
                                 window.location = '<?php echo base_url('login/selecionar_empresa'); ?>'
-                            } else{
+                            } else {
                                 Pace.start();
                                 window.location = 'representantes/dashboard'
 
@@ -659,7 +677,6 @@ if (isset($header)) echo $header;
                 });
             });
         });
-
 
 
     });
