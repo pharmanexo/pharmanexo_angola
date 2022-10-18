@@ -9,12 +9,24 @@ jobs:
         steps:
           - uses: actions/checkout@v2
 
+          #          - name: deploy arquivos
+          #            uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+          #            with:
+          #                username: ${{ secrets.SSH_USERNAME }}
+          #                server: '${{ secrets.SSH_HOST }}'
+          #                ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          #                local_path: './*'
+          #                remote_path: '/var/www/teste'
+          #                sftpArgs: '-o ConnectTimeout=5'
+
           - name: Setup SSH
-            uses: MrSquaare/ssh-setup-action@v2
+            uses: appleboy/ssh-action@master
             with:
-                host: '${{ secrets.SSH_HOST }}'
-                private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+                host: ${{ secrets.SSH.HOST }}
+                username: ${{ secrets.SSH.USERNAME }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                port: ${{ secrets.PORT }}
           - name: pull
-            run: |
+            script: |
               cd /var/www/pharmanexo.com.br
               git pull
