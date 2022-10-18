@@ -9,14 +9,12 @@ jobs:
         steps:
           - uses: actions/checkout@v2
 
-          - name: deploy arquivos
-            uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+          - name: Setup SSH
+            uses: MrSquaare/ssh-setup-action@v2
             with:
-                username: ${{ secrets.SSH_USERNAME }}
-                server: '${{ secrets.SSH_HOST }}'
-                ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
-                local_path: './*'
-                remote_path: '/var/www/teste'
-                sftpArgs: '-o ConnectTimeout=5'
-
-
+                host: '${{ secrets.SSH_HOST }}'
+                private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - name: pull
+            run: |
+              cd /var/www/pharmanexo.com.br
+              git pull
