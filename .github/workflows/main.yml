@@ -7,16 +7,15 @@ jobs:
     deploy_code:
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout files
           - uses: actions/checkout@v2
 
           - name: Install doctl
-          - uses: digitalocean/action-doctl@v2
+            uses: digitalocean/action-doctl@v2
             with:
                 token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
           - name: SSH PULL
-          - uses: appleboy/ssh-action@master
+            uses: appleboy/ssh-action@master
             with:
                 host: ${{ secrets.SSH_HOST }}
                 username: ${{ secrets.SSH_USERNAME }}
