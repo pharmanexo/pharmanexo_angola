@@ -22,10 +22,10 @@ jobs:
           - name: Setup SSH
             uses: appleboy/ssh-action@master
             with:
-                host: ${{ secrets.SSH.HOST }}
-                username: ${{ secrets.SSH.USERNAME }}
+                host: ${{ secrets.SSH_HOST }}
+                username: ${{ secrets.SSH_USERNAME }}
                 key: ${{ secrets.SSH_PRIVATE_KEY }}
-                port: ${{ secrets.PORT }}
+                port: ${{ secrets.SSH_PORT }}
                 script: |
                   cd /var/www/pharmanexo.com.br
                   git pull
