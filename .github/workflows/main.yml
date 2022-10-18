@@ -28,4 +28,5 @@ jobs:
                 port: ${{ secrets.SSH_PORT }}
                 script: |
                   cd /var/www/pharmanexo.com.br
+                  git fetch
                   git pull

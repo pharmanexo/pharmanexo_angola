@@ -104,7 +104,7 @@ if (isset($header)) echo $header;
                 <div class="card-body">
                     <form id="formRecuperarSenha" method="post" action="<?php echo $frm_novasenha; ?>">
                         <h3>Perdeu sua senha? </h3>
-                        <p class="small">Não tem problema, informe o e-mail cadastrado e iremos te ajudar a recuperar seua senha.</p>
+                        <p class="small">Não tem problema, informe o e-mail cadastrado e iremos te ajudar a recuperar sua senha.</p>
                         <!-- <div class="form-group">
                              <div class="input-group mb-3 mt-5">
                                  <div class="input-group-prepend border-0">
