@@ -222,7 +222,7 @@ class Login extends CI_Controller
                 $consulta = $this->m_login->logar($post);
 
                 # Verifica se o retorno da autenticação não deu error
-                if ( !isset($consulta['error']) ) {
+                if (!isset($consulta['error'])) {
 
                     $this->auditor->setlog("Login", 'login', []);
 
@@ -365,8 +365,7 @@ class Login extends CI_Controller
                     $consulta['logado'] = 1;
 
 
-                    if (!empty($consulta['empresas']))
-                    {
+                    if (!empty($consulta['empresas'])) {
                         if (count($consulta['empresas']) > 1) {
                             $this->session->set_userdata($consulta);
                             $warning = ['type' => 'success', 'action' => 'empresas'];
@@ -395,10 +394,10 @@ class Login extends CI_Controller
 
                             $warning = ['type' => 'success', 'action' => '/representantes/dashboard'];
                         }
-                    }else{
+                    } else {
                         $warning = ['type' => 'error', 'message' => 'Nenhum distribuidor associado'];
                     }
-                }else{
+                } else {
                     $warning = ['type' => 'error', 'message' => 'Dados inválidos, verique e tente novamente.'];
                 }
 
@@ -444,7 +443,7 @@ class Login extends CI_Controller
                 $consulta = $this->m_login->logar($post);
 
                 # Verifica se o retorno da autenticação não deu error
-                if ( !isset($consulta['error']) ) {
+                if (!isset($consulta['error'])) {
 
                     $this->auditor->setlog("Login", 'login', []);
 
@@ -551,24 +550,25 @@ class Login extends CI_Controller
         $this->output->set_content_type('application/json')->set_output(json_encode($warning));
     }
 
-    public function logarCompraColetiva(){
+    public function logarCompraColetiva()
+    {
 
-        if ($this->input->method() == 'post'){
+        if ($this->input->method() == 'post') {
 
             $post = $this->input->post();
             $db2 = $this->load->database('adesao', TRUE);
             $comp = $db2->select('*')->where('cnpj', $post['loginCompraColetiva'])->get('compradores')->row_array();
 
             if (!empty($comp)) {
-                if ($comp['situacao'] == '1'){
+                if ($comp['situacao'] == '1') {
                     if (password_verify($post['senhaCompraColetiva'], $comp['senha'])) {
                         unset($comp['senhaCompraColetiva']);
                         $_SESSION['validLogin'] = true;
                         $this->session->set_userdata('dados', $comp);
 
-                        if ($comp['completo'] == 1){
+                        if ($comp['completo'] == 1) {
                             redirect(base_url('compra-coletiva/produtos'));
-                        }else{
+                        } else {
                             redirect(base_url('compra-coletiva/cadastro/dados'));
                         }
                     } else {
@@ -577,7 +577,7 @@ class Login extends CI_Controller
                             'message' => 'Dados inválidos, tente novamente.'
                         ];
                     }
-                }else{
+                } else {
                     $warn = [
                         'type' => 'warning',
                         'message' => 'Seu cadastro está aguardando aprovação do administrador.'
@@ -587,7 +587,7 @@ class Login extends CI_Controller
 
                 redirect($this->route);
 
-            }else{
+            } else {
                 $warn = [
                     'type' => 'error',
                     'message' => 'Não encontramos este usuário.'
@@ -601,7 +601,6 @@ class Login extends CI_Controller
 
 
     }
-
 
     public function logout()
     {
