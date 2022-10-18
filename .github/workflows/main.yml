@@ -14,8 +14,8 @@ jobs:
             with:
                 username: ${{ secrets.SSH_USERNAME }}
                 server: '${{ secrets.SSH_HOST }}'
-                ssh_private_key: ${{ secrets.SSH_KEY }}
-                local_path: './static/*'
+                ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+                local_path: './*'
                 remote_path: '/var/www/teste'
                 sftpArgs: '-o ConnectTimeout=5'
 
