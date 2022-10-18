@@ -26,7 +26,6 @@ jobs:
                 username: ${{ secrets.SSH.USERNAME }}
                 key: ${{ secrets.SSH_PRIVATE_KEY }}
                 port: ${{ secrets.PORT }}
-          - name: pull
-            script: |
-              cd /var/www/pharmanexo.com.br
-              git pull
+                script: |
+                  cd /var/www/pharmanexo.com.br
+                  git pull
