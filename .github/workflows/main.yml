@@ -19,8 +19,3 @@ jobs:
                 remote_path: '/var/www/teste'
                 sftpArgs: '-o ConnectTimeout=5'
 
-                script: |
-                  cd ~/var/www/pharmanexo.com.br/
-                  git fetch
-                  git checkout main
-                  git pull origin main
