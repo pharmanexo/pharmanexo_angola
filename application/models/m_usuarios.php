@@ -91,8 +91,7 @@ class M_usuarios extends MY_Model
 
         //Pesquisa se o cpf já existe no BD
         $cpf_user = $this->db->where('cpf', $data['cpf'])->get($this->table);
-        var_dump($cpf_user->num_rows());
-        exit();
+
         if($cpf_user->num_rows() > 0){
             return ['status' => false, 'msg' => 'Este cpf já se encontra cadastrado.'];
         }
@@ -443,7 +442,7 @@ class M_usuarios extends MY_Model
     {
 
 
-        $this->db->select("lp.id_usuario, u.nome, count(0) as total");
+        $this->db->select("lp.id_usuario, u.nickname as nome, count(0) as total");
         $this->db->from('log_de_para lp');
         $this->db->join('usuarios u', "u.id = lp.id_usuario");
 
