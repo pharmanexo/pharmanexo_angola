@@ -1,8 +1,8 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class M_prazo_entrega extends MY_Model
+class M_valor_minimo extends MY_Model
 {
-    protected $table = 'prazos_entrega';
+    protected $table = 'valor_minimo_cliente';
     protected $primary_key = 'id';
     protected $primary_filter = 'intval';
     protected $order_field = 'id';
@@ -18,10 +18,10 @@ class M_prazo_entrega extends MY_Model
         $this->oncoexo = explode(',', ONCOEXO);
     }
 
-    public function listar_prazo_entrega_estado()
+    public function listar_valor_minimo_estado()
     {
         $id_fornecedor = $this->session->userdata("id_fornecedor");
-        $this->db->select("pe.id, pe.prazo, e.uf, e.descricao, pe.id_estado FROM prazos_entrega pe INNER JOIN estados e ON e.id = pe.id_estado ", false);
+        $this->db->select("vm.id, vm.valor_minimo, e.uf,e.descricao, vm.id_estado FROM valor_minimo_cliente vm INNER JOIN  estados e ON e.id = vm.id_estado ", false);
         $this->db->where('id_fornecedor', $id_fornecedor);
         $this->db->where('id_cliente', NULL);
         $consulta = $this->db->get();
@@ -33,12 +33,12 @@ class M_prazo_entrega extends MY_Model
         }
     }
 
-    public function listar_prazo_entrega_cnpj()
+    public function listar_valor_minimo_cnpj()
     {
         $id_fornecedor = $this->session->userdata("id_fornecedor");
-        $this->db->select(" pe.prazo, pe.id, u.id_dados_usuario, u.id_endereco, u.tipo_usuario, u.cnpj, u.ativo, du.razao_social, du.integracao FROM prazos_entrega pe INNER JOIN  usuarios u ON u.id=pe.id_cliente INNER JOIN dados_usuarios du ON du.id=u.id_dados_usuario INNER JOIN enderecos e ON e.id=u.id_endereco ", false);
-        $this->db->where('pe.id_fornecedor', $id_fornecedor);
-        $this->db->where('pe.id_estado', NULL);
+        $this->db->select(" vm.valor_minimo, vm.id, u.id_dados_usuario, u.id_endereco, u.tipo_usuario, u.cnpj, u.ativo , du.razao_social, du.integracao FROM valor_minimo_cliente vm INNER JOIN  usuarios u ON u.id=vm.id_cliente INNER JOIN dados_usuarios du ON du.id=u.id_dados_usuario INNER JOIN enderecos e ON e.id=u.id_endereco ", false);
+        $this->db->where('vm.id_fornecedor', $id_fornecedor);
+        $this->db->where('vm.id_estado', NULL);
         $consulta = $this->db->get();
         if ($consulta->num_rows() > 0) {
             return $consulta;
@@ -49,17 +49,21 @@ class M_prazo_entrega extends MY_Model
 
     public function gravar()
     {
+
+        $post = $this->input->post();
+
         $this->db->trans_begin();
 
         $id_fornecedor = $this->session->userdata("id_fornecedor");
-        $id_tipo_venda = $this->session->userdata("id_tipo_venda"); //1-markplace 2- integranexo 3- markplace/integranexo
-        $prazo_entrega = $this->input->post('prazo');
-        $elementos     = explode(',', $this->input->post('elementos'));
+        $id_tipo_venda = $this->session->userdata("id_tipo_venda");
+        $valor_minimo = dbNumberFormat($this->input->post('valor_minimo'));
+        $desconto = dbNumberFormat($this->input->post('desconto_padrao'));
+        $elementos = explode(',', $this->input->post('elementos'));
 
-        $option = $this->input->post("opcao");
+        $option = $this->input->post('opcao');
 
-        if ($option == 'ESTADOS') {
-
+        if ($option === 'ESTADOS') {
+           
             # Se for ONCOPROD replica para todos os seus fornecedores
             if ( in_array($id_fornecedor, $this->oncoprod) && isset($post['replicarMatriz']) ) {
 
@@ -79,7 +83,8 @@ class M_prazo_entrega extends MY_Model
                                 'id_fornecedor' => $f,
                                 'id_estado'     => $id_estado,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega,
+                                'valor_minimo'  => $valor_minimo,
+                                'desconto_padrao'  => $desconto,
                                 'data_atualizacao' => date("Y-m-d H:i:s")
                             ];
                         } else {
@@ -88,7 +93,8 @@ class M_prazo_entrega extends MY_Model
                                 'id_fornecedor' => $f,
                                 'id_estado'     => $id_estado,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega
+                                'valor_minimo'  => $valor_minimo,
+                                'desconto_padrao' => $desconto,
                             ];
                         }
                     }
@@ -114,7 +120,8 @@ class M_prazo_entrega extends MY_Model
                                 'id_fornecedor' => $f,
                                 'id_estado'     => $id_estado,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega,
+                                'valor_minimo'  => $valor_minimo,
+                                'desconto_padrao'  => $desconto,
                                 'data_atualizacao' => date("Y-m-d H:i:s")
                             ];
                         } else {
@@ -123,7 +130,8 @@ class M_prazo_entrega extends MY_Model
                                 'id_fornecedor' => $f,
                                 'id_estado'     => $id_estado,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega
+                                'valor_minimo'  => $valor_minimo,
+                                'desconto_padrao' => $desconto,
                             ];
                         }
                     }
@@ -147,7 +155,8 @@ class M_prazo_entrega extends MY_Model
                             'id_fornecedor' => $id_fornecedor,
                             'id_estado'     => $id_estado,
                             'id_tipo_venda' => $id_tipo_venda,
-                            'prazo'         => $prazo_entrega,
+                            'valor_minimo'  => $valor_minimo,
+                            'desconto_padrao'  => $desconto,
                             'data_atualizacao' => date("Y-m-d H:i:s")
                         ];
                     } else {
@@ -156,7 +165,8 @@ class M_prazo_entrega extends MY_Model
                             'id_fornecedor' => $id_fornecedor,
                             'id_estado'     => $id_estado,
                             'id_tipo_venda' => $id_tipo_venda,
-                            'prazo'         => $prazo_entrega
+                            'valor_minimo'  => $valor_minimo,
+                            'desconto_padrao'  => $desconto,
                         ];
                     }
                 }
@@ -167,7 +177,7 @@ class M_prazo_entrega extends MY_Model
         } else {
 
             # Se for ONCOPROD replica para todos os seus fornecedores
-            if ( in_array($id_fornecedor, $this->oncoprod)  && isset($post['replicarMatriz']) ) {
+            if ( in_array($id_fornecedor, $this->oncoprod) && isset($post['replicarMatriz']) ) {
 
                 foreach ($this->oncoprod as $f) {
 
@@ -185,7 +195,8 @@ class M_prazo_entrega extends MY_Model
                                 'id_fornecedor' => $f,
                                 'id_estado'     => $id_cliente,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega,
+                                'valor_minimo'  => $valor_minimo,
+                                'desconto_padrao'  => $desconto,
                                 'data_atualizacao' => date("Y-m-d H:i:s")
                             ];
                         } else {
@@ -194,7 +205,8 @@ class M_prazo_entrega extends MY_Model
                                 'id_fornecedor' => $f,
                                 'id_estado'     => $id_cliente,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega
+                                'valor_minimo'  => $valor_minimo,
+                                'desconto_padrao'  => $desconto,
                             ];
                         }
                     }
@@ -220,7 +232,8 @@ class M_prazo_entrega extends MY_Model
                                 'id_fornecedor' => $f,
                                 'id_estado'     => $id_cliente,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega,
+                                'valor_minimo'  => $valor_minimo,
+                                'desconto_padrao'  => $desconto,
                                 'data_atualizacao' => date("Y-m-d H:i:s")
                             ];
                         } else {
@@ -229,7 +242,8 @@ class M_prazo_entrega extends MY_Model
                                 'id_fornecedor' => $f,
                                 'id_estado'     => $id_cliente,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega
+                                'valor_minimo'  => $valor_minimo,
+                                'desconto_padrao' => $desconto,
                             ];
                         }
                     }
@@ -253,17 +267,21 @@ class M_prazo_entrega extends MY_Model
                             'id_fornecedor' => $id_fornecedor,
                             'id_cliente'    => $id_cliente,
                             'id_tipo_venda' => $id_tipo_venda,
-                            'prazo'         => $prazo_entrega,
+                            'valor_minimo'  => $valor_minimo,
+                            'desconto_padrao'  => $desconto,
                             'data_atualizacao' => date("Y-m-d H:i:s")
                         ];
+
                     } else {
 
                         $dataNovo[] = [
                             'id_fornecedor' => $id_fornecedor,
                             'id_cliente'    => $id_cliente,
                             'id_tipo_venda' => $id_tipo_venda,
-                            'prazo'         => $prazo_entrega
+                            'valor_minimo'  => $valor_minimo,
+                            'desconto_padrao' => $desconto,
                         ];
+
                     }
                 }
 
@@ -272,14 +290,13 @@ class M_prazo_entrega extends MY_Model
             }
         }
 
-        if ($this->db->trans_status() === FALSE) {
+        if ($this->db->trans_status() === false) {
 
             $this->db->trans_rollback();
-
             return false;
         } else {
 
-            $this->db->trans_commit();      
+            $this->db->trans_commit();
 
             return true;
         }
@@ -291,35 +308,36 @@ class M_prazo_entrega extends MY_Model
 
         $this->db->where('id', $id);
         $this->db->where('id_fornecedor', $id_fornecedor);
-
-        return $this->db->delete('prazos_entrega');
+        return $this->db->delete($this->table);
     }
 
     public function getById($id)
     {
-        $this->db->select("p.id, p.prazo, CONCAT(e.uf, ' - ', e.descricao) AS estado, CONCAT(c.cnpj, ' - ', c.razao_social) AS cliente");
-        $this->db->from("{$this->table} AS p");
-        $this->db->join('estados e', 'p.id_estado = e.id', 'LEFT');
-        $this->db->join('usuarios u', 'p.id_cliente = u.id', 'LEFT');
-        $this->db->join('compradores c', 'p.id_cliente = c.id', 'LEFT');
-
-        $this->db->where('p.id', $id);
-        $this->db->where('p.id_fornecedor', $this->session->userdata('id_fornecedor'));
+        $this->db->select("v.id, v.desconto_padrao, v.valor_minimo, CONCAT(e.uf, ' - ', e.descricao) AS estado, CONCAT(c.cnpj, ' - ', c.razao_social) AS cliente");
+        $this->db->from("{$this->table} AS v");
+        $this->db->join('estados e', 'v.id_estado = e.id', 'LEFT');
+        $this->db->join('usuarios u', 'v.id_cliente = u.id', 'LEFT');
+        $this->db->join('compradores c', 'u.id_comprador = c.id', 'LEFT');
+        $this->db->where('v.id', $id);
+        $this->db->where('v.id_fornecedor', $this->session->userdata('id_fornecedor'));
         $this->db->limit(1);
 
-        return $this->db->get()->row_array();
+        $query = $this->db->get();
+        return $query->row_array();
     }
 
     public function getList($option)
     {
         if ($option === 'ESTADOS') {
-            $this->db->select("e.id, CONCAT(e.uf, ' - ', e.descricao) as descricao");
-            $this->db->from('estados e');
-            $this->db->order_by('e.descricao', 'ASC');
+
+            $this->db->select("id, CONCAT(uf, ' - ', descricao) as descricao");
+            $this->db->from('estados');
+            $this->db->order_by('descricao', 'ASC');
         } else {
-            $this->db->select("c.id, CONCAT(c.cnpj, ' - ', c.razao_social) as descricao");
-            $this->db->from('compradores c');
-            $this->db->order_by('c.cnpj', 'ASC');
+
+            $this->db->select("id, CONCAT(cnpj, ' - ', razao_social) as descricao");
+            $this->db->from('compradores');
+            $this->db->order_by('cnpj', 'ASC');
         }
 
         return $this->db->get()->result_array();
@@ -339,8 +357,6 @@ class M_prazo_entrega extends MY_Model
         $this->db->where("id_fornecedor", $id_fornecedor);
 
         $this->db->limit(1);
-        $query = $this->db->get();
-
-        return $query->row_array()['id'];
+        return $this->db->get()->row_array()['id'];
     }
 }

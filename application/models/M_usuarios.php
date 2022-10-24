@@ -466,7 +466,7 @@ class M_usuarios extends MY_Model
             $this->db->group_by('lp.id_usuario');
         }
 
-       // $this->db->where('integrador', $integrador);
+        // $this->db->where('integrador', $integrador);
 
         $q = $this->db->get();
 
