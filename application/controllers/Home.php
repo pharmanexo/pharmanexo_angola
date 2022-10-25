@@ -40,7 +40,7 @@ class Home extends CI_Controller
 
         $data['totalEstoque'] = $this->views($this->getTotal()['total']);*/
 
-        $this->load->view('home', $data, FALSE);
+        $this->load->view('home2', $data, FALSE);
 
 
     }

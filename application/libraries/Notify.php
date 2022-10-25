@@ -49,10 +49,10 @@ Class Notify
             $body = str_replace(['%body%'], [$data['message']], $template);
         } else {
 
-            $file = base_url('/public/html/template_mail/notify_tmp.html');
+            $file = "public/html/template_mail/notify_tmp.html";
             $template = file_get_contents($file);
 
-            $body = str_replace(['%body%', '%subject%', '%greeting%'], [$data['message'], $data['subject'], $data['greeting']], $template);
+            $body = $data['message'];
         }
 
         $this->CI->email->subject($data['subject']);

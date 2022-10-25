@@ -141,7 +141,7 @@ class M_usuarios extends MY_Model
         }
     }
 
-    public function update($data)
+    public function update1($data)
     {
         $id = $data['id'];
 

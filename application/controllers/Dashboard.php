@@ -16,7 +16,7 @@ class Dashboard extends MY_Controller
         parent::__construct();
 
 
-        $this->route = base_url('dashboard');
+        $this->route = base_url('dashboard/');
 
         $this->load->model('m_fornecedor', 'fornecedor');
         $this->load->model('m_cotacoes_produtos', 'cotacoes_produtos');
@@ -47,44 +47,92 @@ class Dashboard extends MY_Controller
         $tipo = $this->session->userdata('tipo_usuario');
         $grupo = ($this->session->has_userdata('grupo')) ? $this->session->grupo : '';
 
-        if ($this->session->id_usuario == '15') {
-
-            $this->dashboard_vendas();
+        if ($this->session->userdata('primeiro') == '1') {
+            $this->primeiro();
         } else {
 
-            if (isset($this->session->administrador) && $this->session->administrador == 1) {
 
-                $this->dashboard_admin();
-            } else if ($tipo == 1) {
 
-                switch ($grupo) {
+            if ($this->session->id_usuario == '15') {
 
-                    case '1':
-                        $this->dashboard_fornecedor();
-                        break;
-                    case  '2':
-                        $this->dashboard_vendas();
-                        break;
-                    case  '3':
-                        $this->dashboard_fornecedor();
-                        break;
-                    default:
-                        $this->dashboard_vendas();
-                        break;
+                $this->dashboard_vendas();
+            } else {
+
+                if (isset($this->session->administrador) && $this->session->administrador == 1) {
+
+                    $this->dashboard_admin();
+                } else if ($tipo == 1) {
+
+                    switch ($grupo) {
+
+                        case '1':
+                            $this->dashboard_fornecedor();
+                            break;
+                        case  '2':
+                            $this->dashboard_vendas();
+                            break;
+                        case  '3':
+                            $this->dashboard_fornecedor();
+                            break;
+                        default:
+                            $this->dashboard_vendas();
+                            break;
+                    }
+                } else if ($tipo == 2) {
+                    $data = [
+                        'header' => $this->tmp->header(),
+                        'scripts' => $this->tmp->scripts(),
+                        'navbar' => $this->tmp->navbar()
+                    ];
+                    $view = "marketplace/home";
+
+                    $this->load->view($view, $data);
                 }
-            } else if ($tipo == 2) {
-                $data = [
-                    'header' => $this->tmp->header(),
-                    'scripts' => $this->tmp->scripts(),
-                    'navbar' => $this->tmp->navbar()
-                ];
-                $view = "marketplace/home";
-
-                $this->load->view($view, $data);
             }
         }
+    }
 
 
+
+    /**
+     *  Função que verifica se é o primeiro login para atualização
+     *
+     * @param - int id usuario
+     * @return json
+     */
+    public function primeiro()
+    {
+        $data['frm_actionprimeiro'] = "{$this->route}primeiroatt";
+        $data['header'] = $this->template->header(['title' => 'Alterar Senha']);
+        $data['scripts'] = $this->template->scripts();
+        $this->load->view('primeiro', $data);
+    }
+
+    /**
+     *  Função que verifica se é o primeiro login para atualização
+     *
+     * @param - int id usuario
+     * @return json
+     */
+    public function primeiroatt()
+    {
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+
+            $post['id'] = $this->session->userdata('id_usuario');
+
+            if ($this->usuario->update($post)) {
+
+                $this->db->where('id', $post['id'])->update('usuarios', ['primeiro_login' => '2', 'nickname' => $post['nickname']]);
+                
+                $warning = ['type' => 'success', 'action' => 'dashboard'];
+            } else {
+
+                $warning = ['type' => 'warning', 'message' => 'Erro ao atualizar senha!'];
+            }
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($warning));
     }
 
     /**
@@ -188,8 +236,6 @@ class Dashboard extends MY_Controller
         } else {
             $this->load->view("admin/dashboard/main", $data);
         }
-
-
     }
 
     /**

@@ -6,20 +6,18 @@
 <body>
 <?php if (isset($navbar)) echo $navbar; ?>
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
+<section id="hero" class="d-flex align-items-center" style="width: 100%; height: 100%">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
         <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-9 text-center">
-                <h1 style="text-transform: uppercase ">O MAIOR PORTAL DE INTEGRAÇÃO PARA </h1>
-                <h1 style="text-transform: uppercase ">PRODUTOS FARMACÊUTICOS DO BRASIL</h1>
+            <div class="col-xl-12 col-lg-12 text-center" style="margin-top: -350px">
+                <h1 style="text-transform: uppercase ">O MAIOR PORTAL DE INTEGRAÇÃO MULTIPLAFORMAS PARA</h1>
+                <h1 style="text-transform: uppercase ">PRODUTOS FARMACÊUTICOS DO BRASIL</h1><br>
+                <a href="<?php echo base_url('dashboard') ?>" style="background-color: #ED3236" class="btn-get-started btn-danger scrollto">ENTRAR</a>
             </div>
         </div>
-        <div class="text-center my-4">
-            <a href="<?php echo base_url('dashboard') ?>" style="background-color: #ED3236" class="btn-get-started btn-danger scrollto">ENTRAR</a>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-9 text-center">
-                <h1 style="text-transform: uppercase; font-size: 16px ">INTEGRANDO E AUTOMATIZANDO A RESPOSTA DE COTAÇÕES DA INDÚSTRIA E GRANDES DISTRIBUIDORES (MULTIPLATAFORMAS)</h1>
+        <div class="row justify-content-center" >
+            <div class="col-xl-7 col-lg-9 text-center" style="margin-top: -120px">
+                <h1 style="text-transform: uppercase; font-size: 16px ">INTEGRANDO E AUTOMATIZANDO A RESPOSTA DE COTAÇÕES DA INDÚSTRIA E DISTRIBUIDORES (MULTIPLATAFORMAS)</h1>
             </div>
         </div>
 

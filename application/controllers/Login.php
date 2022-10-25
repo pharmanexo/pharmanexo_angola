@@ -9,8 +9,8 @@ class Login extends CI_Controller
         parent::__construct();
         $this->load->model("m_login");
         $this->load->model("m_rota", 'rota');
-        $this->load->model("m_grupo_usuario_rota", "grupo_usuario_rota");
-        $this->load->model("m_representante", 'rep');
+        $this->load->model("M_grupo_usuario_rota", "grupo_usuario_rota");
+        $this->load->model("M_representante", 'rep');
         $this->load->model('m_fornecedor', 'fornecedor');
         $this->load->model('m_estados', 'estado');
         $this->load->model('m_usuarios', 'usuario');
@@ -27,6 +27,7 @@ class Login extends CI_Controller
         $data['frm_distribuidor'] = "{$this->route}logarDistribuidor";
         $data['frm_compracoletiva'] = "{$this->route}logarCompraColetiva";
         $data['frm_novasenha'] = "{$this->route}recuperar_senha";
+        $data['frm_novasenharep'] = "{$this->route}recuperar_senhaRepresentante";
         // TEMPLATE
         $data['header'] = $this->template->header([
             'title' => 'Login'
@@ -105,6 +106,73 @@ class Login extends CI_Controller
     }
 
     /**
+     *  Função que verifica email informado para recuperar a senha
+     *
+     * @return json
+     */
+    public function recuperar_senhaRepresentante()
+    {
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+
+            $usuario = $this->db->where('email', $post['login'])->get('representantes')->row_array();
+
+            // Verifica se o email existe
+            if (!empty($usuario)) {
+                // Obtem o caminho do arquivo de email
+                $path = "public/html/template_mail/nova_senha.html";
+
+                // Recupera o arquivo
+                $template = file_get_contents($path);
+
+                // Obtem o primeiro nome do usuário
+                $nome = explode(' ', $usuario['nome'])[0];
+
+                $token = password_hash(time(), PASSWORD_DEFAULT);
+
+                // url para a função nova_senha_email()
+                $url = "{$this->route}/validation_tokenrep?email={$post['login']}&token={$token}";
+
+                // Altera os coringas do arquivo
+                $body = str_replace(['%usuario%', '%url_verificar%'], [$nome, $url], $template);
+
+                $data = [
+                    'token' => $token,
+                    'validade_token' => date('Y-m-d H:i', strtotime('+6 Hours'))
+                ];
+
+                // Atualiza o usuario
+                $this->db->where('id', $usuario['id'])->update('representantes', $data);
+
+                # Envia email para com a nova senha
+                $notify = [
+                    "to" => $post['login'],
+                    "cco" => '',
+                    "greeting" => $usuario['nome'],
+                    "subject" => "Portal Pharmanexo - Recuperação de Acesso",
+                    "message" => $body
+                ];
+                $send = $this->notify->send($notify);
+
+                // Enviar email
+                if ($send) {
+
+                    $output = ['type' => 'success', 'message' => 'Pronto! Verifique o e-mail informado para concluir a recuperação.'];
+                } else {
+
+                    $output = ['type' => 'error', 'message' => 'Erro ao enviar e-mail!'];
+                }
+            } else {
+
+                $output = ['type' => 'error', 'message' => 'E-mail não encontrado no sistema.'];
+            }
+
+            $this->output->set_content_type('application/json')->set_output(json_encode($output));
+        }
+    }
+
+    /**
      *  View para alterar senha
      *
      * @param - int id usuario
@@ -118,6 +186,22 @@ class Login extends CI_Controller
 
 
         $this->load->view('change_password', $data);
+    }
+
+    /**
+     *  View para alterar senha
+     *
+     * @param - int id usuario
+     * @return view
+     */
+    public function alterar_senharep()
+    {
+        $data['frm_actionrep'] = "{$this->route}change_passwordrep";
+        $data['header'] = $this->template->header(['title' => 'Alterar Senha']);
+        $data['scripts'] = $this->template->scripts();
+
+
+        $this->load->view('change_passwordrep', $data);
     }
 
     /**
@@ -144,6 +228,29 @@ class Login extends CI_Controller
     }
 
     /**
+     *  Função para validar token liberando acesso
+     *
+     * @return view
+     */
+    public function validation_tokenrep()
+    {
+        $get = $this->input->get();
+
+        $usuario = $this->db->where('email', $get['email'])->get('representantes')->row_array();
+
+        if (strtotime(date('Y-m-d H:i:s')) <= strtotime($usuario['validade_token'])) {
+
+            $this->session->set_userdata(['user_id' => $usuario['id']]);
+
+            redirect("{$this->route}alterar_senharep");
+        } else {
+
+            var_dump("Token expirado! Solicite uma nova recuperação de senha.");
+            exit();
+        }
+    }
+
+    /**
      *  Função para alterar senha
      *
      * @param - int id usuario
@@ -158,7 +265,6 @@ class Login extends CI_Controller
             if ($post['senha'] != $post['c_senha']) {
 
                 $output = ['type' => 'warning', 'message' => 'Erro ao confirmar senha!'];
-
             } else {
 
                 $post['id'] = $this->session->user_id;
@@ -169,15 +275,56 @@ class Login extends CI_Controller
                 if ($this->usuario->update($post)) {
 
                     // Atualiza o usuário sem token e validade token
-                    $this->db->where('id', $this->session->user_id)->update('usuarios', ['token' => null, 'validade_token' => null]);
+                    $senha = password_hash($post['senha'], PASSWORD_DEFAULT);
 
+                    $this->db->where('id', $this->session->user_id)->update('usuarios', ['token' => null, 'validade_token' => null, 'senha' => $senha]);
+                    
                     $output = ['type' => 'success', 'message' => 'Senha alterada com sucesso!', 'route' => $this->route];
-
                 } else {
 
                     $output = ['type' => 'warning', 'message' => 'Erro ao atualizar senha!'];
                 }
+            }
 
+            $this->output->set_content_type('application/json')->set_output(json_encode($output));
+        }
+    }
+
+    /**
+     *  Função para alterar senha
+     *
+     * @param - int id usuario
+     * @return json
+     */
+    public function change_passwordrep()
+    {
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+
+            if ($post['senha'] != $post['c_senha']) {
+
+                $output = ['type' => 'warning', 'message' => 'Erro ao confirmar senha!'];
+            } else {
+
+                $post['id'] = $this->session->user_id;
+
+                unset($post['c_senha']);
+                unset($post['token']);
+
+                if ($this->rep->update($post)) {
+
+                    // Atualiza o usuário sem token e validade token
+
+                    $senha = password_hash($post['senha'], PASSWORD_DEFAULT);
+
+                    $this->db->where('id', $this->session->user_id)->update('representantes', ['token' => null, 'validade_token' => null, 'senha' => $senha]);
+
+                    $output = ['type' => 'success', 'message' => 'Senha do representante alterada com sucesso!', 'route' => $this->route];
+                } else {
+
+                    $output = ['type' => 'warning', 'message' => 'Erro ao atualizar senha!'];
+                }
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
@@ -237,6 +384,7 @@ class Login extends CI_Controller
                         if (isset($consulta['administrador']) && $consulta['administrador'] == 1) {
                             $userdata = [
                                 'logado' => '1',
+                                "primeiro" => $consulta['primeiro_login'],
                                 'mc' => '0',
                                 'id_usuario' => $consulta['id'],
                                 "tipo_usuario" => $consulta['tipo_usuario'],
@@ -248,10 +396,12 @@ class Login extends CI_Controller
                                 "foto" => $consulta['foto'],
                                 "routes" => $this->rota->rotasAdmin($consulta['nivel']),
                             ];
-
+                            if ($userdata['primeiro'] == '1')
+                            {
+                                $warning = ['type' => 'success', 'action' => 'dashboard/primeiro'];
+                            }
                             $this->session->set_userdata($userdata);
-
-                            $warning = ['type' => 'success', 'action' => 'dashboard'];
+                            $warning = ['type' => 'success', 'action' => 'dashboard/primeiro'];
                         } else {
 
                             if (!empty($consulta)) {
@@ -260,6 +410,7 @@ class Login extends CI_Controller
 
                                 $userdata = [
                                     'logado' => '1',
+                                    "primeiro" => $consulta['primeiro_login'],
                                     'mc' => '0',
                                     'id_usuario' => $consulta['id'],
                                     "tipo_usuario" => $consulta['tipo_usuario'],
@@ -308,7 +459,7 @@ class Login extends CI_Controller
                                 }
                             } else {
                                 $this->session->set_userdata("logado", "0");
-                                $this->session->set_userdata("mc", "0");//menu controle
+                                $this->session->set_userdata("mc", "0"); //menu controle
                                 #$this->session->set_flashdata("mensagem", "Usuário/Senha incorretos.");
                                 $warning = ['type' => 'error', 'message' => 'Dados incorretos'];
                             }
@@ -400,7 +551,6 @@ class Login extends CI_Controller
                 } else {
                     $warning = ['type' => 'error', 'message' => 'Dados inválidos, verique e tente novamente.'];
                 }
-
             } else {
                 $warning = ['type' => 'error', 'message' => 'No Score'];
             }
@@ -529,7 +679,7 @@ class Login extends CI_Controller
                                 }
                             } else {
                                 $this->session->set_userdata("logado", "0");
-                                $this->session->set_userdata("mc", "0");//menu controle
+                                $this->session->set_userdata("mc", "0"); //menu controle
                                 #$this->session->set_flashdata("mensagem", "Usuário/Senha incorretos.");
                                 $warning = ['type' => 'error', 'message' => 'Dados incorretos'];
                             }
@@ -586,7 +736,6 @@ class Login extends CI_Controller
                 $this->session->set_userdata('warning', $warn);
 
                 redirect($this->route);
-
             } else {
                 $warn = [
                     'type' => 'error',
@@ -598,8 +747,6 @@ class Login extends CI_Controller
                 redirect($this->route);
             }
         }
-
-
     }
 
     public function logout()
@@ -612,7 +759,7 @@ class Login extends CI_Controller
         # $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$this->session->id_usuario}");
         $this->session->sess_destroy();
         $this->session->set_userdata("logado", "0");
-        $this->session->set_userdata("mc", "0");//menu controle
+        $this->session->set_userdata("mc", "0"); //menu controle
         redirect(base_url());
     }
 
@@ -657,7 +804,10 @@ class Login extends CI_Controller
                 //     $fornecedor[] = $estado['id_estado'];
                 // }
 
-                $usuario_fornecedor = $this->db->select("*")->from('usuarios_fornecedores')->where("id_usuario = {$this->session->id_usuario} and id_fornecedor = {$fornecedor['id']}")->get()->row_array();
+                $usuario_fornecedor = $this->db->select("*")
+                    ->from('usuarios_fornecedores')
+                    ->where("id_usuario = {$this->session->id_usuario} and id_fornecedor = {$fornecedor['id']}")
+                    ->get()->row_array();
 
                 $session_data = [
                     'id_fornecedor' => $fornecedor['id'],
@@ -680,6 +830,7 @@ class Login extends CI_Controller
 
                 $this->session->set_userdata($session_data);
 
+                //var_dump();
                 redirect(base_url('dashboard'));
                 // redirect($this->route . "notificao");
             } else {

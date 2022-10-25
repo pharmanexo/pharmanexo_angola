@@ -10,13 +10,11 @@
             <ul>
                 <li class="active"><a href="#header">HOME</a></li>
                 <li><a href="#about">QUEM SOMOS</a></li>
-                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">CONTATO</a></li>
                 <li><a href="https://webmail.pharmanexo.com.br/" target="_blank"><i class="fas fa-envelope"></i></a></li>
             </ul>
         </nav><!-- .nav-menu -->
 
-        <a href="<?php echo base_url('dashboard') ?>" class="get-started-btn scrollto">ENTRAR</a>
 
     </div>
 </header><!-- End Header -->

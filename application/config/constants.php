@@ -93,6 +93,7 @@ defined('META_DEPARA')      OR define('META_DEPARA', 300);
 defined('ONCOPROD')      OR define('ONCOPROD', '12,111,112,115,120,123,126');
 defined('ONCOEXO')      OR define('ONCOEXO', '15,25');
 defined('ASSETS_PATH')      OR define('ASSETS_PATH', '/public/assets/');
+defined('HOME_PATH')      OR define('HOME_PATH', '/public/home/assets/');
 //Adesao
 defined('ASSETS')      OR define('ASSETS', '/public/adesao/assets/');
 defined('CONTRATOS_PATH')      OR define('CONTRATOS_PATH', '/application/adesao/contratos/');
