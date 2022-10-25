@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Dashboard extends MY_Controller
 {
     private $route;
+    private $routelogin;
     private $views;
     protected $oncoexo;
     protected $oncoprod;
@@ -17,6 +18,7 @@ class Dashboard extends MY_Controller
 
 
         $this->route = base_url('dashboard/');
+        $this->routelogin = base_url('login/');
 
         $this->load->model('m_fornecedor', 'fornecedor');
         $this->load->model('m_cotacoes_produtos', 'cotacoes_produtos');
@@ -46,9 +48,10 @@ class Dashboard extends MY_Controller
     {
         $tipo = $this->session->userdata('tipo_usuario');
         $grupo = ($this->session->has_userdata('grupo')) ? $this->session->grupo : '';
+        $data['scripts'] = $this->template->scripts();
 
         if ($this->session->userdata('primeiro') == '1') {
-            $this->primeiro();
+            $this->primeiro_login();
         } else {
 
 
@@ -100,39 +103,12 @@ class Dashboard extends MY_Controller
      * @param - int id usuario
      * @return json
      */
-    public function primeiro()
+    public function primeiro_login()
     {
-        $data['frm_actionprimeiro'] = "{$this->route}primeiroatt";
-        $data['header'] = $this->template->header(['title' => 'Alterar Senha']);
+        $data['frm_actionprimeiro'] = "{$this->routelogin}primeiroatt";
+        $data['header'] = $this->template->header(['title' => 'Atualização de cadastro']);
         $data['scripts'] = $this->template->scripts();
         $this->load->view('primeiro', $data);
-    }
-
-    /**
-     *  Função que verifica se é o primeiro login para atualização
-     *
-     * @param - int id usuario
-     * @return json
-     */
-    public function primeiroatt()
-    {
-        if ($this->input->method() == 'post') {
-
-            $post = $this->input->post();
-
-            $post['id'] = $this->session->userdata('id_usuario');
-
-            if ($this->usuario->update($post)) {
-
-                $this->db->where('id', $post['id'])->update('usuarios', ['primeiro_login' => '2', 'nickname' => $post['nickname']]);
-                
-                $warning = ['type' => 'success', 'action' => 'dashboard'];
-            } else {
-
-                $warning = ['type' => 'warning', 'message' => 'Erro ao atualizar senha!'];
-            }
-        }
-        $this->output->set_content_type('application/json')->set_output(json_encode($warning));
     }
 
     /**

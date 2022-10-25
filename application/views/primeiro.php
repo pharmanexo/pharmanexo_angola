@@ -35,7 +35,6 @@ if (isset($header)) echo $header;
                         <h3>Atualização de cadastro</h3>
                         <p class="small">Nos informe um nickname para atualizar o seu cadastro!</p>
                         <form id="form" method="post" class="frmLogin" action="<?php echo $frm_actionprimeiro; ?>">
-                            <input type="hidden" name="capcode" id="capcode" value="false" />
                             <div class="form-group">
                                 <label for="nickname">Nickname</label>
                                 <div class="input-group mb-3">
@@ -71,56 +70,41 @@ if (isset($header)) echo $header;
     </div>
 
     <?php if (isset($scripts)) echo $scripts; ?>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn"></script>
     <script>
         $(function() {
-            password_popover('#nickname');
 
             $('#form').submit(function(e) {
-
                 e.preventDefault();
+
                 $('#postbut').html("<i class='fa fa-spin fa-spinner'></i> Validando Dados... ").attr('disabled', true);
-                // needs for recaptacha ready
-                grecaptcha.ready(function() {
-                    // do request for recaptcha token
-                    // response is promise with passed token
-                    grecaptcha.execute('6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn', {
-                        action: 'dashboard'
-                    }).then(function(token) {
-                        // add token to form
-                        $('#form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
 
+                var $form = $(this),
+                    term = $form.find("#nickname").val(),
+                    url = $form.attr("action");
 
-                        $.post($('#form').attr('action'), {
-                            nickname: nickname,
-                            token: token
-                        }, function(result) {
-                            console.log(result);
-                            if (result.type === 'success') {
-
-                                formWarning(result);
-
-                                setTimeout(function() {
-                                    window.location.href = '<?php echo base_url('login'); ?>';
-                                }, 2000);
-                            } else {
-                                formWarning(result);
-                                $('#postbut').html("<i class='fas fa-check'></i> Cadastrar").attr('disabled', false);
-                            }
-                        });
+                var posting = $.post(url, {
+                        nickname: term
+                    })
+                    .done(function(result) {
+                        console.log(result);
+                        if (result.type === "success") {
+                            formWarning(result);
+                            setTimeout(function() {
+                                window.location.href = '<?php echo base_url('login'); ?>';
+                            }, 2000);
+                            
+                        } else {
+                            formWarning(result);
+                            $('#postbut').html("<i class='fas fa-check'></i> Cadastrar").attr('disabled', false);
+                        }
+                    })
+                    .fail(function() {
+                        formWarning(result);
                     });
-                });
+
 
             });
 
-            var nickname = document.getElementById("nickname");
-
-            nickname.addEventListener('keyup', function() {
-                checkPassword(nickname.value);
-            });
-            nickname.addEventListener('focus', function() {
-                checks(null, nickname.value);
-            });
         });
     </script>
 </body>

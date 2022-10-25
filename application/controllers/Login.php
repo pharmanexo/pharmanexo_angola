@@ -3,6 +3,7 @@
 class Login extends CI_Controller
 {
     private $route, $views;
+    var $google_auth;
 
     public function __construct()
     {
@@ -202,6 +203,33 @@ class Login extends CI_Controller
 
 
         $this->load->view('change_passwordrep', $data);
+    }
+
+    /**
+     *  Função que verifica se é o primeiro login para atualização
+     *
+     * @param - int id usuario
+     * @return json
+     */
+    public function primeiroatt()
+    {
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+
+            $post['id'] = $this->session->userdata('id_usuario');
+
+            if ($this->usuario->update($post)) {
+
+                $this->db->where('id', $post['id'])->update('usuarios', ['primeiro_login' => '2', 'nickname' => $post['nickname']]);
+                
+                $result = ['type' => 'success', 'message' => 'Conta atualizada'];
+            } else {
+
+                $result = ['type' => 'warning', 'message' => 'Erro ao atualizar senha!'];
+            }
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode($result));
     }
 
     /**
@@ -455,7 +483,7 @@ class Login extends CI_Controller
                                         $this->session->set_userdata($session_data);
                                     }
 
-                                    $warning = ['type' => 'success', 'action' => 'dashboard'];
+                                    $warning = ['type' => 'success', 'action' => 'dashboard/primeiro'];
                                 }
                             } else {
                                 $this->session->set_userdata("logado", "0");
