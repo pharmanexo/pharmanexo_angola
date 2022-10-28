@@ -28,62 +28,37 @@ if (isset($header)) echo $header;
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6 d-flex justify-content-center bg-light formColumn">
-
-                    <div class="container" style="margin-top: 50px; margin-left: -5%;">
-                        <div class="row justify-content-md-center">
-                            <div class="col col-lg-6 mx-4">
-                                <h2 class="cc">Integranexo</h2>
-                                <a id="acessoIntegranexo" data-toggle="modal" data-target="#modalIntegranexo">
-                                    <img src="<?php echo ASSETS_PATH ?>/img/integranexo.jpg" alt="Integranexo" width="250" height="250">
-                                </a>
-                            </div>
-                            <div class="col col-lg-3 mx-5" style="padding-left: auto">
-                                <h2 class="cc">Representantes</h2>
-                                <a id="acessoRepresentante" data-toggle="modal" data-target="#modalRepresentante">
-                                    <img src="<?php echo ASSETS_PATH ?>/img/representantes.jpg" alt="Representantes" width="250" height="250">
-                                </a>
-                            </div>
+                <div class="col-12 col-lg-6">
+                    <div class="row" style="margin-top: 100px">
+                        <div class="col-6 text-center">
+                            <p class="h4">Integranexo</p>
+                            <a id="acessoIntegranexo" class="" data-toggle="modal" data-target="#modalIntegranexo">
+                                <img src="<?php echo ASSETS_PATH ?>/img/integranexo.jpg" data-toggle="tooltip" title="Portal de Cotações" alt="Integranexo" width="150" height="150">
+                            </a>
                         </div>
-                        <div class="row justify-content-md-center mt-4" style="padding-top: 50px; ">
-                            <div class="col col-lg-6 mx-4">
-                                <h2 class="cc">Distribuidores</h2>
-                                <a id="acessoDistribuidor" data-toggle="modal" data-target="#modalDistribuidor">
-                                    <img src="<?php echo ASSETS_PATH ?>/img/distribuidor.jpg" alt="Distribuidor" width="250" height="250">
-                                </a>
-                            </div>
-                            <div class="col col-lg-3 mx-5" style="padding-left: auto">
-                                <h2 class="cc">Compra Coletiva</h2>
-                                <a id="acessoCompraColetiva" data-toggle="modal" data-target="#modalCompraColetiva">
-                                    <img src="<?php echo ASSETS_PATH ?>/img/compracoletiva.jpg" alt="Compra Coletiva" width="250" height="250">
-                                </a>
-                            </div>
+                        <div class="col-6 text-center">
+                            <p class="h4">Representantes</p>
+                            <a id="acessoRepresentante" class="" data-toggle="modal" data-target="#modalRepresentante">
+                                <img src="<?php echo ASSETS_PATH ?>/img/representantes.jpg" alt="Representantes" width="150" height="150">
+                            </a>
                         </div>
-
                     </div>
-
-                    <!-- Cadastre-se -->
-                    <div class="mb-4 w-100" hidden style="margin-top:10px; margin-bottom:10px;">
-                        <h5 class=" mx-auto text-center"> Não tem acesso? Cadastre-se...</h5>
-
-                        <div class="row  text-center">
-                            <div class="col-6  ">
-                                <a href="<?php echo base_url('Cliente/cadastro') ?>" style="text-decoration: none;">
-                                    <button type="button" class="btn float-right btn-info  " style="width:132px;"><i class="fas fa-users"></i> Cliente
-                                    </button>
-                                </a>
-                            </div>
-
-                            <div class="col-6 ">
-                                <a href="<?php echo base_url('Fornecedor') ?>" style="text-decoration: none;">
-                                    <button type="button" class="btn float-left btn-info " data-sitekey="6LcnlLkUAAAAAPg2mSRJPKhYX_mrRCx99FUwFuj2" data-callback='onSubmit'><i class="fas fa-building"></i>
-                                        Fornecedor
-                                    </button>
-                                </a>
-                            </div>
+                    <div class="row" style="margin-top: 100px">
+                        <div class="col-6 text-center">
+                            <p class="h4">Distribuidores</p>
+                            <a id="acessoDistribuidor" class="" data-toggle="modal" data-target="#modalDistribuidor">
+                                <img src="<?php echo ASSETS_PATH ?>/img/distribuidor.jpg" alt="Distribuidor" width="150" height="150">
+                            </a>
+                        </div>
+                        <div class="col-6 text-center">
+                            <p class="h4">Compra Coletiva</p>
+                            <a id="acessoCompraColetiva" class="" data-toggle="modal" data-target="#modalCompraColetiva">
+                                <img src="<?php echo ASSETS_PATH ?>/img/compracoletiva.jpg" alt="Compra Coletiva" width="150" height="150">
+                            </a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -391,7 +366,7 @@ if (isset($header)) echo $header;
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="number" name="loginCompraColetiva" id="loginCompraColetiva" value="" required="true" data-inputmask="cnpj" class="form-control">
+                                <input type="text" name="loginCompraColetiva" id="loginCompraColetiva" value="" required="true" data-inputmask="cnpj" class="form-control">
 
                             </div>
                         </div>

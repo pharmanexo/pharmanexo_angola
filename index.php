@@ -49,8 +49,8 @@ foreach ($envs as $env){
     if (!empty($variavel)){
         $_SERVER[trim($variavel[0])] = trim($variavel[1]);
     }
+	
 }
-
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

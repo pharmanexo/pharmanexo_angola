@@ -294,7 +294,7 @@
                             </form>
                         </div>
                     </div>
-                    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+                    <a href="#" class="back-to-top1"><i class="ri-arrow-up-line"></i></a>
                     <div class="col-md-6">
                         <div class="map_container">
                             <div class="map">
@@ -515,6 +515,7 @@
         <!-- End Google Map -->
     </div>
 </body>
+<?php if (isset($footer)) echo $footer; ?>
 <?php if (isset($scripts)) echo $scripts; ?>
 
 <script>
