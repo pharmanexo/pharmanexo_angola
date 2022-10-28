@@ -44,6 +44,10 @@ if (file_exists('.env.local')){
 }
 
 foreach ($envs as $env){
+	if (preg_match('/^#/', $env)) { // Ignora os comentários
+		continue;
+	}
+	
     $variavel = explode("=", $env);
 
     if (!empty($variavel)){

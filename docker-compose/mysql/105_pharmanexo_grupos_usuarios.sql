@@ -1,0 +1,1 @@
+INSERT INTO pharmanexo.grupos_usuarios (id, nome, hora_fim_acesso, hora_ini_acesso, dias_acesso, situacao, data_registro, data_atualizacao, id_fornecedor) VALUES (1, 'Administrador', '00:00:00', '23:59:00', '0,1,2,3,4,5,6', 1, '2019-06-27 14:30:46', '2019-06-27 14:30:50', null);
