@@ -1,0 +1,36 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>27/10/2022 10:53:50</Dt_Gravacao>
+  <Cd_Fornecedor>04307650001530</Cd_Fornecedor>
+  <Cd_Cotacao>COT9621-3105</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>12</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Karina Souza (41) 3303-9240 - karina.souza@oncoprod.com.br . Medicamentos refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo de entrega e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos somente até às 16h00, após este horário o pedido será resgatado e fat. no próx. dia útil, exceções entrar em contato. Fat. mín. acima de R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB. </Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>19529</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>905</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5851</Id_Marca>
+          <Ds_Marca>TAKEDA DISTRIBUIDORA LT</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>10,5000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>NORIPURUM ENDOVEN C 5 AMP 5ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>102509</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

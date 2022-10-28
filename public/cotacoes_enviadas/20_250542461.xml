@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250542461</Id_Pdc>
+    <CNPJ_Hospital>66.518.267/0011-55</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142725190</Id_Artigo>
+      <Codigo_Produto>13653</Codigo_Produto>
+      <Preco_Unitario>0.0000</Preco_Unitario>
+      <Fabricante>BUPIVACAINA 05 ISOBARICA 4 ML S/V  NEOCAINA C/40 AMP - CRISTALIA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/05/2025</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>2344</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142725192</Id_Artigo>
+      <Codigo_Produto>9005174</Codigo_Produto>
+      <Preco_Unitario>6.1186</Preco_Unitario>
+      <Fabricante>NALOXONA 04 MG/ML 1ML GENERICO C/10 AMP PORT 344/98  - HIPOLABOR</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/08/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11280</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

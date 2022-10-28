@@ -1,0 +1,111 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 13:04:48</Dt_Gravacao>
+  <Cd_Fornecedor>12882932000194</Cd_Fornecedor>
+  <Cd_Cotacao>COT3041-957</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>34</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor/>
+  <Qt_Prz_Minimo_Entrega>1</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1500,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>18363</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>10</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>403</Id_Marca>
+          <Ds_Marca>EQUIPLEX / GO</Ds_Marca>
+          <Qt_Embalagem>200</Qt_Embalagem>
+          <Vl_Preco_Produto>0,3900</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>3842</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7166</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>108853</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>19100</Id_Marca>
+          <Ds_Marca>Sanofi-Aventis / SP</Ds_Marca>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>16,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5650</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7593</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>207</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>14680</Id_Marca>
+          <Ds_Marca>HIPOLABOR / MG</Ds_Marca>
+          <Qt_Embalagem>50</Qt_Embalagem>
+          <Vl_Preco_Produto>6,2000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5623</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>10672</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>118</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>8224</Id_Marca>
+          <Ds_Marca>CRISTÁLIA / SP</Ds_Marca>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>16,5400</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5243</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7761</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>112184</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>8224</Id_Marca>
+          <Ds_Marca>CRISTÁLIA / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>10,5000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5521</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6304</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>310</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10100</Id_Marca>
+          <Ds_Marca>FRESENIUS KABI / GO</Ds_Marca>
+          <Qt_Embalagem>25</Qt_Embalagem>
+          <Vl_Preco_Produto>20,9900</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5440</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5198</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>108814</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>12076</Id_Marca>
+          <Ds_Marca>VOLPHARMA / RJ</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>7,2640</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5666</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

@@ -228,7 +228,7 @@ if (isset($header)) echo $header;
                                 window.location = '<?php echo base_url('representantes/login/selecionar_empresa'); ?>'
                             } else{
                                 Pace.start();
-                                window.location = '/pharmanexo_v2/representantes/dashboard'
+                                window.location = '/representantes/dashboard'
 
                             }
                         } else {

@@ -557,7 +557,7 @@ class M_bi extends MY_Model
      */
     public function valorTotalProdutosPorValidade($id_fornecedor, $id_estado, $periodoInicial, $periodoFinal = null)
     {
-        $forns = [12, 104, 111, 115, 123, 120, 126, 15, 180, 25, 5002, 1002, 5039, 5038, 5018];
+        $forns = [12, 104, 111, 115, 123, 120, 126, 15, 180, 25, 5002, 1002, 5039, 5038, 5018, 5046];
         if (in_array($id_fornecedor, $forns)) {
             $estado = " = {$id_estado}";
         } elseif ($id_fornecedor == 112) {
@@ -649,7 +649,7 @@ class M_bi extends MY_Model
 
         $this->db->start_cache();
 
-        if (in_array($id_fornecedor, [12, 20, 104, 111, 115, 123, 120, 126, 15, 180, 25, 5032, 5033, 5010])) {
+        if (in_array($id_fornecedor, [12, 20, 104, 111, 115, 123, 120, 126, 15, 180, 25, 5032, 5033, 5010, 5046])) {
             $estado = " = {$id_estado}";
         } elseif ($id_fornecedor == 112) {
 

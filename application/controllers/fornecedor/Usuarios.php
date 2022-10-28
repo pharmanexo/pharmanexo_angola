@@ -253,31 +253,14 @@ class Usuarios extends MY_Controller
 
             $this->form_validation->set_error_delimiters('<span>', '</span>');
             $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|is_unique[usuarios.email]');
-          //  $this->form_validation->set_rules('cpf', 'CPF', 'required|is_unique[usuarios.cpf]');
+            $this->form_validation->set_rules('cpf', 'CPF', 'required|is_unique[usuarios.cpf]');
 
 
             $password = generatePassword();
             $post = $this->input->post();
-            $post['tipo'] = (isset($post['nivel'])) ? $post['nivel'] : 1;
+            $post['tipo'] = 1;
             $post['situacao'] = 1;
 
-            $keys = explode(' ', $post['nome']);
-            $nickname = $keys[0];
-            $novoNome = '';
-
-            foreach ($keys as $key) {
-                $key = strtoupper($key);
-
-                if ($key != 'DE' && $key != 'DOS' && $key != 'DA') {
-                    $letra = substr($key, 0, 1);
-                    if ($letra != '(') {
-                        $novoNome .= $letra . ".";
-                    }
-
-                }
-            }
-            $post['nickname'] = $nickname;
-            $post['nome'] = $novoNome;
 
             if ($this->form_validation->run() === false) {
 
@@ -514,7 +497,7 @@ class Usuarios extends MY_Controller
             [
                 ['db' => 'us.id', 'dt' => 'id'],
                 ['db' => 'us.email', 'dt' => 'email'],
-                ['db' => 'us.nickname', 'dt' => 'nome'],
+                ['db' => 'us.nome', 'dt' => 'nome'],
                 ['db' => 'us.nivel', 'dt' => 'nivel', "formatter" => function ($d) {
                     $out = '';
                     switch ($d) {

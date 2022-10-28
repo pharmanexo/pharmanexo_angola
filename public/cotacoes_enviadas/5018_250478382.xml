@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250478382</Id_Pdc>
+    <CNPJ_Hospital>25.646.761/0004-99</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>4</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>2</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>31</Sequencia>
+      <Id_Artigo>142711147</Id_Artigo>
+      <Codigo_Produto>657</Codigo_Produto>
+      <Preco_Unitario>3.9000</Preco_Unitario>
+      <Fabricante>CEFAZOLINA SODICA 1G IM/IV S/D FAZOLON - BLAU</Fabricante>
+      <Embalagem>F/A</Embalagem>
+      <Quantidade_Embalagem>20</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1057</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>61</Sequencia>
+      <Id_Artigo>142711177</Id_Artigo>
+      <Codigo_Produto>1123</Codigo_Produto>
+      <Preco_Unitario>0.4800</Preco_Unitario>
+      <Fabricante>CLORETO DE SODIO 0,9% 10ML PLAST NT - EQUIPLEX</Fabricante>
+      <Embalagem>AMP</Embalagem>
+      <Quantidade_Embalagem>200</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1292</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

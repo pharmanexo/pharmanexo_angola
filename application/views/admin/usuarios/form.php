@@ -49,6 +49,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="form-group col-6">
+                                        <label for="cpf">CPF</label>
+                                        <input type="text" name="cpf" class="form-control" data-inputmask="cpf" value="<?php if (isset($usuario['cpf'])) echo $usuario['cpf']; ?>">
+                                    </div> 
+                                     <div class="form-group col-6">
+                                        <label for="rg">RG</label>
+                                        <input type="text" name="rg" class="form-control" value="<?php if (isset($usuario['rg'])) echo $usuario['rg']; ?>">
+                                    </div> 
+                                </div>
+                                <div class="row">
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="">Telefone Comercial</label>

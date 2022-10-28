@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250550648</Id_Pdc>
+    <CNPJ_Hospital>00.625.711/0001-51</CNPJ_Hospital>
+    <Faturamento_Minimo>300.0000</Faturamento_Minimo>
+    <Prazo_Entrega>2</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142726686</Id_Artigo>
+      <Codigo_Produto>10010715</Codigo_Produto>
+      <Preco_Unitario>19.1533</Preco_Unitario>
+      <Fabricante>DIFENIDRAMINA CLORID 50MG/ML 1ML C/25 AMP - CRISTALIA</Fabricante>
+      <Embalagem>AM</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14259</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

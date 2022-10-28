@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250763411</Id_Pdc>
+    <CNPJ_Hospital>62.779.145/0002-70</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>10</Sequencia>
+      <Id_Artigo>142756911</Id_Artigo>
+      <Codigo_Produto>6366</Codigo_Produto>
+      <Preco_Unitario>7.9475</Preco_Unitario>
+      <Fabricante>BENZILPENICILINA  600.000 UI BEPEBEN C/50 F/A  - TEUTO</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 08/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>2343</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142756912</Id_Artigo>
+      <Codigo_Produto>7350</Codigo_Produto>
+      <Preco_Unitario>4.5575</Preco_Unitario>
+      <Fabricante>SUXAMETONIO 500MG INJ %28SUCCITRAT%29 - BLAU</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 17/06/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>21265</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>9</Sequencia>
+      <Id_Artigo>142756919</Id_Artigo>
+      <Codigo_Produto>6372</Codigo_Produto>
+      <Preco_Unitario>1.1085</Preco_Unitario>
+      <Fabricante>OXACILINA 500 MG INJ. OXANON C/100 F/A  - BLAU</Fabricante>
+      <Embalagem>FL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 29/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>2529</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142756921</Id_Artigo>
+      <Codigo_Produto>8474</Codigo_Produto>
+      <Preco_Unitario>2.4640</Preco_Unitario>
+      <Fabricante>DIPIRONA SODICA 2 ML INJ GENERICO C/120 AMP  - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>4788</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>6</Sequencia>
+      <Id_Artigo>142756913</Id_Artigo>
+      <Codigo_Produto>6640</Codigo_Produto>
+      <Preco_Unitario>2.9665</Preco_Unitario>
+      <Fabricante>FUROSEMIDA 10 MG/ML INJ 2 ML GENERICO C/100 AMP  - SANTISA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12920</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

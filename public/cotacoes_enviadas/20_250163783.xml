@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250163783</Id_Pdc>
+    <CNPJ_Hospital>02.060.226/0001-03</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>10</Sequencia>
+      <Id_Artigo>142648875</Id_Artigo>
+      <Codigo_Produto>00000643</Codigo_Produto>
+      <Preco_Unitario>6.2768</Preco_Unitario>
+      <Fabricante>MASCARA DESC TRIPLA C/ELASTICO - DESCARPACK</Fabricante>
+      <Embalagem>PC</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25913</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>13</Sequencia>
+      <Id_Artigo>142648868</Id_Artigo>
+      <Codigo_Produto>00007476</Codigo_Produto>
+      <Preco_Unitario>2.5816</Preco_Unitario>
+      <Fabricante>CLOREXIDINA 05  ALCOOLICA  100ML C/24 - VICPHARMA</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12253</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142648860</Id_Artigo>
+      <Codigo_Produto>00005892</Codigo_Produto>
+      <Preco_Unitario>0.0665</Preco_Unitario>
+      <Fabricante>ALCOOL SWAB SACHE %28PH%29 - LABOR IMPORT</Fabricante>
+      <Embalagem>SH</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25716</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

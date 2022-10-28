@@ -1,0 +1,42 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>28/10/2022 10:05:05</Dt_Gravacao>
+  <Cd_Fornecedor>12882932000194</Cd_Fornecedor>
+  <Cd_Cotacao>COT7567-465</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>ENTREGA IMEDIATA, NÃƒO ABRIMOS CAIXAS. FATURAMENTO MINIMO R$ 600, PRAZO A COMBINAR CONTATO/WHATSAPP (81)99947-1263 Cicero</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>1</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1500,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>2764</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1403</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>12848</Id_Marca>
+          <Ds_Marca>AMERICAN MEDICAL / MG</Ds_Marca>
+          <Qt_Embalagem>50</Qt_Embalagem>
+          <Vl_Preco_Produto>0,2565</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>400 unidades disponível &#13;
+</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>5438</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>546</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>156</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>140</Id_Marca>
+          <Ds_Marca>INJEX / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,1600</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5596</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

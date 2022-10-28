@@ -1,0 +1,78 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 13:16:21</Dt_Gravacao>
+  <Cd_Fornecedor>04307650002502</Cd_Fornecedor>
+  <Cd_Cotacao>COT14378-2743</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>30</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Rosangela Maria de Jesus Lima - rosangela.lima@oncoprod.com.br. Medic. refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos até às 16h00, após este horário será resg. e fat. no próx. dia útil, exceções entrar em contato. Fat. mín.R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB.</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5305</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>08010</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>607</Id_Marca>
+          <Ds_Marca/>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>386,9500</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>BRIDION 100 MG ML INJ 10AMP 2 ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1104</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6415</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>06394</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>13689</Id_Marca>
+          <Ds_Marca>SANOFI MEDLEY FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>LANTUS 100UI 1 FRASCO AMP 10ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>456</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>35600</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>13233</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>7432</Id_Marca>
+          <Ds_Marca>UCB BIOPHARMA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>114,3100</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>KEPPRA 100MG ML SOL OR 150ML  C1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4312</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7067</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>15252</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>13689</Id_Marca>
+          <Ds_Marca>SANOFI AVENTIS FARM LTDA</Ds_Marca>
+          <Qt_Embalagem>28</Qt_Embalagem>
+          <Vl_Preco_Produto>10,2711</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>PLAVIX 75MG C 28COMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3041</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

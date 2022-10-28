@@ -26,12 +26,12 @@ class Usuarios extends Admin_controller
         $data['url_new_password'] = "{$this->route}/new_password/";
         $data['url_bloqueio'] = "{$this->route}/blockUser/";
         $data['url_delete_multiple'] = "{$this->route}/delete_multiple/";
-        $data['header'] = $this->template->header(['title' => $page_title]);
-        $data['navbar'] = $this->template->navbar();
+        $data['header'] = $this->template->header([ 'title' => $page_title ]);
+        $data['navbar']  = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title,
-            'buttons' => [
+            'buttons'    => [
                 [
                     'type' => 'button',
                     'id' => 'btnDeleteMultiple',
@@ -45,13 +45,13 @@ class Usuarios extends Admin_controller
                     'id' => 'btnExport',
                     'url' => "{$this->route}/exportar",
                     'class' => 'btn-primary',
-                    'icone' => 'fa-file-excel',
+                    'icone' => 'fa-file-excel', 
                     'label' => 'Exportar Excel'
                 ],
                 [
-                    'type' => 'a',
-                    'id' => 'btnInsert',
-                    'url' => "{$this->route}/criar",
+                    'type'  => 'a',
+                    'id'    => 'btnInsert',
+                    'url'   => "{$this->route}/criar",
                     'class' => 'btn-primary',
                     'icone' => 'fa-plus',
                     'label' => 'Novo Registro'
@@ -74,14 +74,12 @@ class Usuarios extends Admin_controller
             $this->input->post(),
             'usuarios',
             [
-                ['db' => 'id', 'dt' => 'id'],
-                ['db' => 'nickname', 'dt' => 'nome'],
-                ['db' => 'email', 'dt' => 'email'],
-                ['db' => 'telefone', 'dt' => 'telefone'],
-                ['db' => 'situacao', 'dt' => 'situacao'],
-                ['db' => 'situacao', 'dt' => 'situacao_lbl', "formatter" => function ($d) {
-                    return ($d == 1) ? 'ATIVO' : 'INATIVO';
-                }],
+                ['db' => 'usuarios.id', 'dt' => 'id'],
+                ['db' => 'usuarios.nome', 'dt' => 'nome'],
+                ['db' => 'usuarios.email', 'dt' => 'email'],
+                ['db' => 'usuarios.telefone', 'dt' => 'telefone'],
+                ['db' => 'usuarios.cpf', 'dt' => 'cpf'],
+                ['db' => 'usuarios.situacao', 'dt' => 'situacao'],
             ]
         );
 
@@ -97,7 +95,7 @@ class Usuarios extends Admin_controller
 
             $this->form_validation->set_error_delimiters('<span>', '</span>');
             $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|is_unique[usuarios.email]');
-            //    $this->form_validation->set_rules('cpf', 'CPF', 'required|is_unique[usuarios.cpf]');
+            $this->form_validation->set_rules('cpf', 'CPF', 'required|is_unique[usuarios.cpf]');
 
             if ($this->form_validation->run() === false) {
 
@@ -109,28 +107,9 @@ class Usuarios extends Admin_controller
                 }
 //                $verificaCpf = null;
                 # Retorna com a lista de erros da validação
-                $warning = ['type' => 'warning', 'message' => array_filter($errors)];
+                $warning = [ 'type' => 'warning', 'message' => array_filter($errors)];
 
             } else {
-
-                $keys = explode(' ', $post['nome']);
-                $nickname = $keys[0];
-                $novoNome = '';
-
-                foreach ($keys as $key) {
-                    $key = strtoupper($key);
-
-                    if ($key != 'DE' && $key != 'DOS' && $key != 'DA') {
-                        $letra = substr($key, 0, 1);
-                        if ($letra != '(') {
-                            $novoNome .= $letra . ".";
-                        }
-
-                    }
-                }
-                $post['nickname'] = $nickname;
-                $post['nome'] = $novoNome;
-
 
                 $data = [
                     'nome' => $post['nome'],
@@ -138,18 +117,19 @@ class Usuarios extends Admin_controller
                     'senha' => password_hash($password, PASSWORD_DEFAULT),
                     'telefone' => $post['telefone'],
                     'celular' => $post['celular'],
+                    'cpf' => $post['cpf'],
+                    'rg' => $post['rg'],
                     'nivel' => $post['nivel'],
-                    'login_fe' => isset($post['login_fe']) ? 1 : 0,
-                    'nickname' => $post['nickname']
+                    'login_fe' => isset($post['login_fe']) ? 1 : 0
                 ];
 
                 # Determina o perfil do usuario ( futuramente a coluna administrador irá mudar para perfil)
-                if ($post['perfil'] == 1) {
+                if ( $post['perfil'] == 1 ) {
 
                     # Administrador
                     $data['administrador'] = 1;
                     $data['tipo_usuario'] = 0;
-                } elseif ($post['perfil'] == 2) {
+                } elseif( $post['perfil'] == 2 ) { 
 
                     # Fornecedor
                     $data['administrador'] = 0;
@@ -177,22 +157,22 @@ class Usuarios extends Admin_controller
                 $id = $this->db->insert_id();
 
                 # Verifica se existe conexões com fornecedores
-                if (isset($conexao) && !empty($conexao)) {
+                if ( isset($conexao) && !empty($conexao) ) {
 
                     # Registra a conexão do usuario com os fornecedores selecionados
                     foreach ($conexao as $kk => $row) {
-
-                        $conexao[$kk]['id_usuario'] = $id;
+                       
+                       $conexao[$kk]['id_usuario'] = $id;
                     }
-
+                    
                     $this->db->insert_batch('usuarios_fornecedores', $conexao);
                 }
 
                 # Armazena a foto do usuario
                 $this->insert_photo($id);
 
-                if ($this->db->trans_status() === FALSE) {
-
+                if ( $this->db->trans_status() === FALSE ) {
+               
                     $this->db->trans_rollback();
 
                     $warning = $this->notify->errorMessage();
@@ -222,11 +202,11 @@ class Usuarios extends Admin_controller
 
                     $send = $this->notify->send($notify);
 
-                    $warning = ['type' => 'success', 'message' => notify_create];
+                    $warning = ['type' => 'success', 'message' => notify_create] ;
                 }
             }
 
-            if (isset($warning)) {
+            if (isset($warning)){
                 $this->output->set_content_type('application/json')->set_output(json_encode($warning));
             }
         } else {
@@ -238,7 +218,7 @@ class Usuarios extends Admin_controller
     /**
      * Função que atualiza o usuario
      *
-     * @param int $id
+     * @param   int  $id
      * @return  json
      */
     public function atualizar($id)
@@ -263,7 +243,7 @@ class Usuarios extends Admin_controller
                 }
 
                 // Retorna com a lista de erros da validação
-                $warning = ['type' => 'warning', 'message' => array_filter($errors)];
+                $warning = [ 'type' => 'warning', 'message' => array_filter($errors)];
 
                 $this->output->set_content_type('application/json')->set_output(json_encode($warning));
             } else {
@@ -281,24 +261,24 @@ class Usuarios extends Admin_controller
                 ];
 
                 # Só altera e-mail se for diferente do existente
-                if ($post['email'] == $usuario['email']) {
-
+                if ( $post['email'] == $usuario['email'] ) {
+                   
                     $data['email'] = $post['email'];
                 }
-
+                
                 # Só altera a senha caso o usuario preencher o campo
-                if (isset($post['senha']) && !empty($post['senha'])) {
+                if ( isset($post['senha']) && !empty($post['senha']) ) {
 
                     $data['senha'] = password_hash($post['senha'], PASSWORD_DEFAULT);
                 }
 
                 # Determina o perfil do usuario ( futuramente a coluna administrador irá mudar para perfil)
-                if ($post['perfil'] == 1) {
+                if ( $post['perfil'] == 1 ) {
 
                     # Administrador
                     $data['administrador'] = 1;
                     $data['tipo_usuario'] = 0;
-                } elseif ($post['perfil'] == 2) {
+                } elseif( $post['perfil'] == 2 ) {
 
                     # Fornecedor
                     $data['administrador'] = 0;
@@ -330,21 +310,21 @@ class Usuarios extends Admin_controller
                 $this->db->where('id_usuario', $id)->delete('usuarios_fornecedores');
 
                 # Verifica se existe conexões com fornecedores
-                if (isset($conexao) && !empty($conexao)) {
-
+                if ( isset($conexao) && !empty($conexao) ) {
+                    
                     $this->db->insert_batch('usuarios_fornecedores', $conexao);
                 }
 
                 # Armazena a foto do usuario
                 $this->insert_photo($id);
 
-                if ($this->db->trans_status() === false) {
+                if ( $this->db->trans_status() === false ) {
 
                     $this->db->trans_rollback();
 
                     $warning = $this->notify->errorMessage();
                 } else {
-
+                    
                     $this->db->trans_commit();
 
                     $warning = ['type' => 'success', 'message' => notify_update];
@@ -360,7 +340,7 @@ class Usuarios extends Admin_controller
 
     public function insert_photo($id)
     {
-        if (isset($_FILES['foto']['name']) && !empty($_FILES['foto']['name'])) {
+        if ( isset($_FILES['foto']['name']) && !empty($_FILES['foto']['name']) ) {
 
             $this->load->library('upload');
 
@@ -371,12 +351,12 @@ class Usuarios extends Admin_controller
             if (!file_exists($config['upload_path'])) mkdir($config['upload_path'], 0777, true);
 
             $this->upload->initialize($config);
-
+            
             if (!$this->upload->do_upload('foto')) {
 
                 $this->db->trans_rollback();
 
-                $warning = ["status" => false, "message" => $this->upload->display_errors()];
+                $warning = [ "status" => false, "message" => $this->upload->display_errors() ];
 
                 $this->output->set_content_type('application/json')->set_output(json_encode($warning));
             } else {
@@ -389,7 +369,7 @@ class Usuarios extends Admin_controller
 
                 return true;
             }
-        }
+        }  
     }
 
     /**
@@ -400,11 +380,11 @@ class Usuarios extends Admin_controller
      */
     public function new_password($id)
     {
-        if ($this->input->is_ajax_request()) {
+        if ( $this->input->is_ajax_request() ) {
 
             $usuario = $this->usuario->findById($id);
 
-            if (isset($usuario) && !empty($usuario['email'])) {
+            if ( isset($usuario) && !empty($usuario['email']) ) {
 
                 $password = generatePassword();
 
@@ -415,8 +395,8 @@ class Usuarios extends Admin_controller
                 $this->db->where('id', $id);
                 $updt = $this->db->update('usuarios', ['senha' => $passwordCriptografada]);
 
-                if ($updt) {
-
+                if ( $updt ) {
+                        
                     # Envia email para com a nova senha
                     $notify = [
                         "to" => $usuario['email'],
@@ -428,7 +408,7 @@ class Usuarios extends Admin_controller
 
                     $send = $this->notify->send($notify);
 
-                    if ($send) {
+                    if ( $send ) {
 
                         $type = 'success';
                         $message = "Nova senha enviada por e-mail!";
@@ -442,8 +422,8 @@ class Usuarios extends Admin_controller
 
                 $type = 'warning';
 
-                if (empty($usuario['email'])) {
-
+                if ( empty($usuario['email']) ) {
+                   
                     $message = "Usuário sem E-mail cadastrado!";
                 } else {
 
@@ -470,15 +450,15 @@ class Usuarios extends Admin_controller
             $this->db->trans_begin();
 
             foreach ($post['el'] as $item) {
-
+                
                 # Remove as conexões de rotas
                 $this->db->where('id_usuario', $item)->delete('usuarios_fornecedores');
 
                 # Remove a foto do usuario
-                if (file_exists(PUBLIC_PATH . "usuarios/{$item}")) {
+                if( file_exists(PUBLIC_PATH . "usuarios/{$item}") ) {
 
                     chmod(PUBLIC_PATH . "usuarios/{$item}", 0777);
-
+                  
                     unlink(PUBLIC_PATH . "usuarios/{$item}");
                 }
 
@@ -490,7 +470,8 @@ class Usuarios extends Admin_controller
                 $this->db->trans_rollback();
 
                 $output = $this->notify->errorMessage();
-            } else {
+            }
+            else {
                 $this->db->trans_commit();
 
                 $output = ['type' => 'success', 'message' => notify_delete];
@@ -504,13 +485,13 @@ class Usuarios extends Admin_controller
     {
         if ($this->input->method() == 'post') {
 
-            $situacao = (isset($ativar)) ? 1 : 0;
-            $validade = (isset($ativar)) ? date('Y-m-d H:i:s', strtotime("+3 minutes")) : null;
-
+            $situacao = ( isset($ativar) ) ? 1 : 0;
+            $validade = ( isset($ativar) ) ? date('Y-m-d H:i:s', strtotime("+3 minutes")) : null;
+            
             $updt = $this->db->where('id', $id)->update('usuarios', ['situacao' => $situacao, 'validade_token' => $validade]);
 
-            if ($updt) {
-
+            if ( $updt ) { 
+               
                 $output = ['type' => 'success', 'message' => notify_update];
             } else {
 
@@ -524,7 +505,7 @@ class Usuarios extends Admin_controller
     /**
      * Função customizada do form_validation, verifica se o email do fornecedor já existe na tabela de usuarios no DB
      *
-     * @param int $email
+     * @param   int  $email
      * @return  bool
      */
     function check_unique_email($email)
@@ -544,13 +525,13 @@ class Usuarios extends Admin_controller
 
     public function getRoles()
     {
-        if ($this->input->is_ajax_request()) {
+        if ( $this->input->is_ajax_request() ) {
 
             $post = $this->input->post();
 
             if ($post['perfil'] == 1) {
-
-                $data['options'] = $this->db->select('id, titulo AS value')->order_by('id ASC')->get('perfis')->result_array();
+               
+               $data['options'] = $this->db->select('id, titulo AS value')->order_by('id ASC')->get('perfis')->result_array();
             } else {
 
                 $data['options'] = [
@@ -567,7 +548,7 @@ class Usuarios extends Admin_controller
     /**
      * Exibe a view admin/Usuarios/form.php
      *
-     * @param int $id
+     * @param   int  $id
      * @return  view
      */
     private function form($id = null)
@@ -580,21 +561,21 @@ class Usuarios extends Admin_controller
         $data['url_perfis'] = "{$this->route}/getRoles";
         $data['url_route_success'] = $this->route;
 
-        if (isset($id)) {
+        if(isset($id)) {
 
             $page_title = "Edição de Usuários";
 
             $data['form_action'] = "{$this->route}/atualizar/{$id}";
             $data['usuario'] = $this->db->where('id', $id)->get('usuarios')->row_array();
-
+            
             $user_fornecedores = $this->db->where('id_usuario', $id)->get('usuarios_fornecedores')->result_array();
             $data['user_fornecedores'] = array_column($user_fornecedores, 'id_fornecedor');
 
             # Caminho da pasta da logo do fornecedor
             $root_path_logo = 'public/usuarios/' . $id . '/' . $data['usuario']['foto'];
 
-            if (isset($data['usuario']['foto']) && !empty($data['usuario']['foto']) && file_exists($root_path_logo)) {
-
+            if( isset($data['usuario']['foto']) && !empty($data['usuario']['foto']) && file_exists($root_path_logo) ) {
+              
                 $data['foto'] = base_url("public/usuarios/{$id}/{$data['usuario']['foto']}");
             } else {
 
@@ -602,24 +583,24 @@ class Usuarios extends Admin_controller
             }
         }
 
-        $data['header'] = $this->template->header(['title' => $page_title]);
-        $data['navbar'] = $this->template->navbar();
+        $data['header'] = $this->template->header([ 'title' => $page_title]);
+        $data['navbar']  = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title,
-            'buttons' => [
+            'buttons'    => [
                 [
-                    'type' => 'a',
-                    'id' => 'btnBack',
-                    'url' => "{$this->route}",
+                    'type'  => 'a',
+                    'id'    => 'btnBack',
+                    'url'   => "{$this->route}",
                     'class' => 'btn-secondary',
                     'icone' => 'fa-arrow-left',
                     'label' => 'Voltar'
                 ],
                 [
-                    'type' => 'submit',
-                    'id' => 'btnSave',
-                    'form' => 'formUsuario',
+                    'type'  => 'submit',
+                    'id'    => 'btnSave',
+                    'form'  => 'formUsuario',
                     'class' => 'btn-primary',
                     'icone' => 'fa-save',
                     'label' => 'Salvar Alterações'
@@ -644,23 +625,23 @@ class Usuarios extends Admin_controller
     public function perfil()
     {
 
-        $this->db->where('id', $this->session->userdata('id_usuario'));
+        $this->db->where('id' , $this->session->userdata('id_usuario'));
 
-        $usuario = $this->db->get('usuarios')->row_array();
+        $usuario = $this->db->get('usuarios')->row_array(); 
 
         $page_title = "Editar Usuário";
         $data['usuario'] = $usuario;
         $data['form_action'] = "{$this->route}/atualizar_perfil";
-        $data['header'] = $this->template->header(['title' => $page_title]);
-        $data['navbar'] = $this->template->navbar();
+        $data['header'] = $this->template->header([ 'title' => $page_title ]);
+        $data['navbar']  = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title,
-            'buttons' => [
+            'buttons'    => [
                 [
-                    'type' => 'submit',
-                    'id' => 'btnSave',
-                    'form' => 'formUsuario',
+                    'type'  => 'submit',
+                    'id'    => 'btnSave',
+                    'form'  => 'formUsuario',
                     'class' => 'btn-primary',
                     'icone' => 'fa-save',
                     'label' => 'Salvar Alterações'
@@ -706,7 +687,7 @@ class Usuarios extends Admin_controller
         unset($post['id']);
 
         // Se o usuario alterar a foto
-        if (isset($_FILES['foto']['name']) && !empty($_FILES['foto']['name'])) {
+        if ( isset($_FILES['foto']['name']) && !empty($_FILES['foto']['name']) ) {
 
             $config['upload_path'] = PUBLIC_PATH . "usuarios/{$id}";
             $config['allowed_types'] = 'png|gif|jpg|jpeg';
@@ -717,11 +698,11 @@ class Usuarios extends Admin_controller
             if (!file_exists($config['upload_path'])) mkdir($config['upload_path'], 0777, true);
 
             $this->upload->initialize($config);
-
+            
             if (!$this->upload->do_upload('foto')) {
                 $error = $this->upload->display_errors('<p>', '</p>');
 
-                $warning = ["type" => 'warning', "message" => $error];
+                $warning = [ "type" => 'warning', "message" => $error ];
 
                 $this->session->set_userdata('warning', $warning);
 
@@ -731,18 +712,18 @@ class Usuarios extends Admin_controller
 
                 $post['foto'] = $data['file_name'];
             }
-        }
+        } 
 
         $this->db->where('id', $id);
 
         if ($this->db->update('usuarios', $post)) {
             // Se cadastrou logo, atualiza a session para exibir imagem no perfil
-            if (isset($post['foto']))
-                $this->session->set_userdata('foto', $post['foto']);
+            if (isset($post['foto'])) 
+               $this->session->set_userdata('foto', $post['foto']);
 
-            $warning = ['type' => 'success', 'message' => 'Usuário atualizado com sucesso'];
+            $warning = [ 'type' => 'success', 'message' => 'Usuário atualizado com sucesso' ];
         } else {
-            $warning = ['type' => 'warning', 'message' => 'Erro ao atualizar usuário'];
+            $warning = [ 'type' => 'warning', 'message' => 'Erro ao atualizar usuário' ];
         }
 
         $this->session->set_userdata('warning', $warning);
@@ -763,7 +744,7 @@ class Usuarios extends Admin_controller
 
         $query = $this->db->get()->result_array();
 
-        if (count($query) < 1) {
+        if ( count($query) < 1 ) {
             $query[] = [
                 'nome' => '',
                 'email' => '',
@@ -775,7 +756,7 @@ class Usuarios extends Admin_controller
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
 
-        if ($exportar['status'] == false) {
+        if ( $exportar['status'] == false ) {
 
             $warning = ['type' => 'warning', 'message' => $exportar['message']];
         } else {

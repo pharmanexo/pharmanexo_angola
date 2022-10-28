@@ -1,0 +1,92 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>27/10/2022 07:00:11</Dt_Gravacao>
+  <Cd_Fornecedor>12882932000194</Cd_Fornecedor>
+  <Cd_Cotacao>COT18680-96</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>11</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor/>
+  <Qt_Prz_Minimo_Entrega>1</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1500,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>1856</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>411</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>17856</Id_Marca>
+          <Ds_Marca>ANÁPOLIS IND. HOSPITALAR / GO</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,4500</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5625</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>12590</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>110230</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>2648</Id_Marca>
+          <Ds_Marca>AMÉRICA / MG</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>5,1200</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5010</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>2399</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>109179</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>175</Id_Marca>
+          <Ds_Marca>MAXICOR / PR</Ds_Marca>
+          <Qt_Embalagem>6</Qt_Embalagem>
+          <Vl_Preco_Produto>4,6940</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>4993</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>12368</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1129189</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>4684</Id_Marca>
+          <Ds_Marca>Plena Fraldas / PE</Ds_Marca>
+          <Qt_Embalagem>50</Qt_Embalagem>
+          <Vl_Preco_Produto>0,6901</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>4217</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>610</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>109016</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>140</Id_Marca>
+          <Ds_Marca>INJEX / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,1600</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5596</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

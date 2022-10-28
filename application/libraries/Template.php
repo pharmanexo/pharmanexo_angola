@@ -9,6 +9,68 @@
 
 class Template
 {
+    public function homeheader($data)
+    {
+
+        $default = [];
+
+
+        return $this->CI->load->view('templates/header', array_merge($default, $data), TRUE);
+    }
+
+    public function homeheading($data)
+    {
+
+        $default = [];
+
+        return $this->CI->load->view('templates/heading', array_merge($default, $data), TRUE);
+    }
+
+    public function homebanner($data)
+    {
+
+        $default = [];
+
+        return $this->CI->load->view('templates/banner', array_merge($default, $data), TRUE);
+    }
+
+
+
+    public function homenavbar($data)
+    {
+        $logo = ASSETS_PATH . "img/123456.png";
+
+        $default = [
+            'logo' => "<img src='{$logo}' class='img-fluid' alt=''>"
+        ];
+
+        return $this->CI->load->view('templates/navbar', array_merge($default, $data), TRUE);
+    }
+
+    public function homesidebar($data)
+    {
+
+        $default = [];
+
+        return $this->CI->load->view('templates/sidebar', array_merge($default, $data), TRUE);
+    }
+
+
+    public function homescripts($data)
+    {
+
+        $default = [];
+
+        return $this->CI->load->view('templates/scripts', array_merge($default, $data), TRUE);
+    }
+
+    public function homefooter($data)
+    {
+
+        $default = [];
+
+        return $this->CI->load->view('templates/footer', array_merge($default, $data), TRUE);
+    }
 
     public function __construct()
     {
@@ -251,6 +313,113 @@ class TemplateMP
     }
 }
 
+class TemplateCC
+{
+
+    public function __construct()
+    {
+        $this->CI = &get_instance();
+    }
+
+
+    public function header($data = [])
+    {
+        $default = [];
+
+        // warning Message
+        if ($this->CI->session->has_userdata('warning')) {
+            $default['warning'] = json_encode($this->CI->session->warning);
+            $this->CI->session->unset_userdata('warning');
+        }
+
+        $data = array_merge($data, $default);
+
+
+        return $this->CI->load->view('compra-coletiva/template/header', $data, TRUE);
+    }
+
+    public function navbar($data = [])
+    {
+        $default = [
+            'logo' => 'https://www.pharmanexo.com.br/pharmanexo_v2/images/img/logo-white.png'
+        ];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view('compra-coletiva/template/navbar', $data, TRUE);
+    }
+
+    public function sidebar($data = [], $view = 'sidebar_painel')
+    {
+        $default = [
+            'routes' => $this->build_menu()
+        ];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view("compra-coletiva/template/{$view}", $data, TRUE);
+    }
+
+    public function scripts($data = [])
+    {
+        $default = [];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view('compra-coletiva/template/scripts', $data, TRUE);
+    }
+
+    public function heading($data = [])
+    {
+        $default = [];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view('compra-coletiva/template/heading', $data, TRUE);
+    }
+
+
+    public function footer($data = [])
+    {
+        $default = [];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view('compra-coletiva/template/footer', $data, TRUE);
+    }
+
+    private function build_menu()
+    {
+        $routes = $this->CI->session->routes;
+        $menu = [];
+
+        foreach ($routes as $r){
+            // sub-menu
+            if (is_null($r['id_parente'])) {
+                $menu[$r['id']] = $r;
+                $menu[$r['id']]['reference'] = str_replace(" ", "", $r['rotulo']) . $r['id'];
+            }
+        }
+
+        foreach ($routes as $r) {
+            // sub-menu
+            if (intval($r['id_parente']) > 0) {
+//                # Gambiarra Eric
+//                if( isset($this->CI->session->id_usuario) && $this->CI->session->id_usuario != 187 && $r['id'] == 159  ) {
+//
+//                    continue;
+//                }
+
+                $menu[$r['id_parente']]['submenu'][] = $r;
+            }
+        }
+
+        #var_dump($menu);exit();
+
+        return $menu;
+    }
+
+}
 
 class TemplateRep
 {

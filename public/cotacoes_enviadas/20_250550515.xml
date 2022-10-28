@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250550515</Id_Pdc>
+    <CNPJ_Hospital>24.933.742/0001-38</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142726685</Id_Artigo>
+      <Codigo_Produto>10620639</Codigo_Produto>
+      <Preco_Unitario>9.5100</Preco_Unitario>
+      <Fabricante>PROPOFOL 10 MG/ML 20 ML PROVIVE 1 C/5 FA  PORT 344/98   - UNI&#xC3;O QUIMICA</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/07/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15379</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

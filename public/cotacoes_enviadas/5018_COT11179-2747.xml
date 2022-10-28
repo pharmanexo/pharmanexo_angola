@@ -1,0 +1,69 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 14:29:43</Dt_Gravacao>
+  <Cd_Fornecedor>02816696000154</Cd_Fornecedor>
+  <Cd_Cotacao>COT11179-2747</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>1</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>*Olá gostaria de conversar com o setor de compras, estamos aberto a negociações. **Mediante a análise cadastral e financeira, adequamos a forma de pagamento, aguardo retorno para ajuste da cotação. ***Pedido mínimo R$ 2.000  Vendedor Diniz 42 whats 42 99116-8500 - vendas15@pontamed.com.br</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>12</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1600,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>10873</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>3454</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>133</Id_Marca>
+          <Ds_Marca>HIPOLABOR</Ds_Marca>
+          <Qt_Embalagem>50</Qt_Embalagem>
+          <Vl_Preco_Produto>1,3900</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>2104</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5289</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>3472</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>133</Id_Marca>
+          <Ds_Marca>HIPOLABOR</Ds_Marca>
+          <Qt_Embalagem>100</Qt_Embalagem>
+          <Vl_Preco_Produto>3,4800</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>item cotado MIDAZOLAM 50MG 10ML (B1) (G) hipolabor val 29/02/2024</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>2905</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5474</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>10794</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>113</Id_Marca>
+          <Ds_Marca>GEOLAB</Ds_Marca>
+          <Qt_Embalagem>500</Qt_Embalagem>
+          <Vl_Preco_Produto>0,1560</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5264</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5304</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>3430</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>6896</Id_Marca>
+          <Ds_Marca>UNIAO QUIMICA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>210,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>4993</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

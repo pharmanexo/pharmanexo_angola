@@ -1,0 +1,100 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 10:41:15</Dt_Gravacao>
+  <Cd_Fornecedor>04307650002502</Cd_Fornecedor>
+  <Cd_Cotacao>COT7114-1500</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>12</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Karina Souza (41) 3303-9240 - karina.souza@oncoprod.com.br . Medicamentos refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo de entrega e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos somente até às 16h00, após este horário o pedido será resgatado e fat. no próx. dia útil, exceções entrar em contato. Fat. mín. acima de R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB. </Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>24843</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>101294</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>144</Id_Marca>
+          <Ds_Marca>JANSSEN-CILAG FARM LT</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>8.031,1300</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>DALINVI SC 1800MG SOL INJ 15ML - VAL: 31/10/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>111842</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6936</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1896</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>6270</Id_Marca>
+          <Ds_Marca>AMGEN BIOTECNOLOGIA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>747,7900</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>PROLIA 60MG ML SOL INJ</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4494</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7704</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1278</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>8,4000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ANSENTRON 8 MG C 1 AMP 4ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>82</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6999</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>101314</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>230</Id_Marca>
+          <Ds_Marca>PROD ROCHE QUIM FARM S A</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>12.467,3700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>PERJETA 420MG SOL DIL. FA 14ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1572</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>29150</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>100832</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10400</Id_Marca>
+          <Ds_Marca>CELGENE BRASIL PRODS FARMACEUTICOS</Ds_Marca>
+          <Qt_Embalagem>21</Qt_Embalagem>
+          <Vl_Preco_Produto>845,4500</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>REVLIMID 10 MG C 21 CAPS C3</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>110186</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10400</Id_Marca>
+          <Ds_Marca>CELGENE BRASIL PRODS FARMACEUTICOS</Ds_Marca>
+          <Qt_Embalagem>28</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>REVLIMID 10MG C 28 CAPS C3</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>110899</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

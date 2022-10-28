@@ -1,0 +1,41 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 08:59:06</Dt_Gravacao>
+  <Cd_Fornecedor>02520829000140</Cd_Fornecedor>
+  <Cd_Cotacao>COT20328-161</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>11</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor/>
+  <Qt_Prz_Minimo_Entrega>6</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>2000,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>595</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>48785</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>879</Id_Marca>
+          <Ds_Marca>SR</Ds_Marca>
+          <Qt_Embalagem>250</Qt_Embalagem>
+          <Vl_Preco_Produto>0,3190</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>12392</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>601</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>48787</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>879</Id_Marca>
+          <Ds_Marca>SR</Ds_Marca>
+          <Qt_Embalagem>250</Qt_Embalagem>
+          <Vl_Preco_Produto>0,4910</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>8508</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

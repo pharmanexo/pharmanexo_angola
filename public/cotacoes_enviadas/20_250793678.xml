@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250793678</Id_Pdc>
+    <CNPJ_Hospital>60.979.457/0001-11</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142762695</Id_Artigo>
+      <Codigo_Produto>53368</Codigo_Produto>
+      <Preco_Unitario>8.3178</Preco_Unitario>
+      <Fabricante>DIMENIDRINATO+PIRIDOX 10ML%28DRAMIN B6 DL%29 - TAKEDA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25499</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142762692</Id_Artigo>
+      <Codigo_Produto>1577</Codigo_Produto>
+      <Preco_Unitario>186.9501</Preco_Unitario>
+      <Fabricante>ALBUMINA HUMANA 20 5O ML KEDRION F/A  - KEDRION</Fabricante>
+      <Embalagem>FL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18824</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142762694</Id_Artigo>
+      <Codigo_Produto>53367</Codigo_Produto>
+      <Preco_Unitario>3.4589</Preco_Unitario>
+      <Fabricante>BROMOPRIDA 10MG/2ML GENERICO C/50  - UNIAO QUIMICA</Fabricante>
+      <Embalagem>AM</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1037</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>4</Sequencia>
+      <Id_Artigo>142762693</Id_Artigo>
+      <Codigo_Produto>53383</Codigo_Produto>
+      <Preco_Unitario>6.7498</Preco_Unitario>
+      <Fabricante>LACTULOSE MAMAO PAPAYA XAROPE 120 ML C/12  - NUTRIEX</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19465</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142762696</Id_Artigo>
+      <Codigo_Produto>53542</Codigo_Produto>
+      <Preco_Unitario>5.3550</Preco_Unitario>
+      <Fabricante>ONDANSETRONA 2 MG/ML 2 ML GENERICO C/50 AMP - HYPOFARMA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11038</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

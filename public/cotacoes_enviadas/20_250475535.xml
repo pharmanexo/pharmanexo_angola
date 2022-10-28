@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250475535</Id_Pdc>
+    <CNPJ_Hospital>44.782.779/0001-10</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>09/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142710112</Id_Artigo>
+      <Codigo_Produto>00009901020001</Codigo_Produto>
+      <Preco_Unitario>2.8648</Preco_Unitario>
+      <Fabricante>AMPICILINA 1G INJ.  CILINON  C/100 - BLAU</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>961</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142710115</Id_Artigo>
+      <Codigo_Produto>00009906750001</Codigo_Produto>
+      <Preco_Unitario>5.3091</Preco_Unitario>
+      <Fabricante>VANCOMICINA 500MG INJ S/DIL GENERICO C/50 FR - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>6235</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

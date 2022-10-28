@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250531899</Id_Pdc>
+    <CNPJ_Hospital>50.819.523/0001-32</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142723753</Id_Artigo>
+      <Codigo_Produto>0072364</Codigo_Produto>
+      <Preco_Unitario>5.5423</Preco_Unitario>
+      <Fabricante>ACIDO TRANEXAMICO 50 MG/ML 5 ML TRANSAMIN C/5 AMP - ZYDUS/NIKKHO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>9709</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

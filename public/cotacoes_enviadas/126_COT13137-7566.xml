@@ -1,0 +1,186 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>27/10/2022 13:45:40</Dt_Gravacao>
+  <Cd_Fornecedor>04307650002502</Cd_Fornecedor>
+  <Cd_Cotacao>COT13137-7566</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>16</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Karina Souza (41) 3303-9240 - karina.souza@oncoprod.com.br . Medicamentos refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo de entrega e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos somente até às 16h00, após este horário o pedido será resgatado e fat. no próx. dia útil, exceções entrar em contato. Fat. mín. acima de R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB. </Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7059</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1660</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>UPJOHN BRASIL IMP DIST MED LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>NORVASC 5MG C 30 COMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4590</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7056</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2724</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>UPJOHN BRASIL IMP DIST MED LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>CITALOR 10MG C 30 COMP REV</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4492</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>UPJOHN BRASIL IMP DIST MED LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>3,2200</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>LIPITOR 10MG C  30 COMP REV - VAL: 31/07/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1354</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5361</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>8719</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>230</Id_Marca>
+          <Ds_Marca>PROD ROCHE QUIM FARM S A</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>17,5800</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>RIVOTRIL 25M 20ML B1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4329</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6615</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2552</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>10,6700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>DECADRON 4MG C 1AMP 2,5ML   NOVO</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1302</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6949</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1774</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>28,8700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>FILGRASTIM 300 MCG C 5 FR.AMP. 1ML - VAL: 31/01/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>90</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>7657</Id_Marca>
+          <Ds_Marca>BLAU FARMACEUTICA S.A.</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>FILGRASTINE 300MCG ML INJ C 1AMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>109877</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6240</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>344</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>146</Id_Marca>
+          <Ds_Marca/>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>272,7200</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SPORANOX PULSO 100MG C 28 CAPS</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>103327</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7494</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1746</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>13689</Id_Marca>
+          <Ds_Marca>SANOFI AVENTIS FARM LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,3653</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>PURAN T4 100MCG C 30 COMP - VAL: 30/09/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>102958</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7509</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1806</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>6896</Id_Marca>
+          <Ds_Marca>UNIAO QUIMICA FARMACEUTICA NACIONAL</Ds_Marca>
+          <Qt_Embalagem>50</Qt_Embalagem>
+          <Vl_Preco_Produto>1,8610</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>OXITON 5UI ML C 50 AMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4654</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>13581</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>16705</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>4,0700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ANSENTRON 4 MG C 1 AMP 2ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>81</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>100</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ANSENTRON 4MG SOL INJ 100AMP 2ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>112292</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6556</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1227</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>8,3000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ANSENTRON 8 MG C 1 AMP 4ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>82</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

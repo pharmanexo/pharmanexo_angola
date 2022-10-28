@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250257152</Id_Pdc>
+    <CNPJ_Hospital>01.534.437/0001-78</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>12</Sequencia>
+      <Id_Artigo>142672516</Id_Artigo>
+      <Codigo_Produto>01.00276</Codigo_Produto>
+      <Preco_Unitario>10.0643</Preco_Unitario>
+      <Fabricante>HEPARINA 5.000 UI 025 ML SUB-CUTANEA HEMOFOL C/ 25 - CRISTALIA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 06/07/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>8448</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>13</Sequencia>
+      <Id_Artigo>142672518</Id_Artigo>
+      <Codigo_Produto>01.00305</Codigo_Produto>
+      <Preco_Unitario>6.6419</Preco_Unitario>
+      <Fabricante>LACTULOSE MAMAO PAPAYA XAROPE 120 ML C/12  - NUTRIEX</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19465</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>15</Sequencia>
+      <Id_Artigo>142672522</Id_Artigo>
+      <Codigo_Produto>01.00356</Codigo_Produto>
+      <Preco_Unitario>5.2373</Preco_Unitario>
+      <Fabricante>MORFINA  1MG/ML 2ML DIMORF C/50 AMP PORT 344/98 CONV. 87/02 - CRISTALIA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/02/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12160</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>17</Sequencia>
+      <Id_Artigo>142672525</Id_Artigo>
+      <Codigo_Produto>01.00418</Codigo_Produto>
+      <Preco_Unitario>0.2576</Preco_Unitario>
+      <Fabricante>QUETIAPINA  25MG C/30 GENERICO  CONV 087/02  PORT 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 23/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19216</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142672527</Id_Artigo>
+      <Codigo_Produto>01.00028</Codigo_Produto>
+      <Preco_Unitario>8.3484</Preco_Unitario>
+      <Fabricante>ALCOOL 70 ANTISSEPTICO 1000ML C/12 - VICPHARMA</Fabricante>
+      <Embalagem>LT</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 08/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11910</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>19</Sequencia>
+      <Id_Artigo>142672528</Id_Artigo>
+      <Codigo_Produto>01.00482</Codigo_Produto>
+      <Preco_Unitario>6.3665</Preco_Unitario>
+      <Fabricante>TRAMADOL  100 MG/2ML 2ML GENERICO C/60 AMP PORT. 344/98  - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 13/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1897</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142672532</Id_Artigo>
+      <Codigo_Produto>01.00104</Codigo_Produto>
+      <Preco_Unitario>5.0091</Preco_Unitario>
+      <Fabricante>CEFTRIAXONA 1G INJ I.V GENERICO CX C/100  - BLAU</Fabricante>
+      <Embalagem>FL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 03/09/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18297</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>8</Sequencia>
+      <Id_Artigo>142672535</Id_Artigo>
+      <Codigo_Produto>01.00143</Codigo_Produto>
+      <Preco_Unitario>8.9644</Preco_Unitario>
+      <Fabricante>CLOREXIDINA 05  ALCOOLICA 1000 ML SEPTMAX C/12 - FARMAX</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 12/04/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18421</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>10</Sequencia>
+      <Id_Artigo>142672537</Id_Artigo>
+      <Codigo_Produto>PLK01</Codigo_Produto>
+      <Preco_Unitario>0.0000</Preco_Unitario>
+      <Fabricante>ESOMEPRAZOL MAG.TRIIDR 20MG GENERICO C/28 CP - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 28/05/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14917</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142672524</Id_Artigo>
+      <Codigo_Produto>01.00023</Codigo_Produto>
+      <Preco_Unitario>0.4233</Preco_Unitario>
+      <Fabricante>AGUA DESTILADA  10 ML C/200 AMP. - FARMACE</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>893</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>16</Sequencia>
+      <Id_Artigo>142672523</Id_Artigo>
+      <Codigo_Produto>01.00403</Codigo_Produto>
+      <Preco_Unitario>23.1947</Preco_Unitario>
+      <Fabricante>PIPERACICLINA+TAZO 4,0G+500MG %28GENERICO%29 - FRESENIUS KABI</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25833</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>11</Sequencia>
+      <Id_Artigo>142672514</Id_Artigo>
+      <Codigo_Produto>02.00119</Codigo_Produto>
+      <Preco_Unitario>13.5818</Preco_Unitario>
+      <Fabricante>ESPARADRAPO 10 CM X 4,5 M  - CIEX</Fabricante>
+      <Embalagem>RL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22696</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>6</Sequencia>
+      <Id_Artigo>142672533</Id_Artigo>
+      <Codigo_Produto>01.00445</Codigo_Produto>
+      <Preco_Unitario>8.4000</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09   100 ML S/F FRASCO C/60 - FARMACE</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>10449</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

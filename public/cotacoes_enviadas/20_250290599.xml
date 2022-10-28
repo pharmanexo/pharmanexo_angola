@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250290599</Id_Pdc>
+    <CNPJ_Hospital>61.699.567/0089-24</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142681474</Id_Artigo>
+      <Codigo_Produto>212</Codigo_Produto>
+      <Preco_Unitario>1.6915</Preco_Unitario>
+      <Fabricante>HIOSCINA SIMPLES 20 MG/ML INJ 1ML  GENERICO C/100  - FARMACE</Fabricante>
+      <Embalagem>AM</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>17528</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>4</Sequencia>
+      <Id_Artigo>142681475</Id_Artigo>
+      <Codigo_Produto>66178</Codigo_Produto>
+      <Preco_Unitario>6.7635</Preco_Unitario>
+      <Fabricante>METARAMINOL HEMIT INJ. 10 MG/ML 1ML ARAMIN C/25 AMP - CRISTALIA</Fabricante>
+      <Embalagem>AM</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/04/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>17850</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142681476</Id_Artigo>
+      <Codigo_Produto>705</Codigo_Produto>
+      <Preco_Unitario>0.0000</Preco_Unitario>
+      <Fabricante>MEROPENEM  500MG. PO P/SOL INJ. GENERICO C/25 FR - BIOCHIMICO</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/06/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20296</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142681477</Id_Artigo>
+      <Codigo_Produto>66683</Codigo_Produto>
+      <Preco_Unitario>7.1621</Preco_Unitario>
+      <Fabricante>CEFAZOLINA 1G INJ FAZOLON C/20 F/A - BLAU</Fabricante>
+      <Embalagem>FL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 03/12/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14353</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

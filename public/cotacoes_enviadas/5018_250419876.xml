@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250419876</Id_Pdc>
+    <CNPJ_Hospital>05.268.526/0001-70</CNPJ_Hospital>
+    <Faturamento_Minimo>2000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>8</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>219</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>*Ol&#xE1; gostaria de conversar com o setor de compras, estamos aberto a negocia&#xE7;&#xF5;es. **Mediante a an&#xE1;lise cadastral e financeira, adequamos a forma de pagamento, aguardo retorno para ajuste da cota&#xE7;&#xE3;o. ***Pedido m&#xED;nimo R$ 2.000  Vendedor Diniz 42 whats 42 99116-8500 - vendas15@pontamed.com.br</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142692323</Id_Artigo>
+      <Codigo_Produto>1486</Codigo_Produto>
+      <Preco_Unitario>3.6000</Preco_Unitario>
+      <Fabricante>MIDAZOLAM 15MG 3ML %28B1%29 DORMIRE - CRISTALIA</Fabricante>
+      <Embalagem>AMP</Embalagem>
+      <Quantidade_Embalagem>10</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>4867</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

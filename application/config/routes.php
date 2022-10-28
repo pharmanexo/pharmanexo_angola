@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'dashboard';
+$route['default_controller'] = 'home';
 
 $route['quem-somos'] = 'marketplace/informativos/quem_somos';
 $route['politica-de-seguranca'] = 'marketplace/informativos/seguranca';
@@ -61,6 +61,9 @@ $route['busca-ativa'] = 'marketplace/busca_ativa';
 $route['faq'] = 'marketplace/FAQ';
 $route['integracoes'] = 'admin/relatorios/integracoes';
 $route['mix'] = 'admin/relatorios/mix';
+$route['home'] = 'home';
+$route['adesao'] = 'adesao';
+$route['web'] = 'home';
 
 $route['fornecedor/estoque/produtos_vencer/(:num)/(:num)'] = 'fornecedor/estoque/produtos_vencer/index/$1/$2';
 

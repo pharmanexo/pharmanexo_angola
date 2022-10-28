@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250724050</Id_Pdc>
+    <CNPJ_Hospital>17.163.528/0001-84</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142749102</Id_Artigo>
+      <Codigo_Produto>405441</Codigo_Produto>
+      <Preco_Unitario>2.6212</Preco_Unitario>
+      <Fabricante>CLOREXIDINA 05  ALCOOLICA  100ML C/24 - VICPHARMA</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12253</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142749103</Id_Artigo>
+      <Codigo_Produto>446326</Codigo_Produto>
+      <Preco_Unitario>3.2602</Preco_Unitario>
+      <Fabricante>CLOREXIDINA 2  DEGERMANTE  100 ML C/24 - VICPHARMA</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12251</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

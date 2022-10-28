@@ -1,0 +1,78 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 17:43:45</Dt_Gravacao>
+  <Cd_Fornecedor>35997345000146</Cd_Fornecedor>
+  <Cd_Cotacao>COT13591-785</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor/>
+  <Qt_Prz_Minimo_Entrega>3</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1200,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6112</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2715</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>3</Id_Marca>
+          <Ds_Marca>ABBOTT</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>40,1078</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 30/09/2023 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>9404</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6576</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2851</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>259</Id_Marca>
+          <Ds_Marca>TEUTO</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>6,3665</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 13/08/2024 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1897</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5441</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2736</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>259</Id_Marca>
+          <Ds_Marca>TEUTO</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>1,3515</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 30/10/2023 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>5020</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25607</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>648</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>133</Id_Marca>
+          <Ds_Marca>HIPOLABOR</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>5,2164</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 31/01/2024 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>2005</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

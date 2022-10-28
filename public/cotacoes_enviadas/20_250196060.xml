@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250196060</Id_Pdc>
+    <CNPJ_Hospital>27.046.217/0002-70</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>14</Sequencia>
+      <Id_Artigo>142659004</Id_Artigo>
+      <Codigo_Produto>700275</Codigo_Produto>
+      <Preco_Unitario>0.0000</Preco_Unitario>
+      <Fabricante>PARACETAMOL 200 MG GOTAS 15 ML GENERICO SABOR TANGERINA  - GREENPHARMA</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/11/2022</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20051</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>6</Sequencia>
+      <Id_Artigo>142659011</Id_Artigo>
+      <Codigo_Produto>700456</Codigo_Produto>
+      <Preco_Unitario>0.2125</Preco_Unitario>
+      <Fabricante>DIPIRONA 500 MG GENERICO C/500 CP - GREENPHARMA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 28/02/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15309</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>16</Sequencia>
+      <Id_Artigo>142659006</Id_Artigo>
+      <Codigo_Produto>700279</Codigo_Produto>
+      <Preco_Unitario>1.7164</Preco_Unitario>
+      <Fabricante>SIMETICONA 75MG/ML 15ML %28GENERICO%29 - EMS-EMS</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22859</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>13</Sequencia>
+      <Id_Artigo>142659015</Id_Artigo>
+      <Codigo_Produto>700274</Codigo_Produto>
+      <Preco_Unitario>0.1702</Preco_Unitario>
+      <Fabricante>PARACETAMOL 750MG %28GENERICO%29 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25461</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

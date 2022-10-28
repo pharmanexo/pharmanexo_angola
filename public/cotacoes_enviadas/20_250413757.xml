@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250413757</Id_Pdc>
+    <CNPJ_Hospital>45.359.213/0015-48</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142690179</Id_Artigo>
+      <Codigo_Produto>175</Codigo_Produto>
+      <Preco_Unitario>24.5000</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09  1000 ML S/F FRASCO C/12 - EQUIPLEX</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5820</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142690181</Id_Artigo>
+      <Codigo_Produto>56329</Codigo_Produto>
+      <Preco_Unitario>9.3800</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09   250 ML S/F FRASCO C/50 - FARMACE</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>3118</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

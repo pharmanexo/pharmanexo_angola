@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250927871</Id_Pdc>
+    <CNPJ_Hospital>53.221.255/0001-40</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>08/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>8</Sequencia>
+      <Id_Artigo>142764421</Id_Artigo>
+      <Codigo_Produto>000000000000001</Codigo_Produto>
+      <Preco_Unitario>8.4000</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09   100 ML S/F FRASCO C/60 - FARMACE</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>10449</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>9</Sequencia>
+      <Id_Artigo>142764422</Id_Artigo>
+      <Codigo_Produto>000000000000354</Codigo_Produto>
+      <Preco_Unitario>12.9000</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09   250 ML S/F FRASCO  C/40  - EQUIPLEX</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5507</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

@@ -1,0 +1,50 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 13:36:59</Dt_Gravacao>
+  <Cd_Fornecedor>02816696000154</Cd_Fornecedor>
+  <Cd_Cotacao>COT3041-957</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>1</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>*Olá gostaria de conversar com o setor de compras, estamos aberto a negociações. **Mediante a análise cadastral e financeira, adequamos a forma de pagamento, aguardo retorno para ajuste da cotação. ***Pedido mínimo R$ 2.000  Vendedor Diniz 42 2101-5177 / whats 42 99116-8500 - vendas15@pontamed.com.br</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>12</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1600,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7761</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>112184</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>7657</Id_Marca>
+          <Ds_Marca>BLAU</Ds_Marca>
+          <Qt_Embalagem>20</Qt_Embalagem>
+          <Vl_Preco_Produto>10,7400</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>3186</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5198</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>108814</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>6896</Id_Marca>
+          <Ds_Marca>UNIAO QUIMICA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>17,6000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>4391</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

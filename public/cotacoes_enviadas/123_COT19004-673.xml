@@ -1,0 +1,136 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>28/10/2022 09:56:58</Dt_Gravacao>
+  <Cd_Fornecedor>04307650002260</Cd_Fornecedor>
+  <Cd_Cotacao>COT19004-673</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Karina Souza (41) 3303-9240 - karina.souza@oncoprod.com.br . Medicamentos refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo de entrega e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos somente até às 16h00, após este horário o pedido será resgatado e fat. no próx. dia útil, exceções entrar em contato. Fat. mín. acima de R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB. </Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>28907</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>27407</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>234</Id_Marca>
+          <Ds_Marca>SANDOZ DO BRASIL IND FARMACEUTICA L</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>653,1600</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ACLASTA 5 MG FR C 100 ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>2183</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6689</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>38153</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>415,0600</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>AFINITOR 10 MG CX C  30 CPS. - VAL: 31/07/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>513</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6880</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>39523</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>159</Id_Marca>
+          <Ds_Marca>LIBBS FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>1,8700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ANASTROLIBBS 1MG C  30COMPR. REV.</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1344</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>98</Id_Marca>
+          <Ds_Marca>EUROFARMA LABORATORIOS LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,4600</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ANASTROZOL 1MG C 30 COMP EUR</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>793</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>28</Qt_Embalagem>
+          <Vl_Preco_Produto>19,2000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ARIMIDEX C 28 COMP - VAL: 31/10/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1072</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6884</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>37823</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>230</Id_Marca>
+          <Ds_Marca>PROD ROCHE QUIM FARM S A</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>1.614,2300</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>AVASTIN 100 MG 4 ML SOLINJ</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>67</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6925</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>37978</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>PFIZER BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>1.153,2000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>CAMPTOSAR 100 MGFR.AMP.5ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1304</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6954</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>37927</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>159</Id_Marca>
+          <Ds_Marca>LIBBS FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>122,8800</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>FAULDFLUOR 2,5 G FR.AMP 50ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1667</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6976</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>38160</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>438,4600</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>GLIVEC 400MG CX C  30 COM REV. - VAL: 30/06/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>5005</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

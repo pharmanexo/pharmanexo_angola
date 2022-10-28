@@ -101,4 +101,21 @@ class CI_Controller {
 		return self::$instance;
 	}
 
+    public function defineMatriz()
+    {
+
+        $CI = self::$instance;
+
+        $matrizes = $CI->db->get('fornecedores_matriz')->result_array();
+
+        foreach ($matrizes as $matriz) {
+
+            $fornecedores = $CI->db->select('GROUP_CONCAT(id order by id ASC) AS ids')->where('id_matriz', $matriz['id'])->get('fornecedores')->row_array();
+
+            defined($matriz['nome']) OR define($matriz['nome'], $fornecedores['ids']);
+        }
+
+        return true;
+    }
+
 }

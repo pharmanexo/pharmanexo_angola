@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250763056</Id_Pdc>
+    <CNPJ_Hospital>04.863.664/0002-16</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>11</Sequencia>
+      <Id_Artigo>142756859</Id_Artigo>
+      <Codigo_Produto>1002</Codigo_Produto>
+      <Preco_Unitario>2.9665</Preco_Unitario>
+      <Fabricante>FUROSEMIDA 10 MG/ML INJ 2 ML GENERICO C/100 AMP  - SANTISA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12920</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

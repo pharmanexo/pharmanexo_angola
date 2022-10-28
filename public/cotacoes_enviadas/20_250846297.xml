@@ -1,0 +1,841 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250846297</Id_Pdc>
+    <CNPJ_Hospital>03.634.318/0001-12</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>6</Sequencia>
+      <Id_Artigo>142763172</Id_Artigo>
+      <Codigo_Produto>3489</Codigo_Produto>
+      <Preco_Unitario>0.1551</Preco_Unitario>
+      <Fabricante>ALOPURINOL 100 MG GENERICO C/600  - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/05/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>7059</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>39</Sequencia>
+      <Id_Artigo>142763175</Id_Artigo>
+      <Codigo_Produto>66373</Codigo_Produto>
+      <Preco_Unitario>2.1165</Preco_Unitario>
+      <Fabricante>ESCITALOPRAM 20 MG GENERICO C/ 30  PORTARIA 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 12/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14616</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>40</Sequencia>
+      <Id_Artigo>142763179</Id_Artigo>
+      <Codigo_Produto>294</Codigo_Produto>
+      <Preco_Unitario>9.8467</Preco_Unitario>
+      <Fabricante>HIOSCINA SIMPLES GOTAS 20 ML GENERICO  - HIPOLABOR</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 29/02/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>3324</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>85</Sequencia>
+      <Id_Artigo>142763183</Id_Artigo>
+      <Codigo_Produto>62222</Codigo_Produto>
+      <Preco_Unitario>0.3468</Preco_Unitario>
+      <Fabricante>PREGABALINA  75MG GENERICO C/30 PORTARIA 344/98 - MEDQUIMICA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>21022</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>42</Sequencia>
+      <Id_Artigo>142763190</Id_Artigo>
+      <Codigo_Produto>60923</Codigo_Produto>
+      <Preco_Unitario>1.6568</Preco_Unitario>
+      <Fabricante>ESOMEPRAZOL MAG. 40MG %28GENERICO%29 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 09/10/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22374</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>15</Sequencia>
+      <Id_Artigo>142763191</Id_Artigo>
+      <Codigo_Produto>60772</Codigo_Produto>
+      <Preco_Unitario>0.7706</Preco_Unitario>
+      <Fabricante>AZITROMICINA 500 MG GENERICO C/300   - MEDQUIMICA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>16670</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>10</Sequencia>
+      <Id_Artigo>142763194</Id_Artigo>
+      <Codigo_Produto>936</Codigo_Produto>
+      <Preco_Unitario>0.0513</Preco_Unitario>
+      <Fabricante>ANLODIPINO  5MG BESILAPIN C/500 CP  - GEOLAB</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>10188</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>29</Sequencia>
+      <Id_Artigo>142763196</Id_Artigo>
+      <Codigo_Produto>2902</Codigo_Produto>
+      <Preco_Unitario>0.2125</Preco_Unitario>
+      <Fabricante>DIPIRONA 500 MG GENERICO C/500 CP - GREENPHARMA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 28/02/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15309</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>16</Sequencia>
+      <Id_Artigo>142763197</Id_Artigo>
+      <Codigo_Produto>61908</Codigo_Produto>
+      <Preco_Unitario>1.2665</Preco_Unitario>
+      <Fabricante>BISOPROLOL 25 MG COMP  GENERICO  CX C/30 CP - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 21/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15611</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>44</Sequencia>
+      <Id_Artigo>142763198</Id_Artigo>
+      <Codigo_Produto>3719</Codigo_Produto>
+      <Preco_Unitario>0.3230</Preco_Unitario>
+      <Fabricante>ESPIRONOLACTONA  25 MG GENERICO C/30  - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 15/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>4356</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>11</Sequencia>
+      <Id_Artigo>142763199</Id_Artigo>
+      <Codigo_Produto>6151</Codigo_Produto>
+      <Preco_Unitario>0.0564</Preco_Unitario>
+      <Fabricante>ATENOLOL   25 MG GENERICO C/30 COMP CONV 87/02 - VITAMED</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 14/07/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20825</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>45</Sequencia>
+      <Id_Artigo>142763202</Id_Artigo>
+      <Codigo_Produto>318</Codigo_Produto>
+      <Preco_Unitario>0.1530</Preco_Unitario>
+      <Fabricante>FENITOINA 100 MG GENERICO C/100 CP PORT. 344/98  - TEUTO</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18506</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>17</Sequencia>
+      <Id_Artigo>142763203</Id_Artigo>
+      <Codigo_Produto>10387514</Codigo_Produto>
+      <Preco_Unitario>0.0959</Preco_Unitario>
+      <Fabricante>BROMAZEPAM 3 MG GENERICO C/100 CP PORT 344/98 - TEUTO</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 17/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>4787</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>31</Sequencia>
+      <Id_Artigo>142763206</Id_Artigo>
+      <Codigo_Produto>277</Codigo_Produto>
+      <Preco_Unitario>0.1020</Preco_Unitario>
+      <Fabricante>DOMPERIDONA 10MG GENERICO C/60 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 26/04/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>16298</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>46</Sequencia>
+      <Id_Artigo>142763208</Id_Artigo>
+      <Codigo_Produto>2842</Codigo_Produto>
+      <Preco_Unitario>0.0694</Preco_Unitario>
+      <Fabricante>FUROSEMIDA 40 MG GENERICO C/500 - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>10959</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>18</Sequencia>
+      <Id_Artigo>142763209</Id_Artigo>
+      <Codigo_Produto>1879</Codigo_Produto>
+      <Preco_Unitario>0.2156</Preco_Unitario>
+      <Fabricante>BROMOPRIDA 10 MG GENERICO C/800 CP  - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 15/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>8254</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>68</Sequencia>
+      <Id_Artigo>142763210</Id_Artigo>
+      <Codigo_Produto>61062</Codigo_Produto>
+      <Preco_Unitario>0.0000</Preco_Unitario>
+      <Fabricante>MIRTAZAPINA 15MG GENERICO C/30 COMP  PORT 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 08/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20831</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>47</Sequencia>
+      <Id_Artigo>142763214</Id_Artigo>
+      <Codigo_Produto>2967</Codigo_Produto>
+      <Preco_Unitario>0.7282</Preco_Unitario>
+      <Fabricante>GABAPENTINA 300 MG GENERICO C/300 CP CONV 87/02 PORT. 344/98 - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 06/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>13931</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>19</Sequencia>
+      <Id_Artigo>142763215</Id_Artigo>
+      <Codigo_Produto>3579</Codigo_Produto>
+      <Preco_Unitario>0.6293</Preco_Unitario>
+      <Fabricante>CARBAMAZEPINA 400 MG TEGRETARD C/200 CP PORT 344/98 - CRISTALIA</Fabricante>
+      <Embalagem>CO</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/09/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19469</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142763219</Id_Artigo>
+      <Codigo_Produto>60721</Codigo_Produto>
+      <Preco_Unitario>0.0438</Preco_Unitario>
+      <Fabricante>ACIDO FOLICO 5 MG HIPOFOL C/500 CP  - HIPOLABOR</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>7327</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>24</Sequencia>
+      <Id_Artigo>142763220</Id_Artigo>
+      <Codigo_Produto>1099</Codigo_Produto>
+      <Preco_Unitario>0.4679</Preco_Unitario>
+      <Fabricante>CLOPIDOGREL 75 MG GENERICO C/30 CP - TEUTO</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/12/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19396</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>70</Sequencia>
+      <Id_Artigo>142763222</Id_Artigo>
+      <Codigo_Produto>74113</Codigo_Produto>
+      <Preco_Unitario>8.1563</Preco_Unitario>
+      <Fabricante>NISTATINA  OXIDO DE ZINCO 60G PRATIDERM C/50 - PRATI</Fabricante>
+      <Embalagem>TB</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 23/05/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>6536</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>73</Sequencia>
+      <Id_Artigo>142763229</Id_Artigo>
+      <Codigo_Produto>4791</Codigo_Produto>
+      <Preco_Unitario>0.8500</Preco_Unitario>
+      <Fabricante>OLANZAPINA   5 MG C/200 CP CRISAPINA PORT 344/98 CONV 087/02 - CRISTALIA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 02/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18976</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>79</Sequencia>
+      <Id_Artigo>142763230</Id_Artigo>
+      <Codigo_Produto>61002</Codigo_Produto>
+      <Preco_Unitario>0.0000</Preco_Unitario>
+      <Fabricante>PANTOPRAZOL 40MG INJ %28PTZOL%29 - CRISTALIA</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/06/2024 - Produto atendido parcialmente!</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22388</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>37</Sequencia>
+      <Id_Artigo>142763234</Id_Artigo>
+      <Codigo_Produto>4603</Codigo_Produto>
+      <Preco_Unitario>0.0647</Preco_Unitario>
+      <Fabricante>ENALAPRIL 05 MG RENOPRIL C/30 CP CONV. 87/02 - - BELFAR</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 18/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14193</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>50</Sequencia>
+      <Id_Artigo>142763235</Id_Artigo>
+      <Codigo_Produto>3790</Codigo_Produto>
+      <Preco_Unitario>0.0310</Preco_Unitario>
+      <Fabricante>HIDROCLOROTIAZIDA 25 MG GENERICO C/500 CONV. 87/02 - MEDQUIMICA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>16666</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>74</Sequencia>
+      <Id_Artigo>142763236</Id_Artigo>
+      <Codigo_Produto>61301</Codigo_Produto>
+      <Preco_Unitario>0.1230</Preco_Unitario>
+      <Fabricante>OMEPRAZOL 20MG GENERICO C/56 CAP   - GLOBO</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/09/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20033</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>80</Sequencia>
+      <Id_Artigo>142763237</Id_Artigo>
+      <Codigo_Produto>4515</Codigo_Produto>
+      <Preco_Unitario>0.0000</Preco_Unitario>
+      <Fabricante>PARACETAMOL 200 MG GOTAS 15 ML GENERICO SABOR TANGERINA  - GREENPHARMA</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/11/2022</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20051</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>101</Sequencia>
+      <Id_Artigo>142763239</Id_Artigo>
+      <Codigo_Produto>61171</Codigo_Produto>
+      <Preco_Unitario>0.7180</Preco_Unitario>
+      <Fabricante>TRAZODONA  50MG C/60 PORT 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>17816</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>38</Sequencia>
+      <Id_Artigo>142763242</Id_Artigo>
+      <Codigo_Produto>61400</Codigo_Produto>
+      <Preco_Unitario>2.1165</Preco_Unitario>
+      <Fabricante>ESCITALOPRAM 20 MG GENERICO C/ 30  PORTARIA 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 12/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14616</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>81</Sequencia>
+      <Id_Artigo>142763243</Id_Artigo>
+      <Codigo_Produto>3105</Codigo_Produto>
+      <Preco_Unitario>0.2184</Preco_Unitario>
+      <Fabricante>PAROXETINA 20 MG GENERICO C/ 30  - EMS-EMS</Fabricante>
+      <Embalagem>CO</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11939</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>61</Sequencia>
+      <Id_Artigo>142763245</Id_Artigo>
+      <Codigo_Produto>5606</Codigo_Produto>
+      <Preco_Unitario>0.2380</Preco_Unitario>
+      <Fabricante>LEVOTIROXINA   25MCG GENERICO C/30 CP CONV 087/02  - MERCK</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/01/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>8482</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>76</Sequencia>
+      <Id_Artigo>142763247</Id_Artigo>
+      <Codigo_Produto>4796</Codigo_Produto>
+      <Preco_Unitario>1.0673</Preco_Unitario>
+      <Fabricante>OXCARBAMAZEPINA 300MG GENERICO C/30 COMP PORT 344/98 - MEDLEY</Fabricante>
+      <Embalagem>CO</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15609</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>62</Sequencia>
+      <Id_Artigo>142763250</Id_Artigo>
+      <Codigo_Produto>410</Codigo_Produto>
+      <Preco_Unitario>0.2516</Preco_Unitario>
+      <Fabricante>LEVOTIROXINA   50MCG GENERICO C/30 CP CONV 087/02 - - MERCK</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>8486</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>93</Sequencia>
+      <Id_Artigo>142763255</Id_Artigo>
+      <Codigo_Produto>60979</Codigo_Produto>
+      <Preco_Unitario>0.4014</Preco_Unitario>
+      <Fabricante>ROSUVASTATINA CALCICA 20MG GENERICO C/30 COMP - AUROBINDO</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20980</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>63</Sequencia>
+      <Id_Artigo>142763257</Id_Artigo>
+      <Codigo_Produto>2845</Codigo_Produto>
+      <Preco_Unitario>0.6821</Preco_Unitario>
+      <Fabricante>LEVOTIROXINA   75MCG EUTHYROX C/50 CP CONV. 87/02 - MERCK</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/05/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>7184</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>64</Sequencia>
+      <Id_Artigo>142763262</Id_Artigo>
+      <Codigo_Produto>1296</Codigo_Produto>
+      <Preco_Unitario>0.1927</Preco_Unitario>
+      <Fabricante>LOPERAMIDA 2 MG  MAGNOSTASE C/ 12 CP - HYPERA - NEO QUIMICA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/05/2025</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11958</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>86</Sequencia>
+      <Id_Artigo>142763263</Id_Artigo>
+      <Codigo_Produto>61028</Codigo_Produto>
+      <Preco_Unitario>0.7748</Preco_Unitario>
+      <Fabricante>QUETIAPINA 100MG %28GENERICO%29 - CRISTALIA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 04/04/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>21924</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>95</Sequencia>
+      <Id_Artigo>142763265</Id_Artigo>
+      <Codigo_Produto>61221</Codigo_Produto>
+      <Preco_Unitario>0.1445</Preco_Unitario>
+      <Fabricante>SERTRALINA  50 MG GENERICO C/490 CP PORT.344/98 - GEOLAB</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/11/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>17434</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>54</Sequencia>
+      <Id_Artigo>142763266</Id_Artigo>
+      <Codigo_Produto>3818</Codigo_Produto>
+      <Preco_Unitario>6.6419</Preco_Unitario>
+      <Fabricante>LACTULOSE MAMAO PAPAYA XAROPE 120 ML C/12  - NUTRIEX</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19465</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>65</Sequencia>
+      <Id_Artigo>142763268</Id_Artigo>
+      <Codigo_Produto>61147</Codigo_Produto>
+      <Preco_Unitario>0.1127</Preco_Unitario>
+      <Fabricante>LOSARTANA POTASSICA  50 MG GENERICO C/960 CONV. 87/02   - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 23/05/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19597</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>87</Sequencia>
+      <Id_Artigo>142763269</Id_Artigo>
+      <Codigo_Produto>61027</Codigo_Produto>
+      <Preco_Unitario>0.2576</Preco_Unitario>
+      <Fabricante>QUETIAPINA  25MG C/30 GENERICO  CONV 087/02  PORT 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 23/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19216</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>106</Sequencia>
+      <Id_Artigo>142763272</Id_Artigo>
+      <Codigo_Produto>61088</Codigo_Produto>
+      <Preco_Unitario>0.4233</Preco_Unitario>
+      <Fabricante>ZOLPIDEM HEMIT. 10 MG GENERICO C/20 POT. 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 21/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>16689</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>89</Sequencia>
+      <Id_Artigo>142763277</Id_Artigo>
+      <Codigo_Produto>2254</Codigo_Produto>
+      <Preco_Unitario>12.2658</Preco_Unitario>
+      <Fabricante>RISPERIDONA 1 MG/ML 30ML RISPERIDON C/10  CONV 087/02 PORT. 344/98 - CRISTALIA</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 03/10/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18521</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>98</Sequencia>
+      <Id_Artigo>142763278</Id_Artigo>
+      <Codigo_Produto>74613</Codigo_Produto>
+      <Preco_Unitario>0.2959</Preco_Unitario>
+      <Fabricante>SULFAMETOXAZOLTRIMET 40080MG GENERICO C/200 CP  - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 29/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1841</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>99</Sequencia>
+      <Id_Artigo>142763281</Id_Artigo>
+      <Codigo_Produto>5770</Codigo_Produto>
+      <Preco_Unitario>0.3315</Preco_Unitario>
+      <Fabricante>TRAMADOL   50 MG GENERICO C/500 CP PORT 344/98   - HIPOLABOR</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/09/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11662</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>100</Sequencia>
+      <Id_Artigo>142763282</Id_Artigo>
+      <Codigo_Produto>61401</Codigo_Produto>
+      <Preco_Unitario>1.1475</Preco_Unitario>
+      <Fabricante>TRAZODONA 100 MG C/ 60 PORTARIA 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 09/05/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18474</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>75</Sequencia>
+      <Id_Artigo>142763241</Id_Artigo>
+      <Codigo_Produto>63151</Codigo_Produto>
+      <Preco_Unitario>6.6485</Preco_Unitario>
+      <Fabricante>ONDANSETRONA 2MG/ML 4ML %28GENERICO%29 - HIPOLABOR</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>23061</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>83</Sequencia>
+      <Id_Artigo>142763177</Id_Artigo>
+      <Codigo_Produto>508</Codigo_Produto>
+      <Preco_Unitario>0.0893</Preco_Unitario>
+      <Fabricante>PREDNISONA  5 MG GENERICO C/500 CP  - SANVAL</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18185</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>96</Sequencia>
+      <Id_Artigo>142763271</Id_Artigo>
+      <Codigo_Produto>3946</Codigo_Produto>
+      <Preco_Unitario>1.7527</Preco_Unitario>
+      <Fabricante>SIMETICONA 75MG/ML 15ML %28GENERICO%29 - EMS-EMS</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22859</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142763195</Id_Artigo>
+      <Codigo_Produto>3442</Codigo_Produto>
+      <Preco_Unitario>0.0705</Preco_Unitario>
+      <Fabricante>ACIDO ACETILSALICILICO 100MG %28GENERICO%29 - EMS-LEGRAND</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>23135</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>7</Sequencia>
+      <Id_Artigo>142763176</Id_Artigo>
+      <Codigo_Produto>2696</Codigo_Produto>
+      <Preco_Unitario>0.0710</Preco_Unitario>
+      <Fabricante>ALPRAZOLAM 0,5MG %28GENERICO%29 - MEDLEY</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25395</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>109</Sequencia>
+      <Id_Artigo>142763283</Id_Artigo>
+      <Codigo_Produto>2843</Codigo_Produto>
+      <Preco_Unitario>25.5000</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09  1000 ML S/F FRASCO C/12 - EQUIPLEX</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5820</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>110</Sequencia>
+      <Id_Artigo>142763284</Id_Artigo>
+      <Codigo_Produto>6703</Codigo_Produto>
+      <Preco_Unitario>8.4000</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09   100 ML S/F FRASCO C/60 - FARMACE</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>10449</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>33</Sequencia>
+      <Id_Artigo>142763170</Id_Artigo>
+      <Codigo_Produto>4595</Codigo_Produto>
+      <Preco_Unitario>0.6070</Preco_Unitario>
+      <Fabricante>DONEPEZILA  10MG %28GENERICO%29 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25447</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>66</Sequencia>
+      <Id_Artigo>142763274</Id_Artigo>
+      <Codigo_Produto>61023</Codigo_Produto>
+      <Preco_Unitario>0.2697</Preco_Unitario>
+      <Fabricante>MEMANTINA 10MG %28GENERICO%29 - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25892</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>69</Sequencia>
+      <Id_Artigo>142763216</Id_Artigo>
+      <Codigo_Produto>62685</Codigo_Produto>
+      <Preco_Unitario>0.9373</Preco_Unitario>
+      <Fabricante>MIRTAZAPINA 30MG %28GENERICO%29  - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25460</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>84</Sequencia>
+      <Id_Artigo>142763180</Id_Artigo>
+      <Codigo_Produto>62221</Codigo_Produto>
+      <Preco_Unitario>0.7449</Preco_Unitario>
+      <Fabricante>PREGABALINA  150MG %28GENERICO%29 - MEDQUIMICA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25918</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>112</Sequencia>
+      <Id_Artigo>142763240</Id_Artigo>
+      <Codigo_Produto>11146231</Codigo_Produto>
+      <Preco_Unitario>0.4925</Preco_Unitario>
+      <Fabricante>AGUA DESTILADA  10 ML C/200 AMP - EQUIPLEX</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11543</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

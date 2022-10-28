@@ -1,0 +1,41 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>27/10/2022 09:57:16</Dt_Gravacao>
+  <Cd_Fornecedor>12882932000194</Cd_Fornecedor>
+  <Cd_Cotacao>COT10012-2234</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>5</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>•	Pedido mínimo: R$ 1.500,00 (Negociável). •	Prazo para Entrega: Até 03 dias Após a confirmação •	Prazo pagamento: (Negociável).  •	Consultor De Negócios: Alessandro Queiroz – RN / CE – EXOMED – SELLMED – LOG. •	Fone: (84) 9 9161-4884  •	E-mail: setor08@exomed.com.br</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>1</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>3500,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>1948</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>905</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>12848</Id_Marca>
+          <Ds_Marca>AMERICAN MEDICAL / MG</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>119,0362</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>3603</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>2095</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>906</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>12848</Id_Marca>
+          <Ds_Marca>AMERICAN MEDICAL / MG</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>79,7243</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5453</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

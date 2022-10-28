@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Dashboard extends MY_Controller
 {
     private $route;
+    private $routelogin;
     private $views;
     protected $oncoexo;
     protected $oncoprod;
@@ -16,7 +17,8 @@ class Dashboard extends MY_Controller
         parent::__construct();
 
 
-        $this->route = base_url('dashboard');
+        $this->route = base_url('dashboard/');
+        $this->routelogin = base_url('login/');
 
         $this->load->model('m_fornecedor', 'fornecedor');
         $this->load->model('m_cotacoes_produtos', 'cotacoes_produtos');
@@ -46,45 +48,65 @@ class Dashboard extends MY_Controller
     {
         $tipo = $this->session->userdata('tipo_usuario');
         $grupo = ($this->session->has_userdata('grupo')) ? $this->session->grupo : '';
+        $data['scripts'] = $this->template->scripts();
 
-        if ($this->session->id_usuario == '15') {
-
-            $this->dashboard_vendas();
+        if ($this->session->userdata('primeiro') == '1') {
+            $this->primeiro_login();
         } else {
 
-            if (isset($this->session->administrador) && $this->session->administrador == 1) {
 
-                $this->dashboard_admin();
-            } else if ($tipo == 1) {
+            if ($this->session->id_usuario == '15') {
 
-                switch ($grupo) {
+                $this->dashboard_vendas();
+            } else {
 
-                    case '1':
-                        $this->dashboard_fornecedor();
-                        break;
-                    case  '2':
-                        $this->dashboard_vendas();
-                        break;
-                    case  '3':
-                        $this->dashboard_fornecedor();
-                        break;
-                    default:
-                        $this->dashboard_vendas();
-                        break;
+                if (isset($this->session->administrador) && $this->session->administrador == 1) {
+
+                    $this->dashboard_admin();
+                } else if ($tipo == 1) {
+
+                    switch ($grupo) {
+
+                        case '1':
+                            $this->dashboard_fornecedor();
+                            break;
+                        case  '2':
+                            $this->dashboard_vendas();
+                            break;
+                        case  '3':
+                            $this->dashboard_fornecedor();
+                            break;
+                        default:
+                            $this->dashboard_vendas();
+                            break;
+                    }
+                } else if ($tipo == 2) {
+                    $data = [
+                        'header' => $this->tmp->header(),
+                        'scripts' => $this->tmp->scripts(),
+                        'navbar' => $this->tmp->navbar()
+                    ];
+                    $view = "marketplace/home";
+
+                    $this->load->view($view, $data);
                 }
-            } else if ($tipo == 2) {
-                $data = [
-                    'header' => $this->tmp->header(),
-                    'scripts' => $this->tmp->scripts(),
-                    'navbar' => $this->tmp->navbar()
-                ];
-                $view = "marketplace/home";
-
-                $this->load->view($view, $data);
             }
         }
+    }
 
 
+    /**
+     *  Função que verifica se é o primeiro login para atualização
+     *
+     * @param - int id usuario
+     * @return json
+     */
+    public function primeiro_login()
+    {
+        $data['frm_actionprimeiro'] = "{$this->routelogin}primeiroatt";
+        $data['header'] = $this->template->header(['title' => 'Atualização de cadastro']);
+        $data['scripts'] = $this->template->scripts();
+        $this->load->view('primeiro', $data);
     }
 
     /**
@@ -183,13 +205,10 @@ class Dashboard extends MY_Controller
             $data['hospitais_f'] = $hospitais_f;
 
 
-
             $this->load->view("admin/dashboard/main_comercial", $data);
         } else {
             $this->load->view("admin/dashboard/main", $data);
         }
-
-
     }
 
     /**
@@ -368,18 +387,41 @@ class Dashboard extends MY_Controller
 
     public function getChartsFornecedor()
     {
+        $json = [];
+        $file = "public/charts_{$this->session->id_fornecedor}.json";
 
-        $post = $this->input->post();
 
-        $integrador = (isset($post['integrador'])) ? $post['integrador'] : 'SINTESE';
+        if (file_exists($file)) {
+            $json = file_get_contents($file);
 
-        $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
+            // exclui arquivos com 1 dia de diferença
+            $fileDate = date_create(date("Y-m-d H:i:s", filectime($file)));
+            $date1 = date_create(date("Y-m-d H:i:s", time()));
+            $interval = date_diff($fileDate, $date1);
 
-        $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
+            if ($interval->days > 0){
+                unlink($file);
+            }
 
-        $data['chartMap'] = $this->createMap($this->session->id_fornecedor);
+        } else {
+            $post = $this->input->post();
 
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+            $integrador = (isset($post['integrador'])) ? $post['integrador'] : 'SINTESE';
+
+            $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
+
+            $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
+
+            $data['chartMap'] = $this->createMap($this->session->id_fornecedor);
+
+            $json = json_encode($data);
+
+            $f = fopen($file, 'w+');
+            fwrite($f, $json);
+            fclose($f);
+        }
+
+        $this->output->set_content_type('application/json')->set_output($json);
     }
 
     /**

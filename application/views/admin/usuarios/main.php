@@ -31,7 +31,7 @@
                                     <th>ID</th>
                                     <th>Nome</th>
                                     <th>Email</th>
-                                    <th>STATUS</th>
+                                    <th>CPF</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -57,10 +57,10 @@
     $(function() {
         var table = $('#table-usuario').DataTable({
             processing: true,
-            serverSide: false,
+            serverSide: true,
             lengthChange: false,
             responsive: true,
-            pageLength: 100,
+            pageLength: 10,
             ajax: {
                 url: $('#table-usuario').data('url'),
                 type: 'POST',
@@ -69,9 +69,9 @@
             columns: [
                 { defaultContent: '', orderable: false, searchable: false },
                 { data: 'id', name: 'id', visible: false },
-                { data: 'nome', name: 'nickname' },
+                { data: 'nome', name: 'nome' },
                 { data: 'email', name: 'email' },
-                { data: 'situacao_lbl', name: 'situacao', className: 'text-nowrap' },
+                { data: 'cpf', name: 'cpf', className: 'text-nowrap' },
                 { defaultContent: '', orderable: false, searchable: false },
             ],
             columnDefs: [

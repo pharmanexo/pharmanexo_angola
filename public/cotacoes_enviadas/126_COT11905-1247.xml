@@ -1,0 +1,50 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 15:05:09</Dt_Gravacao>
+  <Cd_Fornecedor>04307650002502</Cd_Fornecedor>
+  <Cd_Cotacao>COT11905-1247</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>5</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Rosangela Maria de Jesus Lima - rosangela.lima@oncoprod.com.br. Medic. refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos até às 16h00, após este horário será resg. e fat. no próx. dia útil, exceções entrar em contato. Fat. mín.R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB.</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7565</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>64276</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>715</Id_Marca>
+          <Ds_Marca>CSL BEHRING COM.DE PROD.FARMACEUTICOS LT</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>130,2300</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ALBUREX 200G L SOL INJ FA X 50ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4295</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5198</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>64563</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>63,0260</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SIMBILEX 100 MCG ML 5 AMP 2ML C1 - val.31/08/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4658</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

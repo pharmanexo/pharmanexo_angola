@@ -1,0 +1,92 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>27/10/2022 11:29:06</Dt_Gravacao>
+  <Cd_Fornecedor>12882932000194</Cd_Fornecedor>
+  <Cd_Cotacao>COT13137-7565</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>CONTATO DO REPRESENTANTE - JEOV√Å GUSTAVO (81)9 9772-1302 setor23@exomed.com.br -  jeova.exomed@gmail.com</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>1</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1500,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25808</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>17455</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10100</Id_Marca>
+          <Ds_Marca>FRESENIUS KABI / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>1.467,4930</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>4384</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25808</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>43188</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10100</Id_Marca>
+          <Ds_Marca>FRESENIUS KABI / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>1.467,4930</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>4384</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25808</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>40419</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10100</Id_Marca>
+          <Ds_Marca>FRESENIUS KABI / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>1.467,4930</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>4384</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25808</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>35526</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10100</Id_Marca>
+          <Ds_Marca>FRESENIUS KABI / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>1.467,4930</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ESTOQUE DISPONÕVEL 12 UN </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4384</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25808</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>47055</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10100</Id_Marca>
+          <Ds_Marca>FRESENIUS KABI / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>1.467,4930</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>4384</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

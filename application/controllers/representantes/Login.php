@@ -126,7 +126,7 @@ class Login extends CI_Controller
         $this->session->sess_destroy();
         $this->session->set_userdata("logado", "0");
         $this->session->set_userdata("mc", "0");//menu controle
-        redirect($this->route);
+        redirect('login');
     }
 
     public function selecionar_empresa($id_fornecedor = null)
