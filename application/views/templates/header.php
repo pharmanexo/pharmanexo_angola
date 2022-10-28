@@ -3,12 +3,14 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WBDX2MKN3P"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
+
         function gtag(){dataLayer.push(arguments);}
+
         gtag('js', new Date());
 
         gtag('config', 'G-WBDX2MKN3P');
     </script>
-    
+
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -40,11 +42,95 @@
     <?php } ?>
 
 
+    <style type="text/css">
+        .box-cookies1.hide {
+            display: none !important;
+        }
+
+        .box-cookies1 {
+            position: fixed;
+            background: #27298A;
+            width: 100%;
+            z-index: 998;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .box-cookies1 .msg-cookies1,
+        .box-cookies1 .btn-cookies1 {
+            text-align: center;
+            padding: 30px;
+            color: #ed3237;
+            font-size: 25px;
+        }
+
+        .msg-cookies1 {
+            margin: 0 auto !important;
+        }
+
+        .btn-cookies1 {
+            background: #fff;
+            cursor: pointer;
+            align-self: normal;
+            border: none;
+        }
+
+        .btn-cookies {
+            text-align: center;
+            padding: 30px;
+            color: #ed3237;
+            font-size: 25px;
+        }
+
+        .btn-cookies {
+            background: #fff;
+            cursor: pointer;
+            align-self: normal;
+            border: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .box-cookies1 {
+                flex-direction: column;
+            }
+
+            /*--------------------------------------------------------------
+            # Back to top button
+            --------------------------------------------------------------*/
+            .back-to-top1 {
+                position: fixed;
+                display: none;
+                right: 15px;
+                bottom: 15px;
+                z-index: 99999;
+            }
+
+            .back-to-top1 i {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 24px;
+                width: 40px;
+                height: 40px;
+                border-radius: 4px;
+                background: #85807e;
+                color: rgb(39, 23, 184);
+                transition: all 0.4s;
+            }
+
+            .back-to-top1 i:hover {
+                background: #e62b25;
+                color: #fff;
+            }
+    </style>
 
     <?php if (isset($warning)) { ?>
         <script>
-            formWarning(JSON.parse('<?php echo $warning;?>'));
+            formWarning(JSON.parse('<?php echo $warning; ?>'));
         </script>
     <?php } ?>
 
 </head>
+

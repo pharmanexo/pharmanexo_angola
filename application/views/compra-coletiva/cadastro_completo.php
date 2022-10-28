@@ -1,6 +1,8 @@
 <?php if (isset($header)) echo $header ?>
 <body>
+
 <?php if (isset($navbar)) echo $navbar; ?>
+
 <div class="container">
 	<?php if (isset($heading)) echo $heading; ?>
 

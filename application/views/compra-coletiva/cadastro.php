@@ -1,6 +1,8 @@
 <?php if (isset($header)) echo $header ?>
 <body>
+
 <?php if (isset($navbar)) echo $navbar; ?>
+
 <div class="container">
 
 	<div class="row login">

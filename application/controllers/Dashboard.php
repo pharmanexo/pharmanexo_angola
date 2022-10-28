@@ -55,6 +55,7 @@ class Dashboard extends MY_Controller
         } else {
 
 
+
             if ($this->session->id_usuario == '15') {
 
                 $this->dashboard_vendas();
