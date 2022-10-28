@@ -3,7 +3,9 @@
 <div class="container">
 	<div class="row topo">
 		<div class="col-6 text-left">
-			<img src="https://www.pharmanexo.com.br/pharmanexo_v2/images/img/logo-white.png" alt="Logo Pharmanexo">
+
+			<img src="https://pharmanexo.com.br/public/home/assets/images/logopharmanexo.png" alt="Logo Pharmanexo">
+
 		</div>
 		<div class="col-6 text-right pt-3">
 			<h3 class="text-white">AQUISIÇÃO DE AVENTAIS</h3>
@@ -19,9 +21,11 @@
 			<br>
 			<hr>
 			<p class="text-center">
-				<a href="<?php if (isset($contrato['url'])) echo $contrato['url']; ?>" class="btn btn-sm btn-primary ">Download</a>
-				<a class="btn btn-sm btn-primary" href="<?php echo base_url('contrato/meus_contratos') ?>">Meus Contratos</a>
-				<a class="btn btn-sm btn-danger" href="<?php echo base_url('home/logout') ?>">Sair</a>
+
+				<a href="<?php if (isset($contrato['url'])) echo $contrato['url']; ?>" target="_blank" class="btn btn-sm btn-primary ">Download</a>
+				<a class="btn btn-sm btn-primary" href="<?php echo base_url('/compra-coletiva/contrato/meus_contratos') ?>">Meus Contratos</a>
+				<a class="btn btn-sm btn-danger" href="<?php echo base_url('login/logout') ?>">Sair</a>
+
 			</p>
 		</div>
 	</div>

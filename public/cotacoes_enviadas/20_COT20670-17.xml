@@ -1,0 +1,27 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>27/10/2022 11:58:59</Dt_Gravacao>
+  <Cd_Fornecedor>35997345000146</Cd_Fornecedor>
+  <Cd_Cotacao>COT20670-17</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEXÍVEL (SUJEITO A ANÁLISE)</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>3</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1200,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>8149</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>32404</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>14432</Id_Marca>
+          <Ds_Marca>VICPHARMA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>2,5816</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 07/09/2024 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>12253</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

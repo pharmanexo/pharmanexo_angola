@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250890728</Id_Pdc>
+    <CNPJ_Hospital>42.297.507/0001-07</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142763552</Id_Artigo>
+      <Codigo_Produto>058810</Codigo_Produto>
+      <Preco_Unitario>2.6908</Preco_Unitario>
+      <Fabricante>AMPICILINA 1G INJ.  CILINON  C/100 - BLAU</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 09/09/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>961</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>8</Sequencia>
+      <Id_Artigo>142763558</Id_Artigo>
+      <Codigo_Produto>059100</Codigo_Produto>
+      <Preco_Unitario>0.2259</Preco_Unitario>
+      <Fabricante>BROMOPRIDA 10 MG GENERICO C/800 CP  - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 15/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>8254</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>27</Sequencia>
+      <Id_Artigo>142763577</Id_Artigo>
+      <Codigo_Produto>063398</Codigo_Produto>
+      <Preco_Unitario>0.0955</Preco_Unitario>
+      <Fabricante>LOSARTANA POTASSICA  50 MG GENERICO C/960 CONV. 87/02   - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 23/05/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19597</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>36</Sequencia>
+      <Id_Artigo>142763586</Id_Artigo>
+      <Codigo_Produto>097597</Codigo_Produto>
+      <Preco_Unitario>1.1436</Preco_Unitario>
+      <Fabricante>OXACILINA 500 MG INJ. OXANON C/100 F/A  - BLAU</Fabricante>
+      <Embalagem>FL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 29/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>2529</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>49</Sequencia>
+      <Id_Artigo>142763599</Id_Artigo>
+      <Codigo_Produto>097648</Codigo_Produto>
+      <Preco_Unitario>5.7178</Preco_Unitario>
+      <Fabricante>ACIDO TRANEXAMICO 50 MG/ML 5 ML TRANSAMIN C/5 AMP - ZYDUS/NIKKHO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>9709</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

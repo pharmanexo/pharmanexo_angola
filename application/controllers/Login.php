@@ -742,7 +742,8 @@ class Login extends CI_Controller
                     if (password_verify($post['senhaCompraColetiva'], $comp['senha'])) {
                         unset($comp['senhaCompraColetiva']);
                         $_SESSION['validLogin'] = true;
-                        $this->session->set_userdata('dados', $comp);
+                        $_SESSION['dados'] = $comp;
+
 
                         if ($comp['completo'] == 1) {
                             redirect(base_url('compra-coletiva/produtos'));
@@ -788,7 +789,9 @@ class Login extends CI_Controller
         $this->session->sess_destroy();
         $this->session->set_userdata("logado", "0");
         $this->session->set_userdata("mc", "0"); //menu controle
-        redirect(base_url());
+
+        redirect(base_url('/login'));
+
     }
 
     public function gravar_senha_alterada()

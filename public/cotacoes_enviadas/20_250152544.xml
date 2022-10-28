@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250152544</Id_Pdc>
+    <CNPJ_Hospital>57.038.952/0001-11</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>20</Sequencia>
+      <Id_Artigo>142644281</Id_Artigo>
+      <Codigo_Produto>00020191</Codigo_Produto>
+      <Preco_Unitario>5.5832</Preco_Unitario>
+      <Fabricante>COLETOR PERFUROCO AMARELO  13LT - FLEXPEL</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25622</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>14</Sequencia>
+      <Id_Artigo>142644274</Id_Artigo>
+      <Codigo_Produto>00020172</Codigo_Produto>
+      <Preco_Unitario>0.6423</Preco_Unitario>
+      <Fabricante>CATETER IV PERIF. 20G C/100 CONV.01/99 - POLYMED - CIR.FERNANDES</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>17169</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>4</Sequencia>
+      <Id_Artigo>142644263</Id_Artigo>
+      <Codigo_Produto>00020071</Codigo_Produto>
+      <Preco_Unitario>0.0871</Preco_Unitario>
+      <Fabricante>AGULHA DESC. 30 X 08 C/100  - SR</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19420</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142644261</Id_Artigo>
+      <Codigo_Produto>00020068</Codigo_Produto>
+      <Preco_Unitario>0.1362</Preco_Unitario>
+      <Fabricante>AGULHA DESC. 13 X 4,5 - WILTEX- CIR.FERNANDES</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22578</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>24</Sequencia>
+      <Id_Artigo>142644297</Id_Artigo>
+      <Codigo_Produto>00020259</Codigo_Produto>
+      <Preco_Unitario>1.0018</Preco_Unitario>
+      <Fabricante>INFUSOR 2 VIAS C/ CLAMP LUER SLIP - DESCARPACK</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>21858</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>81</Sequencia>
+      <Id_Artigo>142644346</Id_Artigo>
+      <Codigo_Produto>00020470</Codigo_Produto>
+      <Preco_Unitario>8.9721</Preco_Unitario>
+      <Fabricante>TOUCA CIR. DESC. BRANCA C/ELAST C/100  - DESCARPACK</Fabricante>
+      <Embalagem>PC</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5624</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>89</Sequencia>
+      <Id_Artigo>142644329</Id_Artigo>
+      <Codigo_Produto>00020385</Codigo_Produto>
+      <Preco_Unitario>6.4097</Preco_Unitario>
+      <Fabricante>TUBO ENDOTRAQUEAL 80 MM C/BALAO CONV.01/99 - LABOR IMPORT - SOLIDOR  </Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>7960</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

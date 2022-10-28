@@ -1,0 +1,85 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 09:48:57</Dt_Gravacao>
+  <Cd_Fornecedor>35997345000146</Cd_Fornecedor>
+  <Cd_Cotacao>COT20672-09</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEXÍVEL (SUJEITO A ANÁLISE)</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>3</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1200,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>13118</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>4818</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>1230</Id_Marca>
+          <Ds_Marca>BIOSANI</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,8084</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 30/05/2025 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>5958</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>1778</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>37774</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>97</Id_Marca>
+          <Ds_Marca>ESTILO</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,1695</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 30/06/2025 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>2448</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>12609</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>64443</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>3515</Id_Marca>
+          <Ds_Marca>FLEXPEL</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>9,9921</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 21/07/2027 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>13970</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>3515</Id_Marca>
+          <Ds_Marca>FLEXPEL</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>19,1751</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 20/09/2027 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>15988</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5591</Id_Marca>
+          <Ds_Marca>DESCARBOX</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>10,4116</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 10/11/2026 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>18829</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>3197</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>37274</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>82</Id_Marca>
+          <Ds_Marca>DESCARPACK</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>Validade: 31/08/2023 - </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>19249</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

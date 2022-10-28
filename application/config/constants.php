@@ -85,8 +85,8 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // CUSTOM CONSTANTS
-defined('THIRD_PARTY')      OR define('THIRD_PARTY', '/application/third_party/');
-defined('DOCUMENTOS_PATH')      OR define('DOCUMENTOS_PATH', '/application/third_party/documentos');
+defined('THIRD_PARTY')      OR define('THIRD_PARTY', '/public/third_party/');
+defined('DOCUMENTOS_PATH')      OR define('DOCUMENTOS_PATH', '/public/third_party/documentos');
 defined('PUBLIC_PATH')      OR define('PUBLIC_PATH', 'public/');
 defined('UPLOAD_PATH')      OR define('UPLOAD_PATH', 'uploads/');
 defined('META_DEPARA')      OR define('META_DEPARA', 300);
@@ -94,10 +94,12 @@ defined('ONCOPROD')      OR define('ONCOPROD', '12,111,112,115,120,123,126');
 defined('ONCOEXO')      OR define('ONCOEXO', '15,25');
 defined('ASSETS_PATH')      OR define('ASSETS_PATH', '/public/assets/');
 defined('HOME_PATH')      OR define('HOME_PATH', '/public/home/assets/');
+defined('IMG_PATH')      OR define('IMG_PATH', '/images/');
 //Adesao
 defined('ASSETS')      OR define('ASSETS', '/public/adesao/assets/');
-defined('CONTRATOS_PATH')      OR define('CONTRATOS_PATH', '/application/adesao/contratos/');
+
 defined('ANEXOS_PATH')      OR define('ANEXOS_PATH', '/application/adesao/anexos/');
+defined('CONTRATOS_PATH')      OR define('CONTRATOS_PATH', '/public/compra_coletiva/contratos/');
 
 
 # Alertas default do sistema

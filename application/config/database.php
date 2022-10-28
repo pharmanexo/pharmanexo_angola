@@ -85,7 +85,7 @@ $db['default'] = array(
     'db_debug' => false,
     // 'db_debug' => (ENVIRONMENT !== 'production'),
     'cache_on' => FALSE,
-    'cachedir' => '',
+    'cachedir' => '/cache',
     'char_set' => 'utf8',
     'dbcollat' => 'utf8_general_ci',
     'swap_pre' => '',
@@ -165,9 +165,10 @@ $db['bionexo'] = array(
 
 $db['pharmanexo-antigo'] = array(
     'dsn'	=> '',
-    'hostname' => '10.101.70.2',
-    'username' => 'pharmanexo',
-    'password' => '@PharmanexoNext2019',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
+    #'password' => '102030',
     'database' => 'pharmanexo',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
@@ -187,11 +188,9 @@ $db['pharmanexo-antigo'] = array(
 
 $db['sintese-antigo'] = array(
     'dsn'	=> '',
-    'hostname' => '10.101.70.2',
-    #'username' => 'pharmanexo',
-    'username' => 'suporte',
-    #'password' => '@PharmanexoNext',
-    'password' => 'Pharma_TI_2019',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
     'database' => 'cotacoes_sintese',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',

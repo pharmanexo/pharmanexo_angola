@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>640560</Id_Pdc>
+    <CNPJ_Hospital>57.149.775/0005-74</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>01/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Custo_Estimado_Frete> - </Custo_Estimado_Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>5820105</Id_Artigo>
+      <Codigo_Produto>36152</Codigo_Produto>
+      <Preco_Unitario>0.7483</Preco_Unitario>
+      <Preco_Unitario_Liquido>0.7483</Preco_Unitario_Liquido>
+      <Classificacao_Anvisa>-</Classificacao_Anvisa>
+      <NCM>-</NCM>
+      <IVA>-</IVA>
+      <ICMS>-</ICMS>
+      <IPI>-</IPI>
+      <Valor_Frete>-</Valor_Frete>
+      <Fabricante>AM&#xC9;RICA</Fabricante>
+      <Embalagem>PC</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario> - </Comentario>
+      <Codigo_Rastreabilidade>15810</Codigo_Rastreabilidade>
+      <Codigo_Fornecedor>35.997.345/0001-46</Codigo_Fornecedor>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15810</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>7850170</Id_Artigo>
+      <Codigo_Produto>12702</Codigo_Produto>
+      <Preco_Unitario>0.7546</Preco_Unitario>
+      <Preco_Unitario_Liquido>0.7546</Preco_Unitario_Liquido>
+      <Classificacao_Anvisa>-</Classificacao_Anvisa>
+      <NCM>-</NCM>
+      <IVA>-</IVA>
+      <ICMS>-</ICMS>
+      <IPI>-</IPI>
+      <Valor_Frete>-</Valor_Frete>
+      <Fabricante>MEDQUIMICA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario> - </Comentario>
+      <Codigo_Rastreabilidade>16670</Codigo_Rastreabilidade>
+      <Codigo_Fornecedor>35.997.345/0001-46</Codigo_Fornecedor>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>16670</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

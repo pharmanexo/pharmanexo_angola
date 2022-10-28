@@ -1,0 +1,27 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 08:49:18</Dt_Gravacao>
+  <Cd_Fornecedor>02520829000140</Cd_Fornecedor>
+  <Cd_Cotacao>COT3104-18547</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>11</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor/>
+  <Qt_Prz_Minimo_Entrega>1</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>500,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6254</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>101442</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>98</Id_Marca>
+          <Ds_Marca>EUROFARMA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>20,9500</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>validade 28/03/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>13318</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

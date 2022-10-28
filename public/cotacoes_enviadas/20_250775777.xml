@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250775777</Id_Pdc>
+    <CNPJ_Hospital>45.615.309/0001-24</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>33</Sequencia>
+      <Id_Artigo>142760141</Id_Artigo>
+      <Codigo_Produto>616570</Codigo_Produto>
+      <Preco_Unitario>1.4025</Preco_Unitario>
+      <Fabricante>EQUIPO MACROGOTAS C/ INJ. LAT  C/ FILTRO LUER SLIP - GLOMED</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20820</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>48</Sequencia>
+      <Id_Artigo>142760156</Id_Artigo>
+      <Codigo_Produto>305457</Codigo_Produto>
+      <Preco_Unitario>20.8250</Preco_Unitario>
+      <Fabricante>GLICERINA 12% 500 ML CLISTER C/SONDA   - JP FARMA</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25673</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>73</Sequencia>
+      <Id_Artigo>142760181</Id_Artigo>
+      <Codigo_Produto>929693</Codigo_Produto>
+      <Preco_Unitario>0.4274</Preco_Unitario>
+      <Fabricante>SERINGA  10 ML S/AG LUER SLIP - TKL</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25965</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>69</Sequencia>
+      <Id_Artigo>142760177</Id_Artigo>
+      <Codigo_Produto>304566</Codigo_Produto>
+      <Preco_Unitario>0.2288</Preco_Unitario>
+      <Fabricante>ESCALPE N. 23 G C/100 CONV 01/99  - SAFER</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19025</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>36</Sequencia>
+      <Id_Artigo>142760144</Id_Artigo>
+      <Codigo_Produto>804553</Codigo_Produto>
+      <Preco_Unitario>11.9259</Preco_Unitario>
+      <Fabricante>ESPARADRAPO 10 CM X 45 M ADPELE - MISSNER - ADPELE</Fabricante>
+      <Embalagem>RL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>17949</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>16</Sequencia>
+      <Id_Artigo>142760124</Id_Artigo>
+      <Codigo_Produto>000417</Codigo_Produto>
+      <Preco_Unitario>6.5685</Preco_Unitario>
+      <Fabricante>COLETOR PERFUROCO AMARELO  13LT - FLEXPEL</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25622</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142760111</Id_Artigo>
+      <Codigo_Produto>825066</Codigo_Produto>
+      <Preco_Unitario>15.1450</Preco_Unitario>
+      <Fabricante>ALGODAO HIDROFILO 500 G  - NATHALYA</Fabricante>
+      <Embalagem>PC</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>2800</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

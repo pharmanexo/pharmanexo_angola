@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250483038</Id_Pdc>
+    <CNPJ_Hospital>35.917.970/0007-26</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142712262</Id_Artigo>
+      <Codigo_Produto>554</Codigo_Produto>
+      <Preco_Unitario>29.5013</Preco_Unitario>
+      <Fabricante>AMOXICILINACLAV 1000200MG INJ DOCLAXIN C/20 FR - BLAU</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12643</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>4</Sequencia>
+      <Id_Artigo>142712264</Id_Artigo>
+      <Codigo_Produto>1192</Codigo_Produto>
+      <Preco_Unitario>3.6997</Preco_Unitario>
+      <Fabricante>BROMOPRIDA 10MG/2ML GENERICO C/50  - UNIAO QUIMICA</Fabricante>
+      <Embalagem>AM</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1037</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>8</Sequencia>
+      <Id_Artigo>142712268</Id_Artigo>
+      <Codigo_Produto>32592</Codigo_Produto>
+      <Preco_Unitario>33.0000</Preco_Unitario>
+      <Fabricante>POLIMIXINA B 500.000UI %28SPOX%29 - CRISTALIA</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>23019</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>9</Sequencia>
+      <Id_Artigo>142712269</Id_Artigo>
+      <Codigo_Produto>26150</Codigo_Produto>
+      <Preco_Unitario>0.2448</Preco_Unitario>
+      <Fabricante>QUETIAPINA  25MG C/30 GENERICO  CONV 087/02  PORT 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19216</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>10</Sequencia>
+      <Id_Artigo>142712270</Id_Artigo>
+      <Codigo_Produto>29545</Codigo_Produto>
+      <Preco_Unitario>138.9800</Preco_Unitario>
+      <Fabricante>SUGAMADEX S&#xD3;DICO 100MG/ML 2 ML %28BRYONY%29 - UNI&#xC3;O QU&#xCD;MICA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25291</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

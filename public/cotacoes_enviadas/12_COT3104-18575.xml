@@ -1,0 +1,240 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>27/10/2022 15:50:28</Dt_Gravacao>
+  <Cd_Fornecedor>04307650000305</Cd_Fornecedor>
+  <Cd_Cotacao>COT3104-18575</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>10</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Karina Souza (41) 3303-9240 - karina.souza@oncoprod.com.br . Medicamentos refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo de entrega e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos somente até às 16h00, após este horário o pedido será resgatado e fat. no próx. dia útil, exceções entrar em contato. Fat. mín. acima de R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB. </Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>34460</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>036092</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10146</Id_Marca>
+          <Ds_Marca>LABORATORIOS PFIZER LT</Ds_Marca>
+          <Qt_Embalagem>4</Qt_Embalagem>
+          <Vl_Preco_Produto>943,4775</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ENBREL PFS 50MG 4CANX1ML+4LEN - VAL: 31/08/2023 </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3468</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>39062</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>037775</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>46</Id_Marca>
+          <Ds_Marca>BOEHRINGER INGELHEIM DO BRASIL QUIM</Ds_Marca>
+          <Qt_Embalagem>60</Qt_Embalagem>
+          <Vl_Preco_Produto>301,0953</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>OFEV 150 MG C  60 CAPS</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4546</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>34688</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>036735</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>60</Qt_Embalagem>
+          <Vl_Preco_Produto>752,0897</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>CALQUENCE CAP 100MG BL 10X6 EA</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>110670</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25375</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>032645</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>120</Qt_Embalagem>
+          <Vl_Preco_Produto>315,7100</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>TAFINLAR 75 MG C 120 CAPS</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4415</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6691</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>026820</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>207,5300</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>AFINITOR 5 MG CX C  30 CPS. - VAL: 31/07/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>514</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6946</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>025685</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>PFIZER BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>16,3660</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>AROMASIN 25 MG C 30 CPS - VAL: 31/08/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1628</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6231</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>118571</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10282</Id_Marca>
+          <Ds_Marca>EMS S A</Ds_Marca>
+          <Qt_Embalagem>100</Qt_Embalagem>
+          <Vl_Preco_Produto>1,6697</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>TEPEV 500MG C 100 CAPS</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>109984</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6976</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>026803</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10282</Id_Marca>
+          <Ds_Marca>EMS S A</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>40,1300</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>GLIMATIN 400MG CX. C  30 COM</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3119</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>438,4600</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>GLIVEC 400MG CX C  30 COM REV. - VAL: 30/06/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>5005</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>28028</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>033065</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>268</Id_Marca>
+          <Ds_Marca>UNITED MEDICAL LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>127,4700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>LENVIMA 4 MG CX C  30</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4569</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6988</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>027151</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>112</Qt_Embalagem>
+          <Vl_Preco_Produto>128,2800</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>TASIGNA 200MG C 112 CAP GEL</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4197</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6907</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>032336</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>5,3100</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>NOLVADEX D 20MG C 30 COMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>62</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>32489</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>035433</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>63</Qt_Embalagem>
+          <Vl_Preco_Produto>290,1300</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>KISQALI 200 MG 63 COMP REC - VAL: 30/06/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>110352</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>22199</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>032937</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>60</Qt_Embalagem>
+          <Vl_Preco_Produto>268,5000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>JAKAVI 5MG C 60 COMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4307</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7011</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>036324</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>240</Id_Marca>
+          <Ds_Marca/>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>603,4880</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>TEMODAL 140MG C  SACHE X 5CAP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4115</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25378</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>032643</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>725,9300</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>MEKINIST 2MG C 30 COMP REV - VAL: 31/08/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4562</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

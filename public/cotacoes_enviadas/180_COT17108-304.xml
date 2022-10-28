@@ -1,0 +1,55 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 15:46:25</Dt_Gravacao>
+  <Cd_Fornecedor>12882932000194</Cd_Fornecedor>
+  <Cd_Cotacao>COT17108-304</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>10</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor/>
+  <Qt_Prz_Minimo_Entrega>1</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1500,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>20913</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>002709</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>3489</Id_Marca>
+          <Ds_Marca>JP Indústria Farmacêutica / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>8,5000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5405</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>20913</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>002708</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>737</Id_Marca>
+          <Ds_Marca>Farmarin Industria / SP</Ds_Marca>
+          <Qt_Embalagem>16</Qt_Embalagem>
+          <Vl_Preco_Produto>15,9900</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5581</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>20913</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>002710</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>403</Id_Marca>
+          <Ds_Marca>EQUIPLEX / GO</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>5,9900</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>CX C/70.</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3027</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

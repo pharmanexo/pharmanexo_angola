@@ -1,0 +1,78 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 09:54:53</Dt_Gravacao>
+  <Cd_Fornecedor>04307650000305</Cd_Fornecedor>
+  <Cd_Cotacao>COT10843-7324</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>16</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Karina Souza (41) 3303-9240 - karina.souza@oncoprod.com.br . Medicamentos refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo de entrega e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos somente até às 16h00, após este horário o pedido será resgatado e fat. no próx. dia útil, exceções entrar em contato. Fat. mín. acima de R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB. </Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>22920</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>60985</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>46</Id_Marca>
+          <Ds_Marca>BOEHRINGER INGELHEIM DO BRASIL QUIM</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>891,1600</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ACTILYSE 20MG INJ 1AMP+DIL  20ML - VAL: 31/10/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3602</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7050</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>751</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>46</Id_Marca>
+          <Ds_Marca>BOEHRINGER INGELHEIM DO BRASIL QUIM</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>2.472,9900</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ACTILYSE 50MG C 1 AMP+DIL 50ML - VAL: 31/10/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>453</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6835</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>9322</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>4285</Id_Marca>
+          <Ds_Marca>ASTELLAS FARMA BRASIL IMP DIST LTDA</Ds_Marca>
+          <Qt_Embalagem>100</Qt_Embalagem>
+          <Vl_Preco_Produto>4,2409</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>PROGRAF 1MG C 100 CAP DURA - VAL: 31/08/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4094</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7036</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>81981</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>7432</Id_Marca>
+          <Ds_Marca>UCB BIOPHARMA LTDA</Ds_Marca>
+          <Qt_Embalagem>14</Qt_Embalagem>
+          <Vl_Preco_Produto>4,0500</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>VIMPAT 50MG 14 COMP C1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3756</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

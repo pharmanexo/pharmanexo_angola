@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250653651</Id_Pdc>
+    <CNPJ_Hospital>18.180.008/0001-42</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142731522</Id_Artigo>
+      <Codigo_Produto>27386</Codigo_Produto>
+      <Preco_Unitario>9.7856</Preco_Unitario>
+      <Fabricante>DIMENIDRINATO+PIRIDOX 10ML%28DRAMIN B6 DL%29 - TAKEDA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25499</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142731519</Id_Artigo>
+      <Codigo_Produto>27790</Codigo_Produto>
+      <Preco_Unitario>2.9665</Preco_Unitario>
+      <Fabricante>FUROSEMIDA 10 MG/ML INJ 2 ML GENERICO C/100 AMP  - SANTISA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12920</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>4</Sequencia>
+      <Id_Artigo>142731521</Id_Artigo>
+      <Codigo_Produto>27280</Codigo_Produto>
+      <Preco_Unitario>0.0656</Preco_Unitario>
+      <Fabricante>ENALAPRIL 05 MG RENOPRIL C/30 CP CONV. 87/02 - - BELFAR</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14193</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>6</Sequencia>
+      <Id_Artigo>142731525</Id_Artigo>
+      <Codigo_Produto>28189</Codigo_Produto>
+      <Preco_Unitario>14.9800</Preco_Unitario>
+      <Fabricante>SORO RINGER SIMPLES 500 ML S/F FRASCO C/24  - FARMACE</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>13378</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

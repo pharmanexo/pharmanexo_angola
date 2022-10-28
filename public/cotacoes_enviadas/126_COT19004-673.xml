@@ -1,0 +1,92 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>28/10/2022 09:56:58</Dt_Gravacao>
+  <Cd_Fornecedor>04307650002502</Cd_Fornecedor>
+  <Cd_Cotacao>COT19004-673</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Karina Souza (41) 3303-9240 - karina.souza@oncoprod.com.br . Medicamentos refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo de entrega e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos somente até às 16h00, após este horário o pedido será resgatado e fat. no próx. dia útil, exceções entrar em contato. Fat. mín. acima de R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB. </Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>34700</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>45076</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>13689</Id_Marca>
+          <Ds_Marca>SANOFI MEDLEY FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>2</Qt_Embalagem>
+          <Vl_Preco_Produto>4.463,8150</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>DUPIXENT 300MG 2SER 2ML+SIST SEG</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>110551</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6957</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>38023</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>6236</Id_Marca>
+          <Ds_Marca>ORGANON FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>272,0700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>EMEND 150MG INJ AMP 10ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1421</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>26078</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>38159</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS S/A</Ds_Marca>
+          <Qt_Embalagem>60</Qt_Embalagem>
+          <Vl_Preco_Produto>109,6100</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>GLIVEC 100MG C 60 CPS - VAL: 31/08/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>2072</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6936</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>38562</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>6270</Id_Marca>
+          <Ds_Marca>AMGEN BIOTECNOLOGIA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>743,1000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>PROLIA 60MG ML SOL INJ</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4494</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>22109</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>39924</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5339</Id_Marca>
+          <Ds_Marca>BEAUFOUR IPSEN FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>3.276,1300</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SOMATULINE AUTOGEL 120MG INJ 0,5ML - VAL: 30/09/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>111852</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

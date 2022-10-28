@@ -189,7 +189,7 @@
                                 API para integração com os mais diversos sistemas.
                             </p>
                             <p>
-                                Além de entregar aos nosso clientes uma ferramenta validada e homologada pelos 4 maiores portais de
+                                Entregamos aos nossos clientes uma ferramenta validada e homologada pelos 4 maiores portais de
                                 cotação do mercado (Bionexo, Síntese, Apoio Cotações e Huma).
                             <p>
                                 Nossos numeros falam um pouco sobre nosso resultado: mais de 1 milhão cotações processadas, com
@@ -204,7 +204,8 @@
                                 customizada para cada cliente.
                             </p>
                             <p>
-                                Não oferecemos a nossos clientes um software ou uma liçensa, mas sim uma ferramenta de automação e
+
+                                Não oferecemos a nossos clientes um software ou uma licença, mas sim uma ferramenta de automação e
                                 inteligência
                                 de mercado.
                             </p>
@@ -294,7 +295,7 @@
                             </form>
                         </div>
                     </div>
-                    <a href="#" class="back-to-top1"><i class="ri-arrow-up-line"></i></a>
+                    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
                     <div class="col-md-6">
                         <div class="map_container">
                             <div class="map">
@@ -515,7 +516,9 @@
         <!-- End Google Map -->
     </div>
 </body>
+
 <?php if (isset($footer)) echo $footer; ?>
+
 <?php if (isset($scripts)) echo $scripts; ?>
 
 <script>

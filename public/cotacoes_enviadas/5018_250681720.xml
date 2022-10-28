@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250681720</Id_Pdc>
+    <CNPJ_Hospital>19.529.478/0001-31</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>4</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>2</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142740810</Id_Artigo>
+      <Codigo_Produto>34</Codigo_Produto>
+      <Preco_Unitario>5.9000</Preco_Unitario>
+      <Fabricante>AMICACINA 500MG/2ML %28G%29 IM/IV GENERICO - TEUTO</Fabricante>
+      <Embalagem>AMP</Embalagem>
+      <Quantidade_Embalagem>50</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>318</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>7</Sequencia>
+      <Id_Artigo>142740828</Id_Artigo>
+      <Codigo_Produto>811</Codigo_Produto>
+      <Preco_Unitario>24.9000</Preco_Unitario>
+      <Fabricante>POLIMIXINA B SULFATO 500.000UI INJ SPOX - CRISTALIA</Fabricante>
+      <Embalagem>F/A</Embalagem>
+      <Quantidade_Embalagem>5</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5137</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>9</Sequencia>
+      <Id_Artigo>142740833</Id_Artigo>
+      <Codigo_Produto>686</Codigo_Produto>
+      <Preco_Unitario>8.4000</Preco_Unitario>
+      <Fabricante>TRAMADOL CLOR 50MG/ML 2ML %28A2%29 %28G%29 GENERICO - UNIAO QUIMICA</Fabricante>
+      <Embalagem>AMP</Embalagem>
+      <Quantidade_Embalagem>50</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>4346</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

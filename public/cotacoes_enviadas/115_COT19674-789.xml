@@ -1,0 +1,64 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 17:57:00</Dt_Gravacao>
+  <Cd_Fornecedor>04307650001530</Cd_Fornecedor>
+  <Cd_Cotacao>COT19674-789</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>1</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Rosangela Maria de Jesus Lima - rosangela.lima@oncoprod.com.br. Medic. refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos até às 16h00, após este horário será resg. e fat. no próx. dia útil, exceções entrar em contato. Fat. mín.R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB.</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>29141</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>244</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>243</Id_Marca>
+          <Ds_Marca>LAB SERVIER DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>8.148,7105</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ONCASPAR 750 ML C  1 AMP 5ML - VAL.25/12/2022</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>110146</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7015</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>5684</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>607</Id_Marca>
+          <Ds_Marca/>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>433,2560</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>TEMODAL 100MG C  SACHE X 5CAP - VAL.31/08/2023	 /  VALORES VAL. APENAS PARA A QTD. TOTAL COTADA E TODAS AS APRES. REF. A ESSA COTA��O. FAT. M�NIMO PARA ESSE �TEM: R$ 5.000,00.</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4114</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>25095</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>7438</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>607</Id_Marca>
+          <Ds_Marca/>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>86,6460</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>TEMODAL 20MG C  SACHE X 5CAP - VAL.30/09/2023 / VALORES VAL. APENAS PARA A QTD. TOTAL COTADA E TODAS AS APRES. REF. A ESSA COTA��O. FAT. M�NIMO PARA ESSE �TEM: R$ 5.000,00.</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4113</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

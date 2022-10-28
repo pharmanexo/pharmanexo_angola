@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250475426</Id_Pdc>
+    <CNPJ_Hospital>05.469.172/0001-22</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>7</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>219</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>9</Sequencia>
+      <Id_Artigo>142710097</Id_Artigo>
+      <Codigo_Produto>001793</Codigo_Produto>
+      <Preco_Unitario>1.9900</Preco_Unitario>
+      <Fabricante>BROMOPRIDA 5MG/ML 2ML %28G%29 GENERICO - HIPOLABOR</Fabricante>
+      <Embalagem>AMP</Embalagem>
+      <Quantidade_Embalagem>100</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>796</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>8</Sequencia>
+      <Id_Artigo>142710096</Id_Artigo>
+      <Codigo_Produto>102974</Codigo_Produto>
+      <Preco_Unitario>1.8900</Preco_Unitario>
+      <Fabricante>DEXAMETASONA 2MG/ML 1ML %28G%29 GENERICO - HIPOLABOR</Fabricante>
+      <Embalagem>AMP</Embalagem>
+      <Quantidade_Embalagem>100</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1570</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>7</Sequencia>
+      <Id_Artigo>142710095</Id_Artigo>
+      <Codigo_Produto>001439</Codigo_Produto>
+      <Preco_Unitario>0.4400</Preco_Unitario>
+      <Fabricante>CLORETO DE SODIO 0,9% 10ML PLAST NT - EQUIPLEX</Fabricante>
+      <Embalagem>AMP</Embalagem>
+      <Quantidade_Embalagem>200</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1292</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>16</Sequencia>
+      <Id_Artigo>142710104</Id_Artigo>
+      <Codigo_Produto>190005</Codigo_Produto>
+      <Preco_Unitario>0.5400</Preco_Unitario>
+      <Fabricante>QUETIAPINA 100MG %28C1%29 %28G%29 GENERICO - GEOLAB</Fabricante>
+      <Embalagem>CMP</Embalagem>
+      <Quantidade_Embalagem>500</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5066</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>18</Sequencia>
+      <Id_Artigo>142710106</Id_Artigo>
+      <Codigo_Produto>000910</Codigo_Produto>
+      <Preco_Unitario>1.4500</Preco_Unitario>
+      <Fabricante>TERBUTALINA SULF 0,5MG/ML 1ML %28G%29 GENERICO - GREENPHARMA</Fabricante>
+      <Embalagem>AMP</Embalagem>
+      <Quantidade_Embalagem>50</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>4900</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

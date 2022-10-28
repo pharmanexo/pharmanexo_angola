@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250765155</Id_Pdc>
+    <CNPJ_Hospital>73.322.273/0001-26</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>16</Sequencia>
+      <Id_Artigo>142757308</Id_Artigo>
+      <Codigo_Produto>000086</Codigo_Produto>
+      <Preco_Unitario>0.2610</Preco_Unitario>
+      <Fabricante>ESCALPE N. 25 G C/100 CONV 01/99 - DESCARPACK</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/12/2026</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20236</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>28</Sequencia>
+      <Id_Artigo>142757309</Id_Artigo>
+      <Codigo_Produto>000121</Codigo_Produto>
+      <Preco_Unitario>0.8084</Preco_Unitario>
+      <Fabricante>CATETER TIPO OCULOS AD. CONV.01/99 - BIOSANI</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/09/2025</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5958</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142757310</Id_Artigo>
+      <Codigo_Produto>000070</Codigo_Produto>
+      <Preco_Unitario>3.3634</Preco_Unitario>
+      <Fabricante>MIDAZOLAM  5 MG/ML 3ML DORMIRE C/10 AMP PORT 344/98 - CRIST&#xC1;LIA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 18/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12101</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142757311</Id_Artigo>
+      <Codigo_Produto>000293</Codigo_Produto>
+      <Preco_Unitario>1.4335</Preco_Unitario>
+      <Fabricante>CATETER IV PERIF. 22G C/200 CONV.01/99 - NIPRO</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2027</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1079</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142757312</Id_Artigo>
+      <Codigo_Produto>000270</Codigo_Produto>
+      <Preco_Unitario>1.4335</Preco_Unitario>
+      <Fabricante>CATETER IV PERIF. 20G C/200 CONV.01/99 - NIPRO</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2027</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>4327</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>4</Sequencia>
+      <Id_Artigo>142757314</Id_Artigo>
+      <Codigo_Produto>0002144566699</Codigo_Produto>
+      <Preco_Unitario>9.5465</Preco_Unitario>
+      <Fabricante>MASCARA DESC TRIPLA C/TIRAS C/50 UNID - NURMED</Fabricante>
+      <Embalagem>PC</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/07/2026</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20336</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>20</Sequencia>
+      <Id_Artigo>142757319</Id_Artigo>
+      <Codigo_Produto>000080</Codigo_Produto>
+      <Preco_Unitario>0.1121</Preco_Unitario>
+      <Fabricante>AGULHA DESC. 40 X 12 C/100  - DESCARPACK</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/04/2027</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11547</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>21</Sequencia>
+      <Id_Artigo>142757322</Id_Artigo>
+      <Codigo_Produto>000123</Codigo_Produto>
+      <Preco_Unitario>1.2697</Preco_Unitario>
+      <Fabricante>EQUIPO MACROGOTAS C/ INJ. LAT C/FILTRO LUER LOCK - LABOR IMPORT</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 22/02/2025</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12879</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>7</Sequencia>
+      <Id_Artigo>142757323</Id_Artigo>
+      <Codigo_Produto>000111</Codigo_Produto>
+      <Preco_Unitario>0.0000</Preco_Unitario>
+      <Fabricante>FLUMAZENIL 01 MG/ML 5ML  FLUMAZIL  C/10 AMP PORT 344/98  - CRISTALIA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/05/2024 - Produto atendido parcialmente!</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1394</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>22</Sequencia>
+      <Id_Artigo>142757326</Id_Artigo>
+      <Codigo_Produto>000801</Codigo_Produto>
+      <Preco_Unitario>23.6824</Preco_Unitario>
+      <Fabricante>COMPRESSA DE GAZE 75 X 75  13 F C/500 REBEKA - AMED - AMERICAN</Fabricante>
+      <Embalagem>PC</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 13/06/2027</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12050</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>36</Sequencia>
+      <Id_Artigo>142757334</Id_Artigo>
+      <Codigo_Produto>000764</Codigo_Produto>
+      <Preco_Unitario>9.5500</Preco_Unitario>
+      <Fabricante>PROPOFOL 10 MG/ML 20 ML PROVIVE 1 C/5 FA  PORT 344/98   - UNI&#xC3;O QUIMICA</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/07/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15379</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>26</Sequencia>
+      <Id_Artigo>142757335</Id_Artigo>
+      <Codigo_Produto>000079</Codigo_Produto>
+      <Preco_Unitario>12.3263</Preco_Unitario>
+      <Fabricante>ESPARADRAPO 10 CM X 45 M ADPELE - MISSNER - ADPELE</Fabricante>
+      <Embalagem>RL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>17949</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>14</Sequencia>
+      <Id_Artigo>142757338</Id_Artigo>
+      <Codigo_Produto>000074</Codigo_Produto>
+      <Preco_Unitario>8.7449</Preco_Unitario>
+      <Fabricante>ALCOOL 70 ANTISSEPTICO 1000ML C/12 - VICPHARMA</Fabricante>
+      <Embalagem>LT</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 08/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11910</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>27</Sequencia>
+      <Id_Artigo>142757339</Id_Artigo>
+      <Codigo_Produto>000131</Codigo_Produto>
+      <Preco_Unitario>2.5415</Preco_Unitario>
+      <Fabricante>FITA MICROPORE  25 CM X 10MTS ADPELE  - MISSNER - ADPELE</Fabricante>
+      <Embalagem>RL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 04/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19878</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>17</Sequencia>
+      <Id_Artigo>142757340</Id_Artigo>
+      <Codigo_Produto>000629</Codigo_Produto>
+      <Preco_Unitario>58.9800</Preco_Unitario>
+      <Fabricante>LIDOCAINA SPRAY 10 FR 50ML  GENERICO  - HIPOLABOR</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 28/02/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14630</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>29</Sequencia>
+      <Id_Artigo>142757341</Id_Artigo>
+      <Codigo_Produto>000625</Codigo_Produto>
+      <Preco_Unitario>0.5232</Preco_Unitario>
+      <Fabricante>SONDA ASP. TRAQUEAL N. 08 - BIOSANI</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/07/2025</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>6018</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>19</Sequencia>
+      <Id_Artigo>142757344</Id_Artigo>
+      <Codigo_Produto>000083</Codigo_Produto>
+      <Preco_Unitario>0.4153</Preco_Unitario>
+      <Fabricante>SERINGA 10   ML S/ AG. LUER LOCK C/200 - DESCARPACK</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/05/2027</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18403</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>10</Sequencia>
+      <Id_Artigo>142757325</Id_Artigo>
+      <Codigo_Produto>000102</Codigo_Produto>
+      <Preco_Unitario>0.4434</Preco_Unitario>
+      <Fabricante>AGUA DESTILADA  10 ML C/200 AMP. - FARMACE</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>893</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142757316</Id_Artigo>
+      <Codigo_Produto>00012554</Codigo_Produto>
+      <Preco_Unitario>1.7623</Preco_Unitario>
+      <Fabricante>AVENTAL ML 30G C/ELAS BRANCO - SNMED</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25746</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>13</Sequencia>
+      <Id_Artigo>142757336</Id_Artigo>
+      <Codigo_Produto>000093</Codigo_Produto>
+      <Preco_Unitario>12.9000</Preco_Unitario>
+      <Fabricante>MANITOL 20% 250ML - JP FARMA</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22444</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>18</Sequencia>
+      <Id_Artigo>142757342</Id_Artigo>
+      <Codigo_Produto>000829</Codigo_Produto>
+      <Preco_Unitario>0.2350</Preco_Unitario>
+      <Fabricante>SERINGA  5 ML S/AG LUER LOCK - DESCARPACK</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22575</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

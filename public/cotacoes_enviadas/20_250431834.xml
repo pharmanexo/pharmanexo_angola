@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250431834</Id_Pdc>
+    <CNPJ_Hospital>00.382.069/0001-27</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142696925</Id_Artigo>
+      <Codigo_Produto>1014</Codigo_Produto>
+      <Preco_Unitario>2.1325</Preco_Unitario>
+      <Fabricante>GLICONATO DE CALCIO 10 10 ML C/200 AMP  - ISOFARMA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 12/06/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>6974</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>8</Sequencia>
+      <Id_Artigo>142696931</Id_Artigo>
+      <Codigo_Produto>2272</Codigo_Produto>
+      <Preco_Unitario>0.6715</Preco_Unitario>
+      <Fabricante>GLICOSE 50 10 ML C/200 AMP - FARMACE</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/09/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>8124</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142696923</Id_Artigo>
+      <Codigo_Produto>2219</Codigo_Produto>
+      <Preco_Unitario>0.3900</Preco_Unitario>
+      <Fabricante>AGUA DESTILADA  10 ML C/200 AMP. - FARMACE</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>893</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142696926</Id_Artigo>
+      <Codigo_Produto>2299</Codigo_Produto>
+      <Preco_Unitario>8.4000</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09   100 ML S/F FRASCO C/60 - FARMACE</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>10449</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>7</Sequencia>
+      <Id_Artigo>142696930</Id_Artigo>
+      <Codigo_Produto>2368</Codigo_Produto>
+      <Preco_Unitario>9.8000</Preco_Unitario>
+      <Fabricante>SORO GLICOSADO  5  250 ML S/F FRASCO C/  - FRESENIUS KABI</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15439</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>10</Sequencia>
+      <Id_Artigo>142696933</Id_Artigo>
+      <Codigo_Produto>2416</Codigo_Produto>
+      <Preco_Unitario>15.9800</Preco_Unitario>
+      <Fabricante>SORO RINGER SIMPLES 500 ML S/F FRASCO C/24  - FARMACE</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>13378</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142696928</Id_Artigo>
+      <Codigo_Produto>2302</Codigo_Produto>
+      <Preco_Unitario>10.3700</Preco_Unitario>
+      <Fabricante>SORO FISIOLOGICO 09   250 ML S/F FRASCO  C/40  - EQUIPLEX</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>MARCA COTADA: FARMACE</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5507</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

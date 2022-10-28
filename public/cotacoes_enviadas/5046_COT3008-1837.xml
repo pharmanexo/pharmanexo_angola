@@ -1,0 +1,27 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>28/10/2022 08:58:55</Dt_Gravacao>
+  <Cd_Fornecedor>08774906000175</Cd_Fornecedor>
+  <Cd_Cotacao>COT3008-1837</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>SUJEITO A ANALISE DE CREDITO. [Vendedor: Laise Emanuelle  - E-mail: laise.emanuelle@hospdrogas.com.br - Telefone: 629 9505 2433]</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>10</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>3000,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>10939</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>1172</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>403</Id_Marca>
+          <Ds_Marca>EQUIPLEX</Ds_Marca>
+          <Qt_Embalagem>24</Qt_Embalagem>
+          <Vl_Preco_Produto>9,1700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>230107</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

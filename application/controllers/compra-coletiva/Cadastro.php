@@ -1,6 +1,8 @@
 <?php
 
-class Cadastro extends CI_Controller
+
+class Cadastro extends Adesao
+
 {
 
 	private $route;
@@ -9,8 +11,10 @@ class Cadastro extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('upload');
-		$this->load->model('Comprador', 'cmp');
-		$this->route = base_url('cadastro');
+		$this->load->model('compra_coletiva/Comprador', 'cmp');
+		$this->route = base_url('compra-coletiva/cadastro');
+		$this->views = 'compra-coletiva/';
+
 	}
 
 	public function index()
@@ -24,7 +28,9 @@ class Cadastro extends CI_Controller
 		$data['form_action'] = "{$this->route}/cadastrar";
 		$data['urlVerificaCNPJ'] = "{$this->route}/verificarCNPJ";
 
-		$this->load->view('cadastro', $data);
+
+		$this->load->view($this->views. 'cadastro', $data);
+
 
 	}
 
@@ -192,7 +198,9 @@ class Cadastro extends CI_Controller
 					}
 				}
 
-				$this->load->view('upload_success', $data);
+
+				$this->load->view($this->views . 'upload_success', []);
+
 			}
 
 
@@ -200,10 +208,13 @@ class Cadastro extends CI_Controller
 
 			if (!isset($_SESSION['dados'])) redirect(base_url());
 
-			$data['header'] = $this->template->header();
-			$data['heading'] = $this->template->heading();
-			$data['scripts'] = $this->template->scripts();
-			$data['footer'] = $this->template->footer();
+
+			$data['header'] = $this->tmp_cc->header();
+      $data['navbar'] = $this->tmp_cc->navbar();
+			$data['heading'] = $this->tmp_cc->heading();
+			$data['scripts'] = $this->tmp_cc->scripts();
+			$data['footer'] = $this->tmp_cc->footer();
+
 
 			$data['form_action'] = "{$this->route}/dados";
 			$data['dados'] = $this->session->dados;
@@ -217,7 +228,9 @@ class Cadastro extends CI_Controller
 			}
 
 
-			$this->load->view('cadastro_completo', $data);
+
+			$this->load->view($this->views . 'cadastro_completo', $data);
+
 		}
 	}
 

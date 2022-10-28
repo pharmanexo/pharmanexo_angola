@@ -96,7 +96,6 @@ class Dashboard extends MY_Controller
     }
 
 
-
     /**
      *  Função que verifica se é o primeiro login para atualização
      *
@@ -205,7 +204,6 @@ class Dashboard extends MY_Controller
             $data['n'] = $meta['total'];
             $data['hospitais_a'] = $hospitais_a;
             $data['hospitais_f'] = $hospitais_f;
-
 
 
             $this->load->view("admin/dashboard/main_comercial", $data);
@@ -390,18 +388,41 @@ class Dashboard extends MY_Controller
 
     public function getChartsFornecedor()
     {
+        $json = [];
+        $file = "public/charts_{$this->session->id_fornecedor}.json";
 
-        $post = $this->input->post();
 
-        $integrador = (isset($post['integrador'])) ? $post['integrador'] : 'SINTESE';
+        if (file_exists($file)) {
+            $json = file_get_contents($file);
 
-        $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
+            // exclui arquivos com 1 dia de diferença
+            $fileDate = date_create(date("Y-m-d H:i:s", filectime($file)));
+            $date1 = date_create(date("Y-m-d H:i:s", time()));
+            $interval = date_diff($fileDate, $date1);
 
-        $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
+            if ($interval->days > 0){
+                unlink($file);
+            }
 
-        $data['chartMap'] = $this->createMap($this->session->id_fornecedor);
+        } else {
+            $post = $this->input->post();
 
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+            $integrador = (isset($post['integrador'])) ? $post['integrador'] : 'SINTESE';
+
+            $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
+
+            $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
+
+            $data['chartMap'] = $this->createMap($this->session->id_fornecedor);
+
+            $json = json_encode($data);
+
+            $f = fopen($file, 'w+');
+            fwrite($f, $json);
+            fclose($f);
+        }
+
+        $this->output->set_content_type('application/json')->set_output($json);
     }
 
     /**

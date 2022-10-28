@@ -29,7 +29,9 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
+
 .back-to-top1 {
+
   position: fixed;
   display: none;
   right: 15px;
@@ -37,7 +39,9 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 99999;
 }
 
+
 .back-to-top1 i {
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,13 +49,17 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 4px;
+
   background: #85807e;
+
   color: #fff;
   transition: all 0.4s;
 }
 
+
 .back-to-top1 i:hover {
   background: #e62b25;
+
   color: #fff;
 }
 
@@ -1996,5 +2004,6 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
 
 }

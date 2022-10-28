@@ -26,7 +26,9 @@
 				</div>
 			</div>
 			<div class="col-lg-4 col-12">
-				<form action="<?php echo base_url('contrato/gerar/'); ?>" method="post">
+
+				<form action="<?php echo base_url('compra-coletiva/contrato/gerar/'); ?>" method="post">
+
 					<input type="hidden" name="id" value="<?php echo $produto['id']; ?>">
 					<div class="card">
 						<div class="card-body">
@@ -59,7 +61,9 @@
 			<?php foreach ($produtos as $prod) { ?>
 				<div class="col-3">
 					<div class="card shadow card-prod mb-3" style="height: auto">
-						<img class="card-img-top" style="width: auto; height: 160px" src="<?php echo base_url("contratos/Contrato{$prod['id']}/{$prod['imagem']}"); ?>" alt="Card image cap">
+
+						<img class="card-img-top" hidden style="width: auto; height: 160px" src="<?php echo base_url("contratos/Contrato{$prod['id']}/{$prod['imagem']}"); ?>" alt="Card image cap">
+
 						<div class="card-body">
 							<p style="font-size: 16px; height: 50px" class="card-title"><?php echo strtoupper($prod['descricao']); ?></p>
 							<p class="text-right" style="font-size: 16px">R$ <?php echo number_format($prod['valor'], 2, ',', '.'); ?> <small>und.</small></p>

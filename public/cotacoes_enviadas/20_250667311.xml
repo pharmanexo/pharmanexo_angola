@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250667311</Id_Pdc>
+    <CNPJ_Hospital>66.518.267/0011-55</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142736239</Id_Artigo>
+      <Codigo_Produto>14073</Codigo_Produto>
+      <Preco_Unitario>8.7449</Preco_Unitario>
+      <Fabricante>ALCOOL 70 ANTISSEPTICO 1000ML C/12 - VICPHARMA</Fabricante>
+      <Embalagem>LT</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11910</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142736241</Id_Artigo>
+      <Codigo_Produto>13651</Codigo_Produto>
+      <Preco_Unitario>2.7849</Preco_Unitario>
+      <Fabricante>ESCOVA DESC C/CLOREXIDINA 2 22ML C/288 UNI  - VICPHARMA</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20313</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

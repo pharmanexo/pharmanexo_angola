@@ -1,0 +1,281 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250709225</Id_Pdc>
+    <CNPJ_Hospital>53.894.218/0001-01</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>21</Sequencia>
+      <Id_Artigo>142745498</Id_Artigo>
+      <Codigo_Produto>90018516</Codigo_Produto>
+      <Preco_Unitario>4.9053</Preco_Unitario>
+      <Fabricante>CEFTRIAXONA 1G INJ I.V GENERICO CX C/100  - BLAU</Fabricante>
+      <Embalagem>FL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 03/09/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18297</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>19</Sequencia>
+      <Id_Artigo>142745499</Id_Artigo>
+      <Codigo_Produto>90095910</Codigo_Produto>
+      <Preco_Unitario>3.4589</Preco_Unitario>
+      <Fabricante>BROMOPRIDA 10MG/2ML GENERICO C/50  - UNIAO QUIMICA</Fabricante>
+      <Embalagem>AM</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/06/2025</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1037</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>22</Sequencia>
+      <Id_Artigo>142745501</Id_Artigo>
+      <Codigo_Produto>90137850</Codigo_Produto>
+      <Preco_Unitario>3.2570</Preco_Unitario>
+      <Fabricante>DEXAMETASONA 4 MG/ML 25 ML GENERICO C/100 AMP    - FARMACE</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11906</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>44</Sequencia>
+      <Id_Artigo>142745515</Id_Artigo>
+      <Codigo_Produto>1000467</Codigo_Produto>
+      <Preco_Unitario>4.3544</Preco_Unitario>
+      <Fabricante>BUPIVACAINA 050GL 8 PES 4ML GENERICO C/25 AMP - HIPOLABOR</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 29/02/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15025</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>37</Sequencia>
+      <Id_Artigo>142745532</Id_Artigo>
+      <Codigo_Produto>1001611</Codigo_Produto>
+      <Preco_Unitario>377.3306</Preco_Unitario>
+      <Fabricante>SEVOFLURANO 250ML GENERICO PORT 344/98 - BIOCHIMICO</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 29/02/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>10509</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>79</Sequencia>
+      <Id_Artigo>142745584</Id_Artigo>
+      <Codigo_Produto>90096924</Codigo_Produto>
+      <Preco_Unitario>2.4640</Preco_Unitario>
+      <Fabricante>DIPIRONA SODICA 2 ML INJ GENERICO C/120 AMP  - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>4788</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>29</Sequencia>
+      <Id_Artigo>142745597</Id_Artigo>
+      <Codigo_Produto>90338227</Codigo_Produto>
+      <Preco_Unitario>6.7505</Preco_Unitario>
+      <Fabricante>ONDANSETRONA 2MG/ML 4ML %28GENERICO%29 - HIPOLABOR</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>23061</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>31</Sequencia>
+      <Id_Artigo>142745534</Id_Artigo>
+      <Codigo_Produto>1001616</Codigo_Produto>
+      <Preco_Unitario>23.5506</Preco_Unitario>
+      <Fabricante>PIPERACICLINA+TAZO 4,0G+500MG %28GENERICO%29 - FRESENIUS KABI</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25833</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>28</Sequencia>
+      <Id_Artigo>142745594</Id_Artigo>
+      <Codigo_Produto>1000754</Codigo_Produto>
+      <Preco_Unitario>18.2571</Preco_Unitario>
+      <Fabricante>HEPARINA 5.000UI 5ML %28PARINEX%29 - HIPOLABOR</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25971</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>38</Sequencia>
+      <Id_Artigo>142745535</Id_Artigo>
+      <Codigo_Produto>90137019</Codigo_Produto>
+      <Preco_Unitario>5.9075</Preco_Unitario>
+      <Fabricante>TRAMADOL   50 MG/ML 1ML GENERICO C/60 AMP  PORT 344/98 - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>3081</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>39</Sequencia>
+      <Id_Artigo>142745539</Id_Artigo>
+      <Codigo_Produto>90137027</Codigo_Produto>
+      <Preco_Unitario>6.3665</Preco_Unitario>
+      <Fabricante>TRAMADOL  100 MG/2ML 2ML GENERICO C/60 AMP PORT. 344/98  - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1897</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>78</Sequencia>
+      <Id_Artigo>142745581</Id_Artigo>
+      <Codigo_Produto>90047540</Codigo_Produto>
+      <Preco_Unitario>16.1480</Preco_Unitario>
+      <Fabricante>OMEPRAZOL 40MG  DIL IV OPRAZON C/20 FA - BLAU</Fabricante>
+      <Embalagem>FL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>10502</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>11</Sequencia>
+      <Id_Artigo>142745516</Id_Artigo>
+      <Codigo_Produto>76014924</Codigo_Produto>
+      <Preco_Unitario>2.6994</Preco_Unitario>
+      <Fabricante>ESCOVA DESC C/CLOREXIDINA 2 22ML C/288 UNI  - VICPHARMA</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20313</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>51</Sequencia>
+      <Id_Artigo>142745543</Id_Artigo>
+      <Codigo_Produto>2000049</Codigo_Produto>
+      <Preco_Unitario>1.6362</Preco_Unitario>
+      <Fabricante>EQUIPO MACROGOTAS C/ INJ. LAT  C/ FILTRO LUER SLIP - DESCARPACK</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11545</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>52</Sequencia>
+      <Id_Artigo>142745549</Id_Artigo>
+      <Codigo_Produto>78246997</Codigo_Produto>
+      <Preco_Unitario>1.0018</Preco_Unitario>
+      <Fabricante>INFUSOR 2 VIAS C/ CLAMP LUER SLIP - DESCARPACK</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>21858</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>23</Sequencia>
+      <Id_Artigo>142745503</Id_Artigo>
+      <Codigo_Produto>90099362</Codigo_Produto>
+      <Preco_Unitario>7.6075</Preco_Unitario>
+      <Fabricante>DOBUTAMINA  125MG/ML INJ 20ML GENERICO C/50 AMP - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>15833</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>18</Sequencia>
+      <Id_Artigo>142745496</Id_Artigo>
+      <Codigo_Produto>90289943</Codigo_Produto>
+      <Preco_Unitario>2.1922</Preco_Unitario>
+      <Fabricante>AMIODARONA INJ 150MG/3ML GENERICO C/100 AMP - HIPOLABOR</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>2339</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>20</Sequencia>
+      <Id_Artigo>142745530</Id_Artigo>
+      <Codigo_Produto>90018370</Codigo_Produto>
+      <Preco_Unitario>7.1621</Preco_Unitario>
+      <Fabricante>CEFAZOLINA 1G INJ FAZOLON C/20 F/A - BLAU</Fabricante>
+      <Embalagem>FL</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14353</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>30</Sequencia>
+      <Id_Artigo>142745506</Id_Artigo>
+      <Codigo_Produto>90017986</Codigo_Produto>
+      <Preco_Unitario>2.8648</Preco_Unitario>
+      <Fabricante>AMPICILINA 1G INJ.  CILINON  C/100 - BLAU</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>961</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

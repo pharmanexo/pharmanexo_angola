@@ -1,0 +1,50 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>27/10/2022 14:48:11</Dt_Gravacao>
+  <Cd_Fornecedor>04307650002502</Cd_Fornecedor>
+  <Cd_Cotacao>COT3008-1836</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>1</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Rosangela Maria de Jesus Lima - rosangela.lima@oncoprod.com.br. Medic. refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos até às 16h00, após este horário será resg. e fat. no próx. dia útil, exceções entrar em contato. Fat. mín.R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB.</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>2</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6615</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>974</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>11,0700</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>DECADRON 4MG C 1AMP 2,5ML   NOVO</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1302</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6397</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>800</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>13689</Id_Marca>
+          <Ds_Marca>SANOFI AVENTIS FARM LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,4900</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>DAONIL C 30 COMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>101004</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

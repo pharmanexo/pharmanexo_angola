@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250432943</Id_Pdc>
+    <CNPJ_Hospital>00.382.069/0001-27</CNPJ_Hospital>
+    <Faturamento_Minimo>1200.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes>CONTATOS: VENDAS01@HOSPIDROGAS-ES.COM.BR - (27) 3229-1000 -- PRAZO DE PAGAMENTO FLEX&#xCD;VEL (SUJEITO A AN&#xC1;LISE)</Observacoes>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142697197</Id_Artigo>
+      <Codigo_Produto>3009</Codigo_Produto>
+      <Preco_Unitario>0.2046</Preco_Unitario>
+      <Fabricante>AMITRIPTILINA 25 MG %28AMYTRIL%29 - CRISTALIA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/06/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>22076</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142697199</Id_Artigo>
+      <Codigo_Produto>3038</Codigo_Produto>
+      <Preco_Unitario>1.8287</Preco_Unitario>
+      <Fabricante>MORFINA 01 MG/ML 1ML DIMORF C/50 CONV 087/02 - CRISTALIA</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 14/05/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>9267</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>4</Sequencia>
+      <Id_Artigo>142697200</Id_Artigo>
+      <Codigo_Produto>3040</Codigo_Produto>
+      <Preco_Unitario>2.7861</Preco_Unitario>
+      <Fabricante>MORFINA 10MG/ML 1ML DIMORF C/50 AMP PORT 344/98 CONV 087/02 - CRISTALIA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 01/09/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>14722</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142697204</Id_Artigo>
+      <Codigo_Produto>3049</Codigo_Produto>
+      <Preco_Unitario>3.2110</Preco_Unitario>
+      <Fabricante>MIDAZOLAM  5 MG/ML 3ML DORMIRE C/10 AMP PORT 344/98 - CRIST&#xC1;LIA</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 18/07/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12101</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>9</Sequencia>
+      <Id_Artigo>142697208</Id_Artigo>
+      <Codigo_Produto>3092</Codigo_Produto>
+      <Preco_Unitario>0.3331</Preco_Unitario>
+      <Fabricante>ESCITALOPRAM 10 MG %28GENERICO%29 - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 23/05/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>12794</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>12</Sequencia>
+      <Id_Artigo>142697210</Id_Artigo>
+      <Codigo_Produto>3102</Codigo_Produto>
+      <Preco_Unitario>2.5415</Preco_Unitario>
+      <Fabricante>MIRTAZAPINA 15MG GENERICO C/30 COMP  PORT 344/98 - EMS-EMS</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 08/03/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20831</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>13</Sequencia>
+      <Id_Artigo>142697211</Id_Artigo>
+      <Codigo_Produto>3119</Codigo_Produto>
+      <Preco_Unitario>0.1499</Preco_Unitario>
+      <Fabricante>RISPERIDONA 2 MG GENERICO C/300 CP CONV 087/02 PORT 344/98 - PRATI</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 23/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>19324</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>15</Sequencia>
+      <Id_Artigo>142697213</Id_Artigo>
+      <Codigo_Produto>2989</Codigo_Produto>
+      <Preco_Unitario>0.2254</Preco_Unitario>
+      <Fabricante>CLONAZEPAM 2 MG GENERICO C/30 CP PORT 344/98  - EMS-EMS</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 13/06/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>16297</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>16</Sequencia>
+      <Id_Artigo>142697214</Id_Artigo>
+      <Codigo_Produto>3002</Codigo_Produto>
+      <Preco_Unitario>6.3665</Preco_Unitario>
+      <Fabricante>TRAMADOL  100 MG/2ML 2ML GENERICO C/60 AMP PORT. 344/98  - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 13/08/2024</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1897</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>17</Sequencia>
+      <Id_Artigo>142697215</Id_Artigo>
+      <Codigo_Produto>3030</Codigo_Produto>
+      <Preco_Unitario>1.3515</Preco_Unitario>
+      <Fabricante>DIAZEPAM 10 MG/2ML GENERICO C/72 AMP PORT 344/98 - TEUTO</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 30/10/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>5020</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>10</Sequencia>
+      <Id_Artigo>142697216</Id_Artigo>
+      <Codigo_Produto>3089</Codigo_Produto>
+      <Preco_Unitario>5.8413</Preco_Unitario>
+      <Fabricante>NALOXONA 04 MG/ML 1ML GENERICO C/10 AMP PORT 344/98  - HIPOLABOR</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/08/2023</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>11280</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

@@ -1,0 +1,338 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 17:41:25</Dt_Gravacao>
+  <Cd_Fornecedor>04307650001530</Cd_Fornecedor>
+  <Cd_Cotacao>COT10012-2233</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>28</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>Contato: Karina Souza (41) 3303-9240 - karina.souza@oncoprod.com.br . Medicamentos refrig. saem de seg à quarta-feira, exceto regiões com o prazo de entrega de 24h (confirmar o prazo de entrega e estoque antecip.). Não aceitamos devolução, por favor conferir seu pedido no ato da entrega. Resgate dos pedidos somente até às 16h00, após este horário o pedido será resgatado e fat. no próx. dia útil, exceções entrar em contato. Fat. mín. acima de R$ 1.000,00 Frete CIF. Fat. mín. R$ 500,00 Frete FOB. </Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>4</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7702</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>15</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>234</Id_Marca>
+          <Ds_Marca>SANDOZ DO BRASIL IND FARMAC LTDA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ZOFRAN 4MG C 5 AMP.2ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1532</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7704</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>16</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>234</Id_Marca>
+          <Ds_Marca>SANDOZ DO BRASIL IND FARMAC LTDA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ZOFRAN 8MG C 5 AMP.4ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1531</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6372</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>4412</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>268</Id_Marca>
+          <Ds_Marca>UNITED MEDICAL LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>CRESEMBA 200MG PO SOL INJ 1FR</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>111029</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6038</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>4122</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>590</Id_Marca>
+          <Ds_Marca>PFIZER BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ZITROMAX IV 500MG C 10 AMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4691</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5625</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>8033</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>46</Id_Marca>
+          <Ds_Marca>BOEHRINGER INGELHEIM DO BRASIL QUIM</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>331,2000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SPIRIVA RESPIMAT 4ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>667</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>12119</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>428</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>230</Id_Marca>
+          <Ds_Marca>PROD ROCHE QUIM FARM S A</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ROCEFIN IM 1G C  1 AMP+DIL</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>916</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>230</Id_Marca>
+          <Ds_Marca>PROD ROCHE QUIM FARM S A</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ROCEFIN IV 1 G C  1 AMP + DIL</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>173</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>17742</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>3990</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>6236</Id_Marca>
+          <Ds_Marca>ORGANON FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>416,4800</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>INVANZ 1 GR  C 1 FR AMP. (ANTIB.) - VAL: 31/05/2023</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3017</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7726</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>5291</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>NEXIUM IV 40 MG CX. C  10AMP.</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>361</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5269</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>5706</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>144</Id_Marca>
+          <Ds_Marca>JANSSEN-CILAG FARM LT</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>60,2100</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>DUROGESIC D-TRANS 4,2MG X5 A1 - VAL: 31/10/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>278</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6448</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>8898</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>4005</Id_Marca>
+          <Ds_Marca>ASPEN PHARMA INDUSTRIA FARMACEUTICA</Ds_Marca>
+          <Qt_Embalagem>100</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>FLORINEFE 0,1 MG CX C  100 COMPR</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>182</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5273</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>503</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>4005</Id_Marca>
+          <Ds_Marca>ASPEN PHARMA INDUSTRIA FARMACEUTICA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>LANEXAT 0,5 MG C  5 AMP 5 ML (C1)</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>177</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6415</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>556</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>13689</Id_Marca>
+          <Ds_Marca>SANOFI MEDLEY FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>LANTUS 100UI 1 FRASCO AMP 10ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>456</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6418</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>554</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>13689</Id_Marca>
+          <Ds_Marca>SANOFI MEDLEY FARMACEUTICA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>LANTUS 100UI 1 FRASCO AMP 10ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>456</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6260</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>4661</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>PFIZER BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>MERONEM IV 1G C  10 FR</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3020</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7296</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>297</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SELOKEN 1MG ML SOL INJ 5 AMP 5ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>328</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5762</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>9002</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>92</Id_Marca>
+          <Ds_Marca>ELI LILLY DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>12,0100</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ZYPREXA 2,5MG C  30 COMP REV C1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4429</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5472</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>8402</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>28</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SEROQUEL 100MG C 28 COMP REV C1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>522</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7642</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>8414</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>30</Id_Marca>
+          <Ds_Marca>BAYER S A</Ds_Marca>
+          <Qt_Embalagem>28</Qt_Embalagem>
+          <Vl_Preco_Produto>8,4400</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>XARELTO 20MG C 28 COMP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1563</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5165</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>656</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>607</Id_Marca>
+          <Ds_Marca/>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>15,5000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ESMERON 10MG ML CX C 10FA X 5ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1277</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>23660</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>7466</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>607</Id_Marca>
+          <Ds_Marca/>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>291,8630</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>BRIDION 100 MG ML INJ 10AMP 2 ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1104</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6358</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>5202</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>PFIZER BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>TYGACIL 50 MG C 10 AMP PO LIOF</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>323</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6704</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>8821</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>13689</Id_Marca>
+          <Ds_Marca>SANOFI AVENTIS FARM LTDA</Ds_Marca>
+          <Qt_Embalagem>20</Qt_Embalagem>
+          <Vl_Preco_Produto>3,4915</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>STILNOX 10MG C 20 COMP     B1 C1 - VAL: 31/10/2023	</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>103359</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

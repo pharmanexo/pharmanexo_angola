@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250563930</Id_Pdc>
+    <CNPJ_Hospital>32.402.414/0001-33</CNPJ_Hospital>
+    <Faturamento_Minimo>300.0000</Faturamento_Minimo>
+    <Prazo_Entrega>2</Prazo_Entrega>
+    <Validade_Proposta>04/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>3</Sequencia>
+      <Id_Artigo>142727950</Id_Artigo>
+      <Codigo_Produto>10010936</Codigo_Produto>
+      <Preco_Unitario>5.7138</Preco_Unitario>
+      <Fabricante>CLINDAMICINA 600 MG INJ 4 ML GENERICO C/100 AMP  - HIPOLABOR</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>2005</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142727951</Id_Artigo>
+      <Codigo_Produto>10028983</Codigo_Produto>
+      <Preco_Unitario>15.2981</Preco_Unitario>
+      <Fabricante>FLUCONAZOL 2MG/ML 100ML - HALEX ISTAR</Fabricante>
+      <Embalagem>BO</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>21320</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

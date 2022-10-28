@@ -1,0 +1,111 @@
+<Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 06:32:22</Dt_Gravacao>
+  <Cd_Fornecedor>12882932000194</Cd_Fornecedor>
+  <Cd_Cotacao>COT20271-35</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>3</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor>•	Pedido mínimo: R$ 1.500,00 (Negociável). •	Prazo para Entrega: Até 03 dias Após a confirmação •	Prazo pagamento: (Negociável).  •	Consultor De Negócios: Alessandro Queiroz – RN / CE – EXOMED – SELLMED – LOG. •	Fone: (84) 9 9161-4884  •	E-mail: setor08@exomed.com.br</Ds_Observacao_Fornecedor>
+  <Qt_Prz_Minimo_Entrega>2</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>3500,0000</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>26922</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>00000010</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>1158</Id_Marca>
+          <Ds_Marca>TKL / PR</Ds_Marca>
+          <Qt_Embalagem>100</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0970</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5565</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>12441</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>00000030</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>17856</Id_Marca>
+          <Ds_Marca>AN�POLIS IND. HOSPITALAR / GO</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>11,1178</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5626</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>23232</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>00000118</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>8814</Id_Marca>
+          <Ds_Marca>LUVIX / SP</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>7,2930</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5656</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>10452</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>00000189</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>12848</Id_Marca>
+          <Ds_Marca>AMERICAN MEDICAL / MG</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,4950</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5277</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>2615</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>00000213</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>175</Id_Marca>
+          <Ds_Marca>MAXICOR / PR</Ds_Marca>
+          <Qt_Embalagem>100</Qt_Embalagem>
+          <Vl_Preco_Produto>0,2390</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>5076</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>1684</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>00000228</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>21769</Id_Marca>
+          <Ds_Marca>LATEX Br / RJ</Ds_Marca>
+          <Qt_Embalagem>200</Qt_Embalagem>
+          <Vl_Preco_Produto>1,3231</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor/>
+          <Cd_ProdutoERP>3891</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>2764</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>00000239</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>522</Id_Marca>
+          <Ds_Marca>NEVE / SP</Ds_Marca>
+          <Qt_Embalagem>50</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0890</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>OFERE�O MASCARA TRIPLA CIRURGICA ELASTICO PCT C/50 	DESCARPACK </Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>5585</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>

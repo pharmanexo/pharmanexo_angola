@@ -1,0 +1,318 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                <tem:EnviarOfertas>
+                <tem:xmlDoc>
+                <Cotacao>
+  <Tp_Movimento>I</Tp_Movimento>
+  <Dt_Gravacao>26/10/2022 13:34:24</Dt_Gravacao>
+  <Cd_Fornecedor>04307650002260</Cd_Fornecedor>
+  <Cd_Cotacao>COT16996-25</Cd_Cotacao>
+  <Cd_Condicao_Pagamento>1</Cd_Condicao_Pagamento>
+  <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+  <Ds_Observacao_Fornecedor/>
+  <Qt_Prz_Minimo_Entrega>2</Qt_Prz_Minimo_Entrega>
+  <Vl_Minimo_Pedido>1000,00</Vl_Minimo_Pedido>
+  <Produtos_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5590</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>5372</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>274</Id_Marca>
+          <Ds_Marca>ZAMBON LABORATORIOS FARM LTDA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>FLUIMUCIL INJ 100MG ML 5 AMP 3ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3874</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7565</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>666</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>715</Id_Marca>
+          <Ds_Marca>CSL BEHRING COM.DE PROD.FARMACEUTICOS LT</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ALBUREX 200G L SOL INJ FA X 50ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4295</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5324</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>632</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>UPJOHN BRASIL IMP DIST MED LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>FRONTAL 0,5MG C 30 COMP B1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1250</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5632</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>12134</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>20</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>PULMICORT SUSPNEB 0,50MG 2ML 20FR</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3023</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>PULMICORT SUSP NEB 0,50MG 2ML 5FR</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3051</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>12119</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2064</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>230</Id_Marca>
+          <Ds_Marca>PROD ROCHE QUIM FARM S A</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ROCEFIN IM 1G C  1 AMP+DIL</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>916</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5359</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>71</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>230</Id_Marca>
+          <Ds_Marca>PROD ROCHE QUIM FARM S A</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>RIVOTRIL 0,5MG C 30 COMP      B1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>103112</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5360</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>111015</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>230</Id_Marca>
+          <Ds_Marca>PROD ROCHE QUIM FARM S A</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>RIVOTRIL 2MG C 30 COMP        B1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>103114</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6615</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2041</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>DECADRON 4MG C 1AMP 2,5ML   NOVO</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1302</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5869</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2951</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>7657</Id_Marca>
+          <Ds_Marca>BLAU FARMACEUTICA S.A.</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ERITROMAX 40.000UI C 1 SER+DISP</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4577</Cd_ProdutoERP>
+        </Marca_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>HEMAXERITRON 4000 UI AMP+DIL 2ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>85</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6949</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>186</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>FILGRASTIM 300 MCG C 5 FR.AMP. 1ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>90</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6208</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>111032</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>PFIZER BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>6</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ZOLTEC 2MG ML 6 BOLS PLAST 100ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>470</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7116</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>111958</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>15632</Id_Marca>
+          <Ds_Marca>NOVARTIS BIOCIENCIAS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>APRESOLINA 50MG C 20 DRG</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>768</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>19546</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>10709</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>7432</Id_Marca>
+          <Ds_Marca>UCB BIOPHARMA LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>KEPPRA 250 MG C 30 COMP REV C1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4275</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>35600</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>6978</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>7432</Id_Marca>
+          <Ds_Marca>UCB BIOPHARMA LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>KEPPRA 100MG ML SOL OR 150ML  C1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>4312</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6260</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>111051</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>PFIZER BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>10</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>MERONEM IV 1G C  10 FR</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>3020</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7289</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>111968</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>30</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SELOZOK 50MG C 30COMP LIB CONT</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1337</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>7292</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>2523</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>5</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SELOKEN 1MG ML SOL INJ 5 AMP 5ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>328</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6556</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>258</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>5</Id_Marca>
+          <Ds_Marca>ACHE LABORATORIOS FARMACEUTICOS SA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>ANSENTRON 8 MG C 1 AMP 4ML</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>82</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>6300</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>447</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>10791</Id_Marca>
+          <Ds_Marca>PFIZER BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>1</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>TAZOCIN 2,25GR C 1 FR. AMP.(ANTIB.)</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>1211</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+    <Produto_Cotacao>
+      <Id_Produto_Sintese>5474</Id_Produto_Sintese>
+      <Cd_Produto_Comprador>12180</Cd_Produto_Comprador>
+      <Marcas_Oferta>
+        <Marca_Oferta>
+          <Id_Marca>18</Id_Marca>
+          <Ds_Marca>ASTRAZENECA DO BRASIL LTDA</Ds_Marca>
+          <Qt_Embalagem>14</Qt_Embalagem>
+          <Vl_Preco_Produto>0,0000</Vl_Preco_Produto>
+          <Ds_Obs_Oferta_Fornecedor>SEROQUEL 25 MG C 14 COMP REV C1</Ds_Obs_Oferta_Fornecedor>
+          <Cd_ProdutoERP>682</Cd_ProdutoERP>
+        </Marca_Oferta>
+      </Marcas_Oferta>
+    </Produto_Cotacao>
+  </Produtos_Cotacao>
+</Cotacao>
+                </tem:xmlDoc>
+                </tem:EnviarOfertas>
+                </soapenv:Body>
+                </soapenv:Envelope>

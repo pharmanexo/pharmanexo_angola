@@ -5,6 +5,7 @@
     <div class="container d-md-flex py-4">
 
         <div class="mr-md-auto text-center text-md-left">
+
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
             <a href="https://twitter.com/pharmanexo" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -16,6 +17,7 @@
     </div>
 </footer><!-- End Footer -->
 
+
 <div id="preloader"></div>
 <div class="box-cookies1 hide text-white text-center">
     <p class="msg-cookies">Nós e os terceiros selecionados usamos cookies ou tecnologias similares para finalidades técnicas e, com seu consentimento,
@@ -25,10 +27,12 @@
     </p>
     <button class="btn-cookies1">Aceitar!</button>
     <button class="btn-cookies">Recusar!</button>
+
 </div>
 <script>
     (() => {
         if (!localStorage.pureJavaScriptCookies) {
+
             document.querySelector(".box-cookies1").classList.remove('hide');
         }
 
@@ -45,3 +49,4 @@
         });
     })();
 </script>
+

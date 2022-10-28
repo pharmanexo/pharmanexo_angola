@@ -13,10 +13,12 @@ class Produtos extends Adesao
 	{
 		parent::__construct();
         $this->db_ades = $this->load->database('adesao', true);
-		$this->load->library('Notify', 'notify');
-        $this->load->model('CC_Produto', 'produto');
 
-		$this->route = base_url('produtos');
+		$this->load->library('Notify', 'notify');
+        $this->load->model('compra_coletiva/produto');
+
+		$this->route = base_url('compra-coletiva/produtos');
+
 
 		if (isset($_SESSION['dados'])) {
 			if ($_SESSION['dados']['completo'] != 1) {
@@ -56,7 +58,8 @@ class Produtos extends Adesao
 
 		$data['produtos'] = $this->db_ades->order_by('data_cadastro DESC')->get('produtos')->result_array();
 
-		$this->load->view('products_new', $data);
+
+		$this->load->view('compra-coletiva/products_new', $data);
 
 	}
 
@@ -74,9 +77,13 @@ class Produtos extends Adesao
 
 		$data['produtos'] = $this->db_ades->where('id <>', $id)->where('ativo','1')->order_by('data_cadastro DESC')->get('produtos')->result_array();
 
+
+    $data['urlDetalhes'] = "{$this->route}/detalhes/";
+
 		$data['urlPreco'] = "{$this->route}/getPreco";
 
-		$this->load->view('products_details', $data);
+		$this->load->view('compra-coletiva/products_details', $data);
+
 
 	}
 

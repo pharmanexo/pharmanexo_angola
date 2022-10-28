@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250488858</Id_Pdc>
+    <CNPJ_Hospital>55.358.188/0001-36</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>03/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>9</Sequencia>
+      <Id_Artigo>142715145</Id_Artigo>
+      <Codigo_Produto>3143</Codigo_Produto>
+      <Preco_Unitario>8.0000</Preco_Unitario>
+      <Fabricante>CISATRACURIO BESI 2MG/ML  5ML  - BLAU</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>21778</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>11</Sequencia>
+      <Id_Artigo>142715129</Id_Artigo>
+      <Codigo_Produto>1545</Codigo_Produto>
+      <Preco_Unitario>4.2973</Preco_Unitario>
+      <Fabricante>FENTANILA 785MCG/005MG/ML  5ML GENERICO C/25 PORT.344/98 - HIPOLABOR</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>17036</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>12</Sequencia>
+      <Id_Artigo>142715130</Id_Artigo>
+      <Codigo_Produto>520</Codigo_Produto>
+      <Preco_Unitario>6.6662</Preco_Unitario>
+      <Fabricante>MIDAZOLAM  5MG/ML 10ML GENERICO C/50 AMP PORT 344/98   - FRESENIUS KABI</Fabricante>
+      <Embalagem>AP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>20813</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>14</Sequencia>
+      <Id_Artigo>142715132</Id_Artigo>
+      <Codigo_Produto>1400</Codigo_Produto>
+      <Preco_Unitario>33.0000</Preco_Unitario>
+      <Fabricante>POLIMIXINA B 500.000UI %28SPOX%29 - CRISTALIA</Fabricante>
+      <Embalagem>FA</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>23019</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>5</Sequencia>
+      <Id_Artigo>142715141</Id_Artigo>
+      <Codigo_Produto>4338</Codigo_Produto>
+      <Preco_Unitario>2.8651</Preco_Unitario>
+      <Fabricante>TRAMADOL+PARACET 37,5/325MG %28ATRACE%29 - MOMENTA FARMA</Fabricante>
+      <Embalagem>CP</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>23079</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

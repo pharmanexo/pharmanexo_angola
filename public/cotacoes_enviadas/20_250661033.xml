@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<Resposta>
+  <Cabecalho>
+    <Id_Pdc>250661033</Id_Pdc>
+    <CNPJ_Hospital>46.043.980/0001-00</CNPJ_Hospital>
+    <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+    <Prazo_Entrega>3</Prazo_Entrega>
+    <Validade_Proposta>05/11/2022</Validade_Proposta>
+    <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+    <Frete>CIF</Frete>
+    <Observacoes/>
+  </Cabecalho>
+  <Itens_Pdc>
+    <Item_Pdc>
+      <Sequencia>40</Sequencia>
+      <Id_Artigo>142734689</Id_Artigo>
+      <Codigo_Produto>2188</Codigo_Produto>
+      <Preco_Unitario>0.3998</Preco_Unitario>
+      <Fabricante>SERINGA 10   ML S/ AG. LUER LOCK C/200 - DESCARPACK</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario>Validade: 31/05/2027</Comentario>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18403</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>1</Sequencia>
+      <Id_Artigo>142734638</Id_Artigo>
+      <Codigo_Produto>40033</Codigo_Produto>
+      <Preco_Unitario>5.0377</Preco_Unitario>
+      <Fabricante>AGUA OXIGENADA 10 VOL 1000ML C/12 SEPTMAX  - FARMAX</Fabricante>
+      <Embalagem>FR</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>18534</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>2</Sequencia>
+      <Id_Artigo>142734636</Id_Artigo>
+      <Codigo_Produto>34612</Codigo_Produto>
+      <Preco_Unitario>0.0675</Preco_Unitario>
+      <Fabricante>ALCOOL SWAB SACHE %28PH%29 - LABOR IMPORT</Fabricante>
+      <Embalagem>SH</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25716</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>9</Sequencia>
+      <Id_Artigo>142734645</Id_Artigo>
+      <Codigo_Produto>2721</Codigo_Produto>
+      <Preco_Unitario>7.0477</Preco_Unitario>
+      <Fabricante>CLOREXIDINA 0,2% AQUO  1000ML %28INDAHEX%29 - INDALABOR</Fabricante>
+      <Embalagem>LT</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>25991</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>8</Sequencia>
+      <Id_Artigo>142734694</Id_Artigo>
+      <Codigo_Produto>2067</Codigo_Produto>
+      <Preco_Unitario>1.6567</Preco_Unitario>
+      <Fabricante>CATETER IV PERIF. 22G C/100 C/ TRAVA CONV.01/99 - POLYMED - CIR.FERNANDES</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>16713</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>48</Sequencia>
+      <Id_Artigo>142734677</Id_Artigo>
+      <Codigo_Produto>2734</Codigo_Produto>
+      <Preco_Unitario>0.5105</Preco_Unitario>
+      <Fabricante>SONDA URETRAL N.08 CONV. 01/99 - BIOBASE</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>16992</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+    <Item_Pdc>
+      <Sequencia>49</Sequencia>
+      <Id_Artigo>142734676</Id_Artigo>
+      <Codigo_Produto>2736</Codigo_Produto>
+      <Preco_Unitario>0.6328</Preco_Unitario>
+      <Fabricante>SONDA URETRAL N.12  CONV.01/99 - BIOSANI</Fabricante>
+      <Embalagem>UN</Embalagem>
+      <Quantidade_Embalagem>1</Quantidade_Embalagem>
+      <Comentario/>
+      <Campo_Extra>
+        <Nome>Codigo_Produto_Fornecedor</Nome>
+        <Valor>1821</Valor>
+      </Campo_Extra>
+    </Item_Pdc>
+  </Itens_Pdc>
+</Resposta>

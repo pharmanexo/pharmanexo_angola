@@ -4,9 +4,8 @@
     <script>
         window.dataLayer = window.dataLayer || [];
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag(){dataLayer.push(arguments);}
+
         gtag('js', new Date());
 
         gtag('config', 'G-WBDX2MKN3P');
@@ -41,6 +40,7 @@
     <?php if (isset($styles)) foreach ($styles as $css) { ?>
         <link rel="stylesheet" href="<?php echo $css; ?>">
     <?php } ?>
+
 
     <style type="text/css">
         .box-cookies1.hide {
@@ -133,3 +133,4 @@
     <?php } ?>
 
 </head>
+

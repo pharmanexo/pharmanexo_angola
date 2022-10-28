@@ -126,6 +126,7 @@
   // Back to top button
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {
+
       $('.back-to-top1').fadeIn('slow');
     } else {
       $('.back-to-top1').fadeOut('slow');
@@ -133,6 +134,7 @@
   });
 
   $('.back-to-top1').click(function() {
+
     $('html, body').animate({
       scrollTop: 0
     }, 1500, 'easeInOutExpo');

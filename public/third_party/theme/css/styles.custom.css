@@ -1,0 +1,388 @@
+.body {
+    background-image: url("../../../../images/bg-site.jpg") !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+input:not([type="checkbox"]), select, textarea, .form-control, .select2-search__field, .select2-container--default .select2-selection--single {
+    border: 1px solid #dbdbdb !important;
+    padding: 5px !important;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    min-height: 40px !important;
+}
+
+input:hover, input:focus, select:hover, select:focus, textarea:hover, textarea:focus, .form-control:hover, .form-control:focus, .select2-search__field:hover, .select2-search__field:focus, .select2-container--default .select2-selection--single:hover, .select2-container--default .select2-selection--single:focus {
+    background-color: #FFFFFF;
+}
+
+input:hover, input:focus, select:hover, select:focus, textarea:hover, textarea:focus, .form-control:hover, .form-control:focus, .select2-search__field:hover, .select2-search__field:focus, .select2-container--default .select2-selection--single:hover, .select2-container--default .select2-selection--single:focus {
+    background-color: #FFFFFF;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    height: auto !important;
+}
+
+.dataTables_filter input, .select2-search__field {
+    padding-left: 30px !important;
+}
+
+.dataTables_filter input:after, .select2-search__field:after {
+    margin-left: 12px !important;
+    left: 12px;
+}
+
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 280px !important;
+    }
+}
+
+/*# sourceMappingURL=styles.custom.css.map */
+select {
+    background: #fff url("../img/icon-selec.png") no-repeat 95% 0 !important;
+}
+
+div#data-table_processing {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: .2;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    font-size: 20px;
+}
+
+select[readonly] {
+    pointer-events: none;
+    touch-action: none;
+}
+
+.flotTip {
+    padding: 3px 5px;
+    background-color: #000;
+    z-index: 100;
+    color: #fff;
+    opacity: .80;
+    filter: alpha(opacity=85);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.dataTables_filter:after, .dataTables_length:after {
+    position: absolute;
+    left: 10px !important;
+    bottom: 5px !important;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.tree, .tree ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tree ul {
+    margin-left: 1em;
+    position: relative;
+}
+
+.tree ul ul {
+    margin-left: 0.5em;
+}
+
+.tree ul:before {
+    content: "";
+    display: block;
+    width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-left: 1px solid;
+}
+
+.tree li {
+    margin: 0;
+    padding: 0 1em;
+    line-height: 2em;
+    color: #369;
+    font-weight: 700;
+    position: relative;
+}
+
+.tree ul li:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 0;
+    border-top: 1px solid;
+    margin-top: -1px;
+    position: absolute;
+    top: 1em;
+    left: 0;
+}
+
+.tree ul li:last-child:before {
+    background: #fff;
+    height: auto;
+    top: 1em;
+    bottom: 0;
+}
+
+.indicator {
+    margin-right: 5px;
+}
+
+.tree li a {
+    text-decoration: none;
+    color: #369;
+}
+
+.tree li button, .tree li button:active, .tree li button:focus {
+    text-decoration: none;
+    color: #369;
+    border: none;
+    background: transparent;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    outline: 0;
+}
+
+/* DUALLISBOX */
+#bootstrap-duallistbox-selected-list_listElements, #bootstrap-duallistbox-nonselected-list_listElements {
+    height: 150px !important;
+    overflow-x: scroll !important;
+}
+
+/* login */
+#social ul li {
+    display: inline-block;
+    list-style-type: none;
+    padding: 10px 10px;
+}
+
+#social li a {
+    color: #fff;
+    text-align: center;
+}
+
+#frameLogin .formColumn {
+    padding: 0 200px;
+}
+
+#frameEmpresas .formColumn {
+    padding: 0 120px;
+}
+
+@media (max-width: 991.98px) {
+    #frameLogin .formColumn {
+        padding: 0 50px !important;
+    }
+
+    #frameLogin .formColumn .card {
+        padding: 0 50px !important;
+    }
+
+    #frameEmpresas .formColumn {
+        padding: 0 50px;
+    }
+
+    #frameEmpresas .formColumn .card {
+        padding: 0 50px !important;
+    }
+}
+
+@media (max-width: 1500px) {
+    #frameLogin .formColumn {
+        padding: 0 50px !important;
+    }
+
+    #frameLogin .formColumn .card {
+        padding: 0 50px !important;
+    }
+
+    #frameEmpresas .formColumn {
+        padding: 0 50px;
+    }
+
+    #frameEmpresas .formColumn .card {
+        padding: 0 50px !important;
+    }
+}
+
+table.dataTable tbody td.select-checkbox:before, table.dataTable tbody th.select-checkbox:before, input[type=checkbox] {
+    content: ' ';
+    margin-top: -6px !important;
+    margin-left: -6px !important;
+    border: 1px solid black !important;
+    border-radius: 4px !important;
+    padding: 7px !important;
+}
+
+/* STYLE PLUGIN BOOTSTRAP SELECT */
+button.btn.dropdown-toggle.btn-light.bs-placeholder {
+    background-color: transparent !important;
+}
+
+button.btn.dropdown-toggle.btn-light {
+    background-color: transparent !important;
+}
+
+/* CSS CORREIO */
+.menu_correio {
+    background: #fff;
+    margin: 0;
+    padding: 20px;
+}
+
+.btn-delete-message {
+    display: none !important;
+}
+
+.messages__item:hover .btn-delete-message {
+    display: block !important;
+}
+
+.messages__search .form-group:before {
+    left: 10px !important;
+}
+
+.messages__search .form-control {
+    padding-left: 2rem !important;
+}
+
+.gradient-primary {
+    background: #766dbc;
+    background: linear-gradient(90deg, #766dbc 0%, #1fc390 100%);
+    /*border-radius: 10px;*/
+}
+
+.gradient-secondary {
+    background: #b4c60b;
+    background: linear-gradient(90deg, #766dbc 0%, #1fc390 100%);
+    /*border-radius: 10px;*/
+}
+
+.painel-cotacoes h4 {
+    font-size: 14px;
+}
+
+#tabelaCotacoes #data-table_wrapper {
+    margin-top: 0 !important;
+}
+
+.navigation__sub--active > a {
+    color: #333C99 !important;
+}
+
+.navigation__active > a {
+    color: #333C99 !important;
+}
+
+.btn {
+    border-radius: 7px !important;
+}
+
+#search-cot {
+    margin-left: 160px;
+}
+
+#search-cot input {
+    background-color: #dce3e9 !important;
+    width: 200px !important;
+}
+
+#respost-cot {
+}
+
+.input-group .input-group-append .btn {
+    border-radius: 0px 7px 7px 0px !important;
+}
+
+.select2-dropdown .select2-search--dropdown .select2-search__field {
+    padding-left: 40px !important;
+}
+
+/* CUSTOM CSS NEW STYLE */
+#telaLogin {
+    border-radius: 30px !important;
+
+}
+
+.row-list:nth-child(even) {
+
+    background: #f8f9fa;
+}
+
+.custom-file-input ~ .custom-file-label::after {
+    content: "Abrir";
+}
+
+
+.cot-success {
+    background-color: #40fcaa !important;
+}
+
+.cot-info {
+    background-color: #85c9fd !important;
+}
+
+
+/*************** HEADER **********************/
+.header {
+    background-color: #192069 !important;
+    border: none !important;
+}
+
+#search-cot input{
+    border-radius: 0 !important;
+    color: white;
+    background-color: #0b0f3d !important;
+    border: 1px solid #0c0e3d !important;
+
+}
+
+#search-cot select {
+    width: 100px;
+    border-radius: 0 !important;
+    color: white;
+    background-color: #0b0f3d !important;
+    border-color: #0c0e3d !important;
+}
+
+#search-cot button {
+    border-radius: 0 !important;
+    color: white;
+    background-color: #0b0f3d !important;
+    border-color: #0c0e3d !important;
+}
+
+.bootstrap-select .dropdown-menu{
+    max-width: 400px !important;
+}
+
+.bootstrap-select.show-tick .dropdown-menu .selected span.check-mark {
+    position: relative !important;
+    margin-left: 5px !important;
+    display: inline-block !important;
+}
+
+.tab-content {
+     padding: 0 !important;
+}
+
+.buttonsToHide{
+    display: none !important;
+}
