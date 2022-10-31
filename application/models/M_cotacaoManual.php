@@ -76,6 +76,7 @@ class M_cotacaoManual extends MY_Model
         $produtos = $this->matchProducts($cd_cotacao, $cotacao['id'], $id_fornecedor, $cliente['id'], $estado['id'], $integrador);
 
 
+
         # Condição de pagamento da cotação
         $condicao_pagamento = ($integrador == 'SINTESE') ?
             $this->forma_pagamento->findById($cotacao['cd_condicao_pagamento'])['descricao'] : $cotacao['forma_pagamento'];
@@ -313,6 +314,7 @@ class M_cotacaoManual extends MY_Model
             # Verifica Restrições como OL e S.E (sem estoque) e a restrição do produto
             $restricao = $this->restricoes_cotacao->find($integrador, $id_fornecedor, $produto['cotado']['cd_cotacao'], $produto['cotado']['cd_produto_comprador'], $id_produto);
 
+
             if (isset($restricao) && !empty($restricao)) {
 
                 $produtos[$kk]['cotado']['ol'] = $restricao['ol'];
@@ -334,11 +336,35 @@ class M_cotacaoManual extends MY_Model
                     # Busca se existe venda diferenciada
                     $vd = $this->getVendaDiferenciada($p['id_fornecedor'], $p['codigo'], $id_cliente, $id_estado);
 
+                    // BUSCA PREÇO POR REGIÃO
+                    $regiaoCliente = $this->db
+                        ->where('id_cliente', $id_cliente)
+                        ->where('id_fornecedor', $id_fornecedor)
+                        ->get('compradores_regiao')
+                        ->row_array();
+
+
+                    if (!empty($regiaoCliente)) {
+
+                        $coluna = "preco_{$regiaoCliente['col']}";
+
+                        $precoRegiao = $this->db
+                            ->where('regiao', $regiaoCliente['numregiao'])
+                            ->where('codigo', $p['codigo'])
+                            ->where('id_fornecedor', $id_fornecedor)
+                            ->get('produtos_precos_regiao')
+                            ->row_array();
+
+                        if (!empty($precoRegiao)) {
+                            $p['preco_unitario'] = $precoRegiao[$coluna];
+                        }
+                    }
+                    // --------------------------------------------------------- //
+
                     $newPrice = $this->getPriceUnitary($p['preco_unitario'], $p['quantidade_unidade'], $p['id_fornecedor'], $vd);
 
                     $produtos[$kk]['encontrados'][$k]['preco_unitario'] = $newPrice;
                     $produtos[$kk]['encontrados'][$k]['preco_caixa'] = $newPrice * $p['quantidade_unidade'];
-
 
                     $params = [
                         'id_fornecedor' => $p['id_fornecedor'],
@@ -346,6 +372,7 @@ class M_cotacaoManual extends MY_Model
                         'codigo' => $p['codigo']
                     ];
                     $pMix = $this->preco_mix->get_item($params);
+                   // $pMix = [];
 
                     if (isset($pMix['preco_base']) && !empty($pMix['preco_base'])) {
                         $produtos[$kk]['encontrados'][$k]['preco_unitario'] = $pMix['preco_base'];
@@ -559,17 +586,6 @@ class M_cotacaoManual extends MY_Model
             $produtos[$kk]['cotado']['encontrados'] = $totalEstoque;
         }
 
-        /*    # Se existir produtos com estoque 0, registra.
-            if (!empty($sem_estoque)) {
-
-                $this->db->insert_batch('produtos_sem_estoque', $sem_estoque);
-            }*/
-
-        /*  # Notifica produtos sem estoque
-          if (!empty($produtosSemEstoque)) {
-
-              $this->stockNotification($produtosSemEstoque['cd_cotacao'], $produtosSemEstoque['produtos']);
-          }*/
 
         return $this->OrganizeProducts($produtos);
     }

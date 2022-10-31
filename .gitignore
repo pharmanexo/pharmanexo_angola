@@ -17,4 +17,5 @@ application/logs/*
 /vendor/
 
 .DS_Store
+.idea
 /.env.local
