@@ -3,7 +3,7 @@
         <div class="user">
             <div class="user__info" data-toggle="dropdown">
                 <?php $url_logo = base_url("public/usuarios/{$this->session->id_usuario}/{$this->session->foto}") ?>
-                <?php  $logo = (empty($this->session->foto) || is_null($this->session->foto)) ? base_url('images/usuarios/no-user.png') : $url_logo; ?>
+                <?php  $logo = (empty($this->session->foto) || is_null($this->session->foto)) ? base_url('images/usuarios/no-user.png') : $this->session->foto; ?>
 
                 <img class="user__img" src="<?php echo $logo ?>" alt="">
                 <div>

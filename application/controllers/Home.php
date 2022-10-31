@@ -12,7 +12,6 @@ class Home extends CI_Controller
     public function index()
     {
 
-
         $data['header'] = $this->template->homeheader([]);
         $data['navbar'] = $this->template->homenavbar([]);
         $data['banner'] = $this->template->homebanner([]);
@@ -41,7 +40,6 @@ class Home extends CI_Controller
         $data['totalEstoque'] = $this->views($this->getTotal()['total']);*/
 
         $this->load->view('home2', $data, FALSE);
-
 
     }
 
