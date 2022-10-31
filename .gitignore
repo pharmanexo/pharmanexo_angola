@@ -19,3 +19,5 @@ application/logs/*
 .DS_Store
 /.env.local
 /.env
+/application/config/config.php
+/application/cache/database.php

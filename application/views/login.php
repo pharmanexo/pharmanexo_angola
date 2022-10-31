@@ -431,7 +431,7 @@ if (isset($header)) echo $header;
                     <form id="formRecuperarSenha" method="post" action="<?php echo $frm_novasenha; ?>">
                         <h3>Perdeu sua senha? </h3>
                         <p class="small">Não tem problema, informe o CNPJ cadastrado e iremos te ajudar a
-                            recuperar sua senha.</p>
+                            recuperar sua senha</p>
                         <div class="form-group">
                             <div class="input-group mb-3 mt-5">
                                 <div class="input-group-prepend border-0">

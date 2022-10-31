@@ -221,8 +221,7 @@ class Login extends CI_Controller
 
             if ($this->usuario->update($post)) {
 
-                $this->db->where('id', $post['id'])->update('usuarios', ['primeiro_login' => '2', 'nickname' => $post['nickname']]);
-                
+                $this->db->where('id', $post['id'])->update('usuarios', ['primeiro_login' => '2', 'avatar' => $post['avatar'], 'nickname' => $post['nickname']]);
                 $result = ['type' => 'success', 'message' => 'Conta atualizada'];
             } else {
 
@@ -306,7 +305,7 @@ class Login extends CI_Controller
                     $senha = password_hash($post['senha'], PASSWORD_DEFAULT);
 
                     $this->db->where('id', $this->session->user_id)->update('usuarios', ['token' => null, 'validade_token' => null, 'senha' => $senha]);
-                    
+
                     $output = ['type' => 'success', 'message' => 'Senha alterada com sucesso!', 'route' => $this->route];
                 } else {
 
@@ -422,10 +421,11 @@ class Login extends CI_Controller
                                 "nivel" => $consulta['nivel'],
                                 "email" => $consulta['email'],
                                 "foto" => $consulta['foto'],
+                                "nickname" => $consulta['nickname'],
+                                "avatar" => $consulta['avatar'],
                                 "routes" => $this->rota->rotasAdmin($consulta['nivel']),
                             ];
-                            if ($userdata['primeiro'] == '1')
-                            {
+                            if ($userdata['primeiro'] == '1') {
                                 $warning = ['type' => 'success', 'action' => 'dashboard/primeiro'];
                             }
                             $this->session->set_userdata($userdata);
@@ -445,6 +445,8 @@ class Login extends CI_Controller
                                     "nome" => $consulta['nome'],
                                     "email" => $consulta['email'],
                                     "foto" => $consulta['foto'],
+                                    "nickname" => $consulta['nickname'],
+                                    "avatar" => $consulta['avatar'],
                                     "usuario_sintese" => $consulta['usuario_sintese'],
                                 ];
 
@@ -791,7 +793,6 @@ class Login extends CI_Controller
         $this->session->set_userdata("mc", "0"); //menu controle
 
         redirect(base_url('/login'));
-
     }
 
     public function gravar_senha_alterada()

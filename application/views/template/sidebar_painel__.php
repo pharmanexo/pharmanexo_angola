@@ -7,7 +7,7 @@
 
                 <img class="user__img" src="<?php echo $logo ?>" alt="">
                 <div>
-                    <div class="user__name"><?php echo $this->session->nome ?></div>
+                    <div class="user__name"><?php var_dump($this->session); echo $this->session->nome ?></div>
                     <div class="user__email"><small><?php echo $this->session->email ?></small></div>
 
                 </div>
