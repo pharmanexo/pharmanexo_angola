@@ -2,12 +2,14 @@
     <div class="scrollbar-inner">
         <div class="user">
             <div class="user__info" data-toggle="dropdown">
-                <?php $url_logo = base_url("public/usuarios/{$this->session->id_usuario}/{$this->session->foto}") ?>
-                <?php  $logo = (empty($this->session->foto) || is_null($this->session->foto)) ? base_url('images/usuarios/no-user.png') : $this->session->foto; ?>
 
-                <img class="user__img" src="<?php echo $logo ?>" alt="">
+                <?php $avatar = $this->session->avatar ?>
+                <?php $url = IMG_PATH.'avatar/'.$avatar.'.png' ?>
+                <?php  $logo = (empty($this->session->foto) || is_null($this->session->foto)) ? base_url('images/usuarios/no-user.png') : $avatar; ?>
+                
+                <img class="user__img" src="<?php echo $url ?>" alt="avatar">
                 <div>
-                    <div class="user__name"><?php echo $this->session->nome ?></div>
+                    <div class="user__name"><?php echo $this->session->nickname ?></div>
                     <div class="user__email"><small><?php echo $this->session->email ?></small></div>
 
                 </div>

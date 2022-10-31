@@ -33,6 +33,13 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <style type="text/css">
+        .avatar {
+            border: 2px solid white;
+            cursor: pointer;
+        }
+        .selecao {
+            border: 3px solid #ed3237;
+        }
         .card {
             border-radius: 30px;
         }
