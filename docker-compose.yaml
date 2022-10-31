@@ -20,7 +20,7 @@ services:
     container_name: pharmanexo-nginx
     restart: unless-stopped
     ports:
-      - 8080:80
+      - 80:80
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d

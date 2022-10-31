@@ -20,3 +20,5 @@ application/logs/*
 .idea
 /.env.local
 /.env
+/application/config/config.php
+/application/cache/database.php
