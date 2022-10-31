@@ -77,7 +77,9 @@
                     <p>O pharmanexo é a maior ferramenta de integração transparente do Brasil, conectando distribuidores a portais de cotação, automatizando 100% do processo de recebimento e resposta de seus usuários.
                         Possuímos integração com diversos ERP's como: Totvs (Winthor, Protheus), Sankhya, SAP, assim como disponibilizamos API para integração entre os mais diversos sistemas. </p>
                     <p>
+
                        Entregamos aos nosso clientes uma ferramenta validade e homologada pelos 3 maiores portais do mercado (Bionexo, Síntese e Apoio Cotações), oferecemos outras ferramentas exclusivas,
+
                         como por exemplo: a ferramenta Integranexo (especializada em produtos pré vencidos e produtos promocionais, auxiliando a
                         Industria e grandes Distribuidores a aumentar a rotatividade de seu estoque, assim como melhorar a performance de vendas), área de representantes, área de compras coletivas programadas, dentre outras.
                         <br><br>

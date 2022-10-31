@@ -1,6 +1,8 @@
 <?php
 
+
 class Cadastro extends Adesao
+
 {
 
 	private $route;
@@ -12,6 +14,7 @@ class Cadastro extends Adesao
 		$this->load->model('compra_coletiva/Comprador', 'cmp');
 		$this->route = base_url('compra-coletiva/cadastro');
 		$this->views = 'compra-coletiva/';
+
 	}
 
 	public function index()
@@ -25,7 +28,9 @@ class Cadastro extends Adesao
 		$data['form_action'] = "{$this->route}/cadastrar";
 		$data['urlVerificaCNPJ'] = "{$this->route}/verificarCNPJ";
 
+
 		$this->load->view($this->views. 'cadastro', $data);
+
 
 	}
 
@@ -193,7 +198,9 @@ class Cadastro extends Adesao
 					}
 				}
 
+
 				$this->load->view($this->views . 'upload_success', []);
+
 			}
 
 
@@ -201,11 +208,13 @@ class Cadastro extends Adesao
 
 			if (!isset($_SESSION['dados'])) redirect(base_url());
 
+
 			$data['header'] = $this->tmp_cc->header();
-            $data['navbar'] = $this->tmp_cc->navbar();
+      $data['navbar'] = $this->tmp_cc->navbar();
 			$data['heading'] = $this->tmp_cc->heading();
 			$data['scripts'] = $this->tmp_cc->scripts();
 			$data['footer'] = $this->tmp_cc->footer();
+
 
 			$data['form_action'] = "{$this->route}/dados";
 			$data['dados'] = $this->session->dados;
@@ -219,7 +228,9 @@ class Cadastro extends Adesao
 			}
 
 
+
 			$this->load->view($this->views . 'cadastro_completo', $data);
+
 		}
 	}
 

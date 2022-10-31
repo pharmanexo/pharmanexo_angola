@@ -204,6 +204,7 @@
                                 customizada para cada cliente.
                             </p>
                             <p>
+
                                 Não oferecemos a nossos clientes um software ou uma licença, mas sim uma ferramenta de automação e
                                 inteligência
                                 de mercado.
@@ -515,6 +516,9 @@
         <!-- End Google Map -->
     </div>
 </body>
+
+<?php if (isset($footer)) echo $footer; ?>
+
 <?php if (isset($scripts)) echo $scripts; ?>
 
 <script>

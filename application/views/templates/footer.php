@@ -5,9 +5,7 @@
     <div class="container d-md-flex py-4">
 
         <div class="mr-md-auto text-center text-md-left">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Pharmanexo® 2017</span></strong>. All Rights Reserved
-            </div>
+
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
             <a href="https://twitter.com/pharmanexo" target="_blank" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -19,26 +17,36 @@
     </div>
 </footer><!-- End Footer -->
 
-<a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
-<div id="preloader"></div>
-<div class="box-cookies hide text-center">
-    <p class="msg-cookies">Este site usa cookies para garantir que você obtenha a melhor experiência em nosso site. <br>   <span class="small"><a class="text-white" href="">Leia nossa política de privacidade</a></span></p>
 
-    <button class="btn-cookies">Aceitar!</button>
+<div id="preloader"></div>
+<div class="box-cookies1 hide text-white text-center">
+    <p class="msg-cookies">Nós e os terceiros selecionados usamos cookies ou tecnologias similares para finalidades técnicas e, com seu consentimento,
+        para outras finalidades, conforme especificado na <a style="color: red;" href="<?php echo ASSETS_PATH ?>/Politica_de_Privacidade.pdf" target="_blank">política de cookies</a>. 
+        Negá-los poderá tornar os recursos relacionados indisponíveis.
+        <br>Use o botão “Aceitar” para consentir com o uso de tais tecnologias ou clique em “Recusar” para continuar sem aceitar.
+    </p>
+    <button class="btn-cookies1">Aceitar!</button>
+    <button class="btn-cookies">Recusar!</button>
+
 </div>
 <script>
     (() => {
         if (!localStorage.pureJavaScriptCookies) {
-            document.querySelector(".box-cookies").classList.remove('hide');
+
+            document.querySelector(".box-cookies1").classList.remove('hide');
         }
 
         const acceptCookies = () => {
-            document.querySelector(".box-cookies").classList.add('hide');
+            document.querySelector(".box-cookies1").classList.add('hide');
             localStorage.setItem("pureJavaScriptCookies", "accept");
         };
 
-        const btnCookies = document.querySelector(".btn-cookies");
+        const btnCookies = document.querySelector(".btn-cookies1");
 
         btnCookies.addEventListener('click', acceptCookies);
+        $('.btn-cookies').click(function() {
+            $('.box-cookies1').toggle();
+        });
     })();
 </script>
+

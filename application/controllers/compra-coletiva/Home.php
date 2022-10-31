@@ -5,7 +5,9 @@ class Home extends CI_Controller{
 	public function __construct()
 	{
 		parent::__construct();
+
 		$this->route = base_url('compra-coletiva/home');
+
 	}
 
 	public function index(){

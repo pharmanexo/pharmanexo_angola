@@ -744,6 +744,7 @@ class Login extends CI_Controller
                         $_SESSION['validLogin'] = true;
                         $_SESSION['dados'] = $comp;
 
+
                         if ($comp['completo'] == 1) {
                             redirect(base_url('compra-coletiva/produtos'));
                         } else {
@@ -788,7 +789,9 @@ class Login extends CI_Controller
         $this->session->sess_destroy();
         $this->session->set_userdata("logado", "0");
         $this->session->set_userdata("mc", "0"); //menu controle
+
         redirect(base_url('/login'));
+
     }
 
     public function gravar_senha_alterada()

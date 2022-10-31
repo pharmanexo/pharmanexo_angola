@@ -5,16 +5,18 @@ require_once 'application/libraries/Number.php';
 
 use WGenial\NumeroPorExtenso\NumeroPorExtenso;
 
+
 class Contrato extends CI_Controller
 {
 	private $route;
 	private $views;
 
+
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->library('Notify', 'notify');
-        $this->db = $this->load->database('adesao', true);
+    $this->db = $this->load->database('adesao', true);
 		$this->load->model('compra_coletiva/produto');
 		$this->route = base_url('compra-coletiva/contrato');
 		$this->views = 'compra-coletiva/';
@@ -23,6 +25,7 @@ class Contrato extends CI_Controller
 		if (isset($_SESSION['dados'])) {
 			if ($_SESSION['dados']['completo'] != 1) {
 				redirect(base_url('compra-coletiva/cadastro/dados'));
+
 			}
 		}
 
@@ -30,6 +33,7 @@ class Contrato extends CI_Controller
 
 	public function index()
 	{
+
 		$data['header'] = $this->tmp_cc->header();
 		$data['navbar'] = $this->tmp_cc->navbar();
 		$data['heading'] = $this->tmp_cc->heading([
@@ -42,10 +46,12 @@ class Contrato extends CI_Controller
 
 		$this->load->view($this->views . 'products', $data);
 
+
 	}
 
 	public function produtos()
 	{
+
 		$data['header'] = $this->tmp_cc->header();
 		$data['navbar'] = $this->tmp_cc->navbar();
 		$data['heading'] = $this->tmp_cc->heading([
@@ -57,6 +63,7 @@ class Contrato extends CI_Controller
 		$data['produtos'] = $this->db->order_by('data_cadastro DESC')->get('produtos')->result_array();
 
 		$this->load->view($this->views . 'products_new', $data);
+
 
 	}
 
@@ -87,11 +94,13 @@ class Contrato extends CI_Controller
 			->where('tipo_contrato', $tipo)
 			->delete('contratos');
 
+
 		if (file_exists("public/compra_coletiva/contratos/{$fileName}")) {
-			unlink("public/compra_coletiva/contratos/{$fileName}");
+
 		}
 
 		$this->gerarContrato($dados, $fileName, $tipo);
+
 
 		$data['header'] = $this->tmp_cc->header();
 		$data['heading'] = $this->tmp_cc->heading([
@@ -102,11 +111,14 @@ class Contrato extends CI_Controller
 		$data['footer'] = $this->tmp_cc->footer();
 
 		$data['contrato'] = $this->load->view($this->views.'contrato', $data, true);
+
 		$data['file'] = CONTRATOS_PATH . "{$fileName}";
 		$data['urlAceite'] = "{$this->route}/aceite";
 		$data['urlAnexos'] = base_url("contratos/Contrato{$produto['id']}/");;
 
+
 		$this->load->view($this->views . 'read_contrato', $data);
+
 	}
 
 	public function aceite()
@@ -125,12 +137,16 @@ class Contrato extends CI_Controller
 		$this->db->where('situacao', 0);
 		if ($this->db->update('contratos', $aprovado)) {
 
+
 			$tmp_cc = file_get_contents('https://www.pharmanexo.com.br/adesao/tmp_ccs/email.html');
+
 			$fiels = ['{url_contrato}', '{cnpj}', '{empresa}', '{cpf}', '{nome}', '{logradouro}', '{numero}', '{bairro}', '{cidade}', '{estado}', '{cep}', '{telefone}', '{celular}'];
 			$values = [$contrato['url'], $contrato['cnpj'], $cliente['empresa'], $cliente['cpf'], $cliente['nome'], $cliente_endereco['logradouro'], $cliente_endereco['numero'],
 				$cliente_endereco['bairro'], $cliente_endereco['localidade'], $cliente_endereco['estado'], $cliente_endereco['cep'], $cliente['telefone'], $cliente['celular']];
 
+
 			$body = str_replace($fiels, $values, $tmp_cc);
+
 
 			$this->notify->send("marlon.boecker@pharmanexo.com.br, administracao@pharmanexo.com.br, {$cliente['email']}", 'Novo Contrato de Adesão', $body);
 
@@ -145,12 +161,14 @@ class Contrato extends CI_Controller
 		$data['contrato'] = $_SESSION['contrato'];
 		$dados = $_SESSION['dados'];
 
+
 		$data['header'] = $this->tmp_cc->header();
 		$data['heading'] = $this->tmp_cc->heading();
 		$data['scripts'] = $this->tmp_cc->scripts();
 		$data['footer'] = $this->tmp_cc->footer();
 
 		$this->load->view($this->views . 'aprovado', $data);
+
 
 	}
 
@@ -173,6 +191,7 @@ class Contrato extends CI_Controller
 
 		}*/
 
+
 		$data['header'] = $this->tmp_cc->header();
 		$data['navbar'] = $this->tmp_cc->navbar();
 		$data['heading'] = $this->tmp_cc->heading([
@@ -182,6 +201,7 @@ class Contrato extends CI_Controller
 		$data['footer'] = $this->tmp_cc->footer();
 
 		$this->load->view($this->views . 'meus_contratos', $data);
+
 	}
 
 	private function gerarContrato($dados, $fileName, $tipo)
@@ -195,6 +215,7 @@ class Contrato extends CI_Controller
 
 		$preco = number_format($dados['preco'], '2', ',', '.');
 		$preco_unit_ext = $n->converter($dados['preco'], true);
+
 
 
 		$contrato = ($this->load->view("{$this->views}modelos/contrato", [], true));
@@ -279,7 +300,9 @@ class Contrato extends CI_Controller
 		#$mpdf->WriteHTML($css,1);
 
 		$mpdf->WriteHTML($out);
+
 		$content = $mpdf->Output("public/compra_coletiva/contratos/{$fileName}", \Mpdf\Output\Destination::FILE);
+
 
 
 		$insert = [
