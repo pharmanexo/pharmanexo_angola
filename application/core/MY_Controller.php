@@ -26,10 +26,17 @@ class MY_Controller extends CI_Controller
 
         foreach ($routes as $route) {
 
+            //exceções
+            if ($url == '/fornecedor/usuarios/perfil'){
+                $check = true;
+                break;
+            }
+
             if (strpos($url, $route['url']) > 0) {
                 $check = true;
                 break;
             }
+
         }
 
         if (!$check) {
