@@ -311,9 +311,8 @@ class Login extends CI_Controller
         if (strtotime(date('Y-m-d H:i:s')) <= strtotime($usuario['validade_token'])) {
             $this->session->set_userdata(['user_id' => $usuario['id']]);
 
-                $this->db->where('id', $this->session->user_id)->update('usuarios', ['token' => null, 'validade_token' => null, 'verifica_email' => "2"]);
-                redirect("{$this->route}validado");
-            
+            $this->db->where('id', $this->session->user_id)->update('usuarios', ['token' => null, 'validade_token' => null, 'verifica_email' => "2"]);
+            redirect("{$this->route}validado");
         } else {
 
             var_dump("Token expirado! Solicite um novo para verificar seu e-mail.");
@@ -582,6 +581,9 @@ class Login extends CI_Controller
                                         'routes' => $this->grupo_usuario_rota->get_routes_fornecedor($fornecedor['id'], $usuario_fornecedor['tipo']),
                                         'compra_distribuidor' => $fornecedor['compra_distribuidor'],
                                         'grupo' => $usuario_fornecedor['tipo'],
+                                        "nickname" => $consulta['nickname'],
+                                        "avatar" => $consulta['avatar'],
+                                        "verifica" => $consulta['verifica_email'],
                                         'credencial_bionexo' => $fornecedor['credencial_bionexo']
                                     ];
 
