@@ -6,7 +6,7 @@
                 <?php $avatar = $this->session->avatar ?>
                 <?php $url = IMG_PATH.'avatar/'.$avatar.'.png' ?>
                 <?php  $logo = (empty($this->session->foto) || is_null($this->session->foto)) ? base_url('images/usuarios/no-user.png') : $avatar; ?>
-                
+
                 <img class="user__img" src="<?php echo $url ?>" alt="avatar">
                 <div>
                     <div class="user__name"><?php echo $this->session->nickname ?></div>

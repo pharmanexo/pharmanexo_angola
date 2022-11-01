@@ -59,6 +59,7 @@ class M_login extends CI_Model
                         $this->db->from('usuarios_fornecedores uf');
                         $this->db->join('fornecedores f', 'f.id = uf.id_fornecedor', 'INNER');
                         $this->db->where('uf.id_usuario', $q['id']);
+                        $this->db->order_by('f.nome_fantasia ASC');
                         $q['empresas'] = $this->db->get()->result_array();
                     }
 

@@ -45,7 +45,8 @@
                  style="background-image: linear-gradient(#c1a44c, #ffc721);border-radius: 15px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
 
                 <div class="quick-stats__info">
-                    <h3 style="color: white">R$<?php if (isset($indicadores['valorTotalOfertado'])) echo $indicadores['valorTotalOfertado']; ?></h3>
+                    <h3 style="color: white">
+                        R$<?php if (isset($indicadores['valorTotalOfertado'])) echo $indicadores['valorTotalOfertado']; ?></h3>
                     <small class="text-white">Valor Total Ofertado</small>
                 </div>
 
@@ -61,7 +62,8 @@
                  style="background-image: linear-gradient(#c44543, #ff6b69);border-radius: 15px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
 
                 <div class="quick-stats__info">
-                    <h3 style="color: white">R$<?php if (isset($indicadores['totalOc'])) echo $indicadores['totalOc']; ?></h3>
+                    <h3 style="color: white">
+                        R$<?php if (isset($indicadores['totalOc'])) echo $indicadores['totalOc']; ?></h3>
                     <small class="text-white">Total Convertido</small>
                 </div>
 
@@ -123,7 +125,9 @@
                         </div>
                         <br>
                         <p class="small">Clique sobre o estado para listar as cotações.
-                            <br> Podem haver diferenças entre o número de cotações mostradas no portal síntese x pharmanexo, pois não exibimos cotações com contrato específico de fornecimento e nem cotações de OPMEs
+                            <br> Podem haver diferenças entre o número de cotações mostradas no portal síntese x
+                            pharmanexo, pois não exibimos cotações com contrato específico de fornecimento e nem
+                            cotações de OPMEs
                         </p>
                     </div>
                 </div>
@@ -133,9 +137,11 @@
                 <div class="card" style="height: 550px;border-radius: 15px;!Important">
                     <div class="card-header bg-secondary text-center"
                          style="background-image: linear-gradient(#757779,#868e96);border-radius: 15px 15px 0px 0px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
-                        <h5 class="text-white font-weight-bold mt-1">PRODUTOS A VENCER</h5>
+                        <h5 class="text-white font-weight-bold mt-1">PRODUTOS A VENCER </span>
+                        </h5>
                     </div>
                     <div class="card-body">
+                        <span id="loadingChart">
                         <div id="chartColumn"></div>
                         <br>
                         <p class="small">Clique sobre o gráfico para listar os produtos de cada categoria.</p>
@@ -148,7 +154,7 @@
     </div>
 
 
-    <?php /*if (isset($_SESSION['compra_distribuidor']) && $_SESSION['compra_distribuidor'] == '1') { */?><!--
+    <?php /*if (isset($_SESSION['compra_distribuidor']) && $_SESSION['compra_distribuidor'] == '1') { */ ?><!--
         <div class="row mb-5">
             <div class="col-12 text-center">
                 <a href="fornecedor/b2b/ofertas"
@@ -157,7 +163,7 @@
                     <br><small>DISTRIBUIDOR x DISTRIBUIDOR</small></a>
             </div>
         </div>
-    --><?php /*} */?>
+    --><?php /*} */ ?>
 </div>
 
 <?php echo $scripts; ?>
@@ -289,6 +295,8 @@
                         }
 
                         setTimeout(function (e) {
+                            $('#loadingChart').html('<i class="fa fa-spin fa-spinner"></i> Carregando produtos...');
+
                             window.location.href = new_url;
                         }, 2000);
                     }
