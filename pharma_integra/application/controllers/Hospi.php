@@ -214,7 +214,7 @@ class Hospi extends MY_Controller
 
             $text = "Integração não realizada. O último XML_ID processado: {$this->xmlId} <br><small>Data do Processamento: {$date}</small>";
 
-            $template = file_get_contents('https://pharmanexo.com.br/pharmanexo_v2/public/html/template_mail/mail_simple.html');
+            $template = file_get_contents('https://pharmanexo.com.br/public/html/template_mail/mail_simple.html');
 
             $body = str_replace(["%user%", "%body%"], ["Elismar Lobão", $text], $template);
 

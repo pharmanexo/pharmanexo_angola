@@ -21,7 +21,7 @@
 <div id="preloader"></div>
 <div class="box-cookies1 hide text-white text-center">
     <p class="msg-cookies">Nós e os terceiros selecionados usamos cookies ou tecnologias similares para finalidades técnicas e, com seu consentimento,
-        para outras finalidades, conforme especificado na <a style="color: red;" href="<?php echo ASSETS_PATH ?>/Politica_de_Privacidade.pdf" target="_blank">política de cookies</a>. 
+        para outras finalidades, conforme especificado na <a style="color: red;" href="<?php echo base_url('home/politica_cookies') ?>" target="_blank">política de cookies</a>. 
         Negá-los poderá tornar os recursos relacionados indisponíveis.
         <br>Use o botão “Aceitar” para consentir com o uso de tais tecnologias ou clique em “Recusar” para continuar sem aceitar.
     </p>

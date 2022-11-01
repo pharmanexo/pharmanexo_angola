@@ -14,7 +14,7 @@ if (isset($header)) echo $header;
              style="background:url(<?php echo base_url('images/medicamentos.jpg'); ?>); background-repeat: no-repeat; background-size: cover;">
             <div class="row my-3">
                 <div class="col">
-                    <a href="/pharmanexo_v2"><img style="width: 80%" class="d-block"
+                    <a href="/"><img style="width: 80%" class="d-block"
                                                   src="<?php echo base_url('images/img/BRPharma_branco.png'); ?>"></a>
                 </div>
                 <div class="col text-right">
@@ -40,7 +40,7 @@ if (isset($header)) echo $header;
                 <div class="text-center w-100 position-absolute" style="bottom: 0">
                     <p class="text-white text-center">Uma parceria: <br></p>
                     <p class="text-white text-center">
-                        <a class="text-center" href="/pharmanexo_v2"> <img style="width: 20%"
+                        <a class="text-center" href="/"> <img style="width: 20%"
                                                                            src="<?php echo base_url('images/img/logo-branca.png'); ?>"></a>
                     </p>
                 </div>
@@ -251,7 +251,7 @@ if (isset($header)) echo $header;
                                 window.location = '<?php echo base_url('representantes/login/selecionar_empresa'); ?>'
                             } else {
                                 Pace.start();
-                                window.location = '/pharmanexo_v2/pharma/dashboard'
+                                window.location = '/pharma/dashboard'
 
                             }
                         } else {

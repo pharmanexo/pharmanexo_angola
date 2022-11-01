@@ -7,7 +7,7 @@ if (isset($header)) echo $header;
 
 ?>
 
-<body class="bg-light" style="">
+<body class="bg-light">
     <div class="supreme-container">
         <div class="container-fluid" id="frameLogin">
             <div class="row" style="height: 100vh">

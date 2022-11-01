@@ -341,7 +341,7 @@ class TemplateCC
     public function navbar($data = [])
     {
         $default = [
-            'logo' => 'https://www.pharmanexo.com.br/pharmanexo_v2/images/img/logo-white.png'
+            'logo' => 'https://www.pharmanexo.com.br/images/img/logo-white.png'
         ];
 
         $data = array_merge($data, $default);

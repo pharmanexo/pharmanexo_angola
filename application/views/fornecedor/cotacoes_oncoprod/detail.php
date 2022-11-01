@@ -674,7 +674,7 @@
             var target = $('#tableLotes tbody');
             target.html('');
 
-            $.get(`https://pharmanexo.com.br/pharmanexo_v2/fornecedor/cotacoes_oncoprod/getValidades/` + cod, {}, function (xhr) {
+            $.get(`https://pharmanexo.com.br/fornecedor/cotacoes_oncoprod/getValidades/` + cod, {}, function (xhr) {
 
                 $.each(xhr, function (index, value) {
                     var line = `<tr> 
