@@ -8,7 +8,7 @@
     <div class="card">
         <div class="card-body">
             <p class="text-center">
-                <img src="https://pharmanexo.com.br/pharmanexo_v2/public/manutencao.png" class="img-fluid" alt="">
+                <img src="https://pharmanexo.com.br/public/manutencao.png" class="img-fluid" alt="">
                 <br>
                 <br>
                 Módulo em manutenção!

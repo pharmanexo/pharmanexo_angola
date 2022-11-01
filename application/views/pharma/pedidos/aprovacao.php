@@ -302,7 +302,7 @@
                             $(this).prop('readonly', true);
                         });
 
-                        window.location = "https://pharmanexo.com.br/pharmanexo_v2/pharma/pedidos/open/" + xhr.id_pedido;
+                        window.location = "https://pharmanexo.com.br/pharma/pedidos/open/" + xhr.id_pedido;
 
                     } else {
 

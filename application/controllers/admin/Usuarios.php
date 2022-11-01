@@ -8,6 +8,7 @@ class Usuarios extends Admin_controller
     {
         parent::__construct();
         $this->route = base_url('admin/usuarios');
+        $this->routelogin = base_url('login/');
         $this->views = "admin/usuarios/";
         $this->load->model('m_usuarios', 'usuario');
         $this->load->model('m_fornecedor', 'fornecedor');
@@ -192,7 +193,7 @@ class Usuarios extends Admin_controller
                                         <strong>Login:</strong> {$post['email']} <br> 
                                         <strong>Senha: </strong> {$password}<br><br>
                                         
-                                        <a href='https://pharmanexo.com.br/pharmanexo_v2' style='padding: 15px; border-radius: 5px; text-decoration: none; background-color: #d2d2d2; color: #204a8f'>ACESSE O PORTAL PHARMANEXO</a>
+                                        <a href='https://pharmanexo.com.br/' style='padding: 15px; border-radius: 5px; text-decoration: none; background-color: #d2d2d2; color: #204a8f'>ACESSE O PORTAL PHARMANEXO</a>
                                         </p> 
                                         <br> 
                                         <br> 
@@ -632,6 +633,7 @@ class Usuarios extends Admin_controller
         $page_title = "Editar Usuário";
         $data['usuario'] = $usuario;
         $data['form_action'] = "{$this->route}/atualizar_perfil";
+        $data['frm_actionverifica'] = "{$this->routelogin}verifica_email";
         $data['header'] = $this->template->header([ 'title' => $page_title ]);
         $data['navbar']  = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();

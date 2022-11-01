@@ -1,6 +1,6 @@
 $(function () {
 
-    $.get('https://www.pharmanexo.com.br/pharmanexo_v2/notifications/getNotifications', function (response) {
+    $.get('https://www.pharmanexo.com.br/notifications/getNotifications', function (response) {
         
         if (response !== "NULL"){
             $("#btnNotfifications").addClass("top-nav__notify");
@@ -27,7 +27,7 @@ $(function () {
     })
 
     $('[data-ma-action="notifications-clear"]').click(function () {
-        $.get('https://www.pharmanexo.com.br/pharmanexo_v2/notifications/removeAll', function (response) {
+        $.get('https://www.pharmanexo.com.br/notifications/removeAll', function (response) {
 
             if(response.type == 'success'){
                 $('#containerNotifications').html('');

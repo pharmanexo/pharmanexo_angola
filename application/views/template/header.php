@@ -33,16 +33,20 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <style type="text/css">
+
         .avatar {
             border: 2px solid white;
             cursor: pointer;
         }
+
         .selecao {
             border: 3px solid #ed3237;
         }
+
         .card {
             border-radius: 30px;
         }
+
         .nencontrado {
             background-color: #ffaeae !important;
         }
@@ -99,7 +103,7 @@
             font-size: 30px;
             font-weight: bold;
             padding-left: 15px;
-            color:#27298a;
+            color: #27298a;
         }
 
         .btn1:hover {

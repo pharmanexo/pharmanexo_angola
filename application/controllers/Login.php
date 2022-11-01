@@ -44,6 +44,72 @@ class Login extends CI_Controller
      *
      * @return json
      */
+    public function verificar_email()
+    {
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+            $usuario = $this->db->where('email', $post['email'])->get('usuarios')->row_array();
+
+            // Verifica se o email existe
+            if (!empty($usuario)) {
+                // Obtem o caminho do arquivo de email
+                $path = "public/html/template_mail/verificar_email.html";
+
+                // Recupera o arquivo
+                $template = file_get_contents($path);
+
+                // Obtem o primeiro nome do usuário
+                $nome = explode(' ', $usuario['nome'])[0];
+
+                $token = password_hash(time(), PASSWORD_DEFAULT);
+
+                // url para a função nova_senha_email()
+                $url = "{$this->route}/validation_email?email={$post['email']}&token={$token}";
+
+                // Altera os coringas do arquivo
+                $body = str_replace(['%usuario%', '%url_verificar%'], [$nome, $url], $template);
+
+                $data = [
+                    'token' => $token,
+                    'validade_token' => date('Y-m-d H:i', strtotime('+1 Hours'))
+                ];
+
+                // Atualiza o usuario
+                $this->db->where('id', $usuario['id'])->update('usuarios', $data);
+
+                # Envia email para com a nova senha
+                $notify = [
+                    "to" => $post['email'],
+                    "cco" => '',
+                    "greeting" => $usuario['nome'],
+                    "subject" => "Portal Pharmanexo - Verificação de E-mail",
+                    "message" => $body
+                ];
+                $send = $this->notify->send($notify);
+
+                // Enviar email
+                if ($send) {
+
+                    $output = ['type' => 'success', 'message' => 'Pronto! Verifique o e-mail informado para concluir a recuperação.'];
+                } else {
+
+                    $output = ['type' => 'error', 'message' => 'Erro ao enviar e-mail!'];
+                }
+            } else {
+
+                $output = ['type' => 'error', 'message' => 'E-mail não encontrado no sistema.'];
+            }
+
+            $this->output->set_content_type('application/json')->set_output(json_encode($output));
+        }
+    }
+
+    /**
+     *  Função que verifica email informado para recuperar a senha
+     *
+     * @return json
+     */
     public function recuperar_senha()
     {
         if ($this->input->method() == 'post') {
@@ -229,6 +295,44 @@ class Login extends CI_Controller
             }
         }
         $this->output->set_content_type('application/json')->set_output(json_encode($result));
+    }
+
+    /**
+     *  Função para validar token liberando acesso
+     *
+     * @return view
+     */
+    public function validation_email()
+    {
+        $get = $this->input->get();
+
+        $usuario = $this->db->where('email', $get['email'])->get('usuarios')->row_array();
+
+        if (strtotime(date('Y-m-d H:i:s')) <= strtotime($usuario['validade_token'])) {
+            $this->session->set_userdata(['user_id' => $usuario['id']]);
+
+                $this->db->where('id', $this->session->user_id)->update('usuarios', ['token' => null, 'validade_token' => null, 'verifica_email' => "2"]);
+                redirect("{$this->route}validado");
+            
+        } else {
+
+            var_dump("Token expirado! Solicite um novo para verificar seu e-mail.");
+            exit();
+        }
+    }
+
+    public function validado()
+    {
+        $this->auditor->setlog("Logout", 'login', null);
+        # $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$this->session->id_usuario}");
+        $this->session->sess_destroy();
+        $this->session->set_userdata("logado", "0");
+        $this->session->set_userdata("mc", "0"); //menu controle
+
+        $data['header'] = $this->template->header(['title' => 'Alterar Senha']);
+        $data['scripts'] = $this->template->scripts();
+
+        $this->load->view('validado', $data);
     }
 
     /**
@@ -423,6 +527,7 @@ class Login extends CI_Controller
                                 "foto" => $consulta['foto'],
                                 "nickname" => $consulta['nickname'],
                                 "avatar" => $consulta['avatar'],
+                                "verifica" => $consulta['verifica_email'],
                                 "routes" => $this->rota->rotasAdmin($consulta['nivel']),
                             ];
                             if ($userdata['primeiro'] == '1') {
@@ -447,6 +552,7 @@ class Login extends CI_Controller
                                     "foto" => $consulta['foto'],
                                     "nickname" => $consulta['nickname'],
                                     "avatar" => $consulta['avatar'],
+                                    "verifica" => $consulta['verifica_email'],
                                     "usuario_sintese" => $consulta['usuario_sintese'],
                                 ];
 
@@ -785,8 +891,6 @@ class Login extends CI_Controller
 
 
         $this->auditor->setlog("Logout", 'login', null);
-
-
         # $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$this->session->id_usuario}");
         $this->session->sess_destroy();
         $this->session->set_userdata("logado", "0");

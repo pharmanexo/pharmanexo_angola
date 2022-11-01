@@ -13,7 +13,7 @@ if (isset($header)) echo $header;
         <div class="col-12 col-lg-6" style="background:url(<?php echo base_url('images/bg-login.jpg'); ?>); background-repeat: no-repeat; background-size: cover;">
             <div class="row my-3">
                 <div class="col">
-                    <a href="/pharmanexo_v2"><img class="d-block" src="<?php echo base_url('images/img/logo-white.png'); ?>"></a>
+                    <a href="/"><img class="d-block" src="<?php echo base_url('images/img/logo-white.png'); ?>"></a>
                 </div>
                 <div class="col text-right">
                     <div id="social" class="d-none d-sm-block" style="color: #fff">

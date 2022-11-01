@@ -49,6 +49,7 @@ class Dashboard extends MY_Controller
         $tipo = $this->session->userdata('tipo_usuario');
         $grupo = ($this->session->has_userdata('grupo')) ? $this->session->grupo : '';
         $data['scripts'] = $this->template->scripts();
+        $data['frm_actionverifica'] = "{$this->routelogin}verifica_email";
 
         if ($this->session->userdata('primeiro') == '1') {
             $this->primeiro_login();
