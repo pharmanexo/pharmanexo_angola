@@ -7,7 +7,7 @@ if (isset($header)) echo $header;
 
 ?>
 
-<body class="bg-light" style="">
+<body class="bg-light" >
     <div class="container-fluid" id="frameLogin">
         <div class="row" style="height: 100vh">
             <div class="col-12 col-lg-6" style="background:url(<?php echo base_url('images/img/bglogin.jpg'); ?>); background-repeat: no-repeat; background-size: cover;">

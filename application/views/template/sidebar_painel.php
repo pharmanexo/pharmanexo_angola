@@ -4,15 +4,9 @@
             <div class="user__info" data-toggle="dropdown">
 
                 <?php $avatar = $this->session->avatar ?>
-<<<<<<< HEAD
-                <?php $url = IMG_PATH . 'avatar/' . $avatar . '.png' ?>
-                <?php $logo = (empty($this->session->foto) || is_null($this->session->foto)) ? base_url('images/usuarios/no-user.png') : $url_logo; ?>
-
-=======
                 <?php $url = IMG_PATH.'avatar/'.$avatar.'.png' ?>
                 <?php  $logo = (empty($this->session->foto) || is_null($this->session->foto)) ? base_url('images/usuarios/no-user.png') : $avatar; ?>
                 
->>>>>>> e6d4e64cf3168b74030821888ac30c08d7df6d4c
                 <img class="user__img" src="<?php echo $url ?>" alt="avatar">
                 <?php if ($this->session->verifica != "1") { ?>
                     <i style="font-size:12px;color: green;position: relative;top: 10px;left:-10px" class="fa fa-lock"></i>
