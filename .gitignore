@@ -22,3 +22,4 @@ application/logs/*
 /.env
 /application/config/config.php
 /application/cache/database.php
+/public
