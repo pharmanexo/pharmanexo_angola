@@ -43,6 +43,17 @@ class Home extends CI_Controller
 
     }
 
+    public function politica_cookies()
+    {
+        $data['header'] = $this->template->homeheader([]);
+        $data['navbar'] = $this->template->homenavbar([]);
+        $data['banner'] = $this->template->homebanner([]);
+        $data['scripts'] = $this->template->homescripts([]);
+        $data['footer'] = $this->template->homefooter([]);
+        
+        $this->load->view('politicaCookies', $data, FALSE);
+    }
+
     private function views($qtd)
     {
         if ($qtd < 1000) {

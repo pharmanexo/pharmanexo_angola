@@ -735,7 +735,7 @@ function dadosCnpj(cnpj) {
     if (cnpj != '') {
         cnpj = cnpj.replace(".", "").replace(".", "").replace("/", "").replace("-", "");
 
-        var url = 'https://pharmanexo.com.br/pharmanexo_v2/API/ConsultaCNPJ/get/' + cnpj;
+        var url = 'https://pharmanexo.com.br/API/ConsultaCNPJ/get/' + cnpj;
 
         $.get(url, function (data) {
 

@@ -95,7 +95,7 @@
                                                 INTEGRANDO E AUTOMATIZANDO A RESPOSTA DE COTAÇÕES DA<br> INDÚSTRIA E DISTRIBUIDORES CONVIDADOS
                                             </p>
                                             <div class="btn-box">
-                                                <a href="/login" class="btn1">
+                                                <a href="<?php echo base_url('login') ?>" class="btn1">
                                                     ENTRAR
                                                 </a>
                                             </div>

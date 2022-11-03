@@ -279,7 +279,7 @@
         });
 
         $('#cnpj').blur(function (v) {
-            $.post('https://pharmanexo.com.br/pharmanexo_v2/fornecedor/clientes/checkCnpj', {cnpj: $(this).val()}, function (v){
+            $.post('https://pharmanexo.com.br/fornecedor/clientes/checkCnpj', {cnpj: $(this).val()}, function (v){
 
             }, 'JSON')
         })

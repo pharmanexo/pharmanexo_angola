@@ -519,7 +519,7 @@
                 if (result.isConfirmed) {
                     $.get(url, function (xhr){
                         if (xhr.type == 'success'){
-                            window.location = "https://pharmanexo.com.br/pharmanexo_v2/fornecedor/clientes/atualizar/" + xhr.id
+                            window.location = "https://pharmanexo.com.br/fornecedor/clientes/atualizar/" + xhr.id
                         }
                     }, 'JSON')
                 }
@@ -528,7 +528,7 @@
         });
 
         $('#cnpj').blur(function (v) {
-            $.post('https://pharmanexo.com.br/pharmanexo_v2/fornecedor/clientes/checkCnpj', {cnpj: $(this).val()}, function (v) {
+            $.post('https://pharmanexo.com.br/fornecedor/clientes/checkCnpj', {cnpj: $(this).val()}, function (v) {
                 if (v.encontrado == true) {
 
                     Swal.fire({
@@ -542,7 +542,7 @@
                         cancelButtonText: 'Não'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            window.location = "https://pharmanexo.com.br/pharmanexo_v2/fornecedor/clientes/atualizar/" + v.id
+                            window.location = "https://pharmanexo.com.br/fornecedor/clientes/atualizar/" + v.id
                         }
                     })
 
