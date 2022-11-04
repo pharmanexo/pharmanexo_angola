@@ -110,6 +110,23 @@ class Login extends CI_Controller
      *
      * @return json
      */
+    public function renovar_sessao()
+    {
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+
+            $this->db->where('id',$post['id'])->update('ci_sessions', ['ip_address' => time(), 'timestamp' => time() ]);
+            $output = ['type' => 'success', 'message' => 'Sessão atualizada!', 'action' => 'dashboard'];
+            $this->output->set_content_type('application/json')->set_output(json_encode($output));
+        }
+    }
+
+    /**
+     *  Função que verifica email informado para recuperar a senha
+     *
+     * @return json
+     */
     public function recuperar_senha()
     {
         if ($this->input->method() == 'post') {
@@ -510,7 +527,7 @@ class Login extends CI_Controller
 
                         /* atualiza usuario logado */
                         # $this->db->query("UPDATE usuarios set logado = 1 WHERE id = {$consulta['id']}");
-
+                        $id_sessao = session_id();
                         if (isset($consulta['administrador']) && $consulta['administrador'] == 1) {
                             $userdata = [
                                 'logado' => '1',
@@ -528,6 +545,7 @@ class Login extends CI_Controller
                                 "avatar" => $consulta['avatar'],
                                 "verifica" => $consulta['verifica_email'],
                                 "routes" => $this->rota->rotasAdmin($consulta['nivel']),
+                                "id_sessao" => $id_sessao,
                             ];
                             if ($userdata['primeiro'] == '1') {
                                 $warning = ['type' => 'success', 'action' => 'dashboard/primeiro'];

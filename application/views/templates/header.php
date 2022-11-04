@@ -49,8 +49,9 @@
 
         .box-cookies1 {
             position: fixed;
-            background: #27298A;
+            background: #fff;
             width: 100%;
+            height: 15%;
             z-index: 998;
             bottom: 0;
             display: flex;
@@ -62,7 +63,7 @@
         .box-cookies1 .btn-cookies1 {
             text-align: center;
             padding: 30px;
-            color: #ed3237;
+            color: #fff;
             font-size: 25px;
         }
 
@@ -71,24 +72,26 @@
         }
 
         .btn-cookies1 {
-            background: #fff;
+            background: #0274cd;
             cursor: pointer;
             align-self: normal;
             border: none;
+            border-radius: 100px;
         }
 
         .btn-cookies {
             text-align: center;
             padding: 30px;
-            color: #ed3237;
+            color: #fff;
             font-size: 25px;
         }
 
         .btn-cookies {
-            background: #fff;
+            background: #0274cd;
             cursor: pointer;
-            align-self: normal;
+            align-self: center;
             border: none;
+            border-radius: 100px;
         }
 
         @media screen and (max-width: 600px) {

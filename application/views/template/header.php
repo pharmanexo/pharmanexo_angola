@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <style type="text/css">
-
         .avatar {
             border: 2px solid white;
             cursor: pointer;
@@ -235,6 +234,9 @@
             formWarning(JSON.parse('<?php echo $warning; ?>'));
         </script>
     <?php } ?>
+    <script>
+
+    </script>
 
     <link rel="stylesheet" href="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/themes/blue/pace-theme-corner-indicator.css' ?>">
 </head>

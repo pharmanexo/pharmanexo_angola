@@ -96,7 +96,6 @@ class Dashboard extends MY_Controller
         }
     }
 
-
     /**
      *  Função que verifica se é o primeiro login para atualização
      *
@@ -401,10 +400,9 @@ class Dashboard extends MY_Controller
             $date1 = date_create(date("Y-m-d H:i:s", time()));
             $interval = date_diff($fileDate, $date1);
 
-            if ($interval->days > 0){
+            if ($interval->days > 0) {
                 unlink($file);
             }
-
         } else {
             $post = $this->input->post();
 
