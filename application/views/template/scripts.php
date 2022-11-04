@@ -50,37 +50,96 @@ if (isset($scripts))
     </script>
 <?php } ?>
 <script>
-    window.fwSettings={
-        'widget_id':73000002652
+    window.fwSettings = {
+        'widget_id': 73000002652
     };
-    !function(){if("function"!=typeof window.FreshworksWidget){var n=function(){n.q.push(arguments)};n.q=[],window.FreshworksWidget=n}}()
+    ! function() {
+        if ("function" != typeof window.FreshworksWidget) {
+            var n = function() {
+                n.q.push(arguments)
+            };
+            n.q = [], window.FreshworksWidget = n
+        }
+    }()
 </script>
 <script type='text/javascript' src='https://widget.freshworks.com/widgets/73000002652.js' async defer></script>
 <script src="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/pace.min.js' ?>"></script>
 <script>
+    $(function() {
+
+        <?php if (isset($this->session->id_sessao)) :
+            $tempo = $this->db->select("timestamp")->from('ci_sessions')->where("id= '{$this->session->id_sessao}'")->get()->row_array();
+        ?>
+            var verificaSessao = setInterval(tempo_sessao, 1000);
+            var alertar = 'true';
+            var tempoSessao = "<?php echo date('H:i:s', $tempo['timestamp'] + 300) ?>";
+            var tempoAlerta = "<?php echo date('H:i:s', $tempo['timestamp'] + 150) ?>";
+            var id = "<?php echo $this->session->id_sessao ?>";
+            var tempo = "<?php echo $tempo['timestamp'] ?>";
+
+            function tempo_sessao() {
+                var timeOut = new Date();
+                var hora = timeOut.toLocaleTimeString();
+                $("#tempo_sessao").html(hora);
+                if (tempoAlerta <= hora && alertar == 'true') {
+                    $('#modalAlerta').modal({
+                        backdrop: false
+                    })
+                    alertar = 'false'
+                }
+                if (tempoSessao <= hora) {
+                    $('#modalAlerta').modal('hide');
+                    $('#modalTimeOut').modal({
+                        backdrop: false
+                    })
+                }
+            };
+
+            $('#renovarSessao').click(function(e) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>/login/renovar_sessao",
+                    data: {
+                        id: id,
+                        timestamp: tempo
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        if (response.type === 'success') {
+                            formWarning(response);
+                            window.location.replace('dashboard');
+                        } else {
+                            formWarning(response)
+                        }
+                    }
+                });
+
+            });
+
+        <?php endif; ?>
 
 
-    $(function () {
-
-        <?php if( isset($this->session->id_fornecedor) ): ?>
+        <?php if (isset($this->session->id_fornecedor)) : ?>
             var urlCorreio = "<?php echo base_url('global/comunicacao/checkAllMessages'); ?>";
 
             getMessagesUnread(urlCorreio);
-            setInterval(function () { getMessagesUnread(urlCorreio); }, 200000)
+            setInterval(function() {
+                getMessagesUnread(urlCorreio);
+            }, 200000)
         <?php endif; ?>
 
-        $('#btnGetCotacao').click(function (e) {
+        $('#btnGetCotacao').click(function(e) {
             e.preventDefault();
             var int = $('#s_integrador').val();
 
-            <?php if (isset($this->session->id_fornecedor)){ ?>
-                <?php if( in_array($this->session->id_fornecedor, explode(',', ONCOPROD)) ) { ?>
+            <?php if (isset($this->session->id_fornecedor)) { ?>
+                <?php if (in_array($this->session->id_fornecedor, explode(',', ONCOPROD))) { ?>
 
-                    var url = "<?php echo base_url('fornecedor/cotacoes_oncoprod/detalhes/'); ?>"+ int + '/';
-                    <?php } elseif( in_array($this->session->id_fornecedor, explode(',', ONCOEXO)) ) { ?>
+                    var url = "<?php echo base_url('fornecedor/cotacoes_oncoprod/detalhes/'); ?>" + int + '/';
+                <?php } elseif (in_array($this->session->id_fornecedor, explode(',', ONCOEXO))) { ?>
 
                     var url = "<?php echo base_url('fornecedor/cotacoes_oncoexo/detalhes/'); ?>" + int + '/';
-                    <?php } else { ?>
+                <?php } else { ?>
 
                     var url = "<?php echo base_url('fornecedor/cotacoes/detalhes/'); ?>" + int + '/';
                 <?php } ?>
@@ -92,10 +151,13 @@ if (isset($scripts))
 
 
 
-            if (cot.length > 4 && int.length > 0){
+            if (cot.length > 4 && int.length > 0) {
                 window.location.replace(url + cot);
-            } else{
-                formWarning({type:'warning', 'message': 'Informe o número da cotação e selecione o integrador'});
+            } else {
+                formWarning({
+                    type: 'warning',
+                    'message': 'Informe o número da cotação e selecione o integrador'
+                });
             }
         });
 
@@ -124,8 +186,7 @@ if (isset($scripts))
     });
 
 
-    $(document).ajaxStart(function () {
+    $(document).ajaxStart(function() {
         Pace.restart();
     });
 </script>
-
