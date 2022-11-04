@@ -13,7 +13,7 @@ class GeralAnalitico extends CI_Controller
     {
         parent::__construct();
 
-        $this->route = base_url('fornecedor/relatorios/geralanalitico');
+        $this->route = base_url('fornecedor/relatorios/GeralAnalitico');
         $this->views = 'fornecedor/relatorios/geral_analitico';
 
         $this->load->model('m_fornecedor', 'fornecedor');
