@@ -13,7 +13,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="">Período</label>
                                 <div class="input-group mb-3">
@@ -32,47 +32,14 @@
                         </div>
 
                         <div class="col-3">
-                            <div class="form-group">
-                                <label for="">Cliente</label>
-                                <input type="hidden" id="id_clientes" name="id_clientes">
-                                <select id="clientes" data-live-search="true" multiple
-                                        title="Selecione" class="form-control">
-                                    <option value="">Selecione...</option>
-                                    <?php foreach ($clientes as $cliente) { ?>
-                                        <option value="<?php echo $cliente['id']; ?>"><?php echo $cliente['cnpj'] . " - " . $cliente['nome_fantasia']; ?></option>
-                                    <?php } ?>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label for="">Estado</label>
-                                <input type="hidden" id="estados" name="estados">
-                                <select id="uf" multiple="multiple" title="Selecione" data-live-search="true"
-                                        class="form-control">
-                                    <?php foreach ($estados as $uf): ?>
-                                        <option <?php if (isset($uf['selected']) && $uf['selected'] == true) echo 'selected'; ?>
-                                                value="<?php echo $uf['uf']; ?>"><?php echo $uf['descricao']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-
-
-                        <div class="col-3">
                             <div class="form-group text-center">
-                                <label for="">Ações</label><br>
+                                <label for=""></label><br>
                                 <button type="submit" form="filters" id="btnBuscar"
-                                        class="btn pull-right mt-2 btn-primary"><i
-                                            class="fas fa-search"></i></button>
-                                <button type="button" form="filters" id="btnExcel"
-                                        class="btn pull-right mt-2 btn-secondary"><i
-                                            class="fas fa-file-excel"></i></button>
+                                        class="btn pull-right mt-2 btn-primary">Solicitar</button>
                             </div>
                         </div>
                     </div>
+                    <p id="msg"></p>
                 </div>
             </div>
 
@@ -109,42 +76,20 @@
         });
 
         $('#btnBuscar, #btnExcel').click(function () {
-            $('#message').removeClass('d-none').html("<i class='fa fa-spin fa-spinner'></i> Carregando informações ...");
+            $('#message').removeClass('d-none').html("<strong><i class='fa fa-spin fa-spinner'></i> Carregando informações ...</strong>");
         });
-
-
-        $('#btnExcel').click(function (e) {
-            e.preventDefault();
-            $('#filters').prop('action', '<?php if (isset($url_export)) echo $url_export?>');
-
-            if ($("#uf").val() != null) {
-                $('#estados').val($("#uf").val().toString());
-            }
-
-            if ($("#clientes").val() != null) {
-                $('#id_clientes').val($("#clientes").val().toString());
-            }
-
-            $('#filters').submit();
-        });
-
 
 
         $('#btnBuscar').click(function (e) {
             e.preventDefault();
-            $('#filters').prop('action', '<?php if (isset($dataTable)) echo $dataTable?>');
+            var action = '<?php if (isset($dataTable)) echo $dataTable?>';
+            $('#msg').html("<i class='fa fa-spin fa-spinner'></i> Enviando solicitação... ")
 
-            if ($("#uf").val() != null) {
-                $('#estados').val($("#uf").val().toString());
-            }
-
-            if ($("#clientes").val() != null) {
-                $('#id_clientes').val($("#clientes").val().toString());
-            }
-
-            $('#filters').submit();
-
-
+            $.post(action, $('#filters').serialize(), function (xhr){
+                if (xhr.type == 'success'){
+                    $('#msg').html("<strong>Relatório solicitado com sucesso!</strong> <br> Como o processamento desse relatório é um pouco mais demorado devido ao grande fluxo de dados consultados, enviaremos o resutlado para seu e-mail cadastrado, assim que concluirmos.")
+                }
+            }, 'JSON');
         });
 
         $('#uf').change(function () {
