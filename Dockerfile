@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y git curl libpng-dev libonig-dev libxml2
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
+RUN docker-php-ext-install soap && docker-php-ext-enable soap
 
 # Create System USER to run commands
 RUN useradd -G www-data,root -u $uid -d /home/$user $user
