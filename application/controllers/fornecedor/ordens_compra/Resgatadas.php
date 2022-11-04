@@ -225,7 +225,7 @@ class Resgatadas extends MY_Controller
 
             if (empty($row['codigo'])) {
 
-                $this->db->select("id_pfv AS codigo");
+                $this->db->select("id_pfv AS codigo, obs_produto");
                 $this->db->where('cd_cotacao', $oc['Cd_Cotacao']);
                 $this->db->where('id_fornecedor', $oc['id_fornecedor']);
                 $this->db->group_start();
@@ -249,7 +249,29 @@ class Resgatadas extends MY_Controller
                     $this->db->update('ocs_sintese_produtos', ['codigo' => $item['codigo']]);
 
                     $oc['produtos'][$kk]['codigo'] = $item['codigo'];
+
+                    $oc['produtos'][$kk]['obs_cot_produto'] = $item['obs_produto'];
                 }
+            }else{
+
+                $this->db->select("id_pfv AS codigo, obs_produto");
+                $this->db->where('cd_cotacao', $oc['Cd_Cotacao']);
+                $this->db->where('id_fornecedor', $oc['id_fornecedor']);
+                $this->db->group_start();
+                $this->db->where("cd_produto_comprador = '{$row['Cd_Produto_Comprador']}' ");
+                $this->db->where('id_produto', $row['Id_Produto_Sintese']);
+                $this->db->where('id_pfv', $row['codigo']);
+                $this->db->or_group_start();
+                $this->db->where('id_produto', $row['Id_Produto_Sintese']);
+                $this->db->group_end();
+                $this->db->group_end();
+
+                $item = $this->db->get('cotacoes_produtos')->row_array();
+
+                if (isset($item) && !empty($item)) {
+                    $oc['produtos'][$kk]['obs_cot_produto'] = $item['obs_produto'];
+                }
+
             }
 
             if (!empty($oc['produtos'][$kk]['codigo'])) {

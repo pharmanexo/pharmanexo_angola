@@ -120,7 +120,84 @@
             <div class="card-header">
                 <p class="card-title">Produtos</p>
             </div>
-            <div class="card-body">
+        </div>
+        <?php if (isset($oc['produtos'])) { ?>
+            <?php foreach ($oc['produtos'] as $kk => $produto) { ?>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+
+                                <p><strong>Código</strong> <br> <?php echo $produto['codigo']; ?></p>
+
+                            </div>
+                            <div class="col-4">
+                                <p><strong>Produto Comprador</strong>
+                                    <br> <?php echo $produto['Ds_Produto_Comprador']; ?></p>
+                            </div>
+                            <div class="col-4">
+                                <p><strong>Produto Catálogo</strong> <br> <?php echo $produto['produto_catalogo']; ?>
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <p><strong>Marca</strong> <br> <?php echo $produto['Ds_Marca']; ?></p>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p><strong>Obs Produto Cotação</strong>
+                                    <br> <?php if (isset($produto['obs_cot_produto'])) echo $produto['obs_cot_produto']; ?></p>
+                            </div>
+                            <div class="col-2">
+
+                                <p><strong>Und Compra</strong> <br> <?php echo $produto['Ds_Unidade_Compra']; ?></p>
+
+                            </div>
+                            <div class="col-2">
+
+                                <p><strong>Qtd. Embalagem: </strong><?php echo $produto['Qt_Embalagem']; ?> <br>
+                                    <strong>Qtd Solicitada: </strong><?php echo $produto['Qt_Produto']; ?>
+                                </p>
+                            </div>
+                            <div class="col-2">
+                                <p><strong>Preço</strong> <br> <?php echo number_format($produto['Vl_Preco_Produto'], 4, ',', '.') ?></p>
+                            </div>
+                            <div class="col-2">
+
+                                <p class="text-success"><strong>Total</strong> <br> <?php echo number_format(($produto['Vl_Preco_Produto'] * $produto['Qt_Produto']), 4, ',', '.') ?></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        <?php } ?>
+
+        <div class="card">
+            <div class="card-header">
+                <p class="card-title">
+                    <div class="row">
+                    <div class="col-6">
+                       <h2>
+                           <strong>Total do Pedido</strong>
+                       </h2>
+                    </div>
+                    <div class="col-6 text-right">
+                        <h2>
+                            <strong><?php if (isset($oc['total'])) echo number_format($oc['total'], "4", ',', '.'); ?></strong>
+                        </h2>
+                    </div>
+                </div>
+                </p>
+            </div>
+        </div>
+
+        <div class="card" hidden>
+            <div class="card-header">
+                <p class="card-title">Produtos</p>
+            </div>
+            <div class="card-body" hidden>
                 <div class="table-responsive col-sm">
                     <table id="data-table" class="table table-condensend table-hover">
                         <thead>
@@ -141,7 +218,13 @@
                             <?php foreach ($oc['produtos'] as $kk => $produto) { ?>
                                 <tr>
                                     <td><?php echo $produto['codigo']; ?></td>
-                                    <td><?php echo $produto['Ds_Produto_Comprador']; ?></td>
+                                    <td><?php echo $produto['Ds_Produto_Comprador']; ?>
+
+                                        <?php if (isset($produto['obs_cot_produto'])) { ?>
+                                            <i class="fa fa-info" data-toggle="tooltip"
+                                               title="<?php echo $produto['obs_cot_produto']; ?>"></i>
+                                        <?php } ?>
+                                    </td>
                                     <td><?php echo (isset($produto['produto_catalogo'])) ? $produto['produto_catalogo'] : ''; ?></td>
                                     <td><?php echo $produto['Ds_Marca']; ?></td>
                                     <td><?php echo $produto['Ds_Unidade_Compra']; ?></td>

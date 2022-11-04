@@ -13,7 +13,7 @@
     <div class="content__inner">
 
         <div class="printPage">
-            <?php if(isset($ordem_compra['prioridade']) && $ordem_compra['prioridade'] == 1){ ?>
+            <?php if (isset($ordem_compra['prioridade']) && $ordem_compra['prioridade'] == 1) { ?>
                 <div class="row mb-3">
                     <div class="col-12 bg-warning text-center">
                         <p><strong>ORDEM DE COMPRA URGENTE!</strong></p>
@@ -55,12 +55,14 @@
                     <div class="d-flex justify-content-between">
                         <div class="p-2">
                             <?php if (!empty($ordem_compra['Dt_Previsao_Entrega'])) { ?>
-                            <b>Data Entrega: </b> <?php echo date("d/m/Y", strtotime($ordem_compra['Dt_Previsao_Entrega'])); ?>
-                            <?php }else{ ?>
+                                <b>Data
+                                    Entrega: </b> <?php echo date("d/m/Y", strtotime($ordem_compra['Dt_Previsao_Entrega'])); ?>
+                            <?php } else { ?>
                                 <b>Data Entrega: </b> Consulte nos produtos
                             <?php } ?>
                         </div>
-                        <div class="p-2"><b>Cond. Pagto: </b><?php if (isset($ordem_compra['form_pagamento'])) echo $ordem_compra['form_pagamento']; ?>
+                        <div class="p-2"><b>Cond.
+                                Pagto: </b><?php if (isset($ordem_compra['form_pagamento'])) echo $ordem_compra['form_pagamento']; ?>
                         </div>
                         <div class="p-2"><b>Tipo Frete: </b>CIF</div>
                     </div>
@@ -73,31 +75,31 @@
                         <div class="card-header border-secondary">
                             <p class="card-title">Endereço de Entrega</p>
                         </div>
-                        <?php if (empty($ordem_compra['endereco_entrega'])){ ?>
-                        <div class="card-body p-1">
+                        <?php if (empty($ordem_compra['endereco_entrega'])) { ?>
+                            <div class="card-body p-1">
 
-                            <div class="d-flex">
-                                <div class="p-2">
-                                    <small>
-                                        <?php if (isset($ordem_compra['Nm_Logradouro']) && !empty($ordem_compra['Nm_Logradouro'])) echo $ordem_compra['Nm_Logradouro'] . ' - ' ?>
+                                <div class="d-flex">
+                                    <div class="p-2">
+                                        <small>
+                                            <?php if (isset($ordem_compra['Nm_Logradouro']) && !empty($ordem_compra['Nm_Logradouro'])) echo $ordem_compra['Nm_Logradouro'] . ' - ' ?>
 
-                                        <?php if (isset($ordem_compra['Ds_Complemento_Logradouro']) && !empty($ordem_compra['Ds_Complemento_Logradouro'])) echo $ordem_compra['Ds_Complemento_Logradouro'] . ' - ' ?>
+                                            <?php if (isset($ordem_compra['Ds_Complemento_Logradouro']) && !empty($ordem_compra['Ds_Complemento_Logradouro'])) echo $ordem_compra['Ds_Complemento_Logradouro'] . ' - ' ?>
 
-                                        <?php if (isset($ordem_compra['Nm_Bairro']) && !empty($ordem_compra['Nm_Bairro'])) echo $ordem_compra['Nm_Bairro'] . ' - ' ?>
+                                            <?php if (isset($ordem_compra['Nm_Bairro']) && !empty($ordem_compra['Nm_Bairro'])) echo $ordem_compra['Nm_Bairro'] . ' - ' ?>
 
-                                        <?php if (isset($ordem_compra['Nm_Cidade']) && !empty($ordem_compra['Nm_Cidade'])) echo $ordem_compra['Nm_Cidade'] . ' - ' ?>
+                                            <?php if (isset($ordem_compra['Nm_Cidade']) && !empty($ordem_compra['Nm_Cidade'])) echo $ordem_compra['Nm_Cidade'] . ' - ' ?>
 
-                                        <?php if (isset($ordem_compra['Id_Unidade_Federativa']) && !empty($ordem_compra['Id_Unidade_Federativa'])) echo $ordem_compra['Id_Unidade_Federativa'] ?>
-                                    </small>
+                                            <?php if (isset($ordem_compra['Id_Unidade_Federativa']) && !empty($ordem_compra['Id_Unidade_Federativa'])) echo $ordem_compra['Id_Unidade_Federativa'] ?>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="p-2">
+                                        <b>CEP: </b><?php if (isset($ordem_compra['Nr_Cep']) && !empty($ordem_compra['Nr_Cep'])) echo $ordem_compra['Nr_Cep']; ?>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="d-flex">
-                                <div class="p-2">
-                                    <b>CEP: </b><?php if (isset($ordem_compra['Nr_Cep']) && !empty($ordem_compra['Nr_Cep'])) echo $ordem_compra['Nr_Cep']; ?>
-                                </div>
-                            </div>
-                        </div>
-                        <?php }else { ?>
+                        <?php } else { ?>
                             <div class="card-body p-1">
                                 <div class="d-flex">
                                     <p class="py-3"><?php echo $ordem_compra['endereco_entrega']; ?></p>
@@ -114,7 +116,7 @@
                         <div class="card-body border-secondary p-1">
                             <small><?php echo $ordem_compra['Ds_Observacao']; ?></small>
 
-                            <?php if (!empty($ordem_compra['termos'])){ ?>
+                            <?php if (!empty($ordem_compra['termos'])) { ?>
                                 <br>
                                 <br>
                                 <p><strong>Termos</strong></p>
@@ -156,12 +158,14 @@
                             </div>
                             <div class="d-flex">
                                 <div class="p-2">
-                                    <b>Prazo de Entrega ofertada: </b><?php echo isset($ordem_compra['oferta']['prazo_entrega']) ? $ordem_compra['oferta']['prazo_entrega'] ." dias" : 'Não informado'; ?>
+                                    <b>Prazo de Entrega
+                                        ofertada: </b><?php echo isset($ordem_compra['oferta']['prazo_entrega']) ? $ordem_compra['oferta']['prazo_entrega'] . " dias" : 'Não informado'; ?>
                                 </div>
                             </div>
                             <div class="d-flex">
                                 <div class="p-2">
-                                    <b>Valor do Faturamento Mínimo: <?php echo isset( $ordem_compra['oferta']['valor_minimo'] ) ? $ordem_compra['oferta']['valor_minimo'] : 'Não informado' ; ?></b>
+                                    <b>Valor do Faturamento
+                                        Mínimo: <?php echo isset($ordem_compra['oferta']['valor_minimo']) ? $ordem_compra['oferta']['valor_minimo'] : 'Não informado'; ?></b>
                                 </div>
                             </div>
                         </div>
@@ -200,9 +204,14 @@
                                     <td><?php echo $oc['Qt_Produto']; ?></td>
                                     <td><?php echo number_format($oc['Vl_Preco_Produto'], 4, ',', '.'); ?></td>
                                     <td><?php echo number_format($oc['Vl_Preco_Produto'] * $oc['Qt_Produto'], 4, ',', '.'); ?></td>
-                                    <td><?php if(isset($oc['programacao']['Data'])) echo $oc['programacao']['Data']; ?>
-                                        <?php if(isset($oc['programacao']['Quantidade'])) echo 'Qtd.: '. intval($oc['programacao']['Quantidade'])  ?></td>
+                                    <td><?php if (isset($oc['programacao']['Data'])) echo $oc['programacao']['Data']; ?>
+                                        <?php if (isset($oc['programacao']['Quantidade'])) echo 'Qtd.: ' . intval($oc['programacao']['Quantidade']) ?></td>
                                 </tr>
+                                <?php if (isset($oc['obs_cot_produto'])) { ?>
+                                    <tr>
+                                        <td colspan="9"><strong>Obs produto cotação:</strong> <?php echo $oc['obs_cot_produto']; ?></td>
+                                    </tr>
+                                <?php } ?>
                             <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -214,7 +223,8 @@
 
             <div class="card">
                 <div class="card-body">
-                    <h4 class="text-right">Valor total: <?php if (isset($ordem_compra['total'])) echo "R$ " . number_format($ordem_compra['total'], 4, ',', '.')?></h4>
+                    <h4 class="text-right">Valor
+                        total: <?php if (isset($ordem_compra['total'])) echo "R$ " . number_format($ordem_compra['total'], 4, ',', '.') ?></h4>
                 </div>
             </div>
         </div>

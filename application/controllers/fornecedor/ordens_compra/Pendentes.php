@@ -138,7 +138,6 @@ class Pendentes extends MY_Controller
 
         $data['oc']['fp_oc'] = $fp;
 
-
         $data['to_datatable'] = "{$this->route}/to_datatable_produtos";
         $data['url_resgate'] = "{$this->route}/resgatar/{$idOC}";
         $data['url_codigo'] = "{$this->route}/addCodigo/{$idOC}";
@@ -194,6 +193,7 @@ class Pendentes extends MY_Controller
         #usuario fornecedor
         $data['usuarios'] = $this->oc->get_usuarios($this->session->id_fornecedor);
 
+        $data['matriz'] = (isset($_SESSION['id_matriz'])) ? $_SESSION['id_matriz'] : 0;
 
         $this->load->view("{$this->views}/detalhes", $data);
     }
@@ -301,7 +301,6 @@ class Pendentes extends MY_Controller
 
                 #resgate sintese
                 $this->resgateSintese(preg_replace('/[^\d\-]/', '', $oc['Cd_Fornecedor']), $oc['Cd_Ordem_Compra']);
-
 
 
             } else {
@@ -494,7 +493,7 @@ class Pendentes extends MY_Controller
 
             if (empty($row['codigo'])) {
 
-                $this->db->select("id_pfv AS codigo");
+                $this->db->select("id_pfv AS codigo, obs_produto");
                 $this->db->where('cd_cotacao', $oc['Cd_Cotacao']);
                 $this->db->where('id_fornecedor', $oc['id_fornecedor']);
                 $this->db->where('preco_marca', $row['Vl_Preco_Produto']);
@@ -519,6 +518,7 @@ class Pendentes extends MY_Controller
                     $this->db->update('ocs_sintese_produtos', ['codigo' => $item['codigo']]);
 
                     $oc['produtos'][$kk]['codigo'] = $item['codigo'];
+                    $oc['produtos'][$kk]['obs_cot_produto'] = $item['obs_produto'];
                 } else {
 
                     $hasNoCode = 1;
@@ -718,7 +718,7 @@ class Pendentes extends MY_Controller
      */
     public function getFormaPagamento($cnpj)
     {
-
+        return [];
         # URL para onde será enviada a requisição GET
         $url = $this->urlOncoprod;
 
@@ -799,7 +799,7 @@ class Pendentes extends MY_Controller
                     'resgatado' => 1,
                     'data_resgate' => date("Y-m-d H:i:s")
                 ]);
-                
+
             }
 
             if ($this->db->trans_status() === false) {
