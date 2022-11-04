@@ -25,8 +25,8 @@
         Negá-los poderá tornar os recursos relacionados indisponíveis.
         <br>Use o botão “Aceitar” para consentir com o uso de tais tecnologias ou clique em “Recusar” para continuar sem aceitar.
     </p>
-    <button class="btn-cookies1">Aceitar!</button>
-    <button class="btn-cookies">Recusar!</button>
+    <button class="btn-cookies">Recusar</button>
+    <button class="btn-cookies1">Aceitar</button>
 
 </div>
 <script>
