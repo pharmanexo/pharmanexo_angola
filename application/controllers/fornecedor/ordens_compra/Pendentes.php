@@ -718,7 +718,6 @@ class Pendentes extends MY_Controller
      */
     public function getFormaPagamento($cnpj)
     {
-        return [];
         # URL para onde será enviada a requisição GET
         $url = $this->urlOncoprod;
 
