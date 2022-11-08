@@ -7,7 +7,7 @@ if (isset($header)) echo $header;
 
 ?>
 
-<body class="bg-light" >
+<body class="bg-light">
     <div class="container-fluid" id="frameLogin">
         <div class="row" style="height: 100vh">
             <div class="col-12 col-lg-6" style="background:url(<?php echo base_url('images/img/bglogin.jpg'); ?>); background-repeat: no-repeat; background-size: cover;">
@@ -36,63 +36,54 @@ if (isset($header)) echo $header;
                         <form id="form" method="post" class="frmLogin" action="<?php echo $frm_actionprimeiro; ?>">
 
                             <div class="form-group">
-                                <label for="nickname">Escolha um Avatar</label>
-                                <div class="row">
-                                    <div class="col-4">
-                                        <a id="foto1" class="avatar" value="1">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/1.png" alt="Avatar" width="70" height="70">
-                                        </a>
+                                <ul class="pagination">
+                                    <li><a style="text-align:left;margin-right:75px;margin-left:10px;" id="avatarbut">Avatar</a></li>
+                                    <li><a style="text-align:center;margin-right:75px;" id="gifsbut">Gifs</a></li>
+                                    <li><a style="position:right;" id="animalbut">Animais</a></li>
+                                </ul>
+                                <!-- Avatar -->
+                                <?php foreach ($fotos as $foto) {
+                                    $array_fotos[] = $foto;
+                                }
+                                $coluna = 3;
+                                $i = 0;
+                                $pedaços = array_chunk($array_fotos, $coluna); ?>
+                                <?php foreach ($pedaços as $pedaço) { ?>
+                                    <div class="row justify-content-start" style="margin-top: 15px;">
+                                        <?php foreach ($pedaço as $foto) : $i++; ?>
+                                            <?php if ($i <= 9) {  ?>
+                                                <div class="col-4 avatarimg">
+                                                    <a id="foto" class="avatar avatarimg" value="<?php echo $foto['foto'] ?>">
+                                                        <img src="<?php echo IMG_PATH . 'avatar/' . $foto['foto'] ?>" alt="Avatar" width="70" height="70">
+                                                    </a>
+                                                </div>
+                                                <!-- Gifs -->
+                                            <?php } elseif ($i > 9 && $i <= 18) { ?>
+                                                <div class="col-4 gifsimg" hidden style="top:-45px;left:1px">
+                                                    <a id="foto" class="avatar gifsimg" value="<?php echo $foto['foto'] ?>">
+                                                        <img src="<?php echo IMG_PATH . 'avatar/' . $foto['foto'] ?>" alt="Avatar" width="70" height="70">
+                                                    </a>
+                                                </div>
+                                                <!-- Animais -->
+                                            <?php } elseif ($i > 18) { ?>
+                                                <div class="col-4 animalimg" hidden style="top:-90px;left:1px">
+                                                    <a id="foto" class="avatar animalimg" value="<?php echo $foto['foto'] ?>">
+                                                        <img src="<?php echo IMG_PATH . 'avatar/' . $foto['foto'] ?>" alt="Avatar" width="70" height="70">
+                                                    </a>
+                                                </div>
+                                            <?php } ?>
+                                        <?php endforeach; ?>
                                     </div>
-                                    <div class="col-4">
-                                        <a id="foto2" class="avatar" value="2">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/2.png" alt="Avatar" width="70" height="70">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a id="foto3" class="avatar" value="3">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/3.png" alt="Avatar" width="70" height="70">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 15px;">
-                                    <div class="col-4">
-                                        <a id="foto4" class="avatar" value="4">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/4.png" alt="Avatar" width="70" height="70">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a id="foto5" class="avatar" value="5">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/5.png" alt="Avatar" width="70" height="70">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a id="foto6" class="avatar" value="6">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/6.png" alt="Avatar" width="70" height="70">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="row" style="margin-top: 15px;">
-                                    <div class="col-4">
-                                        <a id="foto7" class="avatar" value="7">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/7.png" alt="Avatar" width="70" height="70">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a id="foto8" class="avatar" value="8">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/8.png" alt="Avatar" width="70" height="70">
-                                        </a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a id="foto9" class="avatar" value="9">
-                                            <img src="<?php echo IMG_PATH ?>/avatar/9.png" alt="Avatar" width="70" height="70">
-                                        </a>
-                                    </div>
-                                </div>
-                                <input hidden id="avatarfoto" type="text" class="avatarfoto" value="" name="avatarfoto" maxlength="20" required>
+                                <?php }  ?>
+
                             </div>
 
 
-                            <div class="form-group" style="margin-top: -25px;">
+                            <input hidden id="avatarfoto" type="text" class="avatarfoto" value="" name="avatarfoto" maxlength="20" required>
+
+
+
+                            <div class="form-group" style="margin-top: -100px;">
                                 <label for="nickname">Apelido</label>
                                 <p class="small">Nos informe um apelido para atualizar o seu cadastro!</p>
                                 <div class="input-group mb-3">
@@ -116,15 +107,16 @@ if (isset($header)) echo $header;
                                 </div>
                             </div>
                         </form>
-
-                        <?php $mensagem = $this->session->flashdata("mensagem"); ?>
-                        <?php if (!empty($mensagem)) : ?>
-                            <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
-                        <?php endif; ?>
                     </div>
+
+                    <?php $mensagem = $this->session->flashdata("mensagem"); ?>
+                    <?php if (!empty($mensagem)) : ?>
+                        <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <?php if (isset($scripts)) echo $scripts; ?>
@@ -140,18 +132,33 @@ if (isset($header)) echo $header;
                     $(".avatarfoto").val($(this).attr('value'));
                 }
             });
+            $("#avatarbut").click(function() {
+                $(".avatarimg").attr("hidden", false);
+                $(".gifsimg").attr("hidden", true);
+                $(".animalimg").attr("hidden", true);
+            });
+            $("#gifsbut").click(function() {
+                $(".gifsimg").attr("hidden", false);
+                $(".avatarimg").attr("hidden", true);
+                $(".animalimg").attr("hidden", true);
+            });
+            $("#animalbut").click(function() {
+                $(".animalimg").attr("hidden", false);
+                $(".gifsimg").attr("hidden", true);
+                $(".avatarimg").attr("hidden", true);
+            });
 
             $('#form').submit(function(e) {
                 e.preventDefault();
 
                 $('#postbut').html("<i class='fa fa-spin fa-spinner'></i> Validando Dados... ").attr('disabled', true);
                 var $form = $(this),
-                    foto = $form.find("#avatarfoto").val(),
+                    id_avatar = $form.find("#avatarfoto").val(),
                     nick = $form.find("#nickname").val(),
                     url = $form.attr("action");
 
                 var posting = $.post(url, {
-                        avatar: foto,
+                        id_avatar: id_avatar,
                         nickname: nick
                     })
                     .done(function(result) {

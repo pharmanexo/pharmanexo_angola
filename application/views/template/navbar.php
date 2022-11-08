@@ -110,19 +110,19 @@
         </li>
     </ul>
     <div id="alerta_sessao">
-        <div class="modal fade text-center" id="modalAlerta" role="dialog" aria-labelledby="modalTimeOut" aria-hidden="true" style="z-index:100">
+        <div class="modal fade text-center" id="modalAlerta" role="dialog" aria-hidden="true" style="z-index:100">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content align-content-center" style="border-radius:30px;background-color:#7b7e82;box-shadow:0px 3px 6px 4px #ced112;">
+                <div class="modal-content align-content-center" style="border-radius:30px;background-color:#fff;box-shadow:0px 1px 2px 1px #000;">
                     <div class="modal-header text-center">
-                        <h3 class="modal-title w-100 text-white" style="margin-top: 5px;
+                        <h3 class="modal-title w-100" style="margin-top: 5px;
                     position: absolute;
                     left: 0px;">Sua sessão vai expirar!</h3>
                     </div>
                     <div class="modal-body" style="margin-top: 40px;">
                         <div class="col-12 controls" style="margin-top:25px;">
-                            <a id="renovarSessao" style="color:#fff;font-size:20px;font-weight:bolder">
-                                Clique para renovar a sessão agora!
-                            </a>
+                            <button class="btn btn-primary" id="renovarSessao" style="background-color: #192069;;color:#fff;font-size:20px;">
+                                Atualizar
+                            </button>
                         </div>
                     </div>
                 </div>

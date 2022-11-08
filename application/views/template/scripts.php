@@ -75,6 +75,7 @@ if (isset($scripts))
             var tempoSessao = "<?php echo date('H:i:s', $tempo['timestamp'] + 300) ?>";
             var tempoAlerta = "<?php echo date('H:i:s', $tempo['timestamp'] + 150) ?>";
             var id = "<?php echo $this->session->id_sessao ?>";
+            var idUser = "<?php echo $this->session->id_usuario ?>";
             var tempo = "<?php echo $tempo['timestamp'] ?>";
 
             function tempo_sessao() {
@@ -85,15 +86,35 @@ if (isset($scripts))
                     $('#modalAlerta').modal({
                         backdrop: false
                     })
+                    $("#myModal").modal({
+                        backdrop: true
+                    })
                     alertar = 'false'
                 }
                 if (tempoSessao <= hora) {
-                    $('#modalAlerta').modal('hide');
-                    $('#modalTimeOut').modal({
-                        backdrop: false
-                    })
+                    timeoutSessao()
+                    clearInterval(verificaSessao)
                 }
             };
+
+            function timeoutSessao() {
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>/login/timeout_sessao",
+                    data: {
+                        id_usuario: idUser,
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        if (response.type === 'error') {
+                            formWarning(response);
+                            window.location.replace('<?php echo base_url('login'); ?>');
+                        } else {
+                            formWarning(response)
+                        }
+                    }
+                });
+            }
 
             $('#renovarSessao').click(function(e) {
                 $.ajax({

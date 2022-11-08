@@ -40,6 +40,8 @@
 
         .selecao {
             border: 3px solid #ed3237;
+            border-bottom: none;
+            border-top: none;
         }
 
         .card {
