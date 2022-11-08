@@ -79,7 +79,7 @@ if (isset($header)) echo $header;
                             </div>
 
 
-                            <input hidden id="avatarfoto" type="text" class="avatarfoto" value="" name="avatarfoto" maxlength="20" required>
+                            <input hidden id="avatarfoto" type="text" class="avatarfoto" value="" name="avatarfoto" maxlength="100" required>
 
 
 

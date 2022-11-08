@@ -29,6 +29,10 @@ if (isset($header)) echo $header;
                     </div>
                 </div>
                 <div class="col-12 col-lg-6">
+                    <div class="alert" id="alertaSessao" style="margin-bottom:-60px;" hidden >
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        Sua sessão foi encerrada por inatividade.
+                    </div>
                     <div class="row" style="margin-top: 100px">
                         <div class="col-6 text-center">
                             <p class="h4">Integranexo</p>
@@ -668,7 +672,6 @@ if (isset($header)) echo $header;
                     });
                 });
             });
-
 
         });
     </script>

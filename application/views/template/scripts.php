@@ -78,6 +78,7 @@ if (isset($scripts))
             var idUser = "<?php echo $this->session->id_usuario ?>";
             var tempo = "<?php echo $tempo['timestamp'] ?>";
 
+
             function tempo_sessao() {
                 var timeOut = new Date();
                 var hora = timeOut.toLocaleTimeString();
@@ -108,12 +109,17 @@ if (isset($scripts))
                         console.log(response)
                         if (response.type === 'error') {
                             formWarning(response);
+                            localStorage.setItem("alertaSessao", true)
                             window.location.replace('<?php echo base_url('login'); ?>');
                         } else {
                             formWarning(response)
                         }
-                    }
+                    },
                 });
+            }
+            if (localStorage.getItem("alertaSessao")) {
+                $("#alertaSessao").attr("hidden", false);
+                localStorage.clear();
             }
 
             $('#renovarSessao').click(function(e) {
@@ -128,7 +134,7 @@ if (isset($scripts))
                         console.log(response)
                         if (response.type === 'success') {
                             formWarning(response);
-                            window.location.replace('dashboard');
+                            window.location.reload(true);
                         } else {
                             formWarning(response)
                         }

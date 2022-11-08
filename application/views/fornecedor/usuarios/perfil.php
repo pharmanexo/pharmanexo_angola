@@ -18,7 +18,7 @@
                             <div class="card-body">
                                 <div class="imgPreview">
                                     <?php $avatar = $this->session->avatar ?>
-                                    <?php $url = IMG_PATH . 'avatar/' . $avatar . '.png' ?>
+                                    <?php $url = IMG_PATH . 'avatar/' . $avatar ?>
                                     <img id="imgPrev" src="<?php echo $url ?>" alt="Imagem" class="img-fluid rounded-circle w-50">
                                     <?php if ($this->session->verifica != "1") { ?>
                                         <i style="font-size:24px;color: green;position: relative;top: 40px;left:-10px" class="fa fa-lock"></i>
