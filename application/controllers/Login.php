@@ -35,14 +35,6 @@ class Login extends CI_Controller
         ]);
         $data['scripts'] = $this->template->scripts();
 
-        if ($this->input->method() == 'post') {
-
-            $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$post['id_usuario']}");
-            $output = ['type' => 'error', 'message' => 'Deslogado por inatividade!'];
-            $this->output->set_content_type('application/json')->set_output(json_encode($output));
-            
-        }
-
         $this->load->view('login', $data);
     }
 

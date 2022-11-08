@@ -35,6 +35,10 @@
     <style type="text/css">
         .alert {
             padding: 20px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-left: 13%;
+            margin-right: 13%;
             background-color: #192069;
             color: white;
         }

@@ -120,7 +120,7 @@
                     </div>
                     <div class="modal-body" style="margin-top: 40px;">
                         <div class="col-12 controls" style="margin-top:25px;">
-                            <button class="btn btn-primary" id="renovarSessao" style="background-color: #192069;;color:#fff;font-size:20px;">
+                            <button class="btn btn-primary" id="renovarSessao" style="background-color: #192069;;color:#fff;font-size:15px;">
                                 Atualizar
                             </button>
                         </div>

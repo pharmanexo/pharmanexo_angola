@@ -72,7 +72,7 @@ if (isset($scripts))
         ?>
             var verificaSessao = setInterval(tempo_sessao, 1000);
             var alertar = 'true';
-            var tempoSessao = "<?php echo date('H:i:s', $tempo['timestamp'] + 300) ?>";
+            var tempoSessao = "<?php echo date('H:i:s', $tempo['timestamp'] + 3) ?>";
             var tempoAlerta = "<?php echo date('H:i:s', $tempo['timestamp'] + 150) ?>";
             var id = "<?php echo $this->session->id_sessao ?>";
             var idUser = "<?php echo $this->session->id_usuario ?>";
