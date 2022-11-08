@@ -2564,6 +2564,8 @@ class M_cotacaoManual extends MY_Model
 
                 $client = new SoapClient($url);
 
+                ini_set('default_socket_timeout', 600);
+
                 # Obtem a credencial bionexo do fornecedor
                 $f = $this->fornecedores->findById($dadosFornecedor['id_fornecedor']);
 
