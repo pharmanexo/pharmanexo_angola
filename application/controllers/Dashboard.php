@@ -26,6 +26,7 @@ class Dashboard extends MY_Controller
         $this->load->model('m_estados', 'estado');
         $this->load->model('m_compradores', 'comprador');
         $this->load->model('m_grafico', 'grafico');
+        $this->load->model('m_fotos', 'fotos');
         $this->load->model('m_bi', 'BI');
         $this->load->model('m_notificacoes', 'notificacao');
         $this->load->model('m_ordemCompra', 'ordem_compra');
@@ -107,6 +108,7 @@ class Dashboard extends MY_Controller
         $data['frm_actionprimeiro'] = "{$this->routelogin}primeiroatt";
         $data['header'] = $this->template->header(['title' => 'Atualização de cadastro']);
         $data['scripts'] = $this->template->scripts();
+        $data['fotos'] = $this->db->get('fotos')->result_array();
         $this->load->view('primeiro', $data);
     }
 

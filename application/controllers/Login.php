@@ -35,7 +35,6 @@ class Login extends CI_Controller
         ]);
         $data['scripts'] = $this->template->scripts();
 
-
         $this->load->view('login', $data);
     }
 
@@ -119,6 +118,24 @@ class Login extends CI_Controller
             $this->db->where('id',$post['id'])->update('ci_sessions', ['ip_address' => time(), 'timestamp' => time() ]);
             $output = ['type' => 'success', 'message' => 'Sessão atualizada!', 'action' => 'dashboard'];
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
+        }
+    }
+
+    /**
+     *  Função que verifica email informado para recuperar a senha
+     *
+     * @return json
+     */
+    public function timeout_sessao()
+    {
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+
+            $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$post['id_usuario']}");
+            $output = ['type' => 'error', 'message' => 'Deslogado por inatividade!'];
+            $this->output->set_content_type('application/json')->set_output(json_encode($output));
+            
         }
     }
 
@@ -304,8 +321,9 @@ class Login extends CI_Controller
 
             if ($this->usuario->update($post)) {
 
-                $this->db->where('id', $post['id'])->update('usuarios', ['primeiro_login' => '2', 'avatar' => $post['avatar'], 'nickname' => $post['nickname']]);
+                $this->db->where('id', $post['id'])->update('usuarios', ['primeiro_login' => '2', 'avatar' => $post['id_avatar'], 'nickname' => $post['nickname']]);
                 $result = ['type' => 'success', 'message' => 'Conta atualizada'];
+                
             } else {
 
                 $result = ['type' => 'warning', 'message' => 'Erro ao atualizar senha!'];
@@ -521,12 +539,12 @@ class Login extends CI_Controller
                     $this->auditor->setlog("Login", 'login', []);
 
                     if ($consulta['logado'] == '1') {
-
-                        $warning = ['type' => 'error', 'message' => 'Já existe um sessão ativa para este usuário.'];
+                        $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$consulta['id']}");
+                        $warning = ['type' => 'error', 'message' => 'Existia uma sessão ativa para este usuário. Entre novamente!'];
                     } else {
 
                         /* atualiza usuario logado */
-                        # $this->db->query("UPDATE usuarios set logado = 1 WHERE id = {$consulta['id']}");
+                        $this->db->query("UPDATE usuarios set logado = 1 WHERE id = {$consulta['id']}");
                         $id_sessao = session_id();
                         if (isset($consulta['administrador']) && $consulta['administrador'] == 1) {
                             $userdata = [
@@ -911,7 +929,7 @@ class Login extends CI_Controller
 
 
         $this->auditor->setlog("Logout", 'login', null);
-        # $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$this->session->id_usuario}");
+        $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$this->session->id_usuario}");
         $this->session->sess_destroy();
         $this->session->set_userdata("logado", "0");
         $this->session->set_userdata("mc", "0"); //menu controle
