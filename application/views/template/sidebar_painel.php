@@ -4,7 +4,7 @@
             <div class="user__info" data-toggle="dropdown">
 
                 <?php $avatar = $this->session->avatar ?>
-                <?php $url = IMG_PATH.'avatar/'.$avatar.'.png' ?>
+                <?php $url = IMG_PATH.'avatar/'.$avatar ?>
                 <?php  $logo = (empty($this->session->foto) || is_null($this->session->foto)) ? base_url('images/usuarios/no-user.png') : $avatar; ?>
 
                 <img class="user__img" src="<?php echo $url ?>" alt="avatar">

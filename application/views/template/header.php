@@ -33,6 +33,30 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <style type="text/css">
+        .alert {
+            padding: 20px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+            margin-left: 13%;
+            margin-right: 13%;
+            background-color: #192069;
+            color: white;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: #ed3237;
+        }
         .avatar {
             border: 2px solid white;
             cursor: pointer;
@@ -40,6 +64,8 @@
 
         .selecao {
             border: 3px solid #ed3237;
+            border-bottom: none;
+            border-top: none;
         }
 
         .card {

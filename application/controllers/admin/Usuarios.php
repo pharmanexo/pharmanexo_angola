@@ -637,6 +637,7 @@ class Usuarios extends Admin_controller
         $data['header'] = $this->template->header([ 'title' => $page_title ]);
         $data['navbar']  = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
+        $data['fotos'] = $this->db->get('fotos')->result_array();
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title,
             'buttons'    => [
