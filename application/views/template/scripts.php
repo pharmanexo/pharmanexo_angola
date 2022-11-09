@@ -75,11 +75,12 @@ if (isset($scripts))
         ?>
             var verificaSessao = setInterval(tempo_sessao, 1000);
             var alertar = 'true';
-            var tempoSessao = "<?php echo date('H:i:s', $tempo['timestamp'] + 300) ?>";
-            var tempoAlerta = "<?php echo date('H:i:s', $tempo['timestamp'] + 150) ?>";
+            var tempoSessao = "<?php echo date('H:i:s', $tempo['timestamp'] + 3600) ?>";
+            var tempoAlerta = "<?php echo date('H:i:s', $tempo['timestamp'] + 3000) ?>";
             var id = "<?php echo $this->session->id_sessao ?>";
             var idUser = "<?php echo $this->session->id_usuario ?>";
             var tempo = "<?php echo $tempo['timestamp'] ?>";
+            var timer = setInterval(timer_sessao, 1000);
 
 
             function tempo_sessao() {
@@ -100,6 +101,35 @@ if (isset($scripts))
                     clearInterval(verificaSessao)
                 }
             };
+
+
+            function countdown(relogio, minutos, segundos) {
+                var element, tempoFinal, horas, mins, ms, time;
+
+                function minSec(n) {
+                    return (n <= 9 ? "0" + n : n);
+                }
+
+                function updateTimer() {
+                    ms = tempoFinal - (+new Date);
+                    if (ms < 1000) {
+                        timeoutSessao()
+                    } else {
+                        time = new Date(ms);
+                        horas = time.getUTCHours();
+                        mins = time.getUTCMinutes();
+                        element.innerHTML = (horas ? horas + ':' + minSec(mins) : mins) + ':' + minSec(time.getUTCSeconds());
+                        setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
+                    }
+                }
+
+                element = document.getElementById("timer_sessao");
+                tempoFinal = (+new Date) + 1000 * (60 * minutos + segundos) + 500;
+                updateTimer();
+            }
+
+            countdown("timer_sessao", 10, 0);
+
 
             function timeoutSessao() {
                 $.ajax({
@@ -125,7 +155,7 @@ if (isset($scripts))
                 localStorage.clear();
             }
 
-            $('#renovarSessao').click(function(e) {
+            $('.renovarSessao').click(function(e) {
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>/login/renovar_sessao",

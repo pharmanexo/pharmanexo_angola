@@ -104,7 +104,7 @@
             </a>
         </li>
         <li class="top-nav">
-            <a href="/dashboard" id="tempo_sessao" value="<?php $tempo['timestamp'] ?>" title="Sessão expira as <?php echo date('H:i:s', $tempo['timestamp'] + 300) ?> ">
+            <a class="renovarSessao" id="tempo_sessao" value="<?php $tempo['timestamp'] ?>" title="Sessão expira as <?php echo date('H:i:s', $tempo['timestamp'] + 3600) ?> ">
                 <?php echo date('h:i:s', $tempo['timestamp']) ?>
             </a>
         </li>
@@ -114,13 +114,15 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content align-content-center" style="border-radius:30px;background-color:#fff;box-shadow:0px 1px 2px 1px #000;">
                     <div class="modal-header text-center">
-                        <h3 class="modal-title w-100" style="margin-top: 5px;
-                    position: absolute;
-                    left: 0px;">Sua sessão vai expirar!</h3>
+                        <h3 class="modal-title w-100" style="margin-top: 2px;position: absolute;left: 0px;">
+                            Sua sessão vai expirar!</h3>
+                        <h5 id="timer_sessao" class="modal-title w-100" style="margin-top: 35px;position: absolute;left: 0px;">
+                            <?php $timer = strtotime("+10 minutes");
+                            echo date('i:s', $timer) ?></h5>
                     </div>
                     <div class="modal-body" style="margin-top: 40px;">
                         <div class="col-12 controls" style="margin-top:25px;">
-                            <button class="btn btn-primary" id="renovarSessao" style="background-color: #192069;;color:#fff;font-size:15px;">
+                            <button class="btn btn-primary renovarSessao" id="renovarSessao" style="background-color: #192069;;color:#fff;font-size:15px;">
                                 Atualizar
                             </button>
                         </div>

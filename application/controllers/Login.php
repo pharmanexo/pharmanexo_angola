@@ -115,7 +115,7 @@ class Login extends CI_Controller
 
             $post = $this->input->post();
 
-            $this->db->where('id',$post['id'])->update('ci_sessions', ['ip_address' => time(), 'timestamp' => time() ]);
+            $this->db->where('id', $post['id'])->update('ci_sessions', ['ip_address' => time(), 'timestamp' => time()]);
             $output = ['type' => 'success', 'message' => 'Sessão atualizada!', 'action' => 'dashboard'];
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
         }
@@ -135,7 +135,6 @@ class Login extends CI_Controller
             $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$post['id_usuario']}");
             $output = ['type' => 'error', 'message' => 'Deslogado por inatividade!'];
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
-            
         }
     }
 
@@ -323,7 +322,6 @@ class Login extends CI_Controller
 
                 $this->db->where('id', $post['id'])->update('usuarios', ['primeiro_login' => '2', 'avatar' => $post['id_avatar'], 'nickname' => $post['nickname']]);
                 $result = ['type' => 'success', 'message' => 'Conta atualizada'];
-                
             } else {
 
                 $result = ['type' => 'warning', 'message' => 'Erro ao atualizar senha!'];
@@ -773,13 +771,13 @@ class Login extends CI_Controller
                     $this->auditor->setlog("Login", 'login', []);
 
                     if ($consulta['logado'] == '1') {
-
-                        $warning = ['type' => 'error', 'message' => 'Já existe um sessão ativa para este usuário.'];
+                        $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$consulta['id']}");
+                        $warning = ['type' => 'error', 'message' => 'Existia uma sessão ativa para este usuário. Entre novamente!'];
                     } else {
 
                         /* atualiza usuario logado */
-                        # $this->db->query("UPDATE usuarios set logado = 1 WHERE id = {$consulta['id']}");
-
+                        $this->db->query("UPDATE usuarios set logado = 1 WHERE id = {$consulta['id']}");
+                        $id_sessao = session_id();
                         if (isset($consulta['administrador']) && $consulta['administrador'] == 1) {
                             $userdata = [
                                 'logado' => '1',
@@ -792,6 +790,7 @@ class Login extends CI_Controller
                                 "nivel" => $consulta['nivel'],
                                 "email" => $consulta['email'],
                                 "foto" => $consulta['foto'],
+                                "id_sessao" => $id_sessao,
                                 "routes" => $this->rota->rotasAdmin($consulta['nivel']),
                             ];
 
@@ -812,45 +811,63 @@ class Login extends CI_Controller
                                     "nome" => $consulta['nome'],
                                     "email" => $consulta['email'],
                                     "foto" => $consulta['foto'],
+                                    "id_sessao" => $id_sessao,
                                     "usuario_sintese" => $consulta['usuario_sintese'],
                                 ];
 
                                 $this->session->set_userdata($userdata);
 
                                 if (count($consulta['empresas']) > 1) {
-                                    $warning = ['type' => 'success', 'action' => 'empresas'];
+                                    foreach ($consulta['empresas'] as $empresa) {
+                                        $fornecedor = $this->fornecedor->findById($empresa['id']);
+                                        if ($fornecedor['distribuidor'] == 1) {
+                                            $warning = ['type' => 'success', 'action' => 'empresas'];
+                                        } else {
+                                            $this->session->set_userdata("logado", "0");
+                                            $this->session->set_userdata("mc", "0"); //menu controle
+                                            #$this->session->set_flashdata("mensagem", "Usuário/Senha incorretos.");
+                                            $warning = ['type' => 'error', 'message' => 'Usuário não possui Fornecedor apto'];
+                                        }
+                                    }
                                 } else {
+
                                     $fornecedor = $this->fornecedor->findById($consulta['empresas'][0]['id']);
                                     // $comissionamento = $this->comissionamento->find("comissao", "id_fornecedor = {$fornecedor['id']}", TRUE);
+                                    if ($fornecedor['distribuidor'] == 1) {
+                                        $usuario_fornecedor = $this->db->select("*")->from('usuarios_fornecedores')->where("id_usuario = {$consulta['id']} and id_fornecedor = {$fornecedor['id']}")->get()->row_array();
 
-                                    $usuario_fornecedor = $this->db->select("*")->from('usuarios_fornecedores')->where("id_usuario = {$consulta['id']} and id_fornecedor = {$fornecedor['id']}")->get()->row_array();
+                                        $session_data = [
+                                            'id_fornecedor' => $fornecedor['id'],
+                                            'razao_social' => $fornecedor['razao_social'],
+                                            'nome_fantasia' => $fornecedor['nome_fantasia'],
+                                            'cnpj' => $fornecedor['cnpj'],
+                                            'id_matriz' => $fornecedor['id_matriz'],
+                                            "integracao" => $fornecedor['integracao'],
+                                            "tipo_empresa" => $fornecedor['tipo'],
+                                            "id_tipo_venda" => $fornecedor['id_tipo_venda'],
+                                            "id_estado" => $this->estado->find("id", "uf = '{$fornecedor['estado']}'", TRUE)['id'],
+                                            'logo' => $fornecedor['logo'],
+                                            'comissao' => 3.00,
+                                            'estados' => $this->db->query("SELECT id_estado from fornecedores_estados where id_fornecedor = {$fornecedor['id']}")->row_array(),
+                                            'routes' => $this->grupo_usuario_rota->get_routes_fornecedor($fornecedor['id'], $usuario_fornecedor['tipo']),
+                                            'compra_distribuidor' => $fornecedor['compra_distribuidor'],
+                                            'grupo' => $usuario_fornecedor['tipo'],
+                                            'credencial_bionexo' => $fornecedor['credencial_bionexo']
+                                        ];
 
-                                    $session_data = [
-                                        'id_fornecedor' => $fornecedor['id'],
-                                        'razao_social' => $fornecedor['razao_social'],
-                                        'nome_fantasia' => $fornecedor['nome_fantasia'],
-                                        'cnpj' => $fornecedor['cnpj'],
-                                        'id_matriz' => $fornecedor['id_matriz'],
-                                        "integracao" => $fornecedor['integracao'],
-                                        "tipo_empresa" => $fornecedor['tipo'],
-                                        "id_tipo_venda" => $fornecedor['id_tipo_venda'],
-                                        "id_estado" => $this->estado->find("id", "uf = '{$fornecedor['estado']}'", TRUE)['id'],
-                                        'logo' => $fornecedor['logo'],
-                                        'comissao' => 3.00,
-                                        'estados' => $this->db->query("SELECT id_estado from fornecedores_estados where id_fornecedor = {$fornecedor['id']}")->row_array(),
-                                        'routes' => $this->grupo_usuario_rota->get_routes_fornecedor($fornecedor['id'], $usuario_fornecedor['tipo']),
-                                        'compra_distribuidor' => $fornecedor['compra_distribuidor'],
-                                        'grupo' => $usuario_fornecedor['tipo'],
-                                        'credencial_bionexo' => $fornecedor['credencial_bionexo']
-                                    ];
+                                        unset($_SESSION['empresas']);
 
-                                    unset($_SESSION['empresas']);
+                                        if (isset($session_data)) {
+                                            $this->session->set_userdata($session_data);
+                                        }
 
-                                    if (isset($session_data)) {
-                                        $this->session->set_userdata($session_data);
+                                        $warning = ['type' => 'success', 'action' => 'dashboard'];
+                                    } else {
+                                        $this->session->set_userdata("logado", "0");
+                                        $this->session->set_userdata("mc", "0"); //menu controle
+                                        #$this->session->set_flashdata("mensagem", "Usuário/Senha incorretos.");
+                                        $warning = ['type' => 'error', 'message' => 'Usuário não possui Fornecedor apto'];
                                     }
-
-                                    $warning = ['type' => 'success', 'action' => 'dashboard'];
                                 }
                             } else {
                                 $this->session->set_userdata("logado", "0");

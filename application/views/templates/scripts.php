@@ -79,7 +79,7 @@ if (isset($scripts))
                 localStorage.clear();
             }
 
-            $('#renovarSessao').click(function(e) {
+            $('. renovarSessao').click(function(e) {
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>/login/renovar_sessao",

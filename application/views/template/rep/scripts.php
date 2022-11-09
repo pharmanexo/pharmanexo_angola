@@ -107,7 +107,7 @@ if (isset($scripts))
                 localStorage.clear();
             }
 
-            $('#renovarSessao').click(function(e) {
+            $('#.').click(function(e) {
                 $.ajax({
                     type: "POST",
                     url: "<?php echo base_url(); ?>/login/renovar_sessao",
@@ -131,7 +131,7 @@ if (isset($scripts))
         <?php endif; ?>
 
     });
-    
+
 
     $(document).ajaxStart(function() {
         Pace.restart();
