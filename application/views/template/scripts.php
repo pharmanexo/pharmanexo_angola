@@ -27,6 +27,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src='https://cdn.jsdelivr.net/npm/apexcharts'></script>
 
+<script src="<?php echo THIRD_PARTY . 'plugins/jquery.vmap/jquery.vmap.min.js' ?>"></script>
+<script src="<?php echo THIRD_PARTY . 'plugins/jquery.vmap/maps/jquery.vmap.brazil.js' ?>"></script>
+
 <!-- Scripts bootstrap-select -->
 <script src="<?php echo THIRD_PARTY . 'plugins/bootstrap-select-1.13.14/dist/js/bootstrap-select.min.js' ?>"></script>
 <script src="<?php echo THIRD_PARTY . 'plugins/bootstrap-select-1.13.14/dist/js/i18n/defaults-pt_BR.js' ?>"></script>

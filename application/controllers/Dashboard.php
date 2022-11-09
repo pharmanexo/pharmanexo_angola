@@ -234,13 +234,7 @@ class Dashboard extends MY_Controller
         $data['navbar'] = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
         $data['heading'] = $this->template->heading(['page_title' => $page_title]);
-        $data['scripts'] = $this->template->scripts([
-            'scripts' => [
-                'https://cdn.jsdelivr.net/npm/apexcharts',
-                THIRD_PARTY . 'plugins/jquery.vmap/jquery.vmap.min.js',
-                THIRD_PARTY . 'plugins/jquery.vmap/maps/jquery.vmap.brazil.js',
-            ]
-        ]);
+        $data['scripts'] = $this->template->scripts();
 
         unset($_SESSION['filtros']);
 
