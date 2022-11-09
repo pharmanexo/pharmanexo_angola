@@ -589,6 +589,7 @@ class Login extends CI_Controller
                                     "avatar" => $consulta['avatar'],
                                     "verifica" => $consulta['verifica_email'],
                                     "usuario_sintese" => $consulta['usuario_sintese'],
+                                    "id_sessao" => $id_sessao,
                                 ];
 
                                 $this->session->set_userdata($userdata);
