@@ -90,7 +90,7 @@ class Login extends CI_Controller
                 // Enviar email
                 if ($send) {
 
-                    $output = ['type' => 'success', 'message' => 'Pronto! Verifique o e-mail informado para concluir a recuperação.'];
+                    $output = ['type' => 'success', 'message' => 'Por motivos de segurança, enviamos um e-mail para o endereço cadastrado. Clique no link do e-mail e verifique seu endereço.'];
                 } else {
 
                     $output = ['type' => 'error', 'message' => 'Erro ao enviar e-mail!'];
