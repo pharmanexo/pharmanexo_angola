@@ -88,9 +88,7 @@ if (isset($scripts))
                 var hora = timeOut.toLocaleTimeString();
                 $("#tempo_sessao").html(hora);
                 if (tempoAlerta <= hora && alertar == 'true') {
-                    // Tempo em minutos
-                    countdown("timer_sessao", 10);
-
+                    countdown("timer_sessao", 10, 00)
                     $('#modalAlerta').modal({
                         backdrop: false
                     })
@@ -100,13 +98,13 @@ if (isset($scripts))
                     alertar = 'false'
                 }
                 if (tempoSessao <= hora) {
-                    timeoutSessao();
-                    clearInterval(verificaSessao);
+                    timeoutSessao()
+                    clearInterval(verificaSessao)
                 }
             };
 
 
-            function countdown(relogio, minutos) {
+            function countdown(relogio, minutos, segundos) {
                 var element, tempoFinal, horas, mins, ms, time;
 
                 function minSec(n) {
@@ -115,16 +113,19 @@ if (isset($scripts))
 
                 function updateTimer() {
                     ms = tempoFinal - (+new Date);
-                    time = new Date(ms);
-                    horas = time.getUTCHours();
-                    mins = time.getUTCMinutes();
-                    element.innerHTML = (horas ? horas + ':' + minSec(mins) : mins) + ':' + minSec(time.getUTCSeconds());
-                    setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
-
+                    if (ms < 1000) {
+                        timeoutSessao()
+                    } else {
+                        time = new Date(ms);
+                        horas = time.getUTCHours();
+                        mins = time.getUTCMinutes();
+                        element.innerHTML = (horas ? horas + ':' + minSec(mins) : mins) + ':' + minSec(time.getUTCSeconds());
+                        setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
+                    }
                 }
 
                 element = document.getElementById("timer_sessao");
-                tempoFinal = (+new Date) + 1000 * (60 * minutos) + 500;
+                tempoFinal = (+new Date) + 1000 * (60 * minutos + segundos) + 500;
                 updateTimer();
             }
 
