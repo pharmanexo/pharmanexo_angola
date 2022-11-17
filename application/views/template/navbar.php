@@ -109,7 +109,7 @@
             </a>
         </li>
     </ul>
-    <div id="alerta_sessao">
+<!--    <div id="alerta_sessao" >
         <div class="modal fade text-center" id="modalAlerta" role="dialog" aria-hidden="true" style="z-index:100">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content align-content-center" style="border-radius:30px;background-color:#fff;box-shadow:0px 1px 2px 1px #000;">
@@ -117,8 +117,8 @@
                         <h3 class="modal-title w-100" style="margin-top: 2px;position: absolute;left: 0px;">
                             Sua sessão vai expirar!</h3>
                         <h5 id="timer_sessao" class="modal-title w-100" style="margin-top: 35px;position: absolute;left: 0px;">
-                            <?php $timer = strtotime("+10 minutes");
-                            echo date('i:s', $timer) ?></h5>
+                            <?php /*$timer = strtotime("+10 minutes");
+                            echo date('i:s', $timer) */?></h5>
                     </div>
                     <div class="modal-body" style="margin-top: 40px;">
                         <div class="col-12 controls" style="margin-top:25px;">
@@ -148,7 +148,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>
 <aside class="chat">
     <div class="chat__header">
