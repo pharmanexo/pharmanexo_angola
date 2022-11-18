@@ -63,81 +63,55 @@ class M_valor_minimo extends MY_Model
         $option = $this->input->post('opcao');
 
         if ($option === 'ESTADOS') {
-           
-            # Se for ONCOPROD replica para todos os seus fornecedores
-            if ( in_array($id_fornecedor, $this->oncoprod) && isset($post['replicarMatriz']) ) {
 
-                foreach ($this->oncoprod as $f) {
+            # replica para todos os seus fornecedores
+            if (isset($post['replicarMatriz'])) {
+                $fornecedores = [];
 
-                    $dataAtualizacao = [];
-                    $dataNovo = [];
-                    
-                    foreach ($elementos as $key => $id_estado) {
-
-                        $id = $this->verifyIfExists($f, $id_estado, 'ESTADOS');
-
-                        if ( $id ) {
-
-                            $dataAtualizacao[] = [
-                                'id' => $id,
-                                'id_fornecedor' => $f,
-                                'id_estado'     => $id_estado,
-                                'id_tipo_venda' => $id_tipo_venda,
-                                'valor_minimo'  => $valor_minimo,
-                                'desconto_padrao'  => $desconto,
-                                'data_atualizacao' => date("Y-m-d H:i:s")
-                            ];
-                        } else {
-
-                            $dataNovo[] = [
-                                'id_fornecedor' => $f,
-                                'id_estado'     => $id_estado,
-                                'id_tipo_venda' => $id_tipo_venda,
-                                'valor_minimo'  => $valor_minimo,
-                                'desconto_padrao' => $desconto,
-                            ];
-                        }
-                    }
-
-                    if (!empty($dataNovo)) {$this->db->insert_batch($this->table, $dataNovo); }
-                    if (!empty($dataAtualizacao)) {$this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
+                if (isset($_SESSION['id_matriz'])) {
+                    $fornecedores = $this->db->select('id')->where('id_matriz', $_SESSION['id_matriz'])->get('fornecedores')->result_array();
                 }
-            } elseif ( in_array($id_fornecedor, $this->oncoexo) && isset($post['replicarMatriz']) ) {
 
-                foreach ($this->oncoexo as $f) {
+                if (!empty($fornecedores)) {
+                    foreach ($fornecedores as $fornecedor) {
+                        $f = $fornecedor['id'];
+                        $dataAtualizacao = [];
+                        $dataNovo = [];
 
-                    $dataAtualizacao = [];
-                    $dataNovo = [];
-                    
-                    foreach ($elementos as $key => $id_estado) {
+                        foreach ($elementos as $key => $id_estado) {
 
-                        $id = $this->verifyIfExists($f, $id_estado, 'ESTADOS');
+                            $id = $this->verifyIfExists($f, $id_estado, 'ESTADOS');
 
-                        if ( $id ) {
+                            if ($id) {
 
-                            $dataAtualizacao[] = [
-                                'id' => $id,
-                                'id_fornecedor' => $f,
-                                'id_estado'     => $id_estado,
-                                'id_tipo_venda' => $id_tipo_venda,
-                                'valor_minimo'  => $valor_minimo,
-                                'desconto_padrao'  => $desconto,
-                                'data_atualizacao' => date("Y-m-d H:i:s")
-                            ];
-                        } else {
+                                $dataAtualizacao[] = [
+                                    'id' => $id,
+                                    'id_fornecedor' => $f,
+                                    'id_estado' => $id_estado,
+                                    'id_tipo_venda' => $id_tipo_venda,
+                                    'valor_minimo' => $valor_minimo,
+                                    'desconto_padrao' => $desconto,
+                                    'data_atualizacao' => date("Y-m-d H:i:s")
+                                ];
+                            } else {
 
-                            $dataNovo[] = [
-                                'id_fornecedor' => $f,
-                                'id_estado'     => $id_estado,
-                                'id_tipo_venda' => $id_tipo_venda,
-                                'valor_minimo'  => $valor_minimo,
-                                'desconto_padrao' => $desconto,
-                            ];
+                                $dataNovo[] = [
+                                    'id_fornecedor' => $f,
+                                    'id_estado' => $id_estado,
+                                    'id_tipo_venda' => $id_tipo_venda,
+                                    'valor_minimo' => $valor_minimo,
+                                    'desconto_padrao' => $desconto,
+                                ];
+                            }
+                        }
+
+                        if (!empty($dataNovo)) {
+                            $this->db->insert_batch($this->table, $dataNovo);
+                        }
+                        if (!empty($dataAtualizacao)) {
+                            $this->db->update_batch($this->table, $dataAtualizacao, 'id');
                         }
                     }
-
-                    if (!empty($dataNovo)) {$this->db->insert_batch($this->table, $dataNovo); }
-                    if (!empty($dataAtualizacao)) {$this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
                 }
             } else {
 

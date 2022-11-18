@@ -1482,6 +1482,7 @@ class Cotacoes extends MY_Controller
             ->where('id_fornecedor', $id_fornecedor)
             ->where('preco_marca = 0')
             ->where('submetido = 0')
+            ->where('controle = 0')
             ->delete('cotacoes_produtos');
 
 

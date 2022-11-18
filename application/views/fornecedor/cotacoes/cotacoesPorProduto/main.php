@@ -56,6 +56,7 @@
                             <th>Numero</th>
                             <th>Qtd Solicitada</th>
                             <th>Periodo</th>
+                            <th>UF</th>
                             <th>Comprador</th>
                             <th></th>
                             <th></th>
@@ -101,8 +102,9 @@
                      order: [[5, "ASC"]],
                     columns: [
                         { data: 'cd_cotacao', className: 'text-nowrap' },
-                        { data: 'qtd_solicitada', className: 'text-nowrap' },
+                        { data: 'qtd_solicitada', className: 'text-nowrap  text-center' },
                         { data: 'data', className: 'text-nowrap text-center' },
+                        { data: 'estado', className: 'text-nowrap  text-center' },
                         { data: 'comprador', className: 'text-nowrap'},
                         { data: 'dt_fim_cotacao', visible: false},
                         { defaultContent: '', orderable: false, searchable: false },

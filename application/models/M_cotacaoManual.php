@@ -1061,8 +1061,9 @@ class M_cotacaoManual extends MY_Model
         if ($this->session->has_userdata('id_matriz')) {
 
 
-            switch (strtoupper($integrador) == 'SINTESE') {
+            switch (strtoupper($integrador)) {
                 case 'SINTESE':
+
                     # Obtem os fornecedores
                     $this->DB_SINTESE->select("cot.id_fornecedor, f.nome_fantasia");
                     $this->DB_SINTESE->from("cotacoes cot");
@@ -1070,6 +1071,7 @@ class M_cotacaoManual extends MY_Model
                     $this->DB_SINTESE->where('cot.cd_cotacao', $cd_cotacao);
                     $this->DB_SINTESE->where('f.id_matriz', $this->session->id_matriz);
                     $lista_fornecedores = $this->DB_SINTESE->get()->result_array();
+
                     break;
                 case 'BIONEXO':
                     $this->DB_BIONEXO->select("cot.id_fornecedor, f.nome_fantasia");
@@ -1090,7 +1092,7 @@ class M_cotacaoManual extends MY_Model
             }
 
 
-            if (!isset($lista_fornecedores) && !empty($lista_fornecedores)) {
+            if (isset($lista_fornecedores) && !empty($lista_fornecedores)) {
                 $list = [];
 
                 foreach ($lista_fornecedores as $f) {

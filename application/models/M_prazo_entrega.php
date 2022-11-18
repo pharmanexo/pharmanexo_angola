@@ -51,86 +51,66 @@ class M_prazo_entrega extends MY_Model
     {
         $this->db->trans_begin();
 
+        $post = $this->input->post();
+
         $id_fornecedor = $this->session->userdata("id_fornecedor");
         $id_tipo_venda = $this->session->userdata("id_tipo_venda"); //1-markplace 2- integranexo 3- markplace/integranexo
-        $prazo_entrega = $this->input->post('prazo');
-        $elementos     = explode(',', $this->input->post('elementos'));
+        $prazo_entrega = $post['prazo'];
+        $elementos = explode(',', $this->input->post('elementos'));
 
         $option = $this->input->post("opcao");
 
         if ($option == 'ESTADOS') {
 
-            # Se for ONCOPROD replica para todos os seus fornecedores
-            if ( in_array($id_fornecedor, $this->oncoprod) && isset($post['replicarMatriz']) ) {
+            # replica para todos os seus fornecedores
+            if (isset($post['replicarMatriz'])) {
+                $fornecedores = [];
 
-                foreach ($this->oncoprod as $f) {
+                if (isset($_SESSION['id_matriz'])) {
+                    $fornecedores = $this->db->select('id')->where('id_matriz', $_SESSION['id_matriz'])->get('fornecedores')->result_array();
+                }
 
-                    $dataAtualizacao = [];
-                    $dataNovo = [];
-                    
-                    foreach ($elementos as $key => $id_estado) {
+                if (!empty($fornecedores)) {
+                    foreach ($fornecedores as $fornecedor) {
+                        $f = $fornecedor['id'];
+                        $dataAtualizacao = [];
+                        $dataNovo = [];
 
-                        $id = $this->verifyIfExists($f, $id_estado, 'ESTADOS');
+                        foreach ($elementos as $key => $id_estado) {
 
-                        if ( $id ) {
+                            $id = $this->verifyIfExists($f, $id_estado, 'ESTADOS');
 
-                            $dataAtualizacao[] = [
-                                'id' => $id,
-                                'id_fornecedor' => $f,
-                                'id_estado'     => $id_estado,
-                                'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega,
-                                'data_atualizacao' => date("Y-m-d H:i:s")
-                            ];
-                        } else {
+                            if ($id) {
 
-                            $dataNovo[] = [
-                                'id_fornecedor' => $f,
-                                'id_estado'     => $id_estado,
-                                'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega
-                            ];
+                                $dataAtualizacao[] = [
+                                    'id' => $id,
+                                    'id_fornecedor' => $f,
+                                    'id_estado' => $id_estado,
+                                    'id_tipo_venda' => $id_tipo_venda,
+                                    'prazo' => $prazo_entrega,
+                                    'data_atualizacao' => date("Y-m-d H:i:s")
+                                ];
+                            } else {
+
+                                $dataNovo[] = [
+                                    'id_fornecedor' => $f,
+                                    'id_estado' => $id_estado,
+                                    'id_tipo_venda' => $id_tipo_venda,
+                                    'prazo' => $prazo_entrega
+                                ];
+                            }
+                        }
+
+                        if (!empty($dataNovo)) {
+                            $this->db->insert_batch($this->table, $dataNovo);
+                        }
+                        if (!empty($dataAtualizacao)) {
+                            $this->db->update_batch($this->table, $dataAtualizacao, 'id');
                         }
                     }
-
-                    if (!empty($dataNovo)) {$this->db->insert_batch($this->table, $dataNovo); }
-                    if (!empty($dataAtualizacao)) {$this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
                 }
-            } elseif ( in_array($id_fornecedor, $this->oncoexo) && isset($post['replicarMatriz']) ) {
 
-                foreach ($this->oncoexo as $f) {
 
-                    $dataAtualizacao = [];
-                    $dataNovo = [];
-                    
-                    foreach ($elementos as $key => $id_estado) {
-
-                        $id = $this->verifyIfExists($f, $id_estado, 'ESTADOS');
-
-                        if ( $id ) {
-
-                            $dataAtualizacao[] = [
-                                'id' => $id,
-                                'id_fornecedor' => $f,
-                                'id_estado'     => $id_estado,
-                                'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega,
-                                'data_atualizacao' => date("Y-m-d H:i:s")
-                            ];
-                        } else {
-
-                            $dataNovo[] = [
-                                'id_fornecedor' => $f,
-                                'id_estado'     => $id_estado,
-                                'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega
-                            ];
-                        }
-                    }
-
-                    if (!empty($dataNovo)) {$this->db->insert_batch($this->table, $dataNovo); }
-                    if (!empty($dataAtualizacao)) {$this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
-                }
             } else {
 
                 $dataAtualizacao = [];
@@ -140,102 +120,114 @@ class M_prazo_entrega extends MY_Model
 
                     $id = $this->verifyIfExists($id_fornecedor, $id_estado, 'ESTADOS');
 
-                    if ( $id ) {
+                    if ($id) {
 
                         $dataAtualizacao[] = [
                             'id' => $id,
                             'id_fornecedor' => $id_fornecedor,
-                            'id_estado'     => $id_estado,
+                            'id_estado' => $id_estado,
                             'id_tipo_venda' => $id_tipo_venda,
-                            'prazo'         => $prazo_entrega,
+                            'prazo' => $prazo_entrega,
                             'data_atualizacao' => date("Y-m-d H:i:s")
                         ];
                     } else {
 
                         $dataNovo[] = [
                             'id_fornecedor' => $id_fornecedor,
-                            'id_estado'     => $id_estado,
+                            'id_estado' => $id_estado,
                             'id_tipo_venda' => $id_tipo_venda,
-                            'prazo'         => $prazo_entrega
+                            'prazo' => $prazo_entrega
                         ];
                     }
                 }
 
-                if (!empty($dataNovo)) { $this->db->insert_batch($this->table, $dataNovo); }
-                if (!empty($dataAtualizacao)) { $this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
+                if (!empty($dataNovo)) {
+                    $this->db->insert_batch($this->table, $dataNovo);
+                }
+                if (!empty($dataAtualizacao)) {
+                    $this->db->update_batch($this->table, $dataAtualizacao, 'id');
+                }
             }
         } else {
 
             # Se for ONCOPROD replica para todos os seus fornecedores
-            if ( in_array($id_fornecedor, $this->oncoprod)  && isset($post['replicarMatriz']) ) {
+            if (in_array($id_fornecedor, $this->oncoprod) && isset($post['replicarMatriz'])) {
 
                 foreach ($this->oncoprod as $f) {
 
                     $dataAtualizacao = [];
                     $dataNovo = [];
-                    
+
                     foreach ($elementos as $key => $id_cliente) {
 
                         $id = $this->verifyIfExists($f, $id_cliente, 'ESTADOS');
 
-                        if ( $id ) {
+                        if ($id) {
 
                             $dataAtualizacao[] = [
                                 'id' => $id,
                                 'id_fornecedor' => $f,
-                                'id_estado'     => $id_cliente,
+                                'id_estado' => $id_cliente,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega,
+                                'prazo' => $prazo_entrega,
                                 'data_atualizacao' => date("Y-m-d H:i:s")
                             ];
                         } else {
 
                             $dataNovo[] = [
                                 'id_fornecedor' => $f,
-                                'id_estado'     => $id_cliente,
+                                'id_estado' => $id_cliente,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega
+                                'prazo' => $prazo_entrega
                             ];
                         }
                     }
 
-                    if (!empty($dataNovo)) {$this->db->insert_batch($this->table, $dataNovo); }
-                    if (!empty($dataAtualizacao)) {$this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
+                    if (!empty($dataNovo)) {
+                        $this->db->insert_batch($this->table, $dataNovo);
+                    }
+                    if (!empty($dataAtualizacao)) {
+                        $this->db->update_batch($this->table, $dataAtualizacao, 'id');
+                    }
                 }
-            } elseif ( in_array($id_fornecedor, $this->oncoexo) && isset($post['replicarMatriz']) ) {
+            } elseif (in_array($id_fornecedor, $this->oncoexo) && isset($post['replicarMatriz'])) {
 
                 foreach ($this->oncoexo as $f) {
 
                     $dataAtualizacao = [];
                     $dataNovo = [];
-                    
+
                     foreach ($elementos as $key => $id_cliente) {
 
                         $id = $this->verifyIfExists($f, $id_cliente, 'ESTADOS');
 
-                        if ( $id ) {
+                        if ($id) {
 
                             $dataAtualizacao[] = [
                                 'id' => $id,
                                 'id_fornecedor' => $f,
-                                'id_estado'     => $id_cliente,
+                                'id_estado' => $id_cliente,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega,
+                                'prazo' => $prazo_entrega,
                                 'data_atualizacao' => date("Y-m-d H:i:s")
                             ];
                         } else {
 
                             $dataNovo[] = [
                                 'id_fornecedor' => $f,
-                                'id_estado'     => $id_cliente,
+                                'id_estado' => $id_cliente,
                                 'id_tipo_venda' => $id_tipo_venda,
-                                'prazo'         => $prazo_entrega
+                                'prazo' => $prazo_entrega
                             ];
                         }
                     }
 
-                    if (!empty($dataNovo)) {$this->db->insert_batch($this->table, $dataNovo); }
-                    if (!empty($dataAtualizacao)) {$this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
+                    if (!empty($dataNovo)) {
+                        $this->db->insert_batch($this->table, $dataNovo);
+                    }
+                    if (!empty($dataAtualizacao)) {
+                        $this->db->update_batch($this->table, $dataAtualizacao, 'id');
+                    }
                 }
             } else {
 
@@ -246,29 +238,33 @@ class M_prazo_entrega extends MY_Model
 
                     $id = $this->verifyIfExists($id_fornecedor, $id_cliente, 'CLIENTES');
 
-                    if ( $id ) {
+                    if ($id) {
 
                         $dataAtualizacao[] = [
                             'id' => $id,
                             'id_fornecedor' => $id_fornecedor,
-                            'id_cliente'    => $id_cliente,
+                            'id_cliente' => $id_cliente,
                             'id_tipo_venda' => $id_tipo_venda,
-                            'prazo'         => $prazo_entrega,
+                            'prazo' => $prazo_entrega,
                             'data_atualizacao' => date("Y-m-d H:i:s")
                         ];
                     } else {
 
                         $dataNovo[] = [
                             'id_fornecedor' => $id_fornecedor,
-                            'id_cliente'    => $id_cliente,
+                            'id_cliente' => $id_cliente,
                             'id_tipo_venda' => $id_tipo_venda,
-                            'prazo'         => $prazo_entrega
+                            'prazo' => $prazo_entrega
                         ];
                     }
                 }
 
-                if (!empty($dataNovo)) { $this->db->insert_batch($this->table, $dataNovo); }
-                if (!empty($dataAtualizacao)) { $this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
+                if (!empty($dataNovo)) {
+                    $this->db->insert_batch($this->table, $dataNovo);
+                }
+                if (!empty($dataAtualizacao)) {
+                    $this->db->update_batch($this->table, $dataAtualizacao, 'id');
+                }
             }
         }
 
@@ -279,7 +275,7 @@ class M_prazo_entrega extends MY_Model
             return false;
         } else {
 
-            $this->db->trans_commit();      
+            $this->db->trans_commit();
 
             return true;
         }

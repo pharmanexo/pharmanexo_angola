@@ -22,85 +22,62 @@ class M_forma_pagamento_fornecedor extends MY_Model
     {
         $this->db->trans_begin();
 
+        $post = $this->input->post();
         $id_fornecedor      = $this->session->userdata("id_fornecedor");
         $id_tipo_venda      = $this->session->userdata("id_tipo_venda");
-        $id_forma_pagamento = $this->input->post('id_forma_pagamento');
-        $elementos          = explode(',', $this->input->post('elementos'));
+        $id_forma_pagamento = $post['id_forma_pagamento'];
+        $elementos          = explode(',',$post['elementos']);
 
         $option = $this->input->post("opcao");
 
         if ($option == 'ESTADOS') {
 
-            # Se for ONCOPROD replica para todos os seus fornecedores
-            if ( in_array($id_fornecedor, $this->oncoprod) && isset($post['replicarMatriz']) ) {
-                
-                foreach ($this->oncoprod as $f) {
-                    
-                    $dataAtualizacao = [];
-                    $dataNovo = [];
+            if (isset($post['replicarMatriz'])) {
+                $fornecedores = [];
 
-                    foreach ($elementos as $key => $value) {
-
-                        $id = $this->verifyIfExists($f, $value, 'ESTADOS');
-
-                        if ( $id ) {
-
-                            $dataAtualizacao[] = [
-                                'id'                 => $id,
-                                'id_fornecedor'      => $f,
-                                'id_estado'          => $value,
-                                'id_tipo_venda'      => $id_tipo_venda,
-                                'id_forma_pagamento' => $id_forma_pagamento,
-                                'data_atualizacao'   => date("Y-m-d H:i:s")
-                            ]; 
-                        } else {
-
-                            $dataNovo[] = [
-                                'id_fornecedor'      => $f,
-                                'id_estado'          => $value,
-                                'id_tipo_venda'      => $id_tipo_venda,
-                                'id_forma_pagamento' => $id_forma_pagamento
-                            ];
-                        }
-                    }
-
-                    if (!empty($dataNovo)) {$this->db->insert_batch($this->table, $dataNovo); }
-                    if (!empty($dataAtualizacao)) {$this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
+                if (isset($_SESSION['id_matriz'])) {
+                    $fornecedores = $this->db->select('id')->where('id_matriz', $_SESSION['id_matriz'])->get('fornecedores')->result_array();
                 }
-            } elseif ( in_array($id_fornecedor, $this->oncoexo) && isset($post['replicarMatriz']) ) {
-              
-                foreach ($this->oncoexo as $f) {
-                    
-                    $dataAtualizacao = [];
-                    $dataNovo = [];
 
-                    foreach ($elementos as $key => $value) {
+                if (!empty($fornecedores)) {
+                    foreach ($fornecedores as $fornecedor) {
+                        $f = $fornecedor['id'];
 
-                        $id = $this->verifyIfExists($f, $value, 'ESTADOS');
+                        $dataAtualizacao = [];
+                        $dataNovo = [];
 
-                        if ( $id ) {
+                        foreach ($elementos as $key => $value) {
 
-                            $dataAtualizacao[] = [
-                                'id'                 => $id,
-                                'id_fornecedor'      => $f,
-                                'id_estado'          => $value,
-                                'id_tipo_venda'      => $id_tipo_venda,
-                                'id_forma_pagamento' => $id_forma_pagamento,
-                                'data_atualizacao'   => date("Y-m-d H:i:s")
-                            ]; 
-                        } else {
+                            $id = $this->verifyIfExists($f, $value, 'ESTADOS');
 
-                            $dataNovo[] = [
-                                'id_fornecedor'      => $f,
-                                'id_estado'          => $value,
-                                'id_tipo_venda'      => $id_tipo_venda,
-                                'id_forma_pagamento' => $id_forma_pagamento
-                            ];
+                            if ($id) {
+
+                                $dataAtualizacao[] = [
+                                    'id' => $id,
+                                    'id_fornecedor' => $f,
+                                    'id_estado' => $value,
+                                    'id_tipo_venda' => $id_tipo_venda,
+                                    'id_forma_pagamento' => $id_forma_pagamento,
+                                    'data_atualizacao' => date("Y-m-d H:i:s")
+                                ];
+                            } else {
+
+                                $dataNovo[] = [
+                                    'id_fornecedor' => $f,
+                                    'id_estado' => $value,
+                                    'id_tipo_venda' => $id_tipo_venda,
+                                    'id_forma_pagamento' => $id_forma_pagamento
+                                ];
+                            }
+                        }
+
+                        if (!empty($dataNovo)) {
+                            $this->db->insert_batch($this->table, $dataNovo);
+                        }
+                        if (!empty($dataAtualizacao)) {
+                            $this->db->update_batch($this->table, $dataAtualizacao, 'id');
                         }
                     }
-
-                    if (!empty($dataNovo)) {$this->db->insert_batch($this->table, $dataNovo); }
-                    if (!empty($dataAtualizacao)) {$this->db->update_batch($this->table, $dataAtualizacao, 'id'); }
                 }
             } else {
                     

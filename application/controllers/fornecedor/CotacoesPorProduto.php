@@ -161,6 +161,7 @@ class CotacoesPorProduto extends MY_Controller
                     $this->DB_COTACAO->select("cot.dt_fim_cotacao");
                     $this->DB_COTACAO->select("c.cnpj");
                     $this->DB_COTACAO->select("c.razao_social");
+                    $this->DB_COTACAO->select("c.estado");
                     $this->DB_COTACAO->select("cp.qt_produto_total");
                     $this->DB_COTACAO->from("cotacoes_produtos cp");
                     $this->DB_COTACAO->join("cotacoes cot", "cot.cd_cotacao = cp.cd_cotacao AND cot.id_fornecedor = cp.id_fornecedor");
@@ -181,6 +182,7 @@ class CotacoesPorProduto extends MY_Controller
                         $cotacoes[$kk]['comprador'] = "<small>{$row['razao_social']}<br>CNPJ: {$row['cnpj']}</small>";
                         $cotacoes[$kk]['data'] = $periodo;
                         $cotacoes[$kk]['qtd_solicitada'] = $row['qt_produto_total'];
+                        $cotacoes[$kk]['estado'] = $row['estado'];
                     }
                 } else {
 
@@ -219,7 +221,7 @@ class CotacoesPorProduto extends MY_Controller
 
 
         $cotacoes = $this->db
-            ->select('ct.cd_cotacao, ct.ds_cotacao, ct.dt_inicio_cotacao, ct.dt_fim_cotacao, cp.qt_produto_total, c.cnpj, c.razao_social')
+            ->select('ct.cd_cotacao, ct.ds_cotacao, ct.dt_inicio_cotacao, ct.dt_fim_cotacao, cp.qt_produto_total, c.cnpj, c.razao_social, c.estado')
             ->from('produtos_catalogo pc')
             ->join('produtos_fornecedores_sintese pfs', 'pfs.cd_produto = pc.codigo and pc.id_fornecedor = pfs.id_fornecedor')
             ->join('produtos_marca_sintese pms', 'pms.id_sintese = pfs.id_sintese')
@@ -242,6 +244,7 @@ class CotacoesPorProduto extends MY_Controller
                 $cotacoes[$kk]['comprador'] = "<small>{$row['razao_social']}<br>CNPJ: {$row['cnpj']}</small>";
                 $cotacoes[$kk]['data'] = $periodo;
                 $cotacoes[$kk]['qtd_solicitada'] = $row['qt_produto_total'];
+                $cotacoes[$kk]['estado'] = $row['estado'];
             }
         }
 
@@ -270,7 +273,7 @@ class CotacoesPorProduto extends MY_Controller
 
 
         $cotacoes = $this->db
-            ->select('ct.cd_cotacao, ct.ds_cotacao, ct.dt_inicio_cotacao, ct.dt_fim_cotacao, cp.qt_produto_total, c.cnpj, c.razao_social')
+            ->select('ct.cd_cotacao, ct.ds_cotacao, ct.dt_inicio_cotacao, ct.dt_fim_cotacao, cp.qt_produto_total, c.cnpj, c.razao_social, c.estado')
             ->from('produtos_catalogo pc')
             ->join('produtos_fornecedores_sintese pfs', 'pfs.cd_produto = pc.codigo and pc.id_fornecedor = pfs.id_fornecedor')
             ->join('produtos_marca_sintese pms', 'pms.id_sintese = pfs.id_sintese')
@@ -293,6 +296,7 @@ class CotacoesPorProduto extends MY_Controller
                 $cotacoes[$kk]['comprador'] = "<small>{$row['razao_social']}<br>CNPJ: {$row['cnpj']}</small>";
                 $cotacoes[$kk]['data'] = $periodo;
                 $cotacoes[$kk]['qtd_solicitada'] = $row['qt_produto_total'];
+                $cotacoes[$kk]['estado'] = $row['estado'];
             }
         }
 
