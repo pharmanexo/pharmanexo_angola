@@ -114,6 +114,20 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="obs"><strong>Observações do comprador</strong></label><br>
+                                <?php if (isset($cotacao['Ds_Cotacao'])) echo "<p>" . $cotacao['Ds_Cotacao'] . "</p>"; ?>
+                                <?php if (isset($cotacao['Ds_Observacao'])) echo "<p>" . $cotacao['Ds_Observacao'] . "</p>"; ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
