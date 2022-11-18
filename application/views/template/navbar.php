@@ -10,8 +10,8 @@
     <div class="header__logo ">
         <h1><a href="<?php echo base_url('dashboard') ?>"><img style="width: 70%;" class="img-fluid" src="<?php echo base_url('images/img/logo-branca.png'); ?>" alt=""></a></h1>
     </div>
-    <ul class="top-nav">
-        <li class="p-5 hidden-lg-down" id="search-cot">
+    <ul class="top-nav text-right">
+        <li class="hidden-lg-down" id="search-cot">
             <div class="input-group" style="margin-top: 20px !important;">
                 <?php
                 $tempo = $this->db->select("timestamp")->from('ci_sessions')->where("id= '{$this->session->id_sessao}'")->get()->row_array();

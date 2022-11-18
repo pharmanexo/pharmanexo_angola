@@ -56,9 +56,9 @@ if (isset($scripts))
     window.fwSettings = {
         'widget_id': 73000002652
     };
-    ! function() {
+    !function () {
         if ("function" != typeof window.FreshworksWidget) {
-            var n = function() {
+            var n = function () {
                 n.q.push(arguments)
             };
             n.q = [], window.FreshworksWidget = n
@@ -68,10 +68,10 @@ if (isset($scripts))
 <script type='text/javascript' src='https://widget.freshworks.com/widgets/73000002652.js' async defer></script>
 <script src="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/pace.min.js' ?>"></script>
 <script>
-    $(function() {
+    $(function () {
 
         <?php if (isset($this->session->id_sessao)) :
-            $tempo = $this->db->select("timestamp")->from('ci_sessions')->where("id= '{$this->session->id_sessao}'")->get()->row_array();
+        $tempo = $this->db->select("timestamp")->from('ci_sessions')->where("id= '{$this->session->id_sessao}'")->get()->row_array();
         ?>
             var verificaSessao = setInterval(tempo_sessao, 1000);
             var alertar = 'true';
@@ -178,43 +178,42 @@ if (isset($scripts))
                             formWarning(response)
                         }
                     }
-                });
-
+                }
             });
+
+        });
 
         <?php endif; ?>
 
 
         <?php if (isset($this->session->id_fornecedor)) : ?>
-            var urlCorreio = "<?php echo base_url('global/comunicacao/checkAllMessages'); ?>";
+        var urlCorreio = "<?php echo base_url('global/comunicacao/checkAllMessages'); ?>";
 
+        getMessagesUnread(urlCorreio);
+        setInterval(function () {
             getMessagesUnread(urlCorreio);
-            setInterval(function() {
-                getMessagesUnread(urlCorreio);
-            }, 200000)
+        }, 200000)
         <?php endif; ?>
 
-        $('#btnGetCotacao').click(function(e) {
+        $('#btnGetCotacao').click(function (e) {
             e.preventDefault();
             var int = $('#s_integrador').val();
 
             <?php if (isset($this->session->id_fornecedor)) { ?>
-                <?php if (in_array($this->session->id_fornecedor, explode(',', ONCOPROD))) { ?>
+            <?php if (in_array($this->session->id_fornecedor, explode(',', ONCOPROD))) { ?>
 
-                    var url = "<?php echo base_url('fornecedor/cotacoes_oncoprod/detalhes/'); ?>" + int + '/';
-                <?php } elseif (in_array($this->session->id_fornecedor, explode(',', ONCOEXO))) { ?>
+            var url = "<?php echo base_url('fornecedor/cotacoes_oncoprod/detalhes/'); ?>" + int + '/';
+            <?php } elseif (in_array($this->session->id_fornecedor, explode(',', ONCOEXO))) { ?>
 
-                    var url = "<?php echo base_url('fornecedor/cotacoes_oncoexo/detalhes/'); ?>" + int + '/';
-                <?php } else { ?>
+            var url = "<?php echo base_url('fornecedor/cotacoes_oncoexo/detalhes/'); ?>" + int + '/';
+            <?php } else { ?>
 
-                    var url = "<?php echo base_url('fornecedor/cotacoes/detalhes/'); ?>" + int + '/';
-                <?php } ?>
+            var url = "<?php echo base_url('fornecedor/cotacoes/detalhes/'); ?>" + int + '/';
+            <?php } ?>
 
             <?php } ?>
 
             var cot = $('#inptGetCotacao').val();
-
-
 
 
             if (cot.length > 4 && int.length > 0) {
@@ -228,7 +227,7 @@ if (isset($scripts))
         });
 
 
-        $('.modalOpen').on('click', function(e) {
+        $('.modalOpen').on('click', function (e) {
             e.preventDefault();
             let me = $(this);
 
@@ -236,11 +235,11 @@ if (isset($scripts))
                 url: me.attr('href'),
                 type: 'get',
                 dataType: 'html',
-                success: function(response) {
+                success: function (response) {
                     $('body').append(response);
                     $('.modal').modal({
                         keyboard: false
-                    }, 'show').on('hide.bs.modal', function() {
+                    }, 'show').on('hide.bs.modal', function () {
                         $('.modal').remove();
                         $('#data-table').DataTable().ajax.reload();
                     });
@@ -252,7 +251,7 @@ if (isset($scripts))
     });
 
 
-    $(document).ajaxStart(function() {
+    $(document).ajaxStart(function () {
         Pace.restart();
     });
 </script>
