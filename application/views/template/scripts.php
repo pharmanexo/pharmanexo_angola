@@ -80,54 +80,66 @@ if (isset($scripts))
             var id = "<?php echo $this->session->id_sessao ?>";
             var idUser = "<?php echo $this->session->id_usuario ?>";
             var tempo = "<?php echo $tempo['timestamp'] ?>";
-            var timer = setInterval(timer_sessao, 1000);
-
 
             function tempo_sessao() {
                 var timeOut = new Date();
                 var hora = timeOut.toLocaleTimeString();
                 $("#tempo_sessao").html(hora);
                 if (tempoAlerta <= hora && alertar == 'true') {
-                    countdown("timer_sessao", 10, 00)
-                    $('#modalAlerta').modal({
-                        backdrop: false
+                    let timerInterval
+                    Swal.fire({
+                        title: 'Sua sessão irá expirar em breve!',
+                        confirmButtonText: 'Atualizar',
+                        html: 'Restam <strong></strong> .<br/>',
+                        icon: "warning",
+                        allowOutsideClick: false,
+                        timer: 10 * 60 * 1000, // 10 minutos
+                        onOpen: () => {
+                            const content = Swal.getHtmlContainer()
+                            const $ = content.querySelector.bind(content)
+                            clearInterval(verificaSessao)
+                            timerInterval = setInterval(() => {
+                                getSeconds = (Swal.getTimerLeft() / 1000).toFixed();
+                                minutes = Math.floor(getSeconds / 60);
+                                seconds = getSeconds - (minutes * 60);
+
+                                timeString = minutes.toString().padStart(2, '0') + ':' +
+                                    seconds.toString().padStart(2, '0');
+
+                                Swal.getHtmlContainer().querySelector('strong')
+                                    .textContent = timeString
+                            }, 1000)
+                        },
+                        onClose: () => {
+                            clearInterval(timerInterval)
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                type: "POST",
+                                url: "<?php echo base_url(); ?>/login/renovar_sessao",
+                                data: {
+                                    id: id,
+                                    timestamp: tempo
+                                },
+                                success: function(response) {
+                                    console.log(response)
+                                    if (response.type === 'success') {
+                                        formWarning(response);
+                                        window.location.reload(true);
+                                    } else {
+                                        formWarning(response)
+                                    }
+                                }
+                            });
+                        }
                     })
-                    $("#myModal").modal({
-                        backdrop: true
-                    })
-                    alertar = 'false'
                 }
                 if (tempoSessao <= hora) {
                     timeoutSessao()
                     clearInterval(verificaSessao)
                 }
             };
-
-
-            function countdown(relogio, minutos, segundos) {
-                var element, tempoFinal, horas, mins, ms, time;
-
-                function minSec(n) {
-                    return (n <= 9 ? "0" + n : n);
-                }
-
-                function updateTimer() {
-                    ms = tempoFinal - (+new Date);
-                    if (ms < 1000) {
-                        timeoutSessao()
-                    } else {
-                        time = new Date(ms);
-                        horas = time.getUTCHours();
-                        mins = time.getUTCMinutes();
-                        element.innerHTML = (horas ? horas + ':' + minSec(mins) : mins) + ':' + minSec(time.getUTCSeconds());
-                        setTimeout(updateTimer, time.getUTCMilliseconds() + 500);
-                    }
-                }
-
-                element = document.getElementById("timer_sessao");
-                tempoFinal = (+new Date) + 1000 * (60 * minutos + segundos) + 500;
-                updateTimer();
-            }
 
 
             function timeoutSessao() {
@@ -149,11 +161,6 @@ if (isset($scripts))
                     },
                 });
             }
-            if (localStorage.getItem("alertaSessao")) {
-                $("#alertaSessao").attr("hidden", false);
-                localStorage.clear();
-            }
-
             $('.renovarSessao').click(function(e) {
                 $.ajax({
                     type: "POST",
