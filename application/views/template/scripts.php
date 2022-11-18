@@ -85,13 +85,13 @@ if (isset($scripts))
                 var timeOut = new Date();
                 var hora = timeOut.toLocaleTimeString();
                 $("#tempo_sessao").html(hora);
-                if (tempoAlerta <= hora && alertar == 'true') {
-                    var alertar = 'false'
+                if (tempoAlerta <= hora) {
+                    clearInterval(verificaSessao)
                     let timerInterval
                     Swal.fire({
                         title: 'Sua sessão irá expirar em breve!',
                         confirmButtonText: 'Atualizar',
-                        html: 'Restam <strong></strong> .<br/>',
+                        html: 'Restam <strong></strong><br/>',
                         icon: "warning",
                         allowOutsideClick: false,
                         timer: 10 * 60 * 1000, // 10 minutos
@@ -132,6 +132,8 @@ if (isset($scripts))
                                     }
                                 }
                             });
+                        } else {
+                            timeoutSessao()
                         }
                     })
                 }
@@ -140,7 +142,6 @@ if (isset($scripts))
                     clearInterval(verificaSessao)
                 }
             };
-
 
             function timeoutSessao() {
                 $.ajax({
@@ -161,7 +162,7 @@ if (isset($scripts))
                     },
                 });
             };
-
+            
             $('.renovarSessao').click(function(e) {
                 $.ajax({
                     type: "POST",
@@ -181,10 +182,6 @@ if (isset($scripts))
                     }
                 })
             });
-
-
-
-
         <?php endif; ?>
 
 

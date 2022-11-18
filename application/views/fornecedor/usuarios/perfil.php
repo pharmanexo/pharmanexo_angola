@@ -11,6 +11,10 @@
         <?php echo $heading; ?>
 
         <div class="content__inner">
+            <div class="alert" hidden>
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                Entre novamente no sistema para atualizar sua foto
+            </div>
             <form action="<?php if (isset($form_action)) echo $form_action; ?>" method="POST" id="formUsuario" enctype="multipart/form-data">
                 <div class="row mx-auto mt-3">
                     <div class="col-12 col-lg-4 text-center">
@@ -18,18 +22,21 @@
                             <div class="card-body">
                                 <div class="imgPreview">
                                     <?php $avatar = $this->session->avatar ?>
-                                    <?php $url = IMG_PATH . 'avatar/' . $avatar ?>
-                                    <img id="imgPrev" src="<?php echo $url ?>" alt="Imagem" class="img-fluid rounded-circle w-50">
+                                    <?php $url = IMG_PATH . 'avatar/' . $avatar  ?>
+                                    <img id="imgPrev" src="<?php echo $url ?>" alt="Imagem" class="img-fluid rounded-circle w-50 ">
                                     <?php if ($this->session->verifica != "1") { ?>
                                         <i style="font-size:24px;color: green;position: relative;top: 40px;left:-10px" class="fa fa-lock"></i>
                                     <?php } else { ?>
                                         <i style="font-size:24px;color: red;position: relative;top: 40px;left:-5px" class="fa fa-exclamation"></i>
                                     <?php } ?>
                                 </div>
-                                <label class="btn btn-outline-primary btn-block mt-3" for="foto">
-                                    <input type="file" name="foto" id="foto" class="d-none">
+                                <label class="btn btn-outline-primary btn-block mt-3" for="foto" data-toggle="modal" data-dismiss="modal" data-target="#modalNovaImagem">
+                                    <input hidden value="" type="text" name="avatarfoto" id="avatarfoto" required>
                                     Trocar Imagem
                                 </label>
+
+
+
                             </div>
                         </div>
                     </div>
@@ -116,15 +123,109 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Modal nova senha Compra Coletiva -->
+                    <div class="modal fade text-center" id="modalNovaImagem" tabindex="-1" role="dialog" aria-labelledby="modalNovaSenha" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content align-content-center">
+                                <div class="modal-header text-center">
+                                    <h3 class="modal-title w-100" style="margin-top: 5px;
+                                                position: absolute;
+                                                left: 0px;">
+                                        Escolha uma nova imagem</h3>
+
+                                </div>
+                                <div class="modal-body" style="margin-top: 40px">
+                                    <ul class="pagination">
+                                        <li><a style="text-align:left;margin-right:120px;margin-left:45px;" id="avatarbut">Avatar</a></li>
+                                        <li><a style="text-align:center;margin-right:120px;" id="gifsbut">Gifs</a></li>
+                                        <li><a style="position:right;" id="animalbut">Animais</a></li>
+                                    </ul>
+                                    <?php foreach ($fotos as $foto) {
+                                        $array_fotos[] = $foto;
+                                    }
+                                    $coluna = 3;
+                                    $i = 0;
+                                    $pedaços = array_chunk($array_fotos, $coluna); ?>
+                                    <?php foreach ($pedaços as $pedaço) { ?>
+                                        <div class="row justify-content-start" style="margin-top: 15px;">
+                                            <?php foreach ($pedaço as $foto) : $i++; ?>
+                                                <?php if ($i <= 9) {  ?>
+                                                    <div class="col-4 avatarimg">
+                                                        <a id="foto" class="avatar avatarimg" value="<?php echo $foto['foto'] ?>">
+                                                            <img src="<?php echo IMG_PATH . 'avatar/' . $foto['foto'] ?>" alt="Avatar" width="70" height="70">
+                                                        </a>
+                                                    </div>
+                                                    <!-- Gifs -->
+                                                <?php } elseif ($i > 9 && $i <= 18) { ?>
+                                                    <div class="col-4 gifsimg" style="top:-45px;left:1px">
+                                                        <a id="foto" class="avatar gifsimg" hidden value="<?php echo $foto['foto'] ?>">
+                                                            <img src="<?php echo IMG_PATH . 'avatar/' . $foto['foto'] ?>" alt="Avatar" width="70" height="70">
+                                                        </a>
+                                                    </div>
+                                                    <!-- Animais -->
+                                                <?php } elseif ($i > 18) { ?>
+                                                    <div class="col-4 animalimg" style="top:-90px;left:1px">
+                                                        <a id="foto" class="avatar animalimg" hidden value="<?php echo $foto['foto'] ?>">
+                                                            <img src="<?php echo IMG_PATH . 'avatar/' . $foto['foto'] ?>" alt="Avatar" width="70" height="70">
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
+                                            <?php endforeach; ?>
+                                        </div>
+                                    <?php }  ?>
+
+                                    <div class="col-12 controls">
+                                        <button type="submit" id="postfoto" class="btn btn-primary px-3 " style="width:200px">
+                                            <i class="fas fa-check"></i> Salvar
+                                        </button>
+                                    </div>
+
+                                    <?php $mensagem = $this->session->flashdata("mensagem"); ?>
+                                    <?php if (!empty($mensagem)) : ?>
+                                        <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
+    <?php $mensagem = $this->session->flashdata("mensagem"); ?>
+    <?php if (!empty($mensagem)) : ?>
+        <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
+    <?php endif; ?>
 
     <?php if (isset($scripts)) echo $scripts; ?>
 
     <script>
         $(function() {
+
+            $(".avatar").click(function() {
+                $(".avatar").removeClass('selecao');
+                if ($(this).hasClass('selecao')) {
+                    $(this).removeClass('selecao');
+                } else {
+                    $(this).addClass('selecao');
+                    $("#avatarfoto").val($(this).attr('value'));
+                }
+            });
+            $("#avatarbut").click(function() {
+                $(".avatarimg").attr("hidden", false);
+                $(".gifsimg").attr("hidden", true);
+                $(".animalimg").attr("hidden", true);
+            });
+            $("#gifsbut").click(function() {
+                $(".gifsimg").attr("hidden", false);
+                $(".avatarimg").attr("hidden", true);
+                $(".animalimg").attr("hidden", true);
+            });
+            $("#animalbut").click(function() {
+                $(".animalimg").attr("hidden", false);
+                $(".gifsimg").attr("hidden", true);
+                $(".avatarimg").attr("hidden", true);
+            });
 
             $('#verificaEmail').click(function(e) {
                 e.preventDefault();
@@ -152,10 +253,6 @@
 
             password_popover('#senha', '#c_senha');
 
-            $("#foto").change(function() {
-                readURL(this);
-            });
-
             var senha = document.getElementById("senha");
             var c_senha = document.getElementById("c_senha");
 
@@ -165,6 +262,31 @@
             senha.addEventListener('focus', function() {
                 checks(null, senha.value, c_senha.value);
             });
+
+            $('#postfoto').click(function(e) {
+                e.preventDefault();
+                $('#postfoto').html("<i class='fa fa-spin fa-spinner'></i> Validando Dados... ").attr('disabled', true);
+                $.ajax({
+                    type: "POST",
+                    url: "<?php echo base_url(); ?>/login/primeiroatt",
+                    data: {
+                        id_avatar: $("#avatarfoto").val(),
+                        nickname: $("#nome").val(),
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        if (response.type === 'success') {
+                            $('#postfoto').html("<i class='fas fa-check' style='color:white'> </i>").attr('disabled', false);
+                            $('#modalNovaImagem').modal('hide');
+                            $('.alert').attr("hidden", false);
+
+                        } else {
+                            formWarning(response)
+                        }
+                    }
+                });
+            });
+
 
             $('#formUsuario').submit(function(e) {
 
