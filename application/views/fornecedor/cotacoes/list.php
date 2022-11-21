@@ -263,7 +263,7 @@
                                                     <?php foreach ($prod['estoques'] as $estq): ?>
                                                         <?php echo "data-{$estq['label']}='{$estq['value']}'"; ?>
                                                     <?php endforeach; ?>
-                                                        data-selectfornecedor=""
+                                                        data-selectfornecedor="a"
                                                         data-key="produto-<?php echo $k; ?>"
                                                         data-codigo="<?php echo $prod['codigo']; ?>"
                                                     <?php if (isset($produto['cotado']['restricao']) && $produto['cotado']['restricao'] == 1) echo 'readonly' ?>

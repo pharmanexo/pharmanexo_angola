@@ -294,13 +294,13 @@ class M_cotacaoManual extends MY_Model
 
         $produtosSemEstoque = [];
 
-        if (in_array($id_fornecedor, explode(',', ONCOPROD)) || in_array($id_fornecedor, explode(',', ONCOEXO))) {
+        if (isset($_SESSION['id_matriz']) && !empty($_SESSION['id_matriz'])) {
 
             # Define qual matriz esta logada
-            $matriz = (in_array($id_fornecedor, explode(',', ONCOPROD))) ? ONCOPROD : ONCOEXO;
+            $matriz = $_SESSION['id_matriz'];
 
             # Lista das filiais da ONCOPROD
-            $fornecedores_filial = $this->fornecedores->find("*", "id in (" . $matriz . ")");
+            $fornecedores_filial = $this->fornecedores->find("*", "id_matriz = {$matriz}");
         }
 
 
@@ -379,7 +379,7 @@ class M_cotacaoManual extends MY_Model
                         $produtos[$kk]['encontrados'][$k]['preco_caixa'] = $pMix['preco_base'] * $p['quantidade_unidade'];
                     }
 
-                    if (in_array($id_fornecedor, explode(',', ONCOPROD)) || in_array($id_fornecedor, explode(',', ONCOEXO))) {
+                    if (!empty($fornecedores_filial)) {
 
                         # Lista de estoques da ONCOPROD
                         foreach ($fornecedores_filial as $f => $fornecedor) {

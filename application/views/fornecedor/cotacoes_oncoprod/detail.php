@@ -442,7 +442,7 @@
                                             <select class="select2 selectDropDown <?php if ($prod['restricao'] == 1) echo 'notdisabled'; ?>"
                                                     name="produtos[<?php echo $produto['cotado']['cd_produto_comprador'] ?>][marcas][<?php echo $jj ?>][id_fornecedor]"
                                                 <?php foreach ($prod['estoques'] as $estq) { ?><?php echo "data-{$estq['label']}='{$estq['value']}'"; ?><?php } ?>
-                                                    data-selectfornecedor=""
+                                                    data-selectfornecedor="a"
                                                     data-codigo="<?php echo $prod['codigo']; ?>"
                                                     data-uf="<?php echo $cotacao['estado']['id']; ?>"
                                                     data-idcliente="<?php echo $cotacao['cliente']['id']; ?>"

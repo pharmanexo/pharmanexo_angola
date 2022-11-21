@@ -214,6 +214,46 @@ class ImportDeivis extends CI_Controller
 
     }
 
+
+    public function fourbioo()
+    {
+        $file = fopen('depara_4bio.csv', 'r');
+        $usuarios = [];
+        $insert = [];
+
+        $forns = [5042, 5043, 5044];
+        while (($line = fgetcsv($file, null, ';')) !== false) {
+            $codigo = $line[0];
+            $id_produto = $line[2];
+
+            //get id_sintese
+            $prodSint = $this->db
+                ->where('id_produto', $id_produto)->limit(1)
+                ->get('produtos_marca_sintese')
+                ->row_array();
+
+           if (!empty($prodSint['id_sintese'])){
+
+               $id_sintese = $prodSint['id_sintese'];
+
+               foreach ($forns as $forn){
+                   $insert[] = [
+                       'id_sintese' => $id_sintese,
+                       'id_usuario' => 999,
+                       'cd_produto' => $codigo,
+                       'id_pfv' => $codigo,
+                       'id_fornecedor' => $forn
+                   ];
+               }
+           }
+        }
+
+        $this->db->insert_batch('produtos_fornecedores_sintese', $insert);
+
+
+
+    }
+
     public function usuario_oncoprod()
     {
         $file = fopen('usuarios.csv', 'r');
@@ -1088,9 +1128,77 @@ class ImportDeivis extends CI_Controller
             ->get('produtos_fornecedores_sintese')
             ->result_array();
 
-        foreach ($depara as $item){
+        foreach ($depara as $item) {
             var_dump($item);
             exit();
+        }
+
+    }
+
+
+    public function catalagoGlobal()
+    {
+        $file = fopen('Catalogo_Global_Novo.csv', 'r');
+        $insert = [];
+
+        while (($line = fgetcsv($file, null, ',')) !== false) {
+
+            $existe = $this->db
+                ->where('id_fornecedor', 5038)
+                ->where('codigo', $line[0])
+                ->get('produtos_catalogo')
+                ->row_array();
+
+            if (!empty($existe)) {
+
+               if (strtolower($existe['marca']) == strtolower($line[2])){
+                   var_dump($existe);
+                   exit();
+               }else{
+                   echo "{$existe['marca']} | {$line[2]}";
+                   exit();
+               }
+
+               exit();
+
+                $updade = [
+                    'nome_comercial' => $line[7],
+                    'apresentacao' => $line[1],
+                    'descricao' => $line[3],
+                    'ean' => $line[8],
+                    'rms' => $line[4],
+                    'marca' => $line[2],
+                    'quantidade_unidade' => $line[6],
+                    'unidade' => $line[5],
+                    'ativo' => $line[9]
+                ];
+
+                $this->db
+                    ->where_in('id_fornecedor', [5042, 5043, 5044])
+                    ->where('codigo', $line[0])
+                    ->update('produtos_catalogo', $updade);
+
+
+            } else {
+
+                foreach ([5042, 5043, 5044] as $id_forn) {
+                    $insert[] = [
+                        'id_fornecedor' => $id_forn,
+                        'codigo' => $line[0],
+                        'nome_comercial' => $line[7],
+                        'apresentacao' => $line[1],
+                        'descricao' => $line[3],
+                        'ean' => $line[8],
+                        'rms' => $line[4],
+                        'marca' => $line[2],
+                        'quantidade_unidade' => $line[6],
+                        'unidade' => $line[5],
+                        'ativo' => $line[9]
+                    ];
+                }
+
+            }
+
         }
 
     }

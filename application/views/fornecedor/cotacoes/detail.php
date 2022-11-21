@@ -748,6 +748,8 @@
 
         $("[data-selectfornecedor]").change(function (index, element) {
 
+            console.log('entrou');
+
             var row = $(this).parent().parent();
             var inputs = row.find("input")
             var links = row.find('a');

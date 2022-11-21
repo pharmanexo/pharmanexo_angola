@@ -50,7 +50,6 @@ class Cotacoes extends MY_Controller
      */
     public function checkFilial()
     {
-
         return $this->session->has_userdata('id_matriz') ? true : false;
     }
 
@@ -152,33 +151,33 @@ class Cotacoes extends MY_Controller
         # Condição pagamento
         $data['forma_pagamento'] = $this->COTACAO_MANUAL->getFormaPagamento($data['integrador'], $cliente['id'], $this->session->id_fornecedor, $estado['id']);
 
-       /* # Verifica se acotação ja foi respondida
-        $this->db->where('id_fornecedor', $this->session->id_fornecedor);
-        $this->db->where('cd_cotacao', $cd_cotacao);
-        $this->db->order_by('data_criacao DESC');
-        $cotacao_respondida = $this->db->get('cotacoes_produtos')->row_array();
+        /* # Verifica se acotação ja foi respondida
+         $this->db->where('id_fornecedor', $this->session->id_fornecedor);
+         $this->db->where('cd_cotacao', $cd_cotacao);
+         $this->db->order_by('data_criacao DESC');
+         $cotacao_respondida = $this->db->get('cotacoes_produtos')->row_array();
 
-        if (isset($cotacao_respondida) && !empty($cotacao_respondida)) {
+         if (isset($cotacao_respondida) && !empty($cotacao_respondida)) {
 
-            $data['prazo_entrega'] = $cotacao_respondida['prazo_entrega'];
-            $data['observacao'] = $cotacao_respondida['obs'];
-            $data['forma_pagamento'] = $cotacao_respondida['id_forma_pagamento'];
-        } else {
+             $data['prazo_entrega'] = $cotacao_respondida['prazo_entrega'];
+             $data['observacao'] = $cotacao_respondida['obs'];
+             $data['forma_pagamento'] = $cotacao_respondida['id_forma_pagamento'];
+         } else {
 
-            $this->db->where("id_fornecedor", $this->session->id_fornecedor);
-            $this->db->where_in("tipo", [2, 3]);
-            $this->db->group_start();
-            $this->db->where("id_estado", $estado['id']);
-            $this->db->or_where("id_estado", 0);
-            $this->db->group_end();
+             $this->db->where("id_fornecedor", $this->session->id_fornecedor);
+             $this->db->where_in("tipo", [2, 3]);
+             $this->db->group_start();
+             $this->db->where("id_estado", $estado['id']);
+             $this->db->or_where("id_estado", 0);
+             $this->db->group_end();
 
-            $obsConfig = $this->db->get("configuracoes_envio")->row_array();
+             $obsConfig = $this->db->get("configuracoes_envio")->row_array();
 
-            if (isset($obsConfig) && !empty($obsConfig)) {
+             if (isset($obsConfig) && !empty($obsConfig)) {
 
-                $data['observacao'] = $obsConfig['observacao'];
-            }
-        }*/
+                 $data['observacao'] = $obsConfig['observacao'];
+             }
+         }*/
 
         # Selects
         $data['select_formas_pagamento'] = $this->forma_pagamento->listar($data['integrador']);
@@ -689,9 +688,9 @@ class Cotacoes extends MY_Controller
                 break;
         }
 
-        if (isset($produto['solicitado'])){
+        if (isset($produto['solicitado'])) {
             $page_title = strtoupper("Produto: {$produto['descricao']} <br> <small>DESCRIÇÃO Comprador: {$produto['solicitado']}</small>");
-        }else{
+        } else {
             $page_title = strtoupper("Produto: {$produto['descricao']}");
         }
 
