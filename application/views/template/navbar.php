@@ -107,48 +107,9 @@
             <a class="renovarSessao" id="tempo_sessao" value="<?php $tempo['timestamp'] ?>" title="Sessão expira as <?php echo date('H:i:s', $tempo['timestamp'] + 3600) ?> ">
                 <?php echo date('h:i:s', $tempo['timestamp']) ?>
             </a>
+
         </li>
     </ul>
-<!--    <div id="alerta_sessao" >
-        <div class="modal fade text-center" id="modalAlerta" role="dialog" aria-hidden="true" style="z-index:100">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content align-content-center" style="border-radius:30px;background-color:#fff;box-shadow:0px 1px 2px 1px #000;">
-                    <div class="modal-header text-center">
-                        <h3 class="modal-title w-100" style="margin-top: 2px;position: absolute;left: 0px;">
-                            Sua sessão vai expirar!</h3>
-                        <h5 id="timer_sessao" class="modal-title w-100" style="margin-top: 35px;position: absolute;left: 0px;">
-                            <?php /*$timer = strtotime("+10 minutes");
-                            echo date('i:s', $timer) */?></h5>
-                    </div>
-                    <div class="modal-body" style="margin-top: 40px;">
-                        <div class="col-12 controls" style="margin-top:25px;">
-                            <button class="btn btn-primary renovarSessao" id="renovarSessao" style="background-color: #192069;;color:#fff;font-size:15px;">
-                                Atualizar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="modal fade text-center" id="modalTimeOut" role="dialog" aria-labelledby="modalTimeOut" aria-hidden="true" style="z-index:100">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content align-content-center" style="border-radius:30px;background-color:#7b7e82;box-shadow:0px 3px 6px 4px #ed3732;">
-                    <div class="modal-header text-center">
-                        <h3 class="modal-title w-100 text-white" style="margin-top: 5px;
-                    position: absolute;
-                    left: 0px;">Sua sessão expirou!</h3>
-                    </div>
-                    <div class="modal-body" style="margin-top: 40px;">
-                        <div class="col-12 controls" style="margin-top:25px;">
-                            <a href="/login" style="color:#fff;font-size:20px;font-weight:bolder">
-                                Clique para entrar novamente
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
 </div>
 <aside class="chat">
     <div class="chat__header">
