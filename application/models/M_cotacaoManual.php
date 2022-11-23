@@ -76,7 +76,6 @@ class M_cotacaoManual extends MY_Model
         $produtos = $this->matchProducts($cd_cotacao, $cotacao['id'], $id_fornecedor, $cliente['id'], $estado['id'], $integrador);
 
 
-
         # Condição de pagamento da cotação
         $condicao_pagamento = ($integrador == 'SINTESE') ?
             $this->forma_pagamento->findById($cotacao['cd_condicao_pagamento'])['descricao'] : $cotacao['forma_pagamento'];
@@ -372,7 +371,7 @@ class M_cotacaoManual extends MY_Model
                         'codigo' => $p['codigo']
                     ];
                     $pMix = $this->preco_mix->get_item($params);
-                   // $pMix = [];
+                    // $pMix = [];
 
                     if (isset($pMix['preco_base']) && !empty($pMix['preco_base'])) {
                         $produtos[$kk]['encontrados'][$k]['preco_unitario'] = $pMix['preco_base'];
@@ -1669,14 +1668,22 @@ class M_cotacaoManual extends MY_Model
 
                     if (empty($old)) {
 
-                        $data = [
-                            "id_sintese" => $row['id_sintese'],
-                            "cd_produto" => $row['cd_produto'],
-                            "id_fornecedor" => $row['id_fornecedor'],
-                            "id_usuario" => $this->session->id_usuario,
-                        ];
+                        $produtoSint = $this->db
+                            ->where('id_produto', $post['id_sintese'])
+                            ->limit(1)
+                            ->get('produtos_marca_sintese')
+                            ->row_array();
 
-                        $this->db->insert('produtos_fornecedores_sintese', $data);
+                        if (!empty($produtoSint)) {
+                            $data = [
+                                "id_sintese" => $produtoSint['id_sintese'],
+                                "cd_produto" => $row['cd_produto'],
+                                "id_fornecedor" => $row['id_fornecedor'],
+                                "id_usuario" => $this->session->id_usuario,
+                            ];
+
+                            $this->db->insert('produtos_fornecedores_sintese', $data);
+                        }
                     }
                 }
                 break;
