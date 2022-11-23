@@ -349,7 +349,7 @@
                 $.post(urlPost, {
                     dados
                 }, function (xhr) {
-                    table.ajax.reload();
+                    Location.reload();
                     formWarning(xhr);
                 }, 'JSON')
                     .fail(function (xhr) {
