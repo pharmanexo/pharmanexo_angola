@@ -288,7 +288,7 @@
                     e.preventDefault();
 
                     var dados = [];
-
+                    alert($('#data-table<?php echo $k; ?>').data('sintese'));
                     $.map(table.rows('.selected').data(), function(item) {
 
                         dados.push({
