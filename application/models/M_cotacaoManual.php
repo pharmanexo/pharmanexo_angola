@@ -1698,15 +1698,34 @@ class M_cotacaoManual extends MY_Model
 
                     if (empty($old)) {
 
-                        $data = [
-                            "id_produto_sintese" => $row['id_produto'],
-                            "cd_produto" => $row['codigo'],
-                            "id_usuario" => $this->session->id_usuario,
-                            "id_integrador" => 2,
-                            "id_cliente" => $row['id_cliente']
-                        ];
+                        $produtoForn = $this->db
+                            ->where('codigo', $row['codigo'])
+                            ->where('id_fornecedor', $this->db->id_fornecedor)
+                            ->limit(1)
+                            ->get('produtos_fornecedores_sintese')
+                            ->row_array();
 
-                        $this->pcd->insert($data);
+                        if (!empty($produtoForn)){
+                            $produtoSint = $this->db
+                                ->where('id_produto', $produtoForn['id_sintese'])
+                                ->limit(1)
+                                ->get('produtos_marca_sintese')
+                                ->row_array();
+                        }
+
+                        if (!empty($produtoSint)){
+                            $data = [
+                                "id_produto_sintese" => $produtoSint['id_produto'],
+                                "cd_produto" => $row['codigo'],
+                                "id_usuario" => $this->session->id_usuario,
+                                "id_integrador" => 2,
+                                "id_cliente" => $row['id_cliente']
+                            ];
+
+                            $this->pcd->insert($data);
+                        }
+
+
                     }
                 }
                 break;
