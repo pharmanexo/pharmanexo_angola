@@ -101,9 +101,7 @@
                     var url = $(this).attr('href');
                     $.post(url, {}, function (xhr) {
                         formWarning(xhr);
-                        setTimeout(function () {
-                            window.location.href = "<?php echo base_url('fornecedor/estoque/consolidacao/consolidados')?>";
-                        }, 3000)
+                        $('#data-table').DataTable().ajax.reload();
                     }, 'JSON')
                 });
 

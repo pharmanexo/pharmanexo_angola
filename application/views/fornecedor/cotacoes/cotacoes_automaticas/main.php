@@ -53,6 +53,19 @@
                         </div>
                     </div>  
                 </div>
+
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label for="filtro-estado">Estados</label>
+                        <select class="select2" id="filtro-estado" data-index="4">
+                            <option value="">Selecione</option>
+                            <?php foreach($estados as $estado) { ?>
+                                <option value="<?php echo $estado['uf'] ?>"><?php echo $estado['descricao']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                </div>
+
             </div>
 
             <div class="card-body">
@@ -64,6 +77,7 @@
                             <th>Comprador</th>
                             <th>Data da Cotação</th>
                             <th>Valor Total</th>
+                            <th>UF COTAÇÃO</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -111,6 +125,11 @@
                         nw_data.columns[0].search.type = 'equal';
                     }
 
+                    if ($('#filtro-estado').val() !== '') {
+                        nw_data.columns[4].search.value = $('#filtro-estado').val();
+                        nw_data.columns[4].search.type = 'equal';
+                    }
+
                     return nw_data;
                 }
             },
@@ -120,6 +139,7 @@
                 {name: 'razao_social', data: 'razao_social', searchable: true},
                 {name: 'data_cotacao', data: 'data_cotacao', searchable: true},
                 {name: 'valor_total', data: 'valor_total', searchable: true },
+                {name: 'cp.uf_comprador', data: 'uf_comprador', searchable: true },
                 {name: 'id_cliente', data: 'id_cliente', searchable: true, visible: false},
             ],
             rowCallback: function (row, data) {

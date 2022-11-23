@@ -70,7 +70,7 @@
 
                     $('td:eq(3)', row).html(`<a href="${url_rede}${data.id}" class="btn btn-sm btn-outline-primary">Configurar</a>`);
 
-                    $('td', row).each(function() {
+                    $('td:not(:last-child)', row).each(function() {
 
                         $(this).on('click', function() {
                             $.ajax({

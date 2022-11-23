@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 class Dashboard extends MY_Controller
 {
     private $route;
@@ -51,6 +53,8 @@ class Dashboard extends MY_Controller
         $grupo = ($this->session->has_userdata('grupo')) ? $this->session->grupo : '';
         $data['scripts'] = $this->template->scripts();
         $data['frm_actionverifica'] = "{$this->routelogin}verifica_email";
+
+
 
         if ($this->session->userdata('primeiro') == '1') {
             $this->primeiro_login();
@@ -250,6 +254,12 @@ class Dashboard extends MY_Controller
 
         $data['indicadores'] = $this->indicadores($this->session->id_fornecedor);
 
+        $data['updateCotacoes'] = $this->db->query("
+                                                select (select max(data_criacao) as SINTESE from cotacoes_sintese.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) as SINTESE,
+                                                (select max(dt_criacao) as BIONEXO from cotacoes_bionexo.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) AS BIONEXO,
+                                                (select max(dt_criacao) as APOIO from cotacoes_apoio.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) AS APOIO
+                                                ")->row_array();
+
         $this->load->view("fornecedor/dashboard/main", $data);
     }
 
@@ -375,6 +385,14 @@ class Dashboard extends MY_Controller
             $this->DB_COTACAO->limit(1);
             $data['dt_cotacaoes'] = $this->DB_COTACAO->get('cotacoes')->row_array()['data_criacao'];
         }
+
+
+        $data['updateCotacoes'] = $this->db->query("
+                                                select (select max(data_criacao) as SINTESE from cotacoes_sintese.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) as SINTESE,
+                                                (select max(dt_criacao) as BIONEXO from cotacoes_bionexo.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) AS BIONEXO,
+                                                (select max(dt_criacao) as APOIO from cotacoes_apoio.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) AS APOIO
+                                                ")->row_array();
+
 
 
         $this->load->view("fornecedor/dashboard/vendas", $data);
