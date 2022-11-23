@@ -190,6 +190,8 @@ class Cotacoes extends MY_Controller
         $data['url_revisar'] = "{$this->route}review/";
         $data['url_price'] = "{$this->route}setProduct/";
         $data['url_restricao'] = "{$this->route}deleteRestriction";
+        $data['datatables'] = "{$this->route}datatable_catalogo"; 
+        $data['url_combinar'] = "{$this->route}combinar_produto_marca/{$integrador}";
 
         if ($data['checkFilial']) {
 

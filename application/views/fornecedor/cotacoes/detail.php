@@ -211,6 +211,7 @@
 
         <!-- Lista de Produtos -->
         <?php $this->load->view("fornecedor/cotacoes/list"); ?>
+        
     </div>
 </div>
 
@@ -277,8 +278,65 @@
     var url_restricao = "<?php if (isset($url_restricao)) echo $url_restricao; ?>";
     var form_action = "<?php if (isset($form_action)) echo $form_action; ?>";
     var url_lista = "<?php if (isset($url_lista)) echo $url_lista; ?>";
+    var url_combinar = $('#data-table').data('url2');
 
     $(function () {
+        <?php foreach ($cotacao['produtos'] as $k => $produto) : ?>
+        var table = $('#data-tableDePara<?php echo $k; ?>').DataTable({
+            serverSide: false,
+            lengthChange: false,
+            ajax: {
+                url: $('#data-tableDePara<?php echo $k; ?>').data('url'),
+                type: 'post',
+                dataType: 'json',
+            },
+            columns: [
+                {defaultContent: '', orderable: false, searchable: false},
+                { name: 'codigo', data: 'codigo' },
+                { name: 'apresentacao', data: 'apresentacao'},
+                { name: 'marca', data: 'marca'},
+            ],
+            columnDefs: [
+                {orderable: false, className: 'select-checkbox', targets: 0 },
+            ],
+            select: {style: 'multiple', selector: 'td'},
+            order: [[ 1, 'asc' ]],
+            rowCallback: function(row, data) {
+                $(row).data('id', data.id_produto).css('cursor', 'pointer');
+            },
+            drawCallback: function() {}
+        });
+        <?php endforeach; ?>
+
+        $('#btnCombinar').on('click', function(e) {
+            e.preventDefault();
+
+            var dados = [];
+
+            $.map(table.rows('.selected').data(), function (item) {
+
+                dados.push({
+                    id_fornecedor: item.id_fornecedor,
+                    cd_produto: item.codigo,
+                    id_sintese: $('#data-table').data('sintese')
+                });
+            });
+
+            if (dados.length > 0) {
+
+                $.post(url_combinar, {dados}, function (xhr) {
+                    table.ajax.reload();
+                    formWarning(xhr);
+                }, 'JSON')
+                .fail(function(xhr) {
+                    formWarning(xhr);
+                    table.ajax.reload();
+                });
+            } else {
+
+                formWarning({type: 'warning', message: "Nenhum registro selecionado!"});
+            }
+        });
 
         $("#btnCount").html($('[data-check]:checked').length);
 
