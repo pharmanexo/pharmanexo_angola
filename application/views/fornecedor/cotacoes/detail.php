@@ -288,13 +288,12 @@
                     e.preventDefault();
 
                     var dados = [];
-                    alert($('#data-table<?php echo $k; ?>').data('sintese'));
                     $.map(table.rows('.selected').data(), function(item) {
 
                         dados.push({
                             id_fornecedor: item.id_fornecedor,
                             cd_produto: item.codigo,
-                            id_sintese: $('#data-table<?php echo $k; ?>').data('sintese')
+                            id_sintese: $('#data-tableDePara<?php echo $k; ?>').data('sintese')
                         });
                     });
 
