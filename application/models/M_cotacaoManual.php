@@ -2455,7 +2455,7 @@ class M_cotacaoManual extends MY_Model
 
                     $this->notify->send($msgEmail);
 
-                    if (strpos($response, 'sucesso') == false) {
+                    if (strpos($response, 'sucesso') == false && strpos($response, 'VL_PRECO_PRODUTO') == false) {
 
                         # Possiveis ERROS retornados pela sintese
 
@@ -2485,9 +2485,7 @@ class M_cotacaoManual extends MY_Model
                         elseif (strpos($response, "Existem ofertas sem quantidade de embalagem informado")) {
                             $type = 'warning';
                         } # Problema no endereço de envio da sintese
-                        elseif (strpos($response, "Erro na inclusão")) {
-                            $type = 'warning';
-                        } elseif (strpos($response, "documentação obrigatória")) {
+                        elseif (strpos($response, "documentação obrigatória")) {
                             $response = "A plataforma Síntese informa que devido a pendência referente a documentos obrigatórios, nenhuma oferta será inserida até regularização";
 
                             $type = 'warning';

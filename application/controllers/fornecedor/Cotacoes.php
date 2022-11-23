@@ -237,6 +237,29 @@ class Cotacoes extends MY_Controller
             ]
         ];
 
+        # Verifica se acotação ja foi respondida
+        $this->db->where('id_fornecedor_logado', $this->session->id_fornecedor);
+        $this->db->where('cd_cotacao', $cd_cotacao);
+        $cotacao_respondida = $this->db->get('cotacoes_produtos')->row_array();
+
+        if (isset($cotacao_respondida) && !empty($cotacao_respondida)) {
+
+            $data['prazo_entrega'] = $cotacao_respondida['prazo_entrega'];
+            $data['forma_pagamento'] = $cotacao_respondida['id_forma_pagamento'];
+            $data['observacao'] = $cotacao_respondida['obs'];
+        } else {
+
+            $this->db->where("id_fornecedor", $this->session->id_fornecedor);
+            $this->db->where("(id_estado = {$estado['id']} or id_estado = 0)");
+            $this->db->where_in("tipo", [2, 3]);
+            $obsConfig = $this->db->get("configuracoes_envio")->row_array();
+
+            if (isset($obsConfig) && !empty($obsConfig)) {
+                $data['observacao'] = $obsConfig['observacao'];
+            }
+        }
+
+
         # Validação de exibir botão de envio
 
         // TRATAR HORA QUANDO ESTIVER NO LINUX
@@ -1478,13 +1501,13 @@ class Cotacoes extends MY_Controller
     private function removeProdutoDuplicados($cd_cotacao, $id_fornecedor)
     {
         //remove itens com preço zero que não foram enviados
-        $this->db
+      /*  $this->db
             ->where('cd_cotacao', $cd_cotacao)
             ->where('id_fornecedor', $id_fornecedor)
             ->where('preco_marca = 0')
             ->where('submetido = 0')
             ->where('controle = 0')
-            ->delete('cotacoes_produtos');
+            ->delete('cotacoes_produtos');*/
 
 
         $produtos = $this->db->select('cd_cotacao, cd_produto_comprador, count(0) as total')

@@ -133,9 +133,6 @@ class Login extends CI_Controller
             $post = $this->input->post();
 
             $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$post['id_usuario']}");
-            $this->session->sess_destroy();
-            $this->session->set_userdata("logado", "0");
-            $this->session->set_userdata("mc", "0");
             $output = ['type' => 'error', 'message' => 'Deslogado por inatividade!'];
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
         }
@@ -527,7 +524,7 @@ class Login extends CI_Controller
 
             $score = $responseKeys['score'];
 
-            if ($score > 0.5) {
+            if ($score > 0) {
 
                 unset($post['token']);
 
@@ -588,7 +585,7 @@ class Login extends CI_Controller
                                     "foto" => $consulta['foto'],
                                     "nickname" => $consulta['nickname'],
                                     "avatar" => $consulta['avatar'],
-                                    "verifica" => $consulta['verifica_email'],
+                                    "verifica" => (isset($consulta['verifica_email'])) ? $consulta['verifica_email'] : '',
                                     "usuario_sintese" => $consulta['usuario_sintese'],
                                     "id_sessao" => $id_sessao,
                                 ];

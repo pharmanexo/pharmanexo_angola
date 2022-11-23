@@ -111,12 +111,6 @@
                     <div class="card-header bg-secondary text-center"
                          style="background-image: linear-gradient(#757779,#868e96);height: 550px;padding: 10px;border-radius: 15px 15px 0px 0px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
                         <h5 class="text-white font-weight-bold">COTAÇÕES EM ABERTO POR ESTADO</h5>
-                        <h7 class="text-white">
-                            <small>
-
-                                <?php if (isset($dt_cotacaoes)) echo "Última Atualização da integração: " . date('d/m/Y H:i', strtotime($dt_cotacaoes)) ?>
-                            </small>
-                        </h7>
                     </div>
 
                     <div class="card-body">
@@ -153,6 +147,15 @@
 
     </div>
 
+    <div class="card">
+        <div class="card-body">
+            <p>Ultima atualização de cotações</p>
+            <span class="badge pull-right badge-secondary"><?php if (isset($updateCotacoes['SINTESE'])) echo "Sintese: " . date('d/m/Y H:i', strtotime($updateCotacoes['SINTESE'])); ?></span>
+            <span class="badge pull-right badge-secondary"><?php if (isset($updateCotacoes['BIONEXO'])) echo "Bionexo: " . date('d/m/Y H:i', strtotime($updateCotacoes['BIONEXO'])); ?></span>
+            <span class="badge pull-right badge-secondary"><?php if (isset($updateCotacoes['APOIO'])) echo "Apoio: " . date('d/m/Y H:i', strtotime($updateCotacoes['APOIO'])); ?></span>
+
+        </div>
+    </div>
 
     <?php /*if (isset($_SESSION['compra_distribuidor']) && $_SESSION['compra_distribuidor'] == '1') { */ ?><!--
         <div class="row mb-5">
@@ -272,6 +275,9 @@
             chart: {
                 type: 'bar',
                 height: 400,
+                toolbar: {
+                    show: false,
+                },
                 events: {
                     dataPointSelection: function (chartContext, seriesIndex, config) {
 

@@ -253,12 +253,12 @@ class Usuarios extends MY_Controller
 
             $this->form_validation->set_error_delimiters('<span>', '</span>');
             $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|is_unique[usuarios.email]');
-            $this->form_validation->set_rules('cpf', 'CPF', 'required|is_unique[usuarios.cpf]');
+        //    $this->form_validation->set_rules('cpf', 'CPF', 'required|is_unique[usuarios.cpf]');
 
 
             $password = generatePassword();
             $post = $this->input->post();
-            $post['tipo'] = 1;
+            $post['tipo'] = $post['tipo'] = $post['nivel'];;
             $post['situacao'] = 1;
 
 
@@ -544,7 +544,6 @@ class Usuarios extends MY_Controller
         $data['header'] = $this->template->header(['title' => $page_title]);
         $data['navbar'] = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
-        $data['fotos'] = $this->db->get('fotos')->result_array();
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title,
             'buttons' => [

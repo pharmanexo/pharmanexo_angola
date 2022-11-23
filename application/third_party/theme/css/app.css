@@ -12200,6 +12200,7 @@ textarea {
   color: #9c9c9c; }
 
 .dataTables_buttons {
+  display: none;
   float: right;
   margin: 0 0 0 20px;
   border-bottom: 1px solid #eceff1;

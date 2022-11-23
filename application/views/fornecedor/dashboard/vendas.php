@@ -182,7 +182,16 @@
 
         </div>
     </div>
-    <span class="badge pull-right badge-secondary"><?php if (isset($dt_cotacaoes)) echo "Atualizado em: " . date('d/m/Y H:i', strtotime($dt_cotacaoes)); ?></span>
+
+    <div class="card">
+        <div class="card-body">
+            <p>Ultima atualização de cotações</p>
+            <span class="badge pull-right badge-secondary"><?php if (isset($updateCotacoes['SINTESE'])) echo "Sintese: " . date('d/m/Y H:i', strtotime($updateCotacoes['SINTESE'])); ?></span>
+            <span class="badge pull-right badge-secondary"><?php if (isset($updateCotacoes['BIONEXO'])) echo "Bionexo: " . date('d/m/Y H:i', strtotime($updateCotacoes['BIONEXO'])); ?></span>
+            <span class="badge pull-right badge-secondary"><?php if (isset($updateCotacoes['APOIO'])) echo "Apoio: " . date('d/m/Y H:i', strtotime($updateCotacoes['APOIO'])); ?></span>
+
+        </div>
+    </div>
 
     <?php echo $scripts; ?>
 
@@ -249,7 +258,7 @@
             var table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
-                pageLength: 10,
+                pageLength: 30,
                 searching: false,
                 stateSave: true,
                 buttons: [

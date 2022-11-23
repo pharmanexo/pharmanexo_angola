@@ -62,6 +62,7 @@ class Cotacoes_manuais extends MY_Controller
             ]
         ]);
 
+        $data['estados'] = $this->db->get('estados')->result_array();
         $this->load->view("{$this->views}/main", $data);
     }
 
