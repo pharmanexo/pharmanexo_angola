@@ -304,16 +304,20 @@
             rowCallback: function(row, data) {
                 $(row).data('id', data.id_produto).css('cursor', 'pointer');
             },
-            drawCallback: function() {}
+            drawCallback: function() {
+
+            }
         });
         
 
         $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
             e.preventDefault();
 
+            var urlPost = $('#data-table<?php echo $k; ?>').data('url2');
+
             var dados = [];
 
-            $.map(table.rows('.selected').data(), function (item) {
+            $.map($('#data-table<?php echo $k; ?>').rows('.selected').data(), function (item) {
 
                 dados.push({
                     id_fornecedor: item.id_fornecedor,
@@ -324,7 +328,7 @@
 
             if (dados.length > 0) {
 
-                $.post(url_combinar, {dados}, function (xhr) {
+                $.post(urlPost, {dados}, function (xhr) {
                     table.ajax.reload();
                     formWarning(xhr);
                 }, 'JSON')
