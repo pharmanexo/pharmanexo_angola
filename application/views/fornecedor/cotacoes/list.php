@@ -287,7 +287,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="data-tableDePara<?php echo $k; ?>" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>" data-sintese="">
+                                    <table id="data-tableDePara<?php echo $k; ?>" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>" data-sintese="<?php echo $identificacao_produto; ?>">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -300,7 +300,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form>''
                 </div>
             </div>
         <?php endif; ?>
