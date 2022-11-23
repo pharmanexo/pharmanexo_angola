@@ -340,7 +340,8 @@
                 dados.push({
                     id_fornecedor: item.id_fornecedor,
                     cd_produto: item.codigo,
-                    id_sintese: $('#data-tableDePara<?php echo $k; ?>').data('sintese')
+                    id_sintese: $('#data-tableDePara<?php echo $k; ?>').data('sintese'),
+                    id_cliente: $('#id_cliente').val()
                 });
             });
 
