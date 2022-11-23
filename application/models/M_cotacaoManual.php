@@ -1669,7 +1669,7 @@ class M_cotacaoManual extends MY_Model
                     if (empty($old)) {
 
                         $produtoSint = $this->db
-                            ->where('id_produto', $post['id_sintese'])
+                            ->where('id_produto', $row['id_sintese'])
                             ->limit(1)
                             ->get('produtos_marca_sintese')
                             ->row_array();
