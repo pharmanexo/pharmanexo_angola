@@ -288,10 +288,9 @@
                     e.preventDefault();
                     var urlPost = $('#data-tableDePara<?php echo $k; ?>').data('url2');
                     var dados = [];
-                   /* alert($('#data-tableDePara<?php echo $k; ?>').data('sintese'));*/
+
 
                     $.map($('#data-tableDePara<?php echo $k; ?>').rows('.selected').data(), function(item) {
-
                         dados.push({
                             id_fornecedor: item.id_fornecedor,
                             cd_produto: item.codigo,
