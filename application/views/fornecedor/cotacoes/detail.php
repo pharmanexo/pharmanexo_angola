@@ -286,10 +286,11 @@
 
                 $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
                     e.preventDefault();
-
+                    var urlPost = $('#data-tableDePara<?php echo $k; ?>').data('url2');
                     var dados = [];
-                    alert($('#data-tableDePara<?php echo $k; ?>').data('sintese'));
-                    $.map(table.rows('.selected').data(), function(item) {
+                   /* alert($('#data-tableDePara<?php echo $k; ?>').data('sintese'));*/
+
+                    $.map($('#data-tableDePara<?php echo $k; ?>').rows('.selected').data(), function(item) {
 
                         dados.push({
                             id_fornecedor: item.id_fornecedor,
@@ -300,7 +301,7 @@
 
                     if (dados.length > 0) {
 
-                        $.post(url_combinar, {
+                        $.post(urlPost, {
                                 dados
                             }, function(xhr) {
                                 table.ajax.reload();
