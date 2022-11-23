@@ -349,8 +349,24 @@
                 $.post(urlPost, {
                     dados
                 }, function (xhr) {
-                    Location.reload();
                     formWarning(xhr);
+
+                    if (xhr.type == 'success'){
+                        Swal.fire({
+                            title: 'Produto(s) Combinado(s)',
+                            text: "Deseja atualizar a página ou continuar fazendo outros de/para?",
+                            icon: 'success',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Atualizar Página',
+                            cancelButtonText: 'Continuar'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                               window.location.reload();
+                            }
+                        })
+                    }
                 }, 'JSON')
                     .fail(function (xhr) {
                         formWarning(xhr);
