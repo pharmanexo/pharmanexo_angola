@@ -364,6 +364,8 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 window.location.reload();
+                            }else{
+                                table.ajax.reload();
                             }
                         })
                     }
