@@ -276,7 +276,7 @@
 
                 <div id="collapseDePara<?php echo $k; ?>" class="collapse">
                     <div class="col-6 text-right">
-                        <a href id="btnCombinar" title class="btn btn-primary" data-original-title="Combinar Produtos">
+                        <a href id="btnCombinar<?php echo $k; ?>" title class="btn btn-primary" data-original-title="Combinar Produtos">
                             <i class="fas fa-random"></i>
                         </a>
                     </div>

@@ -306,9 +306,9 @@
             },
             drawCallback: function() {}
         });
-        <?php endforeach; ?>
+        
 
-        $('#btnCombinar').on('click', function(e) {
+        $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
             e.preventDefault();
 
             var dados = [];
@@ -318,7 +318,7 @@
                 dados.push({
                     id_fornecedor: item.id_fornecedor,
                     cd_produto: item.codigo,
-                    id_sintese: $('#data-table').data('sintese')
+                    id_sintese: $('#data-table<?php echo $k; ?>').data('sintese')
                 });
             });
 
@@ -337,6 +337,7 @@
                 formWarning({type: 'warning', message: "Nenhum registro selecionado!"});
             }
         });
+        <?php endforeach; ?>
 
         $("#btnCount").html($('[data-check]:checked').length);
 
