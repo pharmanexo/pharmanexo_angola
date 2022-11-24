@@ -251,9 +251,6 @@
                         type: 'post',
                         dataType: 'json',
                     },
-                    search: {
-                        search: '<?php $nomeProduto = explode(" ", $produto['ds_produto_comprador']); echo $nomeProduto[0]   ?>'
-                    },
                     columns: [{
                             defaultContent: '',
                             orderable: false,
