@@ -1691,15 +1691,14 @@ class M_cotacaoManual extends MY_Model
                 foreach ($post['dados'] as $row) {
 
                     $this->db->where('id_cliente', $row['id_cliente']);
-                    $this->db->where('cd_produto', $row['codigo']);
-                    $this->db->where('id_produto_sintese', $row['id_produto']);
+                    $this->db->where('cd_produto', $row['id_sintese']);
                     $this->db->where('id_integrador', 2);
                     $old = $this->db->get('produtos_clientes_depara')->row_array();
 
                     if (empty($old)) {
 
                         $produtoForn = $this->db
-                            ->where('codigo', $row['codigo'])
+                            ->where('codigo', $row['cd_produto'])
                             ->where('id_fornecedor', $this->db->id_fornecedor)
                             ->limit(1)
                             ->get('produtos_fornecedores_sintese')
@@ -1716,7 +1715,7 @@ class M_cotacaoManual extends MY_Model
                         if (!empty($produtoSint)){
                             $data = [
                                 "id_produto_sintese" => $produtoSint['id_produto'],
-                                "cd_produto" => $row['codigo'],
+                                "cd_produto" => $row['id_sintese'],
                                 "id_usuario" => $this->session->id_usuario,
                                 "id_integrador" => 2,
                                 "id_cliente" => $row['id_cliente']
