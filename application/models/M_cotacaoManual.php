@@ -1704,6 +1704,9 @@ class M_cotacaoManual extends MY_Model
                             ->get('produtos_fornecedores_sintese')
                             ->row_array();
 
+                        var_dump($produtoForn);
+                        exit();
+
                         if (!empty($produtoForn)){
                             $produtoSint = $this->db
                                 ->where('id_produto', $produtoForn['id_sintese'])
