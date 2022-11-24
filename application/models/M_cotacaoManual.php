@@ -1699,7 +1699,7 @@ class M_cotacaoManual extends MY_Model
 
                         $produtoForn = $this->db
                             ->where('codigo', $row['cd_produto'])
-                            ->where('id_fornecedor', $this->db->id_fornecedor)
+                            ->where('id_fornecedor', $this->session->id_fornecedor)
                             ->limit(1)
                             ->get('produtos_fornecedores_sintese')
                             ->row_array();
