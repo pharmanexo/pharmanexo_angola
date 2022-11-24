@@ -1713,9 +1713,6 @@ class M_cotacaoManual extends MY_Model
                                 ->row_array();
                         }
 
-                        var_dump($produtoSint);
-                        exit();
-
                         if (!empty($produtoSint)){
                             $data = [
                                 "id_produto_sintese" => $produtoSint['id_produto'],
