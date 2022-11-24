@@ -275,8 +275,8 @@
                 <!-- De Para -->
 
                 <div id="collapseDePara<?php echo $k; ?>" class="collapse">
-                    <div class="col-6 text-right">
-                        <a href id="btnCombinar<?php echo $k; ?>" title class="btn btn-primary" data-original-title="Combinar Produtos">
+                    <div class="col-12 mt-2 text-right">
+                        <a href id="btnCombinar<?php echo $k; ?>" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 8px;" title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
                             <i class="fas fa-random"></i>
                         </a>
                     </div>
@@ -286,7 +286,7 @@
                             <div class="card-header">
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
+                                <div class="table" style="margin-top: -110px;">
                                     <table id="data-tableDePara<?php echo $k; ?>" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>" data-sintese="<?php echo $identificacao_produto; ?>">
                                         <thead>
                                             <tr>
