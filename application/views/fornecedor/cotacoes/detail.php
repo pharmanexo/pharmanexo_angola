@@ -255,13 +255,6 @@
                     search: {
                         search: nome_produto.first()
                     },
-                    buttons: [{
-                        text: 'Combinar',
-                        id: 'btnCombinar<?php echo $k; ?>',
-                        action: function(e, dt, node, config) {
-                            alert('Button activated');
-                        }
-                    }],
                     columns: [{
                             defaultContent: '',
                             orderable: false,
