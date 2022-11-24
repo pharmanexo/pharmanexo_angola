@@ -240,6 +240,8 @@
 
         $(function() {
             <?php foreach ($cotacao['produtos'] as $k => $produto) : ?>
+
+                var nome_produto = '<?php echo $produto['cotado']['ds_produto_comprador']?>'
                 var url_combinar = $('#data-table<?php echo $k; ?>').data('url2');
                 var table = $('#data-tableDePara<?php echo $k; ?>').DataTable({
                     serverSide: false,
@@ -251,8 +253,15 @@
                         dataType: 'json',
                     },
                     search: {
-                        search: 'teste'
+                        search: nome_produto.first()
                     },
+                    buttons: [{
+                        text: 'Combinar',
+                        id: 'btnCombinar<?php echo $k; ?>',
+                        action: function(e, dt, node, config) {
+                            alert('Button activated');
+                        }
+                    }],
                     columns: [{
                             defaultContent: '',
                             orderable: false,
@@ -301,7 +310,8 @@
                             id_fornecedor: item.id_fornecedor,
                             cd_produto: item.codigo,
                             id_sintese: $('#data-tableDePara<?php echo $k; ?>').data('sintese'),
-                            id_cliente: $('#id_cliente').val()
+                            id_cliente: $('#id_cliente').val(),
+                            id_produto_comprador: '<? echo $produto['cotado']['cd_produto_comprador']?>'
                         });
                     });
 
