@@ -15374,6 +15374,7 @@ button, input, optgroup, select, textarea {
 }
 
 .dataTables_buttons {
+    display: none !important;
     float: right;
     margin: 0 0 0 20px;
     border-bottom: 1px solid #eceff1;

@@ -9,10 +9,6 @@
                 <form action="<?php if (isset($form_action)) echo $form_action; ?>" method="POST" onload="javascript: document.formulario.reset()" id="formUsuario" autocomplete="anyrandomstring">
                     <input type="hidden" id="id" name="id" value="<?php if (isset($id)) echo $id; ?>">
                     <div class="row">
-                        <div class="form-group col-12 col-lg-3">
-                            <label for="">CPF</label>
-                            <input type="text" id="cpf" name="cpf" data-inputmask="cpf" required class="form-control" value="<?php if (isset($usuario['cpf'])) echo $usuario['cpf']; ?>">
-                        </div>
                         <div class="form-group col-12 col-lg-5">
                             <label for="">Nome</label>
                             <input type="text" id="nome" name="nome" required class="form-control" value="<?php if (isset($usuario['nome'])) echo $usuario['nome']; ?>">
