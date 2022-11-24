@@ -275,14 +275,14 @@
                 <!-- De Para -->
 
                 <div id="collapseDePara<?php echo $k; ?>" class="collapse">
-                    <div class="col-6 text-right">
-                        <a href id="btnCombinar<?php echo $k; ?>" title class="btn btn-primary" data-original-title="Combinar Produtos">
+                    <div class="col-12 mt-1">
+                        <a href id="btnCombinar<?php echo $k; ?>" title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
                             <i class="fas fa-random"></i>
                         </a>
                     </div>
 
                     <form>
-                        <div class="card">
+                        <div class="card" style="margin-top: -15px;">
                             <div class="card-header">
                             </div>
                             <div class="card-body">
