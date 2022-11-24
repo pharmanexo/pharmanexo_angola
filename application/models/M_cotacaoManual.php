@@ -1704,16 +1704,17 @@ class M_cotacaoManual extends MY_Model
                             ->get('produtos_fornecedores_sintese')
                             ->row_array();
 
-                        var_dump($produtoForn);
-                        exit();
 
                         if (!empty($produtoForn)){
                             $produtoSint = $this->db
-                                ->where('id_produto', $produtoForn['id_sintese'])
+                                ->where('id_sintese', $produtoForn['id_sintese'])
                                 ->limit(1)
                                 ->get('produtos_marca_sintese')
                                 ->row_array();
                         }
+
+                        var_dump($produtoSint);
+                        exit();
 
                         if (!empty($produtoSint)){
                             $data = [
