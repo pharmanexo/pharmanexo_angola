@@ -241,6 +241,7 @@
         $(function() {
             <?php foreach ($cotacao['produtos'] as $k => $produto) : ?>
                 
+                var nome = $('#data-table<?php echo $k; ?>').data('url2');
                 var url_combinar = $('#data-table<?php echo $k; ?>').data('url2');
                 var table = $('#data-tableDePara<?php echo $k; ?>').DataTable({
                     serverSide: false,
