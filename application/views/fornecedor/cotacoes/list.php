@@ -133,7 +133,7 @@
                                                     <?php } ?>
                                                 <?php } ?>
 
-                                                <?php if (isset($prod['produto_descricao'])) echo strtoupper(str_replace(['%28', '%29'], ['(', ')'], $prod['descricao'])); ?>
+                                                <?php if (isset($prod['produto_descricao'])) echo strtoupper(str_replace(['%28', '%29'], ['(', ')'], $prod['produto_descricao'])); ?>
 
                                                 <small id="label_alert">
                                                     <?php if ($prod['restricao'] == 1) { ?>
