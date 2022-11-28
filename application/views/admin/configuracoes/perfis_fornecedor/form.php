@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <p>Após atualizar as rotas, será necessário fazer login novamente.</p>
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-3">
                             <h5>Administrativo</h5>
                             <ul id="ulAdm">
                                 <?php foreach ($rotas['adm'] as $rota){ ?>
@@ -34,7 +34,7 @@
                                 <?php } ?>
                             </ul>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <h5>Financeiro</h5>
                             <ul id="ulFin">
                                 <?php foreach ($rotas['fin'] as $rota){ ?>
@@ -56,7 +56,7 @@
                                 <?php } ?>
                             </ul>
                         </div>
-                        <div class="col-4">
+                        <div class="col-3">
                             <h5>Comercial</h5>
                             <ul id="ulCom">
                                 <?php foreach ($rotas['com'] as $rota){ ?>
@@ -70,6 +70,28 @@
                                                     
                                                     <li>
                                                         <input type="checkbox" name="com[]" <?php if(isset($subrota['checked'])) echo 'checked'; ?> data-id-com="<?php echo $subrota['id_parente']; ?>" value="<?php echo $subrota['id'];?>"> <?php echo $subrota['rotulo']; ?>
+                                                    </li>
+                                                <?php } ?>
+                                            </ul>
+                                        <?php } ?>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                        </div>
+                        <div class="col-3">
+                            <h5>Dist x Dist</h5>
+                            <ul id="ulDist">
+                                <?php foreach ($rotas['dist'] as $rota){ ?>
+                                    <li class="<?php if (isset($rota['subrotas'])) echo 'box'; ?>">
+                                        <input type="checkbox" name="dist[]" <?php if(isset($rota['checked'])) echo 'checked'; ?> data-select-dist="<?php echo $rota['id'];?>" value="<?php echo $rota['id'];?>"> <?php echo $rota['rotulo']; ?>
+                                        <?php if (isset($rota['subrotas'])){ ?>
+                                            <ul class="nested">
+                                                <?php foreach ($rota['subrotas'] as $subrota){ ?>
+
+                                                    <?php $subrota['rotulo'] = ($subrota['id'] == 159) ? "{$subrota['rotulo']} (oncoprod) " : $subrota['rotulo'] ?>
+
+                                                    <li>
+                                                        <input type="checkbox" name="dist[]" <?php if(isset($subrota['checked'])) echo 'checked'; ?> data-id-dist="<?php echo $subrota['id_parente']; ?>" value="<?php echo $subrota['id'];?>"> <?php echo $subrota['rotulo']; ?>
                                                     </li>
                                                 <?php } ?>
                                             </ul>
@@ -104,9 +126,15 @@
             $(`[data-id-com="${v}"]`).not(this).prop('checked', this.checked);
         });
 
+        $('[data-select-dist]').on('change', function () {
+            var v = $(this).data('select-dist');
+            $(`[data-id-dist="${v}"]`).not(this).prop('checked', this.checked);
+        });
+
         $('#ulAdm').treed({openedClass:'fas fa-chevron-right', closedClass:'fas fa-chevron-down'});
         $('#ulFin').treed({openedClass:'fas fa-chevron-right', closedClass:'fas fa-chevron-down'});
         $('#ulCom').treed({openedClass:'fas fa-chevron-right', closedClass:'fas fa-chevron-down'});
+        $('#ulDist').treed({openedClass:'fas fa-chevron-right', closedClass:'fas fa-chevron-down'});
     });
 </script>
 </body>

@@ -47,6 +47,7 @@ class Grupo_usuario_rota extends MY_Model
     
     public function atualizar($post)
     {
+
         $this->db->trans_begin();
 
         // Remover rotas
@@ -65,6 +66,22 @@ class Grupo_usuario_rota extends MY_Model
                     'id_fornecedor' => $this->session->id_fornecedor
                 ];
     
+                $this->db->insert($this->table, $data);
+            }
+        }
+
+        // inserir novas rotas dist
+        if (isset($post['dist'])) {
+            foreach ($post['dist'] as $id ) {
+                $data = [
+                    'id_rota' => $id,
+                    'tipo_usuario' => 4,
+                    'id_fornecedor' => $this->session->id_fornecedor
+                ];
+
+                var_dump($data);
+                exit();
+
                 $this->db->insert($this->table, $data);
             }
         }
@@ -131,6 +148,20 @@ class Grupo_usuario_rota extends MY_Model
                 $data = [
                     'id_rota' => $id,
                     'tipo_usuario' => 2,
+                    'id_fornecedor' => $id_fornecedor
+                ];
+
+                $this->db->insert($this->table, $data);
+            }
+        }
+
+
+        // inserir novas rotas comercial
+        if ($post['dist']) {
+            foreach ($post['dist'] as $id ) {
+                $data = [
+                    'id_rota' => $id,
+                    'tipo_usuario' => 4,
                     'id_fornecedor' => $id_fornecedor
                 ];
 

@@ -118,7 +118,26 @@ class Perfis_fornecedor extends Admin_controller
             $rotas_adm = $this->grupo_usuario_rota->get_routes_fornecedor($id, 1);
             $rotas_com = $this->grupo_usuario_rota->get_routes_fornecedor($id, 2);
             $rotas_fin = $this->grupo_usuario_rota->get_routes_fornecedor($id, 3);
+            $rotas_dist = $this->grupo_usuario_rota->get_routes_fornecedor($id, 4);
+
             $rotas = $this->rota->find($fields = '*', "grupo = 1", FALSE);
+
+
+            foreach ($rotas as $k => $rota){
+                foreach ($rotas_dist as $item){
+                    if ($rota['id'] == $item['id']){
+                        $rota['checked'] = true;
+                        break;
+                    }
+                }
+
+                if (!empty($rota['id_parente'])){
+                    $data['rotas']['dist'][$rota['id_parente']]['subrotas'][] = $rota;
+                }else{
+                    $data['rotas']['dist'][$rota['id']] = $rota;
+                }
+            }
+
 
             foreach ($rotas as $k => $rota){
                 foreach ($rotas_adm as $item){

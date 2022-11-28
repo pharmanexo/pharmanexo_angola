@@ -538,7 +538,8 @@ class Usuarios extends Admin_controller
                 $data['options'] = [
                     ['id' => 1, 'value' => 'Administrador'],
                     ['id' => 2, 'value' => 'Comercial'],
-                    ['id' => 3, 'value' => 'Financeiro']
+                    ['id' => 3, 'value' => 'Financeiro'],
+                    ['id' => 4, 'value' => 'Dist X Dist'],
                 ];
             }
 

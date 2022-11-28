@@ -80,8 +80,8 @@ class Dashboard extends MY_Controller
                         case  '2':
                             $this->dashboard_vendas();
                             break;
-                        case  '3':
-                            $this->dashboard_fornecedor();
+                        case  '4':
+                            redirect(base_url('fornecedor/b2b/ofertas'));
                             break;
                         default:
                             $this->dashboard_vendas();

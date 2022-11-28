@@ -40,23 +40,13 @@
                             <div class="content__inner">
                                 <div class="row">
                                     <div class="form-group col-6">
-                                        <label for="">Nome</label>
-                                        <input type="text" id="nome" name="nome" class="form-control" value="<?php if (isset($usuario['nome'])) echo $usuario['nome']; ?>" >
+                                        <label for="">Nickname</label>
+                                        <input type="text" id="nickname" name="nickname" class="form-control" value="<?php if (isset($usuario['nickname'])) echo $usuario['nickname']; ?>" >
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="">E-mail</label>
                                         <input type="search" id="email" name="email" class="form-control" autocomplete="disabled" value="<?php if (isset($usuario['email'])) echo $usuario['email']; ?>">
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-6">
-                                        <label for="cpf">CPF</label>
-                                        <input type="text" name="cpf" class="form-control" data-inputmask="cpf" value="<?php if (isset($usuario['cpf'])) echo $usuario['cpf']; ?>">
-                                    </div> 
-                                     <div class="form-group col-6">
-                                        <label for="rg">RG</label>
-                                        <input type="text" name="rg" class="form-control" value="<?php if (isset($usuario['rg'])) echo $usuario['rg']; ?>">
-                                    </div> 
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
