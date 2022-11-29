@@ -100,7 +100,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-2">
                             <div class="form-group">
                                 <label for="cd_cotacao">Filtrar por Cotação</label>
                                 <br>
@@ -113,7 +113,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-group">
                                 <label for="id_cliente">Filtrar por Comprador</label>
                                 <br>
