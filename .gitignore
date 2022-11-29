@@ -23,3 +23,7 @@ application/logs/*
 /application/config/config.php
 /application/cache/database.php
 /public
+_BACKUP_840.env
+_BASE_840.env
+_LOCAL_840.env
+_REMOTE_840.env
