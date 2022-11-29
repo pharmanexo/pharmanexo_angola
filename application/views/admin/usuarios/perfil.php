@@ -13,7 +13,7 @@
         <div class="content__inner">
             <div class="alert" hidden>
                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                Entre novamente no sistema para atualizar sua foto
+                Seu avatar será atualizado no próximo acesso
             </div>
             <form action="<?php if (isset($form_action)) echo $form_action; ?>" method="POST" id="formUsuario" enctype="multipart/form-data">
                 <div class="row mx-auto mt-3">

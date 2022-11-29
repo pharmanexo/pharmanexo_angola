@@ -57,6 +57,7 @@
         .closebtn:hover {
             color: #ed3237;
         }
+
         .avatar {
             border: 2px solid white;
             cursor: pointer;
@@ -261,7 +262,23 @@
         </script>
     <?php } ?>
     <script>
-
+        var initDestroyTimeOutPace = function() {
+            var counter = 0;
+            var refreshIntervalId = setInterval(function() {
+                var progress;
+                if (typeof document.querySelector('.pace-progress').getAttribute('data-progress-text') !== 'undefined') {
+                    progress = Number(document.querySelector('.pace-progress').getAttribute('data-progress-text').replace("%", ''));
+                }
+                if (progress === 99) {
+                    counter++;
+                }
+                if (counter > 50) {
+                    clearInterval(refreshIntervalId);
+                    Pace.stop();
+                }
+            }, 100);
+        }
+        initDestroyTimeOutPace();
     </script>
 
     <link rel="stylesheet" href="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/themes/blue/pace-theme-corner-indicator.css' ?>">

@@ -131,8 +131,9 @@ class Login extends CI_Controller
         if ($this->input->method() == 'post') {
 
             $post = $this->input->post();
-
+            $this->session->sess_destroy();
             $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$post['id_usuario']}");
+            $this->db->where('id', $post['id'])->update('ci_sessions', ['timestamp' => $post['timestamp']]);
             $output = ['type' => 'error', 'message' => 'Deslogado por inatividade!'];
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
         }
