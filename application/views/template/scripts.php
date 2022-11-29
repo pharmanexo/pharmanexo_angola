@@ -73,7 +73,7 @@ if (isset($scripts))
         <?php if (isset($this->session->id_sessao)) :
             $tempo = $this->db->select("timestamp")->from('ci_sessions')->where("id= '{$this->session->id_sessao}'")->get()->row_array();
         ?>
-            var verificaSessao = setInterval(tempo_sessao, 1000);
+    /*        var verificaSessao = setInterval(tempo_sessao, 1000);
             var alertar = 'true';
             var tempoSessao = "<?php echo date('H:i:s', $tempo['timestamp'] + 3600) ?>";
             var tempoAlerta = "<?php echo date('H:i:s', $tempo['timestamp'] + 3000) ?>";
@@ -141,7 +141,7 @@ if (isset($scripts))
                     timeoutSessao()
                     clearInterval(verificaSessao)
                 }
-            };
+            };*/
 
             function timeoutSessao() {
                 $.ajax({
