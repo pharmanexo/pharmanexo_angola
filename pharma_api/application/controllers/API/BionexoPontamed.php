@@ -303,13 +303,14 @@ class BionexoPontamed extends CI_Controller
 
                     $total_itens = count($itens);
 
-                    if (is_array($cabecalho["UF_Hospital"])) {
+                    if (is_array($cabecalho["UF_Hospital"]) || empty($cabecalho['UF_Hospital'])) {
                         $cabecalho["UF_Hospital"] = isset($cliente['estado']) ? $cliente['estado'] : '';
                     }
 
-                    if (is_array($cabecalho["Cidade_Hospital"])) {
+                    if (is_array($cabecalho["Cidade_Hospital"]) || empty($cabecalho['Cidade_Hospital'])) {
                         $cabecalho["Cidade_Hospital"] = isset($cliente['cidade']) ? $cliente['cidade'] : '';
                     }
+
 
                     $arrCabecalho =
                         [

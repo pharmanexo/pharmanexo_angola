@@ -161,8 +161,8 @@ class DownloadPedidosTeste extends CI_Controller
     {
 
         $log = [];
-        $dtBegin = date("d/m/Y 00:00:00", strtotime("-1day"));
-        $dtEnd = date("d/m/Y 23:59:59", strtotime("+1day"));
+     //   $dtBegin = date("d/m/Y 00:00:00", strtotime("-1day"));
+     //   $dtEnd = date("d/m/Y 23:59:59", strtotime("+1day"));
 
         try {
 
@@ -178,7 +178,7 @@ class DownloadPedidosTeste extends CI_Controller
                     # 'DT_BEGIN' => $dtBegin,
                     #'DT_END' => $dtEnd,
                     #'REGION' => 'SP',
-                    'ID' => 208568785,
+                    'ID' => 255113149,
                     'LAYOUT' => 'WJ',
                     #'TOKEN' => 202344657,
                     'ISO' => 0,
@@ -251,6 +251,16 @@ class DownloadPedidosTeste extends CI_Controller
                         'pendente' => 1,
                         'integrador' => 2
                     ];
+
+
+                    //verifica se tem consolidador
+                    if (isset($cabecalho['Consolidador'])) {
+                        $oc['consolidador'] = 1;
+
+                        if (isset($cabecalho['Consolidador']['Id_Pdc_Consolidador'])) {
+                            $oc['Cd_Cotacao'] = $cabecalho['Consolidador']['Id_Pdc_Consolidador'];
+                        }
+                    }
 
                     $oc_produtos = [];
 

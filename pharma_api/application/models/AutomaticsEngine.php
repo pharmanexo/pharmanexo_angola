@@ -15,37 +15,37 @@ class AutomaticsEngine extends CI_Model
         $this->mix = $this->load->database('mix', true);
     }
 
-   /* public function getCotsFornecedor($params)
-    {
-        $where = "id_fornecedor = {$params['id_fornecedor']}";
+    /* public function getCotsFornecedor($params)
+     {
+         $where = "id_fornecedor = {$params['id_fornecedor']}";
 
-        $cd_cotacao = '"' . $params['configs']['cotacaoById']['cd_cotacao'] . '"';
+         $cd_cotacao = '"' . $params['configs']['cotacaoById']['cd_cotacao'] . '"';
 
-        if ($params['configs']['cotacaoById']['status'])
-            $where .= " and cd_cotacao = $cd_cotacao";
+         if ($params['configs']['cotacaoById']['status'])
+             $where .= " and cd_cotacao = $cd_cotacao";
 
-        if ($params['configs']['checkDataFimCotacao'])
-            $where .= " and dt_fim_cotacao > NOW()";
+         if ($params['configs']['checkDataFimCotacao'])
+             $where .= " and dt_fim_cotacao > NOW()";
 
 
-        $fields = "id, cd_cotacao, cd_comprador, id_cliente, dt_fim_cotacao, dt_inicio_cotacao, id_fornecedor, uf_cotacao, revisao";
+         $fields = "id, cd_cotacao, cd_comprador, id_cliente, dt_fim_cotacao, dt_inicio_cotacao, id_fornecedor, uf_cotacao, revisao";
 
-        $params['db']->select($fields);
-        $params['db']->where($where);
+         $params['db']->select($fields);
+         $params['db']->where($where);
 
-        $result = $params['db']->group_by($fields)
-            ->get('cotacoes');
+         $result = $params['db']->group_by($fields)
+             ->get('cotacoes');
 
-        if (empty($result->result_array()))
-            return ['status' => FALSE];
+         if (empty($result->result_array()))
+             return ['status' => FALSE];
 
-        return
-            [
-                'status' => TRUE,
-                'result' => $result->result_array()
-            ];
+         return
+             [
+                 'status' => TRUE,
+                 'result' => $result->result_array()
+             ];
 
-    }*/
+     }*/
 
     public function getCotsFornecedor($params)
     {
@@ -56,15 +56,23 @@ class AutomaticsEngine extends CI_Model
         if ($params['configs']['cotacaoById']['status'])
             $where .= " and cd_cotacao = $cd_cotacao";
 
-        if ($params['configs']['checkDataFimCotacao'])
-            $where .= " and dt_fim_cotacao > NOW()";
+        if ($params['configs']['checkDataFimCotacao']) {
+            if ($params['configs']['integrador'] == 'BIONEXO') {
+                $where .= " and encerrada = 0";
+            } else {
+                $where .= " and dt_fim_cotacao > NOW()";
+            }
+        }
+
+
+        $where .= " and revisao = 0";
 
         $fields = "id, cd_cotacao, cd_comprador, id_cliente, dt_fim_cotacao, dt_inicio_cotacao, id_fornecedor, uf_cotacao, revisao";
 
         $params['db']->select($fields);
         $params['db']->where($where);
 
-        if (!empty($params['estados']) || !empty($params['clientes'])){
+        if (!empty($params['estados']) || !empty($params['clientes'])) {
             $params['db']->group_start(); //this will start grouping
             if (!empty($params['estados']) && !is_null($params['estados'])) {
                 $params['db']->where_in('uf_cotacao', $params['estados']);
@@ -85,11 +93,14 @@ class AutomaticsEngine extends CI_Model
         if (empty($result->result_array()))
             return ['status' => FALSE];
 
-        return
-            [
-                'status' => TRUE,
-                'result' => $result->result_array()
-            ];
+
+        $output = [
+            'status' => TRUE,
+            'result' => $result->result_array()
+        ];
+
+        return $output;
+
 
     }
 
@@ -319,6 +330,7 @@ class AutomaticsEngine extends CI_Model
                 ->order_by('desconto_percentual DESC')
                 ->get('vendas_diferenciadas')
                 ->row_array();
+
 
             if (IS_NULL($result))
                 return ['status' => FALSE];

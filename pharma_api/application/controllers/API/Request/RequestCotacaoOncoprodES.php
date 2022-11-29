@@ -209,7 +209,7 @@ class RequestCotacaoOncoprodES extends CI_Controller
 
                                         $verifica = $this->DB2->where($dataCotacaoProdutos)->get('cotacoes_produtos');
                                         if ($verifica->num_rows() == 0) {
-                                            $this->DB2->insert('cotacoes_produtos', $dataCotacaoProdutos);
+                                            //   $this->DB2->insert('cotacoes_produtos', $dataCotacaoProdutos);
                                             $inseridos[] = $dataCotacaoProdutos;
                                         }
                                     }
@@ -225,19 +225,20 @@ class RequestCotacaoOncoprodES extends CI_Controller
 
 
                                     $data = date('d/m/Y H:i:s');
+                                    $novaDataFim = date("d/m/Y H:i", strtotime($update['dt_fim_cotacao']));
 
                                     $errorMsg = [
                                         "to" => "marlon.boecker@pharmanexo.com.br",
                                         "greeting" => "",
-                                        "subject" => "Nova data fim da cotação {}",
+                                        "subject" => "Cotação {$cotacao2['Cd_Cotacao']} teve atualização do comprador.",
                                         "message" => "Cotação atualizada {$cotacao2['Cd_Cotacao']} - {$comprador['cnpj']} - {$comprador['nome_fantasia']} <br>
-                                                    Nova Data de Encerramento: {$update['dt_fim_cotacao']}
+                                                    Nova Data de Encerramento: {$novaDataFim}
                                                     <br>
                                                     <b>Data de Envio:</b> {$data} <br>
                                         "
                                     ];
 
-                                    $this->notify->send($errorMsg);
+                                    //$this->notify->send($errorMsg);
 
                                 }
                             }

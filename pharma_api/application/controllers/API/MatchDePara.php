@@ -49,7 +49,7 @@ class MatchDePara extends CI_Controller
 
     public function index()
     {
-        $id_fornecedor = 5039;
+        $id_fornecedor = 5042;
 
         $produtos = $this->db->query("select codigo, nome_comercial, descricao, id_fornecedor
                             from produtos_catalogo pc

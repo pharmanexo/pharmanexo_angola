@@ -123,7 +123,7 @@ class Usuarios extends MY_Controller
                                         <strong>Login:</strong> {$getDados['email']} <br> 
                                         <strong>Senha: </strong> {$password}<br><br>
                                         
-                                        <a href='https://pharmanexo.com.br/' style='padding: 15px; border-radius: 5px; text-decoration: none; background-color: #d2d2d2; color: #204a8f'>ACESSE O PORTAL PHARMANEXO</a>
+                                        <a href='https://pharmanexo.com.br/pharmanexo_v2' style='padding: 15px; border-radius: 5px; text-decoration: none; background-color: #d2d2d2; color: #204a8f'>ACESSE O PORTAL PHARMANEXO</a>
                                         </p> 
                                         <br> 
                                         <br> 

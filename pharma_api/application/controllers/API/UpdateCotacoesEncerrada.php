@@ -19,10 +19,29 @@ class UpdateCotacoesEncerrada extends CI_Controller
 
     public function index()
     {
-       $this->sint
-           ->where('encerrada', '0')
-           ->where('dt_fim_cotacao < now()')
-           ->update('cotacoes', ['encerrada' => 1]);
+
+        // reabre
+        $this->sint
+            ->where('encerrada', '1')
+            ->where('dt_fim_cotacao > now()')
+            ->update('cotacoes', ['encerrada' => 0]);
+
+        $this->bio
+            ->where('encerrada', '1')
+            ->where('dt_fim_cotacao > now()')
+            ->update('cotacoes', ['encerrada' => 0]);
+
+        $this->apoio
+            ->where('encerrada', '1')
+            ->where('dt_fim_cotacao > now()')
+            ->update('cotacoes', ['encerrada' => 0]);
+
+
+        // encerra
+        $this->sint
+            ->where('encerrada', '0')
+            ->where('dt_fim_cotacao < now()')
+            ->update('cotacoes', ['encerrada' => 1]);
 
         $this->bio
             ->where('encerrada', '0')

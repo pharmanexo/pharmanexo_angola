@@ -24,14 +24,14 @@ class DownloadPedidos extends CI_Controller
         $this->load->model('m_compradores', 'comprador');
         $this->login = loginBionexo();
 
-        $this->login =  [
+        $this->login = [
             "HOSPIDROGAS" =>
                 [
                     'id_fornecedor' => 20,
                     'user' => 'ws_hospidrogas_pharm',
                     'password' => '3fjwk3dm'
                 ],
-            "PONTAMED" =>
+          /*  "PONTAMED" =>
                 [
                     'id_fornecedor' => 5018,
                     'user' => 'ws_pontamed_pr',
@@ -42,7 +42,7 @@ class DownloadPedidos extends CI_Controller
                     'id_fornecedor' => 5039,
                     'user' => 'ws_londricir_pr',
                     'password' => '3g8tvvcs'
-                ],
+                ],*/
 
         ];
 
@@ -86,6 +86,8 @@ class DownloadPedidos extends CI_Controller
         } else {
             $resp = $client->__soapCall($type, $p);
         }
+
+
 
         $strxml = substr($resp, strpos($resp, '<?xml'));
 
@@ -179,6 +181,9 @@ class DownloadPedidos extends CI_Controller
         $dtBegin = date("d/m/Y 00:00:00", strtotime("-1day"));
         $dtEnd = date("d/m/Y 23:59:59", strtotime("+1day"));
 
+       /* $dtBegin = date("21/11/2022 00:00:00", strtotime("-1day"));
+        $dtEnd = date("21/11/2022 23:59:59", strtotime("+1day"));*/
+
         try {
 
             foreach ($this->login as $login) {
@@ -193,7 +198,7 @@ class DownloadPedidos extends CI_Controller
                     'DT_BEGIN' => $dtBegin,
                     'DT_END' => $dtEnd,
                     #'REGION' => 'SP',
-                    // 'ID' => 210500388,
+                  //   'ID' => 252680177,
                     'LAYOUT' => 'WJ',
                     #'TOKEN' => 202344657,
                     'ISO' => 0,
@@ -235,7 +240,6 @@ class DownloadPedidos extends CI_Controller
                         continue;
                     }
 
-
                     // prudutos do pedido
                     $produtos = $pedido['Itens_Confirmados']['Item_Confirmado'];
 
@@ -262,7 +266,7 @@ class DownloadPedidos extends CI_Controller
                         'Hr_Ordem_Compra' => date('H:i:s', time()),
                         'Cd_Comprador' => preg_replace('/[^0-9]/', '', $cabecalho['CNPJ_Hospital']),
                         'id_comprador' => $comp['id'],
-                        'Nm_Aprovador' => $cabecalho['Contato'],
+                        'Nm_Aprovador' => (is_array($cabecalho['Contato'])) ? json_encode($cabecalho['Contato']) : $cabecalho['Contato'],
                         'Ds_Observacao' => $cabecalho['Observacao'],
                         'endereco_entrega' => $cabecalho['Endereco_Entrega'],
                         'termos' => (is_array($cabecalho['Termos_Condicoes'])) ? json_encode($cabecalho['Termos_Condicoes']) : $cabecalho['Termos_Condicoes'],
@@ -270,8 +274,19 @@ class DownloadPedidos extends CI_Controller
                         'forma_pagamento' => $cabecalho['Forma_Pagamento'],
                         'Status_OrdemCompra' => 1,
                         'pendente' => 1,
-                        'integrador' => 2
+                        'integrador' => 2,
+                        'consolidador' => 0
                     ];
+
+                    //verifica se tem consolidador
+                    if (isset($cabecalho['Consolidador'])) {
+                        $oc['consolidador'] = 1;
+
+                        if (isset($cabecalho['Consolidador']['Id_Pdc_Consolidador'])) {
+                            $oc['Cd_Cotacao'] = $cabecalho['Consolidador']['Id_Pdc_Consolidador'];
+                        }
+                    }
+
 
                     $oc_produtos = [];
 
@@ -293,8 +308,17 @@ class DownloadPedidos extends CI_Controller
                         $i = $this->bionexo->insertCabecalho($oc);
                         $id = $this->db->insert_id();
                         if (!$i) {
-                            var_dump($this->db->error());
-                            exit();
+
+                            $mail = [
+                                "from" => "suporte@pharmanexo.com.br",
+                                "from-name" => "Portal Pharmanexo",
+                                "assunto" => "Erro no download do Pedido {$oc['Cd_Ordem_Compra']}",
+                                "destinatario" => 'marlon.boecker@pharmanexo.com.br',
+                                "msg" => "Houve um erro ao realizar o download do pedido {$oc['Cd_Ordem_Compra']}"
+                            ];
+
+                            $this->bionexo->sendMail($mail);
+
                         }
 
                     } else {

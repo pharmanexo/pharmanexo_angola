@@ -1,16 +1,17 @@
 <?php
 
-class AutomaticSintese extends CI_Controller
+
+class AutomaticBionexoHospdrogas extends CI_Controller
 {
 	/**
 	 * @author : Chule Cabral
 	 * Data: 01/11/2020
 	 *
-	 * Crontab => 30 7-23 * * * wget https://pharmanexo.com.br/pharma_api/API/AutomaticSintese
+	 * Crontab => 30 7-23 * * * wget https://pharmanexo.com.br/pharma_api/API/AutomaticBionexo
 	 */
 
 	private $configs;
-	private $sint;
+	private $bio;
 	private $logs;
 
 	public function __construct()
@@ -19,12 +20,12 @@ class AutomaticSintese extends CI_Controller
 
 		$this->load->model('AutomaticsEngine', 'Engine');
 
-		$this->sint = $this->load->database('sintese', true);
+		$this->bio = $this->load->database('bionexo', TRUE);
 
 		$this->configs =
 			[
-				'turnOn' => TRUE,
-				'integrador' => 'SINTESE',
+				'integrador' => 'BIONEXO',
+                'IdIntegrador' => '2',
 				'fornecedorById' =>
 					[
 						'status' => false,
@@ -33,7 +34,7 @@ class AutomaticSintese extends CI_Controller
 				'cotacaoById' =>
 					[
 						'status' => false,
-						'cd_cotacao' => 'COT17357-1135',
+						'cd_cotacao' => "192092140",
 					],
 				'checkDataFimCotacao' => TRUE,
 				'checkEnabledAuto' => TRUE,
@@ -46,9 +47,9 @@ class AutomaticSintese extends CI_Controller
 				'checkClientRestriction' => TRUE,
 				'checkPrdStock' => TRUE,
 				'checkPrdSent' => TRUE,
-				'checkValorTotalCot' => FALSE,
+				'checkValorTotalCot' => false,
 				'setDescontoFinal' => TRUE,
-				'submitSintese' => TRUE,
+				'submitBionexo' => TRUE,
 				'sendEmail' => TRUE,
 				'sendEmailAnexo' => TRUE,
 				'sendEmailDestiny' => TRUE,
@@ -57,34 +58,25 @@ class AutomaticSintese extends CI_Controller
 			];
 	}
 
-	public function testeMail()
-    {
-        $this->Engine->sendEmail([
-            'from' => 'no-reply@pharmanexo.com.br',
-            'from-name' => 'MArlon',
-            'destinatario' => 'marlon.mbes@gmail.com',
-            'assunto' => 'marlon.mbes@gmail.com',
-            'msg' => 'Teste',
-        ]);
-    }
-
 	private function getFornecedores()
 	{
-
-		$fornecedores = $this->db->select('id, margem_estoque, cnpj, config')
-			->where_in('tipo_venda', [2, 3])
-			->where_not_in('id', [12,111,112,115,120,123,126,5032,5033,5034,180, 125, 5010, 5046, 5018])
-			->order_by('id')
-			->get('fornecedores')
-			->result_array();
+        $data = [
+            "HOSPIDROGAS" =>
+                [
+                    'id_fornecedor' => 20,
+                    'user' => 'ws_hospidrogas_pharm',
+                    'password' => '3fjwk3dm'
+                ]
+        ];
 
 		if ($this->configs['fornecedorById']['status']) {
 
 			$id = intval($this->configs['fornecedorById']['id']);
 
-			foreach ($fornecedores as $key => $fornecedor) {
+			//foreach (loginBionexo() as $key => $fornecedor) {
+			foreach ($data as $key => $fornecedor) {
 
-				if ($fornecedor['id'] == $id) {
+				if ($fornecedor['id_fornecedor'] === $id) {
 
 					return
 						[
@@ -99,33 +91,15 @@ class AutomaticSintese extends CI_Controller
 		return
 			[
 				'status' => TRUE,
-				'result' => $fornecedores
+				'result' => $data
 			];
 	}
-
-    private function getEstados($id)
-    {
-        return $this->db->distinct()->select('e.uf')->where('c.id_estado > 0')->where('c.regra_venda > 0')->where('c.id_fornecedor', $id)
-            ->from('controle_cotacoes c')
-            ->join('estados e', 'e.id = c.id_estado')
-            ->get()
-            ->result_array();
-    }
-
-    private function getCompradores($id)
-    {
-        return $this->db->distinct()->select('id_cliente')->where('id_cliente > 0')->where('regra_venda > 0')->where('id_fornecedor', $id)->get('controle_cotacoes')->result_array();
-    }
 
 	private function getProdsCots($params)
 	{
 
-		$fields = "id_produto_sintese, cd_produto_comprador, ds_produto_comprador, qt_produto_total, ds_unidade_compra";
-
-		$result = $this->sint->select($fields)
-			->where('cd_cotacao', $params['cd_cotacao'])
-			->where('id_fornecedor', $params['id_fornecedor'])
-			->group_by($fields)
+		$result = $this->bio->where('id_cotacao', $params['id_cotacao'])
+			#->where_in('id_categoria', [100, 200, 300, 700, 1500])
 			->get('cotacoes_produtos')
 			->result_array();
 
@@ -144,30 +118,48 @@ class AutomaticSintese extends CI_Controller
 
 		$bool = TRUE;
 
-		$id_forma_pagamento = 5;
+		$cd_forma_pagamento = 5;
 
 		if ($this->configs['checkFormaPagamento']) {
 
-			$result = $this->db->where('id_fornecedor', $params['id_fornecedor'])
-				->group_start()
+			$checkFormaPagamento = $this->db->where('id_fornecedor', $params['id_fornecedor'])
 				->where('id_cliente', $params['id_cliente'])
-				->or_where('id_estado', $params['id_estado'])
-				->group_end()
 				->limit(1)
 				->get('formas_pagamento_fornecedores')
 				->row_array()['id_forma_pagamento'];
+
+            if (empty($checkFormaPagamento)){
+                $checkFormaPagamento = $this->db->where('id_fornecedor', $params['id_fornecedor'])
+                    ->where('id_estado', $params['id_estado'])
+                    ->limit(1)
+                    ->get('formas_pagamento_fornecedores')
+                    ->row_array()['id_forma_pagamento'];
+            }
+
+
+			if (IS_NULL($checkFormaPagamento))
+				return ['status' => FALSE];
+
+			$result = $this->db->where('integrador', 2)
+				->where('ativo', 1)
+				->where('id_forma_pagamento', $checkFormaPagamento)
+				->limit(1)
+				->get('formas_pagamento_depara')
+				->row_array()['cd_forma_pagamento'];
 
 			if (IS_NULL($result)) {
 
 				$bool = FALSE;
 
 			} else {
-				$id_forma_pagamento = $result;
+
+				$cd_forma_pagamento = $result;
 			}
 		}
 
 		$arrResult =
-			['id_forma_pagamento' => $id_forma_pagamento];
+			['cd_forma_pagamento' => $cd_forma_pagamento];
+
 
 		return
 			[
@@ -187,9 +179,8 @@ class AutomaticSintese extends CI_Controller
 
 			$result = $this->db->where('id_fornecedor', $params['id_fornecedor'])
 				->where('cd_cotacao', $params['cd_cotacao'])
-				->where('id_pfv', $params['codigo'])
 				->where('cd_produto_comprador', $params['cd_produto_comprador'])
-				->where('integrador', "SINTESE")
+				->where('integrador', "BIONEXO")
 				->limit(1)
 				->get('cotacoes_produtos')
 				->row_array();
@@ -202,6 +193,20 @@ class AutomaticSintese extends CI_Controller
 		return FALSE;
 	}
 
+	private function getProdMenorPreco($produtos)
+	{
+
+		$sortArr = [];
+
+		foreach ($produtos as $key => $produto)
+			$sortArr[$key] = $produto['preco_oferta'];
+
+		asort($sortArr);
+
+		foreach ($sortArr as $key => $value)
+			return $produtos[$key];
+	}
+
 	private function prodsEncontrados($params, $prodsCotacao)
 	{
 		$produtos = [];
@@ -211,31 +216,51 @@ class AutomaticSintese extends CI_Controller
 			$params = array_merge($params,
 				[
 					'cd_produto_comprador' => $prod['cd_produto_comprador'],
-					'id_produto_sintese' => $prod['id_produto_sintese'],
 					'ds_produto_comprador' => $prod['ds_produto_comprador'],
-					'qt_produto_total' => intval($prod['qt_produto_total']),
+					'qt_produto_total' => $prod['qt_produto_total'],
 					'ds_unidade_compra' => $prod['ds_unidade_compra']
 				]);
 
 			$this->logs['PRODS-COT'][$key] =
 
 				[
-					'id_produto_sintese' => $params['id_produto_sintese'],
 					'cd_produto_comprador' => $params['cd_produto_comprador'],
 					'ds_produto_comprador' => $params['ds_produto_comprador']
 				];
 
-			$checkProductCotRestriction = $this->Engine->productCotRestriction($params, $this->configs);
+			if ($this->checkProductSent($params)) {
 
-			if ($checkProductCotRestriction) {
-
-				$this->logs['PRODS-COT'][$key]['productCotRestriction'] = TRUE;
+				$this->logs['PRODS-COT'][$key]['productSent'] = TRUE;
 
 				continue;
 			}
 
+			$resultIdsProdutos = $this->db->select('id_produto_sintese')
+				->where('cd_produto', $params['cd_produto_comprador'])
+				->where('id_cliente', $params['id_cliente'])
+				->get('produtos_clientes_depara')
+				->result_array();
+
+			if (empty($resultIdsProdutos)) {
+
+				$this->logs['PRODS-COT'][$key]['produtos_clientes_depara'] = FALSE;
+
+				continue;
+			}
+
+			$ids_produto = [];
+
+			foreach ($resultIdsProdutos as $value) {
+
+				$id_produto = intval($value['id_produto_sintese']);
+
+				if (!in_array($id_produto, $ids_produto))
+					array_push($ids_produto, $id_produto);
+
+			}
+
 			$resultIdsSintese = $this->db->select('id_sintese')
-				->where('id_produto', $params['id_produto_sintese'])
+				->where_in('id_produto', $ids_produto)
 				->get('produtos_marca_sintese')
 				->result_array();
 
@@ -258,7 +283,7 @@ class AutomaticSintese extends CI_Controller
 			}
 
 			$select = "cat.codigo, cat.descricao, cat.apresentacao, cat.unidade,
-					   cat.nome_comercial, cat.marca, cat.id_marca, cat.quantidade_unidade";
+					   cat.nome_comercial, cat.marca, cat.quantidade_unidade";
 
 			$resultDepara = $this->db->select($select)
 				->distinct()
@@ -280,8 +305,6 @@ class AutomaticSintese extends CI_Controller
 
 			$newArr = [];
 
-			$checkIdMarca = FALSE;
-
 			foreach ($resultDepara as $keyProd => $value) {
 
 				$params = array_merge($params,
@@ -297,27 +320,8 @@ class AutomaticSintese extends CI_Controller
 						'descricao' => $value['descricao'],
 						'apresentacao' => $value['apresentacao'],
 						'nome_comercial' => $value['nome_comercial'],
-						'id_marca' => intval($value['id_marca']),
 						'marca' => $value['marca']
 					];
-
-				if (intval($value['id_marca']) == 0) {
-
-					$this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
-					['restricao']['DeParaMarca'] = FALSE;
-
-					$checkIdMarca = TRUE;
-
-					continue;
-				}
-
-				if ($this->checkProductSent($params)) {
-
-					$this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
-					['restricao']['productSent'] = TRUE;
-
-					continue;
-				}
 
 				$checkVendDif = $this->Engine->vendaDif($params, $this->configs);
 
@@ -357,12 +361,12 @@ class AutomaticSintese extends CI_Controller
 
 				$validade = $checkEstoque['result']['validade'];
 
-				$obsProd = "-";
+				$obsProd = "";
 
 				if (isset($params['confValidade'])) {
 
-					if ($params['confValidade'])
-						$obsProd = "Validade: {$validade} - ";
+					if (boolval($params['confValidade']))
+						$obsProd = "Validade: {$validade}";
 				}
 
 				$qtd_aceitavel = $qtd_solicitada;
@@ -371,7 +375,7 @@ class AutomaticSintese extends CI_Controller
 					$qtd_aceitavel = (floatval($params['margem_estoque']) / 100) * $qtd_solicitada;
 
 				if ($qtd_aceitavel > $estoque_unidade) {
-					$obsProd .= "Produto atendido parcialmente!";
+					$obsProd .= " - Produto atendido parcialmente!";
 				}
 
 				$checkPrice = $this->Engine->getPriceProd($params, $this->configs);
@@ -384,16 +388,17 @@ class AutomaticSintese extends CI_Controller
 					continue;
 				}
 
+
 				$arr =
 					[
 						'codigo' => $params['codigo'],
-						'id_produto' => $params['id_produto_sintese'],
+						'id_artigo' => $prod['id_artigo'],
+						'sequencia' => $prod['sequencia'],
 						'qtd_solicitada' => $qtd_solicitada,
 						'ds_unidade_compra' => $prod['ds_unidade_compra'],
 						'descricao' => $value['descricao'],
 						'apresentacao' => $value['apresentacao'],
 						'nome_comercial' => $value['nome_comercial'],
-						'id_marca' => intval($value['id_marca']),
 						'marca' => $value['marca'],
 						'unidade' => $value['unidade'],
 						'validade' => $validade,
@@ -402,13 +407,12 @@ class AutomaticSintese extends CI_Controller
 						'estoque_unidade' => $estoque_unidade,
 						'desconto_padrao' => $params['desconto_padrao'],
 						'desconto_vendaDif' => $params['desconto_percentual'],
-						'tabela_precos' => $checkPrice['tabelaPrecos'],
-						'tipo_preco' => $checkPrice['typePrice'],
-						'preco_tabela' => $checkPrice['priceTabela'],
-						'acres_tab_mix' => $checkPrice['acrescimoTabMix'],
+						'tabela_precos' => $checkPrice['priceTabela'],
+						'preco_unitario' => $checkPrice['priceTabela'],
 						'preco_oferta' => $checkPrice['priceOferta'],
 						'tipo_desconto_aplicado' => $checkPrice['tipoDesconto'],
 						'vl_desconto_aplicado' => $checkPrice['descontoAplicado'],
+						'vl_desconto_final' => $checkPrice['descontoAplicado'],
 						'obs_produto' => $obsProd
 					];
 
@@ -418,16 +422,8 @@ class AutomaticSintese extends CI_Controller
 
 				$this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
 				['oferta']['submitSintese'] = TRUE;
-			}
 
-			if ($checkIdMarca)
-				$this->db->insert('notifications',
-					[
-						'type' => 'warning',
-						'id_fornecedor' => $params['id_fornecedor'],
-						'message' => "Existem produtos sem depara de marca na cotação: {$params['cd_cotacao']}.",
-						'envia_email' => 1
-					]);
+			}
 
 			if (empty($newArr))
 				continue;
@@ -435,13 +431,11 @@ class AutomaticSintese extends CI_Controller
 			$produtos[] =
 				[
 					'cd_produto_comprador' => $params['cd_produto_comprador'],
-					'id_produto_sintese' => $params['id_produto_sintese'],
 					'ds_produto_comprador' => $params['ds_produto_comprador'],
 					'qt_produto_total' => $params['qt_produto_total'],
 					'ds_unidade_compra' => $params['ds_unidade_compra'],
 					'marcas_encontradas' => $newArr
 				];
-
 		}
 
 		if (empty($produtos))
@@ -451,9 +445,8 @@ class AutomaticSintese extends CI_Controller
 			$params['codigo'],
 			$params['cd_produto_comprador'],
 			$params['ds_produto_comprador'],
-			$params['qt_produto_total'],
 			$params['ds_unidade_compra'],
-			$params['id_produto_sintese'],
+			$params['qt_produto_total'],
 			$params['qtd_unidade'],
 			$params['desconto_percentual']
 		);
@@ -468,25 +461,24 @@ class AutomaticSintese extends CI_Controller
 
 	private function createObject($objCotacao)
 	{
-		$arrProdsOferta = [];
+		$prodsOferta = [];
 
 		$vlTtotalCotacao = 0;
 
-		$dom = new DOMDocument("1.0", "ISO-8859-1");
+		$dom = new DOMDocument();
 		$dom->formatOutput = TRUE;
 
-		$root = $dom->createElement("Cotacao");
+		$resposta = $dom->createElement("Resposta");
 
 		# Adiciona as informações do cabeçalho
-		$root->appendChild($dom->createElement("Tp_Movimento", '1'));
-		$root->appendChild($dom->createElement("Dt_Gravacao", date("d/m/Y H:i:s", time())));
-		$root->appendChild($dom->createElement("Cd_Fornecedor", preg_replace("/\D+/", "", $objCotacao['dados']['cnpj_fornecedor'])));
-		$root->appendChild($dom->createElement("Cd_Cotacao", $objCotacao['dados']['cd_cotacao']));
-		$root->appendChild($dom->createElement("Cd_Condicao_Pagamento", $objCotacao['dados']['forma_pagamento']));
-		$root->appendChild($dom->createElement("Nm_Usuario", "PHARMAINT321"));
-		$root->appendChild($dom->createElement("Ds_Observacao", '-'));
-		$root->appendChild($dom->createElement("Qt_Prz_Minimo_Entrega", $objCotacao['dados']['prazo_entrega']));
-		$root->appendChild($dom->createElement("Vl_Minimo_Pedido", str_replace(".", ",", $objCotacao['dados']['valor_minimo'])));
+		$header = $dom->createElement("Cabecalho");
+		$header->appendChild($dom->createElement("Id_Pdc", $objCotacao['dados']['cd_cotacao']));
+		$header->appendChild($dom->createElement("CNPJ_Hospital", $objCotacao['dados']['cnpj_cliente']));
+		$header->appendChild($dom->createElement("Faturamento_Minimo", str_replace(".", ",", $objCotacao['dados']['valor_minimo'])));
+		$header->appendChild($dom->createElement("Prazo_Entrega", $objCotacao['dados']['prazo_entrega']));
+		$header->appendChild($dom->createElement("Validade_Proposta", date('d/m/Y', strtotime('+5 days', strtotime($objCotacao['dados']['dt_fim_cotacao'])))));
+		$header->appendChild($dom->createElement("Id_Forma_Pagamento", $objCotacao['dados']['forma_pagamento']));
+		$header->appendChild($dom->createElement("Frete", 'CIF'));
 
 		$obs_fornecedor = "-";
 
@@ -496,50 +488,61 @@ class AutomaticSintese extends CI_Controller
 				$obs_fornecedor = $objCotacao['dados']['obsFornecedor'];
 		}
 
-		$root->appendChild($dom->createElement("Ds_Observacao_Fornecedor", utf8_encode($obs_fornecedor)));
+		$header->appendChild($dom->createElement("Observacoes", $obs_fornecedor));
 
-		$produtosOferta = $dom->createElement("Produtos_Cotacao");
+		$itens_pdc = $dom->createElement("Itens_Pdc");
 
-		foreach ($objCotacao['produtos_fornecedor'] as $prodsOferta) {
+		$produtos_escolihos = $objCotacao['produtos_fornecedor'];
 
-			$produtoOferta = $dom->createElement("Produto_Cotacao");
+		foreach ($objCotacao['produtos_fornecedor'] as $key => $produtos) {
 
-			$produtoOferta->appendChild($dom->createElement("Id_Produto_Sintese", $prodsOferta['id_produto_sintese']));
-			$produtoOferta->appendChild($dom->createElement("Cd_Produto_Comprador", $prodsOferta['cd_produto_comprador']));
 
-			$marcasOferta = $dom->createElement("Marcas_Oferta");
+			$cd_prd_comprador = $produtos['cd_produto_comprador'];
 
-			foreach ($prodsOferta['marcas_encontradas'] as $prodsMarca) {
+			$produtoEscolhido = $this->getProdMenorPreco($produtos['marcas_encontradas']);
 
-				$marca = $dom->createElement("Marca_Oferta");
+			$produtoEscolhido = array_merge($produtoEscolhido, ['id_produto' => NULL]);
 
-				$marca->appendChild($dom->createElement("Id_Marca", $prodsMarca['id_marca']));
-				$marca->appendChild($dom->createElement("Ds_Marca", utf8_encode($prodsMarca['marca'])));
-				$marca->appendChild($dom->createElement("Qt_Embalagem", $prodsMarca['qtd_unidade']));
-				$marca->appendChild($dom->createElement("Vl_Preco_Produto", number_format($prodsMarca['preco_oferta'], 4, ',', '.')));
-				$marca->appendChild($dom->createElement("Ds_Obs_Oferta_Fornecedor", utf8_encode($prodsMarca['obs_produto'])));
-				$marca->appendChild($dom->createElement("Cd_produtoERP", $prodsMarca['codigo']));
+			$produtoEscolhido['obs'] = $obs_fornecedor;
 
-				$marcasOferta->appendChild($marca);
+			unset($produtos_escolihos[$key]['marcas_encontradas']);
 
-				$produtoOferta->appendChild($marcasOferta);
-				$produtosOferta->appendChild($produtoOferta);
+			$produtos_escolihos[$key]['marcas_encontradas'][0] = $produtoEscolhido;
 
-				$vlTtotalCotacao += ($prodsMarca['qtd_solicitada'] * $prodsMarca['preco_oferta']);
+			$item = $dom->createElement("Item_Pdc");
 
-				$arrProdsOferta[] = $this->Engine->prodsOferta(
-					[
-						'type' => $objCotacao['dados']['type'],
-						'dadosCotacao' => $objCotacao['dados'],
-						'produtoOferta' => $prodsMarca,
-						'cd_produto_comprador' => $prodsOferta['cd_produto_comprador']
-					]);
-			}
+			$item->appendChild($dom->createElement('Sequencia', $produtoEscolhido['sequencia']));
+			$item->appendChild($dom->createElement('Id_Artigo', $produtoEscolhido['id_artigo']));
+			$item->appendChild($dom->createElement('Codigo_Produto', $cd_prd_comprador));
+			$item->appendChild($dom->createElement('Preco_Unitario', $produtoEscolhido['preco_oferta']));
+			$item->appendChild($dom->createElement('Fabricante', $produtoEscolhido['nome_comercial'] . " / " . $produtoEscolhido['marca']));
+			$item->appendChild($dom->createElement('Embalagem', $produtoEscolhido['unidade']));
+			$item->appendChild($dom->createElement('Quantidade_Embalagem', $produtoEscolhido['qtd_unidade']));
+			$item->appendChild($dom->createElement('Comentario', $produtoEscolhido['obs_produto']));
+
+            $extra = $dom->createElement('Campo_Extra');
+            $extra->appendChild($dom->createElement('Nome', "Codigo_Produto_Fornecedor"));
+            $extra->appendChild($dom->createElement('Valor', $produtoEscolhido['codigo']));
+
+            $item->appendChild($extra);
+
+			$itens_pdc->appendChild($item);
+
+			$prodsOferta[] = $this->Engine->prodsOferta(
+				[
+					'type' => $objCotacao['dados']['type'],
+					'dadosCotacao' => $objCotacao['dados'],
+					'produtoOferta' => $produtoEscolhido,
+					'cd_produto_comprador' => $cd_prd_comprador
+				]);
+
+			$vlTtotalCotacao += ($produtoEscolhido['qtd_solicitada'] * $produtoEscolhido['preco_oferta']);
 		}
 
-		$root->appendChild($produtosOferta);
 
-		$dom->appendChild($root);
+		$resposta->appendChild($header);
+		$resposta->appendChild($itens_pdc);
+		$dom->appendChild($resposta);
 
 		$dom->preserveWhiteSpace = FALSE;
 
@@ -564,89 +567,80 @@ class AutomaticSintese extends CI_Controller
 			[
 				'status' => TRUE,
 				'valorTotalCotacao' => $vlTtotalCotacao,
-				'prodsOferta' => $arrProdsOferta,
-				'prodsEspelho' => $objCotacao['produtos_fornecedor'],
-				'xml' => $dom->saveXML()
+				'prodsOferta' => $prodsOferta,
+				'prodsEspelho' => $produtos_escolihos,
+				'xml' => $dom->saveXML(),
 			];
+
 	}
 
-	private function submitSintese($xml)
+	private function submitBionexo($params)
 	{
-		if ($this->configs['submitSintese']) {
+		if ($this->configs['submitBionexo']) {
 
-			$myXml = trim(str_replace("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>", "", $xml));
-			/*
-			 * Função disponibilizada pela Sintese para enviar o envelope via SOAP o XML da cotação.
-			 * Responspavel: Jorge Cruz da Sintese.
-			 */
-			$envio = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-                       <soapenv:Header/>
-                       <soapenv:Body>
-                          <tem:EnviarOfertas>
-                             <tem:xmlDoc>
-                             ' . $myXml . '
-                             </tem:xmlDoc>
-                          </tem:EnviarOfertas>
-                       </soapenv:Body>
-                    </soapenv:Envelope>';
+            $temp_xml = new DOMDocument();
+            $temp_xml->loadXML($params['xml']);
+            $your_xml = $temp_xml->saveXML($temp_xml->documentElement);
 
-			$soapUrl = 'http://integracao.plataformasintese.com/IntegrationService.asmx?WSDL';
-			// xml post structure
-			$headers = array(
-				"Host: integracao.plataformasintese.com",
-				"Content-type: text/xml;charset=\"utf-8\"",
-				"Accept: text/xml",
-				"Cache-Control: no-cache",
-				"Pragma: no-cache",
-				"SOAPAction: http://tempuri.org/EnviarOfertas",
-				"Content-length: " . strlen($envio),
-			); //SOAPAction: your op URL
+            $params['xml'] = $your_xml;
 
-			$url = $soapUrl;
+			$client = new SoapClient("https://ws.bionexo.com.br/BionexoBean?wsdl");
 
-			// PHP cURL  for https connection with auth
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			# curl_setopt($ch, CURLOPT_USERPWD, $soapUser.":".$soapPassword); // username and password - declared at the top of the doc
-			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-			curl_setopt($ch, CURLOPT_TIMEOUT, 400);
-			curl_setopt($ch, CURLOPT_POST, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $envio); // the SOAP request
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			$newParams = //WHU cotação já tem no BANCO, porem é novo produto
+				[
+					$params['user'],
+					$params['password'],
+					'WHS',
+					'WH',
+                    $params['xml']
+				];
 
-			// converting
-			$response = strip_tags(curl_exec($ch));
 
-          /*  if (curl_errno($ch)) {
-                $error_msg = curl_error($ch);
-                var_dump($error_msg);
-            }else{
-                var_dump($response);
-            }*/
+			$resp = $client->__soapCall('post', $newParams);
 
-			curl_close($ch);
+			$response = explode(';', $resp);
 
-			if (strpos($response, 'sucesso') == FALSE) {
+			if (intval($response[0]) < 0) {
+
+				# Lista de ERROS
+
+				# Não é possível criar resposta: periodo de cotação encerrado
+				# O dia da validade da proposta deve ser 3 dias posterior ao vencimento da cotação
+				# java.lang.NullPointerException
+				# Incorrect login/password
+				# Não é possível criar resposta: pedido [119062878] já foi respondido!
+				# O cliente trabalha com condições comerciais pré-estabelecidas para esta cotação. Para responder, é obrigatório utilizar os seguintes critérios: [Data de validade mínima= 19/11/2020]
 
 				return
 					[
 						'status' => FALSE,
-						'error' => $response
+						'result' => $response[2]
 					];
 			}
-
-			return ['status' => TRUE];
 		}
 		return
-			['status' => TRUE];
+			[
+				'status' => TRUE,
+				'xml' => $params['xml']
+			];
 	}
+
+    private function getEstados($id)
+    {
+        return $this->db->distinct()->select('e.uf')->where('c.id_estado > 0')->where('c.regra_venda > 0')->where('c.id_fornecedor', $id)
+            ->from('controle_cotacoes c')
+            ->join('estados e', 'e.id = c.id_estado')
+            ->get()
+            ->result_array();
+    }
+
+    private function getCompradores($id)
+    {
+        return $this->db->distinct()->select('id_cliente')->where('id_cliente > 0')->where('regra_venda > 0')->where('id_fornecedor', $id)->get('controle_cotacoes')->result_array();
+    }
 
 	public function index()
 	{
-		if (!$this->configs['turnOn'])
-			exit();
 
 		$getFornecedores = $this->getFornecedores();
 
@@ -655,10 +649,13 @@ class AutomaticSintese extends CI_Controller
 
 		foreach ($getFornecedores['result'] as $fornecedor) {
 
-			$this->logs = [];
+			$margem_estoque = $this->db->where('id', $fornecedor['id_fornecedor'])
+				->get('fornecedores')
+				->row_array()['margem_estoque'];
 
-            $estados = $this->getEstados($fornecedor['id']);
-            $clientes = $this->getCompradores($fornecedor['id']);
+
+            $estados = $this->getEstados($fornecedor['id_fornecedor']);
+            $clientes = $this->getCompradores($fornecedor['id_fornecedor']);
 
             if (!empty($estados)){
                 $diff = [];
@@ -686,29 +683,30 @@ class AutomaticSintese extends CI_Controller
                 continue;
             }
 
+
             $getCotacoes = $this->Engine->getCotsFornecedor(
-                [
-                    'db' => $this->sint,
-                    'configs' => $this->configs,
-                    'id_fornecedor' => intval($fornecedor['id']),
+				[
+					'db' => $this->bio,
+					'configs' => $this->configs,
+					'id_fornecedor' => $fornecedor['id_fornecedor'],
                     'estados' => $estados,
-                    'clientes' => $clientes
-                ]
-            );
+                    'clientes' => $clientes,
+                    'integrador' => 'BIONEXO'
+				]
+			);
+
 
 			if (!$getCotacoes['status'])
 				continue;
 
 			foreach ($getCotacoes['result'] as $cotacao) {
 
-				$this->logs = [];
-
 				$params =
 					[
-						'type' => $this->configs['integrador'],
-						'id_fornecedor' => intval($fornecedor['id']),
-						'cnpj_fornecedor' => $fornecedor['cnpj'],
-						'margem_estoque' => $fornecedor['margem_estoque'],
+						'type' => 'BIONEXO',
+						'integrador' => 2,
+						'id_fornecedor' => $fornecedor['id_fornecedor'],
+						'margem_estoque' => $margem_estoque,
 						'id_cotacao' => intval($cotacao['id']),
 						'cd_cotacao' => $cotacao['cd_cotacao'],
 						'dt_inicio_cotacao' => $cotacao['dt_inicio_cotacao'],
@@ -718,56 +716,48 @@ class AutomaticSintese extends CI_Controller
 						'uf_cotacao' => $cotacao['uf_cotacao'],
 					];
 
+
 				$id_estado = $this->db->where('uf', $params['uf_cotacao'])
 					->get('estados')
 					->row_array()['id'];
 
 				$params = array_merge($params, ['id_estado' => intval($id_estado)]);
 
-				$configsFornecedor = $fornecedor['config'];
-
-				if (!IS_NULL($configsFornecedor)) {
-
-					$arrConfigsFornecedor = json_decode($configsFornecedor, true);
-
-					$confValidade = isset($arrConfigsFornecedor['envia_validade']) ? boolval($arrConfigsFornecedor['envia_validade']) : false;
-
-					$params = array_merge($params, ['confValidade' => $confValidade ]);
-
-					if (isset($arrConfigsFornecedor['envia_revisada']) && !$arrConfigsFornecedor['envia_revisada']) {
-
-						if ((boolval($cotacao['revisao']))) {
-
-							$this->logs['MSG'] = "Cotacao revisada!";
-
-							continue;
-						}
-					}
-				}
+				if (!empty($this->logs))
+					$this->Engine->saveLogs($this->logs, $params, $this->configs);
 
 				$configsEnvio = $this->Engine->getConfigsEnvio($params);
 
 				if ($configsEnvio['status']) {
 
-					$params = array_merge($params, ['obsFornecedor' => $configsEnvio['result']['observacao']]);
+					$params = array_merge($params,
+						[
+							'obsFornecedor' => $configsEnvio['result']['observacao'],
+							'confValidade' => $configsEnvio['result']['validade']
+						]);
 				}
+
+
+				$this->logs = [];
 
 				if (!$this->Engine->enabledAutomatic($params, $this->configs)) {
 
-					$this->Engine->saveLogs($arr['CONFIGS-COT'] =
+					$this->logs['CONFIGS-COT'] =
 						[
 							'enabledAutomatic' => FALSE
-						], $params, $this->configs);
+						];
 
 					continue;
 				}
 
+
+
 				if ($this->Engine->clientRestriction($params, $this->configs)) {
 
-					$this->Engine->saveLogs($arr['CONFIGS-COT'] =
+					$this->logs['CONFIGS-COT'] =
 						[
 							'clientRestriction' => TRUE
-						], $params, $this->configs);
+						];
 
 					continue;
 				}
@@ -776,10 +766,10 @@ class AutomaticSintese extends CI_Controller
 
 				if (!$checkVlMinimo['status']) {
 
-					$this->Engine->saveLogs($arr['CONFIGS-COT'] =
+					$this->logs['CONFIGS-COT'] =
 						[
 							'valorMinimo' => FALSE
-						], $params, $this->configs);
+						];
 
 					continue;
 				}
@@ -788,10 +778,10 @@ class AutomaticSintese extends CI_Controller
 
 				if (!$checkFormaPagamento['status']) {
 
-					$this->Engine->saveLogs($arr['CONFIGS-COT'] =
+					$this->logs['CONFIGS-COT'] =
 						[
 							'formaPagamento' => FALSE
-						], $params, $this->configs);
+						];
 
 					continue;
 				}
@@ -800,43 +790,44 @@ class AutomaticSintese extends CI_Controller
 
 				if (!$checkPrazoEntrega['status']) {
 
-					$this->Engine->saveLogs($arr['CONFIGS-COT'] =
+					$this->logs['CONFIGS-COT'] =
 						[
-							'prazoEntrega' => FALSE
-						], $params, $this->configs);
+							'prazoEntrega' => $checkPrazoEntrega['status']
+						];
 
 					continue;
 				}
+
+
 
 				$params = array_merge($params,
 					[
 						'valor_minimo' => $checkVlMinimo['result']['valor_minimo'],
 						'desconto_padrao' => floatval($checkVlMinimo['result']['desconto_padrao']),
-						'forma_pagamento' => $checkFormaPagamento['result']['id_forma_pagamento'],
+						'forma_pagamento' => $checkFormaPagamento['result']['cd_forma_pagamento'],
 						'prazo_entrega' => $checkPrazoEntrega['result']['prazo_entrega']
 					]);
 
 				$getProdsCots = $this->getProdsCots($params);
 
-				if (!$getProdsCots['status']) {
 
-					$this->Engine->saveLogs($arr['CONFIGS-COT'] =
+                if (!$getProdsCots['status']) {
+
+					$this->logs['CONFIGS-COT'] =
 						[
 							'produtosCotacao' => FALSE
-						], $params, $this->configs);
+						];
 
 					continue;
 				}
+
+
 
 				$dataCot = $this->prodsEncontrados($params, $getProdsCots['result']);
 
 				if (empty($dataCot)) {
 
 					$this->logs['MSG'] = "Nenhum produto ofertado!";
-
-					$this->Engine->saveLogs($this->logs, $params, $this->configs);
-
-					$this->logs = [];
 
 					continue;
 				}
@@ -847,10 +838,15 @@ class AutomaticSintese extends CI_Controller
 
 					$this->logs['VALOR-TOTAL'] = $createObject['valorTotalCotacao'];
 
+					$submitBionexo = $this->submitBionexo(
+						[
+							'user' => $fornecedor['user'],
+							'password' => $fornecedor['password'],
+							'xml' => $createObject['xml']
+						]);
 
-					$submitSintese = $this->submitSintese($createObject['xml']);
 
-					if ($submitSintese['status']) {
+					if ($submitBionexo['status']) {
 
 						$this->Engine->saveProdsOferta($createObject['prodsOferta'], $this->configs);
 
@@ -870,7 +866,7 @@ class AutomaticSintese extends CI_Controller
 						continue;
 					}
 
-					$this->logs['MSG'] = "Erro de envio para Sintese - Error: {$submitSintese['error']}";
+					$this->logs['MSG'] = "Erro de envio para Bionexo - Error: {$submitBionexo['result']}";
 
 					$this->Engine->saveLogs($this->logs, $params, $this->configs);
 

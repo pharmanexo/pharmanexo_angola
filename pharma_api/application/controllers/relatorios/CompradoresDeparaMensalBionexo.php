@@ -3,7 +3,7 @@
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class CompradoresDeparaMensal extends CI_Controller
+class CompradoresDeparaMensalBionexo extends CI_Controller
 {
 
     public function __construct()
@@ -26,24 +26,24 @@ class CompradoresDeparaMensal extends CI_Controller
         }
 
         $fornecedoresAgrupados = [];
-        $fornecedores = $this->db->query("
-                        select f.id, f.nome_fantasia, f.id_matriz, pm.nome
-                            from fornecedores f
-                            left join fornecedores_matriz pm on pm.id = f.id_matriz
-                            where f.id in (select id_fornecedor
-                                         from cotacoes_produtos
-                                         where month(data_criacao) = '{$filtro_mes}'
-                                           and year(data_criacao) = '{$filtro_ano}'
-                                         group by id_fornecedor
-                            )
-        ")->result_array();
-
         /*  $fornecedores = $this->db->query("
                           select f.id, f.nome_fantasia, f.id_matriz, pm.nome
                               from fornecedores f
                               left join fornecedores_matriz pm on pm.id = f.id_matriz
-                              where f.id = 20
+                              where f.id in (select id_fornecedor
+                                           from cotacoes_produtos
+                                           where month(data_criacao) = '{$filtro_mes}'
+                                             and year(data_criacao) = '{$filtro_ano}'
+                                           group by id_fornecedor
+                              )
           ")->result_array();*/
+
+        $fornecedores = $this->db->query("
+                          select f.id, f.nome_fantasia, f.id_matriz, pm.nome
+                              from fornecedores f
+                              left join fornecedores_matriz pm on pm.id = f.id_matriz
+                              where f.id = 20
+          ")->result_array();
 
 
         foreach ($fornecedores as $fornecedor) {
@@ -89,7 +89,7 @@ class CompradoresDeparaMensal extends CI_Controller
         }
 
         $errorMsg = [
-            "to" => "marlon.boecker@pharmanexo.com.br, administracao@pharmanexo.com.br",
+            "to" => "marlon.boecker@pharmanexo.com.br",
             "greeting" => "",
             "anexos" => $anexos,
             "subject" => "Relatório Mensal - Cotações geral por distribuidor",
@@ -97,13 +97,14 @@ class CompradoresDeparaMensal extends CI_Controller
         ];
 
         $send = $this->notify->sendRel($errorMsg);
-        if ($send){
-            foreach ($anexos as $anexo){
+        if ($send) {
+            foreach ($anexos as $anexo) {
                 unlink($anexo);
             }
         }
 
     }
+
 
     public function output_csv($filter)
     {
@@ -117,26 +118,26 @@ class CompradoresDeparaMensal extends CI_Controller
 
 
         $data = [];
-        $sint = $this->load->database('sintese', true);
-        $cotacoesProdutos = $sint
-            ->select('ct.cd_cotacao, ct.id_cliente, id_produto_sintese, cd_produto_comprador')
+        $dbCot = $this->load->database('bionexo', true);
+        $cotacoesProdutos = $dbCot
+            ->select('ct.cd_cotacao, ct.id_cliente, cd_produto_comprador')
             ->from('cotacoes ct')
-            ->join('cotacoes_produtos cp', 'ct.id_fornecedor = cp.id_fornecedor and ct.cd_cotacao = cp.cd_cotacao')
-            ->where("cp.id_fornecedor in ({$filter['ids']})
-                                and month(ct.data_criacao) = '{$filter['mes']}'
-                                and year(ct.data_criacao) = '{$filter['ano']}'
+            ->join('cotacoes_produtos cp', 'cp.id_cotacao = ct.id')
+            ->where("ct.id_fornecedor in ({$filter['ids']})
+                                and month(ct.dt_criacao) = '{$filter['mes']}'
+                                and year(ct.dt_criacao) = '{$filter['ano']}'
                                 "
             )
-            ->group_by('ct.cd_cotacao, id_produto_sintese, cd_produto_comprador')
+            ->group_by('ct.cd_cotacao, cd_produto_comprador')
             ->get()
             ->result_array();
+
 
         $clientes = [];
 
         foreach ($cotacoesProdutos as $produto) {
             $clientes[$produto['id_cliente']][$produto['cd_cotacao']][] = $produto;
         }
-
 
         foreach ($clientes as $k => $cotacoes) {
 
@@ -156,17 +157,20 @@ class CompradoresDeparaMensal extends CI_Controller
                 $totalProds = ($totalProds + count($produtos));
 
                 foreach ($produtos as $produto) {
+
+
                     $depara = $this->db
                         ->select('pms.id_produto')
-                        ->from('produtos_fornecedores_sintese pfs')
-                        ->join('produtos_marca_sintese pms', 'pfs.id_sintese = pms.id_sintese')
-                        ->where('pms.id_produto', $produto['id_produto_sintese'])
+                        ->from('produtos_clientes_depara pcd')
+                        ->join('produtos_marca_sintese pms', 'pcd.id_produto_sintese = pms.id_produto')
+                        ->join('produtos_fornecedores_sintese pfs', 'pfs.id_sintese = pms.id_sintese')
+                        ->where('pcd.cd_produto', $produto['cd_produto_comprador'])
+                        ->where('pcd.id_cliente', $produto['id_cliente'])
                         ->where("pfs.id_fornecedor in ({$filter['ids']})")
                         ->group_by('pfs.cd_produto')
-                        ->get()
-                        ->result_array();
+                        ->get();
 
-                    if (!empty($depara)) {
+                    if ($depara->num_rows() > 0) {
                         $cotsDepara++;
                         break;
                     }

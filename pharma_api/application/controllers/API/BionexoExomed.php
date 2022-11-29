@@ -6,7 +6,7 @@ error_reporting(1);
 ini_set('default_socket_timeout', 600);
 
 
-class BionexoHospidrogas extends CI_Controller
+class BionexoExomed extends CI_Controller
 {
 
     /**
@@ -34,11 +34,11 @@ class BionexoHospidrogas extends CI_Controller
 
         //$this->login = loginBionexo();
         $this->login = [
-            "HOSPIDROGAS" =>
+            "EXOMED" =>
                 [
-                    'id_fornecedor' => 20,
-                    'user' => 'ws_hospidrogas_pharm',
-                    'password' => '3fjwk3dm'
+                    'id_fornecedor' => 180,
+                    'user' => 'ws_exomed_pharm',
+                    'password' => 'ExO11mD*'
                 ],
         ];
 
@@ -57,7 +57,7 @@ class BionexoHospidrogas extends CI_Controller
                 break;
         }
 
-    //   $this->wsdl = 'http://ws.sandbox.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean?wsdl';
+        $this->wsdl = 'https://ws.bionexo.com.br/BionexoBean?wsdl';
 
     }
 
@@ -87,6 +87,9 @@ class BionexoHospidrogas extends CI_Controller
             $resp = $client->__soapCall($type, $p);
         }
 
+
+        var_dump($resp);
+        exit();
 
         $strxml = substr($resp, strpos($resp, '<?xml'));
 
@@ -184,11 +187,11 @@ class BionexoHospidrogas extends CI_Controller
         try {
 
 
-            $dt_begin = date('d/m/Y H:i:s', strtotime('-1hour'));
-            $dt_end = date('d/m/Y H:i:s', strtotime('+1hour'));
+            $dt_begin = date('d/m/Y H:i:s', strtotime('-3hour'));
+            $dt_end = date('d/m/Y H:i:s', strtotime('+3hour'));
 
-          /*  $dt_begin = '30/09/2021 08:00:00';
-            $dt_end = '30/09/2021 11:59:00';*/
+            /* $dt_begin = '18/11/2022 00:00:00';
+             $dt_end = '18/11/2022 23:59:00';*/
 
             foreach ($this->login as $login) {
 
@@ -202,8 +205,8 @@ class BionexoHospidrogas extends CI_Controller
                 $WGG = $this->request('WGG', [
                     'DT_BEGIN' => $dt_begin,
                     'DT_END' => $dt_end,
-                   # 'REGION' => 'ES',
-                   // 'ID' => 247343599,
+                    //'REGION' => 'PE',
+                    //'ID' => 254834411,
                     'LAYOUT' => 'WG',
                     #'TOKEN' => 109849401,
                     'ISO' => 0,
@@ -212,9 +215,7 @@ class BionexoHospidrogas extends CI_Controller
                 $cotacoes = isset($WGG['data']['Pedido'][0]) ? $WGG['data']['Pedido'] : arrayFormat($WGG['data']['Pedido']);
 
 
-
                 foreach ($cotacoes as $cotacao) {
-
 
                     $checkIntegradores = [];
 
@@ -293,8 +294,8 @@ class BionexoHospidrogas extends CI_Controller
                     $cd_cotacao = $cabecalho["Id_Pdc"];
 
 
-                    if (is_array($cd_cotacao)){
-                      continue;
+                    if (is_array($cd_cotacao)) {
+                        continue;
                     }
 
                     $cnpj_format = str_replace('.', '', str_replace('-', '', str_replace('/', '', $cabecalho["CNPJ_Hospital"])));
@@ -312,7 +313,6 @@ class BionexoHospidrogas extends CI_Controller
                     if (is_array($cabecalho["Cidade_Hospital"]) || empty($cabecalho['Cidade_Hospital'])) {
                         $cabecalho["Cidade_Hospital"] = isset($cliente['cidade']) ? $cliente['cidade'] : '';
                     }
-
 
                     $arrCabecalho =
                         [
@@ -335,7 +335,6 @@ class BionexoHospidrogas extends CI_Controller
                         ];
 
 
-
                     $this->bio->trans_begin();
 
                     $checkCotacao = $this->bio
@@ -344,7 +343,6 @@ class BionexoHospidrogas extends CI_Controller
                         ->limit(1)
                         ->get('cotacoes')
                         ->row_array();
-
 
 
                     $id_cotacao = 0;
@@ -360,6 +358,7 @@ class BionexoHospidrogas extends CI_Controller
                         if ($checkCotacao['dt_fim_cotacao'] != $dt_fim) {
 
                             $this->bio->where('id', $checkCotacao['id'])
+                                ->set('uf_cotacao', $arrCabecalho['uf_cotacao'])
                                 ->set('dt_fim_cotacao', $dt_fim)
                                 ->update('cotacoes');
 

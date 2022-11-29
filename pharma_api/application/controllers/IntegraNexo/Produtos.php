@@ -125,7 +125,10 @@ class Produtos extends MY_Controller
 
                         $update = [
                             'nome_comercial' => $produto['nome_comercial'],
+                            "apresentacao" => $produto['apresentacao'],
                             'marca' => $produto['marca'],
+                            'ean' => isset($produto['ean']) ? $produto['ean'] : '',
+                            'rms' => isset($produto['rms']) ? $produto['rms'] : '',
                             'quantidade_unidade' => $produto['quantidade_unidade'],
                             'unidade' => $produto['unidade'],
                             "bloqueado" => (intval($produto['ativo']) == 1) ? 0 : 1,
@@ -258,6 +261,9 @@ class Produtos extends MY_Controller
                 $this->db
                     ->where('id_fornecedor', $_SESSION['id_fornecedor'])
                     ->delete('produtos_preco');
+                $this->db
+                    ->where('id_fornecedor', $_SESSION['id_fornecedor'])
+                    ->delete('produtos_preco_max');
 
                 $this->db->insert_batch('produtos_preco', $salvaNovoPrecos);
 

@@ -67,6 +67,12 @@ class AutomaticBionexo extends CI_Controller
                     'user' => 'ws_hospidrogas_pharm',
                     'password' => '3fjwk3dm'
                 ],
+            "PONTAMED" =>
+                [
+                    'id_fornecedor' => 5018,
+                    'user' => 'ws_pontamed_pr',
+                    'password' => '4hyamzzs'
+                ],
         ];
 
 		if ($this->configs['fornecedorById']['status']) {
@@ -690,7 +696,8 @@ class AutomaticBionexo extends CI_Controller
 					'configs' => $this->configs,
 					'id_fornecedor' => $fornecedor['id_fornecedor'],
                     'estados' => $estados,
-                    'clientes' => $clientes
+                    'clientes' => $clientes,
+                    'integrador' => 'BIONEXO'
 				]
 			);
 

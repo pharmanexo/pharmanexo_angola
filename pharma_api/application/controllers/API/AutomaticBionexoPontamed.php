@@ -1,7 +1,7 @@
 <?php
 
 
-class AutomaticBionexoHMG extends CI_Controller
+class AutomaticBionexoPontamed extends CI_Controller
 {
     /**
      * @author : Chule Cabral
@@ -34,7 +34,7 @@ class AutomaticBionexoHMG extends CI_Controller
                 'cotacaoById' =>
                     [
                         'status' => false,
-                        'cd_cotacao' => "192092140",
+                        'cd_cotacao' => "254768826",
                     ],
                 'checkDataFimCotacao' => TRUE,
                 'checkEnabledAuto' => TRUE,
@@ -49,24 +49,18 @@ class AutomaticBionexoHMG extends CI_Controller
                 'checkPrdSent' => TRUE,
                 'checkValorTotalCot' => false,
                 'setDescontoFinal' => TRUE,
-                'submitBionexo' => FALSE,
-                'sendEmail' => FALSE,
-                'sendEmailAnexo' => FALSE,
-                'sendEmailDestiny' => FALSE,
-                'saveProdsOferta' => FALSE,
-                'saveLogs' => FALSE
+                'submitBionexo' => TRUE,
+                'sendEmail' => TRUE,
+                'sendEmailAnexo' => TRUE,
+                'sendEmailDestiny' => TRUE,
+                'saveProdsOferta' => TRUE,
+                'saveLogs' => TRUE
             ];
     }
 
     private function getFornecedores()
     {
         $data = [
-            "HOSPIDROGAS" =>
-                [
-                    'id_fornecedor' => 20,
-                    'user' => 'ws_hospidrogas_pharm',
-                    'password' => '3fjwk3dm'
-                ],
             "PONTAMED" =>
                 [
                     'id_fornecedor' => 5018,
@@ -134,7 +128,7 @@ class AutomaticBionexoHMG extends CI_Controller
                 ->get('formas_pagamento_fornecedores')
                 ->row_array()['id_forma_pagamento'];
 
-            if (empty($checkFormaPagamento)){
+            if (empty($checkFormaPagamento)) {
                 $checkFormaPagamento = $this->db->where('id_fornecedor', $params['id_fornecedor'])
                     ->where('id_estado', $params['id_estado'])
                     ->limit(1)
@@ -247,7 +241,6 @@ class AutomaticBionexoHMG extends CI_Controller
                 ->get('produtos_clientes_depara')
                 ->result_array();
 
-
             if (empty($resultIdsProdutos)) {
 
                 $this->logs['PRODS-COT'][$key]['produtos_clientes_depara'] = FALSE;
@@ -270,7 +263,6 @@ class AutomaticBionexoHMG extends CI_Controller
                 ->where_in('id_produto', $ids_produto)
                 ->get('produtos_marca_sintese')
                 ->result_array();
-
 
             if (empty($resultIdsSintese)) {
 
@@ -304,7 +296,6 @@ class AutomaticBionexoHMG extends CI_Controller
                 ->get()
                 ->result_array();
 
-
             if (empty($resultDepara)) {
 
                 $this->logs['PRODS-COT'][$key]['produtos_fornecedores_sintese'] = FALSE;
@@ -332,18 +323,13 @@ class AutomaticBionexoHMG extends CI_Controller
                         'marca' => $value['marca']
                     ];
 
+                $desconto_percentual = 0;
+
                 $checkVendDif = $this->Engine->vendaDif($params, $this->configs);
 
-                if (!$checkVendDif['status']) {
-
-                    $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
-                    ['restricao']['vendaDif'] = FALSE;
-
-                    continue;
+                if (isset($checkVendDif['result']['desconto_percentual'])) {
+                    $desconto_percentual = floatval($checkVendDif['result']['desconto_percentual']);
                 }
-
-                $desconto_percentual = floatval($checkVendDif['result']['desconto_percentual']);
-
 
                 if ($this->Engine->productRestriction($params, $this->configs)) {
 
@@ -389,7 +375,6 @@ class AutomaticBionexoHMG extends CI_Controller
                 }
 
                 $checkPrice = $this->Engine->getPriceProd($params, $this->configs);
-
 
                 if (!$checkPrice['status']) {
 
@@ -668,11 +653,9 @@ class AutomaticBionexoHMG extends CI_Controller
             $estados = $this->getEstados($fornecedor['id_fornecedor']);
             $clientes = $this->getCompradores($fornecedor['id_fornecedor']);
 
-
-            if (!empty($estados)){
+            if (!empty($estados)) {
                 $diff = [];
-                foreach ($estados as $estado)
-                {
+                foreach ($estados as $estado) {
                     $diff[] = $estado['uf'];
                 }
 
@@ -680,18 +663,16 @@ class AutomaticBionexoHMG extends CI_Controller
             }
 
 
-            if (!empty($clientes)){
+            if (!empty($clientes)) {
                 $diff = [];
-                foreach ($clientes as $cliente)
-                {
+                foreach ($clientes as $cliente) {
                     $diff[] = $cliente['id_cliente'];
                 }
 
                 $clientes = $diff;
             }
 
-            if (empty($estados) && empty($clientes))
-            {
+            if (empty($estados) && empty($clientes)) {
                 continue;
             }
 
@@ -729,6 +710,17 @@ class AutomaticBionexoHMG extends CI_Controller
                     ];
 
 
+                //verifica se a cotação ja foi respondida
+                $cotOferta = $this->db
+                    ->where('cd_cotacao', $params['cd_cotacao'])
+                    ->where('id_fornecedor', $params['id_fornecedor'])
+                    ->get('cotacoes_produtos');
+
+
+                if ($cotOferta->num_rows() > 0){
+                    continue;
+                }
+
                 $id_estado = $this->db->where('uf', $params['uf_cotacao'])
                     ->get('estados')
                     ->row_array()['id'];
@@ -739,6 +731,7 @@ class AutomaticBionexoHMG extends CI_Controller
                     $this->Engine->saveLogs($this->logs, $params, $this->configs);
 
                 $configsEnvio = $this->Engine->getConfigsEnvio($params);
+
 
                 if ($configsEnvio['status']) {
 
@@ -753,7 +746,6 @@ class AutomaticBionexoHMG extends CI_Controller
                 $this->logs = [];
 
                 if (!$this->Engine->enabledAutomatic($params, $this->configs)) {
-
                     $this->logs['CONFIGS-COT'] =
                         [
                             'enabledAutomatic' => FALSE
@@ -763,8 +755,8 @@ class AutomaticBionexoHMG extends CI_Controller
                 }
 
 
-
                 if ($this->Engine->clientRestriction($params, $this->configs)) {
+
 
                     $this->logs['CONFIGS-COT'] =
                         [
@@ -774,7 +766,9 @@ class AutomaticBionexoHMG extends CI_Controller
                     continue;
                 }
 
+
                 $checkVlMinimo = $this->Engine->valorMinimo($params, $this->configs);
+
 
                 if (!$checkVlMinimo['status']) {
 
@@ -788,6 +782,8 @@ class AutomaticBionexoHMG extends CI_Controller
 
                 $checkFormaPagamento = $this->getFormaPagamento($params);
 
+
+
                 if (!$checkFormaPagamento['status']) {
 
                     $this->logs['CONFIGS-COT'] =
@@ -800,6 +796,7 @@ class AutomaticBionexoHMG extends CI_Controller
 
                 $checkPrazoEntrega = $this->Engine->prazoEntrega($params, $this->configs);
 
+
                 if (!$checkPrazoEntrega['status']) {
 
                     $this->logs['CONFIGS-COT'] =
@@ -809,7 +806,6 @@ class AutomaticBionexoHMG extends CI_Controller
 
                     continue;
                 }
-
 
 
                 $params = array_merge($params,
@@ -822,7 +818,6 @@ class AutomaticBionexoHMG extends CI_Controller
 
                 $getProdsCots = $this->getProdsCots($params);
 
-
                 if (!$getProdsCots['status']) {
 
                     $this->logs['CONFIGS-COT'] =
@@ -834,8 +829,8 @@ class AutomaticBionexoHMG extends CI_Controller
                 }
 
 
-
                 $dataCot = $this->prodsEncontrados($params, $getProdsCots['result']);
+
 
                 if (empty($dataCot)) {
 
@@ -843,8 +838,6 @@ class AutomaticBionexoHMG extends CI_Controller
 
                     continue;
                 }
-
-                exit();
 
                 $createObject = $this->createObject($dataCot);
 

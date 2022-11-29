@@ -1,6 +1,6 @@
 <?php
 
-class RequestCotacao extends CI_Controller
+class RequestCotacaoFourBio extends CI_Controller
 {
 
     /**
@@ -84,12 +84,9 @@ class RequestCotacao extends CI_Controller
     public function index()
     {
         # Obtem fornecedores
-        $fornecedores = $this->DB1->where('id not in(12,111,112,115,120,123,125,126,5038, 20, 180, 1002, 5039, 5018, 5046, 5010, 5042,5043, 5044)')->where('sintese', 1)->get('fornecedores')->result_array();
+        //$fornecedores = $this->DB1->where('sintese', 1)->get('fornecedores')->result_array();
+        $fornecedores = $this->DB1->where_in('id', [5042,5043,5044])->where('sintese', 1)->get('fornecedores')->result_array();
 
-       // $fornecedores = $this->DB1->where('id', 126)->where('sintese', 1)->get('fornecedores')->result_array();
-
-        # notificação de recebimento de cotação
-        $this->checkRecordSintese();
 
         foreach ($fornecedores as $fornecedor) {
 
@@ -97,6 +94,7 @@ class RequestCotacao extends CI_Controller
 
                 $result = $this->connectSintese($fornecedor);
                 $result = str_replace('&#x2;', '', $result);
+
 
                 if ($result != false) {
 
@@ -190,42 +188,7 @@ class RequestCotacao extends CI_Controller
                                     $this->DB2->where('cd_cotacao', $cotacao2['Cd_Cotacao']);
                                     $this->DB2->where('id_fornecedor', $fornecedor['id']);
                                     $this->DB2->update('cotacoes', $update);
-
-
-                                   /* $log3 = [
-                                        "mensagem" => "Cotação {$cotacao2['Cd_Cotacao']} recebeu uma atualização, verifique a nova data de encerramento e novos itens",
-                                        "id_fornecedor" => $fornecedor['id'],
-                                        "cnpj_fornecedor" => $fornecedor['cnpj'],
-                                        "cnpj_comprador" => $comp
-                                    ];
-
-                                    $this->DB1->insert('log_cotacoes_sintese', $log1);*/
-
                                 }
-
-                                $produtos = $cotacao->Produtos_Cotacao->Produto_Cotacao;
-
-                                foreach ($produtos as $produto) {
-
-                                    $produto2 = (array)$produto;
-
-                                    $dataCotacaoProdutos = [
-                                        'id_produto_sintese' => $produto2['Id_Produto_Sintese'],
-                                        'id_fornecedor' => $fornecedor['id'],
-                                        'cd_produto_comprador' => $produto2['Cd_Produto_Comprador'],
-                                        'ds_produto_comprador' => utf8_decode($produto2['Ds_Produto_Comprador']),
-                                        'ds_unidade_compra' => utf8_decode($produto2['Ds_Unidade_Compra']),
-                                        'ds_complementar' => utf8_decode($produto2['Ds_Complementar']),
-                                        'qt_produto_total' => $produto2['Qt_Produto_Total'],
-                                        'cd_cotacao' => $cotacao2['Cd_Cotacao'],
-                                    ];
-
-                                    $this->DB2->where($dataCotacaoProdutos);
-
-
-                                 //   $this->DB2->insert('cotacoes_produtos', $dataCotacaoProdutos);
-                                }
-
                             }
                         } else {
 
@@ -316,7 +279,7 @@ class RequestCotacao extends CI_Controller
         $interval = date_diff($datetime1, $datetime2);
 
         # Somente notifica de segunda a sexta das 07 as 20
-        if ((($interval->format("%h") > 0 && $interval->format("%i") > 30) || $interval->format("%h") > 1) && date('N') < 6 && intval(date('G')) >= 8 && intval(date('G')) < 20) {
+        if ((($interval->format("%h") > 0 && $interval->format("%i") > 30) || $interval->format("%h") > 1) && date('N') < 6 && intval(date('G')) >= 7 && intval(date('G')) < 20) {
 
             # , deivis.guimaraes@pharmanexo.com.br, jorge@sintese.net
 
