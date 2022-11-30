@@ -285,6 +285,7 @@
                     rowCallback: function(row, data) {
                         $(row).data('id', data.id_produto).css('cursor', 'pointer');
                         var nome = (data.descricao).split(" ");
+                        console.log($('.searchInput<?php echo $k; ?>').val(), nome);
                         $('.searchInput<?php echo $k; ?>').val(nome[1]);
                     },
                     drawCallback: function() {}
