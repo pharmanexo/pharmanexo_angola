@@ -264,7 +264,7 @@
                         <div class="col-12 col-lg-1"></div>
 
                         <div class="col-12 col-lg-3">
-                            <button class="btn btn-block btn-secondary" type="button" data-toggle="collapse" data-target="#collapseDePara<?php echo $k; ?>" aria-expanded="false" aria-controls="collapseDePara">
+                            <button id="fazerDePara" class="btn btn-block btn-secondary" type="button" data-toggle="collapse" data-target="#collapseDePara<?php echo $k; ?>" aria-expanded="false" aria-controls="collapseDePara">
                                 Fazer De -> Para <i class="fas fa-chevron-down ml-3"></i>
                             </button>
                             <!-- <a href="<?php echo $url_findProduct; ?><?php echo $identificacao_produto ?>/<?php echo $cotacao['cliente']['id']; ?>/<?php echo $produto['cotado']['cd_produto_comprador']; ?>" data-depara="" class="btn btn-block btn-danger">Fazer De -> Para</a> -->
