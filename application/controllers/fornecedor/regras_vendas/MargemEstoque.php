@@ -38,6 +38,8 @@ class MargemEstoque extends CI_Controller
 
         $data['dados'] = $this->db->where('id_fornecedor', $this->session->id_fornecedor)->get('margem_estoque')->row_array();
 
+        $data['dados']['disp'] = (100 - intval($data['dados']['margem']));
+
         $this->load->view("{$this->views}/main", $data);
     }
 

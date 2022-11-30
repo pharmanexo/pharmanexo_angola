@@ -16,15 +16,30 @@
                 <div class="card">
                     <div class="card-body">
                         <form action="<?php echo $formAction; ?>" enctype="multipart/form-data" method="post" id="form">
-                            <div class="form-group">
-                                <label for="">Margem de segurança</label>
-                                <div class="input-group mb-3">
-                                    <input type="number" name="margem" id="margem" max="100" value="<?php if (isset($dados['margem'])) echo $dados['margem']; ?>" required class="form-control text-center" placeholder="Informe o valor (Ex. 70)" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text">%</span>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="">Margem de segurança</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" name="margem" id="margem" max="100" value="<?php if (isset($dados['margem'])) echo $dados['margem']; ?>" required class="form-control text-center" placeholder="Informe o valor (Ex. 70)" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">%</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <small>Defina a margem de segurança para os envios de ofertas. <br> Exemplo: ESTOQUE = 100 E MARGEM = 70: ESTOQUE DISPONIVEL = 70</small>
+                                <div class="col-6">
+                                    <label for="">Estoque disponível</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" id="disp" readonly max="100" value="<?php if (isset($dados['disp'])) echo $dados['disp']; ?>" required class="form-control text-center" placeholder="Informe o valor (Ex. 70)" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                <small>Define a margem de segurança de disponibilidade do estoque, isto é, quanto do estoque total deve ser desconsiderado. Ex: para o estoque total de 100 unidades e a margem de segurança definida em 30%, o estoque disponível para negociação será de 70 unidades.</small>
                             </div>
                             <div class="form-group">
                                <label for=""> <input type="checkbox" <?php if (isset($dados['oferta_parcial']) && $dados['oferta_parcial'] == 1) echo 'checked'?> name="oferta_parcial" id="oferta_parcial" value="1"> Desejo ofertar itens com estoque MENOR que a quantidade solicitada pelo comprador (OFERTA PARCIAL)</label>
@@ -56,7 +71,13 @@
 
 
     $(function () {
+        $('#margem').keyup(function (e){
+            var value = $(this).val();
+            var disp = 100 - value;
 
+            $('#disp').val(disp)
+
+        });
 
     });
 </script>
