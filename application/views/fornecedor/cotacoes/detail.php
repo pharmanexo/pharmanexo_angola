@@ -292,7 +292,7 @@
                 $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
                 $('#fazerDePara<?php echo $k; ?>').on('click', function() {
                     $('.searchInput<?php echo $k; ?>').val(busca[0]);
-                    $('#data-tableDePara<?php echo $k; ?>').DataTable().draw();
+                    console.log($('#data-tableDePara<?php echo $k; ?>').DataTable().draw());
                 });
 
                 $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
