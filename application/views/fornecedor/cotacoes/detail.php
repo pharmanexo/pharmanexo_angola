@@ -285,7 +285,7 @@
                         $(row).data('id', data.id_produto).css('cursor', 'pointer');
                         var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
                         var busca = (primeiroNome).split(" ");
-                        $('.searchInput<?php echo $k; ?>').val(nome[1]);
+                        $('.searchInput<?php echo $k; ?>').val(busca[1]);
                     },
                     drawCallback: function() {}
                 });
