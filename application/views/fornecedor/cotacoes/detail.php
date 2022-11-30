@@ -289,9 +289,7 @@
                 $('#fazerDePara<?php echo $k; ?>').on('click', function() {
                     var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
                     var busca = (primeiroNome).split(" ");
-                    alert(busca);
                     $('.searchInput<?php echo $k; ?>').val(busca[0]);
-                    table.draw();
                 });
                 $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
 
