@@ -90,10 +90,11 @@ class GeralAnalitico extends CI_Controller
 
     private function _req($data)
     {
+
         $url = 'https://reports.pharmanexo.com.br/cotacoes-by-fornecedores';
-        $url = 'http://137.184.138.115/cotacoes-by-fornecedores';
 
         $curl = curl_init();
+
         curl_setopt_array($curl, array(
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
@@ -106,7 +107,8 @@ class GeralAnalitico extends CI_Controller
             CURLOPT_POSTFIELDS => json_encode($data),
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_HTTPHEADER => array(
-                'Content-Type: application/json'
+                'Content-Type: application/json',
+                'X-AUTH-TOKEN: 221c385f4bd2c092c81b5f4b56dae377',
             ),
         ));
 

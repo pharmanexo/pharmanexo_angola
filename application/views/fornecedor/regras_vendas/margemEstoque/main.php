@@ -24,15 +24,17 @@
                                         <span class="input-group-text">%</span>
                                     </div>
                                 </div>
-                                <small>Defina a margem de segurança para os envios de ofertas, em caso de 100% somente serão enviadas ofertas de itens que o estoque disponível atenda
-                                100% da quatidade solicitada pelo comprador.</small>
+                                <small>Defina a margem de segurança para os envios de ofertas. <br> Exemplo: ESTOQUE = 100 E MARGEM = 70: ESTOQUE DISPONIVEL = 70</small>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" <?php if (isset($dados['responder_zerados']) && $dados['responder_zerados'] == 1) echo 'checked'?> name="sem_estoque" id="sem_estoque" value="1"> <label for="">Desejo ofertar itens com estoque zerado (sem estoque)</label>
+                               <label for=""> <input type="checkbox" <?php if (isset($dados['oferta_parcial']) && $dados['oferta_parcial'] == 1) echo 'checked'?> name="oferta_parcial" id="oferta_parcial" value="1"> Desejo ofertar itens com estoque MENOR que a quantidade solicitada pelo comprador (OFERTA PARCIAL)</label>
                                 <br>
-                                <input type="checkbox" <?php if (isset($dados['envia_obs_parcial']) && $dados['envia_obs_parcial'] == 1) echo 'checked'?> name="envia_obs" id="envia_obs" value="1"> <label for="">Em casos de estoque parcial, desejo enviar observação "atendido parcialmente"</label>
+                                <input type="checkbox" <?php if (isset($dados['envia_obs_parcial']) && $dados['envia_obs_parcial'] == 1) echo 'checked'?> name="envia_obs" id="envia_obs" value="1"> <label for="">Em casos de oferta parcial, desejo enviar observação "atendido parcialmente"</label>
                                 <br>
-                                <input type="checkbox" <?php if (isset($dados['notificar_zerado']) && $dados['notificar_zerado'] == 1) echo 'checked'?> name="alerta_sem_estoque" id="alerta_sem_estoque" value="1"> <label for="">Desejo receber alerta quando algum item sem estoque for ofertado</label><br>
+                                <input type="checkbox" <?php if (isset($dados['responder_zerados']) && $dados['responder_zerados'] == 1) echo 'checked'?> name="sem_estoque" id="sem_estoque" value="1"> <label for="">Desejo ofertar itens com estoque ZERADO (sem estoque)</label>
+                                <br>
+                                <input type="checkbox" <?php if (isset($dados['notificar_zerado']) && $dados['notificar_zerado'] == 1) echo 'checked'?> name="alerta_sem_estoque" id="alerta_sem_estoque" value="1"> <label for="">Desejo receber alerta quando algum item SEM ESTOQUE for ofertado</label><br>
+                                <hr>
                                 <label for="">Destinatários</label>
                                 <input type="text" name="emails" id="emails"  value="<?php if (isset($dados['destinatarios'])) echo $dados['destinatarios']; ?>" class="form-control" placeholder="informe separado por virgula (Ex. fulano@gmail.com,ciclano@hotmail.com)">
                                 <br>

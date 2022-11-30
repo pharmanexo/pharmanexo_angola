@@ -539,7 +539,7 @@ class Login extends CI_Controller
 
                     if ($consulta['logado'] == '1') {
                         $this->db->query("UPDATE usuarios set logado = 0 WHERE id = {$consulta['id']}");
-                        $warning = ['type' => 'error', 'message' => 'Existia uma sessão ativa para este usuário. Entre novamente!'];
+                        $warning = ['type' => 'info', 'message' => 'Existia uma sessão ativa para este usuário. Entre novamente!'];
                     } else {
 
                         /* atualiza usuario logado */

@@ -56,12 +56,14 @@
 
                 <div class="row">
                     <div class="col-md-3 form-group">
-                        <label for="filtro-estado">Estados</label>
-                        <select class="select2" id="filtro-estado" data-index="4">
-                            <option value="">Selecione</option>
-                            <?php foreach($estados as $estado) { ?>
-                                <option value="<?php echo $estado['uf'] ?>"><?php echo $estado['descricao']; ?></option>
-                            <?php } ?>
+                        <label for="estados">Filtrar por Estado</label>
+                        <br>
+                        <select class="form-control" id="estados" multiple="multiple" style="heigth: 60%"
+                                data-live-search="true" title="Selecione" data-actions-box="true">
+                            <?php foreach ($estados as $estado): ?>
+                                <option <?php if (isset($estado['selected'])) echo "selected"; ?>
+                                        value="<?php echo $estado['uf']; ?>"><?php echo $estado['descricao']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
@@ -94,6 +96,7 @@
 
         $("#filter-start-date").flatpickr({ "locale": "pt", "dateFormat": "d/m/Y", 'defaultDate': "<?php echo date('01/m/Y'); ?>" });
         $("#filter-end-date").flatpickr({ "locale": "pt", "dateFormat": "d/m/Y", 'defaultDate': "<?php echo date('t/m/Y'); ?>" });
+        $('#estados').selectpicker();
 
 
         var dt = $('#data-table').DataTable({
@@ -125,8 +128,8 @@
                     }
 
                     if ($('#filtro-estado').val() !== '') {
-                        nw_data.columns[4].search.value = $('#filtro-estado').val();
-                        nw_data.columns[4].search.type = 'equal';
+                        nw_data.columns[4].search.value = $('#estados').val().toString();
+                        nw_data.columns[4].search.type = 'in';
                     }
 
                     return nw_data;
@@ -161,8 +164,8 @@
             dt.ajax.reload();
         });
 
-        $('#filter-start-date, #filter-end-date, #cd_cotacao').on('change', function() {
-             dt.ajax.reload();
+        $('#filter-start-date, #filter-end-date, #cd_cotacao, #estados').on('change', function() {
+            dt.ajax.reload();
         });
 
         // remove filter

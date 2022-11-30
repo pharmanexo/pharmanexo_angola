@@ -1478,14 +1478,6 @@ class Cotacoes extends MY_Controller
     private function removeProdutoDuplicados($cd_cotacao, $id_fornecedor)
     {
         //remove itens com preço zero que não foram enviados
-        $this->db
-            ->where('cd_cotacao', $cd_cotacao)
-            ->where('id_fornecedor', $id_fornecedor)
-            ->where('preco_marca = 0')
-            ->where('submetido = 0')
-            ->where('controle = 0')
-            ->delete('cotacoes_produtos');
-
 
         $produtos = $this->db->select('cd_cotacao, cd_produto_comprador, count(0) as total')
             ->where('cd_cotacao', $cd_cotacao)
@@ -1503,6 +1495,7 @@ class Cotacoes extends MY_Controller
                     ->where('cd_cotacao', $cd_cotacao)
                     ->where('id_fornecedor', $id_fornecedor)
                     ->where('cd_produto_comprador', $produto['cd_produto_comprador'])
+                    ->where('integrador', "BIONEXO")
                     ->where('preco_marca = 0')
                     ->delete('cotacoes_produtos');
             }
