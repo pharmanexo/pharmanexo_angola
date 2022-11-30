@@ -241,7 +241,6 @@
         $(function() {
             <?php foreach ($cotacao['produtos'] as $k => $produto) : ?>
 
-                var nome = $('#data-table<?php echo $k; ?>').data('url2');
                 var url_combinar = $('#data-table<?php echo $k; ?>').data('url2');
                 var table = $('#data-tableDePara<?php echo $k; ?>').DataTable({
                     serverSide: false,
@@ -285,7 +284,7 @@
                     rowCallback: function(row, data) {
                         $(row).data('id', data.id_produto).css('cursor', 'pointer');
                         var nome = (data.descricao).split(" ");
-                        console.log(<?php echo $k, var_dump($produto)?>);
+                        console.log(<?php echo $produto['cotado']['ds_produto_comprado'] ?>);
                         $('.searchInput<?php echo $k; ?>').val(nome[1]);
                     },
                     drawCallback: function() {}
