@@ -286,14 +286,14 @@
                     },
                     drawCallback: function() {}
                 });
+                
+                var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
+                var busca = (primeiroNome).split(" ");
+                $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
                 $('#fazerDePara<?php echo $k; ?>').on('click', function() {
-                    var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
-                    var busca = (primeiroNome).split(" ");
                     $('.searchInput<?php echo $k; ?>').val(busca[0]);
                     $('#data-tableDePara<?php echo $k; ?>').DataTable().draw();
                 });
-                $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
-
 
                 $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
                     e.preventDefault();
