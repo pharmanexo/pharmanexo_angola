@@ -240,7 +240,7 @@
 
         $(function() {
             <?php foreach ($cotacao['produtos'] as $k => $produto) : ?>
-                
+
                 var nome = $('#data-table<?php echo $k; ?>').data('url2');
                 var url_combinar = $('#data-table<?php echo $k; ?>').data('url2');
                 var table = $('#data-tableDePara<?php echo $k; ?>').DataTable({
@@ -284,9 +284,12 @@
                     ],
                     rowCallback: function(row, data) {
                         $(row).data('id', data.id_produto).css('cursor', 'pointer');
+                        var nome = (data.descricao).split(" ");
+                        $('.searchInput<?php echo $k; ?>').val(nome[1]);
                     },
                     drawCallback: function() {}
                 });
+                $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
 
 
                 $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
@@ -301,7 +304,7 @@
                             cd_produto: item.codigo,
                             id_sintese: $('#data-tableDePara<?php echo $k; ?>').data('sintese'),
                             id_cliente: $('#id_cliente').val(),
-                            id_produto_comprado: '<?php echo $produto['cotado']['cd_produto_comprador']?>'
+                            id_produto_comprado: '<?php echo $produto['cotado']['cd_produto_comprador'] ?>'
                         });
                     });
 
