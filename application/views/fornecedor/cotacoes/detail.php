@@ -283,11 +283,12 @@
                     ],
                     rowCallback: function(row, data) {
                         $(row).data('id', data.id_produto).css('cursor', 'pointer');
+                    },
+                    drawCallback: function() {
                         var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
                         var busca = (primeiroNome).split(" ");
                         $('.searchInput<?php echo $k; ?>').val(busca[0]);
-                    },
-                    drawCallback: function() {}
+                    }
                 });
                 $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
 
