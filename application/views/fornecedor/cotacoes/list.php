@@ -276,8 +276,8 @@
 
                 <div id="collapseDePara<?php echo $k; ?>" class="collapse">
                     <div class="col-12 mt-2 text-right">
-                        <a href id="btnCombinar<?php echo $k; ?>" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 8px;" title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
-                            <i class="fas fa-random"></i>
+                        <a href id="btnCombinar<?php echo $k; ?>" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
+                            <i style="font-size:20px;padding-top: 3px;" class="fas fa-random"></i>
                         </a>
                     </div>
 
