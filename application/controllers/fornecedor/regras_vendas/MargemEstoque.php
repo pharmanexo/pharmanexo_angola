@@ -56,6 +56,7 @@ class MargemEstoque extends CI_Controller
                     'id_fornecedor' => $this->session->id_fornecedor,
                     'margem' => $post['margem'],
                     'responder_zerados' => (isset($post['sem_estoque'])) ? 1 : 0,
+                    'oferta_parcial' => (isset($post['oferta_parcial'])) ? 1 : 0,
                     'notificar_zerado' => (isset($post['alerta_sem_estoque'])) ? 1 : 0,
                     'envia_obs_parcial' => (isset($post['envia_obs'])) ? 1 : 0,
                     'destinatarios' => $post['emails']
