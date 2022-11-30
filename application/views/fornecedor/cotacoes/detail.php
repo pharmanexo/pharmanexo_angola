@@ -283,12 +283,10 @@
                     ],
                     rowCallback: function(row, data) {
                         $(row).data('id', data.id_produto).css('cursor', 'pointer');
-                        $('#fazerDePara').keyup(function() {
-                            var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
-                            var busca = (primeiroNome).split(" ");
-                            $('.searchInput<?php echo $k; ?>').val(busca[0]);
-                            table.draw();
-                        });
+                        var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
+                        var busca = (primeiroNome).split(" ");
+                        $('.searchInput<?php echo $k; ?>').val(busca[0]);
+                        table.draw();
                     },
                     drawCallback: function() {}
                 });
