@@ -1421,6 +1421,7 @@ class Cotacoes extends MY_Controller
                 ['db' => 'cot.id_cliente', 'dt' => 'id_cliente'],
                 ['db' => 'cot.total_itens', 'dt' => 'total_itens'],
                 ['db' => 'cot.oferta', 'dt' => 'oferta'],
+                ['db' => 'cot.nome', 'dt' => 'nome'],
                 ['db' => 'cot.dt_fim_cotacao', 'dt' => 'dt_fim_cotacao'],
                 ['db' => 'c.cnpj', 'dt' => 'cnpj'],
                 ['db' => 'cot.ds_cotacao', 'dt' => 'ds_cotacao', 'formatter' => function ($value, $row) {

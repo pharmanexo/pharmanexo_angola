@@ -240,8 +240,7 @@
 
         $(function() {
             <?php foreach ($cotacao['produtos'] as $k => $produto) : ?>
-                
-                var nome = $('#data-table<?php echo $k; ?>').data('url2');
+
                 var url_combinar = $('#data-table<?php echo $k; ?>').data('url2');
                 var table = $('#data-tableDePara<?php echo $k; ?>').DataTable({
                     serverSide: false,
@@ -287,7 +286,12 @@
                     },
                     drawCallback: function() {}
                 });
-
+                $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
+                $('#fazerDePara<?php echo $k; ?>').on('click', function() {
+                    var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
+                    var busca = (primeiroNome).split(" ");
+                    $('#data-tableDePara<?php echo $k; ?>').DataTable().search(busca[0]).draw();
+                });
 
                 $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
                     e.preventDefault();
@@ -301,7 +305,7 @@
                             cd_produto: item.codigo,
                             id_sintese: $('#data-tableDePara<?php echo $k; ?>').data('sintese'),
                             id_cliente: $('#id_cliente').val(),
-                            id_produto_comprado: '<?php echo $produto['cotado']['cd_produto_comprador']?>'
+                            id_produto_comprado: '<?php echo $produto['cotado']['cd_produto_comprador'] ?>'
                         });
                     });
 
