@@ -12,7 +12,8 @@
 	},
 	"require": {
 		"php": ">=5.4",
-		"robthree/twofactorauth": "^1.8"
+		"robthree/twofactorauth": "^1.8",
+		"phpoffice/phpspreadsheet": "^1.25"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
