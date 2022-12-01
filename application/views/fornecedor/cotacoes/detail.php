@@ -291,8 +291,7 @@
                 var busca = (primeiroNome).split(" ");
                 $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
                 $('#fazerDePara<?php echo $k; ?>').on('click', function() {
-                    $('.searchInput<?php echo $k; ?>').val(busca[0]);
-                    table.ajax.reload();
+                    table.search(busca[0]).draw();
                 });
 
                 $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
