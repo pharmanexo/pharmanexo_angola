@@ -282,10 +282,11 @@ class Pendentes extends MY_Controller
                 $this->db->where("id", $oc['id']);
                 $this->db->update('ocs_sintese', [
                     'id_usuario_resgate' => $this->session->id_usuario,
+                    'Status_OrdemCompra' => 4,
                     'data_resgate' => date("Y-m-d H:i:s")
                 ]);
 
-                # Registra resgate
+                # Registra resgate produtos
                 $this->db->where("id_ordem_compra", $oc['id']);
                 $this->db->update('ocs_sintese_produtos', [
                     'resgatado' => 1,
