@@ -789,6 +789,7 @@ class Pendentes extends MY_Controller
                 $this->db->where('id_fornecedor', $this->session->id_fornecedor);
                 $this->db->update('ocs_sintese', [
                     'pendente' => 0,
+                    'Status_OrdemCompra' => 4,
                     'id_usuario_resgate' => $this->session->id_usuario,
                     'data_resgate' => date("Y-m-d H:i:s")
                 ]);
