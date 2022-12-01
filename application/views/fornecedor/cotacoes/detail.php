@@ -290,7 +290,7 @@
                 $('#fazerDePara<?php echo $k; ?>').on('click', function() {
                     var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
                     var busca = (primeiroNome).split(" ");
-                    table.search(busca[0]).draw();
+                    $('#data-tableDePara<?php echo $k; ?>').DataTable.search(busca[0]).draw();
                 });
 
                 $('#btnCombinar<?php echo $k; ?>').on('click', function(e) {
