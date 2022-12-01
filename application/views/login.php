@@ -33,7 +33,7 @@ if (isset($header)) echo $header;
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         Sua sessão foi encerrada por inatividade.
                     </div>
-                    <div class="row" style="margin-top: 100px">
+                    <div class="row" style="margin-top: 20px;">
                         <div class="col-6 text-center">
                             <p class="h4">Integranexo</p>
                             <a id="acessoIntegranexo" class="" data-toggle="modal" data-target="#modalIntegranexo">
@@ -47,11 +47,19 @@ if (isset($header)) echo $header;
                             </a>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 100px">
+                    <div class="row" style="margin-top: 20px; margin-left:32%">
                         <div class="col-6 text-center">
                             <p class="h4">Distribuidores</p>
                             <a id="acessoDistribuidor" class="" data-toggle="modal" data-target="#modalDistribuidor">
                                 <img src="<?php echo ASSETS_PATH ?>/img/distribuidor.jpg" alt="Distribuidor" width="150" height="150">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-6 text-center">
+                            <p class="h4">Convidados</p>
+                            <a id="acessoConvidado" class="" data-toggle="modal" data-target="#modalConvidados">
+                                <img src="<?php echo ASSETS_PATH ?>/img/convidado.jpg" alt="Convidados" width="150" height="150">
                             </a>
                         </div>
                         <div class="col-6 text-center">
@@ -361,6 +369,73 @@ if (isset($header)) echo $header;
                 <div class="modal-header text-center">
                     <h3 class="modal-title w-100" style="margin-top: 10px; position: absolute; left: 0px;">
                         Portal de Compras Coletivas</h3>
+                </div>
+                <div class="modal-body" style="margin-top: 10px">
+                    <form id="formCompraColetiva" method="post" class="frmLoginCompraColetiva" action="<?php echo $frm_compracoletiva; ?>">
+
+                        <div class="form-group">
+                            <div class="input-group mb-3 mt-5">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input type="text" name="loginCompraColetiva" id="loginCompraColetiva" value="" required="true" data-inputmask="cnpj" class="form-control">
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text "><i class="fa fa-key"></i></span>
+                                </div>
+                                <input id="senhaCompraColetiva" type="password" class="form-control input-sm senha" name="senhaCompraColetiva" placeholder="Digite sua Senha" maxlength="20" required="true">
+                                <div class="input-group-append">
+                                    <div class="input-group-text olho" id="olho"><i class="fas fa-eye"></i></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top:25px" class="form-group">
+
+                            <div class="col-12 controls" style="margin-top:25px;">
+                                <button type="submit" id="postCompraColetiva" class="btn btn-primary px-3 " style="width:200px">
+                                    <i class="fas fa-check"></i> Acessar Sistema
+                                </button>
+                            </div>
+
+                            <div class="col-12 controls" style="margin-top:25px;">
+                                <button disabled type="submit" id="cadCompraColetiva" class="btn btn-secondary px-3 " style="width:150px">
+                                    <i class="fas fa-paperclip"></i> Cadastre-se
+                                </button>
+                            </div>
+
+                            <div class="col-12 controls" style="margin-top:25px;">
+                                <span style="padding-top: 10px;">
+                                    <a id="esqueceuSenhaCC" style="text-decoration:none" data-toggle="modal" data-dismiss="modal" data-target="#modalNovaSenhaCC">Esqueceu sua senha?
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                    <?php $mensagem = $this->session->flashdata("mensagem"); ?>
+                    <?php if (!empty($mensagem)) : ?>
+                        <div class="alert alert-danger" style="margin-top:125px;"><?php echo $mensagem; ?></div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal login Convidados -->
+    <div class="modal fade text-center" id="modalConvidados" tabindex="-1" role="dialog" aria-labelledby="modalConvidados" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content align-content-center" style="box-shadow:0px 3px 6px 4px #9f9291;">
+                <div class="modal-header text-center">
+                    <h3 class="modal-title w-100" style="margin-top: 10px; position: absolute; left: 0px;">
+                        Lista Promocional Convidados</h3>
                 </div>
                 <div class="modal-body" style="margin-top: 10px">
                     <form id="formCompraColetiva" method="post" class="frmLoginCompraColetiva" action="<?php echo $frm_compracoletiva; ?>">
