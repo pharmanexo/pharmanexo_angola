@@ -40,21 +40,26 @@
 if (file_exists('.env.local')){
     $envs = explode("\n", file_get_contents('.env.local'));
 }else{
-    $envs = explode("\n", file_get_contents('.env'));
-}
-
-foreach ($envs as $env){
-	if (preg_match('/^#/', $env)) { // Ignora os comentários
-		continue;
-	}
-	
-    $variavel = explode("=", $env);
-
-    if (!empty($variavel)){
-        $_SERVER[trim($variavel[0])] = trim($variavel[1]);
+    if (file_exists('.env')){
+        $envs = explode("\n", file_get_contents('.env'));
     }
-	
 }
+
+if(isset($envs) && !empty($envs)){
+    foreach ($envs as $env){
+        if (preg_match('/^#/', $env)) { // Ignora os comentários
+            continue;
+        }
+
+        $variavel = explode("=", $env);
+
+        if (!empty($variavel)){
+            $_SERVER[trim($variavel[0])] = trim($variavel[1]);
+        }
+
+    }
+}
+
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

@@ -320,8 +320,9 @@ class M_relatorios extends MY_Model
 
         $this->db->where("os.pendente", 0);
         // $this->db->where("os.transaction_id > 0");
-        $result = $this->db->get()->row_array();
+        $query = $this->db->get();
 
+        $result = $query->row_array();
 
         return $result;
     }
@@ -471,20 +472,20 @@ class M_relatorios extends MY_Model
                 order by ct.data_criacao ASC ";
 
 
-      /*  $rows = $this->db->query($query)->num_rows();*/
+        /*  $rows = $this->db->query($query)->num_rows();*/
 
-      //  $query = $query . " limit {$limit} offset $offset";
+        //  $query = $query . " limit {$limit} offset $offset";
 
         $data = $this->db->query($query)->result_array();
 
         var_dump($data);
         exit();
 
-       /* $output = [
-            "rows" => $rows,
-            "pages" => ceil(($rows / $limit)),
-            "data" => $data,
-        ];*/
+        /* $output = [
+             "rows" => $rows,
+             "pages" => ceil(($rows / $limit)),
+             "data" => $data,
+         ];*/
 
         return $data;
 
