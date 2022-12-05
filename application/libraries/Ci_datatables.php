@@ -140,6 +140,10 @@ class Ci_datatables
 
         # query
         $query = $db->get();
+
+      /*  var_dump($db->error());
+        exit();*/
+
         /*var_dump($db->last_query());
         exit();*/
         $rows = $query->result_array();

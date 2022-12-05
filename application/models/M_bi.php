@@ -557,7 +557,7 @@ class M_bi extends MY_Model
      */
     public function valorTotalProdutosPorValidade($id_fornecedor, $id_estado, $periodoInicial, $periodoFinal = null)
     {
-        $forns = [12, 104, 111, 115, 123, 120, 126, 15, 180, 25, 5002, 1002, 5039, 5038, 5018, 5046];
+        $forns = [12, 104, 111, 112, 115, 123, 120, 126, 125, 15, 180, 25, 5002, 1002, 5039, 5038, 5018, 5046];
         if (in_array($id_fornecedor, $forns)) {
             $estado = " = {$id_estado}";
         } elseif ($id_fornecedor == 112) {
@@ -597,7 +597,7 @@ class M_bi extends MY_Model
                     x.estoque_total,
                     x.validade,
                     x.preco,
-                    (CASE WHEN x.id_fornecedor IN (12, 104, 111, 115, 123, 120, 126, 15, 180, 25, 5002, 1002, 5039, 5038, 5010, 5018) THEN (x.preco / x.qtd_unidade) ELSE (x.preco) END) preco_unitario
+                    (CASE WHEN x.id_fornecedor IN (12, 104, 111, 112, 115, 123, 125, 120, 126, 15, 180, 25, 5002, 1002, 5039, 5038, 5010, 5018) THEN (x.preco / x.qtd_unidade) ELSE (x.preco) END) preco_unitario
                 FROM (
                     SELECT 
                         pl.id_fornecedor,
