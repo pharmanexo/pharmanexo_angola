@@ -105,7 +105,7 @@
         </li>
         <li class="top-nav">
             <a class="renovarSessao" id="tempo_sessao" value="<?php $tempo['timestamp'] ?>" title="Sessão expira as <?php echo date('H:i:s', $tempo['timestamp'] + 3600) ?> ">
-                <?php echo date('h:i:s', $tempo['timestamp']) ?>
+                <?php echo date('h:i:s', strtotime('-1hour')) ?>
             </a>
 
         </li>

@@ -203,7 +203,7 @@
                                                     </select>
                                                 <?php else : ?>
                                                     <select hidden name="marcas[<?php echo $jj; ?>][id_fornecedor]" id="selectForn">
-                                                        <option value="<?php echo $this->session->id_fornecedor; ?>"><?php echo $this->session->nome_fantasia; ?></option>
+                                                        <option value="<?php echo $this->session->id_fornecedor; ?>" <?php echo (isset($prod['fornecedor_cotacao']) && $f['id'] == $prod['fornecedor_cotacao']) ? 'selected dd' : ($this->session->id_fornecedor == $f['id']) ? 'selected' : '' ?>><?php echo $this->session->nome_fantasia; ?></option>
                                                     </select>
                                                 <?php endif; ?>
                                             </td>

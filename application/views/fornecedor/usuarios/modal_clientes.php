@@ -13,7 +13,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label for="clientes">Selecionar Clientes</label>
-                                <select data-actions-box="true" name="clientes[]" id="clientes" multiple class="form-control">
+                                <select data-actions-box="true" data-live-search="true" name="clientes[]" id="clientes" multiple class="form-control">
                                     <?php foreach ($clientes as $cliente) { ?>
                                         <option value="<?php echo $cliente['id']; ?>">
                                             <?php echo $cliente['cnpj']; ?> - <?php echo $cliente['nome_fantasia']; ?>
