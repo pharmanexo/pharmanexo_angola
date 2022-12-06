@@ -2,7 +2,9 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 ini_set('display_errors', '0');
 ini_set('display_startup_errors', '0');
-error_reporting(0);class M_cotacoes extends MY_Model
+error_reporting(0);
+
+class M_cotacoes extends MY_Model
 {
     protected $table = 'cotacoes_produtos';
     protected $primary_key = 'id';
@@ -70,8 +72,8 @@ error_reporting(0);class M_cotacoes extends MY_Model
                     return "<small>{$value}</small>";
                 }],
                 ['db' => 'c.razao_social', 'dt' => 'comprador', 'formatter' => function ($value, $row) {
-
-                    return "<small>{$row['cnpj']} - {$value}</small> <br> <small>{$row['ds_cotacao']}</small>";
+                    $value = substr($value, 0, 50);
+                    return "<small data-toggle='tooltip' title='{$row['ds_cotacao']}'>{$row['cnpj']} - {$value}</small>";
                 }],
                 ['db' => 'cot.dt_fim_cotacao', 'dt' => 'datafim', 'formatter' => function ($value, $row) {
 

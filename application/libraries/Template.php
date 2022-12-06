@@ -61,7 +61,7 @@ class Template
 
         $default = [];
 
-        return $this->CI->load->view('templates/scripts', array_merge($default, $data), TRUE);
+        return $this->CI->load->view('templates/scripts_home', array_merge($default, $data), TRUE);
     }
 
     public function homefooter($data)

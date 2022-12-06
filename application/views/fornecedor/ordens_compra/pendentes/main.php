@@ -52,6 +52,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-3 form-group">
+                <label for="estados">Filtrar por Estado</label>
+                <br>
+                <select class="form-control" id="estados" multiple="multiple" style="heigth: 60%"
+                        data-live-search="true" title="Selecione" data-actions-box="true">
+                    <?php foreach ($estados as $estado): ?>
+                        <option <?php if (isset($estado['selected'])) echo "selected"; ?>
+                                value="<?php echo $estado['uf']; ?>"><?php echo $estado['descricao']; ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
 
         <div class="card">
             <div class="card-body">
@@ -79,6 +92,7 @@
                             <th>Data de Criação</th>
                             <th>Ordem Compra</th>
                             <th>Empresa</th>
+                            <th>UF</th>
                             <th>Valor (R$)</th>
                             <th>Entrega Acordada</th>
                             <th>Cotação</th>
@@ -97,11 +111,14 @@
 
     var urlDetalhes = $('#data-table').data('detalhes');
     var urlChange_status = $('#data-table').data('change_status');
+    $('#estados').selectpicker();
 
     $(function () {
         var dt1 = $('#data-table').DataTable({
             "processing": true,
             lengthChange: false,
+            stateSave: true,
+            serverSide: true,
             buttons: [],
             ajax: {
                 url: $('#data-table').data('url'),
@@ -133,6 +150,11 @@
                         data.columns[9].search.type = 'equal';
                     }
 
+                    if ($('#estados').val() !== '') {
+                        data.columns[4].search.value = $('#estados').val().toString();
+                        data.columns[4].search.type = 'in';
+                    }
+
 
                     return data;
                 }
@@ -142,6 +164,7 @@
                 {name: 'ocs_sintese.Dt_Ordem_Compra', data: 'data', width: '150px'},
                 {name: 'ocs_sintese.Cd_Ordem_Compra', data: 'Cd_Ordem_Compra'},
                 {name: 'compradores.razao_social', data: 'razao_social'},
+                {name: 'compradores.estado', data: 'estado'},
                 {name: 'valor', data: 'valor', searchable: false},
                 {name: 'ocs_sintese.Dt_Previsao_Entrega', data: 'Dt_Previsao_Entrega', visible: false},
                 {name: 'ocs_sintese.Cd_Cotacao', data: 'Cd_Cotacao'},
@@ -156,7 +179,7 @@
                 style: 'multi',
                 selector: 'td:first-child'
             },
-            order: [[7, "desc"]],
+            order: [[8, "desc"]],
             rowCallback: function (row, data) {
                 $(row).css('cursor', 'pointer');
 
@@ -205,7 +228,7 @@
             checkall(dt1, document.getElementById('checkall'));
         });
 
-        $('#f_cd_oc, #id_integrador, #id_cliente, #data_ini, #data_fim').on('change', function () {
+        $('#f_cd_oc, #id_integrador, #id_cliente, #data_ini, #data_fim, #estados').on('change', function () {
             $('#data-table').DataTable().ajax.reload();
         });
     });

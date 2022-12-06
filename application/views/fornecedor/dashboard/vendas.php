@@ -29,7 +29,7 @@
             <br>
         </div>
     <?php } ?>
-    <div class="alert alert-primary" role="alert" hidden>
+    <div class="alert alert-primary" role="alert" style="display: none">
         <h3 class="text-white">Informativo</h3>
         <p class="text-white">Os servidores da sintese encontram-se com instabilidade e a equipe tácnica já está atuando
             para sanar o problema, ainda não foi passado uma previsão. <br> Com essa instabilidade o envio e recebimento
@@ -149,7 +149,7 @@
 
                         </div>
                     </div>
-                    <div class="table-responsive">
+                    <div class="">
                         <table id="data-table" class="table table-condensend table-hover"
                                data-url="<?php echo $to_datatable; ?>"
                                data-cotacao="<?php echo $url_cotacao; ?>"
@@ -160,7 +160,7 @@
                             <thead>
                             <tr>
                                 <th></th>
-                                <th></th>
+                                <th><i class="fas fa-circle" style="font-size: 12px; color: #28a745"></i></th>
                                 <th>Numero</th>
                                 <th>Encerramento</th>
                                 <th>Cliente</th>
@@ -168,7 +168,7 @@
                                 <!-- <th>Descrição</th> -->
                                 <th>Itens</th>
                                 <th>Revisada</th>
-                                <th></th>
+                                <th><i class="fas fa-ban" data-toggle="tooltip" title="REMOVER ORDENAÇÃO" id="removeOrder"></i></th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -197,6 +197,18 @@
 
     <script>
 
+        $.fn.dataTable.Api.register( 'order.neutral()', function () {
+            return this.iterator( 'table', function ( s ) {
+                s.aaSorting.length = 0;
+                s.aiDisplay.sort( function (a,b) {
+                    return a-b;
+                } );
+                s.aiDisplayMaster.sort( function (a,b) {
+                    return a-b;
+                } );
+            } );
+        } );
+
         var url_cotacao = $('#data-table').data('cotacao');
         var url_ocultar = $('#data-table').data('ocultar');
         var url_info = $('#data-table').data('info');
@@ -222,6 +234,7 @@
                 localStorage.setItem(`informe`, 'off');
                 $('#informativo').remove();
             })
+
 
 
             ///Function para manter a sessão no select2
@@ -259,14 +272,16 @@
                 processing: true,
                 serverSide: true,
                 pageLength: 30,
-                searching: false,
+                searching: true,
                 stateSave: true,
                 buttons: [
                     {extend: "excel", className: "buttonsToHide"},
                     {extend: "pdf", className: "buttonsToHide"},
                     {extend: "print", className: "buttonsToHide"}
                 ],
-                "dom": 'pr',
+                language: {
+                    searchPlaceholder: "Pesquisar Cotações"
+                },
                 ajax: {
                     url: $('#data-table').data('url'),
                     type: 'post',
@@ -303,7 +318,7 @@
                 order: [[11, "ASC"]],
                 columns: [
                     {defaultContent: '', orderable: false, searchable: false},
-                    {name: 'cot.oferta', data: 'oferta', orderable: false, searchable: false},
+                    {name: 'cot.oferta', data: 'oferta', orderable: true, searchable: false},
                     {name: 'cot.cd_cotacao', data: 'cd_cotacao'},
                     {name: 'cot.dt_fim_cotacao', data: 'datafim', searchable: false},
                     {name: 'c.razao_social', data: 'comprador'},
@@ -364,6 +379,7 @@
                                 <i class="fas fa-list-ul" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                             </a>
                             <div class="dropdown-menu">
+                                <a target="_blank" href="${url_cotacao}/${data.integrador}/${data.cd_cotacao}" class="dropdown-item">Abrir nova guia</a>
                                 <a data-action="list" data-href="${url_info}${data.integrador}/${data.cd_cotacao}/1" class="dropdown-item">Listar Produtos</a>
                                 <a data-action="details" data-href="${url_info}${data.integrador}/${data.cd_cotacao}" class="dropdown-item">Dados Cotação</a>
                                 <a data-rev="review" data-integrador="${data.integrador}" data-href="${url_review}${data.cd_cotacao}" class="dropdown-item">Marcar Revisada</a>
@@ -443,10 +459,17 @@
                 $('.actions').remove();
             });
 
+
+            $('#removeOrder').click(function(){
+                table.order([11, "ASC"]).draw();
+            });
+
             $('#estados, #id_cliente, #cd_cotacao, #integrador').on('change', function () {
                 table.draw();
             });
         });
+
+
     </script>
 </body>
 </html>

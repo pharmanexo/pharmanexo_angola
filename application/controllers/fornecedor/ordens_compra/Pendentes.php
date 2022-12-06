@@ -92,6 +92,34 @@ class Pendentes extends MY_Controller
         $data['urlChangeStatusPending'] = "{$this->route}/changeStatusPendingAll";
         $data['integradores'] = $this->db->get('integradores')->result_array();
         $data['compradores'] = $this->comp->find("id, CONCAT(cnpj, ' - ', razao_social) AS comprador", null, FALSE, 'comprador ASC');
+        $data['estados'] = $this->db->get('estados')->result_array();
+
+        $rede = $this->db
+            ->where('id_usuario', $this->session->id_usuario)
+            ->where('id_fornecedor', $this->session->id_fornecedor)
+            ->get('usuarios_rede_atendimento')
+            ->result_array();
+
+
+        $rede_estados = [];
+        $rede_clientes = [];
+
+        foreach ($rede as $item) {
+            if ($item['id_estado'] > 0) {
+                $rede_estados[] = $item;
+            } else {
+                $rede_clientes[] = $item;
+            }
+        }
+
+
+        foreach ($rede_estados as $rest) {
+            foreach ($data['estados'] as $k => $estado) {
+                if ($estado['id'] == $rest['id_estado']) {
+                    $data['estados'][$k]['selected'] = true;
+                }
+            }
+        }
 
 
         $this->load->view("{$this->views}/main", $data);
@@ -412,6 +440,7 @@ class Pendentes extends MY_Controller
                     return number_format($d, 4, ',', '.');
                 }],
                 ['db' => 'compradores.id', 'dt' => 'id_cliente'],
+                ['db' => 'compradores.estado', 'dt' => 'estado'],
                 ['db' => 'ocs_sintese.integrador', 'dt' => 'id_integrador'],
             ],
             [

@@ -1368,7 +1368,7 @@ class Cotacoes extends MY_Controller
                 }],
             ],
             null,
-            "ativo = 1 and id_fornecedor = {$this->session->id_fornecedor}"
+            "id_fornecedor = {$this->session->id_fornecedor}"
         );
 
         $this->output->set_content_type('application/json')->set_output(json_encode($datatables));
