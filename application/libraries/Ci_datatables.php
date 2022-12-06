@@ -144,8 +144,8 @@ class Ci_datatables
       /*  var_dump($db->error());
         exit();*/
 
-        /*var_dump($db->last_query());
-        exit();*/
+        var_dump($db->last_query());
+        exit();
         $rows = $query->result_array();
         $recordsTotal = $db->count_all_results($table);
 
