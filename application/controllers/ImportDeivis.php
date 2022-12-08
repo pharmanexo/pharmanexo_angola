@@ -11,25 +11,31 @@ class ImportDeivis extends CI_Controller
         $this->mix = $this->load->database('mix', true);
     }
 
-    public function deparaReverseSintese()
+    public function importRest()
     {
-        $query = "
-        select cp.cd_produto_comprador, cp.id_produto_sintese, cp.id_fornecedor, c.id_cliente
-from cotacoes_sintese.cotacoes_produtos cp
-         join cotacoes_sintese.cotacoes c on c.cd_cotacao = cp.cd_cotacao and c.id_fornecedor = cp.id_fornecedor
-group by cp.id_produto_sintese, cp.cd_produto_comprador";
+        $file = fopen('restricoes_hosp.csv', 'r');
+        $insert = [];
 
-        $data = $this->db->query($query)->result_array();
+        while (($line = fgetcsv($file, null, ',')) !== false) {
 
-        foreach ($data as $item){
+            $estados = $this->db->get('estados')->result_array();
 
-            var_dump($item);
-            exit();
-
-
+            foreach ($estados as $estado) {
+                $insert[] = [
+                    "id_estado" => $estado['id'],
+                    "id_fornecedor" => 5046,
+                    "id_tipo_venda" => 2,
+                    "id_produto" => $line[0],
+                    "integrador" => 1
+                ];
+            }
         }
+        fclose($file);
 
 
+        if (!$this->db->insert_batch("restricoes_produtos_clientes", $insert)) {
+            var_dump($this->db->error());
+        }
     }
 
 }

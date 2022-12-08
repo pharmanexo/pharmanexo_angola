@@ -72,7 +72,7 @@ class M_cotacoes extends MY_Model
                     return "<small>{$value}</small>";
                 }],
                 ['db' => 'c.razao_social', 'dt' => 'comprador', 'formatter' => function ($value, $row) {
-                    $value = substr($value, 0, 50);
+                    $value = utf8_encode(substr($value, 0, 50));
                     return "<small data-toggle='tooltip' title='{$row['ds_cotacao']}'>{$row['cnpj']} - {$value}</small>";
                 }],
                 ['db' => 'cot.dt_fim_cotacao', 'dt' => 'datafim', 'formatter' => function ($value, $row) {

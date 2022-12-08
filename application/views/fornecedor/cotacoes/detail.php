@@ -288,7 +288,7 @@
                 });
                 $('#data-tableDePara<?php echo $k; ?>_filter input').addClass('searchInput<?php echo $k; ?>');
                 $('#fazerDePara<?php echo $k; ?>').on('click', function() {
-                    var primeiroNome = '<?php echo $produto['cotado']['ds_produto_comprador'] ?>';
+                    var primeiroNome = `<?php echo $produto['cotado']['ds_produto_comprador'] ?>`;
                     var busca = (primeiroNome).split(" ");
                     $('#data-tableDePara<?php echo $k; ?>').DataTable().search(busca[0]).draw();
                 });

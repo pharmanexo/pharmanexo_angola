@@ -91,7 +91,7 @@ class GeralAnalitico extends CI_Controller
     private function _req($data)
     {
 
-        $url = 'https://reports.pharmanexo.com.br/cotacoes-by-fornecedores';
+        $url = 'http://reports2.pharmanexo.com.br/cotacoes-by-fornecedores';
 
         $curl = curl_init();
 

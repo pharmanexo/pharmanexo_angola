@@ -2713,6 +2713,9 @@ class M_cotacaoManual extends MY_Model
 
             foreach ($this->urlCliente_apoio as $url) {
 
+                if ($this->session->id_fornecedor == 5018){
+                    $url = 'http://ws.homologacao.apoiocotacoes.com.br/app/fornecedores/WSFornecedores';
+                }
 
                 $client = new SoapClient($url . "?WSDL", array('trace' => 1));
 
@@ -2761,6 +2764,12 @@ class M_cotacaoManual extends MY_Model
                     //     $response = explode(';', $resp->String);
 
                     $response = explode(';', $resp->String);
+
+
+                  /*  if ($this->session->id_fornecedor == 5018){
+                        var_dump($response);
+                        exit();
+                    }*/
 
 
                     if (intval($response[0]) < 0) {

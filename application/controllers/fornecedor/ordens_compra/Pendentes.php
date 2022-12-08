@@ -173,7 +173,11 @@ class Pendentes extends MY_Controller
         $data['urlChangeStatusPending'] = "{$this->route}/changeStatusPending/{$idOC}";
 
         # Select
-        $data['formas_pagamento'] = $this->getFormaPagamento($data['oc']['comprador']['cnpj']);
+        if (isset($_SESSION['id_matriz']) && $_SESSION['id_matriz'] == 1) {
+            $data['formas_pagamento'] = $this->getFormaPagamento($data['oc']['comprador']['cnpj']);
+        } else {
+            $data['formas_pagamento'] = [];
+        }
 
 
         $data['header'] = $this->template->header(['title' => $page_title]);
@@ -267,9 +271,12 @@ class Pendentes extends MY_Controller
             $oc = $this->oc->find('*', "id = '{$oc}' and id_fornecedor = {$idForn}", true);
             $ocProds = $this->db->select("*")->where('id_ordem_compra', $oc['id'])->get('ocs_sintese_produtos')->result_array();
 
+
             $prods = [];
 
             foreach ($ocProds as $prod) {
+
+                $prod['Qt_Embalagem'] = ($prod['Qt_Embalagem'] > 0) ? $prod['Qt_Embalagem'] : 1;
 
                 $qtd = round($prod['Qt_Produto'] / $prod['Qt_Embalagem']);
 
@@ -328,8 +335,19 @@ class Pendentes extends MY_Controller
 
                 $output = ['type' => 'success', 'message' => 'Resgate efetuado com sucesso', 'route' => $route];
 
-                #resgate sintese
-                $this->resgateSintese(preg_replace('/[^\d\-]/', '', $oc['Cd_Fornecedor']), $oc['Cd_Ordem_Compra']);
+                switch (intval($oc['integrador'])) {
+                    case 1:
+                        #resgate sintese
+                        $this->resgateSintese(preg_replace('/[^\d\-]/', '', $oc['Cd_Fornecedor']), $oc['Cd_Ordem_Compra']);
+                        break;
+                    case 2:
+                        $resg = [];
+                        break;
+                    case 3:
+                        #resgate sintese
+                        $this->resgateApoio($oc['id_fornecedor'], $oc['Cd_Ordem_Compra']);
+                        break;
+                }
 
 
             } else {
@@ -748,6 +766,7 @@ class Pendentes extends MY_Controller
      */
     public function getFormaPagamento($cnpj)
     {
+
         # URL para onde será enviada a requisição GET
         $url = $this->urlOncoprod;
 
@@ -889,4 +908,75 @@ class Pendentes extends MY_Controller
 
         return true;
     }
+
+    private function resgateApoio($idFornecedor, $oc)
+    {
+        $forn = $this->db->where('id', $idFornecedor)->get('fornecedores')->row_array();
+        $credencial_apoio = json_decode($forn['credencial_apoio'], true);
+
+        if (!empty($credencial_apoio)) {
+            #producao
+            $wsdl = "https://ws.apoiocotacoes.com.br/app/fornecedores/WSFornecedores?wsdl";
+
+            /* #homolog
+             $wsdl = "http://ws.homologacao.apoiocotacoes.com.br/app/fornecedores/WSFornecedores?WSDL";*/
+
+            $xml_post_string = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://cotacao.fornecedores.client.webService.apoio.com.br/">
+                               <soapenv:Header/>
+                               <soapenv:Body>
+                                  <web:service>
+                                     <usuario>' . $credencial_apoio['login'] . '</usuario>
+                                         <senha>' . $credencial_apoio['password'] . '</senha>
+                                         <operacao>WHR</operacao>
+                                         <parametros></parametros>
+                                          <xml>
+                                            <Id_Pdc>' . $oc . '</Id_Pdc>
+                                            <Status_Resgate_Pedido>A</Status_Resgate_Pedido>
+                                          </xml>
+                                  </web:service>
+                               </soapenv:Body>
+                            </soapenv:Envelope>';
+
+            $headers = array(
+                "Content-type: text/xml;charset=\"utf-8\"",
+                "Accept: text/xml",
+                "Cache-Control: no-cache",
+                "Pragma: no-cache",
+                "Content-length: " . strlen($xml_post_string),
+            ); //SOAPAction: your op URL
+
+
+            $url = str_replace("?wsdl", "", $wsdl);
+
+
+            // PHP cURL  for https connection with auth
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 120);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $xml_post_string); // the SOAP request
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+            // converting
+            $response = curl_exec($ch);
+
+            if (curl_errno($ch)) {
+                $error_msg = curl_error($ch);
+            }
+
+            curl_close($ch);
+
+
+            if (isset($error_msg)) {
+                return false;
+            } else {
+                return true;
+            }
+
+        }
+
+    }
+
 }
