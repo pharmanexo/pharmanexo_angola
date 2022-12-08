@@ -262,7 +262,7 @@
         </script>
     <?php } ?>
     <script>
-        var initDestroyTimeOutPace = function() {
+      /*  var initDestroyTimeOutPace = function() {
             var counter = 0;
             var refreshIntervalId = setInterval(function() {
                 var progress;
@@ -278,7 +278,7 @@
                 }
             }, 100);
         }
-        initDestroyTimeOutPace();
+        initDestroyTimeOutPace();*/
     </script>
 
     <link rel="stylesheet" href="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/themes/blue/pace-theme-corner-indicator.css' ?>">
