@@ -287,7 +287,10 @@
 
         $('.btn_depara').click(function () {
             var idElem = $(this).data('idelem');
-            loadDatatables(idElem);
+
+            if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
+                loadDatatables(idElem);
+            }
         });
 
 
@@ -1038,6 +1041,7 @@
 
     function loadDatatables(id) {
         var url_combinar = $('#data-table' + id).data('url2');
+
         var table = $('#data-tableDePara' + id).DataTable({
             serverSide: false,
             pageLength: 10,
@@ -1081,8 +1085,11 @@
                 $(row).data('id', data.id_produto).css('cursor', 'pointer');
             },
             drawCallback: function () {
+
             }
         });
+
+
         $(`#data-tableDePara${id}_filter input`).addClass('searchInput' + id);
         $(`#fazerDePara${id}`).on('click', function () {
             var primeiroNome = ``; //produto cotado primeiro nome
@@ -1144,6 +1151,8 @@
                 });
             }
         });
+
+
     }
 
     function save_item(key) {
