@@ -286,10 +286,13 @@
         <?php // endforeach; ?>
 
         $('.btn_depara').click(function () {
+            console.log($(this).parent().parent());
             var idElem = $(this).data('idelem');
+            var produto = $(this).data('produto');
+            var cod_prod = $(this).data('codproduto');
 
             if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
-                loadDatatables(idElem);
+                loadDatatables(idElem, produto, cod_prod);
             }
         });
 
@@ -1039,13 +1042,15 @@
     });
 
 
-    function loadDatatables(id) {
+    function loadDatatables(id, produto, codprod) {
         var url_combinar = $('#data-table' + id).data('url2');
+
 
         var table = $('#data-tableDePara' + id).DataTable({
             serverSide: false,
             pageLength: 10,
             lengthChange: false,
+            "oSearch": {"sSearch": produto},
             ajax: {
                 url: $('#data-tableDePara' + id).data('url'),
                 type: 'post',
@@ -1090,13 +1095,6 @@
         });
 
 
-        $(`#data-tableDePara${id}_filter input`).addClass('searchInput' + id);
-        $(`#fazerDePara${id}`).on('click', function () {
-            var primeiroNome = ``; //produto cotado primeiro nome
-            var busca = (primeiroNome).split(" ");
-            $('#data-tableDePara' + id).DataTable().search(busca[0]).draw();
-        });
-
         $('#btnCombinar' + id).on('click', function (e) {
             e.preventDefault();
             var urlPost = $('#data-tableDePara' + id).data('url2');
@@ -1109,7 +1107,7 @@
                     cd_produto: item.codigo,
                     id_sintese: $('#data-tableDePara' + id).data('sintese'),
                     id_cliente: $('#id_cliente').val(),
-                    id_produto_comprado: '' //produto cotado
+                    id_produto_comprado: codprod //produto cotado
                 });
             });
 
