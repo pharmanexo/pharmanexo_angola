@@ -28,6 +28,7 @@ class M_rota extends MY_Model
 
         $this->db->select('*');
         $this->db->where("id in (" . $rotas['id_rotas'] . ")");
+        $this->db->where("situacao", 1);
         $this->db->order_by('posicao', 'asc');
         $result = $this->db->get('rotas')->result_array();
 
