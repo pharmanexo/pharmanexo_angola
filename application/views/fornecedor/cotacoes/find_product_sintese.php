@@ -88,8 +88,8 @@
                 e.preventDefault();
 
                 var dados = [];
-                var cod_prod = $(this).data('codproduto');
-                
+                var codprod = $(this).data('codproduto');
+
                 $.map(table.rows('.selected').data(), function(item) {
 
                     dados.push({
