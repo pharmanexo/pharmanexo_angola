@@ -60,7 +60,7 @@
                                     <label class="checkbox__label mb-0" data-toggle="tooltip" title=" <?php echo (isset($produto['cotado']['sem_estoque']) && $produto['cotado']['sem_estoque'] == 1) ? 'Sem estoque' : 'Marcar como sem estoque' ?>" for="<?php echo "semestq_{$k}_{$produto['cotado']['id_produto_sintese']}_{$produto['cotado']['cd_produto_comprador']}"; ?>">S.E.</label>
                                 </div>
 
-                                <a href="<?php echo $url_findProduct; ?><?php echo $identificacao_produto ?>/<?php echo $cotacao['cliente']['id']; ?>" data-depara="" data-toggle="tooltip" title="Upgrade De -> Para">
+                                <a href="<?php echo $url_findProduct; ?><?php echo $identificacao_produto ?>/<?php echo $cotacao['cliente']['id']; ?>" data-depara="" data-idelem="<?php echo $k; ?>" data-codproduto="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" data-produto="<?php echo explode(' ', $produto['cotado']['ds_produto_comprador'])[0]; ?>" data-toggle="tooltip" title="Upgrade De -> Para">
                                     <i class="fas fa-arrow-circle-up"></i>
                                 </a>
                             </div>
