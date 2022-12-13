@@ -1056,7 +1056,6 @@
                 var urlPost = $('#data-tableDePara' + id).data('url2');
                 var dados = [];
                 var table = $('#data-tableDePara' + id).DataTable();
-                var cod_prod = $(this).data('codproduto');
 
                 $.map(table.rows('.selected').data(), function(item) {
                     dados.push({
