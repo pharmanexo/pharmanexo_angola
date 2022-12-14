@@ -15,7 +15,7 @@ class Grupo_usuario_rota extends MY_Model
         if (!isset($grupo)) return false;
 
         $this->db->select("*");
-        $this->db->where("tipo_usuario = {$grupo}");
+        $this->db->where("tipo_usuario = {$grupo} and situacao = 1");
         $this->db->join("rotas", "grupos_usuarios_rotas.id_rota = rotas.id");
         $this->db->order_by('posicao', 'ASC');
         
@@ -29,6 +29,7 @@ class Grupo_usuario_rota extends MY_Model
 
             $this->db->select("*");
             $this->db->where("grupo", "1");
+            $this->db->where("situacao", "1");
             $this->db->order_by('posicao', 'ASC');
             $rotas = $this->db->get("rotas")->result_array();
         } else {
@@ -38,6 +39,7 @@ class Grupo_usuario_rota extends MY_Model
             $this->db->where("id_fornecedor = {$id_fornecedor}");
 
             $this->db->where("grupo", "1");
+            $this->db->where("situacao", "1");
             $this->db->order_by('posicao', 'ASC');
             $rotas = $this->db->get("vw_fornecedores_usuarios_rotas")->result_array();
         }
