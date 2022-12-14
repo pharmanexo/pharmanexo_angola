@@ -40,15 +40,39 @@ class Contato extends CI_Controller
          $data['totalEstoque'] = $this->views($this->getTotal()['total']);*/
 
         $this->load->view('home2', $data, FALSE);
-
     }
 
     public function sendMessage()
     {
         if ($this->input->method() == 'post') {
+
             $post = $this->input->post();
-            $data = date('d/m/Y H:i', time());
-            $message = "
+
+            $url = 'https://www.google.com/recaptcha/api/siteverify';
+            $data = array('secret' => '6LcSlLkUAAAAACT-qSeWEd0nrNRzgYJaUqwHuZkR', 'response' => $post['g-recaptcha-response']);
+
+            $options = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($data)
+                )
+            );
+            $context = stream_context_create($options);
+            $response = file_get_contents($url, false, $context);
+            $responseKeys = json_decode($response, true);
+            header('Content-type: application/json');
+
+            if ($responseKeys["success"]) {
+
+                $score = $responseKeys['score'];
+
+                if ($score > 0.5) {
+
+                    unset($post['token']);
+
+                    $data = date('d/m/Y H:i', time());
+                    $message = "
             Olá, <br></br>
             Recebemos a solicitação de contato abaixo. <br><br>
             Nome: {$post['nome']} <br>
@@ -59,32 +83,33 @@ class Contato extends CI_Controller
             ";
 
 
-            $sendError = $this->notify->send([
-                "to" => 'marlon.boecker@pharmanexo.com.br, administracao@pharmanexo.com.br',
-                "greeting" => "",
-                "subject" => "Solicitação de Contato do Site",
-                "message" => $message,
-                "oncoprod" => 1,
-            ]);
+                    $sendError = $this->notify->send([
+                        "to" => 'marlon.boecker@pharmanexo.com.br, administracao@pharmanexo.com.br, felipe.lima@pharmanexo.com.br',
+                        "greeting" => "",
+                        "subject" => "Solicitação de Contato do Site",
+                        "message" => $message,
+                        "oncoprod" => 1,
+                    ]);
 
-            if ($sendError) {
-                $warning = [
-                    'type' => 'success',
-                    'message' => "Enviamos sua solicitação com sucesso, em breve alguém de nosso time entrará em contato"
-                ];
+                    if ($sendError) {
+                        $warning = [
+                            'type' => 'success',
+                            'message' => "Enviamos sua solicitação com sucesso, em breve alguém de nosso time entrará em contato"
+                        ];
+                    } else {
+                        $warning = [
+                            'type' => 'error',
+                            'message' => "Houve um erro ao enviar sua mensagem, nos comunique por helpdesk@pharmanexo.com.br"
+                        ];
+                    }
+                } else {
+                    $warning = ['type' => 'error', 'message' => 'No Score'];
+                }
             } else {
-                $warning = [
-                    'type' => 'error',
-                    'message' => "Houve um erro ao enviar sua mensagem, nos comunique por helpdesk@pharmanexo.com.br"
-                ];
-
+                $warning = ['type' => 'error', 'message' => 'No captch'];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($warning));
-
-
         }
     }
-
-
 }

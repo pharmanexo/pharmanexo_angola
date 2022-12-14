@@ -60,8 +60,8 @@
                                     <label class="checkbox__label mb-0" data-toggle="tooltip" title=" <?php echo (isset($produto['cotado']['sem_estoque']) && $produto['cotado']['sem_estoque'] == 1) ? 'Sem estoque' : 'Marcar como sem estoque' ?>" for="<?php echo "semestq_{$k}_{$produto['cotado']['id_produto_sintese']}_{$produto['cotado']['cd_produto_comprador']}"; ?>">S.E.</label>
                                 </div>
 
-                                <a href="<?php echo $url_findProduct; ?><?php echo $identificacao_produto ?>/<?php echo $cotacao['cliente']['id']; ?>" data-depara="" data-toggle="tooltip" title="Upgrade De -> Para">
-                                    <i class="fas fa-arrow-circle-up"></i>
+                                <a href="<?php echo $url_findProduct; ?><?php echo $identificacao_produto ?>/<?php echo $cotacao['cliente']['id']; ?>" data-depara="" data-idelem="<?php echo $k; ?>" data-codproduto="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" data-produto="<?php echo explode(' ', $produto['cotado']['ds_produto_comprador'])[0]; ?>" data-toggle="tooltip" title="Upgrade De -> Para">
+                                    <i class="fas fa-arrow-circle-up btn_depara"></i>
                                 </a>
                             </div>
 
@@ -203,7 +203,7 @@
                                                     </select>
                                                 <?php else : ?>
                                                     <select hidden name="marcas[<?php echo $jj; ?>][id_fornecedor]" id="selectForn">
-                                                        <option value="<?php echo $this->session->id_fornecedor; ?>" <?php echo (isset($prod['fornecedor_cotacao']) && $f['id'] == $prod['fornecedor_cotacao']) ? 'selected dd' : ($this->session->id_fornecedor == $f['id']) ? 'selected' : '' ?> ><?php echo $this->session->nome_fantasia; ?></option>
+                                                        <option value="<?php echo $this->session->id_fornecedor; ?>" <?php echo (isset($prod['fornecedor_cotacao']) && $f['id'] == $prod['fornecedor_cotacao']) ? 'selected dd' : ($this->session->id_fornecedor == $f['id']) ? 'selected' : '' ?>><?php echo $this->session->nome_fantasia; ?></option>
                                                     </select>
                                                 <?php endif; ?>
                                             </td>
@@ -276,7 +276,7 @@
 
                 <div id="collapseDePara<?php echo $k; ?>" class="collapse">
                     <div class="col-12 mt-2 text-right">
-                        <a href id="btnCombinar<?php echo $k; ?>" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;"  title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
+                        <a href id="btnCombinar<?php echo $k; ?>" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
                             <i style="font-size:20px;padding-top: 3px;" class="fas fa-random"></i>
                         </a>
                     </div>
