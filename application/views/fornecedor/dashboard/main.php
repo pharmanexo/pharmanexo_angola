@@ -75,76 +75,11 @@
         </div>
     </div>
 
-    <div id="graficos" data-url="<?php echo $urlCharts; ?>">
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card" style="border-radius: 15px;!Important">
-                    <div class="card-header text-center"
-                         style="background-image: linear-gradient(#757779,#868e96);border-radius: 15px 15px 0px 0px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
-                        <h5 class="text-white font-weight-bold mt-1">TOTAL COTAÇÕES MENSAL</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-2 offset-md-10">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <label class="input-group-text" for="filtroAno"><b>Ano</b></label>
-                                    </div>
-                                    <select class="custom-select" id="filtroAno">
-                                        <?php foreach ($filtroAno as $ano): ?>
-                                            <option value="<?php echo $ano['ano']; ?>" <?php if (date("Y") == $ano['ano']) echo 'selected'; ?>><?php echo $ano['ano']; ?></option>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="chartLine"></div>
-                    </div>
-                </div>
-            </div>
+    <div class="card">
+        <div class="card-body">
+            <p>Gráficos em manutenção...</p>
+            <p>Para acessar as cotações em andamento <a href="<?php echo base_url('fornecedor/cotacoes'); ?>">clique aqui.</a></p>
         </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card" style="height: 550px;border-radius: 15px;!Important">
-                    <div class="card-header bg-secondary text-center"
-                         style="background-image: linear-gradient(#757779,#868e96);height: 550px;padding: 10px;border-radius: 15px 15px 0px 0px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
-                        <h5 class="text-white font-weight-bold">COTAÇÕES EM ABERTO POR ESTADO</h5>
-                    </div>
-
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <div id="chartMap" style="height: 360px;" data-url="<?php echo $url_info_mapa; ?>"></div>
-                        </div>
-                        <br>
-                        <p class="small">Clique sobre o estado para listar as cotações.
-                            <br> Podem haver diferenças entre o número de cotações mostradas no portal síntese x
-                            pharmanexo, pois não exibimos cotações com contrato específico de fornecimento e nem
-                            cotações de OPMEs
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="card" style="height: 550px;border-radius: 15px;!Important">
-                    <div class="card-header bg-secondary text-center"
-                         style="background-image: linear-gradient(#757779,#868e96);border-radius: 15px 15px 0px 0px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
-                        <h5 class="text-white font-weight-bold mt-1">PRODUTOS A VENCER </span>
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <span id="loadingChart">
-                        <div id="chartColumn"></div>
-                        <br>
-                        <p class="small">Clique sobre o gráfico para listar os produtos de cada categoria.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
 
     <div class="card">
@@ -203,7 +138,7 @@
             ano: $("#filtroAno").val()
         };
 
-        $.post($("#graficos").data('url'), data, function (xhr) {
+        /*$.post($("#graficos").data('url'), data, function (xhr) {
 
             if (typeof xhr == "string") {
                 xhr = JSON.parse(xhr);
@@ -212,7 +147,7 @@
             chartline(xhr.chartLine);
             chartColumn(xhr.chartColumn);
             chartMap(xhr.chartMap);
-        });
+        });*/
     }
 
     function chartMap(response) {

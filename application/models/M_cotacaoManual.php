@@ -1681,8 +1681,19 @@ class M_cotacaoManual extends MY_Model
                                 "id_fornecedor" => $row['id_fornecedor'],
                                 "id_usuario" => $this->session->id_usuario,
                             ];
-
                             $this->db->insert('produtos_fornecedores_sintese', $data);
+
+                        } else {
+                            $getProd = $this->getProdSintese($row['id_sintese']);
+                            if ($getProd != FALSE){
+                                $data = [
+                                    "id_sintese" => $getProd['id_sintese'],
+                                    "cd_produto" => $row['cd_produto'],
+                                    "id_fornecedor" => $row['id_fornecedor'],
+                                    "id_usuario" => $this->session->id_usuario,
+                                ];
+                                $this->db->insert('produtos_fornecedores_sintese', $data);
+                            }
                         }
                     }
                 }
@@ -1784,6 +1795,80 @@ class M_cotacaoManual extends MY_Model
             $this->db->trans_commit();
 
             return true;
+        }
+    }
+
+    private function getProdSintese($id_produto)
+    {
+        $client = new SoapClient("http://integracao.plataformasintese.com/IntegrationService.asmx?WSDL");
+        $location = 'http://integracao.plataformasintese.com/IntegrationService.asmx';
+
+        $forn = $this->fornecedor->findById($this->session->id_fornecedor);
+
+        $function = 'ObterProdutos';
+        $arguments = array('ObterProdutos' => array(
+            'cnpj' => preg_replace("/\D+/", "", $forn['cnpj']),
+            'chave' => $forn['chave_sintese'],
+            'codigoProdutoSintese' => $id_produto,
+        ));
+
+
+        $options = array('location' => $location);
+        $result = $client->__soapCall($function, $arguments, $options);
+
+
+        $xml = new SimpleXMLElement($result->ObterProdutosResult);
+
+        if (isset($xml->Produto)) {
+            $xml = json_decode(json_encode($xml), true);
+            $produto = $xml['Produto'];
+
+            $produtosMarca = (isset($produto['Produtos_Marca'][0])) ? $produto['Produtos_Marca'][0]['Produto_Marca'] : $produto['Produtos_Marca']['Produto_Marca'];
+
+
+            if (!isset($produtosMarca[0])) {
+                $aux = $produtosMarca;
+
+                unset($produtosMarca);
+
+                $produtosMarca[0] = $aux;
+            }
+
+            if (isset($produtosMarca) && !empty($produtosMarca)) {
+
+                $prod = $produtosMarca[0];
+
+                $data = [
+                    'id_produto' => $id_produto,
+                    'descricao' => strtoupper(utf8_decode($produto['Ds_Produto'])),
+                    'id_grupo' => 999,
+                    'id_sintese' => $prod['Id_Produto_Marca'],
+                    'ativo' => 1
+                ];
+
+                if (!$this->db->insert('produtos_marca_sintese', $data)) {
+                    $lista_adms = $this->usuario->listAdmMaster();
+
+                    foreach ($lista_adms as $adm) {
+
+                        # Notifica o ADM master sobre o produto
+                        $this->notify->alert([
+                            'type' => 'danger',
+                            'id_usuario' => $adm['id'],
+                            'id_fornecedor' => null,
+                            'message' => "Produto sintese não encontrado em nosso banco de dados. #ID PRODUTO: {$id_produto}.",
+                            'url' => '',
+                            'status' => 0
+                        ]);
+                    }
+
+                    return false;
+
+                } else {
+                    return $data;
+                }
+            }
+
         }
     }
 
@@ -2032,7 +2117,7 @@ class M_cotacaoManual extends MY_Model
                             $item->appendChild($dom->createElement('IPI', '-'));
                             $item->appendChild($dom->createElement('Valor_Frete', '-'));
                             $item->appendChild($dom->createElement('Fabricante', utf8_encode(utf8_decode("{$catalogo['marca']}"))));
-                            $item->appendChild($dom->createElement('Embalagem', $catalogo['unidade']));
+                            $item->appendChild($dom->createElement('Embalagem', 'unidade'));
                             $item->appendChild($dom->createElement('Quantidade_Embalagem', $p['qtd_embalagem']));
                             $item->appendChild($dom->createElement('Comentario', (isset($p['obs_produto']) && !empty($p['obs_produto'])) ? $p['obs_produto'] : ' - '));
                             $item->appendChild($dom->createElement('Codigo_Rastreabilidade', $p['id_pfv']));
@@ -2713,9 +2798,6 @@ class M_cotacaoManual extends MY_Model
 
             foreach ($this->urlCliente_apoio as $url) {
 
-                if ($this->session->id_fornecedor == 5018){
-                    $url = 'http://ws.homologacao.apoiocotacoes.com.br/app/fornecedores/WSFornecedores';
-                }
 
                 $client = new SoapClient($url . "?WSDL", array('trace' => 1));
 
@@ -2766,10 +2848,10 @@ class M_cotacaoManual extends MY_Model
                     $response = explode(';', $resp->String);
 
 
-                  /*  if ($this->session->id_fornecedor == 5018){
-                        var_dump($response);
-                        exit();
-                    }*/
+                    /*  if ($this->session->id_fornecedor == 5018){
+                          var_dump($response);
+                          exit();
+                      }*/
 
 
                     if (intval($response[0]) < 0) {
