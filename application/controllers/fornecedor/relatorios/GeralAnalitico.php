@@ -76,10 +76,14 @@ class GeralAnalitico extends CI_Controller
                 'usuario' => $this->session->id_usuario
             ];
 
-            $this->_req($data);
+            $req = $this->_req($data);
 
+            if ($req['type']) {
+                $output = ['type' => 'success', 'message' => "Relatório solicitado com sucesso."];
+            } else {
+                $output = ['type' => 'error', 'message' => $req['message']];
+            }
 
-            $output = ['type' => 'success', 'message' => "Relatório solicitado com sucesso."];
 
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
 
@@ -108,7 +112,7 @@ class GeralAnalitico extends CI_Controller
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json',
-                'X-AUTH-TOKEN: 221c385f4bd2c092c81b5f4b56dae377',
+                'X-AUTH-TOKEN: pharma@ish#2022!',
             ),
         ));
 
@@ -116,8 +120,11 @@ class GeralAnalitico extends CI_Controller
 
         if (curl_errno($curl)) {
             $error_msg = curl_error($curl);
-            var_dump($error_msg);
-            exit();
+
+            return ['type' => false, 'message' => $error_msg];
+
+        } else {
+            return ['type' => true];
         }
 
         curl_close($curl);

@@ -671,6 +671,7 @@ class Cotacoes extends MY_Controller
                             join cotacoes c on cp.id_fornecedor = c.id_fornecedor and cp.cd_cotacao = c.cd_cotacao
                             where cp.cd_produto_comprador = '{$cdProdutoCliente}' and c.id_cliente = {$id_cliente}
                             group by cd_produto_comprador, id_cliente")->row_array();
+
                 $produto = $this->pms->find('*', "id_produto = {$codigo_produto}", true);
                 $datatable = "{$this->route}datatable_catalogo";
 
