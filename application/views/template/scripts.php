@@ -26,6 +26,7 @@
 <script src="<?php echo THIRD_PARTY . 'plugins/Material-Design-Calculator-jQuery/js/calculate.js' ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src='https://cdn.jsdelivr.net/npm/apexcharts'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
 <script src="<?php echo THIRD_PARTY . 'plugins/jquery.vmap/jquery.vmap.min.js' ?>"></script>
 <script src="<?php echo THIRD_PARTY . 'plugins/jquery.vmap/maps/jquery.vmap.brazil.js' ?>"></script>

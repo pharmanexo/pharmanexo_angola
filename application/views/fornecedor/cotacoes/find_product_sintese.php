@@ -10,7 +10,7 @@
 
         <div class="content__inner">
             <input type="hidden" name="id_cliente" id="id_cliente" value="<?php if (isset($id_cliente)) echo $id_cliente; ?>">
-            <input type="hidden" name="id_prod_cot" id="id_prod_cot" value="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>">
+            <input type="hidden" name="id_prod_cot" id="id_prod_cot" value="<?php if (isset($id_prod_cot)) echo $id_prod_cot; ?>">
 
             <form>
                 <div class="card">
@@ -90,7 +90,6 @@
                 e.preventDefault();
 
                 var dados = [];
-                var codprod = '1';
 
                 $.map(table.rows('.selected').data(), function(item) {
 

@@ -645,6 +645,15 @@ class Dashboard extends MY_Controller
                 ]
             ],
             [
+                'name' => 'COT COM PROD RESP',
+                'type' => 'line',
+                'data' => [
+                    $cotProd[1], $cotProd[2], $cotProd[3], $cotProd[4], $cotProd[5], $cotProd[6],
+                    $cotProd[7], $cotProd[8], $cotProd[9], $cotProd[10], $cotProd[11], $cotProd[12]
+                ]
+
+            ],
+            [
                 'name' => 'COT COM PROD',
                 'type' => 'line',
                 'data' => [

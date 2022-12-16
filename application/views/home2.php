@@ -582,7 +582,7 @@
                         if (xhr.type === 'success') {
                             console.log(xhr);
                             $('.sent-message', '#formContact').html(xhr.message);
-
+                            alert('teste');
                         } else {
                             $('.error-message', '#formContact').html(xhr.message);
 

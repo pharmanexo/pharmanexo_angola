@@ -28,6 +28,7 @@
                                 </div>
                             </th>
                             <th>Comprador</th>
+                            <th>Celular</th>
                             <th>Gerente</th>
                             <th>Consultor</th>
                             <th>Geral</th>
@@ -66,6 +67,7 @@
             columns: [
                 {defaultContent: '', orderable: false, searchable: false},
                 { name: 'c.razao_social', data: 'razao_social' },
+                { name: 'email_notificacao.celular', data: 'celular'},
                 { name: 'email_notificacao.gerente', data: 'gerente'},
                 { name: 'email_notificacao.consultor', data: 'consultor'},
                 { name: 'email_notificacao.geral', data: 'geral'},

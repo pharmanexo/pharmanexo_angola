@@ -719,6 +719,7 @@ class Cotacoes extends MY_Controller
 
         $data['produto'] = $produto;
         $data['id_cliente'] = $id_cliente;
+        $data['id_prod_cot'] = $cdProdutoCliente;
         $data['datatables'] = $datatable;
         $data['url_combinar'] = "{$this->route}combinar_produto_marca/{$integrador}";
 
