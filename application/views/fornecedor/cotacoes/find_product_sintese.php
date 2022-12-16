@@ -10,7 +10,7 @@
 
         <div class="content__inner">
             <input type="hidden" name="id_cliente" id="id_cliente" value="<?php if (isset($id_cliente)) echo $id_cliente; ?>">
-            <input type="hidden" name="id_prod_cot" id="id_prod_cot" value="<?php if (isset($id_prod_cot)) echo $id_prod_cot; ?>">
+            <input type="hidden" name="id_prod_cot" id="id_prod_cot" value="<?php var_dump($id_prod_cot); exit; if (isset($id_prod_cot)) echo $id_prod_cot; ?>">
 
             <form>
                 <div class="card">
