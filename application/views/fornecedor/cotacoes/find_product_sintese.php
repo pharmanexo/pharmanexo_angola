@@ -90,7 +90,7 @@
                 e.preventDefault();
 
                 var dados = [];
-                console.log('<?php echo $id_prod_cot; ?>');
+                alert('teste');
 
                 $.map(table.rows('.selected').data(), function(item) {
 
