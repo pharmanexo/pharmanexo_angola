@@ -90,7 +90,7 @@
                 e.preventDefault();
 
                 var dados = [];
-                codprod = $(this).data('codproduto');
+                console.log('<?php echo $id_prod_cot; ?>');
 
                 $.map(table.rows('.selected').data(), function(item) {
 
@@ -99,7 +99,7 @@
                         cd_produto: item.codigo,
                         id_sintese: $('#data-table').data('sintese'),
                         id_cliente: $('#id_cliente').val(),
-                        id_produto_comprado: codprod //produto cotado
+                        id_produto_comprado: $('#id_prod_cot').val(), //produto cotado
                     });
                 });
 
