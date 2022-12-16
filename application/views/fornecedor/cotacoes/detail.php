@@ -246,10 +246,11 @@
             ?>
 
             $('.btn_depara').click(function() {
-                console.log($(this).parent().parent());
+                //console.log($(this).parent().parent());
                 var idElem = $(this).data('idelem');
                 var produto = $(this).data('produto');
                 var cod_prod = $(this).data('codproduto');
+                console.log(cod_prod);
 
                 if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
                     loadDatatables(idElem, produto, cod_prod);
