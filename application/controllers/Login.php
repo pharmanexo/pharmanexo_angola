@@ -943,6 +943,55 @@ class Login extends CI_Controller
         }
     }
 
+    public function logarConvidado()
+    {
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+
+            $comp = $this->db->select('*')->where('cnpj', $post['loginCompraColetiva'])->get('compradores')->row_array();
+
+            if (!empty($comp)) {
+                if ($comp['situacao'] == '1') {
+                    if (password_verify($post['senhaCompraColetiva'], $comp['senha'])) {
+                        unset($comp['senhaCompraColetiva']);
+                        $_SESSION['validLogin'] = true;
+                        $_SESSION['dados'] = $comp;
+
+
+                        if ($comp['completo'] == 1) {
+                            redirect(base_url('compra-coletiva/produtos'));
+                        } else {
+                            redirect(base_url('compra-coletiva/cadastro/dados'));
+                        }
+                    } else {
+                        $warn = [
+                            'type' => 'error',
+                            'message' => 'Dados inválidos, tente novamente.'
+                        ];
+                    }
+                } else {
+                    $warn = [
+                        'type' => 'warning',
+                        'message' => 'Seu cadastro está aguardando aprovação do administrador.'
+                    ];
+                }
+                $this->session->set_userdata('warning', $warn);
+
+                redirect($this->route);
+            } else {
+                $warn = [
+                    'type' => 'error',
+                    'message' => 'Não encontramos este usuário.'
+                ];
+
+                $this->session->set_userdata('warning', $warn);
+
+                redirect($this->route);
+            }
+        }
+    }
+
     public function logout()
     {
 
