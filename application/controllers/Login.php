@@ -29,6 +29,9 @@ class Login extends CI_Controller
         $data['frm_compracoletiva'] = "{$this->route}logarCompraColetiva";
         $data['frm_novasenha'] = "{$this->route}recuperar_senha";
         $data['frm_novasenharep'] = "{$this->route}recuperar_senhaRepresentante";
+
+        $data['frm_convidado'] = "{$this->route}logarConvidado";
+
         // TEMPLATE
         $data['header'] = $this->template->header([
             'title' => 'Login'

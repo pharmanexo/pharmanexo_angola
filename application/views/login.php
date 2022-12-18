@@ -438,14 +438,14 @@ if (isset($header)) echo $header;
                         Lista Promocional Convidados</h3>
                 </div>
                 <div class="modal-body" style="margin-top: 10px">
-                    <form id="formCompraColetiva" method="post" class="frmLoginCompraColetiva" action="<?php echo $frm_compracoletiva; ?>">
+                    <form id="formconvidado" method="post" class="frmLoginconvidado" action="<?php echo $frm_convidado; ?>">
 
                         <div class="form-group">
                             <div class="input-group mb-3 mt-5">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" name="loginCompraColetiva" id="loginCompraColetiva" value="" required="true" data-inputmask="cnpj" class="form-control">
+                                <input type="text" name="loginconvidado" id="loginconvidado" value="" required="true" data-inputmask="cnpj" class="form-control">
 
                             </div>
                         </div>
@@ -455,7 +455,7 @@ if (isset($header)) echo $header;
                                 <div class="input-group-prepend">
                                     <span class="input-group-text "><i class="fa fa-key"></i></span>
                                 </div>
-                                <input id="senhaCompraColetiva" type="password" class="form-control input-sm senha" name="senhaCompraColetiva" placeholder="Digite sua Senha" maxlength="20" required="true">
+                                <input id="senhaconvidado" type="password" class="form-control input-sm senha" name="senhaconvidado" placeholder="Digite sua Senha" maxlength="20" required="true">
                                 <div class="input-group-append">
                                     <div class="input-group-text olho" id="olho"><i class="fas fa-eye"></i></div>
                                 </div>
@@ -465,13 +465,13 @@ if (isset($header)) echo $header;
                         <div style="margin-top:25px" class="form-group">
 
                             <div class="col-12 controls" style="margin-top:25px;">
-                                <button type="submit" id="postCompraColetiva" class="btn btn-primary px-3 " style="width:200px">
+                                <button type="submit" id="postconvidado" class="btn btn-primary px-3 " style="width:200px">
                                     <i class="fas fa-check"></i> Acessar Sistema
                                 </button>
                             </div>
 
                             <div class="col-12 controls" style="margin-top:25px;">
-                                <button disabled type="submit" id="cadCompraColetiva" class="btn btn-secondary px-3 " style="width:150px">
+                                <button disabled type="submit" id="cadconvidado" class="btn btn-secondary px-3 " style="width:150px">
                                     <i class="fas fa-paperclip"></i> Cadastre-se
                                 </button>
                             </div>
