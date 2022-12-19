@@ -368,12 +368,6 @@
                 var row = button.parent().parent().parent().parent();
 
                 var dropdown = row.find('select');
-
-                var data = {
-                    id_fornecedor: dropdown.val(),
-                    codigo: button.data('cod'),
-                    id_cliente: button.data('cliente'),
-                };
             }).on('hidden.bs.modal', function(event) {
                 var upgradeModal = $(this);
 
