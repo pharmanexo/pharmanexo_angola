@@ -1183,7 +1183,7 @@
         function loadDatatableUpgrade(id, produto, codprod, idsintese) {
             var url_combinar = $('#data-table' + id).data('url2');
 
-            var table = $('#data-tableUpgradeDePara' + id).DataTable({
+            var table = $('#data-tableUpgradeDePara').DataTable({
                 serverSide: false,
                 pageLength: 10,
                 lengthChange: false,
@@ -1192,7 +1192,7 @@
                     "sSearch": produto
                 },
                 ajax: {
-                    url: $('#data-tableUpgradeDePara' + id).data('url'),
+                    url: $('#data-tableUpgradeDePara').data('url'),
                     type: 'post',
                     dataType: 'json',
                 },
@@ -1237,9 +1237,9 @@
 
             $('#btnCombinarUpgrade' + id).on('click', function(e) {
                 e.preventDefault();
-                var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
+                var urlPost = $('#data-tableUpgradeDePara').data('url2');
                 var dados = [];
-                var table = $('#data-tableUpgradeDePara' + id).DataTable();
+                var table = $('#data-tableUpgradeDePara').DataTable();
 
                 $.map(table.rows('.selected').data(), function(item) {
                     dados.push({
