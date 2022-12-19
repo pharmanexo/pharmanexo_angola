@@ -63,7 +63,7 @@
                                 <a data-href="<?php echo $url_findProduct; ?><?php echo $identificacao_produto ?>/<?php echo $cotacao['cliente']['id'] ?>/<?php echo $produto['cotado']['cd_produto_comprador']; ?>" 
                                 data-depara="" data-idelem="<?php echo $k; ?>" data-codproduto="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" 
                                 data-produto="<?php echo explode(' ', $produto['cotado']['ds_produto_comprador'])[0]; ?>" data-toggle="modal" data-target="#upgradeModal" title="Upgrade De -> Para">
-                                    <i class="fas fa-arrow-circle-up btn_depara"></i>
+                                    <i class="fas fa-arrow-circle-up btn_upgradeDePara"></i>
                                     
                                 </a>
                             </div>
