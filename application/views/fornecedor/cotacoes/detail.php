@@ -244,7 +244,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table" style="margin-top: -110px;">
-                                    <table id="data-tableDePara" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>">
+                                    <table id="data-tableUpgradeDePara" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>">
                                         <thead>
                                             <tr>
                                                 <th></th>
@@ -305,7 +305,9 @@
                 var cod_prodU = $(this).data('codprodutou');
                 console.log(cod_prodU);
 
-                if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElemU)) {
+                $('#data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
+
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
                     loadDatatables(idElemU, produtoU, cod_prodU);
                 }
             });
