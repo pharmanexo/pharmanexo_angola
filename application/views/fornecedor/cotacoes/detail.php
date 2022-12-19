@@ -305,11 +305,11 @@
                 var cod_prodU = $(this).data('codprodutou');
                 console.log(cod_prodU);
 
-                $('#data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
-
-                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara')) {
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
                     loadDatatables(idElemU, produtoU, cod_prodU);
                 }
+
+                $('#data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
             });
 
 
