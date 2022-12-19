@@ -291,7 +291,6 @@
                 var idElem = $(this).data('idelem');
                 var produto = $(this).data('produto');
                 var cod_prod = $(this).data('codproduto');
-                console.log(cod_prod);
 
                 if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
                     loadDatatables(idElem, produto, cod_prod);
@@ -303,11 +302,12 @@
                 var idElemU = $(this).data('idelemu');
                 var produtoU = $(this).data('produtou');
                 var cod_prodU = $(this).data('codprodutou');
-                console.log(cod_prodU);
 
-                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara')) {
-                    loadDatatables(idElemU, produtoU, cod_prodU);
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara') + idElem) {
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU);
                 }
+
+                $('#data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
             });
 
 
@@ -1069,6 +1069,119 @@
 
 
             var table = $('#data-tableDePara' + id).DataTable({
+                serverSide: false,
+                pageLength: 10,
+                lengthChange: false,
+                "oSearch": {
+                    "sSearch": produto
+                },
+                ajax: {
+                    url: $('#data-tableDePara' + id).data('url'),
+                    type: 'post',
+                    dataType: 'json',
+                },
+                columns: [{
+                        defaultContent: '',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        name: 'codigo',
+                        data: 'codigo'
+                    },
+                    {
+                        name: 'apresentacao',
+                        data: 'apresentacao'
+                    },
+                    {
+                        name: 'marca',
+                        data: 'marca'
+                    },
+                ],
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 0
+                }, ],
+                select: {
+                    style: 'multiple',
+                    selector: 'td'
+                },
+                order: [
+                    [1, 'asc']
+                ],
+                rowCallback: function(row, data) {
+                    $(row).data('id', data.id_produto).css('cursor', 'pointer');
+                },
+                drawCallback: function() {
+
+                }
+            });
+
+
+            $('#btnCombinar' + id).on('click', function(e) {
+                e.preventDefault();
+                var urlPost = $('#data-tableDePara' + id).data('url2');
+                var dados = [];
+                var table = $('#data-tableDePara' + id).DataTable();
+
+                $.map(table.rows('.selected').data(), function(item) {
+                    dados.push({
+                        id_fornecedor: item.id_fornecedor,
+                        cd_produto: item.codigo,
+                        id_sintese: $('#data-tableDePara' + id).data('sintese'),
+                        id_cliente: $('#id_cliente').val(),
+                        id_produto_comprado: codprod //produto cotado
+                    });
+                });
+
+                if (dados.length > 0) {
+
+                    $.post(urlPost, {
+                            dados
+                        }, function(xhr) {
+                            formWarning(xhr);
+
+                            if (xhr.type == 'success') {
+                                Swal.fire({
+                                    title: 'Produto(s) Combinado(s)',
+                                    text: "Deseja atualizar a página ou continuar fazendo outros de/para?",
+                                    icon: 'success',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Atualizar Página',
+                                    cancelButtonText: 'Continuar'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.reload();
+                                    } else {
+                                        table.ajax.reload();
+                                    }
+                                })
+                            }
+                        }, 'JSON')
+                        .fail(function(xhr) {
+                            formWarning(xhr);
+                            table.ajax.reload();
+                        });
+                } else {
+
+                    formWarning({
+                        type: 'warning',
+                        message: "Nenhum registro selecionado!"
+                    });
+                }
+            });
+
+
+        }
+
+        function loadDatatableUpgrade(id, produto, codprod) {
+            var url_combinar = $('#data-table' + id).data('url2');
+
+
+            var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
                 pageLength: 10,
                 lengthChange: false,
