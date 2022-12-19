@@ -60,11 +60,11 @@
                                     <label class="checkbox__label mb-0" data-toggle="tooltip" title=" <?php echo (isset($produto['cotado']['sem_estoque']) && $produto['cotado']['sem_estoque'] == 1) ? 'Sem estoque' : 'Marcar como sem estoque' ?>" for="<?php echo "semestq_{$k}_{$produto['cotado']['id_produto_sintese']}_{$produto['cotado']['cd_produto_comprador']}"; ?>">S.E.</label>
                                 </div>
 
-                                <a data-idelemU="<?php echo $k; ?>" data-codprodutoU="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" 
+                                <button data-idelemU="<?php echo $k; ?>" data-codprodutoU="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" 
                                 data-produtoU="<?php echo explode(' ', $produto['cotado']['ds_produto_comprador'])[0]; ?>" data-toggle="modal" data-target="#upgradeModal" title="Upgrade De -> Para">
                                     <i class="fas fa-arrow-circle-up btn_upgradeDePara"></i>
                                     
-                                </a>
+                                </button>
                             </div>
 
                             <?php if (!empty($produto['cotado']['cd_produto_comprador'])) : ?>
