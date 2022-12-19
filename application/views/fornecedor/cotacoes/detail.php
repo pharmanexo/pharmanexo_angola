@@ -302,14 +302,15 @@
                 var idElemU = $(this).data('idelemu');
                 var produtoU = $(this).data('produtou');
                 var cod_prodU = $(this).data('codprodutou');
+                var idsintese = $(this).data('sintese');
 
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
-                
+
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara') + idElemU) {
-                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU);
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
                 }
-                console.log(idElemU,produtoU,cod_prodU);
+                console.log(idElemU,produtoU,cod_prodU,idsintese);
             });
 
 
@@ -1179,7 +1180,7 @@
 
         }
 
-        function loadDatatableUpgrade(id, produto, codprod) {
+        function loadDatatableUpgrade(id, produto, codprod, idsintese) {
             var url_combinar = $('#data-table' + id).data('url2');
 
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
@@ -1231,7 +1232,7 @@
                 drawCallback: function() {
 
                 }
-            });
+            }).ajax.reload();
 
 
             $('#btnCombinarUpgrade' + id).on('click', function(e) {
@@ -1244,7 +1245,7 @@
                     dados.push({
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
-                        id_sintese: $('#data-tableUpgradeDePara' + id).data('sintese'),
+                        id_sintese: idsintese,
                         id_cliente: $('#id_cliente').val(),
                         id_produto_comprado: codprod //produto cotado
                     });
