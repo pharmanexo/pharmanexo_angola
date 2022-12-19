@@ -225,6 +225,47 @@
         </div>
     </div>
 
+    <div class="modal fade" id="upgradeModal" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="historicoModalLabel"></h5>
+                </div>
+                <div class="modal-body">
+                    <div class="col-12 mt-2 text-right">
+                        <a href id="btnCombinar" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
+                            <i style="font-size:20px;padding-top: 3px;" class="fas fa-random"></i>
+                        </a>
+                    </div>
+
+                    <form>
+                        <div class="card">
+                            <div class="card-header">
+                            </div>
+                            <div class="card-body">
+                                <div class="table" style="margin-top: -110px;">
+                                    <table id="data-tableDePara" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>" data-sintese="<?php echo $identificacao_produto; ?>">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Código</th>
+                                                <th>Produto</th>
+                                                <th>Marca</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </form>''
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php echo $scripts; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
@@ -305,6 +346,26 @@
                 modal.find('.modal-title').text('Nova Observação');
                 // Passa o ID do campo observacao do form para o value do campo oculto do modal
                 modal.find('.modal-obs').val(button.data('produto'));
+            });
+
+            $('#upgradeModal').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget);
+                var upgradeModal = $(this);
+
+
+                var row = button.parent().parent().parent().parent();
+
+                var dropdown = row.find('select');
+
+                var data = {
+                    id_fornecedor: dropdown.val(),
+                    codigo: button.data('cod'),
+                    id_cliente: button.data('cliente'),
+                };
+            }).on('hidden.bs.modal', function(event) {
+                var upgradeModal = $(this);
+
+                upgradeModal.find('tbody').html('');
             });
 
             $('#historicoModal').on('show.bs.modal', function(event) {

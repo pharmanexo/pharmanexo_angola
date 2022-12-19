@@ -90,7 +90,6 @@
                 e.preventDefault();
 
                 var dados = [];
-                alert('teste');
 
                 $.map(table.rows('.selected').data(), function(item) {
 
