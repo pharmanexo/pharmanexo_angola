@@ -306,7 +306,7 @@
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara') + idElemU) {
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU);
                 }
-
+                console.log(idElemU,produtoU,cod_prodU);
                 $('#data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('#btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
             });
