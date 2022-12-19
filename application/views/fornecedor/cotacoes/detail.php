@@ -303,7 +303,7 @@
                 var produtoU = $(this).data('produtou');
                 var cod_prodU = $(this).data('codprodutou');
 
-                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara') + idElem) {
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara') + idElemU) {
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU);
                 }
 
