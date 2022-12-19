@@ -297,16 +297,16 @@
                     loadDatatables(idElem, produto, cod_prod);
                 }
             });
-            
+
             $('.btn_upgradeDePara').click(function() {
                 //console.log($(this).parent().parent());
-                var idElem = $(this).data('idelem');
-                var produto = $(this).data('produto');
-                var cod_prod = $(this).data('codproduto');
-                console.log(cod_prod);
+                var idElemU = $(this).data('idelemU');
+                var produtoU = $(this).data('produtoU');
+                var cod_prodU = $(this).data('codprodutoU');
+                console.log(cod_prodU);
 
-                if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
-                    loadDatatables(idElem, produto, cod_prod);
+                if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElemU)) {
+                    loadDatatables(idElemU, produtoU, cod_prodU);
                 }
             });
 
