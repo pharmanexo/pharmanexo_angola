@@ -305,7 +305,7 @@
 
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
-                table.destroy();
+                
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara') + idElemU) {
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU);
                 }
@@ -1181,12 +1181,12 @@
 
         function loadDatatableUpgrade(id, produto, codprod) {
             var url_combinar = $('#data-table' + id).data('url2');
-            alert('teste');
 
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
                 pageLength: 10,
                 lengthChange: false,
+                retrieve: true,
                 "oSearch": {
                     "sSearch": produto
                 },
