@@ -300,9 +300,9 @@
 
             $('.btn_upgradeDePara').click(function() {
                 //console.log($(this).parent().parent());
-                var idElemU = $(this).data('idelemU');
-                var produtoU = $(this).data('produtoU');
-                var cod_prodU = $(this).data('codprodutoU');
+                var idElemU = $(this).data('idelemu');
+                var produtoU = $(this).data('produtou');
+                var cod_prodU = $(this).data('codprodutou');
                 console.log(cod_prodU);
 
                 if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElemU)) {
