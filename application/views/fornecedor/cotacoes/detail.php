@@ -233,7 +233,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="col-12 mt-2 text-right">
-                        <a href id="btnCombinar" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
+                        <a href id="btnCombinarUpgrade" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary" data-original-title="Combinar Produtos">
                             <i style="font-size:20px;padding-top: 3px;" class="fas fa-random"></i>
                         </a>
                     </div>
@@ -308,6 +308,7 @@
                 }
 
                 $('#data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
+                $('#btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
             });
 
 
@@ -1189,7 +1190,7 @@
                     "sSearch": produto
                 },
                 ajax: {
-                    url: $('#data-tableDePara' + id).data('url'),
+                    url: $('#data-tableUpgradeDePara' + id).data('url'),
                     type: 'post',
                     dataType: 'json',
                 },
@@ -1232,17 +1233,17 @@
             });
 
 
-            $('#btnCombinar' + id).on('click', function(e) {
+            $('#btnCombinarUpgrade' + id).on('click', function(e) {
                 e.preventDefault();
-                var urlPost = $('#data-tableDePara' + id).data('url2');
+                var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
                 var dados = [];
-                var table = $('#data-tableDePara' + id).DataTable();
+                var table = $('#data-tableUpgradeDePara' + id).DataTable();
 
                 $.map(table.rows('.selected').data(), function(item) {
                     dados.push({
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
-                        id_sintese: $('#data-tableDePara' + id).data('sintese'),
+                        id_sintese: $('#data-tableUpgradeDePara' + id).data('sintese'),
                         id_cliente: $('#id_cliente').val(),
                         id_produto_comprado: codprod //produto cotado
                     });
