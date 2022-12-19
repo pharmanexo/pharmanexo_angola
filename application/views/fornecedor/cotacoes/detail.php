@@ -244,7 +244,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table" style="margin-top: -110px;">
-                                    <table id="data-tableDePara" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>" data-sintese="<?php echo $identificacao_produto; ?>">
+                                    <table id="data-tableDePara" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>">
                                         <thead>
                                             <tr>
                                                 <th></th>
