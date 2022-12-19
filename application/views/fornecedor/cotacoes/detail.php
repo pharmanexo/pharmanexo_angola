@@ -1180,7 +1180,7 @@
 
         function loadDatatableUpgrade(id, produto, codprod) {
             var url_combinar = $('#data-table' + id).data('url2');
-
+            alert('teste');
 
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
