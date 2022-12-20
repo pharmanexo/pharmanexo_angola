@@ -27,8 +27,8 @@ class M_cotacaoManual extends MY_Model
         $this->load->model("m_produto_cliente_depara", "pcd");
         $this->load->model('m_preco_mix', 'preco_mix');
 
-//        error_reporting(E_ALL);
-//        ini_set("display_errors", 1);
+        //        error_reporting(E_ALL);
+        //        ini_set("display_errors", 1);
         error_reporting(0);
         ini_set('display_errors', 0);
 
@@ -407,7 +407,6 @@ class M_cotacaoManual extends MY_Model
 
                                 # Adiciona o estoque na variavel de estoque geral do produto
                                 $totalEstoque += $estq;
-
                             }
 
                             $estoque[] = ['name' => $fornecedor['nome_fantasia'], 'value' => $estq, 'label' => $fornecedor['id']];
@@ -485,21 +484,21 @@ class M_cotacaoManual extends MY_Model
                             $produtos[$kk]['encontrados'][$k]['obs'] = $produto_enviado['obs_produto'];
 
                             # Exibe a observação enviada
-//                            if (!empty($produto_enviado['obs_produto'])) {
-//
-//                                # Separa a observação em dois para identificar o texto da observação sem o nome do produto
-//                                $obs = explode(' - ', $produto_enviado['obs_produto']);
-//
-//                                # Verifica se existe observação
-//                                if (isset($obs[1])) {
-//
-//                                    $produtos[$kk]['encontrados'][$k]['obs'] = $obs[1];
-//                                } else {
-//
-//                                    # Se não existir, manda vazio
-//                                    $produtos[$kk]['encontrados'][$k]['obs'] = '';
-//                                }
-//                            }
+                            //                            if (!empty($produto_enviado['obs_produto'])) {
+                            //
+                            //                                # Separa a observação em dois para identificar o texto da observação sem o nome do produto
+                            //                                $obs = explode(' - ', $produto_enviado['obs_produto']);
+                            //
+                            //                                # Verifica se existe observação
+                            //                                if (isset($obs[1])) {
+                            //
+                            //                                    $produtos[$kk]['encontrados'][$k]['obs'] = $obs[1];
+                            //                                } else {
+                            //
+                            //                                    # Se não existir, manda vazio
+                            //                                    $produtos[$kk]['encontrados'][$k]['obs'] = '';
+                            //                                }
+                            //                            }
                         }
 
                         # Altera as informações caso ja tenha sido enviado para a sintese
@@ -798,8 +797,6 @@ class M_cotacaoManual extends MY_Model
             } else {
                 $data[$k]['preco_unitario'] = 0.00;
             }
-
-
         }
 
         return $data;
@@ -872,7 +869,6 @@ class M_cotacaoManual extends MY_Model
                     LIMIT 1)      preco_unitario
                         ";
             }
-
         }
 
         $query .= "
@@ -1100,15 +1096,12 @@ class M_cotacaoManual extends MY_Model
                         'id' => $f['id_fornecedor'],
                         'fornecedor' => $f['nome_fantasia']
                     ];
-
                 }
 
                 return $list;
             } else {
                 return null;
             }
-
-
         }
 
         return null;
@@ -1528,7 +1521,6 @@ class M_cotacaoManual extends MY_Model
                         'obs_recusa' => NULL,
                     ]);
             }
-
         }
 
         if ($this->db->trans_status() === FALSE) {
@@ -1682,10 +1674,9 @@ class M_cotacaoManual extends MY_Model
                                 "id_usuario" => $this->session->id_usuario,
                             ];
                             $this->db->insert('produtos_fornecedores_sintese', $data);
-
                         } else {
                             $getProd = $this->getProdSintese($row['id_sintese']);
-                            if ($getProd != FALSE){
+                            if ($getProd != FALSE) {
                                 $data = [
                                     "id_sintese" => $getProd['id_sintese'],
                                     "cd_produto" => $row['cd_produto'],
@@ -1701,41 +1692,39 @@ class M_cotacaoManual extends MY_Model
             case 'BIONEXO':
                 foreach ($post['dados'] as $row) {
 
-                    $this->db->where('id_cliente', $row['id_cliente']);
-                    $this->db->where('cd_produto', $row['id_sintese']);
-                    $this->db->where('id_integrador', 2);
-                    $old = $this->db->get('produtos_clientes_depara')->row_array();
+                    $produtoForn = $this->db
+                        ->where('cd_produto', $row['cd_produto'])
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->limit(1)
+                        ->get('produtos_fornecedores_sintese')
+                        ->row_array();
 
-                    if (empty($old)) {
-
-                        $produtoForn = $this->db
-                            ->where('cd_produto', $row['cd_produto'])
-                            ->where('id_fornecedor', $this->session->id_fornecedor)
+                    if (!empty($produtoForn)) {
+                        $produtoSint = $this->db
+                            ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_fornecedores_sintese')
+                            ->get('produtos_marca_sintese')
                             ->row_array();
+                    }
 
-                            var_dump($produtoForn); exit;
-                        if (!empty($produtoForn)) {
-                            $produtoSint = $this->db
-                                ->where('id_sintese', $produtoForn['id_sintese'])
-                                ->limit(1)
-                                ->get('produtos_marca_sintese')
-                                ->row_array();
-                        }
-                        
-                        if (!empty($produtoSint)) {
-                            $data = [
-                                "id_produto_sintese" => $produtoSint['id_produto'],
-                                "cd_produto" => $row['id_sintese'],
-                                "id_usuario" => $this->session->id_usuario,
-                                "id_integrador" => 2,
-                                "id_cliente" => $row['id_cliente']
-                            ];
+                    if (!empty($produtoSint)) {
+
+                        $this->db->where('id_cliente', $row['id_cliente']);
+                        $this->db->where('cd_produto', $row['id_sintese']);
+                        $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
+                        $this->db->where('id_integrador', 2);
+                        $old = $this->db->get('produtos_clientes_depara')->row_array();
+
+                        $data = [
+                            "id_produto_sintese" => $produtoSint['id_produto'],
+                            "cd_produto" => $row['id_sintese'],
+                            "id_usuario" => $this->session->id_usuario,
+                            "id_integrador" => 2,
+                            "id_cliente" => $row['id_cliente']
+                        ];
+                        if (empty($old)) {
                             $this->pcd->insert($data);
                         }
-
-
                     }
                 }
                 break;
@@ -1776,8 +1765,6 @@ class M_cotacaoManual extends MY_Model
 
                             $this->pcd->insert($data);
                         }
-
-
                     }
                 }
                 break;
@@ -1862,12 +1849,10 @@ class M_cotacaoManual extends MY_Model
                     }
 
                     return false;
-
                 } else {
                     return $data;
                 }
             }
-
         }
     }
 
@@ -2640,14 +2625,16 @@ class M_cotacaoManual extends MY_Model
                         $updtCotacao = $this->atualizarEnvioCotacao($cd_cotacao);
 
                         # Envia email com o espelho para o comprador
-                        $sendEmails = $this->sendEmail('SINTESE',
+                        $sendEmails = $this->sendEmail(
+                            'SINTESE',
                             [
                                 'html' => file_get_contents($dados['html']),
                                 'filename' => $dadosFornecedor['mirror']
                             ],
                             $id_cliente,
                             $dadosFornecedor['id_fornecedor'],
-                            $cd_cotacao);
+                            $cd_cotacao
+                        );
 
                         $type = 'success';
                         $response = 'As ofertas foram incluidas com sucesso';
@@ -2744,7 +2731,8 @@ class M_cotacaoManual extends MY_Model
                             ],
                             $id_cliente,
                             $dadosFornecedor['id_fornecedor'],
-                            $cd_cotacao);
+                            $cd_cotacao
+                        );
 
                         $type = 'success';
                         $response = "Cotação enviada com sucesso";
@@ -2832,7 +2820,8 @@ class M_cotacaoManual extends MY_Model
                             'senha' => $credencial_apoio['password'],
                             'operacao' => $operacao,
                             'xml' => [
-                                'Resposta' => $xml],
+                                'Resposta' => $xml
+                            ],
                         )
                     );
 
@@ -2881,7 +2870,8 @@ class M_cotacaoManual extends MY_Model
                             ],
                             $id_cliente,
                             $dadosFornecedor['id_fornecedor'],
-                            $cd_cotacao);
+                            $cd_cotacao
+                        );
 
                         $type = 'success';
                         $response = "Cotação enviada com sucesso";
@@ -2983,5 +2973,4 @@ class M_cotacaoManual extends MY_Model
             ->where('id_fornecedor', $id_forn)
             ->update('cotacoes_produtos');
     }
-
 }
