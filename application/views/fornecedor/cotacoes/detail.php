@@ -308,13 +308,16 @@
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
-                
-                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
-                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
-                }
-                console.log(idElemU,produtoU,cod_prodU,idsintese);
+                upgradeTable(idElemU, produtoU, cod_prodU, idsintese);
+                console.log(idElemU, produtoU, cod_prodU, idsintese);
             });
 
+            function upgradeTable() {
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
+                    $('#data-tableUpgradeDePara' + idElemU).DataTable().destroy();
+                }
+                loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
+            }
 
             $("#btnCount").html($('[data-check]:checked').length);
 
@@ -1233,7 +1236,7 @@
                 drawCallback: function() {
 
                 }
-            }).draw(true);
+            }).ajax.reload();
 
 
             $('#btnCombinarUpgrade' + id).on('click', function(e) {
