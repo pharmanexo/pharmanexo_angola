@@ -308,8 +308,6 @@
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
 
-                loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
-
                 if ($('.modalUpgradeDePara table').DataTable()) {
                     $('.modalUpgradeDePara table').DataTable().destroy();
                     setTimeout(function() {
