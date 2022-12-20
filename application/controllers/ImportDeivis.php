@@ -13,29 +13,40 @@ class ImportDeivis extends CI_Controller
 
     public function importRest()
     {
-        $file = fopen('restricoes_hosp.csv', 'r');
-        $insert = [];
+        $file = fopen('itens_hosp.csv', 'r');
+        $linhas = [];
 
-        while (($line = fgetcsv($file, null, ',')) !== false) {
+        while (($line = fgetcsv($file, null, ';')) !== false) {
 
-            $estados = $this->db->get('estados')->result_array();
+            $linhas[] = $line;
 
-            foreach ($estados as $estado) {
-                $insert[] = [
-                    "id_estado" => $estado['id'],
-                    "id_fornecedor" => 5046,
-                    "id_tipo_venda" => 2,
-                    "id_produto" => $line[0],
-                    "integrador" => 1
-                ];
-            }
+            /*  $codigo = utf8_decode($line[0]);
+              if ($codigo == 'CODPROD'){
+                  var_dump($line);
+                  exit();
+              }
+
+             exit();
+
+           */
         }
         fclose($file);
 
-
-        if (!$this->db->insert_batch("restricoes_produtos_clientes", $insert)) {
-            var_dump($this->db->error());
+        unset($linhas[0]);
+        foreach ($linhas as $line) {
+            $insert[] = [
+               "codigo" => intval($line[0]),
+               "descricao" => trim($line[1]),
+               "unidade" => trim($line[2]),
+               "marca" => trim($line[3]),
+               "quantidade" => intval($line[4]),
+               "lote" => trim($line[5]),
+               "validade" => date("Y-m-d", strtotime($line[6])),
+               "preco" => dbNumberFormat(trim($line[7])),
+            ];
         }
+
+        $this->db->insert_batch("promocoes_convidados", $insert);
     }
 
 }

@@ -58,15 +58,13 @@
                 <div class="row mx-auto mt-3">
                     <div id="" class="col-12">
                         <div class="table-responsive col-sm">
-                            <table id="data-table" class="table table-condensend table-hover" data-url="<?php echo $datatable_src; ?>" data-cancel="<?php echo $url_cancel ?>" data-update="<?php echo $url_update ?>">
+                            <table id="data-table" class="table table-condensend table-hover" data-url="<?php echo $to_datatable; ?>" data-cancel="<?php if (isset($url_cancel)) echo $url_cancel ?>" data-update="<?php if (isset($url_update)) echo $url_update ?>">
                                 <thead>
                                 <tr>
-                                    <th></th>
                                     <th>ID</th>
-                                    <th>Comprador</th>
                                     <th>Data Abetura</th>
+                                    <th>Fornecedor</th>
                                     <th>Situação</th>
-                                    <th>Valor Total</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -110,27 +108,18 @@
                 }
             },
             columns: [
-                {defaultContent: '', width: '100px', orderable: false, searchable: false},
-                {name: 'pedidos_representantes.id', data: 'id', visible: false},
-                {name: 'compradores.razao_social', data: 'razao_social'},
-                {name: 'pedidos_representantes.data_abertura', data: 'data_abertura'},
-                {name: 'pedidos_representantes.situacao', data: 'situacao'},
-                {name: 'pedidos_representantes.valor_total', data: 'valor_total'},
-                {name: 'pedidos_representantes.situacao', data: 'status_situacao', orderable: false, searchable: true, visible: false},
+                {name: 'cp.id', data: 'id', visible: false},
+                {name: 'cp.data_pedido', data: 'data_pedido'},
+                {name: 'f.nome_fantasia', data: 'fornecedor'},
+                {name: 'cp.situacao', data: 'situacao_lbl'},
+                {name: 'cp.situacao', data: 'situacao', orderable: false, searchable: true, visible: false},
                 {defaultContent: '', width: '100px', orderable: false, searchable: false},
             ],
             "order": [[1, "desc"]],
             rowCallback: function (row, data) {
                 $(row).data('id', data.id).css('cursor', 'pointer');
 
-                if(data.prioridade == 1){
-                    $('td:eq(0)', row).html('<i class="fa fa-fast-forward" data-toggle="tooltip" title="PEDIDO URGENTE"></i>');
-                    $(row).addClass('fa-pisca');
-                    $(row).attr('data-toggle', 'tooltip');
-                    $(row).prop('title', 'PEDIDO URGENTE');
-                }
-
-                switch (data.status_situacao) {
+                switch (data.situacao) {
                     case '1':
                         $(row).addClass('table-light');
                         break;
@@ -154,19 +143,11 @@
                         break;
                 }
 
-                var btnModal = $(`<a onclick="cancel_request(${data.id})" data-toggle="tooltip" title="Cancelar Pedido" class="btn btn-sm btn-danger text-white"><i class="fas fa-ban"></i></a>`);
-
                 $('td:not(:last-child)', row).each(function () {
                     $(this).on('click', function () {
                         window.location.href = $('#data-table').data('update') + data.id
                     });
                 });
-
-
-                if (data.status_situacao == '1'){
-                    $('td:eq(4)', row).html(btnModal);
-                }
-
 
             },
             drawCallback: function () {

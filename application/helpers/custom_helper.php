@@ -35,6 +35,19 @@ function getStatusPedidos($stts = null)
     return (isset($stts)) ? $rows[$stts] : $rows;
 }
 
+function getStatusPedidosConv($stts = null)
+{
+
+    $rows = [
+        0 => "Em aberto",
+        1 => "Enviado ao distribuidor",
+        2 => "Aprovado",
+        3 => "Reprovado e Cancelado",
+    ];
+
+    return (isset($stts)) ? $rows[$stts] : $rows;
+}
+
 if (!function_exists('dbDateFormat')) {
     function dbDateFormat($date = NULL)
     {

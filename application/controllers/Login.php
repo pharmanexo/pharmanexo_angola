@@ -952,27 +952,44 @@ class Login extends CI_Controller
 
             $post = $this->input->post();
 
-            $comp = $this->db->select('*')->where('cnpj', $post['loginCompraColetiva'])->get('compradores')->row_array();
+            $comp = $this->db->select('*')->where('cnpj', $post['loginconvidado'])->get('compradores')->row_array();
 
             if (!empty($comp)) {
-                if ($comp['situacao'] == '1') {
-                    if (password_verify($post['senhaCompraColetiva'], $comp['senha'])) {
-                        unset($comp['senhaCompraColetiva']);
-                        $_SESSION['validLogin'] = true;
-                        $_SESSION['dados'] = $comp;
+                if ($comp['status'] == '1') {
 
-
-                        if ($comp['completo'] == 1) {
-                            redirect(base_url('compra-coletiva/produtos'));
-                        } else {
-                            redirect(base_url('compra-coletiva/cadastro/dados'));
-                        }
-                    } else {
-                        $warn = [
-                            'type' => 'error',
-                            'message' => 'Dados inválidos, tente novamente.'
+                    //verifica se é o primeiro login
+                    if ($post['senhaconvidado'] == 'Invite@pharma10' && empty($comp['senha_promo'])) {
+                        $data = [
+                            'id' => $comp['id'],
+                            'cnpj' => $comp['cnpj'],
+                            'razao_social' => $comp['razao_social'],
+                            'troca_senha' => true,
                         ];
+
+                        $_SESSION['validLogin'] = false;
+                        $_SESSION['dados'] = $data;
+
+                        redirect(base_url('login/trocarSenhaConvidado'));
+
+                    } else {
+                        if (md5($post['senhaconvidado']) == $comp['senha_promo']) {
+                            unset($comp['senha_promo']);
+                            unset($comp['senha']);
+                            $_SESSION['validLogin'] = true;
+                            $_SESSION['convidado'] = true;
+                            $_SESSION['dados'] = $comp;
+
+                            redirect(base_url('convidados/promocoes'));
+
+                        } else {
+                            $warn = [
+                                'type' => 'error',
+                                'message' => 'Dados inválidos, tente novamente.'
+                            ];
+                        }
                     }
+
+
                 } else {
                     $warn = [
                         'type' => 'warning',
@@ -993,6 +1010,71 @@ class Login extends CI_Controller
                 redirect($this->route);
             }
         }
+    }
+
+    public function trocarSenhaConvidado()
+    {
+
+        if ($this->input->method() == 'post') {
+
+            $post = $this->input->post();
+
+            if (!isset($post['nome']) || !isset($post['email']) || !isset($post['telefone'])) {
+                $warn = [
+                    'type' => 'warning',
+                    'message' => 'Dados obrigatórios não foram informados'
+                ];
+
+                $this->session->set_userdata('warning', $warn);
+
+                redirect("{$this->route}trocarSenhaConvidado");
+            } else {
+
+                $comp = $this->db->select('*')->where('id', $post['id_comprador'])->get('compradores');
+
+                if ($comp->num_rows() > 0) {
+                    $this->db
+                        ->where('id', $post['id_comprador'])
+                        ->update('compradores', ['senha_promo' => md5($post['senha'])]);
+
+                    $contato = $this->db
+                        ->where('id_comprador', $post['id_comprador'])
+                        ->get('compradores_contatos');
+
+                    $dataContato = [
+                        'id_comprador' => $post['id_comprador'],
+                        'nome' => $post['nome'],
+                        'email' => $post['email'],
+                        'telefone' => $post['telefone']
+                    ];
+
+                    if ($contato->num_rows() > 0) {
+
+                        $this->db
+                            ->where('id_comprador', $post['id_comprador'])
+                            ->update('compradores_contatos', $dataContato);
+                    } else {
+                        $this->db->insert('compradores_contatos', $dataContato);
+                    }
+                }
+
+
+            }
+
+
+        } else {
+            $data['frm_action'] = "{$this->route}trocarSenhaConvidado";
+
+            // TEMPLATE
+            $data['header'] = $this->template->header([
+                'title' => 'Login'
+            ]);
+            $data['scripts'] = $this->template->scripts();
+
+            $this->load->view('troca_senha_convidado', $data);
+        }
+
+
     }
 
     public function logout()

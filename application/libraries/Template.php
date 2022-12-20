@@ -517,3 +517,100 @@ class TemplateRep
 
 
 }
+
+class TemplateConv
+{
+
+    public function __construct()
+    {
+        $this->CI = &get_instance();
+    }
+
+
+    public function header($data = [])
+    {
+        $default = [];
+
+        // warning Message
+        if ($this->CI->session->has_userdata('warning')) {
+            $default['warning'] = json_encode($this->CI->session->warning);
+            $this->CI->session->unset_userdata('warning');
+        }
+
+        $data = array_merge($data, $default);
+
+
+        return $this->CI->load->view('template/conv/header', $data, TRUE);
+    }
+
+    public function navbar($data = [])
+    {
+        $logo_n = $this->CI->session->logo;
+        $id_usuario = $this->CI->session->id_usuario;
+
+        $logo = "/images/usuarios/{$id_usuario}/{$logo_n}";
+
+        $uri = $this->CI->uri->segment_array();
+
+        if ($uri['1'] == 'pharma'){
+            $logosys = base_url('images/img/BRPharma_small.png');
+        }else{
+            $logosys = base_url('images/img/123456.png');
+        }
+
+        $default = [
+            'logo' => base_url((!empty($logo_n)) ? $logo : "/images/usuarios/no-user.png"),
+            'logoSistema' => $logosys
+        ];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view('template/conv/navbar', $data, TRUE);
+    }
+
+    public function sidebar($data = [], $view = 'sidebar_painel')
+    {
+
+        if (isset($_SESSION['pharma']) && $_SESSION['pharma'] == 1){
+
+            $data['cliente'] = $this->CI->db->where('id', $_SESSION['id_cliente'])->get('compradores')->row_array();
+        }
+
+        $default = [
+        ];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view("template/conv/{$view}", $data, TRUE);
+    }
+
+    public function scripts($data = [])
+    {
+        $default = [];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view('template/conv/scripts', $data, TRUE);
+    }
+
+    public function heading($data = [])
+    {
+        $default = [];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view('template/conv/heading', $data, TRUE);
+    }
+
+
+    public function footer($data = [])
+    {
+        $default = [];
+
+        $data = array_merge($data, $default);
+
+        return $this->CI->load->view('template/conv/footer', $data, TRUE);
+    }
+
+
+}

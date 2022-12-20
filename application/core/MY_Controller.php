@@ -123,3 +123,29 @@ class Rep_controller extends CI_Controller
         $this->db->close();
     }
 }
+
+class Conv_controller extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+
+        date_default_timezone_set('America/Sao_Paulo');
+        $this->form_validation->set_error_delimiters('<span>', '</span>');
+
+        $this->defineMatriz();
+
+        $logado = $this->session->userdata("validLogin");
+
+        if (!$logado) {
+            $this->session->sess_destroy();
+            redirect(base_url('/login'));
+        }
+
+    }
+
+    public function __destruct()
+    {
+        $this->db->close();
+    }
+}

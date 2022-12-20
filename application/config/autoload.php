@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'session', 'template', 'form_validation', 'templateCC' => 'tmp_cc', 'templateMP' => 'tmp', 'templateRep' => 'tmp_rep', 'Ci_datatables' => 'datatable', 'Ci_select2' => 'select2', 'Auditor' => 'auditor', 'Notify' => 'notify',  'Export' => 'export', 'Price' => 'price', 'Tom_ticket' => 'ticket');
+$autoload['libraries'] = array('database', 'session', 'template', 'form_validation', 'templateCC' => 'tmp_cc', 'templateMP' => 'tmp', 'templateRep' => 'tmp_rep', 'templateConv' => 'tmp_conv', 'Ci_datatables' => 'datatable', 'Ci_select2' => 'select2', 'Auditor' => 'auditor', 'Notify' => 'notify',  'Export' => 'export', 'Price' => 'price', 'Tom_ticket' => 'ticket');
 
 /*
 | -------------------------------------------------------------------

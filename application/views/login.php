@@ -445,7 +445,7 @@ if (isset($header)) echo $header;
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                                 </div>
-                                <input type="text" name="loginconvidado" id="loginconvidado" value="" required="true" data-inputmask="cnpj" class="form-control">
+                                <input type="text" name="loginconvidado" id="loginconvidado" value="" placeholder="Informe o CNPJ do comprador" required="true" data-inputmask="cnpj" class="form-control">
 
                             </div>
                         </div>

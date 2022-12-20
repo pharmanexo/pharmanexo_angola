@@ -12,21 +12,7 @@
 
     <div class="content__inner">
         <form action="<?php if (isset($form_action)) echo $form_action; ?>" method="POST" id="formRep" enctype="multipart/form-data">
-            <div class="row mx-auto mt-3">
-                <div class="col-12 col-lg-4 text-center">
-                   <div class="card">
-                       <div class="card-body">
-                           <div class="imgPreview">
-                               <img id="imgPrev" src="<?php echo ( !empty($this->session->foto) && !is_null($this->session->foto)  ) ? base_url("public/representantes/{$rep['id']}/{$this->session->foto}") : base_url("/images/usuarios/no-user.png"); ?>" alt="Imagem" class="img-fluid rounded-circle w-50">
-                           </div>
-                           <label class="btn btn-outline-primary btn-block mt-3" for="foto">
-                               <input type="file" name="foto" id="foto" class="d-none">
-                               Trocar Imagem
-                           </label>
-                       </div>
-                   </div>
-                </div>
-                <div class="col-12 col-lg-8">
+                <div class="col-12 col-lg-12">
                     <div class="card">
                         <div class="card-header">
                             <h6 class="card-title">Dados Pessoais</h6>
