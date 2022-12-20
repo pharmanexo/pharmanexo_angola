@@ -226,7 +226,7 @@
     </div>
 
     <div class="modal fade" id="upgradeModal" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="historicoModalLabel"></h5>
@@ -241,6 +241,7 @@
                     <form>
                         <div class="card">
                             <div class="card-header">
+                                <h1 class="upgradeModal"></h1>
                             </div>
                             <div class="card-body">
                                 <div class="table" style="margin-top: -110px;">
@@ -305,6 +306,7 @@
                 var idsintese = $(this).data('sintese');
 
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
+                $('.upgradeModal').text(produtoU);
 
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara')) {
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
