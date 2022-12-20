@@ -306,8 +306,9 @@
                 var idsintese = $(this).data('sintese');
 
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
+                $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.upgradeModal').text(produtoU);
-                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara')) {
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
                 }
                 if ($('.modalUpgradeDePara table').DataTable()) {
@@ -1187,8 +1188,8 @@
         }
 
         function loadDatatableUpgrade(id, produto, codprod, idsintese) {
-            var url_combinar = $('#data-tableUpgradeDePara').data('url2');
-            var table = $('#data-tableUpgradeDePara').DataTable({
+            var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
+            var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
                 pageLength: 10,
                 lengthChange: false,
@@ -1196,7 +1197,7 @@
                     "sSearch": produto
                 },
                 ajax: {
-                    url: $('#data-tableUpgradeDePara').data('url'),
+                    url: $('#data-tableUpgradeDePara' + id).data('url'),
                     type: 'post',
                     dataType: 'json',
                 },
@@ -1241,9 +1242,9 @@
 
             $('#btnCombinarUpgrade' + id).on('click', function(e) {
                 e.preventDefault();
-                var urlPost = $('.modalUpgradeDePara table').data('url2');
+                var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
                 var dados = [];
-                var table = $('.modalUpgradeDePara table').DataTable();
+                var table = $('#data-tableUpgradeDePara' + id).DataTable();
 
                 $.map(table.rows('.selected').data(), function(item) {
                     dados.push({
