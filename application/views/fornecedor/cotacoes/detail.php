@@ -307,9 +307,9 @@
 
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
-                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElem)) {
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
                     if ($('.modalUpgradeDePara table').DataTable())  $('.modalUpgradeDePara table').DataTable().destroy();
-                    loadDatatables(idElem, produto, cod_prod).fail(alert('falhou'));
+                    loadDatatables(idElem, produto, cod_prod, idsintese).fail(alert('falhou'));
                 };
                 console.log(idElemU, produtoU, cod_prodU, idsintese);
             });
