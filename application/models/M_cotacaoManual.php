@@ -1732,7 +1732,7 @@ class M_cotacaoManual extends MY_Model
                                 "id_integrador" => 2,
                                 "id_cliente" => $row['id_cliente']
                             ];
-
+                            var_dump($data); exit;
                             $this->pcd->insert($data);
                         }
 
