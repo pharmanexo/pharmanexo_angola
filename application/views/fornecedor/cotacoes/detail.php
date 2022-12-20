@@ -311,9 +311,10 @@
                 loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
 
                 if ($('.modalUpgradeDePara table').DataTable()) {
-                    $('.modalUpgradeDePara table').DataTable().destroy().done(function() {
+                    $('.modalUpgradeDePara table').DataTable().destroy();
+                    setTimeout(function() {
                         loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
-                    });
+                    }, 0);
                 }
 
                 console.log(idElemU, produtoU, cod_prodU, idsintese);
