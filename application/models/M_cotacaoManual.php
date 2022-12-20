@@ -1705,7 +1705,7 @@ class M_cotacaoManual extends MY_Model
                     $this->db->where('cd_produto', $row['id_sintese']);
                     $this->db->where('id_integrador', 2);
                     $old = $this->db->get('produtos_clientes_depara')->row_array();
-
+                    var_dump($old); exit;
                     if (empty($old)) {
 
                         $produtoForn = $this->db
@@ -1723,7 +1723,7 @@ class M_cotacaoManual extends MY_Model
                                 ->get('produtos_marca_sintese')
                                 ->row_array();
                         }
-
+                        
                         if (!empty($produtoSint)) {
                             $data = [
                                 "id_produto_sintese" => $produtoSint['id_produto'],
@@ -1732,7 +1732,6 @@ class M_cotacaoManual extends MY_Model
                                 "id_integrador" => 2,
                                 "id_cliente" => $row['id_cliente']
                             ];
-                            var_dump($data); exit;
                             $this->pcd->insert($data);
                         }
 
