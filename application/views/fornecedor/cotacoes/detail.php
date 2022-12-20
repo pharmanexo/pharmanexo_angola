@@ -312,7 +312,7 @@
                 console.log(idElemU, produtoU, cod_prodU, idsintese);
             });
 
-            function upgradeTable() {
+            function upgradeTable(idElemU, produtoU, cod_prodU, idsintese) {
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
                     $('#data-tableUpgradeDePara' + idElemU).DataTable().destroy();
                 }
