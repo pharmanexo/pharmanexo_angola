@@ -1235,10 +1235,6 @@
                 drawCallback: function() {
 
                 }
-            }).ajax.reload({
-                url: $('#data-tableUpgradeDePara' + id).data('url'),
-                type: 'post',
-                dataType: 'json',
             });
 
 
