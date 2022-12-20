@@ -1714,7 +1714,6 @@ class M_cotacaoManual extends MY_Model
                         $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
                         $this->db->where('id_integrador', 2);
                         $old = $this->db->get('produtos_clientes_depara');
-                        var_dump($old); exit;
                         $data = [
                             "id_produto_sintese" => $produtoSint['id_produto'],
                             "cd_produto" => $row['id_sintese'],
