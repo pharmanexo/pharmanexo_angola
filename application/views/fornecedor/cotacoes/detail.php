@@ -234,9 +234,9 @@
                 <div class="modal-body modalUpgradeDePara">
                     <div class="upgradeModal"></div>
                     <div class="col-12 mt-2 text-right">
-                        <a href id="btnCombinarUpgrade" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary btnCombinarUpgrade" data-original-title="Combinar Produtos">
+                        <button type="button" href id="btnCombinarUpgrade" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary btnCombinarUpgrade" data-original-title="Combinar Produtos">
                             <i style="font-size:20px;padding-top: 3px;" class="fas fa-random"></i>
-                        </a>
+                        </button>
                     </div>
 
                     <form>
