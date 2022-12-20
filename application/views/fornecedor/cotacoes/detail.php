@@ -305,7 +305,6 @@
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
 
-                $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
                 if ($('.modalUpgradeDePara table').DataTable())  $('.modalUpgradeDePara table').DataTable().destroy();
