@@ -225,6 +225,48 @@
         </div>
     </div>
 
+    <div class="modal fade" id="upgradeModal" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="historicoModalLabel"></h5>
+                </div>
+                <div class="modal-body modalUpgradeDePara">
+                    <div class="upgradeModal"></div>
+                    <div class="col-12 mt-2 text-right">
+                        <button type="button" href id="btnCombinarUpgrade" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary btnCombinarUpgrade" data-original-title="Combinar Produtos">
+                            <i style="font-size:20px;padding-top: 3px;" class="fas fa-random"></i>
+                        </button>
+                    </div>
+
+                    <form>
+                        <div class="card">
+                            <div class="card-header">
+                            </div>
+                            <div class="card-body">
+                                <div class="table" style="margin-top: -110px;">
+                                    <table id="data-tableUpgradeDePara" class="table w-100 table-hover data-tableUpgradeDePara" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Código</th>
+                                                <th>Produto</th>
+                                                <th>Marca</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </form>''
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php echo $scripts; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
@@ -250,13 +292,34 @@
                 var idElem = $(this).data('idelem');
                 var produto = $(this).data('produto');
                 var cod_prod = $(this).data('codproduto');
-                console.log(cod_prod);
 
                 if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
                     loadDatatables(idElem, produto, cod_prod);
                 }
             });
 
+            $('.btn_upgradeDePara').click(function() {
+                //console.log($(this).parent().parent());
+                var idElemU = $(this).data('idelemu');
+                var produtoU = $(this).data('produtou');
+                var cod_prodU = $(this).data('codprodutou');
+                var idsintese = $(this).data('sintese');
+
+                $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
+                $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
+                $('.upgradeModal').text(produtoU);
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
+                }
+                if ($('.modalUpgradeDePara table').DataTable()) {
+                    $('.modalUpgradeDePara table').DataTable().destroy();
+                    setTimeout(function() {
+                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
+                    }, 0);
+                }
+
+                console.log(idElemU, produtoU, cod_prodU, idsintese);
+            });
 
             $("#btnCount").html($('[data-check]:checked').length);
 
@@ -305,6 +368,20 @@
                 modal.find('.modal-title').text('Nova Observação');
                 // Passa o ID do campo observacao do form para o value do campo oculto do modal
                 modal.find('.modal-obs').val(button.data('produto'));
+            });
+
+            $('#upgradeModal').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget);
+                var upgradeModal = $(this);
+
+
+                var row = button.parent().parent().parent().parent();
+
+                var dropdown = row.find('select');
+            }).on('hidden.bs.modal', function(event) {
+                var upgradeModal = $(this);
+
+                upgradeModal.find('tbody').html('');
             });
 
             $('#historicoModal').on('show.bs.modal', function(event) {
@@ -999,8 +1076,6 @@
 
         function loadDatatables(id, produto, codprod) {
             var url_combinar = $('#data-table' + id).data('url2');
-
-
             var table = $('#data-tableDePara' + id).DataTable({
                 serverSide: false,
                 pageLength: 10,
@@ -1079,6 +1154,117 @@
                                 Swal.fire({
                                     title: 'Produto(s) Combinado(s)',
                                     text: "Deseja atualizar a página ou continuar fazendo outros de/para?",
+                                    icon: 'success',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Atualizar Página',
+                                    cancelButtonText: 'Continuar'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.reload();
+                                    } else {
+                                        table.ajax.reload();
+                                    }
+                                })
+                            }
+                        }, 'JSON')
+                        .fail(function(xhr) {
+                            formWarning(xhr);
+                            table.ajax.reload();
+                        });
+                } else {
+
+                    formWarning({
+                        type: 'warning',
+                        message: "Nenhum registro selecionado!"
+                    });
+                }
+            });
+
+
+        }
+
+        function loadDatatableUpgrade(id, produto, codprod, idsintese) {
+            var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
+            var table = $('#data-tableUpgradeDePara' + id).DataTable({
+                serverSide: false,
+                pageLength: 10,
+                lengthChange: false,
+                "oSearch": {
+                    "sSearch": produto
+                },
+                ajax: {
+                    url: $('#data-tableUpgradeDePara' + id).data('url'),
+                    type: 'post',
+                    dataType: 'json',
+                },
+                columns: [{
+                        defaultContent: '',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        name: 'codigo',
+                        data: 'codigo'
+                    },
+                    {
+                        name: 'apresentacao',
+                        data: 'apresentacao'
+                    },
+                    {
+                        name: 'marca',
+                        data: 'marca'
+                    },
+                ],
+                columnDefs: [{
+                    orderable: false,
+                    className: 'select-checkbox',
+                    targets: 0
+                }, ],
+                select: {
+                    style: 'multiple',
+                    selector: 'td'
+                },
+                order: [
+                    [1, 'asc']
+                ],
+                rowCallback: function(row, data) {
+                    $(row).data('id', data.id_produto).css('cursor', 'pointer');
+                },
+                drawCallback: function() {
+
+                }
+            });
+
+
+            $('#btnCombinarUpgrade' + id).on('click', function(e) {
+                e.preventDefault();
+                var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
+                var dados = [];
+                var table = $('#data-tableUpgradeDePara' + id).DataTable();
+
+                $.map(table.rows('.selected').data(), function(item) {
+                    dados.push({
+                        id_fornecedor: item.id_fornecedor,
+                        cd_produto: item.codigo,
+                        id_sintese: idsintese,
+                        id_cliente: $('#id_cliente').val(),
+                        id_produto_comprado: codprod //produto cotado
+                    });
+                });
+
+                if (dados.length > 0) {
+
+                    $.post(urlPost, {
+                            dados
+                        }, function(xhr) {
+                            formWarning(xhr);
+
+                            if (xhr.type == 'success') {
+                                Swal.fire({
+                                    title: 'Produto(s) Combinado(s)',
+                                    text: "Deseja atualizar a página ou continuar fazendo upgrade de/para?",
                                     icon: 'success',
                                     showCancelButton: true,
                                     confirmButtonColor: '#3085d6',
