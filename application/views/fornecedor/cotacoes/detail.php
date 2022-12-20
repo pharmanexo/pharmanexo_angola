@@ -308,23 +308,10 @@
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
-
-                upgradeTable(idElemU, produtoU, cod_prodU, idsintese);
-
-                if ($('.data-tableUpgradeDePara').DataTable()) {
-                    $('.data-tableUpgradeDePara').DataTable().destroy();
-                } else {
-                    upgradeTable(idElemU, produtoU, cod_prodU, idsintese);
-                }
-                
+                if ($('.data-tableUpgradeDePara').DataTable())  $('.data-tableUpgradeDePara').DataTable().destroy();
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
                 console.log(idElemU, produtoU, cod_prodU, idsintese);
             });
-
-            function upgradeTable(idElemU, produtoU, cod_prodU, idsintese) {
-                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
-                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
-                }
-            }
 
             $("#btnCount").html($('[data-check]:checked').length);
 
