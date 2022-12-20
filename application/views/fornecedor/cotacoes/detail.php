@@ -1232,7 +1232,7 @@
                 drawCallback: function() {
 
                 }
-            });
+            }).draw(true);
 
 
             $('#btnCombinarUpgrade' + id).on('click', function(e) {
