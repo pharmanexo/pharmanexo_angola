@@ -1179,8 +1179,8 @@
         }
 
         function loadDatatableUpgrade(id, produto, codprod, idsintese) {
-            var url_combinar = $('.modalUpgradeDePara table').data('url2');
-            var table = $('.modalUpgradeDePara table').DataTable({
+            var url_combinar = $('#data-tableUpgradeDePara').data('url2');
+            var table = $('#data-tableUpgradeDePara').DataTable({
                 serverSide: false,
                 pageLength: 10,
                 lengthChange: false,
@@ -1188,7 +1188,7 @@
                     "sSearch": produto
                 },
                 ajax: {
-                    url: $('.modalUpgradeDePara table').data('url'),
+                    url: $('#data-tableUpgradeDePara').data('url'),
                     type: 'post',
                     dataType: 'json',
                 },
