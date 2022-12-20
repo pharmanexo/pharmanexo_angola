@@ -305,11 +305,13 @@
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
 
+                $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
 
-                loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
-                
+                if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara') + idElemU) {
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
+                }
                 console.log(idElemU,produtoU,cod_prodU,idsintese);
             });
 
@@ -1183,7 +1185,7 @@
         function loadDatatableUpgrade(id, produto, codprod, idsintese) {
             var url_combinar = $('#data-table' + id).data('url2');
 
-            var table = $('#data-tableUpgradeDePara').DataTable({
+            var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
                 pageLength: 10,
                 lengthChange: false,
@@ -1191,7 +1193,7 @@
                     "sSearch": produto
                 },
                 ajax: {
-                    url: $('#data-tableUpgradeDePara').data('url'),
+                    url: $('#data-tableUpgradeDePara' + id).data('url'),
                     type: 'post',
                     dataType: 'json',
                 },
@@ -1236,9 +1238,9 @@
 
             $('#btnCombinarUpgrade' + id).on('click', function(e) {
                 e.preventDefault();
-                var urlPost = $('#data-tableUpgradeDePara').data('url2');
+                var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
                 var dados = [];
-                var table = $('#data-tableUpgradeDePara').DataTable();
+                var table = $('#data-tableUpgradeDePara' + id).DataTable();
 
                 $.map(table.rows('.selected').data(), function(item) {
                     dados.push({
