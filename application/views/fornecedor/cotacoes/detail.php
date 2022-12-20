@@ -231,7 +231,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="historicoModalLabel"></h5>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body modalUpgradeDePara">
                     <div class="upgradeModal"></div>
                     <div class="col-12 mt-2 text-right">
                         <a href id="btnCombinarUpgrade" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary btnCombinarUpgrade" data-original-title="Combinar Produtos">
@@ -308,15 +308,15 @@
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
+                $('.modalUpgradeDePara').DataTable().destroy();
                 upgradeTable(idElemU, produtoU, cod_prodU, idsintese);
                 console.log(idElemU, produtoU, cod_prodU, idsintese);
             });
 
             function upgradeTable(idElemU, produtoU, cod_prodU, idsintese) {
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
-                    $('#data-tableUpgradeDePara' + idElemU).DataTable().destroy();
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
                 }
-                loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
             }
 
             $("#btnCount").html($('[data-check]:checked').length);
@@ -1187,7 +1187,6 @@
 
         function loadDatatableUpgrade(id, produto, codprod, idsintese) {
             var url_combinar = $('#data-table' + id).data('url2');
-
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
                 pageLength: 10,
@@ -1236,7 +1235,11 @@
                 drawCallback: function() {
 
                 }
-            }).ajax.reload();
+            }).ajax.reload({
+                url: $('#data-tableUpgradeDePara' + id).data('url'),
+                type: 'post',
+                dataType: 'json',
+            });
 
 
             $('#btnCombinarUpgrade' + id).on('click', function(e) {
