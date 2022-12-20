@@ -1076,8 +1076,6 @@
 
         function loadDatatables(id, produto, codprod) {
             var url_combinar = $('#data-table' + id).data('url2');
-
-
             var table = $('#data-tableDePara' + id).DataTable({
                 serverSide: false,
                 pageLength: 10,
@@ -1266,7 +1264,7 @@
                             if (xhr.type == 'success') {
                                 Swal.fire({
                                     title: 'Produto(s) Combinado(s)',
-                                    text: "Deseja atualizar a página ou continuar fazendo outros de/para?",
+                                    text: "Deseja atualizar a página ou continuar fazendo upgrade de/para?",
                                     icon: 'success',
                                     showCancelButton: true,
                                     confirmButtonColor: '#3085d6',
