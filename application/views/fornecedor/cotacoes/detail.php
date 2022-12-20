@@ -313,6 +313,8 @@
                     setTimeout(function() {
                         loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
                     }, 0);
+                } else {
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
                 }
 
                 console.log(idElemU, produtoU, cod_prodU, idsintese);
