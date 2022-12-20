@@ -1713,7 +1713,7 @@ class M_cotacaoManual extends MY_Model
                         $this->db->where('cd_produto', $row['id_sintese']);
                         $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
                         $this->db->where('id_integrador', 2);
-                        $old = $this->db->get('produtos_clientes_depara')->row_array();
+                        $old = $this->db->get('produtos_clientes_depara');
                         var_dump($old); exit;
                         $data = [
                             "id_produto_sintese" => $produtoSint['id_produto'],
@@ -1722,9 +1722,13 @@ class M_cotacaoManual extends MY_Model
                             "id_integrador" => 2,
                             "id_cliente" => $row['id_cliente']
                         ];
-                        if (empty($old)) {
+                        if ($old->num_rows() == 0) {
                             $this->pcd->insert($data);
                         }
+                    } else {
+
+                        $this->db->trans_rollback();
+                        return false;
                     }
                 }
                 break;
