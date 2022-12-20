@@ -308,9 +308,8 @@
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
-
+                $('.data-tableUpgradeDePara').DataTable().destroy();
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
-                    $('.data-tableUpgradeDePara').DataTable().destroy();
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
                 }
                 console.log(idElemU,produtoU,cod_prodU,idsintese);
