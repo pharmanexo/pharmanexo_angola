@@ -308,8 +308,15 @@
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.upgradeModal').text(produtoU);
-                if ($('.data-tableUpgradeDePara').DataTable()) $('.data-tableUpgradeDePara').DataTable().destroy();
+
                 upgradeTable(idElemU, produtoU, cod_prodU, idsintese);
+
+                if ($('.data-tableUpgradeDePara').DataTable()) {
+                    $('.data-tableUpgradeDePara').DataTable().destroy();
+                } else {
+                    upgradeTable(idElemU, produtoU, cod_prodU, idsintese);
+                }
+                
                 console.log(idElemU, produtoU, cod_prodU, idsintese);
             });
 
