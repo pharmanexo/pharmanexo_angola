@@ -1186,7 +1186,6 @@
                 serverSide: false,
                 pageLength: 10,
                 lengthChange: false,
-                retrieve: true,
                 "oSearch": {
                     "sSearch": produto
                 },
@@ -1231,7 +1230,7 @@
                 drawCallback: function() {
 
                 }
-            }).ajax.reload();
+            });
 
 
             $('#btnCombinarUpgrade' + id).on('click', function(e) {
