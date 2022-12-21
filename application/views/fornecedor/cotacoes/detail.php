@@ -249,9 +249,9 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>Código</th>
+                                                <th style="width: 50px;">Código</th>
                                                 <th>Produto</th>
-                                                <th>Marca</th>
+                                                <th style="width: 70px;">Marca</th>
                                             </tr>
                                         </thead>
                                     </table>
