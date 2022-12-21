@@ -298,6 +298,7 @@
                 }
             });
 
+            $('.btn_upgradeDePara').tooltip();
             $('.btn_upgradeDePara').click(function() {
                 //console.log($(this).parent().parent());
                 var idElemU = $(this).data('idelemu');
