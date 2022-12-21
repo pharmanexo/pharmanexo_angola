@@ -473,6 +473,7 @@ class M_usuarios extends MY_Model
 
         $q = $this->db->get();
 
+
         if ($all) {
             return $q->result_array();
         } else {

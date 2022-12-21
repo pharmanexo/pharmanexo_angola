@@ -66,8 +66,7 @@ class Convidados extends CI_Controller
         if ($this->input->method() == 'post') {
             $post = $this->input->post();
 
-            var_dump($post);
-            exit();
+
 
             $folder = APPPATH . "../uploads/arquivos/{$this->session->id_fornecedor}";
             $path = realpath($folder);
@@ -93,26 +92,35 @@ class Convidados extends CI_Controller
                 $file = $data['full_path'];
 
                 $csv = fopen($file, 'r');
+                $lines = [];
+                $insert = [];
 
                 while (($line = fgetcsv($csv, null, $post['separador'])) !== false) {
 
-                    //  $exist = $this->db->where('codigo', $line[0])->where('id_fornecedor', $id_fornecedor)->get('produtos_catalogo')->row_array();
-                    if (strtoupper($line['0']) != 'CODIGO') {
-                        if (empty($exist)) {
-                            $insert[] = [
-                                'codigo' => $line[0],
-                                'lote' => $line[1],
-                                'validade' => dbDateFormat($line[2]),
-                                'estoque' => $line[3],
-                                'id_fornecedor' => $id_fornecedor,
-                            ];
-                        }
-                    }
+                    $lines[] = $line;
+                }
+
+                unset($lines[0]);
+
+                foreach ($lines as $line){
+                    $insert[] = [
+                        'codigo' => $line[0],
+                        'descricao' => $line[1],
+                        'unidade' => $line[2],
+                        'marca' => $line[3],
+                        'quantidade' => $line[4],
+                        'lote' => $line[5],
+                        'validade' => date('Y-m-d', strtotime($line[6])),
+                        'preco' => dbNumberFormat($line[7]),
+                        'data_cadastro' => date('Y-m-d h:i:s', time()),
+                        'situacao' => 0,
+                        'id_fornecedor' => $id_fornecedor,
+                    ];
                 }
 
                 $this->db->trans_start();
 
-                $this->db->insert_batch('produtos_lote', $insert);
+                $this->db->insert_batch('conv_promocoes', $insert);
 
                 if ($this->db->trans_status() === FALSE) {
                     $this->db->trans_rollback();

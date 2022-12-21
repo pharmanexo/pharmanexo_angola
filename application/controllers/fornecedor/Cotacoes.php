@@ -1128,7 +1128,16 @@ class Cotacoes extends MY_Controller
 
             if (isset($post['status'])) {
 
-                $dbcot = (strtoupper($post['integrador']) == 'SINTESE') ? $this->DB_SINTESE : $this->DB_BIONEXO;
+                switch (strtoupper($post['integrador'])) {
+                    case 'SINTESE':
+                        $dbcot = $this->DB_SINTESE;
+                    case 'BIONEXO':
+                        $dbcot = $this->DB_BIONEXO;
+                        break;
+                    case 'APOIO':
+                        $dbcot = $this->DB_APOIO;
+                        break;
+                }
 
                 $dbcot->where('id_fornecedor', $this->session->id_fornecedor);
                 $dbcot->where('cd_cotacao', $cd_cotacao);
