@@ -107,11 +107,35 @@ class Pedidos extends Conv_controller
         $data['scripts'] = $this->tmp_conv->scripts();
 
         $data['formAction'] = "{$this->route}/salvar";
-
+        $data['urlDelete'] = "{$this->route}/delete_item/{$pedido['id']}/";
         $data['pedido'] = $pedido;
 
         $this->load->view("{$this->views}/detalhes", $data);
 
+    }
+
+    public function delete_item($id_pedido, $id_item)
+    {
+        $delete = $this->db
+            ->where('id_pedido', $id_pedido)
+            ->where('id', $id_item)
+            ->delete('conv_pedidos_produtos');
+
+        if ($delete) {
+            $warn = [
+                'type' => 'success',
+                'message' => "Produto removido do pedido"
+            ];
+        } else {
+            $warn = [
+                'type' => 'warning',
+                'message' => "Erro ao remover os registros"
+            ];
+        }
+
+        $_SESSION['warning'] = $warn;
+
+        redirect("{$this->route}/detalhes/{$id_pedido}");
     }
 
     public function salvar()
@@ -169,7 +193,6 @@ class Pedidos extends Conv_controller
                         ]);
 
 
-
                         // atualiza o pedido
                         $update = [
                             'data_envio' => date('Y-m-d H:i:s', time()),
@@ -197,6 +220,7 @@ class Pedidos extends Conv_controller
 
                 }
 
+            } else {
                 $warn = [
                     'type' => 'warning',
                     'message' => "Pedido não localizado ou encerrado."
@@ -304,7 +328,7 @@ class Pedidos extends Conv_controller
                 'Telefones_Ordem_Compra' => $contato['telefone'],
                 'pendente' => 1,
                 'integrador' => 999,
-                'termos' => $pedido['obs']
+                'Ds_Observacao' => $pedido['obs']
             ];
 
             $this->db->insert('ocs_sintese', $oc);
@@ -577,6 +601,16 @@ class Pedidos extends Conv_controller
                 ['db' => 'f.id', 'dt' => 'id_fornecedor'],
                 ['db' => 'f.razao_social', 'dt' => 'razao_social'],
                 ['db' => 'f.nome_fantasia', 'dt' => 'fornecedor'],
+                ['db' => 'cp.id', 'dt' => 'total', 'formatter' => function ($r, $d) {
+                    $total = $this->db
+                        ->select("sum(quantidade * preco_unitario) as total")
+                        ->where('id_pedido', $r)
+                        ->get('conv_pedidos_produtos')
+                        ->row_array();
+
+                    return "R$ " . number_format($total['total'], 2, ',', '.');
+                }],
+
             ],
             [
                 ["fornecedores f", "f.id = cp.id_fornecedor"],

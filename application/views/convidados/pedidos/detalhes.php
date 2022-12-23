@@ -97,7 +97,7 @@
                                 <td><?php echo $produto['quantidade']; ?></td>
                                 <td><?php echo number_format($produto['preco_unitario'], 2, ',', '.'); ?></td>
                                 <td><?php echo number_format(($produto['preco_unitario'] * $produto['quantidade']), 2, ',', '.'); ?></td>
-                                <th><a href="" data-toggle="tooltip" title="Excluir Item" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></th>
+                                <th><a href="<?php echo $urlDelete . $produto['id']; ?>" data-toggle="tooltip" title="Excluir Item" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a></th>
                             </tr>
                         <?php } ?>
                     </table>

@@ -69,7 +69,9 @@ class Promocoes extends Conv_controller
                 ['db' => 'pc.validade', 'dt' => 'validade', 'formatter' => function ($d) {
                     return date("d/m/Y", strtotime($d));
                 }],
-                ['db' => 'pc.preco', 'dt' => 'preco'],
+                ['db' => 'pc.preco', 'dt' => 'preco', 'formatter' => function($d){
+                    return number_format($d, 4, ',', '.');
+                }],
                 ['db' => 'pc.data_cadastro', 'dt' => 'data_cadastro', 'formatter' => function ($d) {
                     return date("d/m/Y", strtotime($d));
                 }],

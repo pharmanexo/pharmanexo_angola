@@ -67,7 +67,6 @@ class Convidados extends CI_Controller
             $post = $this->input->post();
 
 
-
             $folder = APPPATH . "../uploads/arquivos/{$this->session->id_fornecedor}";
             $path = realpath($folder);
 
@@ -102,23 +101,29 @@ class Convidados extends CI_Controller
 
                 unset($lines[0]);
 
-                foreach ($lines as $line){
+                foreach ($lines as $line) {
+
                     $insert[] = [
                         'codigo' => $line[0],
                         'descricao' => $line[1],
-                        'unidade' => $line[2],
-                        'marca' => $line[3],
+                        'marca' => $line[2],
+                        'qtd_embalagem' => (intval($line[3]) > 0) ? intval($line[3]) : 1,
+                        'unidade' => 'UND',
                         'quantidade' => $line[4],
                         'lote' => $line[5],
-                        'validade' => date('Y-m-d', strtotime($line[6])),
-                        'preco' => dbNumberFormat($line[7]),
+                        'validade' => dbDateFormat(trim($line[6])),
+                        'preco' => dbNumberFormat(trim(str_replace('R$', '', $line[7]))),
                         'data_cadastro' => date('Y-m-d h:i:s', time()),
-                        'situacao' => 0,
+                        'situacao' => 1,
                         'id_fornecedor' => $id_fornecedor,
                     ];
+
                 }
 
                 $this->db->trans_start();
+
+                //delete todos registros anteriores
+                $this->db->where('id_fornecedor', $id_fornecedor)->delete('conv_promocoes');
 
                 $this->db->insert_batch('conv_promocoes', $insert);
 
@@ -139,6 +144,11 @@ class Convidados extends CI_Controller
                     ];
                 }
             }
+
+            $_SESSION['warning'] = $warning;
+            redirect("{$this->route}/importarPromocoes");
+
+
         } else {
             $page_title = "Importar Promoções";
 

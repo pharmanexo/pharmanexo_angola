@@ -41,16 +41,10 @@
                     <div class="col-12">
                         <div class="bg-light mr-2" style="width: 15px; height: 15px; border-radius: 20%; display: inline-block"></div>
                         Em aberto
-                        <div class="table-secondary mr-2 ml-2" style="width: 15px; height: 15px; border-radius: 20%; display: inline-block"></div>
-                        Enviado para análise
-                        <div class="table-secondary mr-2 ml-2" style="width: 15px; height: 15px; border-radius: 20%; display: inline-block"></div>
-                        Aguardando Comprador
-                        <div class="table-warning ml-2" style="width: 15px; height: 15px; border-radius: 20%; display: inline-block"></div>
-                        Aprovado parcialmente
                         <div class="table-info mr-2 ml-2" style="width: 15px; height: 15px; border-radius: 20%; display: inline-block"></div>
-                        Aprovado
+                        Enviado para distribuidor
                         <div class="table-success mr-2 ml-2" style="width: 15px; height: 15px; border-radius: 20%; display: inline-block"></div>
-                        Faturado
+                        Aprovado
                         <div class="table-danger ml-2" style="width: 15px; height: 15px; border-radius: 20%; display: inline-block"></div>
                         Cancelado
                     </div>
@@ -64,6 +58,7 @@
                                     <th>ID</th>
                                     <th>Data Abetura</th>
                                     <th>Fornecedor</th>
+                                    <th>Total Pedido</th>
                                     <th>Situação</th>
                                     <th></th>
                                     <th></th>
@@ -95,12 +90,13 @@
                 data: function (data) {
                     let nw_data = data;
 
+
                     if ($('#filter-start-date').val() !== '') {
                         let dt1 = $('#filter-start-date').val().split('/');
                         let dt2 = ($('#filter-end-date').val() !== '') ? $('#filter-end-date').val().split('/') : dt1;
 
-                        nw_data.columns[2].search.value = `${dt1[2]}-${dt1[1]}-${dt1[0]},${dt2[2]}-${dt2[1]}-${dt2[0]}`;
-                        nw_data.columns[2].search.type = 'date';
+                        nw_data.columns[1].search.value = `${dt1[2]}-${dt1[1]}-${dt1[0]},${dt2[2]}-${dt2[1]}-${dt2[0]}`;
+                        nw_data.columns[1].search.type = 'date';
                     }
 
                     console.log(nw_data);
@@ -111,6 +107,7 @@
                 {name: 'cp.id', data: 'id', visible: false},
                 {name: 'cp.data_pedido', data: 'data_pedido'},
                 {name: 'f.nome_fantasia', data: 'fornecedor'},
+                {name: 'cp.id', data: 'total'},
                 {name: 'cp.situacao', data: 'situacao_lbl'},
                 {name: 'cp.situacao', data: 'situacao', orderable: false, searchable: true, visible: false},
                 {defaultContent: '', width: '100px', orderable: false, searchable: false},
@@ -120,26 +117,17 @@
                 $(row).data('id', data.id).css('cursor', 'pointer');
 
                 switch (data.situacao) {
-                    case '1':
+                    case '0':
                         $(row).addClass('table-light');
                         break;
-                    case '2':
-                        $(row).addClass('table-secondary');
-                        break;
-                    case '3':
+                    case '1':
                         $(row).addClass('table-info');
                         break;
-                    case '4':
+                    case '2':
                         $(row).addClass('table-success');
                         break;
-                    case '5':
+                    case '3':
                         $(row).addClass('table-danger');
-                        break;
-                    case '6':
-                        $(row).addClass('table-warning');
-                        break;
-                    case '7':
-                        $(row).addClass('table-ocre');
                         break;
                 }
 

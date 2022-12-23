@@ -79,7 +79,7 @@
             order: [[ 2, 'asc' ]],
             rowCallback: function(row, data) {
                 var btnModal = $(`<a data-toggle="tooltip" title="Incluir no Pedido" data-idprod="${data.id}" class="btn btn-sm btn-info text-white"><i class="fas fa-cart-plus"></i></a>`);
-                $('td:eq(5)', row).html(btnModal);
+                $('td:eq(6)', row).html(btnModal);
 
 
                 btnModal.click(function (e){
