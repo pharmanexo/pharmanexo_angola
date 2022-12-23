@@ -353,7 +353,7 @@
                                 dados
                             }, function(xhr) {
                                 formWarning(xhr);
-
+                                alert('certo');
                                 if (xhr.type == 'success') {
                                     Swal.fire({
                                         text: 'Produto Removido',
@@ -362,9 +362,10 @@
                                 }
                             })
                             .fail(function(xhr) {
-                                formWarning(xhr);
-                                table.ajax.reload();
+                                
+                                alert('falhou');
                             });
+                            alert('post falhou');
                         window.location.reload();
                     } else {
                         table.ajax.reload();
