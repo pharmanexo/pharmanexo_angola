@@ -279,6 +279,7 @@
         var url_restricao = "<?php if (isset($url_restricao)) echo $url_restricao; ?>";
         var form_action = "<?php if (isset($form_action)) echo $form_action; ?>";
         var url_lista = "<?php if (isset($url_lista)) echo $url_lista; ?>";
+        var url_removeDePara = "<?php if (isset($url_removeDePara)) echo $url_removeDePara; ?>";
 
         $(function() {
             <?php //foreach ($cotacao['produtos'] as $k => $produto) : 
@@ -321,6 +322,50 @@
                 }
 
                 console.log(idElemU, produtoU, cod_prodU, idsintese);
+            });
+
+            $('.removerDePara').click(function() {
+
+                var cod_prod = $(this).data('cod');
+                var cliente = $(this).data('cliente');
+                var sintese = $(this).data('sintese');
+                var prod_comprador = $(this).data('codcomprador');
+                var integrador = $(this).data('integrador');
+                var dados = [cod_prod, cliente, sintese, prod_comprador]
+
+                Swal.fire({
+                    title: 'Remover Produto',
+                    text: "Deseja remover esse De/Para da cotação",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Remover',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.post(url_removeDePara, {
+                            dados
+                            }, function(xhr) {
+                                formWarning(xhr);
+
+                                if (xhr.type == 'success') {
+                                    Swal.fire({
+                                        text: 'Produto Removido',
+                                        icon: 'success'
+                                    }
+                                    )
+                                }
+                            }, 'JSON')
+                            .fail(function(xhr) {
+                                formWarning(xhr);
+                                table.ajax.reload();
+                            });
+                        window.location.reload();
+                    } else {
+                        table.ajax.reload();
+                    }
+                });
             });
 
             $("#btnCount").html($('[data-check]:checked').length);
@@ -1125,6 +1170,13 @@
                 },
                 drawCallback: function() {
 
+                }
+            });
+
+            table.rows().every(function() {
+                var data = this.data();
+                if (data.code == "") {
+                    this.remove();
                 }
             });
 

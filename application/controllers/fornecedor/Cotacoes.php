@@ -190,8 +190,9 @@ class Cotacoes extends MY_Controller
         $data['url_revisar'] = "{$this->route}review/";
         $data['url_price'] = "{$this->route}setProduct/";
         $data['url_restricao'] = "{$this->route}deleteRestriction";
-        $data['datatables'] = "{$this->route}datatable_catalogo"; 
+        $data['datatables'] = "{$this->route}datatable_catalogo";
         $data['url_combinar'] = "{$this->route}combinar_produto_marca/{$integrador}";
+        $data['url_removeDePara'] = "{$this->route}removeDePara/{$integrador}";
 
         if ($data['checkFilial']) {
 
@@ -414,6 +415,126 @@ class Cotacoes extends MY_Controller
             $this->db->trans_commit();
 
             $warning = ['type' => 'success', 'message' => 'Oferta salva com sucesso!'];
+        }
+
+        $this->output->set_content_type('application/json')->set_output(json_encode($warning));
+    }
+
+    /**
+     * Deleta o item em De/Para da cotação
+     *
+     * @return json
+     */
+    public function removeDePara($integrador, $post)
+    {
+        $post = $this->input->post();
+
+        switch (strtoupper($integrador)) {
+            case 'SINTESE':
+                foreach ($post['dados'] as $row) {
+
+                    $this->db->where('id_fornecedor', $this->session->id_fornecedor);
+                    $this->db->where('id_produto', $row['sintese']);
+                    $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                    $idSintese = [];
+                    foreach ($marcaSintese as $s) {
+                        $idSintese[]=$s;
+                    }
+                    if ($marcaSintese->num_rows() > 0) {
+                        $this->db->where_in('id_sintese', $idSintese)
+                        ->where('cd_produto', $row['cod_prod'])
+                        ->where('cd_produto', $row['cod_prod'])
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->delete('produtos_fornecedores_sintese');
+                    }
+
+                }
+                break;
+            case 'BIONEXO':
+                foreach ($post['dados'] as $row) {
+
+                    $produtoForn = $this->db
+                        ->where('cd_produto', $row['cd_produto'])
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->limit(1)
+                        ->get('produtos_fornecedores_sintese')
+                        ->row_array();
+
+                    if (!empty($produtoForn)) {
+                        $produtoSint = $this->db
+                            ->where('id_sintese', $produtoForn['id_sintese'])
+                            ->limit(1)
+                            ->get('produtos_marca_sintese')
+                            ->row_array();
+                    }
+
+                    if (!empty($produtoSint)) {
+
+                        $this->db->where('id_cliente', $row['id_cliente']);
+                        $this->db->where('cd_produto', $row['id_sintese']);
+                        $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
+                        $this->db->where('id_integrador', 2);
+                        $old = $this->db->get('produtos_clientes_depara');
+                        $data = [
+                            "id_produto_sintese" => $produtoSint['id_produto'],
+                            "cd_produto" => $row['id_sintese'],
+                            "id_usuario" => $this->session->id_usuario,
+                            "id_integrador" => 2,
+                            "id_cliente" => $row['id_cliente']
+                        ];
+                        if ($old->num_rows() == 0) {
+                            $this->pcd->insert($data);
+                        }
+                    } else {
+
+                        $this->db->trans_rollback();
+                        return false;
+                    }
+                }
+                break;
+            case 'APOIO':
+                foreach ($post['dados'] as $row) {
+
+                    $produtoForn = $this->db
+                        ->where('cd_produto', $row['cd_produto'])
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->limit(1)
+                        ->get('produtos_fornecedores_sintese')
+                        ->row_array();
+
+
+                    if (!empty($produtoForn)) {
+                        $produtoSint = $this->db
+                            ->where('id_sintese', $produtoForn['id_sintese'])
+                            ->limit(1)
+                            ->get('produtos_marca_sintese')
+                            ->row_array();
+                    }
+
+                    if (!empty($produtoSint)) {
+
+                        $this->db->where('id_cliente', $row['id_cliente']);
+                        $this->db->where('cd_produto', $row['id_sintese']);
+                        $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
+                        $this->db->where('id_integrador', 3);
+                        $old = $this->db->get('produtos_clientes_depara');
+                        $data = [
+                            "id_produto_sintese" => $produtoSint['id_produto'],
+                            "cd_produto" => $row['id_sintese'],
+                            "id_usuario" => $this->session->id_usuario,
+                            "id_integrador" => 3,
+                            "id_cliente" => $row['id_cliente']
+                        ];
+                        if ($old->num_rows() == 0) {
+                            $this->pcd->insert($data);
+                        }
+                    } else {
+
+                        $this->db->trans_rollback();
+                        return false;
+                    }
+                }
+                break;
         }
 
         $this->output->set_content_type('application/json')->set_output(json_encode($warning));
@@ -1039,16 +1160,12 @@ class Cotacoes extends MY_Controller
                                 }
 
                                 $output = ["type" => 'warning', 'message' => "Produto sintese não encontrado no nosso banco de dados."];
-
                             } else {
 
                                 $output = ['type' => 'success', 'message' => 'Produto encontrado!', 'link' => "{$this->route}index_depara/{$integrador}/{$id_produto}/{$id_cliente}/{$cdProdutoCliente}"];
-
                             }
-
                         }
                     }
-
                 }
                 break;
             case 'BIONEXO':
@@ -1375,7 +1492,6 @@ class Cotacoes extends MY_Controller
                         return strtoupper("{$row['nome_comercial']} - {$row['descricao']}");
                     }
                     return strtoupper("{$row['nome_comercial']} - {$row['apresentacao']}");
-
                 }],
             ],
             null,
@@ -1511,8 +1627,6 @@ class Cotacoes extends MY_Controller
                     ->where('preco_marca = 0')
                     ->delete('cotacoes_produtos');
             }
-
         }
-
     }
 }

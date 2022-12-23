@@ -60,7 +60,7 @@
                                     <label class="checkbox__label mb-0" data-toggle="tooltip" title=" <?php echo (isset($produto['cotado']['sem_estoque']) && $produto['cotado']['sem_estoque'] == 1) ? 'Sem estoque' : 'Marcar como sem estoque' ?>" for="<?php echo "semestq_{$k}_{$produto['cotado']['id_produto_sintese']}_{$produto['cotado']['cd_produto_comprador']}"; ?>">S.E.</label>
                                 </div>
 
-                                <a style="border: none;background-color:white" id="UpgradeDePara<?php echo $k; ?>" data-idelemu="<?php echo $k; ?>" data-codprodutou="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" data-produtou="<?php echo explode(' ', $produto['cotado']['ds_produto_comprador'])[0]; ?>" data-produton="<?php echo $produto['cotado']['ds_produto_comprador']; ?>" data-sintese="<?php echo $identificacao_produto; ?>" class="btn_upgradeDePara" type="button" data-toggle="modal" data-target="#upgradeModal" title="Upgrade De -> Para">
+                                <a style="border: none;background-color:white;float: right;" id="UpgradeDePara<?php echo $k; ?>" data-idelemu="<?php echo $k; ?>" data-codprodutou="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" data-produtou="<?php echo explode(' ', $produto['cotado']['ds_produto_comprador'])[0]; ?>" data-produton="<?php echo $produto['cotado']['ds_produto_comprador']; ?>" data-sintese="<?php echo $identificacao_produto; ?>" class="btn_upgradeDePara" type="button" data-toggle="modal" data-target="#upgradeModal" title="Upgrade De -> Para">
                                     <i class="fas fa-arrow-circle-up"></i>
                                 </a>
                             </div>
@@ -210,9 +210,6 @@
 
                                             <!-- CAMPO OPTIONS -->
                                             <td class="text-nowrap ml-0">
-                                                <a href="#" data-toggle="tooltip" data-title="Remover produto" title="" class="btn btn-sm btn-danger" data-original-title="Remover este produto">
-                                                    <i class="fas fa-ban"></i>
-                                                </a>
                                                 <div style="display: inline-block;" class="dropdown">
                                                     <a href="#" data-toggle="dropdown" class="dropdown-toggle text-secondary" style="<?php if (isset($produto['cotado']['restricao']) && $produto['cotado']['restricao'] == 1) echo 'pointer-events: none' ?>">
                                                         <i class="fas fa-ellipsis-v" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
@@ -223,6 +220,13 @@
                                                         </a>
                                                         <a class="dropdown-item" data-toggle="modal" data-target="#historicoModal" title="Histórico de ofertas" data-cod="<?php echo $prod['codigo'] ?>" data-cliente="<?php echo $cotacao['cliente']['id']; ?>">
                                                             <i class="fas fa-eye"></i> <small>&nbsp;&nbsp;Histórico</small>
+                                                        </a>
+                                                        <a class="dropdown-item removerDePara" data-toggle="modal" title="Remover De/Para" 
+                                                        data-cod="<?php echo $prod['codigo'] ?>" 
+                                                        data-cliente="<?php echo $cotacao['cliente']['id']; ?>" 
+                                                        data-sintese="<?php echo $identificacao_produto; ?>" 
+                                                        data-codcomprador="<?php echo $produto['cotado']['cd_produto_comprador']; ?>" 
+                                                            <i class="fas fa-times"></i> <small>&nbsp;&nbsp;Remover</small>
                                                         </a>
                                                     </div>
                                                 </div>
