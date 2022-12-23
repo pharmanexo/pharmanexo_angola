@@ -432,7 +432,7 @@ class Cotacoes extends MY_Controller
         switch (strtoupper($integrador)) {
             case 'SINTESE':
                 $this->db->where('id_fornecedor', $this->session->id_fornecedor);
-                $this->db->where('id_produto', $post['sintese']);
+                $this->db->where('id_produto', $post['dados']['sintese']);
                 $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
                 $idSintese = [];
                 foreach ($marcaSintese as $s) {
@@ -440,12 +440,12 @@ class Cotacoes extends MY_Controller
                 }
                 if ($marcaSintese->num_rows() > 0) {
                     $this->db->where_in('id_sintese', $idSintese)
-                        ->where('cd_produto', $post['cod_prod'])
+                        ->where('cd_produto', $post['dados']['cod_prod'])
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->delete('produtos_fornecedores_sintese');
                 }
                 break;
-                
+
             case 'BIONEXO':
                 foreach ($post['dados'] as $row) {
 
