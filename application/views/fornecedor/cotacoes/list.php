@@ -225,7 +225,7 @@
                                                         data-cod="<?php echo $prod['codigo'] ?>" 
                                                         data-cliente="<?php echo $cotacao['cliente']['id']; ?>" 
                                                         data-sintese="<?php echo $identificacao_produto; ?>" 
-                                                        data-codcomprador="<?php echo $produto['cotado']['cd_produto_comprador']; ?>" 
+                                                        data-codcomprador="<?php echo $produto['cotado']['cd_produto_comprador']; ?>">
                                                             <i class="fas fa-times"></i> <small>&nbsp;&nbsp;Remover</small>
                                                         </a>
                                                     </div>
