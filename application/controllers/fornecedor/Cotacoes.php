@@ -428,7 +428,6 @@ class Cotacoes extends MY_Controller
     public function removeDePara($integrador)
     {
         $post = $this->input->post();
-        var_dump($post); exit;
 
         switch (strtoupper($integrador)) {
             case 'SINTESE':
@@ -443,7 +442,6 @@ class Cotacoes extends MY_Controller
                     }
                     if ($marcaSintese->num_rows() > 0) {
                         $this->db->where_in('id_sintese', $idSintese)
-                        ->where('cd_produto', $row['cod_prod'])
                         ->where('cd_produto', $row['cod_prod'])
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->delete('produtos_fornecedores_sintese');
