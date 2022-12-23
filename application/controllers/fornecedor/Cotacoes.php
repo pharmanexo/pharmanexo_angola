@@ -443,7 +443,7 @@ class Cotacoes extends MY_Controller
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->delete('produtos_fornecedores_sintese');
                     if ($deleteDePara) {
-                        $retorno = ['type' => 'success'];
+                        $retorno = ['type' => 'sucesso'];
                     } else {
                         $retorno = ['type' => 'error'];
                     }
