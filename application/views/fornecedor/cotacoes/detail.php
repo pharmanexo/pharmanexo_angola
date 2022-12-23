@@ -307,7 +307,7 @@
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
 
-                $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
+                //$('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
@@ -1240,7 +1240,7 @@
             });
 
 
-            $('#btnCombinarUpgrade' + id).on('click', function(e) {
+            $('#btnCombinarUpgrade').on('click', function(e) {
                 e.preventDefault();
                 var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
                 var dados = [];
