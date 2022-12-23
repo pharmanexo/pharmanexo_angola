@@ -360,7 +360,7 @@
                                         icon: 'success'
                                     })
                                 }
-                            }, 'JSON')
+                            })
                             .fail(function(xhr) {
                                 formWarning(xhr);
                                 table.ajax.reload();
