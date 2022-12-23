@@ -431,7 +431,6 @@ class Cotacoes extends MY_Controller
 
         switch (strtoupper($integrador)) {
             case 'SINTESE':
-                $this->db->where('id_fornecedor', $this->session->id_fornecedor);
                 $this->db->where('id_produto', $post['dados']['sintese']);
                 $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
                 $idSintese = [];
