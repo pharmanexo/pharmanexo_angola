@@ -303,12 +303,13 @@
                 //console.log($(this).parent().parent());
                 var idElemU = $(this).data('idelemu');
                 var produtoU = $(this).data('produtou');
+                var produtoN = $(this).data('produton');
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
 
                 $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
-                $('.upgradeModal').text(produtoU);
+                $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
                 }
