@@ -365,8 +365,6 @@
                                 
                                 alert('falhou');
                             });
-                            alert('post falhou');
-                        window.location.reload();
                     } else {
                         table.ajax.reload();
                     }
