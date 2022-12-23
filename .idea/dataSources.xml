@@ -22,5 +22,12 @@
       <jdbc-url>jdbc:mysql://mysql-pharmanexo-miracle-do-user-12598691-0.b.db.ondigitalocean.com:25060</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="@10.101.70.5" uuid="32134170-40e4-4e75-bc97-0109641ae77b">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://10.101.70.5:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
