@@ -425,10 +425,9 @@ class Cotacoes extends MY_Controller
      *
      * @return json
      */
-    public function removeDePara($integrador, $post)
+    public function removeDePara($integrador)
     {
         $post = $this->input->post();
-        var_dump($post); exit;
 
         switch (strtoupper($integrador)) {
             case 'SINTESE':
