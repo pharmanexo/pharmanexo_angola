@@ -435,7 +435,7 @@ class Cotacoes extends MY_Controller
                 $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
                 $idSintese = [];
                 foreach ($marcaSintese as $s) {
-                    $idSintese[] = $s;
+                    $idSintese[] = $s['id_sintese'];
                 }
                 if (count($idSintese) > 0) {
                     $this->db->where_in('id_sintese', $idSintese)
