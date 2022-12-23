@@ -331,7 +331,12 @@
                 var sintese = $(this).data('sintese');
                 var prod_comprador = $(this).data('codcomprador');
                 var integrador = $(this).data('integrador');
-                var dados = [cod_prod, cliente, sintese, prod_comprador]
+                var dados = {
+                    cod_prod: cod_prod,
+                    cliente: cliente,
+                    sintese: sintese,
+                    prod_comprador: prod_comprador
+                };
 
                 Swal.fire({
                     title: 'Remover Produto',
@@ -345,7 +350,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.post(url_removeDePara, {
-                            dados
+                                dados
                             }, function(xhr) {
                                 formWarning(xhr);
 
@@ -353,8 +358,7 @@
                                     Swal.fire({
                                         text: 'Produto Removido',
                                         icon: 'success'
-                                    }
-                                    )
+                                    })
                                 }
                             }, 'JSON')
                             .fail(function(xhr) {
