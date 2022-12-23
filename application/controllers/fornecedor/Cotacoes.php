@@ -437,7 +437,7 @@ class Cotacoes extends MY_Controller
                 foreach ($marcaSintese as $s) {
                     $idSintese[] = $s;
                 }
-                if ($marcaSintese->num_rows() > 0) {
+                if (count($idSintese) > 0) {
                     $this->db->where_in('id_sintese', $idSintese)
                         ->where('cd_produto', $post['dados']['cod_prod'])
                         ->where('id_fornecedor', $this->session->id_fornecedor)
