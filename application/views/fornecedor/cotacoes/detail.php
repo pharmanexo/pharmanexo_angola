@@ -326,6 +326,8 @@
 
             $('.removerDePara').click(function() {
 
+                var container = $(this).parent().parent().parent();
+                console.log(container);
                 var cod_prod = $(this).data('cod');
                 var cliente = $(this).data('cliente');
                 var sintese = $(this).data('sintese');

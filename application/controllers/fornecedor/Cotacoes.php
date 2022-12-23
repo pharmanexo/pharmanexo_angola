@@ -438,11 +438,18 @@ class Cotacoes extends MY_Controller
                     $idSintese[] = $s['id_sintese'];
                 }
                 if (count($idSintese) > 0) {
-                    $this->db->where_in('id_sintese', $idSintese)
+                    $deleteDePara = $this->db->where_in('id_sintese', $idSintese)
                         ->where('cd_produto', $post['dados']['cod_prod'])
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->delete('produtos_fornecedores_sintese');
+                    if ($deleteDePara) {
+                        $retorno = ['type' => 'success'];
+                    } else {
+                        $retorno = ['type' => 'error'];
+                    }
+                    $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 }
+
                 break;
 
             case 'BIONEXO':
