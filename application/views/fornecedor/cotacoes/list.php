@@ -210,8 +210,10 @@
 
                                             <!-- CAMPO OPTIONS -->
                                             <td class="text-nowrap ml-0">
-                                                <a href="#" data-toggle="tooltip" data-title="Remover produto" title="" class="btn btn-sm btn-danger" data-original-title="Remover este produto"><i class="fas fa-ban"></i></a>
-                                                <div class="dropdown">
+                                                <a href="#" data-toggle="tooltip" data-title="Remover produto" title="" class="btn btn-sm btn-danger" data-original-title="Remover este produto">
+                                                    <i class="fas fa-ban"></i>
+                                                </a>
+                                                <div style="display: inline-block;" class="dropdown">
                                                     <a href="#" data-toggle="dropdown" class="dropdown-toggle text-secondary" style="<?php if (isset($produto['cotado']['restricao']) && $produto['cotado']['restricao'] == 1) echo 'pointer-events: none' ?>">
                                                         <i class="fas fa-ellipsis-v" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                                     </a>
@@ -221,9 +223,6 @@
                                                         </a>
                                                         <a class="dropdown-item" data-toggle="modal" data-target="#historicoModal" title="Histórico de ofertas" data-cod="<?php echo $prod['codigo'] ?>" data-cliente="<?php echo $cotacao['cliente']['id']; ?>">
                                                             <i class="fas fa-eye"></i> <small>&nbsp;&nbsp;Histórico</small>
-                                                        </a>
-                                                        <a class="dropdown-item" data-toggle="modal" data-target="#RemoveModal" title="Remover Produto" data-cod="<?php echo $prod['codigo'] ?>" data-cliente="<?php echo $cotacao['cliente']['id']; ?>">
-                                                            <i class="fas fa-times"></i> <small>&nbsp;&nbsp;Remover</small>
                                                         </a>
                                                     </div>
                                                 </div>
