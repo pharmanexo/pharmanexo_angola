@@ -234,7 +234,7 @@
                 <div class="modal-body modalUpgradeDePara">
                     <div class="upgradeModal"></div>
                     <div class="col-12 mt-2 text-right">
-                        <button type="button" href id="btnCombinarUpgrade" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary btnCombinarUpgrade" data-original-title="Combinar Produtos">
+                        <button type="button" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary btnCombinarUpgrade" data-original-title="Combinar Produtos">
                             <i style="font-size:20px;padding-top: 3px;" class="fas fa-random"></i>
                         </button>
                     </div>
@@ -308,7 +308,6 @@
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
 
-                //$('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
@@ -326,7 +325,7 @@
 
             $('.removerDePara').click(function() {
 
-                var container = $(this).parent().parent().parent().parent().parent().parent();
+                var container = $(this).parent().parent().parent().parent().parent();
                 console.log(container);
                 var cod_prod = $(this).data('cod');
                 var cliente = $(this).data('cliente');
@@ -1297,7 +1296,7 @@
             });
 
 
-            $('#btnCombinarUpgrade').on('click', function(e) {
+            $('.btnCombinarUpgrade').on('click', function(e) {
                 e.preventDefault();
                 var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
                 var dados = [];
