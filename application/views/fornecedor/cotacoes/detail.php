@@ -350,7 +350,7 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.post(url_removeDePara, {
-                                dados: [cod_prod, cliente, sintese,]
+                                dados
                             }, function(xhr) {
                                 formWarning(xhr);
 
