@@ -428,7 +428,7 @@ class Cotacoes extends MY_Controller
     public function removeDePara($integrador)
     {
         $post = $this->input->post();
-        var_dump($integrador); exit;
+        var_dump($post); exit;
 
         switch (strtoupper($integrador)) {
             case 'SINTESE':
