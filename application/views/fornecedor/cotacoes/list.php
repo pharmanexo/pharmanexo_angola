@@ -120,8 +120,8 @@
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][produto_descricao]" value="<?php if (isset($prod['produto_descricao'])) echo $prod['produto_descricao']; ?>">
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][estoque]" value="<?php if (isset($prod['estoque'])) echo $prod['estoque']; ?>">
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][quantidade_unidade]" value="<?php if (isset($prod['quantidade_unidade'])) echo $prod['quantidade_unidade']; ?>">
-                                        <div class="codigoTabela" data-tabela="<?php echo $prod['codigo']; ?>"></div>
-                                        
+                                        <div class="codigoTabela<?php echo $produto['cotado']['cd_produto_comprador'] ?>" data-tabela="<?php echo $prod['codigo']; ?>"></div>
+
                                             <tr class="<?php if (isset($prod['class'])) echo $prod['class']; ?> codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>">
 
                                                 <td colspan="10" class="ml-0">

@@ -307,7 +307,7 @@
                 var produtoN = $(this).data('produton');
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
-                var codigo_tabela = $('.codigoTabela').each(function() {
+                var codigo_tabela = $('.codigoTabela'+cod_prodU).each(function() {
                     var data_tabela = $(this).data('tabela');
                     console.log(data_tabela);
                 });
