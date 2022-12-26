@@ -1281,7 +1281,7 @@
                 createdRow: function(row, data, index) {
                     data_tabela.forEach(function(codigo) {
                         if (data.codigo == codigo) {
-                            $(row).hide();
+                            $(row).remove();
                         }
                     });
                 },
