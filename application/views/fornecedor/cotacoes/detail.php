@@ -1283,11 +1283,12 @@
                 },
                 drawCallback: function() {
                     var table = $('#data-tableUpgradeDePara' + id).DataTable();
+
                     data_tabela.forEach(function(codigo) {
-                        var rows = table.column(1).search(codigo).draw();
+                        var rows = table.column(1).search(codigo);
                         rows.every(function() {
                             row = table.row(this);
-                            row.remove().draw();
+                            row.remove();
                         });
                     });
                 }
