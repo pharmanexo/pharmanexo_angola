@@ -1292,7 +1292,8 @@
                 var rows = table.column(1).search(codigo).draw();
                 // Seleciona as linhas encontradas
                 rows.every(function() {
-                    var row = this;
+                    // Obtém uma instância da classe "DataTable.Api" para a linha atual
+                    var row = table.row(this);
                     // Remove as linhas selecionadas
                     row.remove().draw();
                 });
