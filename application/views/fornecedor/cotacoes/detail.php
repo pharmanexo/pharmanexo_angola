@@ -307,8 +307,10 @@
                 var produtoN = $(this).data('produton');
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
-                var data_tabela = $('.codigoTabela').data('tabela');
-                console.log(data_tabela);
+                var codigo_tabela = $('.codigoTabela').each(function() {
+                    var data_tabela = $(this).data('tabela');
+                    console.log(data_tabela);
+                });
 
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.upgradeModal').text(produtoN);
