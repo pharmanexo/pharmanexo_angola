@@ -1281,17 +1281,16 @@
                 rowCallback: function(row, data) {
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
-                drawCallback: function() {
-                    var table = $('#data-tableUpgradeDePara' + id).DataTable();
-                    removeRows(table, data_tabela);
-                }
+                drawCallback: function() {}
             });
 
-            function removeRows(table, data_tabela) {
-                data_tabela.forEach(function(codigo) {
-                    table.column(1).search(codigo).rows().remove().draw();
-                });
-            }
+            data_tabela.forEach(function(codigo) {
+                table.column(1).search(codigo).rows().remove().draw();
+            });
+
+            setTimeout(function() {
+                table.ajax.reload();
+            }, 500);
 
 
             $('.btnCombinarUpgrade').on('click', function(e) {
