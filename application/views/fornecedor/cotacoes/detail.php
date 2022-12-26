@@ -1286,7 +1286,7 @@
                 }
             });
 
-            function removeRows(tabela, data_tabela) {
+            function removeRows(table, data_tabela) {
                 data_tabela.forEach(function(codigo) {
                     table.column(1).search(codigo).rows().remove().draw();
                 });
