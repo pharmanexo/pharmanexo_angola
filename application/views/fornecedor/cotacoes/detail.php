@@ -1280,10 +1280,13 @@
                 ],
                 rowCallback: function(row, data) {
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
+                    data_tabela.forEach(function(codigo) {
+                        if(data.codigo == codigo) {
+                            row.remove();
+                        }
+                    });
                 },
-                drawCallback: function(row, data) {
-                    console.log(data);
-                }
+                drawCallback: function() {}
             });
             console.log(data_tabela);
             data_tabela.forEach(function(codigo) {
