@@ -1285,11 +1285,9 @@
             });
             console.log(data_tabela);
             data_tabela.forEach(function(codigo) {
-                var rows = table.rows().data();
+                var rows = table.column(1).search(codigo).rows().data();
                 rows.each(function(rowData, index) {
-                    if (rowData.codigo == codigo) {
-                        table.row(index).remove().draw();
-                    }
+                    table.row(index).remove().draw();
                 });
             });
 
