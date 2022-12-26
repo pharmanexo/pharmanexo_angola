@@ -1287,14 +1287,9 @@
             });
 
             data_tabela.forEach(function(codigo) {
-                table.rows().every(function() {
-                    var data = this.data();
-                    if (data.codigo == codigo) {
-                        this.remove().draw();
-                    }
-                });
+                table.column(1).search(codigo).rows().remove().draw();
             });
-
+            table.ajax.reload();
 
             $('.btnCombinarUpgrade').on('click', function(e) {
                 e.preventDefault();
