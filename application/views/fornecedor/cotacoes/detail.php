@@ -1282,20 +1282,17 @@
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
                 drawCallback: function() {
+                    data_tabela.forEach(function(codigo) {
 
+                        var rows = table.column(1).search(codigo).draw();
+                        rows.each(function() {
+                            var row = table.row(this);
+                            row.remove().draw();
+                        });
+
+                    });
                 }
             });
-
-            data_tabela.forEach(function(codigo) {
-
-                var rows = table.column(1).search(codigo).draw();
-                rows.each(function() {
-                    var row = table.row(this);
-                    row.remove().draw();
-                });
-
-            });
-
 
             $('.btnCombinarUpgrade').on('click', function(e) {
                 e.preventDefault();
