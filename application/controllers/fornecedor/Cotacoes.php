@@ -462,7 +462,7 @@ class Cotacoes extends MY_Controller
                     $idSintese[] = $p['id_sintese'];
                 }
                 $this->db->where_in('id_sintese', $idSintese);
-                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $marcaSintese = $this->db->select('id_produto')->get('produtos_marca_sintese')->result_array();
                 $idProduto = [];
                 foreach ($marcaSintese as $s) {
                     $idProduto[] = $s['id_produto'];
@@ -491,7 +491,7 @@ class Cotacoes extends MY_Controller
                     $idSintese[] = $p['id_sintese'];
                 }
                 $this->db->where_in('id_sintese', $idSintese);
-                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $marcaSintese = $this->db->select('id_produto')->get('produtos_marca_sintese')->result_array();
                 $idProduto = [];
                 foreach ($marcaSintese as $s) {
                     $idProduto[] = $s['id_produto'];
