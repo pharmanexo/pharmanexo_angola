@@ -1278,22 +1278,22 @@
                 order: [
                     [1, 'asc']
                 ],
-                createdRow: function(row, data) {
-                    data_tabela.forEach(function(codigo) {
-                        var table = $('#data-tableUpgradeDePara' + id).DataTable();
-                        var rows = table.column(1).search(codigo).rows().data();
-                        rows.each(function(rowData, index) {
-                            if (rowData.codigo == codigo) {
-                                table.row(index).remove();
-                                table.draw();
-                            }
-                        });
-                    });
-                },
                 rowCallback: function(row, data) {
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
                 drawCallback: function() {}
+            });
+
+            data_tabela.forEach(function(codigo) {
+                var table = $('#data-tableUpgradeDePara' + id).DataTable();
+                var rows = table.column(1).search(codigo).rows().data();
+                rows.each(function(rowData, index) {
+                    if (rowData.codigo == codigo) {
+                        console.log(rowData.codigo, codigo);
+                        table.row(index).remove();
+                        table.draw();
+                    }
+                });
             });
 
             $('.btnCombinarUpgrade').on('click', function(e) {
