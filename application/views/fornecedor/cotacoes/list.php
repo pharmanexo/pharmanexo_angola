@@ -120,8 +120,8 @@
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][produto_descricao]" value="<?php if (isset($prod['produto_descricao'])) echo $prod['produto_descricao']; ?>">
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][estoque]" value="<?php if (isset($prod['estoque'])) echo $prod['estoque']; ?>">
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][quantidade_unidade]" value="<?php if (isset($prod['quantidade_unidade'])) echo $prod['quantidade_unidade']; ?>">
-                                        <span class="codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>">
-                                            <tr class="<?php if (isset($prod['class'])) echo $prod['class']; ?>">
+                                        
+                                            <tr class="<?php if (isset($prod['class'])) echo $prod['class']; ?> codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>">
 
                                                 <td colspan="10" class="ml-0">
                                                     <?php if (isset($prod['usuario']['nome'])) echo "<p> Respondido por: {$prod['usuario']['nome']} </p>"; ?>
@@ -163,7 +163,7 @@
                                                 </td>
                                             </tr>
 
-                                            <tr class="<?php if (isset($prod['class'])) echo $prod['class']; ?> " data-qtdsolicitada="<?php echo $produto['cotado']['qt_produto_total'] ?>" id="<?php echo "row_{$k}_{$jj}_{$prod['codigo']}"; ?>">
+                                            <tr class="<?php if (isset($prod['class'])) echo $prod['class']; ?> codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>" data-qtdsolicitada="<?php echo $produto['cotado']['qt_produto_total'] ?>" id="<?php echo "row_{$k}_{$jj}_{$prod['codigo']}"; ?>">
                                                 <td>
                                                     <div class="checkbox">
                                                         <input type="checkbox" id="prod[<?php echo $k; ?>][<?php echo $jj; ?>][<?php echo $prod['codigo']; ?>]" data-check="produto" value="1" data-key="produto-<?php echo $k; ?>" data-integrador="<?php echo $integrador; ?>" data-cd_comprador="<?php echo $produto['cotado']['cd_produto_comprador']; ?>" name="marcas[<?php echo $jj ?>][marcado]" <?php echo (($prod['enviado'] == 1 || $prod['rascunho'] == 1) && $produto['cotado']['restricao'] == 0) ? 'checked' : ''; ?> <?php if (isset($produto['cotado']['restricao']) && $produto['cotado']['restricao'] == 1) echo 'disabled' ?>>
@@ -234,7 +234,7 @@
                                                 <input type="hidden" name="marcas[<?php echo $jj ?>][ocultar]" value="<?php echo $prod['ocultar']; ?>">
                                                 <input type="hidden" name="marcas[<?php echo $jj ?>][id_cotacao]" value="<?php echo $prod['id_cotacao']; ?>">
                                             <?php endif; ?>
-                                        </span>
+                                        
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
