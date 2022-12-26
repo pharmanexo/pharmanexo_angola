@@ -1278,14 +1278,16 @@
                 order: [
                     [1, 'asc']
                 ],
-                rowCallback: function(row, data) {
-                    $(row).data('id', data.id_produto).css('cursor', 'pointer');
+                createdRow: function(row, data){
                     data_tabela.forEach(function(codigo) {
                         console.log(data.codigo, codigo);
                         if(data.codigo == codigo) {
                             $(row).remove().draw();
                         }
                     });
+                },
+                rowCallback: function(row, data) {
+                    $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
                 drawCallback: function() {}
             });
