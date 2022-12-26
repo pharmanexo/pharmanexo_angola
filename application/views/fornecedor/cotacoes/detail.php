@@ -1285,21 +1285,17 @@
 
                 }
             });
-            console.log(data_tabela);
-            // Itera sobre o array "data_tabela"
-            data_tabela.forEach(function(codigo) {
-                // Realiza uma busca pela coluna "Código"
-                var rows = table.column(1).search(codigo).draw();
-                // Seleciona as linhas encontradas
-                rows.every(function() {
-                    row = table.row(this);
-                    // Remove as linhas selecionadas
-                    row.remove().draw();
-                });
-                table.draw();
 
+            table.rows().every(function() {
+                var data = this.data();
+                console.log(data_tabela, data.code);
+                if (data.code == data_tabela) {
+                    this.remove();
+                }
             });
 
+            // Atualiza a tabela
+            table.draw();
 
             $('.btnCombinarUpgrade').on('click', function(e) {
                 e.preventDefault();
