@@ -307,20 +307,21 @@
                 var produtoN = $(this).data('produton');
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
+                var data_tabela = [];
                 var codigo_tabela = $('.codigoTabela'+cod_prodU).each(function() {
-                    var data_tabela = $(this).data('tabela');
+                    data_tabela.push($(this).data('tabela'));
                     console.log(data_tabela);
                 });
 
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
-                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
                 }
                 if ($('.modalUpgradeDePara table').DataTable()) {
                     $('.modalUpgradeDePara table').DataTable().destroy();
                     setTimeout(function() {
-                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
+                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
                     }, 0);
                 }
 
@@ -1182,12 +1183,6 @@
                 }
             });
 
-            table.rows().every(function() {
-                var data = this.data();
-                if (data.code == "") {
-                    this.remove();
-                }
-            });
 
 
             $('#btnCombinar' + id).on('click', function(e) {
@@ -1248,7 +1243,7 @@
 
         }
 
-        function loadDatatableUpgrade(id, produto, codprod, idsintese) {
+        function loadDatatableUpgrade(id, produto, codprod, idsintese, data_tabela) {
             var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
@@ -1297,6 +1292,13 @@
                 },
                 drawCallback: function() {
 
+                }
+            });
+
+            table.rows().every(function() {
+                var data = this.data();
+                if (data.code == data_tabela) {
+                    this.remove();
                 }
             });
 
