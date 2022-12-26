@@ -1282,6 +1282,7 @@
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
                 drawCallback: function() {
+                    var table = $('#data-tableUpgradeDePara' + id).DataTable();
                     removeRows(table, data_tabela);
                 }
             });
