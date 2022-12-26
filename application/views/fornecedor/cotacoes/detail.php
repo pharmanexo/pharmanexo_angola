@@ -1237,7 +1237,7 @@
         function loadDatatableUpgrade(id, produto, codprod, idsintese, data_tabela) {
             var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
-                serverSide: true,
+                serverSide: false,
                 pageLength: 10,
                 lengthChange: false,
                 "oSearch": {
@@ -1281,7 +1281,9 @@
                 rowCallback: function(row, data) {
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
-                drawCallback: function() {}
+                drawCallback: function(row, data) {
+                    console.log(data);
+                }
             });
             console.log(data_tabela);
             data_tabela.forEach(function(codigo) {
