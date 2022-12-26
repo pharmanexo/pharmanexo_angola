@@ -483,24 +483,24 @@ class Cotacoes extends MY_Controller
                 break;
             case 'APOIO':
 
-                $produtoFornecedorSintese = $this->db->where('cd_produto', $post['dados']['cod_prod'])
-                    ->where('id_fornecedor', $this->session->id_fornecedor)
-                    ->get('produtos_fornecedores_sintese')->result_array();
+                $produtoSintese = $this->db->where('cd_produto', $post['dados']['cod_prod'])
+                    ->where('id_cliente', $post['dados']['cliente'])
+                    ->get('produtos_clientes_depara')->result_array();
                 $idSintese = [];
-                foreach ($produtoFornecedorSintese as $p) {
-                    $idSintese[] = $p['id_sintese'];
+                foreach ($produtoSintese as $p) {
+                    $idSintese[] = $p['id_produto_sintese'];
                 }
                 $this->db->where_in('id_sintese', $idSintese);
-                $marcaSintese = $this->db->select('id_produto')->get('produtos_marca_sintese')->result_array();
-                $idProduto = [];
+                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $fornecedorSintese = [];
                 foreach ($marcaSintese as $s) {
-                    $idProduto[] = $s['id_produto'];
+                    $fornecedorSintese[] = $s['id_sintese'];
                 }
-                if (count($idProduto) > 0) {
-                    $deleteDePara = $this->db->where_in('id_produto_sintese', $idProduto)
-                        ->where('id_cliente', $post['dados']['cliente'])
+                if (count($fornecedorSintese) > 0) {
+                    $deleteDePara = $this->db->where_in('id_sintese', $fornecedorSintese)
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->where('cd_produto', $post['dados']['prod_comprador'])
-                        ->delete('produtos_clientes_depara');
+                        ->delete('produtos_fornecedores_sintese');
                     if ($deleteDePara) {
                         $retorno = ['type' => 'success', 'message' => 'Registro removido'];
                     } else {
