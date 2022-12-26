@@ -1279,9 +1279,7 @@
                     [1, 'asc']
                 ],
                 createdRow: function(row, data, index) {
-                    // Check if the row data matches a value in the data_tabela array
                     if (data_tabela.includes(data.codigo)) {
-                        // If it does, hide the row
                         $(row).hide();
                     }
                 },
