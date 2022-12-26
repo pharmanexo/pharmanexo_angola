@@ -476,16 +476,23 @@ class Cotacoes extends MY_Controller
                 break;
             case 'APOIO':
 
-                $this->db->where('id_produto', $post['dados']['sintese']);
-                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $produtoFornecedorSintese = $this->db->where('cd_produto', $post['dados']['cod_prod'])
+                    ->where('id_fornecedor', $this->session->id_fornecedor)
+                    ->get('produtos_fornecedores_sintese')->result_array();
                 $idSintese = [];
+                foreach ($produtoFornecedorSintese as $p) {
+                    $idSintese[] = $p['id_sintese'];
+                }
+                $this->db->where_in('id_sintese', $idSintese);
+                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $idProduto = [];
                 foreach ($marcaSintese as $s) {
-                    $idSintese[] = $s['id_sintese'];
+                    $idProduto[] = $s['id_produto'];
                 }
                 if (count($idSintese) > 0) {
-                    $deleteDePara = $this->db->where_in('id_produto_sintese', $idSintese)
+                    $deleteDePara = $this->db->where_in('id_produto_sintese', $idProduto)
                         ->where('id_cliente', $post['dados']['cliente'])
-                        ->where('cd_produto', $post['dados']['cod_prod'])
+                        ->where('cd_produto', $post['dados']['prod_comprador'])
                         ->delete('produtos_clientes_depara');
                     if ($deleteDePara) {
                         $retorno = ['type' => 'success', 'message' => 'Registro removido'];
