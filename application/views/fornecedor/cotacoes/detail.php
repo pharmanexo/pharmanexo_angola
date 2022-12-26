@@ -1284,11 +1284,14 @@
                 drawCallback: function() {}
             });
 
-            $.when.apply($, data_tabela.map(function(codigo) {
-                return table.column(1).search(codigo).rows().remove().draw();
-            })).done(function() {
-                table.ajax.reload();
+            const promises = data_tabela.map(codigo => new Promise((resolve, reject) => {
+                table.column(1).search(codigo).rows().remove().draw();
+                resolve();
+            }));
+
+            Promise.all(promises).then(() => {
                 alert('t');
+                table.ajax.reload();
             });
 
 
