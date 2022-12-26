@@ -1287,7 +1287,12 @@
             });
 
             data_tabela.forEach(function(codigo) {
-                table.column(1).search(codigo).rows().remove().draw();
+                table.rows().every(function() {
+                    var data = this.data();
+                    if (data.codigo == codigo) {
+                        this.remove().draw();
+                    }
+                });
             });
 
 
