@@ -1288,7 +1288,7 @@
                         table.rows().every(function() {
                             var data = this.data();
                             console.log(data.codigo, codigo);
-                            if (data.codigo == codigo) {
+                            if (data?.codigo == codigo) {
                                 this.remove();
                             }
                         });
