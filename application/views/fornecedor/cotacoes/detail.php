@@ -1285,7 +1285,7 @@
                     var table = $('#data-tableUpgradeDePara' + id).DataTable();
 
                     data_tabela.forEach(function(codigo) {
-                        table.column(1).search(codigo).remove();
+                        table.column(1).search(codigo).row().remove();
                     });
                 }
             });
