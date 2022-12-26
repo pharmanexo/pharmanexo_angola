@@ -324,8 +324,7 @@
                         loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
                     }, 0);
                 }
-
-                console.log(idElemU, produtoU, cod_prodU, idsintese);
+                
             });
 
             $('.removerDePara').click(function() {
@@ -359,14 +358,6 @@
                             }, function(xhr) {
                                 formWarning(xhr);
                                 container.remove();
-
-                                if (xhr.type == 'sucesso') {
-                                    Swal.fire({
-                                        text: 'Produto Removido',
-                                        icon: 'success'
-                                    });
-                                    container.remove();
-                                }
                             })
                             .fail(function(xhr) {
                                 formWarning(xhr);
