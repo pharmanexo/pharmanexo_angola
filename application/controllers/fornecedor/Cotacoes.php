@@ -454,24 +454,24 @@ class Cotacoes extends MY_Controller
 
             case 'BIONEXO':
 
-                $produtoFornecedorSintese = $this->db->where('cd_produto', $post['dados']['cod_prod'])
-                    ->where('id_fornecedor', $this->session->id_fornecedor)
-                    ->get('produtos_fornecedores_sintese')->result_array();
+                $produtoSintese = $this->db->where('cd_produto', $post['dados']['prod_comprador'])
+                    ->where('id_cliente', $post['dados']['cliente'])
+                    ->get('produtos_clientes_depara')->result_array();
                 $idSintese = [];
-                foreach ($produtoFornecedorSintese as $p) {
-                    $idSintese[] = $p['id_sintese'];
+                foreach ($produtoSintese as $p) {
+                    $idSintese[] = $p['id_produto_sintese'];
                 }
-                $this->db->where_in('id_sintese', $idSintese);
-                $marcaSintese = $this->db->select('id_produto')->get('produtos_marca_sintese')->result_array();
-                $idProduto = [];
+                $this->db->where_in('id_produto', $idSintese);
+                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $fornecedorSintese = [];
                 foreach ($marcaSintese as $s) {
-                    $idProduto[] = $s['id_produto'];
+                    $fornecedorSintese[] = $s['id_sintese'];
                 }
-                if (count($idProduto) > 0) {
-                    $deleteDePara = $this->db->where_in('id_produto_sintese', $idProduto)
-                        ->where('id_cliente', $post['dados']['cliente'])
-                        ->where('cd_produto', $post['dados']['prod_comprador'])
-                        ->delete('produtos_clientes_depara');
+                if (count($fornecedorSintese) > 0) {
+                    $deleteDePara = $this->db->where_in('id_sintese', $fornecedorSintese)
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->where('cd_produto', $post['dados']['cod_prod'])
+                        ->delete('produtos_fornecedores_sintese');
                     if ($deleteDePara) {
                         $retorno = ['type' => 'success', 'message' => 'Registro removido'];
                     } else {
@@ -479,7 +479,6 @@ class Cotacoes extends MY_Controller
                     }
                     $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 }
-
                 break;
             case 'APOIO':
 
