@@ -1279,8 +1279,8 @@
                     [1, 'asc']
                 ],
                 createdRow: function(row, data){
+                    console.log(table);
                     data_tabela.forEach(function(codigo) {
-                        console.log(data.codigo, codigo);
                         if(data.codigo == codigo) {
                             $(row).remove();
                         }
