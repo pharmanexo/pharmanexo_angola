@@ -309,8 +309,8 @@
                 var idsintese = $(this).data('sintese');
                 var data_tabela = [];
                 var codigo_tabela = $('.codigoTabela'+cod_prodU).each(function() {
-                    data_tabela.push($(this).data('tabela'));
-                    console.log(data_tabela);
+                    var valor = $(this).data('tabela');
+                    data_tabela.push(valor);
                 });
 
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
@@ -324,7 +324,7 @@
                         loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
                     }, 0);
                 }
-                
+
             });
 
             $('.removerDePara').click(function() {
@@ -1288,6 +1288,7 @@
 
             table.rows().every(function() {
                 var data = this.data();
+                console.log(data_tabela, data.code);
                 if (data.code == data_tabela) {
                     this.remove();
                 }
