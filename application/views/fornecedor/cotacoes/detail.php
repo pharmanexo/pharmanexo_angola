@@ -1278,15 +1278,17 @@
                 order: [
                     [1, 'asc']
                 ],
+                createdRow: function(row, data, index) {
+                    // Check if the row data matches a value in the data_tabela array
+                    if (data_tabela.includes(data.codigo)) {
+                        // If it does, hide the row
+                        $(row).hide();
+                    }
+                },
                 rowCallback: function(row, data) {
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
                 drawCallback: function() {}
-            });
-
-            data_tabela.forEach(function(codigo) {
-                var table = $('#data-tableUpgradeDePara' + id).DataTable();
-                var rows = table.column(1).search(codigo).rows(1).remove().draw();
             });
 
             $('.btnCombinarUpgrade').on('click', function(e) {
