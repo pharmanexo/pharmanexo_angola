@@ -1282,14 +1282,16 @@
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
                 drawCallback: function() {
-
+                    removeRows(tabela, data_tabela);
                 }
             });
 
-            data_tabela.forEach(function(codigo) {
-                table.column(1).search(codigo).rows().remove().draw();
-            });
-            table.ajax.reload();
+            function removeRows(tabela, data_tabela) {
+                data_tabela.forEach(function(codigo) {
+                    table.column(1).search(codigo).rows().remove().draw();
+                });
+            }
+
 
             $('.btnCombinarUpgrade').on('click', function(e) {
                 e.preventDefault();
