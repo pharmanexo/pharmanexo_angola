@@ -1278,10 +1278,10 @@
                 order: [
                     [1, 'asc']
                 ],
-                initComplete: function() {
+                initComplete: function(row, data) {
                     data_tabela.forEach(function(codigo) {
                         if (data.codigo == codigo) {
-                            $(row).hide();
+                            $(row).remove();
                         }
                     });
                 },
