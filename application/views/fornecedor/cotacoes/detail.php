@@ -1282,7 +1282,7 @@
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                     data_tabela.forEach(function(codigo) {
                         if(data.codigo == codigo) {
-                            row.remove();
+                            $(row).remove();
                         }
                     });
                 },
