@@ -1285,7 +1285,7 @@
 
                 }
             });
-
+            console.log(data_tabela);
             table.rows().every(function() {
                 var data = this.data();
                 console.log(data_tabela, data.code);
