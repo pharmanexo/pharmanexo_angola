@@ -1288,14 +1288,6 @@
                 },
                 drawCallback: function() {}
             });
-            console.log(data_tabela);
-            data_tabela.forEach(function(codigo) {
-                var rows = table.column(1).search(codigo).rows().data();
-                rows.each(function(rowData, index) {
-                    table.row(index).remove().draw();
-                });
-            });
-
 
             $('.btnCombinarUpgrade').on('click', function(e) {
                 e.preventDefault();
