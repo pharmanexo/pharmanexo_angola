@@ -1294,9 +1294,10 @@
                 rows.every(function() {
                     row = table.row(this);
                     // Remove as linhas selecionadas
-                    console.log(row);
                     row.remove().draw();
                 });
+                table.draw();
+
             });
 
 
