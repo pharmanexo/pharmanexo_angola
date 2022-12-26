@@ -1284,14 +1284,8 @@
                 drawCallback: function() {}
             });
 
-            const promises = data_tabela.map(codigo => new Promise((resolve, reject) => {
+            data_tabela.forEach(function(codigo) {
                 table.column(1).search(codigo).rows().remove().draw();
-                resolve();
-            }));
-
-            Promise.all(promises).then(() => {
-                alert('t');
-                table.ajax.reload();
             });
 
 
