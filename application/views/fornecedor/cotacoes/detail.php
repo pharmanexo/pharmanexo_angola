@@ -1284,8 +1284,11 @@
                 drawCallback: function() {}
             });
 
-            data_tabela.forEach(function(codigo) {
-                table.column(1).search(codigo).row().remove().draw();
+            $.when.apply($, data_tabela.map(function(codigo) {
+                return table.column(1).search(codigo).rows().remove().draw();
+            })).done(function() {
+                table.ajax.reload();
+                alert('t');
             });
 
 
