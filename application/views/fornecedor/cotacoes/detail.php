@@ -1291,9 +1291,11 @@
                 // Realiza uma busca pela coluna "Código"
                 var rows = table.column(1).search(codigo).draw();
                 // Seleciona as linhas encontradas
-                var row = table.row(rows[0]);
-                // Remove as linhas selecionadas
-                row.remove().draw();
+                rows.every(function() {
+                    var row = this;
+                    // Remove as linhas selecionadas
+                    row.remove().draw();
+                });
             });
 
 
