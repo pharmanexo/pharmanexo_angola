@@ -1279,9 +1279,12 @@
                     [1, 'asc']
                 ],
                 createdRow: function(row, data, index) {
-                    if (data_tabela.includes(data.codigo)) {
-                        $(row).hide();
-                    }
+                    data_tabela.forEach(function(codigo) {
+                        if (data.codigo == codigo) {
+                            console.log(codigo);
+                            $(row).hide();
+                        }
+                    });
                 },
                 rowCallback: function(row, data) {
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
