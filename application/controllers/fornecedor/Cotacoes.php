@@ -467,7 +467,7 @@ class Cotacoes extends MY_Controller
                 foreach ($marcaSintese as $s) {
                     $idProduto[] = $s['id_produto'];
                 }
-                if (count($idSintese) > 0) {
+                if (count($idProduto) > 0) {
                     $deleteDePara = $this->db->where_in('id_produto_sintese', $idProduto)
                         ->where('id_cliente', $post['dados']['cliente'])
                         ->where('cd_produto', $post['dados']['prod_comprador'])
@@ -496,7 +496,7 @@ class Cotacoes extends MY_Controller
                 foreach ($marcaSintese as $s) {
                     $idProduto[] = $s['id_produto'];
                 }
-                if (count($idSintese) > 0) {
+                if (count($idProduto) > 0) {
                     $deleteDePara = $this->db->where_in('id_produto_sintese', $idProduto)
                         ->where('id_cliente', $post['dados']['cliente'])
                         ->where('cd_produto', $post['dados']['prod_comprador'])
