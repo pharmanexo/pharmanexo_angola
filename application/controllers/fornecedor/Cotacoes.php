@@ -431,6 +431,7 @@ class Cotacoes extends MY_Controller
 
         switch (strtoupper($integrador)) {
             case 'SINTESE':
+
                 $this->db->where('id_produto', $post['dados']['sintese']);
                 $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
                 $idSintese = [];
@@ -449,92 +450,49 @@ class Cotacoes extends MY_Controller
                     }
                     $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 }
-
                 break;
 
             case 'BIONEXO':
-                foreach ($post['dados'] as $row) {
 
-                    $produtoForn = $this->db
-                        ->where('cd_produto', $row['cd_produto'])
-                        ->where('id_fornecedor', $this->session->id_fornecedor)
-                        ->limit(1)
-                        ->get('produtos_fornecedores_sintese')
-                        ->row_array();
-
-                    if (!empty($produtoForn)) {
-                        $produtoSint = $this->db
-                            ->where('id_sintese', $produtoForn['id_sintese'])
-                            ->limit(1)
-                            ->get('produtos_marca_sintese')
-                            ->row_array();
-                    }
-
-                    if (!empty($produtoSint)) {
-
-                        $this->db->where('id_cliente', $row['id_cliente']);
-                        $this->db->where('cd_produto', $row['id_sintese']);
-                        $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
-                        $this->db->where('id_integrador', 2);
-                        $old = $this->db->get('produtos_clientes_depara');
-                        $data = [
-                            "id_produto_sintese" => $produtoSint['id_produto'],
-                            "cd_produto" => $row['id_sintese'],
-                            "id_usuario" => $this->session->id_usuario,
-                            "id_integrador" => 2,
-                            "id_cliente" => $row['id_cliente']
-                        ];
-                        if ($old->num_rows() == 0) {
-                            $this->pcd->insert($data);
-                        }
-                    } else {
-
-                        $this->db->trans_rollback();
-                        return false;
-                    }
+                $this->db->where('id_produto', $post['dados']['sintese']);
+                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $idSintese = [];
+                foreach ($marcaSintese as $s) {
+                    $idSintese[] = $s['id_sintese'];
                 }
+                if (count($idSintese) > 0) {
+                    $deleteDePara = $this->pcd->where_in('id_produto_sintese', $idSintese)
+                        ->where('id_cliente', $post['dados']['cliente'])
+                        ->where('cd_produto', $post['dados']['cod_prod'])
+                        ->delete('produtos_clientes_depara');
+                    if ($deleteDePara) {
+                        $retorno = ['type' => 'sucesso'];
+                    } else {
+                        $retorno = ['type' => 'error'];
+                    }
+                    $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
+                }
+
                 break;
             case 'APOIO':
-                foreach ($post['dados'] as $row) {
 
-                    $produtoForn = $this->db
-                        ->where('cd_produto', $row['cd_produto'])
-                        ->where('id_fornecedor', $this->session->id_fornecedor)
-                        ->limit(1)
-                        ->get('produtos_fornecedores_sintese')
-                        ->row_array();
-
-
-                    if (!empty($produtoForn)) {
-                        $produtoSint = $this->db
-                            ->where('id_sintese', $produtoForn['id_sintese'])
-                            ->limit(1)
-                            ->get('produtos_marca_sintese')
-                            ->row_array();
-                    }
-
-                    if (!empty($produtoSint)) {
-
-                        $this->db->where('id_cliente', $row['id_cliente']);
-                        $this->db->where('cd_produto', $row['id_sintese']);
-                        $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
-                        $this->db->where('id_integrador', 3);
-                        $old = $this->db->get('produtos_clientes_depara');
-                        $data = [
-                            "id_produto_sintese" => $produtoSint['id_produto'],
-                            "cd_produto" => $row['id_sintese'],
-                            "id_usuario" => $this->session->id_usuario,
-                            "id_integrador" => 3,
-                            "id_cliente" => $row['id_cliente']
-                        ];
-                        if ($old->num_rows() == 0) {
-                            $this->pcd->insert($data);
-                        }
+                $this->db->where('id_produto', $post['dados']['sintese']);
+                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $idSintese = [];
+                foreach ($marcaSintese as $s) {
+                    $idSintese[] = $s['id_sintese'];
+                }
+                if (count($idSintese) > 0) {
+                    $deleteDePara = $this->pcd->where_in('id_produto_sintese', $idSintese)
+                        ->where('id_cliente', $post['dados']['cliente'])
+                        ->where('cd_produto', $post['dados']['cod_prod'])
+                        ->delete('produtos_clientes_depara');
+                    if ($deleteDePara) {
+                        $retorno = ['type' => 'sucesso'];
                     } else {
-
-                        $this->db->trans_rollback();
-                        return false;
+                        $retorno = ['type' => 'error'];
                     }
+                    $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 }
                 break;
         }
