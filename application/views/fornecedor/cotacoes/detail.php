@@ -354,7 +354,8 @@
                                 dados
                             }, function(xhr) {
                                 formWarning(xhr);
-
+                                container.remove();
+                                
                                 if (xhr.type == 'sucesso') {
                                     Swal.fire({
                                         text: 'Produto Removido',
