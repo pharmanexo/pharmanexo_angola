@@ -1278,12 +1278,16 @@
                 order: [
                     [1, 'asc']
                 ],
-                createdRow: function(row, data){
+                createdRow: function(row, data) {
                     console.log(table);
                     data_tabela.forEach(function(codigo) {
-                        if(data.codigo == codigo) {
-                            $(row).remove();
-                        }
+                        var rows = table.column(1).search(codigo).rows().data();
+                        rows.each(function(rowData, index) {
+                            if (rowData.codigo == codigo) {
+                                table.row(index).remove();
+                                table.draw();
+                            }
+                        });
                     });
                 },
                 rowCallback: function(row, data) {
