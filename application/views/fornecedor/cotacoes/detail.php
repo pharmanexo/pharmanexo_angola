@@ -1283,7 +1283,7 @@
                 },
                 drawCallback: function() {}
             });
-
+            console.log(data_tabela);
             data_tabela.forEach(function(codigo) {
                 table.column(1).search(codigo).rows().remove().draw();
             });
