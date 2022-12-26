@@ -1278,7 +1278,7 @@
                 order: [
                     [1, 'asc']
                 ],
-                createdRow: function(row, data) {
+                createdRow: function(row, data, table) {
                     data_tabela.forEach(function(codigo) {
                         var rows = table.column(1).search(codigo).rows().data();
                         rows.each(function(rowData, index) {
