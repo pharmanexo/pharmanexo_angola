@@ -490,7 +490,7 @@ class Cotacoes extends MY_Controller
                 foreach ($produtoSintese as $p) {
                     $idSintese[] = $p['id_produto_sintese'];
                 }
-                $this->db->where_in('id_sintese', $idSintese);
+                $this->db->where_in('id_produto', $idSintese);
                 $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
                 $fornecedorSintese = [];
                 foreach ($marcaSintese as $s) {
