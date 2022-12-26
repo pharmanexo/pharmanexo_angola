@@ -325,7 +325,7 @@
 
             $('.removerDePara').click(function() {
 
-                var container = $(this).parent().parent().parent().parent();
+                var container = $(this).parent().parent().parent().parent().parent();
                 console.log(container);
                 var cod_prod = $(this).data('cod');
                 var cliente = $(this).data('cliente');
@@ -355,7 +355,7 @@
                             }, function(xhr) {
                                 formWarning(xhr);
                                 container.remove();
-                                
+
                                 if (xhr.type == 'sucesso') {
                                     Swal.fire({
                                         text: 'Produto Removido',
