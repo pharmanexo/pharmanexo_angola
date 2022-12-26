@@ -1286,8 +1286,8 @@
 
                     data_tabela.forEach(function(codigo) {
                         table.rows().every(function() {
-                            console.log(data.codigo, codigo);
                             var data = this.data();
+                            console.log(data.codigo, codigo);
                             if (data.codigo == codigo) {
                                 this.remove();
                             }
