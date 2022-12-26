@@ -1282,7 +1282,7 @@
                     data_tabela.forEach(function(codigo) {
                         console.log(data.codigo, codigo);
                         if(data.codigo == codigo) {
-                            $(row).remove().draw();
+                            $(row).remove();
                         }
                     });
                 },
