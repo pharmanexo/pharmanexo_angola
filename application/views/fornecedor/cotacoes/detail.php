@@ -1282,7 +1282,7 @@
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
                 drawCallback: function() {
-                    removeRows(tabela, data_tabela);
+                    removeRows(table, data_tabela);
                 }
             });
 
