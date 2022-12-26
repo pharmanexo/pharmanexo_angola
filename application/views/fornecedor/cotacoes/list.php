@@ -120,7 +120,7 @@
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][produto_descricao]" value="<?php if (isset($prod['produto_descricao'])) echo $prod['produto_descricao']; ?>">
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][estoque]" value="<?php if (isset($prod['estoque'])) echo $prod['estoque']; ?>">
                                         <input type="hidden" name="marcas[<?php echo $jj ?>][quantidade_unidade]" value="<?php if (isset($prod['quantidade_unidade'])) echo $prod['quantidade_unidade']; ?>">
-                                        <div class="codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>">
+                                        <span class="codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>">
                                             <tr class="<?php if (isset($prod['class'])) echo $prod['class']; ?>">
 
                                                 <td colspan="10" class="ml-0">
@@ -234,7 +234,7 @@
                                                 <input type="hidden" name="marcas[<?php echo $jj ?>][ocultar]" value="<?php echo $prod['ocultar']; ?>">
                                                 <input type="hidden" name="marcas[<?php echo $jj ?>][id_cotacao]" value="<?php echo $prod['id_cotacao']; ?>">
                                             <?php endif; ?>
-                                        </div>
+                                        </span>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
