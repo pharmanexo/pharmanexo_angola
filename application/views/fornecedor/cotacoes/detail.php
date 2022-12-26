@@ -1285,7 +1285,13 @@
                     var table = $('#data-tableUpgradeDePara' + id).DataTable();
 
                     data_tabela.forEach(function(codigo) {
-                        table.column(1).search(codigo).row().remove();
+                        table.rows().every(function() {
+                            console.log(data.codigo, codigo);
+                            var data = this.data();
+                            if (data.codigo == codigo) {
+                                this.remove();
+                            }
+                        });
                     });
                 }
             });
