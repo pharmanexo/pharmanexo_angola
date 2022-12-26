@@ -1286,11 +1286,9 @@
 
             data_tabela.forEach(function(codigo) {
                 table.column(1).search(codigo).rows().remove().draw();
-            });
-
-            setTimeout(function() {
+            }).done(function() {
                 table.ajax.reload();
-            }, 500);
+            });
 
 
             $('.btnCombinarUpgrade').on('click', function(e) {
