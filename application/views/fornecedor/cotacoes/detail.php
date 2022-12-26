@@ -1285,7 +1285,7 @@
 
                 }
             });
-
+            console.log(data_tabela);
             // Itera sobre o array "data_tabela"
             data_tabela.forEach(function(codigo) {
                 // Realiza uma busca pela coluna "Código"
@@ -1294,6 +1294,7 @@
                 rows.every(function() {
                     row = table.row(this);
                     // Remove as linhas selecionadas
+                    console.log(row);
                     row.remove().draw();
                 });
             });
