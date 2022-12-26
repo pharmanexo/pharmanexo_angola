@@ -1278,8 +1278,9 @@
                 order: [
                     [1, 'asc']
                 ],
-                createdRow: function(row, data, table) {
+                createdRow: function(row, data) {
                     data_tabela.forEach(function(codigo) {
+                        var table = $('#data-tableUpgradeDePara' + id).DataTable();
                         var rows = table.column(1).search(codigo).rows().data();
                         rows.each(function(rowData, index) {
                             if (rowData.codigo == codigo) {
