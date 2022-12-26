@@ -1283,10 +1283,18 @@
                 },
                 drawCallback: function() {}
             });
-            console.log(data_tabela);
+
+            let promises = [];
+
             data_tabela.forEach(function(codigo) {
-                table.column(1).search(codigo).rows().remove().draw();
-            }).done(function() {
+                let promise = new Promise(function(resolve, reject) {
+                    table.column(1).search(codigo).rows().remove().draw();
+                    resolve();
+                });
+                promises.push(promise);
+            });
+
+            Promise.all(promises).then(function() {
                 table.ajax.reload();
             });
 
