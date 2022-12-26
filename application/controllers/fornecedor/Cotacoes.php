@@ -483,7 +483,7 @@ class Cotacoes extends MY_Controller
                 break;
             case 'APOIO':
 
-                $produtoSintese = $this->db->where('cd_produto', $post['dados']['cod_prod'])
+                $produtoSintese = $this->db->where('cd_produto', $post['dados']['prod_comprador'])
                     ->where('id_cliente', $post['dados']['cliente'])
                     ->get('produtos_clientes_depara')->result_array();
                 $idSintese = [];
@@ -499,7 +499,7 @@ class Cotacoes extends MY_Controller
                 if (count($fornecedorSintese) > 0) {
                     $deleteDePara = $this->db->where_in('id_sintese', $fornecedorSintese)
                         ->where('id_fornecedor', $this->session->id_fornecedor)
-                        ->where('cd_produto', $post['dados']['prod_comprador'])
+                        ->where('cd_produto', $post['dados']['cod_prod'])
                         ->delete('produtos_fornecedores_sintese');
                     if ($deleteDePara) {
                         $retorno = ['type' => 'success', 'message' => 'Registro removido'];
