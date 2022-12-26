@@ -1286,16 +1286,16 @@
                 }
             });
 
-            table.rows().every(function() {
-                var data = this.data();
-                console.log(data_tabela, data.code);
-                if (data.code == data_tabela) {
-                    this.remove();
-                }
+            data_tabela.forEach(function(codigo) {
+
+                var rows = table.column(1).search(codigo).draw();
+                rows.each(function() {
+                    var row = table.row(this);
+                    row.remove().draw();
+                });
+
             });
 
-            // Atualiza a tabela
-            table.draw();
 
             $('.btnCombinarUpgrade').on('click', function(e) {
                 e.preventDefault();
