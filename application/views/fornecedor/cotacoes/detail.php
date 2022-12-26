@@ -1237,7 +1237,7 @@
         function loadDatatableUpgrade(id, produto, codprod, idsintese, data_tabela) {
             var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
-                serverSide: false,
+                serverSide: true,
                 pageLength: 10,
                 lengthChange: false,
                 "oSearch": {
