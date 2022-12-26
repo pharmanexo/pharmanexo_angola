@@ -1281,8 +1281,9 @@
                 rowCallback: function(row, data) {
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                     data_tabela.forEach(function(codigo) {
+                        console.log(data.codigo, codigo);
                         if(data.codigo == codigo) {
-                            $(row).remove();
+                            $(row).remove().draw();
                         }
                     });
                 },
