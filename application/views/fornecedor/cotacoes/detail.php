@@ -1284,13 +1284,11 @@
                 drawCallback: function() {
                     var table = $('#data-tableUpgradeDePara' + id).DataTable();
                     data_tabela.forEach(function(codigo) {
-
                         var rows = table.column(1).search(codigo).draw();
-                        rows.each(function() {
-                            var row = table.row(this);
+                        rows.every(function() {
+                            row = table.row(this);
                             row.remove().draw();
                         });
-
                     });
                 }
             });
