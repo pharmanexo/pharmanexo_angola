@@ -488,9 +488,9 @@ class Cotacoes extends MY_Controller
                         ->where('cd_produto', $post['dados']['cod_prod'])
                         ->delete('produtos_clientes_depara');
                     if ($deleteDePara) {
-                        $retorno = ['type' => 'sucesso'];
+                        $retorno = ['type' => 'sucesso', 'message' => 'Registro removido'];
                     } else {
-                        $retorno = ['type' => 'error'];
+                        $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
                     }
                     $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 }
