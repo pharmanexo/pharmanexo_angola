@@ -461,7 +461,7 @@ class Cotacoes extends MY_Controller
                     $idSintese[] = $s['id_sintese'];
                 }
                 if (count($idSintese) > 0) {
-                    $deleteDePara = $this->pcd->where_in('id_produto_sintese', $idSintese)
+                    $deleteDePara = $this->db->where_in('id_produto_sintese', $idSintese)
                         ->where('id_cliente', $post['dados']['cliente'])
                         ->where('cd_produto', $post['dados']['cod_prod'])
                         ->delete('produtos_clientes_depara');
@@ -483,7 +483,7 @@ class Cotacoes extends MY_Controller
                     $idSintese[] = $s['id_sintese'];
                 }
                 if (count($idSintese) > 0) {
-                    $deleteDePara = $this->pcd->where_in('id_produto_sintese', $idSintese)
+                    $deleteDePara = $this->db->where_in('id_produto_sintese', $idSintese)
                         ->where('id_cliente', $post['dados']['cliente'])
                         ->where('cd_produto', $post['dados']['cod_prod'])
                         ->delete('produtos_clientes_depara');
