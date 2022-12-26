@@ -308,7 +308,7 @@
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
                 var data_tabela = [];
-                var codigo_tabela = $('.codigoTabela'+cod_prodU).each(function() {
+                var codigo_tabela = $('.codigoTabela' + cod_prodU).each(function() {
                     var valor = $(this).data('tabela');
                     data_tabela.push(valor);
                 });
@@ -329,7 +329,7 @@
 
             $('.removerDePara').click(function() {
 
-                var container = $('.'+$(this).data('classcontainer'));
+                var container = $('.' + $(this).data('classcontainer'));
                 var cod_prod = $(this).data('cod');
                 var cliente = $(this).data('cliente');
                 var sintese = $(this).data('sintese');
@@ -1285,13 +1285,15 @@
 
                 }
             });
-            console.log(data_tabela);
-            table.rows().every(function() {
-                var data = this.data();
-                console.log(data_tabela, data.code);
-                if (data.code == data_tabela) {
-                    this.remove();
-                }
+
+            // Itera sobre o array "data_tabela"
+            data_tabela.forEach(function(codigo) {
+                // Realiza uma busca pela coluna "Código"
+                var rows = table.column(1).search(codigo).draw();
+                // Seleciona as linhas encontradas
+                var row = table.row(rows[0]);
+                // Remove as linhas selecionadas
+                row.remove().draw();
             });
 
 
