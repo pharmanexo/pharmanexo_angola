@@ -317,8 +317,7 @@
                 $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
-                }
-                if ($('.modalUpgradeDePara table').DataTable()) {
+                } else {
                     $('.modalUpgradeDePara table').DataTable().destroy();
                     setTimeout(function() {
                         loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
