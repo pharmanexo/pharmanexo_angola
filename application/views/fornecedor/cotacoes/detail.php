@@ -364,7 +364,7 @@
                     }
                 });
 
-                var checkbox = $(this).parent().parent().parent().find('input[type="checkbox"]');
+                var checkbox = $(this).parent().parent().parent().parent().find('input[type="checkbox"]');
                 console.log(checkbox);
                 if (checkbox.is(':checked')) {
                     Swal.fire({
