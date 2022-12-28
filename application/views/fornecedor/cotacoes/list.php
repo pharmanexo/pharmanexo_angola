@@ -286,8 +286,6 @@
 
                     <form>
                         <div class="card">
-                            <div class="card-header">
-                            </div>
                             <div class="card-body">
                                 <div class="table" style="margin-top: -110px;">
                                     <table id="data-tableDePara<?php echo $k; ?>" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>" data-sintese="<?php echo $identificacao_produto; ?>">

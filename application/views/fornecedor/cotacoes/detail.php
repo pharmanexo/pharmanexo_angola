@@ -243,8 +243,6 @@
 
                     <form>
                         <div class="card">
-                            <div class="card-header">
-                            </div>
                             <div class="card-body">
                                 <div class="table" style="margin-top: -110px;">
                                     <table id="data-tableUpgradeDePara" class="table w-100 table-hover data-tableUpgradeDePara" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>">
