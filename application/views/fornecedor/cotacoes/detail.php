@@ -364,7 +364,7 @@
                     }
                 });
 
-                const checkbox = $(this).closest('.checkboxdepara');
+                var checkbox = $(this).parent().parent().parent().parent();
                 console.log(checkbox);
                 const checked = checkbox.find('input[type="checkbox"]');
                 console.log(checked);
