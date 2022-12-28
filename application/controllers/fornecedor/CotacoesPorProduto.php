@@ -183,6 +183,7 @@ class CotacoesPorProduto extends MY_Controller
                         $cotacoes[$kk]['data'] = $periodo;
                         $cotacoes[$kk]['qtd_solicitada'] = $row['qt_produto_total'];
                         $cotacoes[$kk]['estado'] = $row['estado'];
+                        $cotacoes[$kk]['integrador'] = 'SINTESE';
                     }
                 } else {
 
@@ -245,6 +246,7 @@ class CotacoesPorProduto extends MY_Controller
                 $cotacoes[$kk]['data'] = $periodo;
                 $cotacoes[$kk]['qtd_solicitada'] = $row['qt_produto_total'];
                 $cotacoes[$kk]['estado'] = $row['estado'];
+                $cotacoes[$kk]['integrador'] = $row['BIONEXO'];
             }
         }
 
@@ -297,6 +299,7 @@ class CotacoesPorProduto extends MY_Controller
                 $cotacoes[$kk]['data'] = $periodo;
                 $cotacoes[$kk]['qtd_solicitada'] = $row['qt_produto_total'];
                 $cotacoes[$kk]['estado'] = $row['estado'];
+                $cotacoes[$kk]['integrador'] = 'APOIO';
             }
         }
 
