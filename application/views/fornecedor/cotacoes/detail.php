@@ -365,12 +365,12 @@
                 });
 
                 var checkbox = $(this).parent().parent().parent().parent();
-                console.log(checkbox);
                 const checked = checkbox.find('input[type="checkbox"]');
-                console.log(checked);
                 if (checked.is(':checked')) {
                     Swal.fire({
-                        title: 'Produto selecionado não pode ser removido.'
+                        title: 'Produto selecionado não pode ser removido.',
+                        icon: 'info',
+                        showCloseButton: true,
                     });
                 }
             });
