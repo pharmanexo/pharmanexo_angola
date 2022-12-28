@@ -365,6 +365,7 @@
                 });
 
                 var checkbox = $(this).parent().find('input[type="checkbox"]');
+                console.log(checkbox);
                 if (checkbox.is(':checked')) {
                     Swal.fire({
                         title: 'Produto selecionado não pode ser removido.'
