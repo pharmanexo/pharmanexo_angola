@@ -229,7 +229,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title upgradeModal" id="upgradeModalLabel"></h5>
+                    <h5 style="font-size: 20px;margin-top: 10px;" class="modal-title upgradeModal" id="upgradeModalLabel"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
