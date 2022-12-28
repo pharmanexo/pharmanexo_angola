@@ -282,11 +282,6 @@
         var url_removeDePara = "<?php if (isset($url_removeDePara)) echo $url_removeDePara; ?>";
 
         $(function() {
-            <?php //foreach ($cotacao['produtos'] as $k => $produto) : 
-            ?>
-
-            <?php // endforeach; 
-            ?>
 
             $('.btn_depara').click(function() {
                 //console.log($(this).parent().parent());
@@ -367,11 +362,11 @@
                     }
                 });
 
-                if ($('.checkboxdepara input[type="checkbox"]').filter(':checked').length > 0) {
+                var checkbox = $(this).parent().find('input[type="checkbox"]');
+                if (checkbox.is(':checked')) {
                     Swal.fire({
-                        title: 'Produto selecionado'
+                        title: 'Produto selecionado não pode ser removido.'
                     });
-                    alert('selected');
                 }
             });
 
