@@ -66,9 +66,17 @@ if (isset($scripts))
         }
     }()
 </script>
-<!--<script type='text/javascript' src='https://widget.freshworks.com/widgets/73000002652.js' async defer></script>-->
-<script src="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/pace.min.js' ?>"></script>
+<!--<script type='text/javascript' src='https://widget.freshworks.com/widgets/73000002652.js' async defer></script>
+<script src="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/pace.min.js' ?>"></script>-->
 <script>
+    $(document).ajaxStart(function() {
+        $('#loading').show();
+        console.log('inicio');
+    });
+    $(document).ajaxStop(function() {
+        $('#loading').hide();
+        console.log('fim');
+    });
     $(function() {
 
         <?php if (isset($this->session->id_fornecedor)) : ?>
@@ -135,12 +143,4 @@ if (isset($scripts))
 
     });
 
-
-    $(document).ajaxStart(function() {
-        Pace.restart();
-        $('#loading').show();
-    });
-    $(document).ajaxStop(function() {
-        $('#loading').hide();
-    });
 </script>
