@@ -8,6 +8,9 @@ if (isset($header)) echo $header;
 ?>
 
 <body class="bg-light">
+    <div hidden class="loading" id="loading">
+        <img src="<?php echo IMG_PATH ?>loading.gif" alt="Loading...">
+    </div>
     <div class="supreme-container">
         <div class="container-fluid" id="frameLogin">
             <div class="row" style="height: 100vh">
@@ -73,9 +76,6 @@ if (isset($header)) echo $header;
 
             </div>
         </div>
-    </div>
-    <div hidden id="loading">
-        <img src="<?php echo IMG_PATH ?>loading.gif" alt="Loading...">
     </div>
     <!-- Modal login Integranexo -->
     <div class="modal fade text-center" id="modalIntegranexo" tabindex="-1" role="dialog" aria-labelledby="modalIntegranexo" aria-hidden="true">
@@ -577,12 +577,8 @@ if (isset($header)) echo $header;
                         }, function(result) {
                             if (result.type === 'success') {
                                 if (result.action === 'empresas') {
-                                    Pace.start();
-
                                     window.location = '<?php echo base_url('login/selecionar_empresa'); ?>'
                                 } else {
-
-                                    Pace.start();
                                     window.location = 'dashboard';
                                 }
                             } else {
@@ -617,12 +613,8 @@ if (isset($header)) echo $header;
                         }, function(result) {
                             if (result.type === 'success') {
                                 if (result.action === 'empresas') {
-                                    Pace.start();
-
                                     window.location = '<?php echo base_url('login/selecionar_empresa'); ?>'
                                 } else {
-
-                                    Pace.start();
                                     window.location = 'dashboard';
                                 }
                             } else {
@@ -657,11 +649,8 @@ if (isset($header)) echo $header;
                         }, function(result) {
                             if (result.type === 'success') {
                                 if (result.action === 'empresas') {
-                                    Pace.start();
-
                                     window.location = '<?php echo base_url('login/selecionar_empresa'); ?>'
                                 } else {
-                                    Pace.start();
                                     window.location = 'representantes/dashboard'
 
                                 }

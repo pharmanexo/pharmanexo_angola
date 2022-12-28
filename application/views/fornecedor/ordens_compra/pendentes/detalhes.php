@@ -322,7 +322,6 @@
                     $.each($('button, input', element), function (i, v) {
                         $(v).attr('disabled', true);
                     })
-                    Pace.start();
                 },
                 success: function (xhr) {
 

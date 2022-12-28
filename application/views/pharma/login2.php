@@ -246,11 +246,8 @@ if (isset($header)) echo $header;
                     $.post($('#form').attr('action'), {email: email, senha: senha, token: token}, function (result) {
                         if (result.type === 'success') {
                             if (result.action === 'empresas') {
-                                Pace.start();
-
                                 window.location = '<?php echo base_url('representantes/login/selecionar_empresa'); ?>'
                             } else {
-                                Pace.start();
                                 window.location = '/pharma/dashboard'
 
                             }

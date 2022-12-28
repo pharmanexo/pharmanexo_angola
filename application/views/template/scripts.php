@@ -70,11 +70,11 @@ if (isset($scripts))
 <script src="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/pace.min.js' ?>"></script>-->
 <script>
     $(document).ajaxStart(function() {
-        $('#loading').show();
+        $('body').append('<div style="z-index: 10001;" class="loading" id="loading"><img src="<?php echo IMG_PATH ?>loading.gif" alt="Loading..."></div>');
         console.log('inicio');
     });
     $(document).ajaxStop(function() {
-        $('#loading').hide();
+        $('.loading').hide();
         console.log('fim');
     });
     $(function() {

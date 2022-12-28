@@ -33,6 +33,13 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <style type="text/css">
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
         .alert {
             padding: 20px;
             text-align: center;
@@ -262,7 +269,7 @@
         </script>
     <?php } ?>
     <script>
-      /*  var initDestroyTimeOutPace = function() {
+        /*  var initDestroyTimeOutPace = function() {
             var counter = 0;
             var refreshIntervalId = setInterval(function() {
                 var progress;

@@ -199,8 +199,6 @@
         }, 10000);
 
 
-        Pace.start();
-
         $.get(url_cotacoes, function (xhr) {
             clearInterval(spin);
             $('#loading').remove();
