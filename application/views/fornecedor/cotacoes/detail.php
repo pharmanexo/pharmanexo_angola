@@ -366,6 +366,13 @@
                         table.ajax.reload();
                     }
                 });
+
+                if ($('.checkboxdepara input[type="checkbox"]').filter(':checked').length > 0) {
+                    Swal.fire({
+                        title: 'Produto selecionado'
+                    });
+                    alert('selected');
+                }
             });
 
             $("#btnCount").html($('[data-check]:checked').length);

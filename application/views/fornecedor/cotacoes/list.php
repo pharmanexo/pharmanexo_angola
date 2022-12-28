@@ -166,7 +166,7 @@
 
                                             <tr class="<?php if (isset($prod['class'])) echo $prod['class']; ?> codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>" data-qtdsolicitada="<?php echo $produto['cotado']['qt_produto_total'] ?>" id="<?php echo "row_{$k}_{$jj}_{$prod['codigo']}"; ?>">
                                                 <td>
-                                                    <div class="checkbox">
+                                                    <div class="checkbox checkboxdepara">
                                                         <input type="checkbox" id="prod[<?php echo $k; ?>][<?php echo $jj; ?>][<?php echo $prod['codigo']; ?>]" data-check="produto" value="1" data-key="produto-<?php echo $k; ?>" data-integrador="<?php echo $integrador; ?>" data-cd_comprador="<?php echo $produto['cotado']['cd_produto_comprador']; ?>" name="marcas[<?php echo $jj ?>][marcado]" <?php echo (($prod['enviado'] == 1 || $prod['rascunho'] == 1) && $produto['cotado']['restricao'] == 0) ? 'checked' : ''; ?> <?php if (isset($produto['cotado']['restricao']) && $produto['cotado']['restricao'] == 1) echo 'disabled' ?>>
                                                         <label class="checkbox__label" for="prod[<?php echo $k; ?>][<?php echo $jj; ?>][<?php echo $prod['codigo']; ?>]"><?php echo $prod['codigo']; ?></label>
                                                     </div>
