@@ -138,5 +138,9 @@ if (isset($scripts))
 
     $(document).ajaxStart(function() {
         Pace.restart();
+        $('#loading').show();
+    });
+    $(document).ajaxStop(function() {
+        $('#loading').hide();
     });
 </script>

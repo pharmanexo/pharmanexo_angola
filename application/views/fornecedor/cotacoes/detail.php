@@ -1291,7 +1291,7 @@
                 drawCallback: function() {}
             });
 
-            $('.btnCombinarUpgrade').on('click', function(e) {
+            $('.btnCombinarUpgrade').one('click', function(e) {
                 e.preventDefault();
                 var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
                 var dados = [];

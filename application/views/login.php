@@ -29,7 +29,7 @@ if (isset($header)) echo $header;
                     </div>
                 </div>
                 <div class="col-12 col-lg-6" style="padding-top: 100px">
-                    <div class="alert" id="alertaSessao" style="margin-bottom:-60px;" hidden >
+                    <div class="alert" id="alertaSessao" style="margin-bottom:-60px;" hidden>
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         Sua sessão foi encerrada por inatividade.
                     </div>
@@ -73,6 +73,9 @@ if (isset($header)) echo $header;
 
             </div>
         </div>
+    </div>
+    <div hidden id="loading">
+        <img src="<?php echo IMG_PATH ?>loading.gif" alt="Loading...">
     </div>
     <!-- Modal login Integranexo -->
     <div class="modal fade text-center" id="modalIntegranexo" tabindex="-1" role="dialog" aria-labelledby="modalIntegranexo" aria-hidden="true">
