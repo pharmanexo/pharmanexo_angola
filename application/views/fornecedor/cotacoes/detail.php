@@ -364,9 +364,10 @@
                     }
                 });
 
-                const checkbox = element.closest('.checkboxdepara');
+                const checkbox = $(this).closest('.checkboxdepara');
+                const checked = checkbox.find('input[type="checkbox"]');
                 console.log(checkbox);
-                if (checkbox.is(':checked')) {
+                if (checked.is(':checked')) {
                     Swal.fire({
                         title: 'Produto selecionado não pode ser removido.'
                     });
