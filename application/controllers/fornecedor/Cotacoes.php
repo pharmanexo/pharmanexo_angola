@@ -223,7 +223,7 @@ class Cotacoes extends MY_Controller
                 'id' => 'btnVoltar',
                 // 'url' => $retornar,
                 //'url' => "{$this->route}?uf={$data['cotacao']['uf_cotacao']}",
-                'url' => base_url('/fornecedor/cotacoes/'),
+                'url' => ($this->session->grupo == 2) ? base_url('/dashboard'): base_url('/fornecedor/cotacoes/'),
                 'class' => 'btn-secondary',
                 'icone' => 'fa-arrow-left',
                 'label' => 'Retornar'
