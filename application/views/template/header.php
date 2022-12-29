@@ -152,9 +152,7 @@
 
         .logo img {
             position: relative;
-            padding-left: 60px;
-            width: 100%;
-            height: 100%;
+            right: -20px;
             -o-object-fit: cover;
             object-fit: cover;
             -o-object-position: bottom right;
