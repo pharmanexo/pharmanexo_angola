@@ -1230,7 +1230,7 @@ class Cotacoes extends MY_Controller
                 $dbcot->where('id_fornecedor', $this->session->id_fornecedor);
                 $dbcot->where('cd_cotacao', $cd_cotacao);
                 $updt = $dbcot->update('cotacoes', ['revisao' => $post['status']]);
-                var_dump($this->session->id_fornecedor, $cd_cotacao) ; exit;
+
                 if ($updt) {
 
                     $warning = ['type' => 'success', 'message' => notify_update];
