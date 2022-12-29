@@ -1219,6 +1219,7 @@ class Cotacoes extends MY_Controller
                 switch (strtoupper($post['integrador'])) {
                     case 'SINTESE':
                         $dbcot = $this->DB_SINTESE;
+                        break;
                     case 'BIONEXO':
                         $dbcot = $this->DB_BIONEXO;
                         break;
