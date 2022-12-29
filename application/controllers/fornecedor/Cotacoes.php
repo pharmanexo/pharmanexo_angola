@@ -1232,7 +1232,7 @@ class Cotacoes extends MY_Controller
                 $updt = $dbcot->update('cotacoes', ['revisao' => $post['status']]);
 
                 if ($updt) {
-                    var_dump($dbcot);
+                    var_dump($updt = $dbcot->update('cotacoes', ['revisao' => $post['status']]));
                     $warning = ['type' => 'success', 'message' => notify_update];
                 } else {
 
