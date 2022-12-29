@@ -1226,11 +1226,10 @@ class Cotacoes extends MY_Controller
                         $dbcot = $this->DB_APOIO;
                         break;
                 }
-
+                var_dump($dbcot); exit;
                 $dbcot->where('id_fornecedor', $this->session->id_fornecedor);
                 $dbcot->where('cd_cotacao', $cd_cotacao);
                 $updt = $dbcot->update('cotacoes', ['revisao' => $post['status']]);
-                var_dump($updt); exit;
                 if ($updt) {
                     
                     $warning = ['type' => 'success', 'message' => notify_update];
