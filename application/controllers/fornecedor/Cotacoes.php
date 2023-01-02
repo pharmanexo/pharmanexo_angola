@@ -223,7 +223,7 @@ class Cotacoes extends MY_Controller
                 'id' => 'btnVoltar',
                 // 'url' => $retornar,
                 //'url' => "{$this->route}?uf={$data['cotacao']['uf_cotacao']}",
-                'url' => ($this->session->grupo == 2) ? base_url('/dashboard'): base_url('/fornecedor/cotacoes/'),
+                'url' => ($this->session->grupo == 2) ? base_url('/dashboard') : base_url('/fornecedor/cotacoes/'),
                 'class' => 'btn-secondary',
                 'icone' => 'fa-arrow-left',
                 'label' => 'Retornar'
@@ -444,7 +444,7 @@ class Cotacoes extends MY_Controller
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->delete('produtos_fornecedores_sintese');
                     if ($deleteDePara) {
-                        $retorno = ['type' => 'sucesso', 'message' => 'Produto removido'];
+                        $retorno = ['type' => 'success', 'message' => 'Produto removido'];
                     } else {
                         $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
                     }
@@ -473,7 +473,7 @@ class Cotacoes extends MY_Controller
                         ->where('cd_produto', $post['dados']['cod_prod'])
                         ->delete('produtos_fornecedores_sintese');
                     if ($deleteDePara) {
-                        $retorno = ['type' => 'success', 'message' => 'Registro removido'];
+                        $retorno = ['type' => 'success', 'message' => 'Produto removido'];
                     } else {
                         $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
                     }
@@ -501,7 +501,7 @@ class Cotacoes extends MY_Controller
                         ->where('cd_produto', $post['dados']['cod_prod'])
                         ->delete('produtos_fornecedores_sintese');
                     if ($deleteDePara) {
-                        $retorno = ['type' => 'success', 'message' => 'Registro removido'];
+                        $retorno = ['type' => 'success', 'message' => 'Produto removido'];
                     } else {
                         $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
                     }
@@ -1231,7 +1231,7 @@ class Cotacoes extends MY_Controller
                 $dbcot->where('cd_cotacao', $cd_cotacao);
                 $updt = $dbcot->update('cotacoes', ['revisao' => $post['status']]);
                 if ($updt) {
-                    
+
                     $warning = ['type' => 'success', 'message' => notify_update];
                 } else {
 
