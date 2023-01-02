@@ -444,9 +444,9 @@ class Cotacoes extends MY_Controller
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->delete('produtos_fornecedores_sintese');
                     if ($deleteDePara) {
-                        $retorno = ['type' => 'sucesso'];
+                        $retorno = ['type' => 'sucesso', 'message' => 'Produto removido'];
                     } else {
-                        $retorno = ['type' => 'error'];
+                        $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
                     }
                     $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 }
