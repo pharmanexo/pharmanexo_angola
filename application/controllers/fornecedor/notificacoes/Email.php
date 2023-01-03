@@ -17,8 +17,8 @@ class Email extends CI_Controller
 
         $this->load->model('m_compradores', 'comprador');
 
-        $this->oncoprod = explode(',', ONCOPROD); 
-        $this->oncoexo = explode(',', ONCOEXO); 
+        $this->oncoprod = explode(',', ONCOPROD);
+        $this->oncoexo = explode(',', ONCOEXO);
     }
 
     public function index()
@@ -57,7 +57,7 @@ class Email extends CI_Controller
                     'id' => 'btnExport',
                     'url' => "{$this->route}/export",
                     'class' => 'btn-primary',
-                    'icone' => 'fa-file-excel', 
+                    'icone' => 'fa-file-excel',
                     'label' => 'Exportar Excel'
                 ],
                 [
@@ -87,19 +87,19 @@ class Email extends CI_Controller
                 ->get('email_notificacao')
                 ->row_array();
 
-            if ( isset($existente) && !empty($existente) ) {
-               
-               $output = ['type' => 'warning', 'message' => 'Este comprador já possui e-mails cadastrados no sistema!'];
+            if (isset($existente) && !empty($existente)) {
 
+                $output = ['type' => 'warning', 'message' => 'Este comprador já possui e-mails cadastrados no sistema!'];
             } else {
 
                 $data = [];
 
-                if ( in_array($this->session->id_fornecedor, $this->oncoprod) ) {
-                    
+                if (in_array($this->session->id_fornecedor, $this->oncoprod)) {
+
                     foreach ($this->oncoprod as $id_fornecedor) {
 
                         $data[] = [
+                            'celular' => $post['celular'],
                             'gerente' => $post['gerente'],
                             'consultor' => $post['consultor'],
                             'geral' => $post['geral'],
@@ -110,11 +110,12 @@ class Email extends CI_Controller
                     }
 
                     $this->db->insert_batch('email_notificacao', $data);
-                } elseif ( in_array($this->session->id_fornecedor, $this->oncoexo) ) {
+                } elseif (in_array($this->session->id_fornecedor, $this->oncoexo)) {
 
                     foreach ($this->oncoexo as $id_fornecedor) {
                         $data[] = [
-                                'gerente' => $post['gerente'],
+                            'celular' => $post['celular'],
+                            'gerente' => $post['gerente'],
                             'consultor' => $post['consultor'],
                             'geral' => $post['geral'],
                             'grupo' => $post['grupo'],
@@ -127,6 +128,7 @@ class Email extends CI_Controller
                 } else {
 
                     $data = [
+                        'celular' => $post['celular'],
                         'gerente' => $post['gerente'],
                         'consultor' => $post['consultor'],
                         'geral' => $post['geral'],
@@ -157,21 +159,22 @@ class Email extends CI_Controller
                 ->get('email_notificacao')
                 ->row_array();
 
-            if ( isset($existente) && !empty($existente) ) {
+            if (isset($existente) && !empty($existente)) {
 
                 $update = [
+                    'celular' => $post['celular'],
                     'gerente' => $post['gerente'],
                     'consultor' => $post['consultor'],
                     'geral' => $post['geral'],
                     'grupo' => $post['grupo']
                 ];
 
-                if ( in_array($this->session->id_fornecedor, $this->oncoprod) ) {
+                if (in_array($this->session->id_fornecedor, $this->oncoprod)) {
 
                     $this->db->where_in('id_fornecedor', $this->oncoprod);
                     $this->db->where('id_cliente', $post['id_cliente']);
                     $this->db->update('email_notificacao', $update);
-                } elseif ( in_array($this->session->id_fornecedor, $this->oncoexo) ) {
+                } elseif (in_array($this->session->id_fornecedor, $this->oncoexo)) {
 
                     $this->db->where_in('id_fornecedor', $this->oncoexo);
                     $this->db->where('id_cliente', $post['id_cliente']);
@@ -182,10 +185,10 @@ class Email extends CI_Controller
                     $this->db->update('email_notificacao', $update);
                 }
 
-                $output = ['type' => 'success', 'message' => notify_update ];
+                $output = ['type' => 'success', 'message' => notify_update];
             } else {
- 
-               $output = ['type' => 'warning', 'message' => 'Este comprador já possui e-mails cadastrados no sistema!'];
+
+                $output = ['type' => 'warning', 'message' => 'Este comprador já possui e-mails cadastrados no sistema!'];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
@@ -203,12 +206,12 @@ class Email extends CI_Controller
 
                 $email = $this->db->where('id', $item)->get('email_notificacao')->row_array();
 
-                if ( in_array($this->session->id_fornecedor, $this->oncoprod) ) {
+                if (in_array($this->session->id_fornecedor, $this->oncoprod)) {
 
                     $this->db->where_in('id_fornecedor', $this->oncoprod);
                     $this->db->where('id_cliente', $email['id_cliente']);
                     $this->db->delete('email_notificacao');
-                } elseif ( in_array($this->session->id_fornecedor, $this->oncoexo) ) {
+                } elseif (in_array($this->session->id_fornecedor, $this->oncoexo)) {
 
                     $this->db->where_in('id_fornecedor', $this->oncoexo);
                     $this->db->where('id_cliente', $email['id_cliente']);
@@ -224,8 +227,7 @@ class Email extends CI_Controller
                 $this->db->trans_rollback();
 
                 $output = ['type'    => 'warning', 'message' => 'Erro ao excluir'];
-            }
-            else {
+            } else {
                 $this->db->trans_commit();
 
                 $output = ['type'    => 'success', 'message' => 'Excluidos com sucesso'];
@@ -243,23 +245,23 @@ class Email extends CI_Controller
             [
                 ['db' => 'email_notificacao.id', 'dt' => 'id'],
                 ['db' => 'c.cnpj', 'dt' => 'cnpj'],
-                ['db' => 'c.razao_social', 'dt' => 'razao_social', 'formatter' => function($value, $row) {
+                ['db' => 'c.razao_social', 'dt' => 'razao_social', 'formatter' => function ($value, $row) {
 
                     return "{$row['cnpj']} - {$value}";
                 }],
-                ['db' => 'email_notificacao.celular', 'dt' => 'celular', 'formatter' => function($value, $row) {
+                ['db' => 'email_notificacao.celular', 'dt' => 'celular', 'formatter' => function ($value, $row) {
                     return "<small>{$value}</small>";
                 }],
-                ['db' => 'email_notificacao.gerente', 'dt' => 'gerente', 'formatter' => function($value, $row) {
+                ['db' => 'email_notificacao.gerente', 'dt' => 'gerente', 'formatter' => function ($value, $row) {
                     return "<small>{$value}</small>";
                 }],
-                ['db' => 'email_notificacao.consultor', 'dt' => 'consultor', 'formatter' => function($value, $row) {
+                ['db' => 'email_notificacao.consultor', 'dt' => 'consultor', 'formatter' => function ($value, $row) {
                     return "<small>{$value}</small>";
                 }],
-                ['db' => 'email_notificacao.geral', 'dt' => 'geral', 'formatter' => function($value, $row) {
+                ['db' => 'email_notificacao.geral', 'dt' => 'geral', 'formatter' => function ($value, $row) {
                     return "<small>{$value}</small>";
                 }],
-                ['db' => 'email_notificacao.grupo', 'dt' => 'grupo', 'formatter' => function($value, $row) {
+                ['db' => 'email_notificacao.grupo', 'dt' => 'grupo', 'formatter' => function ($value, $row) {
                     return "<small>{$value}</small>";
                 }],
             ],
@@ -275,7 +277,7 @@ class Email extends CI_Controller
 
     public function openModal($id = null)
     {
-        if ( isset($id) ) {
+        if (isset($id)) {
 
             $title = "Atualizar configuração de e-mail";
             $form_action = "{$this->route}/update";
@@ -284,18 +286,18 @@ class Email extends CI_Controller
 
             $title = "Nova configuração de e-mail";
             $form_action = "{$this->route}/save";
-        }   
+        }
 
         $data['title'] = $title;
         $data['form_action'] =  $form_action;
         $data['compradores'] = $this->comprador->find("id, CONCAT(cnpj, ' - ', razao_social) as comprador");
-        
+
         $this->load->view("{$this->views}/modal", $data);
     }
 
     public function export()
     {
-        $this->db->select("CONCAT(c.cnpj, ' - ', c.razao_social) AS comprador, en.gerente, en.consultor, en.geral");
+        $this->db->select("CONCAT(c.cnpj, ' - ', c.razao_social) AS comprador, en.celular, en.gerente, en.consultor, en.geral");
         $this->db->from("email_notificacao en");
         $this->db->join('compradores c', 'c.id = en.id_cliente');
         $this->db->where("en.id_fornecedor = {$this->session->id_fornecedor}");
@@ -303,7 +305,7 @@ class Email extends CI_Controller
 
         $query = $this->db->get()->result_array();
 
-        if ( count($query) < 1 ) {
+        if (count($query) < 1) {
             $query[] = [
                 'estado' => '',
                 'fornecedor' => '',
@@ -311,12 +313,12 @@ class Email extends CI_Controller
                 'desconto' => ''
             ];
         }
-        
+
         $dados_page = ['dados' => $query, 'titulo' => 'email_notificacao'];
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
 
-        if ( $exportar['status'] == false ) {
+        if ($exportar['status'] == false) {
 
             $warning = ['type' => 'warning', 'message' => $exportar['message']];
         } else {
