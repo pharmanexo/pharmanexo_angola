@@ -247,6 +247,9 @@ class Email extends CI_Controller
 
                     return "{$row['cnpj']} - {$value}";
                 }],
+                ['db' => 'email_notificacao.celular', 'dt' => 'celular', 'formatter' => function($value, $row) {
+                    return "<small>{$value}</small>";
+                }],
                 ['db' => 'email_notificacao.gerente', 'dt' => 'gerente', 'formatter' => function($value, $row) {
                     return "<small>{$value}</small>";
                 }],
