@@ -743,10 +743,11 @@ class Produtos extends MY_Controller
 
         if ( count($query) < 1 ) {
             $query[] = [
+                'ativo' => '',
                 'codigo' => '',
                 'descricao' => '',
                 'marca' => '',
-                'ativo' => '',
+                'bloqueado' => '',
             ];
         }
 
