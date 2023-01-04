@@ -95,10 +95,9 @@ class Produtos extends MY_Controller
             $this->db->where('codigo', $codigo);
             $this->db->where('id_fornecedor', $this->session->id_fornecedor);
 
-            if ( $this->db->update('produtos_catalogo', $update) ) {
+            if ($this->db->update('produtos_catalogo', $update)) {
 
                 $warning = ['type' => 'success', 'message' => 'Produto atualizado com sucesso!'];
-
             } else {
 
                 $warning = ['type' => 'warning', 'message' => 'Erro ao atualizar produto!'];
@@ -122,7 +121,7 @@ class Produtos extends MY_Controller
             $ativo = ($ativar == 1) ? 1 : 0;
             $message = ($ativar == 1) ? 'ativado' : 'inativado';
 
-            if ( in_array($this->session->id_fornecedor, $this->oncoprod) ) {
+            if (in_array($this->session->id_fornecedor, $this->oncoprod)) {
 
                 $fornecedores = implode(',', $this->oncoprod);
 
@@ -191,7 +190,7 @@ class Produtos extends MY_Controller
 
         $fornecedor = $this->fornecedor->findByID($this->session->id_fornecedor);
 
-        if ( $fornecedor['permitir_cadastro_prod'] == 1 ) {
+        if ($fornecedor['permitir_cadastro_prod'] == 1) {
 
             $buttons = [
                 [
@@ -269,7 +268,7 @@ class Produtos extends MY_Controller
         }
 
 
-        $data['header'] = $this->template->header(['title' => $page_title ]);
+        $data['header'] = $this->template->header(['title' => $page_title]);
         $data['navbar'] = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
         $data['heading'] = $this->template->heading([
@@ -319,12 +318,13 @@ class Produtos extends MY_Controller
                 [
                     'db' => 'apresentacao',
                     'dt' => 'produto_descricao', "formatter" => function ($d, $r) {
-                    if ( empty($r['descricao']) ) {
-                        return $r['nome_comercial'] . " - " . $d;
-                    } else {
-                        return $r['nome_comercial'] . " - " . $r['descricao'];
+                        if (empty($r['descricao'])) {
+                            return $r['nome_comercial'] . " - " . $d;
+                        } else {
+                            return $r['nome_comercial'] . " - " . $r['descricao'];
+                        }
                     }
-                }],
+                ],
             ],
             null,
             "id_fornecedor = {$this->session->userdata('id_fornecedor')}",
@@ -468,17 +468,16 @@ class Produtos extends MY_Controller
             $this->db->where('id_fornecedor', $this->session->id_fornecedor);
             $this->db->where('codigo', $data['codigo']);
 
-            if ( $this->db->get('produtos_catalogo')->num_rows() > 0 ) {
+            if ($this->db->get('produtos_catalogo')->num_rows() > 0) {
 
-                $output = [ 'type' => 'warning', 'message' => 'Este produto já existe no catálogo!' ];
+                $output = ['type' => 'warning', 'message' => 'Este produto já existe no catálogo!'];
             } else {
 
-                if ( $this->db->insert('produtos_catalogo', $data) ) {
+                if ($this->db->insert('produtos_catalogo', $data)) {
 
-                    $output = [ 'type' => 'success', 'codigo' => $post['codigo'] ];
-                }
-                else {
-                    $output = [ 'type' => 'warning', 'message' => "Erro ao cadastrar o produto!" ];
+                    $output = ['type' => 'success', 'codigo' => $post['codigo']];
+                } else {
+                    $output = ['type' => 'warning', 'message' => "Erro ao cadastrar o produto!"];
                 }
             }
 
@@ -499,16 +498,16 @@ class Produtos extends MY_Controller
 
             if (!isset($post['codigo_produto']) || empty($post['codigo_produto'])) {
 
-                $output = [ 'type' => 'warning', 'message' => "Erro ao cadastrar o produto!" ];
+                $output = ['type' => 'warning', 'message' => "Erro ao cadastrar o produto!"];
             } else {
 
                 $precos = [];
                 $lotes = [];
 
                 // // Armazena os preços
-                for ($i=0; $i < count($post['id_estado']); $i++) {
+                for ($i = 0; $i < count($post['id_estado']); $i++) {
 
-                    if ( $post['id_estado'][$i] == 30 ) {
+                    if ($post['id_estado'][$i] == 30) {
 
                         $precos[] = [
                             'codigo' => $post['codigo_produto'],
@@ -516,7 +515,7 @@ class Produtos extends MY_Controller
                             'id_estado' => null,
                             'preco_unitario' => dbNumberFormat($post['preco'][$i]),
                         ];
-                    } elseif ( $post['id_estado'][$i] != 0 ) {
+                    } elseif ($post['id_estado'][$i] != 0) {
 
                         $precos[] = [
                             'codigo' => $post['codigo_produto'],
@@ -528,9 +527,9 @@ class Produtos extends MY_Controller
                 }
 
                 // // Armazena os lotes
-                for ($i=0; $i < count($post['lote']); $i++) {
+                for ($i = 0; $i < count($post['lote']); $i++) {
 
-                    if ( !empty($post['lote'][$i]) ) {
+                    if (!empty($post['lote'][$i])) {
 
                         $lotes[] = [
                             'codigo' => $post['codigo_produto'],
@@ -551,12 +550,12 @@ class Produtos extends MY_Controller
                 if ($this->db->trans_status() !== false) {
                     $this->db->trans_commit();
 
-                    $output = [ 'type' => 'success', 'message' => "Produto cadastrado com sucesso!", 'route' => $this->route ];
+                    $output = ['type' => 'success', 'message' => "Produto cadastrado com sucesso!", 'route' => $this->route];
                 } else {
 
                     $this->db->trans_rollback();
 
-                    $output = [ 'type' => 'warning', 'message' => "Erro ao cadastrar o produto!"];
+                    $output = ['type' => 'warning', 'message' => "Erro ao cadastrar o produto!"];
                 }
             }
 
@@ -585,9 +584,9 @@ class Produtos extends MY_Controller
             ];
 
             if ($this->db->insert('produtos_preco', $preco)) {
-                $output = [ 'type' => 'success', 'message' => "Preço cadastrado com sucesso!", 'route' => $this->route ];
+                $output = ['type' => 'success', 'message' => "Preço cadastrado com sucesso!", 'route' => $this->route];
             } else {
-                $output = [ 'type' => 'warning', 'message' => "Erro ao cadastrar preço!"];
+                $output = ['type' => 'warning', 'message' => "Erro ao cadastrar preço!"];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
@@ -609,7 +608,7 @@ class Produtos extends MY_Controller
             $this->db->where('id_fornecedor', $this->session->id_fornecedor);
             $this->db->where('lote', $post['lote']);
 
-            if ( $this->db->get('produtos_lote')->num_rows() < 1 ) {
+            if ($this->db->get('produtos_lote')->num_rows() < 1) {
 
                 $lotes = [
                     'codigo' => $codigo,
@@ -621,12 +620,12 @@ class Produtos extends MY_Controller
                 ];
 
                 if ($this->db->insert('produtos_lote', $lotes)) {
-                    $output = [ 'type' => 'success', 'message' => "Estoque cadastrado com sucesso!", 'route' => $this->route ];
+                    $output = ['type' => 'success', 'message' => "Estoque cadastrado com sucesso!", 'route' => $this->route];
                 } else {
-                    $output = [ 'type' => 'warning', 'message' => "Erro ao cadastrar estoque!"];
+                    $output = ['type' => 'warning', 'message' => "Erro ao cadastrar estoque!"];
                 }
             } else {
-                $output = [ 'type' => 'warning', 'message' => "Este lote já possui registro!" ];
+                $output = ['type' => 'warning', 'message' => "Este lote já possui registro!"];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
@@ -657,9 +656,9 @@ class Produtos extends MY_Controller
             $this->db->where('lote', $post['lote']);
 
             if ($this->db->update('produtos_lote', $data)) {
-                $output = [ 'type' => 'success', 'message' => "Lote atualizado com sucesso!", 'route' => $this->route ];
+                $output = ['type' => 'success', 'message' => "Lote atualizado com sucesso!", 'route' => $this->route];
             } else {
-                $output = [ 'type' => 'warning', 'message' => "Erro ao atualizar lote!"];
+                $output = ['type' => 'warning', 'message' => "Erro ao atualizar lote!"];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
@@ -684,9 +683,9 @@ class Produtos extends MY_Controller
             $this->db->where('lote', $post['lote']);
 
             if ($this->db->delete('produtos_lote')) {
-                $output = [ 'type' => 'success', 'message' => "Lote excluído com sucesso!" ];
+                $output = ['type' => 'success', 'message' => "Lote excluído com sucesso!"];
             } else {
-                $output = [ 'type' => 'warning', 'message' => "Erro ao excluir lote!"];
+                $output = ['type' => 'warning', 'message' => "Erro ao excluir lote!"];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
@@ -718,7 +717,7 @@ class Produtos extends MY_Controller
 
             $data['title'] = "Atualizar {$title}";
             $data['form_action'] = "{$this->route}/updateLote/{$codigo}";
-            if ( $get['type'] == 1 ) {
+            if ($get['type'] == 1) {
                 $data['dados'] = $this->m_estoque->getPreco($codigo, $get['param'], $this->session->id_fornecedor);
             } else {
                 $data['dados'] = $this->m_estoque->getLote($codigo, $get['param'], $this->session->id_fornecedor);
@@ -733,7 +732,7 @@ class Produtos extends MY_Controller
         $this->db->select(" 
             codigo,
             CASE WHEN descricao is null THEN CONCAT(nome_comercial, ' - ', apresentacao) ELSE CONCAT(nome_comercial, ' - ', descricao) END  AS descricao,
-            marca, CASE WHEN bloqueado = 1 THEN 'inativo' ELSE 'ativo' END AS bloqueado"); 
+            marca, CASE WHEN bloqueado = 1 THEN 'inativo' ELSE 'ativo' END AS bloqueado");
         $this->db->from("produtos_catalogo");
         $this->db->where('id_fornecedor', $this->session->id_fornecedor);
         $this->db->group_by('codigo');
@@ -741,7 +740,7 @@ class Produtos extends MY_Controller
 
         $query = $this->db->get()->result_array();
 
-        if ( count($query) < 1 ) {
+        if (count($query) < 1) {
             $query[] = [
                 'codigo' => '',
                 'descricao' => '',
@@ -750,11 +749,17 @@ class Produtos extends MY_Controller
             ];
         }
 
-        $dados_page = ['dados' => $query , 'titulo' => 'Produtos'];
+        $dados_page = ['dados' => $query, 'titulo' => 'Produtos'];
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
 
-        if ( $exportar['status'] == false ) {
+        $objPHPExcel = $exportar['result'];
+        $objPHPExcel->getActiveSheet()->getColumnDimension("A")->setWidth(20);
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save("planilha.xlsx");
+
+        if ($exportar['status'] == false) {
 
             $warning = ['type' => 'warning', 'message' => $exportar['message']];
         } else {
@@ -781,7 +786,7 @@ class Produtos extends MY_Controller
 
         $query = $this->db->get()->result_array();
 
-        if ( count($query) < 1 ) {
+        if (count($query) < 1) {
             $query[] = [
                 'estado' => '',
                 'preco' => '',
@@ -789,11 +794,11 @@ class Produtos extends MY_Controller
             ];
         }
 
-        $dados_page = ['dados' => $query , 'titulo' => 'precos'];
+        $dados_page = ['dados' => $query, 'titulo' => 'precos'];
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
 
-        if ( $exportar['status'] == false ) {
+        if ($exportar['status'] == false) {
 
             $warning = ['type' => 'warning', 'message' => $exportar['message']];
         } else {
@@ -812,7 +817,7 @@ class Produtos extends MY_Controller
 
         $query = $this->db->get()->result_array();
 
-        if ( count($query) < 1 ) {
+        if (count($query) < 1) {
             $query[] = [
                 'lote' => '',
                 'local' => '',
@@ -821,11 +826,11 @@ class Produtos extends MY_Controller
             ];
         }
 
-        $dados_page = ['dados' => $query , 'titulo' => 'lotes'];
+        $dados_page = ['dados' => $query, 'titulo' => 'lotes'];
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
 
-        if ( $exportar['status'] == false ) {
+        if ($exportar['status'] == false) {
 
             $warning = ['type' => 'warning', 'message' => $exportar['message']];
         } else {
@@ -834,4 +839,3 @@ class Produtos extends MY_Controller
         }
     }
 }
-

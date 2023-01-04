@@ -37,7 +37,8 @@ class Export{
             if ( count($page1['dados']) > 0 ) {
 
                 $sheet = $spreadsheet->getActiveSheet()->setTitle($page1['titulo']);
-
+                $spreadsheet->getActiveSheet()->getColumnDimension("B")->setAutoSize(true);
+                $spreadsheet->getActiveSheet()->getColumnDimension("C")->setAutoSize(true);
                 $countNumber = 1;
 
                 $data = $this->getHeader($page1['dados']);
