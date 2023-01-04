@@ -746,6 +746,7 @@ class Produtos extends MY_Controller
                 'codigo' => '',
                 'descricao' => '',
                 'marca' => '',
+                'ativo' => '',
             ];
         }
 

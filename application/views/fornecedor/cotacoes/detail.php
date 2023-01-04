@@ -1194,7 +1194,7 @@
                         cd_produto: item.codigo,
                         id_sintese: $('#data-tableDePara' + id).data('sintese'),
                         id_cliente: $('#id_cliente').val(),
-                        id_produto_comprado: codprod //produto cotado
+                        id_produto_cotado: codprod //produto cotado
                     });
                 });
 
@@ -1309,7 +1309,7 @@
                         cd_produto: item.codigo,
                         id_sintese: idsintese,
                         id_cliente: $('#id_cliente').val(),
-                        id_produto_comprado: codprod //produto cotado
+                        id_produto_cotado: codprod //produto cotado
                     });
                 });
 
