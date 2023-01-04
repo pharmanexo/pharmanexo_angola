@@ -733,7 +733,7 @@ class Produtos extends MY_Controller
         $this->db->select(" 
             codigo,
             CASE WHEN descricao is null THEN CONCAT(nome_comercial, ' - ', apresentacao) ELSE CONCAT(nome_comercial, ' - ', descricao) END  AS descricao,
-            marca");
+            marca, ativo");
         $this->db->from("produtos_catalogo");
         $this->db->where('id_fornecedor', $this->session->id_fornecedor);
         $this->db->group_by('codigo');
@@ -743,11 +743,10 @@ class Produtos extends MY_Controller
 
         if ( count($query) < 1 ) {
             $query[] = [
-                'ativo' => '',
                 'codigo' => '',
                 'descricao' => '',
                 'marca' => '',
-                'bloqueado' => '',
+                'ativo' => '',
             ];
         }
 
