@@ -753,7 +753,7 @@ class Produtos extends MY_Controller
 
         $dados_page = ['dados' => $query , 'titulo' => 'Produtos'];
 
-        $exportar = $this->export->excel("planilha.xlsx", $dados_page);
+        $exportar = $this->exportar->excel("planilha.xlsx", $dados_page);
 
         if ( $exportar['status'] == false ) {
 
