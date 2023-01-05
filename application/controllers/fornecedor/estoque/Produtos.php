@@ -753,12 +753,6 @@ class Produtos extends MY_Controller
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
 
-        $objPHPExcel = $exportar['result'];
-        $objPHPExcel->getActiveSheet()->getColumnDimension("A")->setWidth(20);
-
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save("planilha.xlsx");
-
         if ($exportar['status'] == false) {
 
             $warning = ['type' => 'warning', 'message' => $exportar['message']];
