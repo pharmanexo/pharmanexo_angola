@@ -290,9 +290,10 @@
                 var idElem = $(this).data('idelem');
                 var produto = $(this).data('produto');
                 var cod_prod = $(this).data('codproduto');
+                var idsintese1 = $(this).data('sintese1');
 
                 if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
-                    loadDatatables(idElem, produto, cod_prod);
+                    loadDatatables(idElem, produto, cod_prod, idsintese1);
                 }
             });
 
@@ -1129,7 +1130,7 @@
         });
 
 
-        function loadDatatables(id, produto, codprod) {
+        function loadDatatables(id, produto, codprod, idsintese1) {
             var url_combinar = $('#data-table' + id).data('url2');
             var table = $('#data-tableDePara' + id).DataTable({
                 serverSide: false,
