@@ -1699,49 +1699,30 @@ class M_cotacaoManual extends MY_Model
 
                     if (empty($old)) {
 
-                        $produtoSint = $this->db
-                            ->where('id_produto', $row['id_sintese'])
-                            ->limit(1)
-                            ->get('produtos_marca_sintese')
-                            ->row_array();
-                        if (!empty($produtoSint)) {
-                            $data = [
-                                "id_sintese" => $produtoSint['id_sintese'],
-                                "cd_produto" => $row['cd_produto'],
-                                "id_fornecedor" => $row['id_fornecedor'],
-                                "id_usuario" => $this->session->id_usuario,
-                            ];
-                            $this->db->insert('produtos_fornecedores_sintese', $data);
-                        } else {
-                            $getProd = $this->getProdSintese($row['id_sintese']);
-                            if ($getProd != FALSE) {
-                                $data = [
-                                    "id_sintese" => $getProd['id_sintese'],
-                                    "cd_produto" => $row['cd_produto'],
-                                    "id_fornecedor" => $row['id_fornecedor'],
-                                    "id_usuario" => $this->session->id_usuario,
-                                ];
-                                $this->db->insert('produtos_fornecedores_sintese', $data);
-                            }
-                        }
-                    }
-
-                    if (!empty($produtoSint)) {
+                        $data = [
+                            "id_sintese" => $row['id_produto_cotado'],
+                            "cd_produto" => $row['cd_produto'],
+                            "id_fornecedor" => $row['id_fornecedor'],
+                            "id_usuario" => $this->session->id_usuario,
+                        ];
+                        $this->db->insert('produtos_fornecedores_sintese', $data);
 
                         $this->db->where('id_cliente', $row['id_cliente']);
-                        $this->db->where('cd_produto', $row['id_sintese']);
-                        $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
+                        $this->db->where('cd_produto', $row['cd_produto']);
+                        $this->db->where('id_produto_sintese', $row['id_produto_cotado']);
                         $this->db->where('id_integrador', 2);
-                        $old = $this->db->get('produtos_clientes_depara');
-                        $data = [
-                            "id_produto_sintese" => $produtoSint['id_produto'],
-                            "cd_produto" => $row['id_sintese'],
-                            "id_usuario" => $this->session->id_usuario,
-                            "id_integrador" => 2,
-                            "id_cliente" => $row['id_cliente']
-                        ];
-                        if ($old->num_rows() == 0) {
+                        $old2 = $this->db->get('produtos_clientes_depara')->row_array();
+                        if (empty($old2)) {
+                            $data = [
+                                "id_produto_sintese" => $row['id_produto_cotado'],
+                                "cd_produto" => $row['cd_produto'],
+                                "id_usuario" => $this->session->id_usuario,
+                                "id_integrador" => 2,
+                                "id_cliente" => $row['id_cliente']
+                            ];
                             $this->pcd->insert($data);
+                        } else {
+                            var_dump($data); exit;
                         }
                     } else {
 
