@@ -1692,19 +1692,38 @@ class M_cotacaoManual extends MY_Model
             case 'BIONEXO':
                 foreach ($post['dados'] as $row) {
 
-                    $produtoForn = $this->db
-                        ->where('cd_produto', $row['cd_produto'])
-                        ->where('id_fornecedor', $this->session->id_fornecedor)
-                        ->limit(1)
-                        ->get('produtos_fornecedores_sintese')
-                        ->row_array();
+                    $this->db->where('id_fornecedor', $row['id_fornecedor']);
+                    $this->db->where('cd_produto', $row['cd_produto']);
+                    $this->db->where('id_sintese', $row['id_sintese']);
+                    $old = $this->db->get('produtos_fornecedores_sintese')->row_array();
 
-                    if (!empty($produtoForn)) {
+                    if (empty($old)) {
+
                         $produtoSint = $this->db
-                            ->where('id_sintese', $produtoForn['id_sintese'])
+                            ->where('id_produto', $row['id_sintese'])
                             ->limit(1)
                             ->get('produtos_marca_sintese')
                             ->row_array();
+                        if (!empty($produtoSint)) {
+                            $data = [
+                                "id_sintese" => $produtoSint['id_sintese'],
+                                "cd_produto" => $row['cd_produto'],
+                                "id_fornecedor" => $row['id_fornecedor'],
+                                "id_usuario" => $this->session->id_usuario,
+                            ];
+                            $this->db->insert('produtos_fornecedores_sintese', $data);
+                        } else {
+                            $getProd = $this->getProdSintese($row['id_sintese']);
+                            if ($getProd != FALSE) {
+                                $data = [
+                                    "id_sintese" => $getProd['id_sintese'],
+                                    "cd_produto" => $row['cd_produto'],
+                                    "id_fornecedor" => $row['id_fornecedor'],
+                                    "id_usuario" => $this->session->id_usuario,
+                                ];
+                                $this->db->insert('produtos_fornecedores_sintese', $data);
+                            }
+                        }
                     }
 
                     if (!empty($produtoSint)) {

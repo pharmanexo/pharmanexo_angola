@@ -60,7 +60,7 @@
                                     <label class="checkbox__label mb-0" data-toggle="tooltip" title=" <?php echo (isset($produto['cotado']['sem_estoque']) && $produto['cotado']['sem_estoque'] == 1) ? 'Sem estoque' : 'Marcar como sem estoque' ?>" for="<?php echo "semestq_{$k}_{$produto['cotado']['id_produto_sintese']}_{$produto['cotado']['cd_produto_comprador']}"; ?>">S.E.</label>
                                 </div>
 
-                                <a style="color:#0c7cd5;border: none;display:inline-block;" id="UpgradeDePara<?php echo $k; ?>" data-idelemu="<?php echo $k; ?>" data-codprodutou="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" data-produtou="<?php echo explode(' ', $produto['cotado']['ds_produto_comprador'])[0]; ?>" data-produton="<?php echo $produto['cotado']['ds_produto_comprador']; ?>" data-sintese="<?php echo $identificacao_produto; ?>" class="btn_upgradeDePara" type="button" data-toggle="modal" data-target="#upgradeModal" title="Upgrade De -> Para">
+                                <a style="color:#0c7cd5;border: none;display:inline-block;" id="UpgradeDePara<?php echo $k; ?>" data-idelemu="<?php echo $k; ?>" data-codprodutou="<?php if (isset($produto['cotado']['cd_produto_comprador'])) echo $produto['cotado']['cd_produto_comprador']; ?>" data-produtou="<?php echo explode(' ', $produto['cotado']['ds_produto_comprador'])[0]; ?>" data-produton="<?php echo $produto['cotado']['ds_produto_comprador']; ?>" data-sintese="<?php echo $identificacao_produto; ?>" data-sintese1="<?php echo $id_produto_sintese; ?>" class="btn_upgradeDePara" type="button" data-toggle="modal" data-target="#upgradeModal" title="Upgrade De -> Para">
                                     <i class="fas fa-arrow-circle-up"></i>
                                 </a>
                             </div>
@@ -222,7 +222,7 @@
                                                             <a class="dropdown-item" data-toggle="modal" data-target="#historicoModal" title="Histórico de ofertas" data-cod="<?php echo $prod['codigo'] ?>" data-cliente="<?php echo $cotacao['cliente']['id']; ?>">
                                                                 <i class="fas fa-eye"></i> <small>&nbsp;&nbsp;Histórico</small>
                                                             </a>
-                                                            <a class="dropdown-item removerDePara" data-toggle="modal" title="Remover De/Para" data-cod="<?php echo $prod['codigo'] ?>" data-cliente="<?php echo $cotacao['cliente']['id']; ?>" data-sintese="<?php echo $identificacao_produto; ?>" data-codcomprador="<?php echo $produto['cotado']['cd_produto_comprador']; ?>" data-classcontainer="codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>">
+                                                            <a class="dropdown-item removerDePara" data-toggle="modal" title="Remover De/Para" data-cod="<?php echo $prod['codigo'] ?>" data-cliente="<?php echo $cotacao['cliente']['id']; ?>" data-sintese="<?php echo $identificacao_produto; ?>" data-sintese1="<?php echo $id_produto_sintese; ?>" data-codcomprador="<?php echo $produto['cotado']['cd_produto_comprador']; ?>" data-classcontainer="codigoProduto<?php echo "{$prod['codigo']}{$produto['cotado']['cd_produto_comprador']}" ?>">
                                                                 <i class="fas fa-times"></i> <small>&nbsp;&nbsp;Remover</small>
                                                             </a>
                                                         </div>
@@ -290,7 +290,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table" style="margin-top: -110px;">
-                                    <table id="data-tableDePara<?php echo $k; ?>" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>" data-sintese="<?php echo $identificacao_produto; ?>">
+                                    <table id="data-tableDePara<?php echo $k; ?>" class="table w-100 table-hover" data-url="<?php echo $datatables; ?>" data-url2="<?php echo $url_combinar; ?>" data-sintese="<?php echo $identificacao_produto; ?>" data-sintese1="<?php echo $id_produto_sintese; ?>">
                                         <thead>
                                             <tr>
                                                 <th></th>

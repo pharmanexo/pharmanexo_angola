@@ -304,6 +304,7 @@
                 var produtoN = $(this).data('produton');
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
+                var idsintese1 = $(this).data('sintese1');
                 var data_tabela = [];
                 var codigo_tabela = $('.codigoTabela' + cod_prodU).each(function() {
                     var valor = $(this).data('tabela');
@@ -1193,6 +1194,7 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: $('#data-tableDePara' + id).data('sintese'),
+                        id_sintese1: idsintese1,
                         id_cliente: $('#id_cliente').val(),
                         id_produto_cotado: codprod //produto cotado
                     });
@@ -1308,6 +1310,7 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: idsintese,
+                        id_sintese1: idsintese1,
                         id_cliente: $('#id_cliente').val(),
                         id_produto_cotado: codprod //produto cotado
                     });
