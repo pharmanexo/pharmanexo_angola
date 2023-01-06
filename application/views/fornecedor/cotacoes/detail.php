@@ -1130,7 +1130,7 @@
         });
 
 
-        function loadDatatables(id, produto, codprod, idsintese1) {
+        function loadDatatables(id, produto, codprod, ) {
             var url_combinar = $('#data-table' + id).data('url2');
             var table = $('#data-tableDePara' + id).DataTable({
                 serverSide: false,
