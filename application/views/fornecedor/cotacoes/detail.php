@@ -314,11 +314,11 @@
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
-                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, idsintese1, data_tabela);
                 } else {
                     $('.modalUpgradeDePara table').DataTable().destroy();
                     setTimeout(function() {
-                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
+                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, idsintese1, data_tabela);
                     }, 0);
                 }
 
@@ -1242,7 +1242,7 @@
 
         }
 
-        function loadDatatableUpgrade(id, produto, codprod, idsintese, data_tabela) {
+        function loadDatatableUpgrade(id, produto, codprod, idsintese, idsintese1, data_tabela) {
             var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
