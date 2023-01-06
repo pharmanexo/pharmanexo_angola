@@ -877,7 +877,7 @@ class M_cotacaoManual extends MY_Model
             JOIN cotacoes_bionexo.cotacoes_produtos cot_prods ON cot_prods.id_cotacao = cot.id
             LEFT JOIN pharmanexo.produtos_clientes_depara depara ON depara.cd_produto = cot_prods.cd_produto_comprador AND depara.id_cliente = cot.id_cliente
             LEFT join pharmanexo.produtos_marca_sintese marc_sint ON marc_sint.id_produto = depara.id_produto_sintese
-            LEFT JOIN pharmanexo.produtos_fornecedores_sintese forn_sint ON forn_sint.id_fornecedor = cot.id_fornecedor AND forn_sint.id_sintese = marc_sint.id_sintese
+            LEFT JOIN pharmanexo.produtos_fornecedores_sintese forn_sint ON forn_sint.id_fornecedor = cot.id_fornecedor
             JOIN pharmanexo.produtos_catalogo pc
                 ON pc.codigo = forn_sint.cd_produto
                 AND pc.id_fornecedor = forn_sint.id_fornecedor
