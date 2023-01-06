@@ -1194,7 +1194,7 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: $('#data-tableDePara' + id).data('sintese'),
-                        id_sintese1: idsintese1,
+                        id_sintese1: $('#data-tableDePara' + id).data('sintese1'),
                         id_cliente: $('#id_cliente').val(),
                         id_produto_cotado: codprod //produto cotado
                     });
