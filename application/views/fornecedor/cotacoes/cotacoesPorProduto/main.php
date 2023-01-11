@@ -107,6 +107,7 @@
                         { data: 'estado', className: 'text-nowrap  text-center' },
                         { data: 'comprador', className: 'text-nowrap'},
                         { data: 'dt_fim_cotacao', visible: false},
+                        { data: 'integrador', visible: false},
                         { defaultContent: '', orderable: false, searchable: false },
                     ],
                     rowCallback: function (row, data) {
@@ -115,7 +116,7 @@
                         $('td', row).each(function () {
                             $(this).on('click', function () {
 
-                                window.location.href = $('#data-table').data('cotacao') + '/SINTESE/' + data.cd_cotacao;
+                                window.location.href = $('#data-table').data('cotacao') + '/'+data.integrador+'/' + data.cd_cotacao;
                             })
                         })
 

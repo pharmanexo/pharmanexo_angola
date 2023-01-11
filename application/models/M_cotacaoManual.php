@@ -1705,6 +1705,12 @@ class M_cotacaoManual extends MY_Model
                             ->limit(1)
                             ->get('produtos_marca_sintese')
                             ->row_array();
+                    } else {
+                        $produtoSint = $this->db
+                            ->where('id_sintese', $produtoForn['id_sintese'])
+                            ->limit(1)
+                            ->get('produtos_marca_sintese')
+                            ->row_array();
                     }
 
                     if (!empty($produtoSint)) {

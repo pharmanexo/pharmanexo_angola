@@ -8,6 +8,9 @@ if (isset($header)) echo $header;
 ?>
 
 <body class="bg-light">
+    <div hidden class="loading" id="loading">
+        <img src="<?php echo IMG_PATH ?>loading.gif" alt="Loading...">
+    </div>
     <div class="supreme-container">
         <div class="container-fluid" id="frameLogin">
             <div class="row" style="height: 100vh">
@@ -29,7 +32,7 @@ if (isset($header)) echo $header;
                     </div>
                 </div>
                 <div class="col-12 col-lg-6" style="padding-top: 100px">
-                    <div class="alert" id="alertaSessao" style="margin-bottom:-60px;" hidden >
+                    <div class="alert" id="alertaSessao" style="margin-bottom:-60px;" hidden>
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         Sua sessão foi encerrada por inatividade.
                     </div>
@@ -574,12 +577,8 @@ if (isset($header)) echo $header;
                         }, function(result) {
                             if (result.type === 'success') {
                                 if (result.action === 'empresas') {
-                                    Pace.start();
-
                                     window.location = '<?php echo base_url('login/selecionar_empresa'); ?>'
                                 } else {
-
-                                    Pace.start();
                                     window.location = 'dashboard';
                                 }
                             } else {
@@ -614,12 +613,8 @@ if (isset($header)) echo $header;
                         }, function(result) {
                             if (result.type === 'success') {
                                 if (result.action === 'empresas') {
-                                    Pace.start();
-
                                     window.location = '<?php echo base_url('login/selecionar_empresa'); ?>'
                                 } else {
-
-                                    Pace.start();
                                     window.location = 'dashboard';
                                 }
                             } else {
@@ -654,11 +649,8 @@ if (isset($header)) echo $header;
                         }, function(result) {
                             if (result.type === 'success') {
                                 if (result.action === 'empresas') {
-                                    Pace.start();
-
                                     window.location = '<?php echo base_url('login/selecionar_empresa'); ?>'
                                 } else {
-                                    Pace.start();
                                     window.location = 'representantes/dashboard'
 
                                 }

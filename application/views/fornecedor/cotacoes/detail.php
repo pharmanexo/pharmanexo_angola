@@ -225,16 +225,18 @@
         </div>
     </div>
 
-    <div class="modal fade" id="upgradeModal" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="upgradeModal" tabindex="-1" role="dialog" aria-labelledby="upgradeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="historicoModalLabel"></h5>
+                    <h5 style="font-size: 20px;margin-top: 10px;" class="modal-title upgradeModal" id="upgradeModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body modalUpgradeDePara">
-                    <div class="upgradeModal"></div>
                     <div class="col-12 mt-2 text-right">
-                        <button type="button" href id="btnCombinarUpgrade" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary btnCombinarUpgrade" data-original-title="Combinar Produtos">
+                        <button type="button" style="position: relative;z-index:1;width:100px;height: 40px;right: 40px;top: 11px;" title="Combinar Produtos" class="btn btn-primary btnCombinarUpgrade" data-original-title="Combinar Produtos">
                             <i style="font-size:20px;padding-top: 3px;" class="fas fa-random"></i>
                         </button>
                     </div>
@@ -279,22 +281,19 @@
         var url_restricao = "<?php if (isset($url_restricao)) echo $url_restricao; ?>";
         var form_action = "<?php if (isset($form_action)) echo $form_action; ?>";
         var url_lista = "<?php if (isset($url_lista)) echo $url_lista; ?>";
+        var url_removeDePara = "<?php if (isset($url_removeDePara)) echo $url_removeDePara; ?>";
 
         $(function() {
-            <?php //foreach ($cotacao['produtos'] as $k => $produto) : 
-            ?>
-
-            <?php // endforeach; 
-            ?>
 
             $('.btn_depara').click(function() {
                 //console.log($(this).parent().parent());
                 var idElem = $(this).data('idelem');
                 var produto = $(this).data('produto');
                 var cod_prod = $(this).data('codproduto');
+                var idsintese1 = $(this).data('sintese1');
 
                 if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
-                    loadDatatables(idElem, produto, cod_prod);
+                    loadDatatables(idElem, produto, cod_prod, idsintese1);
                 }
             });
 
@@ -303,23 +302,79 @@
                 //console.log($(this).parent().parent());
                 var idElemU = $(this).data('idelemu');
                 var produtoU = $(this).data('produtou');
+                var produtoN = $(this).data('produton');
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
+                var idsintese1 = $(this).data('sintese1');
+                var data_tabela = [];
+                var codigo_tabela = $('.codigoTabela' + cod_prodU).each(function() {
+                    var valor = $(this).data('tabela');
+                    data_tabela.push(valor);
+                });
 
-                $('.btnCombinarUpgrade').attr('id', 'btnCombinarUpgrade' + idElemU);
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
-                $('.upgradeModal').text(produtoU);
+                $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
-                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
-                }
-                if ($('.modalUpgradeDePara table').DataTable()) {
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, idsintese1, data_tabela);
+                } else {
                     $('.modalUpgradeDePara table').DataTable().destroy();
                     setTimeout(function() {
-                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese);
+                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, idsintese1, data_tabela);
                     }, 0);
                 }
 
-                console.log(idElemU, produtoU, cod_prodU, idsintese);
+            });
+
+            $('.removerDePara').click(function() {
+
+                var container = $('.' + $(this).data('classcontainer'));
+                var cod_prod = $(this).data('cod');
+                var cliente = $(this).data('cliente');
+                var sintese = $(this).data('sintese');
+                var prod_comprador = $(this).data('codcomprador');
+                var integrador = $(this).data('integrador');
+                var dados = {
+                    cod_prod: cod_prod,
+                    cliente: cliente,
+                    sintese: sintese,
+                    prod_comprador: prod_comprador
+                };
+
+                Swal.fire({
+                    title: 'Remover Produto',
+                    text: "Deseja remover esse De/Para da cotação",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Remover',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.post(url_removeDePara, {
+                                dados
+                            }, function(xhr) {
+                                formWarning(xhr);
+                                container.remove();
+                            })
+                            .fail(function(xhr) {
+                                formWarning(xhr);
+                                table.ajax.reload();
+                            });
+                    } else {
+                        table.ajax.reload();
+                    }
+                });
+
+                var checkbox = $(this).parent().parent().parent().parent();
+                const checked = checkbox.find('input[type="checkbox"]');
+                if (checked.is(':checked')) {
+                    Swal.fire({
+                        title: 'Produto selecionado não pode ser removido.',
+                        icon: 'info',
+                        showCloseButton: true,
+                    });
+                }
             });
 
             $("#btnCount").html($('[data-check]:checked').length);
@@ -1075,7 +1130,7 @@
         });
 
 
-        function loadDatatables(id, produto, codprod) {
+        function loadDatatables(id, produto, codprod, ) {
             var url_combinar = $('#data-table' + id).data('url2');
             var table = $('#data-tableDePara' + id).DataTable({
                 serverSide: false,
@@ -1128,6 +1183,7 @@
             });
 
 
+
             $('#btnCombinar' + id).on('click', function(e) {
                 e.preventDefault();
                 var urlPost = $('#data-tableDePara' + id).data('url2');
@@ -1139,8 +1195,9 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: $('#data-tableDePara' + id).data('sintese'),
+                        id_sintese1: $('#data-tableDePara' + id).data('sintese1'),
                         id_cliente: $('#id_cliente').val(),
-                        id_produto_comprado: codprod //produto cotado
+                        id_produto_cotado: codprod //produto cotado
                     });
                 });
 
@@ -1186,7 +1243,7 @@
 
         }
 
-        function loadDatatableUpgrade(id, produto, codprod, idsintese) {
+        function loadDatatableUpgrade(id, produto, codprod, idsintese, idsintese1, data_tabela) {
             var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
@@ -1230,16 +1287,20 @@
                 order: [
                     [1, 'asc']
                 ],
+                createdRow: function(row, data, index) {
+                    data_tabela.forEach(function(codigo) {
+                        if (data.codigo == codigo) {
+                            $(row).hide();
+                        }
+                    });
+                },
                 rowCallback: function(row, data) {
                     $(row).data('id', data.id_produto).css('cursor', 'pointer');
                 },
-                drawCallback: function() {
-
-                }
+                drawCallback: function() {}
             });
 
-
-            $('#btnCombinarUpgrade' + id).on('click', function(e) {
+            $('.btnCombinarUpgrade').one('click', function(e) {
                 e.preventDefault();
                 var urlPost = $('#data-tableUpgradeDePara' + id).data('url2');
                 var dados = [];
@@ -1250,8 +1311,9 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: idsintese,
+                        id_sintese1: idsintese1,
                         id_cliente: $('#id_cliente').val(),
-                        id_produto_comprado: codprod //produto cotado
+                        id_produto_cotado: codprod //produto cotado
                     });
                 });
 

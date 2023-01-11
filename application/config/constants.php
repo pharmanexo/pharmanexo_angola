@@ -90,7 +90,7 @@ defined('DOCUMENTOS_PATH')      OR define('DOCUMENTOS_PATH', '/public/third_part
 defined('PUBLIC_PATH')      OR define('PUBLIC_PATH', 'public/');
 defined('UPLOAD_PATH')      OR define('UPLOAD_PATH', 'uploads/');
 defined('META_DEPARA')      OR define('META_DEPARA', 300);
-defined('ONCOPROD')      OR define('ONCOPROD', '12,111,112,115,120,123,126');
+defined('ONCOPROD')      OR define('ONCOPROD', '12,111,112,115,120,123,125,126');
 defined('ONCOEXO')      OR define('ONCOEXO', '15,25');
 defined('ASSETS_PATH')      OR define('ASSETS_PATH', '/public/assets/');
 defined('HOME_PATH')      OR define('HOME_PATH', '/public/home/assets/');

@@ -33,6 +33,30 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <style type="text/css">
+        .loading {
+            position: relative;
+        }
+
+        .loading:before {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ccc;
+            border-radius: 50%;
+            border-top-color: #333;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
         .alert {
             padding: 20px;
             text-align: center;
@@ -151,9 +175,7 @@
 
         .logo img {
             position: relative;
-            padding-left: 60px;
-            width: 100%;
-            height: 100%;
+            right: -20px;
             -o-object-fit: cover;
             object-fit: cover;
             -o-object-position: bottom right;
@@ -262,7 +284,7 @@
         </script>
     <?php } ?>
     <script>
-      /*  var initDestroyTimeOutPace = function() {
+        /*  var initDestroyTimeOutPace = function() {
             var counter = 0;
             var refreshIntervalId = setInterval(function() {
                 var progress;
