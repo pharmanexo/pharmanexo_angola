@@ -13,6 +13,10 @@ class ImportDeivis extends CI_Controller
 
     public function importRest()
     {
+
+        echo password_hash('Londricir122@', 1);
+        exit();
+
         $file = fopen('itens_hosp.csv', 'r');
         $linhas = [];
 

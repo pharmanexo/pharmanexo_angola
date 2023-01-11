@@ -1,0 +1,56 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cot="http://cotacao.fornecedores.client.webService.apoio.com.br/" xmlns:apo="http://www.apoiocotacoes.com.br">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <cot:post>
+            <!--Optional:-->
+            <usuario>HOSPIDROGAS</usuario>
+            <!--Optional:-->
+            <senha>hsp@2019</senha>
+            <!--Optional:-->
+            <operacao>WHS</operacao>
+            <!--Optional:-->
+            <parametros></parametros>
+            <!--Optional:-->
+            <xml>
+                <Resposta>
+                    <Cabecalho>
+                        <Id_Pdc>668905</Id_Pdc>
+                        <CNPJ_Hospital>47.074.851/0009-08</CNPJ_Hospital>
+                        <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
+                        <Prazo_Entrega>3</Prazo_Entrega>
+                        <Validade_Proposta>31/12/2022</Validade_Proposta>
+                        <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
+                        <Frete>CIF</Frete>
+                        <Custo_Estimado_Frete> - </Custo_Estimado_Frete>
+                        <Observacoes/>
+                    </Cabecalho>
+                    <Itens_Pdc>
+                        <Item_Pdc>
+                            <Sequencia>1</Sequencia>
+                            <Id_Artigo>439188</Id_Artigo>
+                            <Codigo_Produto>00000086</Codigo_Produto>
+                            <Preco_Unitario>1.4025</Preco_Unitario>
+                            <Preco_Unitario_Liquido>1.4025</Preco_Unitario_Liquido>
+                            <Classificacao_Anvisa>-</Classificacao_Anvisa>
+                            <NCM>-</NCM>
+                            <IVA>-</IVA>
+                            <ICMS>-</ICMS>
+                            <IPI>-</IPI>
+                            <Valor_Frete>-</Valor_Frete>
+                            <Fabricante>AMED - AMERICAN</Fabricante>
+                            <Embalagem>unidade</Embalagem>
+                            <Quantidade_Embalagem>1</Quantidade_Embalagem>
+                            <Comentario> - </Comentario>
+                            <Codigo_Rastreabilidade>18851</Codigo_Rastreabilidade>
+                            <Codigo_Fornecedor>35.997.345/0001-46</Codigo_Fornecedor>
+                            <Campo_Extra>
+                                <Nome>Codigo_Produto_Fornecedor</Nome>
+                                <Valor>18851</Valor>
+                            </Campo_Extra>
+                        </Item_Pdc>
+                    </Itens_Pdc>
+                </Resposta>
+            </xml>
+        </cot:post>
+    </soapenv:Body>
+</soapenv:Envelope>
