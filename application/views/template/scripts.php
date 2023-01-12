@@ -71,12 +71,11 @@ if (isset($scripts))
 <script>
     $(document).ajaxStart(function() {
         $('body').append('<div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index: 1000001;" class="loading" id="loading"><img src="<?php echo IMG_PATH ?>loading.gif" alt="Loading..."></div>');
-        $('.loading').show();
-        $('.container').addClass('loading');
+        console.log('inicio');
     });
     $(document).ajaxStop(function() {
         $('.loading').hide();
-        $('.container').removeClass('loading');
+        console.log('fim');
     });
     $(function() {
 

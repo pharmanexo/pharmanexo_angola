@@ -1053,9 +1053,19 @@ class Login extends CI_Controller
                         $this->db
                             ->where('id_comprador', $post['id_comprador'])
                             ->update('compradores_contatos', $dataContato);
+
                     } else {
                         $this->db->insert('compradores_contatos', $dataContato);
                     }
+
+                    $warn = [
+                        'type' => 'success',
+                        'message' => 'Dados atualizados com sucesso, faça login novamente'
+                    ];
+
+                    $this->session->set_userdata('warning', $warn);
+
+                    redirect("{$this->route}");
                 }
 
 

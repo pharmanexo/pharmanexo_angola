@@ -46,17 +46,12 @@ class Pedidos extends Conv_controller
         $data['heading'] = $this->tmp_conv->heading([
             'page_title' => $page_title,
             'buttons' => [
-                [
-                    'type' => 'button',
-                    'id' => 'btnPedido',
-                    'url' => base_url("convidados/pedidos"),
-                    'class' => 'btn-primary',
-                    'icone' => 'fa-cart',
-                    'label' => 'Ver Pedido'
-                ],
+
             ]
         ]);
         $data['scripts'] = $this->tmp_conv->scripts();
+
+        $data['status'] = $this->db->get('conv_pedidos_status')->result_array();
 
         $this->load->view("{$this->views}/main", $data);
     }
@@ -65,6 +60,7 @@ class Pedidos extends Conv_controller
     public function detalhes($idPedido)
     {
         $pedido = $this->db->where('id', $idPedido)->get('conv_pedidos')->row_array();
+        $pedido['situacao'] = $this->db->where('id', $pedido['situacao'])->get('conv_pedidos_status')->row_array();
 
         $pedidoItens = $this->db
             ->select('cp.*, p.descricao')
@@ -76,11 +72,18 @@ class Pedidos extends Conv_controller
             ->get()->result_array();
 
         $total = 0;
+        $totalCancelado = 0;
         foreach ($pedidoItens as $item) {
-            $total = ($item['quantidade'] * $item['preco_unitario']) + $total;
+            if ($item['situacao'] <> 9){
+                $total = ($item['quantidade'] * $item['preco_unitario']) + $total;
+            }else{
+                $totalCancelado = ($item['quantidade'] * $item['preco_unitario']) + $totalCancelado;
+            }
+
         }
 
         $pedido['total'] = $total;
+        $pedido['totalCancelado'] = $totalCancelado;
 
         $pedido['fornecedor'] = $this->db->where('id', $pedido['id_fornecedor'])->get('fornecedores')->row_array();
 
@@ -94,11 +97,10 @@ class Pedidos extends Conv_controller
         $data['heading'] = $this->tmp_conv->heading([
             'page_title' => $page_title,
             'buttons' => [
-
                 ['type' => 'submit',
                     'id' => 'btnPedido',
                     'form' => 'frmPedido',
-                    'class' => ($pedido['fechado'] == 1) ? 'btn-primary d-nome' : 'btn-primary',
+                    'class' => ($pedido['fechado'] == 1) ? 'btn-primary d-none' : 'btn-primary',
                     'icone' => 'fa-cart',
                     'label' => 'Enviar Pedido'
                 ],
@@ -126,6 +128,24 @@ class Pedidos extends Conv_controller
                 'type' => 'success',
                 'message' => "Produto removido do pedido"
             ];
+
+            $itens = $this->db->where('id_pedido', $id_pedido)->get('conv_pedidos_produtos');
+
+            if ($itens->num_rows() == 0) {
+                $warn = [
+                    'type' => 'success',
+                    'message' => "Produto removido do pedido, o pedido foi cancelado",
+                    'redir' => $this->route
+                ];
+
+                $this->db->where('id', $id_pedido)->update('conv_pedidos', ['situacao' => 5, 'fechado' => 1]);
+            } else {
+                $warn = [
+                    'type' => 'success',
+                    'message' => "Produto removido do pedido",
+                ];
+            }
+
         } else {
             $warn = [
                 'type' => 'warning',
@@ -135,7 +155,12 @@ class Pedidos extends Conv_controller
 
         $_SESSION['warning'] = $warn;
 
-        redirect("{$this->route}/detalhes/{$id_pedido}");
+        if (isset($warn['redir'])) {
+            redirect($warn['redir']);
+        } else {
+            redirect("{$this->route}/detalhes/{$id_pedido}");
+        }
+
     }
 
     public function salvar()
@@ -153,13 +178,13 @@ class Pedidos extends Conv_controller
                     ->where('id', $post['idpedido'])
                     ->where('fechado', 0)
                     ->get('conv_pedidos')->row_array();
-                $pedido['obs'] = $post['obs'];
+
 
                 if (!empty($pedido)) {
-
+                    $pedido['obs'] = $post['obs'];
                     $fornecedor = $this->db->where('id', $pedido['id_fornecedor'])->get('fornecedores')->row_array();
                     $pedidoItens = $this->db
-                        ->select('cp.*, p.descricao, p.unidade, p.marca, p.preco')
+                        ->select('cp.*, p.descricao, p.unidade, p.marca, p.preco, p.id as id_produto')
                         ->from('conv_pedidos_produtos cp')
                         ->join('conv_pedidos pd', 'pd.id = cp.id_pedido')
                         ->join('conv_promocoes p', 'p.codigo = cp.codigo and p.id_fornecedor = pd.id_fornecedor', 'INNER')
@@ -175,8 +200,21 @@ class Pedidos extends Conv_controller
 
                     $gravarOc = $this->registrarOrdemCompra($pedido);
 
+                    if (!empty($gravarOc)) {
 
-                    if ($gravarOc) {
+                        // atualiza o pedido
+                        $update = [
+                            'data_envio' => date('Y-m-d H:i:s', time()),
+                            'fechado' => 1,
+                            'situacao' => 2,
+                            'observacao' => $pedido['obs'],
+                            'ordem_compra' => $gravarOc['Cd_Ordem_Compra']
+                        ];
+
+
+                        $this->db->where('id', $pedido['id'])->update('conv_pedidos', $update);
+
+
                         // envia e-mail ao distribuidor notificando (verificar qual configuração usar)
 
 
@@ -192,17 +230,6 @@ class Pedidos extends Conv_controller
                             "message" => $message . $espelho,
                         ]);
 
-
-                        // atualiza o pedido
-                        $update = [
-                            'data_envio' => date('Y-m-d H:i:s', time()),
-                            'fechado' => 1,
-                            'situacao' => 1,
-                            'observacao' => $pedido['obs']
-                        ];
-
-
-                        $this->db->where('id', $pedido['id'])->update('conv_pedidos', $update);
 
                         $warn = [
                             'type' => 'success',
@@ -309,58 +336,66 @@ class Pedidos extends Conv_controller
                 ->where('id_comprador', $comp['id'])
                 ->get('compradores_contatos')
                 ->row_array();
+            $cdPedido = 'PHX_CONV_' . $pedido['fornecedor']['id'] . $pedido['id'];
 
-            $oc = [
-                'Dt_Gravacao' => date('Y-m-d H:i:s', time()),
-                'Tp_Movimento' => 'I',
-                'Cd_Fornecedor' => soNumero($pedido['fornecedor']['cnpj']),
-                'Cd_Ordem_Compra' => 'PHX_CONV_' . $pedido['id'],
-                'Cd_Cotacao' => 'PHX_CONV_' . $pedido['id'],
-                'Dt_Ordem_Compra' => date('Y-m-d', time()),
-                'Hr_Ordem_Compra' => date('H:i:s', time()),
-                'Tp_Situacao' => 1,
-                'Cd_Comprador' => soNumero($comp['cnpj']),
-                'id_comprador' => $comp['id'],
-                'id_fornecedor' => $pedido['fornecedor']['id'],
-                'Nm_Cidade' => $comp['cidade'],
-                'Id_Unidade_Federativa' => $comp['estado'],
-                'Nm_Aprovador' => $contato['nome'],
-                'Telefones_Ordem_Compra' => $contato['telefone'],
-                'pendente' => 1,
-                'integrador' => 999,
-                'Ds_Observacao' => $pedido['obs']
-            ];
+            $verificaOcExistente = $this->db->where('Cd_Ordem_Compra', $cdPedido)->get('ocs_sintese');
 
-            $this->db->insert('ocs_sintese', $oc);
-            $idOc = $this->db->insert_id();
+            if ($verificaOcExistente->num_rows() == 0) {
+                $oc = [
+                    'Dt_Gravacao' => date('Y-m-d H:i:s', time()),
+                    'Tp_Movimento' => 'I',
+                    'Cd_Fornecedor' => soNumero($pedido['fornecedor']['cnpj']),
+                    'Cd_Ordem_Compra' => $cdPedido,
+                    'Cd_Cotacao' => $cdPedido,
+                    'Dt_Ordem_Compra' => date('Y-m-d', time()),
+                    'Hr_Ordem_Compra' => date('H:i:s', time()),
+                    'Tp_Situacao' => 1,
+                    'Cd_Comprador' => soNumero($comp['cnpj']),
+                    'id_comprador' => $comp['id'],
+                    'id_fornecedor' => $pedido['fornecedor']['id'],
+                    'Nm_Cidade' => $comp['cidade'],
+                    'Id_Unidade_Federativa' => $comp['estado'],
+                    'Nm_Aprovador' => $contato['nome'],
+                    'Telefones_Ordem_Compra' => $contato['telefone'],
+                    'pendente' => 1,
+                    'Status_OrdemCompra' => 1,
+                    'integrador' => 100,
+                    'Ds_Observacao' => $pedido['obs']
+                ];
 
-            if ($idOc > 0) {
-                $produtosOC = [];
+                $this->db->insert('ocs_sintese', $oc);
+                $idOc = $this->db->insert_id();
 
-                foreach ($pedido['produtos'] as $produto) {
-                    $produtosOC[] = [
-                        'id_ordem_compra' => $idOc,
-                        'Ds_Unidade_Compra' => $produto['unidade'],
-                        'Ds_Marca' => $produto['marca'],
-                        'Qt_Embalagem' => 1,
-                        'Qt_Produto' => $produto['quantidade'],
-                        'Vl_Preco_Produto' => $produto['preco_unitario'],
-                        'Cd_ProdutoERP' => $produto['codigo'],
-                        'Cd_Ordem_Compra' => $oc['Cd_Ordem_Compra'],
-                        'Id_Produto_Sintese' => $produto['codigo'],
-                        'Ds_Produto_Comprador' => $produto['descricao'],
-                        'codigo' => $produto['codigo']
-                    ];
+                if ($idOc > 0) {
+                    $produtosOC = [];
 
+                    foreach ($pedido['produtos'] as $produto) {
+
+                        $produtosOC[] = [
+                            'id_ordem_compra' => $idOc,
+                            'Ds_Unidade_Compra' => $produto['unidade'],
+                            'Ds_Marca' => $produto['marca'],
+                            'Qt_Embalagem' => 1,
+                            'Qt_Produto' => $produto['quantidade'],
+                            'Vl_Preco_Produto' => $produto['preco_unitario'],
+                            'Cd_ProdutoERP' => $produto['codigo'],
+                            'Cd_Ordem_Compra' => $oc['Cd_Ordem_Compra'],
+                            'Id_Produto_Sintese' => $produto['id_produto'],
+                            'Ds_Produto_Comprador' => $produto['descricao'],
+                            'codigo' => $produto['codigo']
+                        ];
+
+                    }
+
+                    $insertProd = $this->db->insert_batch('ocs_sintese_produtos', $produtosOC);
+
+                    return $oc;
+                } else {
+                    return false;
                 }
-
-                $insertProd = $this->db->insert_batch('ocs_sintese_produtos', $produtosOC);
-
-                return true;
             } else {
                 return false;
             }
-
 
         }
     }
@@ -372,68 +407,79 @@ class Pedidos extends Conv_controller
             $idComprador = $_SESSION['dados']['id'];
 
             if (!empty($prod)) {
-                // verifica se existe um pedido aberto
-                $pedido = $this->db
-                    ->where("id_comprador", $idComprador)
-                    ->where("id_fornecedor", $prod['id_fornecedor'])
-                    ->where("fechado", 0)
-                    ->get('conv_pedidos')
-                    ->row_array();
-
-                if (empty($pedido)) {
-                    $insertPedido = [
-                        'id_comprador' => $idComprador,
-                        'id_fornecedor' => $prod['id_fornecedor'],
+                if ($qtd > $prod['quantidade']) {
+                    $warn = [
+                        'type' => 'warning',
+                        'message' => 'Não é permitido quantidades maiores que o estoque disponível'
                     ];
-
-                    $this->db->insert('conv_pedidos', $insertPedido);
-                    $idPedido = $this->db->insert_id();
                 } else {
-                    $idPedido = $pedido['id'];
-                }
 
-                $pedidoProd = $this->db
-                    ->where('id_pedido', $idPedido)
-                    ->where('codigo', $prod['codigo'])
-                    ->get('conv_pedidos_produtos');
+                    // verifica se existe um pedido aberto
+                    $pedido = $this->db
+                        ->where("id_comprador", $idComprador)
+                        ->where("id_fornecedor", $prod['id_fornecedor'])
+                        ->where("fechado", 0)
+                        ->get('conv_pedidos')
+                        ->row_array();
 
-                if ($pedidoProd->num_rows() > 0) {
+                    if (empty($pedido)) {
+                        $insertPedido = [
+                            'id_comprador' => $idComprador,
+                            'id_fornecedor' => $prod['id_fornecedor'],
+                        ];
+
+                        $this->db->insert('conv_pedidos', $insertPedido);
+                        $idPedido = $this->db->insert_id();
+                    } else {
+                        $idPedido = $pedido['id'];
+                    }
 
                     $pedidoProd = $this->db
                         ->where('id_pedido', $idPedido)
                         ->where('codigo', $prod['codigo'])
-                        ->set('quantidade', $qtd)
-                        ->update('conv_pedidos_produtos');
+                        ->get('conv_pedidos_produtos');
 
-                    if ($pedidoProd) {
+                    if ($pedidoProd->num_rows() > 0) {
+
+                        $pedidoProd = $this->db
+                            ->where('id_pedido', $idPedido)
+                            ->where('codigo', $prod['codigo'])
+                            ->set('quantidade', $qtd)
+                            ->update('conv_pedidos_produtos');
+
+                        if ($pedidoProd) {
+                            $warn = [
+                                'type' => 'success',
+                                'message' => 'O produto ja existe no pedido, atualizamos a quantidade para o valor informado'
+                            ];
+                        } else {
+                            $warn = [
+                                'type' => 'warning',
+                                'message' => 'O produto ja existe no pedido, mas não conseguimos atualizar, consulte o suporte'
+                            ];
+                        }
+
+                    } else {
+                        $dataProd = [
+                            'id_pedido' => $idPedido,
+                            'codigo' => $prod['codigo'],
+                            'quantidade' => $qtd,
+                            'preco_unitario' => $prod['preco'],
+                            'situacao' => 1,
+                            'data_registro' => date("Y-m-d H:i:s", time())
+                        ];
+
+                        $this->db->insert('conv_pedidos_produtos', $dataProd);
+
                         $warn = [
                             'type' => 'success',
-                            'message' => 'O produto ja existe no pedido, atualizamos a quantidade para o valor informado'
-                        ];
-                    } else {
-                        $warn = [
-                            'type' => 'warning',
-                            'message' => 'O produto ja existe no pedido, mas não conseguimos atualizar, consulte o suporte'
+                            'message' => 'Produto enviado para o pedido'
                         ];
                     }
 
-                } else {
-                    $dataProd = [
-                        'id_pedido' => $idPedido,
-                        'codigo' => $prod['codigo'],
-                        'quantidade' => $qtd,
-                        'preco_unitario' => $prod['preco'],
-                        'situacao' => 1,
-                        'data_registro' => date("Y-m-d H:i:s", time())
-                    ];
 
-                    $this->db->insert('conv_pedidos_produtos', $dataProd);
-
-                    $warn = [
-                        'type' => 'success',
-                        'message' => 'Produto enviado para o pedido'
-                    ];
                 }
+
             } else {
                 $warn = [
                     'type' => 'warning',
@@ -593,7 +639,9 @@ class Pedidos extends Conv_controller
                 }],
                 ['db' => 'cp.situacao', 'dt' => 'situacao'],
                 ['db' => 'cp.situacao', 'dt' => 'situacao_lbl', 'formatter' => function ($r, $d) {
-                    return getStatusPedidosConv(intval($r));
+
+                    $status = $this->db->where('id', $r)->get('conv_pedidos_status')->row_array();
+                    return (!empty($status)) ? $status['descricao'] : 'Indefinido';
                 }],
                 ['db' => 'cp.observacao', 'dt' => 'observacao'],
                 ['db' => 'cp.data_faturamento', 'dt' => 'data_faturamento'],

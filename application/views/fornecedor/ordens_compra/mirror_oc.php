@@ -16492,6 +16492,7 @@
                         <th>Qtd.</th>
                         <th>Preço (R$)</th>
                         <th>Total (R$)</th>
+                        <th>Situação</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -16505,6 +16506,7 @@
                             <td><?php echo $oc['Qt_Produto']; ?></td>
                             <td><?php echo number_format($oc['Vl_Preco_Produto'], 4, ',', '.'); ?></td>
                             <td><?php echo number_format($oc['Vl_Preco_Produto'] * $oc['Qt_Produto'], 4, ',', '.'); ?></td>
+                            <td><?php echo ($oc['situacao'] == 9 ) ? 'Rejeitado' : 'Aprovado' ?></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

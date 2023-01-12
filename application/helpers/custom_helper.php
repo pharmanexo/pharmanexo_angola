@@ -39,10 +39,10 @@ function getStatusPedidosConv($stts = null)
 {
 
     $rows = [
-        0 => "Em aberto",
-        1 => "Enviado ao distribuidor",
-        2 => "Aprovado",
-        3 => "Reprovado e Cancelado",
+        1 => "Em aberto",
+        2 => "Enviado ao distribuidor",
+        3 => "Aprovado",
+        4 => "Reprovado e Cancelado",
     ];
 
     return (isset($stts)) ? $rows[$stts] : $rows;
