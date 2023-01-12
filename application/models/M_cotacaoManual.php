@@ -847,7 +847,7 @@ class M_cotacaoManual extends MY_Model
 	    		";
         }
 
-        # Add preço
+        # Add preço 
         if (isset($exibirPreco)) {
 
             if (is_null($estado)) {
