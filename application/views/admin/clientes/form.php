@@ -11,14 +11,18 @@
     <?php echo $heading; ?>
 
     <div class="content__inner">
-        <form id="formCliente" enctype="multipart/form-data" data-url="<?php echo $form_action; ?>" data-route_success="<?php echo $url_route_success; ?>" data-type="<?php echo $tipo_cadastro ?>" method="POST">
+        <form id="formCliente" enctype="multipart/form-data" data-url="<?php echo $form_action; ?>"
+              data-route_success="<?php echo $url_route_success; ?>" data-type="<?php echo $tipo_cadastro ?>"
+              method="POST">
             <?php if (isset($cliente) && !empty($cliente)) : ?>
                 <input type="hidden" name="id" value="<?php echo $cliente['id']; ?>">
             <?php endif; ?>
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-cliente" role="tab" aria-controls="nav-home" aria-selected="true">Dados Comprador</a>
-                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-documentos" role="tab" aria-controls="nav-profile" aria-selected="false">Documentos</a>
+                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-cliente"
+                       role="tab" aria-controls="nav-home" aria-selected="true">Dados Comprador</a>
+                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-documentos"
+                       role="tab" aria-controls="nav-profile" aria-selected="false">Documentos</a>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
@@ -30,16 +34,20 @@
                                 <div class="card-header">
                                     <div class="card-title">Logomarca</div>
                                 </div>
-                                <div class="card-body text-center py-5" data-toggle="tooltip" title="Clique para alterar">
-                                    <label for="logo">
-                                        <img id="logo_img" src="<?php echo $src_logo ?>" alt="" style="width: 150px; height: auto">
-                                        <input type="file" hidden class="form-control" id="logo" name="logo" >
+                                <div class="card-body text-center py-5">
+                                    <label for="logo" data-toggle="tooltip" title="Clique para alterar">
+                                        <img id="logo_img" src="<?php echo $src_logo ?>" alt=""
+                                             style="width: 150px; height: auto">
+                                        <input type="file" hidden class="form-control" id="logo" name="logo">
                                     </label>
                                     <div class="mt-3 text-left">
                                         <div class="form-group">
                                             <div class="checkbox checkbox--inline">
                                                 <?php $default = (isset($cliente['aprovado'])) ? $cliente['aprovado'] : '1'; ?>
-                                                <input type="checkbox" id="aprovado" <?php  echo ($default == 1) ? "checked" : "" ?> name="aprovado" value="<?php echo set_value('aprovado', $default, TRUE); ?>">
+                                                <input type="checkbox"
+                                                       id="aprovado" <?php echo ($default == 1) ? "checked" : "" ?>
+                                                       name="aprovado"
+                                                       value="<?php echo set_value('aprovado', $default, TRUE); ?>">
                                                 <label class="checkbox__label" for="aprovado">Cadastro Aprovado</label>
                                             </div>
                                         </div>
@@ -47,6 +55,12 @@
                                             <label><?php echo isset($cliente['data_criacao']) ? 'Registrado em: ' . date('d/m/Y', strtotime($cliente['data_criacao'])) : '' ?></label>
                                         </div>
                                     </div>
+                                    <?php if (isset($cliente['situacao_promo']) && $cliente['situacao_promo'] == 0) { ?>
+                                        <hr>
+                                        <div class="text-center">
+                                            <a href="<?php if (isset($url_aprovar)) echo $url_aprovar; ?>" class="btn btn-sm btn-primary btn-block">Aprovar Convidado</a>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +76,8 @@
                                             <div class="form-group">
                                                 <?php $default = (isset($cliente['cnpj'])) ? $cliente['cnpj'] : ''; ?>
                                                 <label for="cnpj">CNPJ</label>
-                                                <input type="text" class="form-control" name="cnpj" id="cnpj" data-inputmask="cnpj"
+                                                <input type="text" class="form-control" name="cnpj" id="cnpj"
+                                                       data-inputmask="cnpj"
                                                        value="<?php echo set_value('cnpj', $default, TRUE); ?>">
                                             </div>
                                         </div>
@@ -70,7 +85,8 @@
                                             <div class="form-group">
                                                 <?php $default = (isset($cliente['nome_fantasia'])) ? $cliente['nome_fantasia'] : ''; ?>
                                                 <label for="nome_fantasia">Nome Fantasia</label>
-                                                <input type="text" class="form-control" id="nome_fantasia" name="nome_fantasia"
+                                                <input type="text" class="form-control" id="nome_fantasia"
+                                                       name="nome_fantasia"
                                                        value="<?php echo set_value('nome_fantasia', $default, TRUE); ?>">
                                             </div>
                                         </div>
@@ -80,7 +96,8 @@
                                             <div class="form-group">
                                                 <?php $default = (isset($cliente['razao_social'])) ? $cliente['razao_social'] : ''; ?>
                                                 <label for="razao_social">Nome/Razão Social</label>
-                                                <input type="text" class="form-control" name="razao_social" id="razao_social"
+                                                <input type="text" class="form-control" name="razao_social"
+                                                       id="razao_social"
                                                        value="<?php echo set_value('razao_social', $default, TRUE); ?>">
                                             </div>
                                         </div>
@@ -108,31 +125,36 @@
                                             <div class="form-group">
                                                 <?php $default = (isset($cliente['protocolo_alvara'])) ? $cliente['protocolo_alvara'] : ''; ?>
                                                 <label for="protocolo_alvara">Protocolo Alvará</label>
-                                                <input type="text" class="form-control" id="protocolo_alvara" name="protocolo_alvara"
+                                                <input type="text" class="form-control" id="protocolo_alvara"
+                                                       name="protocolo_alvara"
                                                        value="<?php echo set_value('protocolo_alvara', $default, TRUE); ?>">
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
-                                                <?php $default = ( isset($cliente['validade_alvara']) && $cliente['validade_alvara'] != '0000-00-00 00:00:00' ) ? date('d/m/Y', strtotime($cliente['validade_alvara'])) : ''; ?>
+                                                <?php $default = (isset($cliente['validade_alvara']) && $cliente['validade_alvara'] != '0000-00-00 00:00:00') ? date('d/m/Y', strtotime($cliente['validade_alvara'])) : ''; ?>
                                                 <label for="validade_alvara">Validade Alvará</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group mb-3">
-                                                        <span class="input-group-text"><i class="far fa-calendar-check"></i></span>
-                                                        <input type="text" class="form-control" name="validade_alvara" id="validade_alvara" data-inputmask="date" value="<?php echo set_value('validade_alvara', $default, TRUE); ?>">
+                                                        <span class="input-group-text"><i
+                                                                    class="far fa-calendar-check"></i></span>
+                                                        <input type="text" class="form-control" name="validade_alvara"
+                                                               id="validade_alvara" data-inputmask="date"
+                                                               value="<?php echo set_value('validade_alvara', $default, TRUE); ?>">
                                                     </div>
-                                                </div>            
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                     </div>
                                     <div class="form-row">
-                                    <div class="col-12">
+                                        <div class="col-12">
                                             <div class="form-group">
                                                 <?php $default = (isset($cliente['motivo_recusa'])) ? $cliente['motivo_recusa'] : ''; ?>
                                                 <label for="motivo_recusa">Motivo Recusa</label>
-                                                <input type="text" class="form-control" id="motivo_recusa" name="motivo_recusa"
+                                                <input type="text" class="form-control" id="motivo_recusa"
+                                                       name="motivo_recusa"
                                                        value="<?php echo set_value('motivo_recusa', $default, TRUE); ?>">
                                             </div>
                                         </div>
@@ -148,9 +170,10 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="form-group">
-                                            <?php $default = (isset($cliente['responsavel'])) ? $cliente['responsavel'] : ''; ?>
+                                                <?php $default = (isset($cliente['responsavel'])) ? $cliente['responsavel'] : ''; ?>
                                                 <label for="responsavel">Responsável</label>
-                                                <input type="text" class="form-control" name="responsavel" value="<?php echo set_value('responsavel', $default, TRUE); ?>">
+                                                <input type="text" class="form-control" name="responsavel"
+                                                       value="<?php echo set_value('responsavel', $default, TRUE); ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -161,9 +184,15 @@
                                                 <label for="integracao">Integração</label>
                                                 <select class="form-control" id="integracao" name="integracao">
                                                     <option value="">Selecione</option>
-                                                    <option value="0" <?php if (isset($cliente['integracao']) && $cliente['integracao'] == '0') echo 'selected' ?> >Não integrado e não Automatizado</option>
-                                                    <option value="1" <?php if (isset($cliente['integracao']) && $cliente['integracao'] == '1') echo 'selected' ?> >Integrado e não Automatizado</option>
-                                                    <option value="2" <?php if (isset($cliente['integracao']) && $cliente['integracao'] == '2') echo 'selected' ?> >Integrado e Automatizado</option>
+                                                    <option value="0" <?php if (isset($cliente['integracao']) && $cliente['integracao'] == '0') echo 'selected' ?> >
+                                                        Não integrado e não Automatizado
+                                                    </option>
+                                                    <option value="1" <?php if (isset($cliente['integracao']) && $cliente['integracao'] == '1') echo 'selected' ?> >
+                                                        Integrado e não Automatizado
+                                                    </option>
+                                                    <option value="2" <?php if (isset($cliente['integracao']) && $cliente['integracao'] == '2') echo 'selected' ?> >
+                                                        Integrado e Automatizado
+                                                    </option>
                                                 </select>
                                             </div>
                                         </div>
@@ -173,8 +202,8 @@
                                                 <label for="id_tipo_venda">Tipo de Venda</label>
                                                 <select class="form-control" name="id_tipo_venda" id="id_tipo_venda">
                                                     <option value="">Selecione</option>
-                                                    <?php foreach($tipos_venda as $tipo) {?>
-                                                        <option value="<?php echo $tipo['id'] ?>" <?php if (isset($cliente['id_tipo_venda']) && $tipo['id'] == $cliente['id_tipo_venda']) echo 'selected' ?>  ><?php echo $tipo['descricao'] ?></option>
+                                                    <?php foreach ($tipos_venda as $tipo) { ?>
+                                                        <option value="<?php echo $tipo['id'] ?>" <?php if (isset($cliente['id_tipo_venda']) && $tipo['id'] == $cliente['id_tipo_venda']) echo 'selected' ?> ><?php echo $tipo['descricao'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -194,7 +223,9 @@
                                                 <?php $default = (isset($cliente['cep'])) ? $cliente['cep'] : ''; ?>
                                                 <label for="cep">CEP</label>
                                                 <div class="input-group mb-3">
-                                                    <input type="text" class="form-control" name="cep" id="cep" data-inputmask="cep" value="<?php echo set_value('cep', $default, TRUE); ?>">
+                                                    <input type="text" class="form-control" name="cep" id="cep"
+                                                           data-inputmask="cep"
+                                                           value="<?php echo set_value('cep', $default, TRUE); ?>">
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">
                                                             <a id="filtro-cep" data-toggle="tooltip" title="Buscar">
@@ -255,20 +286,24 @@
                                             <div class="form-group">
                                                 <?php $default = (isset($cliente['complemento'])) ? $cliente['complemento'] : ''; ?>
                                                 <label for="complemento">Complemento</label>
-                                                <input type="text" class="form-control" name="complemento" id="complemento"value="<?php echo set_value('complemento', $default, TRUE); ?>">
+                                                <input type="text" class="form-control" name="complemento"
+                                                       id="complemento"
+                                                       value="<?php echo set_value('complemento', $default, TRUE); ?>">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-6"> 
+                                        <div class="col-6">
                                             <div class="form-group">
                                                 <?php $default = (isset($cliente['email'])) ? $cliente['email'] : ''; ?>
                                                 <label for="email">Email</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1"><i class="far fa-envelope"></i></span>
+                                                        <span class="input-group-text" id="basic-addon1"><i
+                                                                    class="far fa-envelope"></i></span>
                                                     </div>
-                                                    <input type="email" class="form-control" name="email" value="<?php echo set_value('email', $default, TRUE); ?>">
+                                                    <input type="email" class="form-control" name="email"
+                                                           value="<?php echo set_value('email', $default, TRUE); ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -278,9 +313,12 @@
                                                 <label for="telefone">Telefone</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
+                                                        <span class="input-group-text" id="basic-addon1"><i
+                                                                    class="fas fa-phone"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="telefone" data-inputmask="tel"value="<?php echo set_value('telefone', $default, TRUE); ?>">
+                                                    <input type="text" class="form-control" name="telefone"
+                                                           data-inputmask="tel"
+                                                           value="<?php echo set_value('telefone', $default, TRUE); ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -290,9 +328,12 @@
                                                 <label for="telefone">Celular</label>
                                                 <div class="input-group mb-3">
                                                     <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-mobile-alt"></i></span>
+                                                        <span class="input-group-text" id="basic-addon1"><i
+                                                                    class="fas fa-mobile-alt"></i></span>
                                                     </div>
-                                                    <input type="text" class="form-control" name="celular" data-inputmask="tel"value="<?php echo set_value('celular', $default, TRUE); ?>">
+                                                    <input type="text" class="form-control" name="celular"
+                                                           data-inputmask="tel"
+                                                           value="<?php echo set_value('celular', $default, TRUE); ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -300,7 +341,8 @@
                                 </div>
                             </div>
                             <!-- Card dados pessoais-->
-                            <div class="card" id="mkt" <?php echo ( isset($cliente['id_tipo_venda']) && ($cliente['id_tipo_venda'] == 1 || $cliente['id_tipo_venda'] == 3) ) ? '' : 'hidden'  ?> >
+                            <div class="card"
+                                 id="mkt" <?php echo (isset($cliente['id_tipo_venda']) && ($cliente['id_tipo_venda'] == 1 || $cliente['id_tipo_venda'] == 3)) ? '' : 'hidden' ?> >
                                 <div class="card-header">
                                     <h6 class="card-title">Dados Pessoais</h6>
                                 </div>
@@ -336,9 +378,12 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <?php $default = (isset($cliente['documento_alvara'])) ? $cliente['documento_alvara'] : ''; ?>
-                                        <label class="btn btn-block btn-outline-secondary" for="documento_alvara" id="lb_documento_alvara">
+                                        <label class="btn btn-block btn-outline-secondary" for="documento_alvara"
+                                               id="lb_documento_alvara">
                                             <span id="span_documento_alvara">Documento Alvará</span>
-                                            <input type="file" hidden class="form-control" onchange="labelArquivo($('#documento_alvara'), $('#span_documento_alvara'))" id="documento_alvara" name="documento_alvara"
+                                            <input type="file" hidden class="form-control"
+                                                   onchange="labelArquivo($('#documento_alvara'), $('#span_documento_alvara'))"
+                                                   id="documento_alvara" name="documento_alvara"
                                                    value="<?php echo set_value('documento_alvara', $default, TRUE); ?>">
                                         </label>
                                     </div>
@@ -348,7 +393,9 @@
                                         <?php $default = (isset($cliente['cartao_cnpj'])) ? $cliente['cartao_cnpj'] : ''; ?>
                                         <label class="btn btn-block btn-outline-secondary" for="cartao_cnpj">
                                             <span id="span_cartao_cnpj">Cartão CNPJ</span>
-                                            <input type="file" hidden class="form-control" onchange="labelArquivo($('#cartao_cnpj'), $('#span_cartao_cnpj'))" id="cartao_cnpj" name="cartao_cnpj"
+                                            <input type="file" hidden class="form-control"
+                                                   onchange="labelArquivo($('#cartao_cnpj'), $('#span_cartao_cnpj'))"
+                                                   id="cartao_cnpj" name="cartao_cnpj"
                                                    value="<?php echo set_value('cartao_cnpj', $default, TRUE); ?>">
                                         </label>
                                     </div>
@@ -360,16 +407,21 @@
                                         <?php $default = (isset($cliente['copia_afe'])) ? $cliente['copia_afe'] : ''; ?>
                                         <label class="btn btn-block btn-outline-secondary" for="copia_afe">
                                             <span id="span_copia_afe">Cópia AFE</span>
-                                            <input type="file" hidden class="form-control" onchange="labelArquivo($('#copia_afe'), $('#span_copia_afe'))" id="copia_afe" name="copia_afe"
+                                            <input type="file" hidden class="form-control"
+                                                   onchange="labelArquivo($('#copia_afe'), $('#span_copia_afe'))"
+                                                   id="copia_afe" name="copia_afe"
                                                    value="<?php echo set_value('copia_afe', $default, TRUE); ?>">
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label class="btn btn-block btn-outline-secondary" for="responsabilidade_tecnica">
+                                        <label class="btn btn-block btn-outline-secondary"
+                                               for="responsabilidade_tecnica">
                                             <span id="span_responsabilidade_tecnica">Responsabilidade Técnica</span>
-                                            <input type="file" hidden class="form-control" onchange="labelArquivo($('#responsabilidade_tecnica'), $('#span_responsabilidade_tecnica'))" id="responsabilidade_tecnica" name="responsabilidade_tecnica">
+                                            <input type="file" hidden class="form-control"
+                                                   onchange="labelArquivo($('#responsabilidade_tecnica'), $('#span_responsabilidade_tecnica'))"
+                                                   id="responsabilidade_tecnica" name="responsabilidade_tecnica">
                                         </label>
                                     </div>
                                 </div>
@@ -377,56 +429,64 @@
                         </div>
                     </div>
                     <div class="row">
-                        <?php if (isset($cliente['documento_alvara']) && !empty($cliente['documento_alvara']) ) { ?>
+                        <?php if (isset($cliente['documento_alvara']) && !empty($cliente['documento_alvara'])) { ?>
                             <div class="col-12 col-lg-3">
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-title">Documento Alvará</div>
                                     </div>
                                     <div class="card-body">
-                                        <?php $default = (isset($cliente['documento_alvara'])) ? $file_url . $cliente['documento_alvara'] : null; ?> 
-                                        <a href="<?php echo $default ?>" class="btn btn-block btn-primary" data-toggle="tooltip" title="Visuaizar Arquivo" target="_blank" ><i class="fas fa-external-link-alt"></i></a>
-                                    </div>  
-                                </div>   
+                                        <?php $default = (isset($cliente['documento_alvara'])) ? $file_url . $cliente['documento_alvara'] : null; ?>
+                                        <a href="<?php echo $default ?>" class="btn btn-block btn-primary"
+                                           data-toggle="tooltip" title="Visuaizar Arquivo" target="_blank"><i
+                                                    class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         <?php } ?>
-                        <?php if (isset($cliente['cartao_cnpj']) && !empty($cliente['cartao_cnpj']) ) { ?>
+                        <?php if (isset($cliente['cartao_cnpj']) && !empty($cliente['cartao_cnpj'])) { ?>
                             <div class="col-12 col-lg-3">
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-title">Cartão CNPJ</div>
                                     </div>
                                     <div class="card-body">
-                                        <?php $default = (isset($cliente['cartao_cnpj'])) ? $file_url . $cliente['cartao_cnpj'] : null; ?> 
-                                        <a href="<?php echo $default ?>" class="btn btn-block btn-primary" data-toggle="tooltip" title="Visuaizar Arquivo" target="_blank" ><i class="fas fa-external-link-alt"></i></a>
-                                    </div>  
-                                </div>   
+                                        <?php $default = (isset($cliente['cartao_cnpj'])) ? $file_url . $cliente['cartao_cnpj'] : null; ?>
+                                        <a href="<?php echo $default ?>" class="btn btn-block btn-primary"
+                                           data-toggle="tooltip" title="Visuaizar Arquivo" target="_blank"><i
+                                                    class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         <?php } ?>
-                        <?php if (isset($cliente['copia_afe']) && !empty($cliente['copia_afe']) ) { ?>
+                        <?php if (isset($cliente['copia_afe']) && !empty($cliente['copia_afe'])) { ?>
                             <div class="col-12 col-lg-3">
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-title">Cópia AFE</div>
                                     </div>
                                     <div class="card-body">
-                                        <?php $default = (isset($cliente['copia_afe'])) ? $file_url . $cliente['copia_afe'] : null; ?> 
-                                        <a href="<?php echo $default ?>" class="btn btn-block btn-primary" data-toggle="tooltip" title="Visuaizar Arquivo" target="_blank" ><i class="fas fa-external-link-alt"></i></a>
-                                    </div>  
-                                </div>   
+                                        <?php $default = (isset($cliente['copia_afe'])) ? $file_url . $cliente['copia_afe'] : null; ?>
+                                        <a href="<?php echo $default ?>" class="btn btn-block btn-primary"
+                                           data-toggle="tooltip" title="Visuaizar Arquivo" target="_blank"><i
+                                                    class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         <?php } ?>
-                        <?php if (isset($cliente['responsabilidade_tecnica']) && !empty($cliente['responsabilidade_tecnica']) ) { ?>
+                        <?php if (isset($cliente['responsabilidade_tecnica']) && !empty($cliente['responsabilidade_tecnica'])) { ?>
                             <div class="col-12 col-lg-3">
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="card-title">Responsabilidade Técnica</div>
                                     </div>
                                     <div class="card-body">
-                                        <?php $default = (isset($cliente['responsabilidade_tecnica'])) ? $file_url . $cliente['responsabilidade_tecnica'] : null; ?> 
-                                        <a href="<?php echo $default ?>" class="btn btn-block btn-primary" data-toggle="tooltip" title="Visuaizar Arquivo" target="_blank" ><i class="fas fa-external-link-alt"></i></a>
-                                    </div>  
-                                </div>   
+                                        <?php $default = (isset($cliente['responsabilidade_tecnica'])) ? $file_url . $cliente['responsabilidade_tecnica'] : null; ?>
+                                        <a href="<?php echo $default ?>" class="btn btn-block btn-primary"
+                                           data-toggle="tooltip" title="Visuaizar Arquivo" target="_blank"><i
+                                                    class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         <?php } ?>
                     </div>
@@ -446,7 +506,7 @@
 
         password_popover('#senha', '#c_senha');
 
-        $('#formCliente').submit(function(e) {
+        $('#formCliente').submit(function (e) {
             e.preventDefault();
 
             var formData = new FormData(this);
@@ -457,30 +517,32 @@
                 contentType: false,
                 processData: false,
                 data: formData,
-                beforeSend: function(jqXHR, settings) {
+                beforeSend: function (jqXHR, settings) {
                     /*if ( validaForm() == false ) {
                         formWarning({ type: 'warning', message: "Senha inválida!"});
                         return jqXHR.abort();
                     }   */
                 },
-                success: function(xhr) {
+                success: function (xhr) {
 
                     if (xhr.type == 'warning') {
 
-                        if ( typeof xhr.message == 'string' ) {
-                            xhr.message = { message: xhr.message };
+                        if (typeof xhr.message == 'string') {
+                            xhr.message = {message: xhr.message};
                         }
 
-                        $.each(xhr.message, function(i, v) {
-                            formWarning({ type: 'warning', message: v });
+                        $.each(xhr.message, function (i, v) {
+                            formWarning({type: 'warning', message: v});
                         });
                     } else {
                         formWarning(xhr);
-                        setTimeout(function() { window.location.href = $('#formCliente').data('route_success'); }, 1500);
+                        setTimeout(function () {
+                            window.location.href = $('#formCliente').data('route_success');
+                        }, 1500);
                     }
                 },
-                error: function(xhr) {
-                    formWarning({ type: 'warning', message: "Erro ao salvar as informações!" });
+                error: function (xhr) {
+                    formWarning({type: 'warning', message: "Erro ao salvar as informações!"});
                 }
             })
         });
@@ -508,7 +570,7 @@
             }
         });
         $("#id_tipo_venda").change(function () {
-            if ( $('#id_tipo_venda').val() == 1 || $('#id_tipo_venda').val() == 3 ) {
+            if ($('#id_tipo_venda').val() == 1 || $('#id_tipo_venda').val() == 3) {
                 $('senha').val("");
                 $('c_senha').val("");
                 $('#mkt').attr('hidden', false);
@@ -520,31 +582,40 @@
         var senha = document.getElementById("senha");
         var c_senha = document.getElementById("c_senha");
 
-        senha.addEventListener('keyup', function() { checkPassword(senha.value, c_senha.value); });
-        senha.addEventListener('focus', function() { checks(null, senha.value, c_senha.value); });
+        senha.addEventListener('keyup', function () {
+            checkPassword(senha.value, c_senha.value);
+        });
+        senha.addEventListener('focus', function () {
+            checks(null, senha.value, c_senha.value);
+        });
     });
 
-    function validaForm() 
-    {
+    function validaForm() {
         if (type == 1) {
 
-            if ( $('#id_tipo_venda').val() != 2 ) {
+            if ($('#id_tipo_venda').val() != 2) {
 
                 var resp = validaPassword($('#senha').val(), $('#c_senha').val());
-                return ( resp != 1 ) ? false : true;
-            } else { return true; }
+                return (resp != 1) ? false : true;
+            } else {
+                return true;
+            }
         } else {
 
-            if ( $('#id_tipo_venda').val() != 2 ) {
+            if ($('#id_tipo_venda').val() != 2) {
 
                 var resp = validaPassword($('#senha').val(), $('#c_senha').val());
 
-                return (  $('#senha').val() != "" && resp != 1 ) ? false : true;
-            } else { return true; }
+                return ($('#senha').val() != "" && resp != 1) ? false : true;
+            } else {
+                return true;
+            }
         }
     }
 
-    function labelArquivo(campo, span) { span.text(campo.val()); }
+    function labelArquivo(campo, span) {
+        span.text(campo.val());
+    }
 </script>
 </body>
 

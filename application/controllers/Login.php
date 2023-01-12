@@ -952,10 +952,12 @@ class Login extends CI_Controller
 
             $post = $this->input->post();
 
-            $comp = $this->db->select('*')->where('cnpj', $post['loginconvidado'])->get('compradores')->row_array();
+            $comp = $this->db->select('*')
+                ->where('cnpj', $post['loginconvidado'])
+                ->get('compradores')->row_array();
 
             if (!empty($comp)) {
-                if ($comp['status'] == '1') {
+                if ($comp['situacao_promo'] == 1) {
 
                     //verifica se é o primeiro login
                     if ($post['senhaconvidado'] == 'Invite@pharma10' && empty($comp['senha_promo'])) {
@@ -996,18 +998,66 @@ class Login extends CI_Controller
                         'message' => 'Seu cadastro está aguardando aprovação do administrador.'
                     ];
                 }
+
                 $this->session->set_userdata('warning', $warn);
 
                 redirect($this->route);
             } else {
-                $warn = [
-                    'type' => 'error',
-                    'message' => 'Não encontramos este usuário.'
-                ];
+                $cnpj = soNumero($post['loginconvidado']);
 
-                $this->session->set_userdata('warning', $warn);
+                $content = file_get_contents("https://www.receitaws.com.br/v1/cnpj/{$cnpj}");
+                if (!empty($content)) {
+                    $result = json_decode($content, true);
 
-                redirect($this->route);
+                    $data = [
+                        'cnpj' => $result['cnpj'],
+                        'nome_fantasia' => $result['fantasia'],
+                        'razao_social' => $result['nome'],
+                        'endereco' => $result['logradouro'],
+                        'numero' => $result['numero'],
+                        'cidade' => $result['municipio'],
+                        'estado' => $result['uf'],
+                        'complemento' => $result['complemento'],
+                        'cep' => $result['cep'],
+                        'email' => $result['email'],
+                        'telefone' => $result['telefone'],
+                        'situacao_promo' => 0,
+                    ];
+
+                    $insert = $this->db->insert('compradores', $data);
+
+                    if ($insert) {
+
+                        $notify = [
+                            "to" => "marlon.boecker@pharmanexo.com.br, administracao@pharmanexo.com.br",
+                            "cco" => '',
+                            "greeting" => "Admninistrador",
+                            "subject" => "Portal Pharmanexo - Convidado aguardando aprovação",
+                            "message" => "
+                            <p>Olá administrador, <br></p>
+                            <p>O comprador abaixo está aguardando aprovação, acesso o painel adminitrativo para liberar o acesso.</p>
+                            <p>CNPJ: {$data['cnpj']} - {$data['razao_social']}</p>
+                          <br>
+                          <p>Atenciosamente,</p>
+                          <p>Equipe Pharmanexo</p>
+                            "
+                        ];
+
+                        $send = $this->notify->send($notify);
+
+
+                        $warn = [
+                            'type' => 'warning',
+                            'message' => 'Seu cadastro foi enviado para análise, você receberá um e-mail de confirmação.'
+                        ];
+
+                        $this->session->set_userdata('warning', $warn);
+
+                        redirect($this->route);
+
+                    }
+
+                }
             }
         }
     }
