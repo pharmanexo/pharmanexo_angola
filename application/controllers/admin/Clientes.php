@@ -60,6 +60,16 @@ class Clientes extends Admin_controller
         $this->load->view("{$this->views}/main", $data);
     }
 
+    public function aprovarConvidado($id)
+    {
+        $this->db->where('id', $id)->update('compradores', ['situacao_promo' => 1]);
+
+        $output = ['type' => 'success', 'message' => 'Convidado Aprovado!'];
+        $this->session->set_userdata('warning', $output);
+
+        redirect("{$this->route}/atualizar/{$id}");
+    }
+
     /**
      * Exibe o datatables de CLientes
      *
@@ -78,8 +88,7 @@ class Clientes extends Admin_controller
                 ['db' => 'compradores.email', 'dt' => 'email'],
                 ['db' => 'compradores.telefone', 'dt' => 'telefone']
             ],
-            null,
-            'compradores.status != 3'
+            null
         );
 
         $this->output->set_content_type('application/json')->set_output(json_encode($datatables));
@@ -285,8 +294,10 @@ class Clientes extends Admin_controller
         $data['tipo_cadastro'] = 1;
         $data['url_route_success'] = $this->route;
 
+
         if(isset($id)) {
             $page_title = "Edição de Compradores";
+            $data['url_aprovar'] = "{$this->route}/aprovarConvidado/{$id}";
             $data['tipo_cadastro'] = 2;
             $data['form_action'] = "{$this->route}/atualizar/{$id}";
             $data['cliente'] = $this->cliente->findById($id);

@@ -136,7 +136,7 @@
                                     <br> <?php echo $produto['Ds_Produto_Comprador']; ?></p>
                             </div>
                             <div class="col-4">
-                                <p><strong>Produto Catálogo</strong> <br> <?php echo $produto['produto_catalogo']; ?>
+                                <p><strong>Produto Catálogo</strong> <br> <?php echo (isset($produto['produto_catalogo'])) ? $produto['produto_catalogo'] : 'Sem vinculo catalogo'; ?>
                                 </p>
                             </div>
                             <div class="col-2">

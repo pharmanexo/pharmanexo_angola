@@ -1,0 +1,3646 @@
+{
+  "PRODS-COT": {
+    "0": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "BRASTERAPICA",
+          "codigo": 4749,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 1477,
+          "unidade": "CMP",
+          "validade": "28/06/2024",
+          "descricao": "AAS 100MG SALICETIL",
+          "id_artigo": 144632293,
+          "sequencia": 1,
+          "obs_produto": "",
+          "qtd_unidade": 500,
+          "apresentacao": "",
+          "preco_oferta": 0.0526,
+          "tabela_precos": 0.0526,
+          "nome_comercial": "AAS 100MG SALICETIL",
+          "preco_unitario": 0.0526,
+          "qtd_solicitada": 5500,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 738500,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1105,
+      "ds_produto_comprador": "AAS 100MG - COMPRIMIDO"
+    },
+    "1": {
+      "cd_produto_comprador": 9,
+      "ds_produto_comprador": "ABAIXADOR DE LINGUA  - EMBALAGEM INDIVIDUAL",
+      "produtos_fornecedores_sintese": false
+    },
+    "2": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "GEOLAB",
+          "codigo": 70,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 737,
+          "unidade": "ENV",
+          "validade": "31/10/2024",
+          "descricao": "ACETILCISTEINA 600MG ENV 5G CISTEIL",
+          "id_artigo": 144632295,
+          "sequencia": 3,
+          "obs_produto": "",
+          "qtd_unidade": 50,
+          "apresentacao": "",
+          "preco_oferta": 1.0002,
+          "tabela_precos": 1.0002,
+          "nome_comercial": "ACETILCISTEINA 600MG ENV 5G CISTEIL",
+          "preco_unitario": 1.0002,
+          "qtd_solicitada": 1200,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 36850,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Envelope",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 3830,
+      "ds_produto_comprador": "ACETILCISTEÍNA 600 MG(FLUIMUCIL D)"
+    },
+    "3": {
+      "cd_produto_comprador": 1928,
+      "ds_produto_comprador": "ACICLOVIR 200MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "4": {
+      "cd_produto_comprador": 1817,
+      "ds_produto_comprador": "ACICLOVIR 250MG",
+      "produtos_fornecedores_sintese": false
+    },
+    "5": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HIPOLABOR",
+          "codigo": 101,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 123,
+          "unidade": "AMP",
+          "validade": "30/06/2024",
+          "descricao": "ACIDO TRANEXAMICO 250MG/5ML 5ML %28G%29 GENERICO",
+          "id_artigo": 144632298,
+          "sequencia": 6,
+          "obs_produto": "",
+          "qtd_unidade": 100,
+          "apresentacao": "",
+          "preco_oferta": 4.54,
+          "tabela_precos": 4.54,
+          "nome_comercial": "ACIDO TRANEXAMICO 250MG/5ML 5ML %28G%29 GENERICO",
+          "preco_unitario": 4.54,
+          "qtd_solicitada": 400,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 12300,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1881,
+      "ds_produto_comprador": "ACIDO TRANEXAMICO 250MG/5ML - AMPOLA"
+    },
+    "6": {
+      "cd_produto_comprador": 1350,
+      "ds_produto_comprador": "ACIDO VALPROICO 250MG CAP",
+      "produtos_clientes_depara": false
+    },
+    "7": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "EQUIPLEX",
+          "codigo": 138,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 361,
+          "unidade": "AMP",
+          "validade": "20/10/2024",
+          "descricao": "AGUA P/ INJ 10ML PLASTICO NT",
+          "id_artigo": 144632300,
+          "sequencia": 8,
+          "obs_produto": "",
+          "qtd_unidade": 200,
+          "apresentacao": "",
+          "preco_oferta": 0.42,
+          "tabela_precos": 0.42,
+          "nome_comercial": "AGUA P/ INJ 10ML PLASTICO NT",
+          "preco_unitario": 0.42,
+          "qtd_solicitada": 41000,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 72200,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "ISOFARMA",
+          "codigo": 141,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 480,
+          "unidade": "AMP",
+          "validade": "30/05/2024",
+          "descricao": "AGUA P/ INJ 10ML PLASTICO NT",
+          "id_artigo": 144632300,
+          "sequencia": 8,
+          "obs_produto": "",
+          "qtd_unidade": 200,
+          "apresentacao": "",
+          "preco_oferta": 0.4803,
+          "tabela_precos": 0.4803,
+          "nome_comercial": "AGUA P/ INJ 10ML PLASTICO NT",
+          "preco_unitario": 0.4803,
+          "qtd_solicitada": 41000,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 96000,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1158,
+      "ds_produto_comprador": "AGUA DESTILADA 10ML - AMPOLA"
+    },
+    "8": {
+      "cd_produto_comprador": 6772,
+      "ds_produto_comprador": "AGULHA DESC. P/RAQUI Nº 22X3.5",
+      "produtos_clientes_depara": false
+    },
+    "9": {
+      "cd_produto_comprador": 3587,
+      "ds_produto_comprador": "AGULHA DESC. P/RAQUI Nº 25 X 3.5 - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "10": {
+      "cd_produto_comprador": 3588,
+      "ds_produto_comprador": "AGULHA DESC. P/RAQUI Nº 27 - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "11": {
+      "cd_produto_comprador": 6310,
+      "ds_produto_comprador": "AGULHA DESCARTAVEL 20X5.5 C/100",
+      "produtos_clientes_depara": false
+    },
+    "12": {
+      "cd_produto_comprador": 14,
+      "ds_produto_comprador": "AGULHA DESCARTAVEL 25 X 7 C/100",
+      "produtos_clientes_depara": false
+    },
+    "13": {
+      "cd_produto_comprador": 13079,
+      "ds_produto_comprador": "AGULHA DESCARTAVEL 25X12 ASPIRACAO E RESCOS (TIPO ROMBA)",
+      "produtos_clientes_depara": false
+    },
+    "14": {
+      "cd_produto_comprador": 11868,
+      "ds_produto_comprador": "AGULHA DESCARTAVEL 40X16",
+      "produtos_fornecedores_sintese": false
+    },
+    "15": {
+      "cd_produto_comprador": 16130,
+      "ds_produto_comprador": "AGULHA DESCARTAVEL PARA BIOPSIA 14G",
+      "produtos_clientes_depara": false
+    },
+    "16": {
+      "cd_produto_comprador": 14091,
+      "ds_produto_comprador": "AGULHA DESCARTÁVEL 25X7 DISPOSITIVO SEGURANÇA NR32",
+      "produtos_clientes_depara": false
+    },
+    "17": {
+      "cd_produto_comprador": 7957,
+      "ds_produto_comprador": "AGULHA P/ BIOPSIA DE PUNÇÃO 18GX20CM",
+      "produtos_clientes_depara": false
+    },
+    "18": {
+      "cd_produto_comprador": 8246,
+      "ds_produto_comprador": "AGULHA P/ BIOPSIA MED OSSEA C/EMP ERG 14GX10MM",
+      "produtos_fornecedores_sintese": false
+    },
+    "19": {
+      "cd_produto_comprador": 13608,
+      "ds_produto_comprador": "AGULHA P/ BIOPSIA MEDULA OSSEA 8GX15MCM",
+      "produtos_clientes_depara": false
+    },
+    "20": {
+      "cd_produto_comprador": 23,
+      "ds_produto_comprador": "AGULHA P/ FISTULA 17 G COM DISP DE SEGURANÇA",
+      "produtos_clientes_depara": false
+    },
+    "21": {
+      "cd_produto_comprador": 8017,
+      "ds_produto_comprador": "AGULHA TIPO HUBER 20GX20MM C/EXTENSOR",
+      "produtos_clientes_depara": false
+    },
+    "22": {
+      "cd_produto_comprador": 18898,
+      "ds_produto_comprador": "ALCA DE POLIPECTOMIA SIMETRICA DESCARTAVEL - 2,6MM X 2300MM X 0,47MM - ABERTURA DE 10 MM",
+      "produtos_clientes_depara": false
+    },
+    "23": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "PROLINK",
+          "codigo": 5114,
+          "descricao": "ALCOOL ETILICO 70% 100ML SEPTPRO",
+          "restricao": {
+            "productPrice": false
+          },
+          "qtd_unidade": 1,
+          "apresentacao": "",
+          "nome_comercial": "ALCOOL ETILICO 70% 100ML SEPTPRO"
+        }
+      },
+      "cd_produto_comprador": 9730,
+      "ds_produto_comprador": "ALCOOL 70O ALMOTOLIA 100ML"
+    },
+    "24": {
+      "cd_produto_comprador": 41,
+      "ds_produto_comprador": "ALCOOL 70o 1000 ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "25": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 4338,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 55,
+          "unidade": "AMP",
+          "validade": "14/02/2024",
+          "descricao": "ALFENTANILA 0,544MG/ML 5ML %28A1%29 ALFAST",
+          "id_artigo": 144632318,
+          "sequencia": 26,
+          "obs_produto": "",
+          "qtd_unidade": 10,
+          "apresentacao": "",
+          "preco_oferta": 16.4688,
+          "tabela_precos": 16.4688,
+          "nome_comercial": "ALFENTANILA 0,544MG/ML 5ML %28A1%29 ALFAST",
+          "preco_unitario": 16.4688,
+          "qtd_solicitada": 100,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 550,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1246,
+      "ds_produto_comprador": "ALFENTANILA 0.5MG/ML AMP 5ML - AMPOLA"
+    },
+    "26": {
+      "cd_produto_comprador": 43,
+      "ds_produto_comprador": "ALGODAO HIDROFILO ROLO 500 G",
+      "produtos_fornecedores_sintese": false
+    },
+    "27": {
+      "cd_produto_comprador": 2686,
+      "ds_produto_comprador": "AMIODARONA 150 MG/3ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "28": {
+      "cd_produto_comprador": 1688,
+      "ds_produto_comprador": "AMIODARONA 200MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "29": {
+      "cd_produto_comprador": 1319,
+      "ds_produto_comprador": "AMITRIPTILINA 25MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "30": {
+      "cd_produto_comprador": 1619,
+      "ds_produto_comprador": "AMOXICILINA + CLAV.DE POTASSIO 500 + 125 MG COM - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "31": {
+      "cd_produto_comprador": 1791,
+      "ds_produto_comprador": "AMOXICILINA 500 MG - CAPSULA",
+      "produtos_fornecedores_sintese": false
+    },
+    "32": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "GEOLAB",
+          "codigo": 407,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 27149,
+          "unidade": "CMP",
+          "validade": "31/08/2024",
+          "descricao": "ANLODIPINO 5MG BESILAPIN",
+          "id_artigo": 144632325,
+          "sequencia": 33,
+          "obs_produto": "",
+          "qtd_unidade": 500,
+          "apresentacao": "",
+          "preco_oferta": 0.0395,
+          "tabela_precos": 0.0395,
+          "nome_comercial": "ANLODIPINO 5MG BESILAPIN",
+          "preco_unitario": 0.0395,
+          "qtd_solicitada": 6500,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 13574500,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1071,
+      "ds_produto_comprador": "ANLODIPINO 5 MG - COMPRIMIDO"
+    },
+    "33": {
+      "cd_produto_comprador": 5592,
+      "ds_produto_comprador": "APARELHO P/TRICOTOMIA DESCARTAVEL - PECA",
+      "produtos_fornecedores_sintese": false
+    },
+    "34": {
+      "cd_produto_comprador": 52,
+      "ds_produto_comprador": "ATADURA DE ALGODAO ORTOPEDICO 10CM -",
+      "produtos_clientes_depara": false
+    },
+    "35": {
+      "cd_produto_comprador": 53,
+      "ds_produto_comprador": "ATADURA DE ALGODAO ORTOPEDICO 15CM -",
+      "produtos_fornecedores_sintese": false
+    },
+    "36": {
+      "cd_produto_comprador": 54,
+      "ds_produto_comprador": "ATADURA DE ALGODAO ORTOPEDICO 20CM",
+      "produtos_fornecedores_sintese": false
+    },
+    "37": {
+      "cd_produto_comprador": 55,
+      "ds_produto_comprador": "ATADURA DE CREPOM COMPOSTA DE ALGODÃO, POLIESTER E ELASTANO DE 10CM X3MT ESTICADA (1,2 MT EM REPOUSO) 13 FIOS",
+      "produtos_clientes_depara": false
+    },
+    "38": {
+      "cd_produto_comprador": 56,
+      "ds_produto_comprador": "ATADURA DE CREPOM COMPOSTA DE ALGODÃO, POLIESTER E ELASTANO DE 15CM X3MT ESTICADA (1,2MT EM REPOUSO)13 FIOS",
+      "produtos_clientes_depara": false
+    },
+    "39": {
+      "cd_produto_comprador": 57,
+      "ds_produto_comprador": "ATADURA DE CREPOM COMPOSTA DE ALGODÃO, POLIESTER E ELASTANO DE 20CM X3MT ESTICADA (1,2MT EM REPOUSO)13 FIOS",
+      "produtos_clientes_depara": false
+    },
+    "40": {
+      "cd_produto_comprador": 58,
+      "ds_produto_comprador": "ATADURA DE CREPOM COMPOSTA DE ALGODÃO, POLIESTER E ELASTANO DE 30CM X3MT ESTICADA (1,2MT EM REPOUSO)13 FIOS",
+      "produtos_clientes_depara": false
+    },
+    "41": {
+      "cd_produto_comprador": 15974,
+      "ds_produto_comprador": "ATADURA DE CREPON 20CM X 3MT 13 FIOS ESTERIL",
+      "produtos_clientes_depara": false
+    },
+    "42": {
+      "cd_produto_comprador": 20582,
+      "ds_produto_comprador": "ATADURA DE CREPON ESTERIL 10 CM LARG TECIDO COM 18 FIOS POR CM2 DE PURO ALGODÃO, LIVRE DE RESIDUOS, MEDINDO 1,80M DE COMP EM REPOUSO E 4,5 MTS ESTICADA, COM ACABAMENTO NAS BORDAS LATERAIS QUE IMPEDEM ",
+      "produtos_clientes_depara": false
+    },
+    "43": {
+      "cd_produto_comprador": 20583,
+      "ds_produto_comprador": "ATADURA DE CREPON ESTERIL 15 CM LARG TECIDO COM 18 FIOS POR CM2 DE PURO ALGODÃO, LIVRE DE RESIDUOS, MEDINDO 1,80M DE COMP EM REPOUSO E 4,5 MTS ESTICADA, COM ACABAMENTO NAS BORDAS LATERAIS QUE IMPEDEM ",
+      "produtos_clientes_depara": false
+    },
+    "44": {
+      "cd_produto_comprador": 20584,
+      "ds_produto_comprador": "ATADURA DE CREPON ESTERIL 20 CM LARG TECIDO COM 18 FIOS POR CM2 DE PURO ALGODÃO, LIVRE DE RESIDUOS, MEDINDO 1,80M DE COMP EM REPOUSO E 4,5 MTS ESTICADA, COM ACABAMENTO NAS BORDAS LATERAIS QUE IMPEDEM ",
+      "produtos_clientes_depara": false
+    },
+    "45": {
+      "cd_produto_comprador": 18895,
+      "ds_produto_comprador": "ATADURA DE RAYON  7,5CM X 40CM",
+      "produtos_clientes_depara": false
+    },
+    "46": {
+      "cd_produto_comprador": 19139,
+      "ds_produto_comprador": "ATADURA DE RAYON  7,5CM X 5M ESTERIL",
+      "produtos_clientes_depara": false
+    },
+    "47": {
+      "cd_produto_comprador": 60,
+      "ds_produto_comprador": "ATADURA GESSADA 10CM - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "48": {
+      "cd_produto_comprador": 1058,
+      "ds_produto_comprador": "ATROPINA 0.5MG/ML AMP 1ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "49": {
+      "cd_produto_comprador": 20387,
+      "ds_produto_comprador": "AVENTAL  DESC. IMPERM TNT/SMS  MANGA LONGA = MAIOR QUE 30G CONFECCIONADO EM TNT - TECIDO NAO TECIDO, 100% POLIPROPILENO,OU SMS  MANGA LONGA, MATERIAL DESCARTAVEL, ATOXICO, COR: BRANCO; GRAMATURA: = MA",
+      "produtos_fornecedores_sintese": false
+    },
+    "50": {
+      "cd_produto_comprador": 6568,
+      "ds_produto_comprador": "AVENTAL CIR EST 1.75X1.40",
+      "produtos_clientes_depara": false
+    },
+    "51": {
+      "cd_produto_comprador": 14977,
+      "ds_produto_comprador": "AVENTAL CIRURGICO EST IMPERM 1,75X1,40 COM BARREIRA VIRAL",
+      "produtos_clientes_depara": false
+    },
+    "52": {
+      "cd_produto_comprador": 20437,
+      "ds_produto_comprador": "AVENTAL DESC.  TNT/SMS  IMPERMEAVEL LAMINADO = MAIOR QUE  50G NAO ESTERIL, USO HOSPITALAR, MANGAS LONGAS, PUNHO EM ELASTICO, GRAMATURA = MAIOR QUE  50GM2, 100% POLIPROPILENO (NAO TECIDO),OU SMS COR BR",
+      "produtos_clientes_depara": false
+    },
+    "53": {
+      "cd_produto_comprador": 1418,
+      "ds_produto_comprador": "BAMIFILINA 300MG - DRAGEA",
+      "produtos_fornecedores_sintese": false
+    },
+    "54": {
+      "cd_produto_comprador": 6825,
+      "ds_produto_comprador": "BANDAGEM ADES. ELÁST DE ALG. E RAYON C/ ADES DE",
+      "produtos_clientes_depara": false
+    },
+    "55": {
+      "cd_produto_comprador": 12794,
+      "ds_produto_comprador": "BECLOMETASONA 50MCG AER. ORAL",
+      "produtos_clientes_depara": false
+    },
+    "56": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "SAMTEC",
+          "codigo": 557,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 81,
+          "unidade": "AMP",
+          "validade": "30/09/2024",
+          "descricao": "BICARBONATO DE SODIO 8,4% 10ML PLAST NT",
+          "id_artigo": 144632349,
+          "sequencia": 57,
+          "obs_produto": "",
+          "qtd_unidade": 200,
+          "apresentacao": "",
+          "preco_oferta": 0.6796,
+          "tabela_precos": 0.6796,
+          "nome_comercial": "BICARBONATO DE SODIO 8,4% 10ML PLAST NT",
+          "preco_unitario": 0.6796,
+          "qtd_solicitada": 300,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 16200,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1161,
+      "ds_produto_comprador": "BICARBONATO DE SODIO 8.4% 10ML - AMPOLA"
+    },
+    "57": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HYPOFARMA",
+          "codigo": 558,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 30,
+          "unidade": "FRC",
+          "validade": "30/06/2024",
+          "descricao": "BICARBONATO DE SODIO 8,4% 250ML SF NT",
+          "id_artigo": 144632350,
+          "sequencia": 58,
+          "obs_produto": "",
+          "qtd_unidade": 35,
+          "apresentacao": "",
+          "preco_oferta": 25.85,
+          "tabela_precos": 25.85,
+          "nome_comercial": "BICARBONATO DE SODIO 8,4% 250ML SF NT",
+          "preco_unitario": 25.85,
+          "qtd_solicitada": 80,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 1050,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Frasco",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1162,
+      "ds_produto_comprador": "BICARBONATO DE SODIO 8.4% 250ML - FRASCO"
+    },
+    "58": {
+      "cd_produto_comprador": 1367,
+      "ds_produto_comprador": "BIPERIDENO 2MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "59": {
+      "cd_produto_comprador": 1621,
+      "ds_produto_comprador": "BISACODIL 5 MG - DRAGEA",
+      "produtos_fornecedores_sintese": false
+    },
+    "60": {
+      "cd_produto_comprador": 10872,
+      "ds_produto_comprador": "BOLSA P/ COLOSTOMIA ABERTA DRENAVEL C/FILTRO 10-70MM TRANSPARENTE (COM CLAMP)",
+      "produtos_clientes_depara": false
+    },
+    "61": {
+      "cd_produto_comprador": 12960,
+      "ds_produto_comprador": "BOLSA P/ COLOSTOMIA NEONATAL 08-51MM",
+      "produtos_clientes_depara": false
+    },
+    "62": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "PRATI DONADUZZI",
+          "codigo": 786,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 151,
+          "unidade": "CMP",
+          "validade": "25/11/2024",
+          "descricao": "BROMOPRIDA 10MG %28G%29 GENERICO",
+          "id_artigo": 144632355,
+          "sequencia": 63,
+          "obs_produto": "",
+          "qtd_unidade": 800,
+          "apresentacao": "",
+          "preco_oferta": 0.2237,
+          "tabela_precos": 0.2237,
+          "nome_comercial": "BROMOPRIDA 10MG %28G%29 GENERICO",
+          "preco_unitario": 0.2237,
+          "qtd_solicitada": 2000,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 120800,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Capsula",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1143,
+      "ds_produto_comprador": "BROMOPRIDA 10 MG - CAPSULA"
+    },
+    "63": {
+      "cd_produto_comprador": 1145,
+      "ds_produto_comprador": "BROMOPRIDA 10 MG/2ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "64": {
+      "cd_produto_comprador": 1281,
+      "ds_produto_comprador": "BUPIVACAINA ISOBARICA 0.5% (EMBALAGEM EST¿R - AMPOLA",
+      "produtos_clientes_depara": false
+    },
+    "65": {
+      "cd_produto_comprador": 1279,
+      "ds_produto_comprador": "BUPIVACAINA PESADA 0.5% (EMBALAGEM EST)- AMPOLA 4 ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "66": {
+      "cd_produto_comprador": 1354,
+      "ds_produto_comprador": "BUPROPIONA 150MG COMP",
+      "produtos_clientes_depara": false
+    },
+    "67": {
+      "cd_produto_comprador": 8341,
+      "ds_produto_comprador": "CABERGOLINA 0.5MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "68": {
+      "cd_produto_comprador": 14992,
+      "ds_produto_comprador": "CAFEINA CITRATO 10MG/ML AMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "69": {
+      "cd_produto_comprador": 79,
+      "ds_produto_comprador": "CAL SODADA - GALÃO 4.5 GRS",
+      "produtos_clientes_depara": false
+    },
+    "70": {
+      "cd_produto_comprador": 6565,
+      "ds_produto_comprador": "CAMPO CIR ESTERIL EM POLIPROPILENO MESA MAYO 0,60X1,40",
+      "produtos_clientes_depara": false
+    },
+    "71": {
+      "cd_produto_comprador": 5545,
+      "ds_produto_comprador": "CAMPO CIR. LAMINADO ESTERIL 1,30X2,00MT - PECA",
+      "produtos_clientes_depara": false
+    },
+    "72": {
+      "cd_produto_comprador": 5546,
+      "ds_produto_comprador": "CAMPO CIRURGICO SMS ESTERIL  FENESTRADO 1,20X1,20MT 48G COM BARREIRA BACTERIANA EMBALADO INDIVIDUALMENTE",
+      "produtos_clientes_depara": false
+    },
+    "73": {
+      "cd_produto_comprador": 19874,
+      "ds_produto_comprador": "CAMPO ESTÉRIL DESC SMS AZUL 48GR 0,75 X 0,75 C/ FENDA 10CM (EMBALAGEM UNITÁRIA)",
+      "produtos_clientes_depara": false
+    },
+    "74": {
+      "cd_produto_comprador": 81,
+      "ds_produto_comprador": "CAMPO OPERATORIO 45 X 50 - C/ RX - 27G -  PCT C/50",
+      "produtos_fornecedores_sintese": false
+    },
+    "75": {
+      "cd_produto_comprador": 6202,
+      "ds_produto_comprador": "CAMPO OPERATORIO 45 X 50 ESTERIL C/5 DUPLA EMBALAGEM",
+      "produtos_fornecedores_sintese": false
+    },
+    "76": {
+      "cd_produto_comprador": 3189,
+      "ds_produto_comprador": "CANETA COMANDO MANUAL C/ 3 PINOS P/ BISTURI DESCARTAVEL",
+      "produtos_clientes_depara": false
+    },
+    "77": {
+      "cd_produto_comprador": 86,
+      "ds_produto_comprador": "CANULA DE GUEDEL PVC Nº 3",
+      "produtos_clientes_depara": false
+    },
+    "78": {
+      "cd_produto_comprador": 88,
+      "ds_produto_comprador": "CANULA DE GUEDEL PVC Nº 4",
+      "produtos_fornecedores_sintese": false
+    },
+    "79": {
+      "cd_produto_comprador": 89,
+      "ds_produto_comprador": "CANULA DE GUEDEL PVC Nº 5",
+      "produtos_fornecedores_sintese": false
+    },
+    "80": {
+      "cd_produto_comprador": 93,
+      "ds_produto_comprador": "CANULA DE TRAQUEOSTOMIA DESCARTAVEL 07MM - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "81": {
+      "cd_produto_comprador": 16580,
+      "ds_produto_comprador": "CANULA DE TRAQUEOSTOMIA INOX STANDART N04",
+      "produtos_clientes_depara": false
+    },
+    "82": {
+      "cd_produto_comprador": 16578,
+      "ds_produto_comprador": "CANULA DE TRAQUEOSTOMIA INOX STANDART N05",
+      "produtos_clientes_depara": false
+    },
+    "83": {
+      "cd_produto_comprador": 5224,
+      "ds_produto_comprador": "CANULA NASAL OXIGENOTERAPIA  SILICONE NEO NATAL 6FR 210CM",
+      "produtos_clientes_depara": false
+    },
+    "84": {
+      "cd_produto_comprador": 6087,
+      "ds_produto_comprador": "CAPA P/VIDEO CIR. ESTERIL 15 X 250CM - PECA",
+      "produtos_clientes_depara": false
+    },
+    "85": {
+      "cd_produto_comprador": 5272,
+      "ds_produto_comprador": "CAPA PROTETORA DESCARTAVEL ESTERIL 80 X 75 CM",
+      "produtos_clientes_depara": false
+    },
+    "86": {
+      "cd_produto_comprador": 1691,
+      "ds_produto_comprador": "CAPTOPRIL 25MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "87": {
+      "cd_produto_comprador": 18557,
+      "ds_produto_comprador": "CARVAO ATIVADO COM PRATA - CURATIVO ABSORVENTE",
+      "produtos_clientes_depara": false
+    },
+    "88": {
+      "cd_produto_comprador": 6272,
+      "ds_produto_comprador": "CARVEDILOL 3,125MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "89": {
+      "cd_produto_comprador": 1503,
+      "ds_produto_comprador": "CATETER DE EMBOLECTOMIA 3 F (FOGARTY)",
+      "produtos_clientes_depara": false
+    },
+    "90": {
+      "cd_produto_comprador": 112,
+      "ds_produto_comprador": "CATETER DUPLO J 6F C/ FIO GUIA HIDROFILICO",
+      "produtos_clientes_depara": false
+    },
+    "91": {
+      "cd_produto_comprador": 5484,
+      "ds_produto_comprador": "CATETER DUPLO LUMEN AVC 7FR X 20CM",
+      "produtos_clientes_depara": false
+    },
+    "92": {
+      "cd_produto_comprador": 107,
+      "ds_produto_comprador": "CATETER DUPLO LUMEN RETO C/ DILATADOR 12F/2 - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "93": {
+      "cd_produto_comprador": 125,
+      "ds_produto_comprador": "CATETER INTRAVENOSO 20G X 11.10MM X 32MM D.I. - TEFLONADO",
+      "produtos_clientes_depara": false
+    },
+    "94": {
+      "cd_produto_comprador": 6399,
+      "ds_produto_comprador": "CATETER MONO LUMEN VENOSO 14 G - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "95": {
+      "cd_produto_comprador": 132,
+      "ds_produto_comprador": "CATETER TIPO OCULOS - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "96": {
+      "cd_produto_comprador": 10431,
+      "ds_produto_comprador": "CATETER TRIPLO LUMEN RETO C/ DILATADOR 12F/200MM",
+      "produtos_fornecedores_sintese": false
+    },
+    "97": {
+      "cd_produto_comprador": 7582,
+      "ds_produto_comprador": "CATETER UMBILICAL ARTERIAL  MONO LUMEN 3.0 FR",
+      "produtos_fornecedores_sintese": false
+    },
+    "98": {
+      "cd_produto_comprador": 11870,
+      "ds_produto_comprador": "CATETER UMBILICAL ARTERIAL  MONO LUMEN 3.5 FR",
+      "produtos_clientes_depara": false
+    },
+    "99": {
+      "cd_produto_comprador": 5250,
+      "ds_produto_comprador": "CATETER UMBILICAL ARTERIAL  MONO LUMEN 4.0 FR",
+      "produtos_clientes_depara": false
+    },
+    "100": {
+      "cd_produto_comprador": 12427,
+      "ds_produto_comprador": "CATETER VEN. CENTRAL  DE INSERCAO PERIFERICO 2.8 C/INTROD",
+      "produtos_clientes_depara": false
+    },
+    "101": {
+      "cd_produto_comprador": 4223,
+      "ds_produto_comprador": "CETOPROFENO AMP IM",
+      "produtos_clientes_depara": false
+    },
+    "102": {
+      "cd_produto_comprador": 6707,
+      "ds_produto_comprador": "CLAMP UMBILICAL",
+      "produtos_clientes_depara": false
+    },
+    "103": {
+      "cd_produto_comprador": 12804,
+      "ds_produto_comprador": "CLOBAZAM 10 MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "104": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "GEOLAB",
+          "codigo": 4970,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 7494,
+          "unidade": "CMP",
+          "validade": "29/02/2024",
+          "descricao": "CLONAZEPAM 2MG %28B1%29 BL OPC ZILEPAM",
+          "id_artigo": 144632397,
+          "sequencia": 105,
+          "obs_produto": "",
+          "qtd_unidade": 480,
+          "apresentacao": "",
+          "preco_oferta": 0.0492,
+          "tabela_precos": 0.0492,
+          "nome_comercial": "CLONAZEPAM 2MG %28B1%29 BL OPC ZILEPAM",
+          "preco_unitario": 0.0492,
+          "qtd_solicitada": 2000,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 3597120,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1352,
+      "ds_produto_comprador": "CLONAZEPAM 2MG COMP"
+    },
+    "105": {
+      "cd_produto_comprador": 1361,
+      "ds_produto_comprador": "CLONAZEPAN 0.5MG - COMPRIMIDO",
+      "produtos_clientes_depara": false
+    },
+    "106": {
+      "cd_produto_comprador": 1388,
+      "ds_produto_comprador": "CLONIDINA 0.100MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "107": {
+      "cd_produto_comprador": 2864,
+      "ds_produto_comprador": "CLOPIDOGREL 75 MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "108": {
+      "cd_produto_comprador": 1163,
+      "ds_produto_comprador": "CLORETO DE POTASSIO 10% 10ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "109": {
+      "cd_produto_comprador": 1188,
+      "ds_produto_comprador": "CLORETO DE POT¿SSIO 600MG - DRAGEA",
+      "produtos_fornecedores_sintese": false
+    },
+    "110": {
+      "cd_produto_comprador": 1741,
+      "ds_produto_comprador": "CLORETO DE SODIO 0.9% 10ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "111": {
+      "cd_produto_comprador": 1168,
+      "ds_produto_comprador": "CLORETO DE SODIO 20% 10ML - AMPOLA",
+      "produtos_clientes_depara": false
+    },
+    "112": {
+      "cd_produto_comprador": 19388,
+      "ds_produto_comprador": "CLOREXIDINE 1%  SOLUCAO AQUOSA 100ML",
+      "produtos_clientes_depara": false
+    },
+    "113": {
+      "cd_produto_comprador": 9759,
+      "ds_produto_comprador": "CLOREXIDINE ALCOOLICO 0.5% ALMOTOLIA 100ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "114": {
+      "cd_produto_comprador": 179,
+      "ds_produto_comprador": "CLOREXIDINE ALCOOLICO 0.5% LITRO",
+      "produtos_clientes_depara": false
+    },
+    "115": {
+      "cd_produto_comprador": 9760,
+      "ds_produto_comprador": "CLOREXIDINE DEGERMANTE 2% ALMOTOLIA 100 ML",
+      "produtos_clientes_depara": false
+    },
+    "116": {
+      "cd_produto_comprador": 9761,
+      "ds_produto_comprador": "CLOREXIDINE SOLUÇÃO AQUOSA 0.2% ALMOT 100ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "117": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 1335,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 22,
+          "unidade": "FRC",
+          "validade": "02/05/2024",
+          "descricao": "CLORPROMAZINA 40MG/ML 20ML GTS %28C1%29 LONGACTIL",
+          "id_artigo": 144632410,
+          "sequencia": 118,
+          "obs_produto": "",
+          "qtd_unidade": 10,
+          "apresentacao": "",
+          "preco_oferta": 6.5198,
+          "tabela_precos": 6.5198,
+          "nome_comercial": "CLORPROMAZINA 40MG/ML 20ML GTS %28C1%29 LONGACTIL",
+          "preco_unitario": 6.5198,
+          "qtd_solicitada": 20,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 220,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Frasco",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1329,
+      "ds_produto_comprador": "CLORPROMAZINA 40MG/ML GTS"
+    },
+    "118": {
+      "cd_produto_comprador": 8241,
+      "ds_produto_comprador": "COBERTURA P/OBITO DESC TAM. G 90X220CM",
+      "produtos_fornecedores_sintese": false
+    },
+    "119": {
+      "cd_produto_comprador": 8597,
+      "ds_produto_comprador": "CODEINA. FOSFATO 3MG/ML SOL",
+      "produtos_fornecedores_sintese": false
+    },
+    "120": {
+      "cd_produto_comprador": 1224,
+      "ds_produto_comprador": "COLAGENASE + CLORANFENICOL POMADA 0.6U+0.0 - TUBO",
+      "produtos_clientes_depara": false
+    },
+    "121": {
+      "cd_produto_comprador": 5398,
+      "ds_produto_comprador": "COLAR CERVICAL PHILADELFIA C/ORIFICIO M",
+      "produtos_clientes_depara": false
+    },
+    "122": {
+      "cd_produto_comprador": 8753,
+      "ds_produto_comprador": "COLETE PUTTI ELASTICO BAIXO G",
+      "produtos_clientes_depara": false
+    },
+    "123": {
+      "cd_produto_comprador": 9758,
+      "ds_produto_comprador": "COLETOR DE URINA DESC. TIPO SACO 2000ML",
+      "produtos_clientes_depara": false
+    },
+    "124": {
+      "cd_produto_comprador": 5266,
+      "ds_produto_comprador": "COLETOR DE URINA S/FECHADO NEO NATAL Nº 6 EM SILICONE",
+      "produtos_fornecedores_sintese": false
+    },
+    "125": {
+      "cd_produto_comprador": 184,
+      "ds_produto_comprador": "COLETOR DE URINA SISTEMA ABERTO N/ ESTERIL 1200ML UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "126": {
+      "cd_produto_comprador": 185,
+      "ds_produto_comprador": "COLETOR DE URINA SISTEMA FECHADO 2000ML C/ VALVULA ANTI-REFLUXO E FILTRO DE AR , COM PONTO DE COLETA",
+      "produtos_fornecedores_sintese": false
+    },
+    "127": {
+      "cd_produto_comprador": 3346,
+      "ds_produto_comprador": "COLETOR DE URINA UNIVERSAL ESTERIL C/TAMPA 80ML - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "128": {
+      "cd_produto_comprador": 20362,
+      "ds_produto_comprador": "COLETOR PERFURO CORTANTE RIGIDO 13 LTS INFECTANTE",
+      "produtos_fornecedores_sintese": false
+    },
+    "129": {
+      "cd_produto_comprador": 4638,
+      "ds_produto_comprador": "COLETOR PERFURO/CORT. 13 LTS - PECA",
+      "produtos_fornecedores_sintese": false
+    },
+    "130": {
+      "cd_produto_comprador": 3209,
+      "ds_produto_comprador": "COMPRESSA GAZE 7.5 X 7.5 13 FIOS (C/05 UNID) - PACOTE",
+      "produtos_clientes_depara": false
+    },
+    "131": {
+      "cd_produto_comprador": 3210,
+      "ds_produto_comprador": "COMPRESSA GAZE 7.5 X 7.5 13 FIOS (C/10 UNID) - PACOTE",
+      "produtos_fornecedores_sintese": false
+    },
+    "132": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "MINASREY",
+          "codigo": 1399,
+          "descricao": "COMP 7,5CMX7,5CM 13F C/500 MELHORMED",
+          "restricao": {
+            "productPrice": false
+          },
+          "qtd_unidade": 26,
+          "apresentacao": "",
+          "nome_comercial": "COMP 7,5CMX7,5CM 13F C/500 MELHORMED"
+        },
+        "1": {
+          "marca": "MINASREY",
+          "codigo": 4311,
+          "descricao": "COMP 7,5CMX7,5CM 13F C/500 ULTRACOTTON",
+          "restricao": {
+            "productPrice": false
+          },
+          "qtd_unidade": 1,
+          "apresentacao": "",
+          "nome_comercial": "COMP 7,5CMX7,5CM 13F C/500 ULTRACOTTON"
+        }
+      },
+      "cd_produto_comprador": 186,
+      "ds_produto_comprador": "COMPRESSA GAZE 7.5 X 7.5 13 FIOS NAO ESTERIL C/500"
+    },
+    "133": {
+      "cd_produto_comprador": 15951,
+      "ds_produto_comprador": "COMPRESSA NEUROCIRURGICA 25X76MM",
+      "produtos_clientes_depara": false
+    },
+    "134": {
+      "cd_produto_comprador": 6823,
+      "ds_produto_comprador": "CONEXAO C/2 VIAS C/CLAMP P/ INF. PAR NEONATAL",
+      "produtos_fornecedores_sintese": false
+    },
+    "135": {
+      "cd_produto_comprador": 187,
+      "ds_produto_comprador": "CONEXAO C/2 VIAS C/CLAMP P/ INF. PARENTERAL - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "136": {
+      "cd_produto_comprador": 188,
+      "ds_produto_comprador": "CONEXAO C/4 VIAS C/CLAMP P/ INF. PARENTERAL - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "137": {
+      "cd_produto_comprador": 12931,
+      "ds_produto_comprador": "CPAP NASAL NEONATAL 0 ( KIT COM PRONGA ) PARA RECEM NASCIDOS COM PESO DE  MAIOR QUE  700 = MENOR QUE  1000 GRAMAS",
+      "produtos_clientes_depara": false
+    },
+    "138": {
+      "cd_produto_comprador": 12933,
+      "ds_produto_comprador": "CPAP NASAL NEONATAL 02 ( KIT COM PRONGA ) PARA RECEM NASCIDOS COM PESO DE  MAIOR QUE  1250 = MENOR QUE  2000 GRAMAS",
+      "produtos_clientes_depara": false
+    },
+    "139": {
+      "cd_produto_comprador": 12932,
+      "ds_produto_comprador": "CPAP NASAL NEONATAL 1 ( KIT COM PRONGA ) PARA RECEM NASCIDOS COM PESO DE  MAIOR QUE  1000 = MENOR QUE  1250 GRAMAS",
+      "produtos_clientes_depara": false
+    },
+    "140": {
+      "cd_produto_comprador": 12934,
+      "ds_produto_comprador": "CPAP NASAL NEONATAL 3 ( KIT COM PRONGA ) PARA RECEM NASCIDOS COM PESO DE  MAIOR QUE  2000 = MENOR QUE  3000 GRAMAS",
+      "produtos_clientes_depara": false
+    },
+    "141": {
+      "cd_produto_comprador": 190,
+      "ds_produto_comprador": "CURATIVO ADESIVO 10 X 12 CM - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "142": {
+      "cd_produto_comprador": 1639,
+      "ds_produto_comprador": "CURATIVO ALGINATO DE CALCIO 10 X 20 CM - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "143": {
+      "cd_produto_comprador": 13861,
+      "ds_produto_comprador": "CURATIVO FILME ADESIVO DE FIXAÇÃO ESTÉRIL 7X7CM DE POLIURETANO, TRANSPARENTE, COM FENDA PARA SAÍDA DE TUBULAÇÕES",
+      "produtos_clientes_depara": false
+    },
+    "144": {
+      "cd_produto_comprador": 13304,
+      "ds_produto_comprador": "CURATIVO HIDROCOLOIDE 10X10 CM EXTRA FINO",
+      "produtos_clientes_depara": false
+    },
+    "145": {
+      "cd_produto_comprador": 195,
+      "ds_produto_comprador": "CURATIVO MICROP. REDONDO ESTERIL 22 MM C/200",
+      "produtos_clientes_depara": false
+    },
+    "146": {
+      "cd_produto_comprador": 5230,
+      "ds_produto_comprador": "CURATIVO POLIURETANO TRANSP ESTERIL PUNCAO PROFUNDA FENDADO",
+      "produtos_clientes_depara": false
+    },
+    "147": {
+      "cd_produto_comprador": 8322,
+      "ds_produto_comprador": "DELTAMETRINA LOCÃO FR",
+      "produtos_clientes_depara": false
+    },
+    "148": {
+      "cd_produto_comprador": 1094,
+      "ds_produto_comprador": "DESLANOSIDEO 0.2MG/ML AMP2ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "149": {
+      "cd_produto_comprador": 5119,
+      "ds_produto_comprador": "DESMOPRESSINA. ACETATO 0.1MG/ML SPRAY NASAL",
+      "produtos_clientes_depara": false
+    },
+    "150": {
+      "cd_produto_comprador": 12796,
+      "ds_produto_comprador": "DEXAMETASONA 0,5 MG/5ML ELIXIR",
+      "produtos_fornecedores_sintese": false
+    },
+    "151": {
+      "cd_produto_comprador": 1429,
+      "ds_produto_comprador": "DEXAMETASONA 4MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "152": {
+      "cd_produto_comprador": 6295,
+      "ds_produto_comprador": "DEXAMETASONA 4MG/ML 2.5ML AMPOLA - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "153": {
+      "cd_produto_comprador": 5183,
+      "ds_produto_comprador": "DEXAMETASONA COLIRIO 1MG/ML 5ML FR",
+      "produtos_fornecedores_sintese": false
+    },
+    "154": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "GEOLAB",
+          "codigo": 1596,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 1228,
+          "unidade": "CMP",
+          "validade": "30/06/2024",
+          "descricao": "DEXCLORFENIRAMINA 2MG HYSTIN",
+          "id_artigo": 144632447,
+          "sequencia": 155,
+          "obs_produto": "",
+          "qtd_unidade": 500,
+          "apresentacao": "",
+          "preco_oferta": 0.0677,
+          "tabela_precos": 0.0677,
+          "nome_comercial": "DEXCLORFENIRAMINA 2MG HYSTIN",
+          "preco_unitario": 0.0677,
+          "qtd_solicitada": 500,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 614000,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1055,
+      "ds_produto_comprador": "DEXCLORFENIRAMINA 2MG - COMPRIMIDO"
+    },
+    "155": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "UNIAO QUIMICA",
+          "codigo": 4391,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 21,
+          "unidade": "FA",
+          "validade": "31/10/2023",
+          "descricao": "DEXMEDETOMIDINA CLOR 100MCG/ML 2ML %28C1%29 EXTODIN",
+          "id_artigo": 144632448,
+          "sequencia": 156,
+          "obs_produto": "",
+          "qtd_unidade": 5,
+          "apresentacao": "",
+          "preco_oferta": 16.544,
+          "tabela_precos": 16.544,
+          "nome_comercial": "DEXMEDETOMIDINA CLOR 100MCG/ML 2ML %28C1%29 EXTODIN",
+          "preco_unitario": 16.544,
+          "qtd_solicitada": 500,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 105,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "CRISTALIA",
+          "codigo": 4852,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 768,
+          "unidade": "FA",
+          "validade": "21/09/2023",
+          "descricao": "DEXMEDETOMIDINA CLOR 100MCG/ML 2ML %28C1%29 DEX",
+          "id_artigo": 144632448,
+          "sequencia": 156,
+          "obs_produto": "",
+          "qtd_unidade": 5,
+          "apresentacao": "",
+          "preco_oferta": 12.408,
+          "tabela_precos": 12.408,
+          "nome_comercial": "DEXMEDETOMIDINA CLOR 100MCG/ML 2ML %28C1%29 DEX",
+          "preco_unitario": 12.408,
+          "qtd_solicitada": 500,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 3840,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 9088,
+      "ds_produto_comprador": "DEXMEDETOMIDINA 100MCG/ML 2ML FR/AMP"
+    },
+    "156": {
+      "cd_produto_comprador": 15853,
+      "ds_produto_comprador": "DEXTROCETAMINA CLORIDRATO  50MG/ML 2ML F/A (MPP)",
+      "produtos_fornecedores_sintese": false
+    },
+    "157": {
+      "cd_produto_comprador": 6677,
+      "ds_produto_comprador": "DIALIZADOR CAPILAR POLY FLUX H USO UNICO (REVACLEAR 400)",
+      "produtos_clientes_depara": false
+    },
+    "158": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 1614,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 1208,
+          "unidade": "CMP",
+          "validade": "06/11/2023",
+          "descricao": "DIAZEPAM 10MG %28B1%29 DU COMPAZ",
+          "id_artigo": 144632451,
+          "sequencia": 159,
+          "obs_produto": "",
+          "qtd_unidade": 200,
+          "apresentacao": "",
+          "preco_oferta": 0.0738,
+          "tabela_precos": 0.0738,
+          "nome_comercial": "DIAZEPAM 10MG %28B1%29 DU COMPAZ",
+          "preco_unitario": 0.0738,
+          "qtd_solicitada": 1600,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 241600,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1315,
+      "ds_produto_comprador": "DIAZEPAM 10MG - COMPRIMIDO"
+    },
+    "159": {
+      "cd_produto_comprador": 1317,
+      "ds_produto_comprador": "DIAZEPAM 10MG/2ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "160": {
+      "cd_produto_comprador": 1258,
+      "ds_produto_comprador": "DICLOFENACO DE SODIO 50MG - COMPRIMIDO",
+      "produtos_clientes_depara": false
+    },
+    "161": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 1659,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 48,
+          "unidade": "AMP",
+          "validade": "01/05/2025",
+          "descricao": "DIFENIDRAMINA 50MG/ML DIFENIDRIN",
+          "id_artigo": 144632454,
+          "sequencia": 162,
+          "obs_produto": "",
+          "qtd_unidade": 25,
+          "apresentacao": "",
+          "preco_oferta": 15.76,
+          "tabela_precos": 15.76,
+          "nome_comercial": "DIFENIDRAMINA 50MG/ML DIFENIDRIN",
+          "preco_unitario": 15.76,
+          "qtd_solicitada": 100,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 1200,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 19062,
+      "ds_produto_comprador": "DIFENIDRAMINA 50MG/ML AMP"
+    },
+    "162": {
+      "cd_produto_comprador": 1095,
+      "ds_produto_comprador": "DIGOXINA 0.25MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "163": {
+      "cd_produto_comprador": 1149,
+      "ds_produto_comprador": "DIMENIDRINATO + PIRIDOXINA 50 + 10MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "164": {
+      "cd_produto_comprador": 5972,
+      "ds_produto_comprador": "DIMENIDRINATO 30MG+PIRIDOX50MG+GLICOSE1G+FRUTOSE 1 G 10 ML EV",
+      "produtos_fornecedores_sintese": false
+    },
+    "165": {
+      "cd_produto_comprador": 1155,
+      "ds_produto_comprador": "DIMETICONA 40MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "166": {
+      "cd_produto_comprador": 1156,
+      "ds_produto_comprador": "DIMETICONA 75MG/ML GTS S/SABOR 10 ML",
+      "produtos_clientes_depara": false
+    },
+    "167": {
+      "cd_produto_comprador": 1238,
+      "ds_produto_comprador": "DIPIRONA + ESCOPOLAMINA 250 + 10MG - DRAGEA",
+      "produtos_fornecedores_sintese": false
+    },
+    "168": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HIPOLABOR",
+          "codigo": 1957,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 7723,
+          "unidade": "AMP",
+          "validade": "31/08/2024",
+          "descricao": "ESCOPOLAMINA + DIPIRONA 5ML %28G%29 GENERICO",
+          "id_artigo": 144632461,
+          "sequencia": 169,
+          "obs_produto": "",
+          "qtd_unidade": 100,
+          "apresentacao": "",
+          "preco_oferta": 2.8482,
+          "tabela_precos": 2.8482,
+          "nome_comercial": "ESCOPOLAMINA + DIPIRONA 5ML %28G%29 GENERICO",
+          "preco_unitario": 2.8482,
+          "qtd_solicitada": 400,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 772300,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1239,
+      "ds_produto_comprador": "DIPIRONA + ESCOPOLAMINA 500 + 4MG/ML AMP 5M - AMPOLA"
+    },
+    "169": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "PRATI DONADUZZI",
+          "codigo": 5215,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 1694,
+          "unidade": "CMP",
+          "validade": "23/09/2024",
+          "descricao": "DIPIRONA SOD 500MG %28G%29 GENERICO",
+          "id_artigo": 144632462,
+          "sequencia": 170,
+          "obs_produto": "",
+          "qtd_unidade": 200,
+          "apresentacao": "",
+          "preco_oferta": 0.1842,
+          "tabela_precos": 0.1842,
+          "nome_comercial": "DIPIRONA SOD 500MG %28G%29 GENERICO",
+          "preco_unitario": 0.1842,
+          "qtd_solicitada": 14000,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 338800,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 7944,
+      "ds_produto_comprador": "DIPIRONA 500MG"
+    },
+    "170": {
+      "cd_produto_comprador": 10564,
+      "ds_produto_comprador": "DIPIRONA+CAFEINA+ISOMETEPTENO 300MG+30MG+30MG",
+      "produtos_clientes_depara": false
+    },
+    "171": {
+      "cd_produto_comprador": 7107,
+      "ds_produto_comprador": "DISPOSITIVO P/TANSFERENCIA DE SOLUCOES (TRANSOFIX)",
+      "produtos_clientes_depara": false
+    },
+    "172": {
+      "cd_produto_comprador": 202,
+      "ds_produto_comprador": "DISPOSITIVO URINARIO N¿ 6 - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "173": {
+      "cd_produto_comprador": 1096,
+      "ds_produto_comprador": "DOBUTAMINA 250MG/20ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "174": {
+      "cd_produto_comprador": 3052,
+      "ds_produto_comprador": "DOMPERIDONA 10 MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "175": {
+      "cd_produto_comprador": 7710,
+      "ds_produto_comprador": "DOMPERIDONA 1MG/ML 100 ML SUSP",
+      "produtos_fornecedores_sintese": false
+    },
+    "176": {
+      "cd_produto_comprador": 524,
+      "ds_produto_comprador": "DOSADOR ORAL DESC. 03 ML - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "177": {
+      "cd_produto_comprador": 6006,
+      "ds_produto_comprador": "DOSADOR ORAL DESC. 05 ML - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "178": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 4347,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 9,
+          "unidade": "AMP",
+          "validade": "01/04/2024",
+          "descricao": "EFEDRINA SULF 50MG/ML 1ML %28D1%29 EFEDRIN",
+          "id_artigo": 144632471,
+          "sequencia": 179,
+          "obs_produto": "",
+          "qtd_unidade": 100,
+          "apresentacao": "",
+          "preco_oferta": 11.186,
+          "tabela_precos": 11.186,
+          "nome_comercial": "EFEDRINA SULF 50MG/ML 1ML %28D1%29 EFEDRIN",
+          "preco_unitario": 11.186,
+          "qtd_solicitada": 160,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 900,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "HIPOLABOR",
+          "codigo": 1836,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 17,
+          "unidade": "AMP",
+          "validade": "30/06/2024",
+          "descricao": "EFEDRINA SULF 50MG/ML 1ML %28D1%29 %28G%29 GENERICO",
+          "id_artigo": 144632471,
+          "sequencia": 179,
+          "obs_produto": "",
+          "qtd_unidade": 50,
+          "apresentacao": "",
+          "preco_oferta": 5.0008,
+          "tabela_precos": 5.0008,
+          "nome_comercial": "EFEDRINA SULF 50MG/ML 1ML %28D1%29 %28G%29 GENERICO",
+          "preco_unitario": 5.0008,
+          "qtd_solicitada": 160,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 850,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1213,
+      "ds_produto_comprador": "EFEDRINA .SULFATO 50MG/ML - AMPOLA"
+    },
+    "179": {
+      "cd_produto_comprador": 216,
+      "ds_produto_comprador": "ELETRODO DESCARTAVEL ADULTO C/ GEL - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "180": {
+      "cd_produto_comprador": 16070,
+      "ds_produto_comprador": "ELETRODO DESCARTAVEL NEONATAL C/ GEL",
+      "produtos_clientes_depara": false
+    },
+    "181": {
+      "cd_produto_comprador": 1100,
+      "ds_produto_comprador": "EPINEFRINA 1MG/ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "182": {
+      "cd_produto_comprador": 1342,
+      "ds_produto_comprador": "EPITEZAN POMADA 3.5 G",
+      "produtos_fornecedores_sintese": false
+    },
+    "183": {
+      "cd_produto_comprador": 217,
+      "ds_produto_comprador": "EQUIPO FLASCH BALL CAM. FLEXIVEL PINCA ROLE - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "184": {
+      "cd_produto_comprador": 12247,
+      "ds_produto_comprador": "EQUIPO MACRO GOTAS CAM. FLEXIVEL 120CM NUTRICAO ENTERAL",
+      "produtos_clientes_depara": false
+    },
+    "185": {
+      "cd_produto_comprador": 219,
+      "ds_produto_comprador": "EQUIPO MACRO GTS CAM. FLEXIVEL SUSP.INJ. LAT - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "186": {
+      "cd_produto_comprador": 21094,
+      "ds_produto_comprador": "EQUIPO MACRO GTS CAM. FLEXIVEL SUSP.INJ. LATERAL - LUER LOCK",
+      "produtos_clientes_depara": false
+    },
+    "187": {
+      "cd_produto_comprador": 222,
+      "ds_produto_comprador": "EQUIPO MICRO GTS C/ CAMARA GRADUADA 150 ML - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "188": {
+      "cd_produto_comprador": 8503,
+      "ds_produto_comprador": "EQUIPO PARA IRRIGACAO EM CISTOSCOPIA 4 VIAS",
+      "produtos_clientes_depara": false
+    },
+    "189": {
+      "cd_produto_comprador": 9497,
+      "ds_produto_comprador": "ERITROPOETINA 4000 UI FR-AMP 2ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "190": {
+      "cd_produto_comprador": 13539,
+      "ds_produto_comprador": "ESCOVA DE LIMPEZA PARA CANULADOS 2MM X 30CM 45-542",
+      "produtos_clientes_depara": false
+    },
+    "191": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "BLAU",
+          "codigo": 5146,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 41,
+          "unidade": "FA",
+          "validade": "10/08/2024",
+          "descricao": "SUGAMADEX 100MG/ML 2ML %28G%29 GENERICO",
+          "id_artigo": 144632484,
+          "sequencia": 192,
+          "obs_produto": "",
+          "qtd_unidade": 10,
+          "apresentacao": "",
+          "preco_oferta": 98.0,
+          "tabela_precos": 98.0,
+          "nome_comercial": "SUGAMADEX 100MG/ML 2ML %28G%29 GENERICO",
+          "preco_unitario": 98.0,
+          "qtd_solicitada": 55,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 410,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Unidade",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "EUROFARMA",
+          "codigo": 5120,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 10,
+          "unidade": "FA",
+          "validade": "01/12/2023",
+          "descricao": "SUGAMADEX 100MG/ML 2ML REBRIVE",
+          "id_artigo": 144632484,
+          "sequencia": 192,
+          "obs_produto": "",
+          "qtd_unidade": 10,
+          "apresentacao": "",
+          "preco_oferta": 280.12,
+          "tabela_precos": 280.12,
+          "nome_comercial": "SUGAMADEX 100MG/ML 2ML REBRIVE",
+          "preco_unitario": 280.12,
+          "qtd_solicitada": 55,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 100,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Unidade",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 14916,
+      "ds_produto_comprador": "ESCOVA DE LIMPEZA PARA CANULADOS 5MM X 61CM 45-551"
+    },
+    "192": {
+      "cd_produto_comprador": 231,
+      "ds_produto_comprador": "ESCOVA DESC.ESTERIL SECA P/ASSEPSIA - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "193": {
+      "cd_produto_comprador": 18906,
+      "ds_produto_comprador": "ESCOVA PARA LIMPEZA DE ENDOSCOPICOS CABECA DUPLA - TAMANHO: 5MM X 230CM DESCARTAVEL",
+      "produtos_clientes_depara": false
+    },
+    "194": {
+      "cd_produto_comprador": 16787,
+      "ds_produto_comprador": "ESCOVA PARA LIMPEZA GERAL 6,35MMX15 METROS",
+      "produtos_clientes_depara": false
+    },
+    "195": {
+      "cd_produto_comprador": 21089,
+      "ds_produto_comprador": "ESOMEPRAZOL MAGNESICO 20 MG COMPRIMIDO",
+      "produtos_clientes_depara": false
+    },
+    "196": {
+      "cd_produto_comprador": 232,
+      "ds_produto_comprador": "ESPARADRAPO 10 X 4.5 MT - ROLO",
+      "produtos_fornecedores_sintese": false
+    },
+    "197": {
+      "cd_produto_comprador": 235,
+      "ds_produto_comprador": "ESPECULO VAGINAL DESCARTAVEL ESTERIL PEQU - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "198": {
+      "cd_produto_comprador": 2872,
+      "ds_produto_comprador": "ESPIRONOLACTONA 25MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "199": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 2058,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 20,
+          "unidade": "AMP",
+          "validade": "01/09/2023",
+          "descricao": "ETOMIDATO 2MG/ML 10ML %28C1%29 %28G%29 GENERICO",
+          "id_artigo": 144632492,
+          "sequencia": 200,
+          "obs_produto": "",
+          "qtd_unidade": 25,
+          "apresentacao": "",
+          "preco_oferta": 17.6438,
+          "tabela_precos": 17.6438,
+          "nome_comercial": "ETOMIDATO 2MG/ML 10ML %28C1%29 %28G%29 GENERICO",
+          "preco_unitario": 17.6438,
+          "qtd_solicitada": 90,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 500,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1292,
+      "ds_produto_comprador": "ETOMIDATO 2MG/ML AMP 10ML - AMPOLA"
+    },
+    "200": {
+      "cd_produto_comprador": 17886,
+      "ds_produto_comprador": "EXTRATOR OBSTETRICO A VACUO - KIWI - EXTRATOR OBSTETRICO",
+      "produtos_clientes_depara": false
+    },
+    "201": {
+      "cd_produto_comprador": 6309,
+      "ds_produto_comprador": "FAIXA DE SMASCH 10 CM - ROLO",
+      "produtos_clientes_depara": false
+    },
+    "202": {
+      "cd_produto_comprador": 13032,
+      "ds_produto_comprador": "FENILEFRINA 10MG/ML AMP 1ML",
+      "produtos_clientes_depara": false
+    },
+    "203": {
+      "cd_produto_comprador": 1322,
+      "ds_produto_comprador": "FENOBARBITAL 100MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "204": {
+      "cd_produto_comprador": 12800,
+      "ds_produto_comprador": "FENOBARBITAL 40MG/ML GTS ORAL",
+      "produtos_fornecedores_sintese": false
+    },
+    "205": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 2092,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 311,
+          "unidade": "AMP",
+          "validade": "01/05/2024",
+          "descricao": "FENOBARBITAL SODICO 200MG 2ML IV/IM %28B1%29 FENOCRIS",
+          "id_artigo": 144632498,
+          "sequencia": 206,
+          "obs_produto": "",
+          "qtd_unidade": 25,
+          "apresentacao": "",
+          "preco_oferta": 2.1526,
+          "tabela_precos": 2.1526,
+          "nome_comercial": "FENOBARBITAL SODICO 200MG 2ML IV/IM %28B1%29 FENOCRIS",
+          "preco_unitario": 2.1526,
+          "qtd_solicitada": 200,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 7775,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1323,
+      "ds_produto_comprador": "FENOBARBITAL SODICO 100MG/ML - AMPOLA 2 ML"
+    },
+    "206": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HIPOLABOR",
+          "codigo": 2104,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 162,
+          "unidade": "AMP",
+          "validade": "31/05/2023",
+          "descricao": "FENTANILA CIT 0,05MG/ML 2ML %28A1%29 %28G%29 GENERICO",
+          "id_artigo": 144632499,
+          "sequencia": 207,
+          "obs_produto": "",
+          "qtd_unidade": 50,
+          "apresentacao": "",
+          "preco_oferta": 1.08,
+          "tabela_precos": 1.08,
+          "nome_comercial": "FENTANILA CIT 0,05MG/ML 2ML %28A1%29 %28G%29 GENERICO",
+          "preco_unitario": 1.08,
+          "qtd_solicitada": 720,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 8100,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "CRISTALIA",
+          "codigo": 2105,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 5,
+          "unidade": "AMP",
+          "validade": "01/07/2023",
+          "descricao": "FENTANILA CIT 0,05MG/ML 2ML SP %28A1%29 FENTANEST",
+          "id_artigo": 144632499,
+          "sequencia": 207,
+          "obs_produto": "",
+          "qtd_unidade": 50,
+          "apresentacao": "",
+          "preco_oferta": 5.1512,
+          "tabela_precos": 5.1512,
+          "nome_comercial": "FENTANILA CIT 0,05MG/ML 2ML SP %28A1%29 FENTANEST",
+          "preco_unitario": 5.1512,
+          "qtd_solicitada": 720,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 250,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1248,
+      "ds_produto_comprador": "FENTANILA CITRATO S/CONS 0.05MG/ML AMP 2ML - AMPOLA"
+    },
+    "207": {
+      "cd_produto_comprador": 7934,
+      "ds_produto_comprador": "FIBRINOLIS+DESOXIRRIBONUCL+CLORANF POMADA",
+      "produtos_clientes_depara": false
+    },
+    "208": {
+      "cd_produto_comprador": 3532,
+      "ds_produto_comprador": "FILGRASTIMA 300 MCG/ML",
+      "produtos_clientes_depara": false
+    },
+    "209": {
+      "cd_produto_comprador": 2949,
+      "ds_produto_comprador": "FILTRO P/ UMIDIFICADOR COM TRAQUEIA 15 CM",
+      "produtos_clientes_depara": false
+    },
+    "210": {
+      "cd_produto_comprador": 15268,
+      "ds_produto_comprador": "FILTRO P/ UMIDIFICADOR NEONATAL",
+      "produtos_clientes_depara": false
+    },
+    "211": {
+      "cd_produto_comprador": 6976,
+      "ds_produto_comprador": "FILTRO POLISULFONA (DIAFASE PLUS) - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "212": {
+      "cd_produto_comprador": 15389,
+      "ds_produto_comprador": "FIO KIRSCHNNER 1,00MM ESTERIL",
+      "produtos_clientes_depara": false
+    },
+    "213": {
+      "cd_produto_comprador": 15391,
+      "ds_produto_comprador": "FIO KIRSCHNNER 1,50MM ESTERIL",
+      "produtos_clientes_depara": false
+    },
+    "214": {
+      "cd_produto_comprador": 2629,
+      "ds_produto_comprador": "FIO KIRSCHNNER 2,0MM - ESTERIL",
+      "produtos_clientes_depara": false
+    },
+    "215": {
+      "cd_produto_comprador": 15393,
+      "ds_produto_comprador": "FIO KIRSCHNNER 2,50MM ESTERIL",
+      "produtos_clientes_depara": false
+    },
+    "216": {
+      "cd_produto_comprador": 366,
+      "ds_produto_comprador": "FITA ADESIVA BRANCA HOSPITALAR 19 X 50 MT - ROLO",
+      "produtos_fornecedores_sintese": false
+    },
+    "217": {
+      "cd_produto_comprador": 368,
+      "ds_produto_comprador": "FITA CIRURGICA HIPO-ALERGENICA 25X10MT - ROLO",
+      "produtos_clientes_depara": false
+    },
+    "218": {
+      "cd_produto_comprador": 1632,
+      "ds_produto_comprador": "FLUCONAZOL 150 MG - CAPSULA",
+      "produtos_clientes_depara": false
+    },
+    "219": {
+      "cd_produto_comprador": 1345,
+      "ds_produto_comprador": "FLUMAZENIL 0.5MG/5ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "220": {
+      "cd_produto_comprador": 1365,
+      "ds_produto_comprador": "FLUOXETINA 20MG - COMPRIMIDO",
+      "produtos_clientes_depara": false
+    },
+    "221": {
+      "cd_produto_comprador": 2944,
+      "ds_produto_comprador": "FORMOL 10 % - LITRO",
+      "produtos_clientes_depara": false
+    },
+    "222": {
+      "cd_produto_comprador": 17386,
+      "ds_produto_comprador": "FORMOTEROL+BUDESONIDA 6+100MCG AEROSOL 120 DOSES",
+      "produtos_clientes_depara": false
+    },
+    "223": {
+      "cd_produto_comprador": 1882,
+      "ds_produto_comprador": "FOSFATO DE SODIO DI E MONOB¿SICO 100ML - FRASCO",
+      "produtos_fornecedores_sintese": false
+    },
+    "224": {
+      "cd_produto_comprador": 6403,
+      "ds_produto_comprador": "FRALDA GERIATRICA EXTRA G - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "225": {
+      "cd_produto_comprador": 7325,
+      "ds_produto_comprador": "FRASCO DE POLIETILENO CAP 75ML C/TAMPA 2 VIA - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "226": {
+      "cd_produto_comprador": 375,
+      "ds_produto_comprador": "FRASCO DESCARTAVEL P/ ALIMENTACAO ENTERAL  300 ML- UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "227": {
+      "cd_produto_comprador": 1204,
+      "ds_produto_comprador": "FUROSEMIDA 10MG/ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "228": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "PRATI DONADUZZI",
+          "codigo": 2220,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 7,
+          "unidade": "CAP",
+          "validade": "22/09/2024",
+          "descricao": "GABAPENTINA 300MG %28C1%29 %28G%29 GENERICO",
+          "id_artigo": 144632521,
+          "sequencia": 229,
+          "obs_produto": "",
+          "qtd_unidade": 300,
+          "apresentacao": "",
+          "preco_oferta": 0.5311,
+          "tabela_precos": 0.5311,
+          "nome_comercial": "GABAPENTINA 300MG %28C1%29 %28G%29 GENERICO",
+          "preco_unitario": 0.5311,
+          "qtd_solicitada": 3200,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 2100,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Capsula",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 8907,
+      "ds_produto_comprador": "GABAPENTINA 300MG CAPS"
+    },
+    "229": {
+      "cd_produto_comprador": 2685,
+      "ds_produto_comprador": "GEL PARA ULTRASSONOGRAFIA - POTE 100 GRS",
+      "produtos_fornecedores_sintese": false
+    },
+    "230": {
+      "cd_produto_comprador": 12806,
+      "ds_produto_comprador": "GENTAMICINA 5 MG/ML SOL. OFTALMICA",
+      "produtos_fornecedores_sintese": false
+    },
+    "231": {
+      "cd_produto_comprador": 240,
+      "ds_produto_comprador": "GLICERINA 1.92G SUP. INFANTIL",
+      "produtos_clientes_depara": false
+    },
+    "232": {
+      "cd_produto_comprador": 6720,
+      "ds_produto_comprador": "GLICOSE 25% 10ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "233": {
+      "cd_produto_comprador": 1173,
+      "ds_produto_comprador": "GLICOSE 50% 10 ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "234": {
+      "cd_produto_comprador": 1752,
+      "ds_produto_comprador": "GLUCONATO DE CALCIO 10% 10ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "235": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 2327,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 100,
+          "unidade": "AMP",
+          "validade": "01/11/2024",
+          "descricao": "HALOPERIDOL 5MG/ML 1ML %28C1%29 HALO",
+          "id_artigo": 144632528,
+          "sequencia": 236,
+          "obs_produto": "",
+          "qtd_unidade": 50,
+          "apresentacao": "",
+          "preco_oferta": 4.4443,
+          "tabela_precos": 4.4443,
+          "nome_comercial": "HALOPERIDOL 5MG/ML 1ML %28C1%29 HALO",
+          "preco_unitario": 4.4443,
+          "qtd_solicitada": 550,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 5000,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1332,
+      "ds_produto_comprador": "HALOPERIDOL 5MG/ML - AMPOLA"
+    },
+    "236": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 2337,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 4213,
+          "unidade": "AMP",
+          "validade": "01/07/2024",
+          "descricao": "HEPARINA SODICA 5000UI/0,25ML 0,25ML SC HEMOFOL",
+          "id_artigo": 144632529,
+          "sequencia": 237,
+          "obs_produto": "",
+          "qtd_unidade": 25,
+          "apresentacao": "",
+          "preco_oferta": 6.89,
+          "tabela_precos": 6.89,
+          "nome_comercial": "HEPARINA SODICA 5000UI/0,25ML 0,25ML SC HEMOFOL",
+          "preco_unitario": 6.89,
+          "qtd_solicitada": 1800,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 105325,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1117,
+      "ds_produto_comprador": "HEPARINA 5000UI/0.25ML - AMPOLA"
+    },
+    "237": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 2341,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 36,
+          "unidade": "AMP",
+          "validade": "01/03/2024",
+          "descricao": "HIDRALAZINA 20MG/ML 1ML NEPRESOL",
+          "id_artigo": 144632530,
+          "sequencia": 238,
+          "obs_produto": "",
+          "qtd_unidade": 50,
+          "apresentacao": "",
+          "preco_oferta": 5.061,
+          "tabela_precos": 5.061,
+          "nome_comercial": "HIDRALAZINA 20MG/ML 1ML NEPRESOL",
+          "preco_unitario": 5.061,
+          "qtd_solicitada": 500,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 1800,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 10634,
+      "ds_produto_comprador": "HIDRALAZINA 20MG/ML AMP"
+    },
+    "238": {
+      "cd_produto_comprador": 3451,
+      "ds_produto_comprador": "HIDROCLOROTIAZIDA 25 MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "239": {
+      "cd_produto_comprador": 1264,
+      "ds_produto_comprador": "HIDROCORTISONA 500MG - FRASCO/AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "240": {
+      "cd_produto_comprador": 1126,
+      "ds_produto_comprador": "HIDROXIDO DE ALUMINIO FR",
+      "produtos_clientes_depara": false
+    },
+    "241": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "BLAU",
+          "codigo": 3508,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 44,
+          "unidade": "AMP",
+          "validade": "31/08/2024",
+          "descricao": "SACARATO DE HIDROXIDO FERRICO IV 20MG/ML 5ML FERROPURUM",
+          "id_artigo": 144632534,
+          "sequencia": 242,
+          "obs_produto": "",
+          "qtd_unidade": 5,
+          "apresentacao": "",
+          "preco_oferta": 11.0149,
+          "tabela_precos": 11.0149,
+          "nome_comercial": "SACARATO DE HIDROXIDO FERRICO IV 20MG/ML 5ML FERROPURUM",
+          "preco_unitario": 11.0149,
+          "qtd_solicitada": 100,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 220,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1880,
+      "ds_produto_comprador": "HIDROXIDO DE FERRO III 100MG/5ML AMP (NORIPURUM EV)"
+    },
+    "242": {
+      "cd_produto_comprador": 1294,
+      "ds_produto_comprador": "HIOSCINA 20MG/ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "243": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "VITAMEDIC",
+          "codigo": 5295,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 13953,
+          "unidade": "CMP",
+          "validade": "28/10/2024",
+          "descricao": "IBUPROFENO 600MG ALGY FLANDERIL",
+          "id_artigo": 144632536,
+          "sequencia": 244,
+          "obs_produto": "",
+          "qtd_unidade": 20,
+          "apresentacao": "",
+          "preco_oferta": 0.2162,
+          "tabela_precos": 0.2162,
+          "nome_comercial": "IBUPROFENO 600MG ALGY FLANDERIL",
+          "preco_unitario": 0.2162,
+          "qtd_solicitada": 1500,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 279060,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 10402,
+      "ds_produto_comprador": "IBUPROFENO 600MG COMP"
+    },
+    "244": {
+      "cd_produto_comprador": 6716,
+      "ds_produto_comprador": "IMUNOGLOBULINA ANTI-RHO(D) SDF 300MCG F/A",
+      "produtos_fornecedores_sintese": false
+    },
+    "245": {
+      "cd_produto_comprador": 4948,
+      "ds_produto_comprador": "IMUNOGLOBULINA HUMANA 5000 MG F/A",
+      "produtos_fornecedores_sintese": false
+    },
+    "246": {
+      "cd_produto_comprador": 12282,
+      "ds_produto_comprador": "INDICADOR QUIMICO P/ ESTERAR REF. CL115",
+      "produtos_clientes_depara": false
+    },
+    "247": {
+      "cd_produto_comprador": 3706,
+      "ds_produto_comprador": "INSULINA HUMANA NPH 100UI/ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "248": {
+      "cd_produto_comprador": 3708,
+      "ds_produto_comprador": "INSULINA HUMANA REGULAR 100UI/ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "249": {
+      "cd_produto_comprador": 18173,
+      "ds_produto_comprador": "INTRODUTOR VALVULADO 5FR 10CM A 12CM",
+      "produtos_clientes_depara": false
+    },
+    "250": {
+      "cd_produto_comprador": 12128,
+      "ds_produto_comprador": "INVOLUCRO SMS DUPLO REFOR  TAM  1,2 X1,2, GRAMAT 82G/M²",
+      "produtos_fornecedores_sintese": false
+    },
+    "251": {
+      "cd_produto_comprador": 12328,
+      "ds_produto_comprador": "INVOLUCRO SMS PESADO TAM 75 X 75CM GR  50G/M²",
+      "produtos_clientes_depara": false
+    },
+    "252": {
+      "cd_produto_comprador": 12127,
+      "ds_produto_comprador": "INVOLUCRO SMS SIMPLES PESADO 100 X 100",
+      "produtos_fornecedores_sintese": false
+    },
+    "253": {
+      "cd_produto_comprador": 15411,
+      "ds_produto_comprador": "IOPAMIDOL 612MG/ML",
+      "produtos_clientes_depara": false
+    },
+    "254": {
+      "cd_produto_comprador": 9526,
+      "ds_produto_comprador": "IOVERSOL 678MG/ML 50ML FR (OPTIRAY 50 ML)",
+      "produtos_clientes_depara": false
+    },
+    "255": {
+      "cd_produto_comprador": 1215,
+      "ds_produto_comprador": "IPRATROPIO 0.25MG/ML GTS 20 ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "256": {
+      "cd_produto_comprador": 381,
+      "ds_produto_comprador": "ISOLADOR DE PRESSAO - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "257": {
+      "cd_produto_comprador": 17016,
+      "ds_produto_comprador": "KIT DISPOSITIVO PARA LIGADURA ELASTICA P VARIZES",
+      "produtos_clientes_depara": false
+    },
+    "258": {
+      "cd_produto_comprador": 2827,
+      "ds_produto_comprador": "LACTULOSE 667MG/ML XPE",
+      "produtos_fornecedores_sintese": false
+    },
+    "259": {
+      "cd_produto_comprador": 383,
+      "ds_produto_comprador": "LAMINA DE BISTURI Nº 15 C/100",
+      "produtos_fornecedores_sintese": false
+    },
+    "260": {
+      "cd_produto_comprador": 384,
+      "ds_produto_comprador": "LAMINA DE BISTURI Nº 24 C/100",
+      "produtos_clientes_depara": false
+    },
+    "261": {
+      "cd_produto_comprador": 12837,
+      "ds_produto_comprador": "LAMINA P/FACA DE ENXERTO DE 4\"",
+      "produtos_clientes_depara": false
+    },
+    "262": {
+      "cd_produto_comprador": 3965,
+      "ds_produto_comprador": "LAMINA P/FACA DE ENXERTO DE 6\"",
+      "produtos_clientes_depara": false
+    },
+    "263": {
+      "cd_produto_comprador": 13095,
+      "ds_produto_comprador": "LENCOL DESCARTAVEL EM TNT C/ ELASTICO",
+      "produtos_clientes_depara": false
+    },
+    "264": {
+      "cd_produto_comprador": 3273,
+      "ds_produto_comprador": "LEVOTIROXINA 25 MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "265": {
+      "cd_produto_comprador": 4136,
+      "ds_produto_comprador": "LEVOTIROXINA 50 MCG COMP",
+      "produtos_clientes_depara": false
+    },
+    "266": {
+      "cd_produto_comprador": 1285,
+      "ds_produto_comprador": "LIDOCAINA 2 % SEM VASOCONSTRITOR AMP 5ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "267": {
+      "cd_produto_comprador": 3105,
+      "ds_produto_comprador": "LIDOCAINA 2% S/V FR 20 ML",
+      "produtos_clientes_depara": false
+    },
+    "268": {
+      "cd_produto_comprador": 1286,
+      "ds_produto_comprador": "LIDOCAINA GELEIA 2% BISN. 30G",
+      "produtos_fornecedores_sintese": false
+    },
+    "269": {
+      "cd_produto_comprador": 1283,
+      "ds_produto_comprador": "LIDOCAINA+EPINEFRINA 2% C/V FR 20 ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "270": {
+      "cd_produto_comprador": 1139,
+      "ds_produto_comprador": "LOPERAMIDA 2MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "271": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "VITAMEDIC",
+          "codigo": 4722,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 13452,
+          "unidade": "CMP",
+          "validade": "14/07/2024",
+          "descricao": "LORATADINA 10MG LORASLIV",
+          "id_artigo": 144632564,
+          "sequencia": 272,
+          "obs_produto": "",
+          "qtd_unidade": 12,
+          "apresentacao": "",
+          "preco_oferta": 0.1288,
+          "tabela_precos": 0.1288,
+          "nome_comercial": "LORATADINA 10MG LORASLIV",
+          "preco_unitario": 0.1288,
+          "qtd_solicitada": 800,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 161424,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1402,
+      "ds_produto_comprador": "LORATADINA 10MG - COMPRIMIDO"
+    },
+    "272": {
+      "cd_produto_comprador": 15327,
+      "ds_produto_comprador": "LUVA CIRURGICA ESTERIL NBR  Nº 7,5 LIVRE LATEX",
+      "produtos_clientes_depara": false
+    },
+    "273": {
+      "cd_produto_comprador": 13965,
+      "ds_produto_comprador": "LUVA CIRURGICA ESTERIL NBR Nº 6,5 SEM TALCO SENSIFREE",
+      "produtos_clientes_depara": false
+    },
+    "274": {
+      "cd_produto_comprador": 9071,
+      "ds_produto_comprador": "LUVA CIRURGICA ESTERIL NBR Nº 7,5 ANTI DERRAP SENSIFIRM",
+      "produtos_fornecedores_sintese": false
+    },
+    "275": {
+      "cd_produto_comprador": 6372,
+      "ds_produto_comprador": "LUVA CIRURGICA ESTERIL Nº 7.0 - PAR",
+      "produtos_fornecedores_sintese": false
+    },
+    "276": {
+      "cd_produto_comprador": 455,
+      "ds_produto_comprador": "LUVA CIRURGICA ESTERIL Nº 7.5 - PAR",
+      "produtos_fornecedores_sintese": false
+    },
+    "277": {
+      "cd_produto_comprador": 457,
+      "ds_produto_comprador": "LUVA CIRURGICA ESTERIL Nº 8.5 - PAR",
+      "produtos_clientes_depara": false
+    },
+    "278": {
+      "cd_produto_comprador": 458,
+      "ds_produto_comprador": "LUVA PROCEDIMENTO NITRILICA TAMANHO MEDIO C/100",
+      "produtos_fornecedores_sintese": false
+    },
+    "279": {
+      "cd_produto_comprador": 7941,
+      "ds_produto_comprador": "MALHA TUBULAR 10CM CM X 25 MT",
+      "produtos_clientes_depara": false
+    },
+    "280": {
+      "cd_produto_comprador": 459,
+      "ds_produto_comprador": "MALHA TUBULAR 20 CM X 25 MT",
+      "produtos_fornecedores_sintese": false
+    },
+    "281": {
+      "cd_produto_comprador": 1341,
+      "ds_produto_comprador": "MANITOL 20% 250ML - FRASCO",
+      "produtos_fornecedores_sintese": false
+    },
+    "282": {
+      "cd_produto_comprador": 13116,
+      "ds_produto_comprador": "MANTA CIRÚRGICA PARA AQUECIMENTO UNIDADE COMPACTA PEDIATRICA",
+      "produtos_clientes_depara": false
+    },
+    "283": {
+      "cd_produto_comprador": 461,
+      "ds_produto_comprador": "MASCARA CIRURGICA DESC C/ELASTICO E TRES CAMADAS - MASCARA CIRURGICA, DESCARTÁVEL, NAO ESTERIL, 100% POLIPROPILENO, SEM LATEX, ATOXICA, HIPOALERGICA, INODORA, TRIPLA CAMADA, MODELO RETANGULAR, COM NO ",
+      "produtos_fornecedores_sintese": false
+    },
+    "284": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 4294,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 10,
+          "unidade": "CMP",
+          "validade": "04/07/2024",
+          "descricao": "METADONA 10MG %28A1%29 MYTEDOM",
+          "id_artigo": 144632577,
+          "sequencia": 285,
+          "obs_produto": "",
+          "qtd_unidade": 20,
+          "apresentacao": "",
+          "preco_oferta": 1.3987,
+          "tabela_precos": 1.3987,
+          "nome_comercial": "METADONA 10MG %28A1%29 MYTEDOM",
+          "preco_unitario": 1.3987,
+          "qtd_solicitada": 360,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 200,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 15543,
+      "ds_produto_comprador": "METADONA 10MG - COMP"
+    },
+    "285": {
+      "cd_produto_comprador": 22060,
+      "ds_produto_comprador": "METADONA 10MG/ML AMP 1ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "286": {
+      "cd_produto_comprador": 1458,
+      "ds_produto_comprador": "METFORMINA 500MG - COMPRIMIDO",
+      "produtos_clientes_depara": false
+    },
+    "287": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "FRESENIUS",
+          "codigo": 5025,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 21,
+          "unidade": "FA",
+          "validade": "18/10/2023",
+          "descricao": "METILPREDNISOLONA SUCC 500MG INJ %28G%29 C/D GENERICO",
+          "id_artigo": 144632580,
+          "sequencia": 288,
+          "obs_produto": "",
+          "qtd_unidade": 25,
+          "apresentacao": "",
+          "preco_oferta": 14.5,
+          "tabela_precos": 14.5,
+          "nome_comercial": "METILPREDNISOLONA SUCC 500MG INJ %28G%29 C/D GENERICO",
+          "preco_unitario": 14.5,
+          "qtd_solicitada": 300,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 525,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Frasco/Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "BLAU",
+          "codigo": 4859,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 98,
+          "unidade": "FA",
+          "validade": "15/09/2024",
+          "descricao": "METILPREDNISOLONA SUCC 500MG INJ %28G%29 C/D GENERICO",
+          "id_artigo": 144632580,
+          "sequencia": 288,
+          "obs_produto": "",
+          "qtd_unidade": 25,
+          "apresentacao": "",
+          "preco_oferta": 11.9756,
+          "tabela_precos": 11.9756,
+          "nome_comercial": "METILPREDNISOLONA SUCC 500MG INJ %28G%29 C/D GENERICO",
+          "preco_unitario": 11.9756,
+          "qtd_solicitada": 300,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 2450,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Frasco/Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1048,
+      "ds_produto_comprador": "METILPREDNISOLONA. SUCCINATO 500MG - FRASCO/AMPOLA"
+    },
+    "288": {
+      "cd_produto_comprador": 4130,
+      "ds_produto_comprador": "METOPROLOL,SUCCINATO 50 MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "289": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "PRATI DONADUZZI",
+          "codigo": 2862,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 122,
+          "unidade": "CMP",
+          "validade": "26/07/2024",
+          "descricao": "METRONIDAZOL 250MG %28G%29 GENERICO",
+          "id_artigo": 144632582,
+          "sequencia": 290,
+          "obs_produto": "",
+          "qtd_unidade": 600,
+          "apresentacao": "",
+          "preco_oferta": 0.2162,
+          "tabela_precos": 0.2162,
+          "nome_comercial": "METRONIDAZOL 250MG %28G%29 GENERICO",
+          "preco_unitario": 0.2162,
+          "qtd_solicitada": 1400,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 73200,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1451,
+      "ds_produto_comprador": "METRONIDAZOL 250 MG COMP"
+    },
+    "290": {
+      "cd_produto_comprador": 6188,
+      "ds_produto_comprador": "METRONIDAZOL GEL TOP. 0,75 %",
+      "produtos_clientes_depara": false
+    },
+    "291": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HIPOLABOR",
+          "codigo": 2941,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 99,
+          "unidade": "AMP",
+          "validade": "28/02/2024",
+          "descricao": "NALBUFINA CLOR 10MG/ML 1ML %28A2%29 %28G%29 GENERICO",
+          "id_artigo": 144632584,
+          "sequencia": 292,
+          "obs_produto": "",
+          "qtd_unidade": 10,
+          "apresentacao": "",
+          "preco_oferta": 13.16,
+          "tabela_precos": 13.16,
+          "nome_comercial": "NALBUFINA CLOR 10MG/ML 1ML %28A2%29 %28G%29 GENERICO",
+          "preco_unitario": 13.16,
+          "qtd_solicitada": 110,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 990,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Frasco/Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 11920,
+      "ds_produto_comprador": "MICAFUNGINA 100 MG F/A"
+    },
+    "292": {
+      "cd_produto_comprador": 8987,
+      "ds_produto_comprador": "MICONAZOL.NITRATO CREME DERM",
+      "produtos_fornecedores_sintese": false
+    },
+    "293": {
+      "cd_produto_comprador": 1327,
+      "ds_produto_comprador": "MIDAZOLAM 5MG/ML AMP 3ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "294": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 4829,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 82,
+          "unidade": "AMP",
+          "validade": "01/11/2023",
+          "descricao": "MIDAZOLAM 50MG 10ML %28B1%29 DORMIRE",
+          "id_artigo": 144632587,
+          "sequencia": 295,
+          "obs_produto": "",
+          "qtd_unidade": 10,
+          "apresentacao": "",
+          "preco_oferta": 4.2864,
+          "tabela_precos": 4.2864,
+          "nome_comercial": "MIDAZOLAM 50MG 10ML %28B1%29 DORMIRE",
+          "preco_unitario": 4.2864,
+          "qtd_solicitada": 1300,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 820,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "HIPOLABOR",
+          "codigo": 2905,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 297,
+          "unidade": "AMP",
+          "validade": "29/02/2024",
+          "descricao": "MIDAZOLAM 50MG 10ML %28B1%29 %28G%29 GENERICO",
+          "id_artigo": 144632587,
+          "sequencia": 295,
+          "obs_produto": "",
+          "qtd_unidade": 100,
+          "apresentacao": "",
+          "preco_oferta": 3.2712,
+          "tabela_precos": 3.2712,
+          "nome_comercial": "MIDAZOLAM 50MG 10ML %28B1%29 %28G%29 GENERICO",
+          "preco_unitario": 3.2712,
+          "qtd_solicitada": 1300,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 29700,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 5098,
+      "ds_produto_comprador": "MIDAZOLAN 50MG/10ML - AMPOLA"
+    },
+    "295": {
+      "cd_produto_comprador": 7695,
+      "ds_produto_comprador": "MISOPROSTOL 200MCG",
+      "produtos_clientes_depara": false
+    },
+    "296": {
+      "cd_produto_comprador": 10536,
+      "ds_produto_comprador": "MISOPROSTOL 25MCG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "297": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 2921,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 45,
+          "unidade": "AMP",
+          "validade": "01/07/2024",
+          "descricao": "MORFINA SULF 0,2MG/ML 1ML SP %28A1%29 DIMORF SP",
+          "id_artigo": 144632590,
+          "sequencia": 298,
+          "obs_produto": "",
+          "qtd_unidade": 50,
+          "apresentacao": "",
+          "preco_oferta": 5.1399,
+          "tabela_precos": 5.1399,
+          "nome_comercial": "MORFINA SULF 0,2MG/ML 1ML SP %28A1%29 DIMORF SP",
+          "preco_unitario": 5.1399,
+          "qtd_solicitada": 150,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 2250,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 5714,
+      "ds_produto_comprador": "MORFINA 0.2 MG/ML AMP 1ML"
+    },
+    "298": {
+      "cd_produto_comprador": 5156,
+      "ds_produto_comprador": "MORFINA 10MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "299": {
+      "cd_produto_comprador": 1634,
+      "ds_produto_comprador": "MORFINA 1MG/ML AMP 2 ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "300": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HIPOLABOR",
+          "codigo": 2941,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 99,
+          "unidade": "AMP",
+          "validade": "28/02/2024",
+          "descricao": "NALBUFINA CLOR 10MG/ML 1ML %28A2%29 %28G%29 GENERICO",
+          "id_artigo": 144632593,
+          "sequencia": 301,
+          "obs_produto": "",
+          "qtd_unidade": 10,
+          "apresentacao": "",
+          "preco_oferta": 13.16,
+          "tabela_precos": 13.16,
+          "nome_comercial": "NALBUFINA CLOR 10MG/ML 1ML %28A2%29 %28G%29 GENERICO",
+          "preco_unitario": 13.16,
+          "qtd_solicitada": 200,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 990,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1249,
+      "ds_produto_comprador": "NALBUFINA 10MG/ML - AMPOLA"
+    },
+    "301": {
+      "cd_produto_comprador": 1245,
+      "ds_produto_comprador": "NEOSTGMINA 0.5MG/ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "302": {
+      "cd_produto_comprador": 14001,
+      "ds_produto_comprador": "NICOTINA 21MG ADESIVO",
+      "produtos_clientes_depara": false
+    },
+    "303": {
+      "cd_produto_comprador": 1086,
+      "ds_produto_comprador": "NIFEDIPINA 10MG CAPS",
+      "produtos_fornecedores_sintese": false
+    },
+    "304": {
+      "cd_produto_comprador": 1090,
+      "ds_produto_comprador": "NITROPRUSSIATO DE SODIO 50MG - FRASCO/AMPOLA 2ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "305": {
+      "cd_produto_comprador": 2838,
+      "ds_produto_comprador": "OLEO MINERAL FR 100ML",
+      "produtos_clientes_depara": false
+    },
+    "306": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "GEOLAB",
+          "codigo": 5062,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 38128,
+          "unidade": "CAP",
+          "validade": "30/09/2024",
+          "descricao": "OMEPRAZOL 20MG %28G%29 GENERICO",
+          "id_artigo": 144632599,
+          "sequencia": 307,
+          "obs_produto": "",
+          "qtd_unidade": 490,
+          "apresentacao": "",
+          "preco_oferta": 0.085,
+          "tabela_precos": 0.085,
+          "nome_comercial": "OMEPRAZOL 20MG %28G%29 GENERICO",
+          "preco_unitario": 0.085,
+          "qtd_solicitada": 2000,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 18682720,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Capsula",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "HIPOLABOR",
+          "codigo": 3113,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 44820,
+          "unidade": "CAP",
+          "validade": "29/02/2024",
+          "descricao": "OMEPRAZOL 20MG %28G%29 GENERICO",
+          "id_artigo": 144632599,
+          "sequencia": 307,
+          "obs_produto": "",
+          "qtd_unidade": 500,
+          "apresentacao": "",
+          "preco_oferta": 0.08,
+          "tabela_precos": 0.08,
+          "nome_comercial": "OMEPRAZOL 20MG %28G%29 GENERICO",
+          "preco_unitario": 0.08,
+          "qtd_solicitada": 2000,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 22410000,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Capsula",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1131,
+      "ds_produto_comprador": "OMEPRAZOL 20MG - CAPSULA"
+    },
+    "307": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "BLAU",
+          "codigo": 3124,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 11,
+          "unidade": "FA",
+          "validade": "08/08/2024",
+          "descricao": "OMEPRAZOL 40MG 10ML C/D OPRAZON",
+          "id_artigo": 144632600,
+          "sequencia": 308,
+          "obs_produto": "",
+          "qtd_unidade": 20,
+          "apresentacao": "",
+          "preco_oferta": 8.49,
+          "tabela_precos": 8.49,
+          "nome_comercial": "OMEPRAZOL 40MG 10ML C/D OPRAZON",
+          "preco_unitario": 8.49,
+          "qtd_solicitada": 800,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 220,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Frasco/Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1130,
+      "ds_produto_comprador": "OMEPRAZOL 40MG - FRASCO/AMPOLA"
+    },
+    "308": {
+      "cd_produto_comprador": 1546,
+      "ds_produto_comprador": "ONDANSETRONA 4MG/2ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "309": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HIPOLABOR",
+          "codigo": 3143,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 221,
+          "unidade": "AMP",
+          "validade": "30/09/2024",
+          "descricao": "ONDANSETRONA 8MG 4ML %28G%29 GENERICO",
+          "id_artigo": 144632602,
+          "sequencia": 310,
+          "obs_produto": "",
+          "qtd_unidade": 100,
+          "apresentacao": "",
+          "preco_oferta": 2.6,
+          "tabela_precos": 2.6,
+          "nome_comercial": "ONDANSETRONA 8MG 4ML %28G%29 GENERICO",
+          "preco_unitario": 2.6,
+          "qtd_solicitada": 1800,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 22100,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 5923,
+      "ds_produto_comprador": "ONDANSETRONA 8MG/4ML - AMPOLA"
+    },
+    "310": {
+      "cd_produto_comprador": 1227,
+      "ds_produto_comprador": "OXIDO DE ZINCO+NISTAT. 200MG+100000UI/G CREME",
+      "produtos_fornecedores_sintese": false
+    },
+    "311": {
+      "cd_produto_comprador": 6656,
+      "ds_produto_comprador": "OXITOCINA 5UI/ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "312": {
+      "cd_produto_comprador": 12279,
+      "ds_produto_comprador": "PACOTE TESTE DESAFIO COD REF. 41360",
+      "produtos_clientes_depara": false
+    },
+    "313": {
+      "cd_produto_comprador": 481,
+      "ds_produto_comprador": "PAPEL GRAU CIRURGICO 10 CM - ROLO",
+      "produtos_clientes_depara": false
+    },
+    "314": {
+      "cd_produto_comprador": 482,
+      "ds_produto_comprador": "PAPEL GRAU CIRURGICO 20 CM - ROLO",
+      "produtos_fornecedores_sintese": false
+    },
+    "315": {
+      "cd_produto_comprador": 9487,
+      "ds_produto_comprador": "PAPEL LENCOL 70CM",
+      "produtos_fornecedores_sintese": false
+    },
+    "316": {
+      "cd_produto_comprador": 12335,
+      "ds_produto_comprador": "PAPEL POLIETILENO ENTRELACAO 25X70 TYVEK",
+      "produtos_clientes_depara": false
+    },
+    "317": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HIPOLABOR",
+          "codigo": 3218,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 1524,
+          "unidade": "CMP",
+          "validade": "30/09/2024",
+          "descricao": "PARACETAMOL 500MG %28G%29 GENERICO",
+          "id_artigo": 144632610,
+          "sequencia": 318,
+          "obs_produto": "",
+          "qtd_unidade": 500,
+          "apresentacao": "",
+          "preco_oferta": 0.1053,
+          "tabela_precos": 0.1053,
+          "nome_comercial": "PARACETAMOL 500MG %28G%29 GENERICO",
+          "preco_unitario": 0.1053,
+          "qtd_solicitada": 1700,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 762000,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        },
+        "1": {
+          "marca": "PRATI DONADUZZI",
+          "codigo": 3219,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 1675,
+          "unidade": "CMP",
+          "validade": "20/07/2024",
+          "descricao": "PARACETAMOL 500MG %28G%29 GENERICO",
+          "id_artigo": 144632610,
+          "sequencia": 318,
+          "obs_produto": "",
+          "qtd_unidade": 500,
+          "apresentacao": "",
+          "preco_oferta": 0.1184,
+          "tabela_precos": 0.1184,
+          "nome_comercial": "PARACETAMOL 500MG %28G%29 GENERICO",
+          "preco_unitario": 0.1184,
+          "qtd_solicitada": 1700,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 837500,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1243,
+      "ds_produto_comprador": "PARACETAMOL 500MG - COMPRIMIDO"
+    },
+    "318": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "PRATI DONADUZZI",
+          "codigo": 3227,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 13,
+          "unidade": "CMP",
+          "validade": "22/07/2024",
+          "descricao": "PARACETAMOL 750MG %28G%29 GENERICO",
+          "id_artigo": 144632611,
+          "sequencia": 319,
+          "obs_produto": "",
+          "qtd_unidade": 480,
+          "apresentacao": "",
+          "preco_oferta": 0.2717,
+          "tabela_precos": 0.2717,
+          "nome_comercial": "PARACETAMOL 750MG %28G%29 GENERICO",
+          "preco_unitario": 0.2717,
+          "qtd_solicitada": 1500,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 6240,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 5495,
+      "ds_produto_comprador": "PARACETAMOL 750 MG - COMPRIMIDO"
+    },
+    "319": {
+      "cd_produto_comprador": 13080,
+      "ds_produto_comprador": "PCR CONTROL TURDIMETRIA ELLITECH",
+      "produtos_clientes_depara": false
+    },
+    "320": {
+      "cd_produto_comprador": 1558,
+      "ds_produto_comprador": "PENICILINA G BENZATINA 1200000 UI - FRASCO/AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "321": {
+      "cd_produto_comprador": 3550,
+      "ds_produto_comprador": "PLASMASTERIL (AMIDO HIDROXIETILICO6%) - FRASCO",
+      "produtos_clientes_depara": false
+    },
+    "322": {
+      "cd_produto_comprador": 13037,
+      "ds_produto_comprador": "POLIVITAMINICO PROTOVIT SOL. ORAL 20ML",
+      "produtos_clientes_depara": false
+    },
+    "323": {
+      "cd_produto_comprador": 1049,
+      "ds_produto_comprador": "PREDNISONA 20MG - COMPRIMIDO",
+      "produtos_fornecedores_sintese": false
+    },
+    "324": {
+      "cd_produto_comprador": 15731,
+      "ds_produto_comprador": "PROGESTERONA 200MCG CAPS",
+      "produtos_fornecedores_sintese": false
+    },
+    "325": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 3339,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 118,
+          "unidade": "CMP",
+          "validade": "01/02/2024",
+          "descricao": "PROMETAZINA 25MG DU PAMERGAN",
+          "id_artigo": 144632618,
+          "sequencia": 326,
+          "obs_produto": "",
+          "qtd_unidade": 200,
+          "apresentacao": "",
+          "preco_oferta": 0.2369,
+          "tabela_precos": 0.2369,
+          "nome_comercial": "PROMETAZINA 25MG DU PAMERGAN",
+          "preco_unitario": 0.2369,
+          "qtd_solicitada": 400,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 23600,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1056,
+      "ds_produto_comprador": "PROMETAZINA 25MG - COMPRIMIDO"
+    },
+    "326": {
+      "cd_produto_comprador": 20927,
+      "ds_produto_comprador": "PROTETOR DE CALCÂNEO/COTOVELO EM ESPUMA DE POLIURETANO COM DENSIDADE 23 EM FORMATO ANATÔMICO FIXADO POR FECHOS ADERENTES. EMBALADOS INDIVIDUALMENTE.",
+      "produtos_clientes_depara": false
+    },
+    "327": {
+      "cd_produto_comprador": 10868,
+      "ds_produto_comprador": "PULSEIRA IDENTIFICACAO TYVEK VERDE",
+      "produtos_clientes_depara": false
+    },
+    "328": {
+      "cd_produto_comprador": 12941,
+      "ds_produto_comprador": "QUETIAPINA FUMARATO 25MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "329": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "CRISTALIA",
+          "codigo": 3462,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 2,
+          "unidade": "CMP",
+          "validade": "01/07/2023",
+          "descricao": "RISPERIDONA 1MG %28C1%29 DU RISPERIDON",
+          "id_artigo": 144632622,
+          "sequencia": 330,
+          "obs_produto": "",
+          "qtd_unidade": 200,
+          "apresentacao": "",
+          "preco_oferta": 0.2707,
+          "tabela_precos": 0.2707,
+          "nome_comercial": "RISPERIDONA 1MG %28C1%29 DU RISPERIDON",
+          "preco_unitario": 0.2707,
+          "qtd_solicitada": 1200,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 400,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 3606,
+      "ds_produto_comprador": "RISPERIDONA 1MG COMP"
+    },
+    "330": {
+      "cd_produto_comprador": 16703,
+      "ds_produto_comprador": "RIVAROXABANA 15MG",
+      "produtos_clientes_depara": false
+    },
+    "331": {
+      "cd_produto_comprador": 16704,
+      "ds_produto_comprador": "RIVAROXABANA 20MG",
+      "produtos_clientes_depara": false
+    },
+    "332": {
+      "cd_produto_comprador": 1290,
+      "ds_produto_comprador": "ROPIVACAINA 10MG/ML - 20ML  AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "333": {
+      "cd_produto_comprador": 6040,
+      "ds_produto_comprador": "SACCHAROMYCES BOULARDII 200MG PO ORAL",
+      "produtos_fornecedores_sintese": false
+    },
+    "334": {
+      "cd_produto_comprador": 1216,
+      "ds_produto_comprador": "SALBUTAMOL 0.5MG/ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "335": {
+      "cd_produto_comprador": 521,
+      "ds_produto_comprador": "SERINGA DESC. 10 ML S/AGULHA LUER LOCK -  BD",
+      "produtos_fornecedores_sintese": false
+    },
+    "336": {
+      "cd_produto_comprador": 522,
+      "ds_produto_comprador": "SERINGA DESC. 20 ML S/AGULHA LUER LOCK -  BD",
+      "produtos_clientes_depara": false
+    },
+    "337": {
+      "cd_produto_comprador": 526,
+      "ds_produto_comprador": "SERRA DE GIGLE 40 CM - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "338": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "GEOLAB",
+          "codigo": 3622,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 3527,
+          "unidade": "CMP",
+          "validade": "30/09/2024",
+          "descricao": "SERTRALINA 50MG %28C1%29 %28G%29 GENERICO",
+          "id_artigo": 144632631,
+          "sequencia": 339,
+          "obs_produto": "",
+          "qtd_unidade": 490,
+          "apresentacao": "",
+          "preco_oferta": 0.1645,
+          "tabela_precos": 0.1645,
+          "nome_comercial": "SERTRALINA 50MG %28C1%29 %28G%29 GENERICO",
+          "preco_unitario": 0.1645,
+          "qtd_solicitada": 1000,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 1728230,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Comprimido",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 2143,
+      "ds_produto_comprador": "SERTRALINA 50MG COMP"
+    },
+    "339": {
+      "cd_produto_comprador": 10037,
+      "ds_produto_comprador": "SISTEMA DREN MED 2000 ML ADULTO 2VIAS C/DRENO Nº 36 PVC",
+      "produtos_clientes_depara": false
+    },
+    "340": {
+      "cd_produto_comprador": 5162,
+      "ds_produto_comprador": "SISTEMA DRENAGEM MED. 2000 ML ADULTO 3 VIAS Nº 36",
+      "produtos_fornecedores_sintese": false
+    },
+    "341": {
+      "cd_produto_comprador": 16071,
+      "ds_produto_comprador": "SISTEMA FECHADO P/ASP. TRAQ. Nº 06",
+      "produtos_clientes_depara": false
+    },
+    "342": {
+      "cd_produto_comprador": 13816,
+      "ds_produto_comprador": "SMOFKABIVEN 1970 ML - 2200 KCAL - CENTRAL",
+      "produtos_clientes_depara": false
+    },
+    "343": {
+      "cd_produto_comprador": 14498,
+      "ds_produto_comprador": "SOLUCAO CONCENTRADO DE BICARBONATO SOL-CART B 760G",
+      "produtos_clientes_depara": false
+    },
+    "344": {
+      "cd_produto_comprador": 1136,
+      "ds_produto_comprador": "SOLUCAO DE GLICERINA 12% FR 500ML - FRASCO",
+      "produtos_fornecedores_sintese": false
+    },
+    "345": {
+      "cd_produto_comprador": 529,
+      "ds_produto_comprador": "SONDA DESC P/ASPIRCAO TRAQ C/ VALVULA Nº 12",
+      "produtos_clientes_depara": false
+    },
+    "346": {
+      "cd_produto_comprador": 532,
+      "ds_produto_comprador": "SONDA ENTERAL COM GUIA Nº12",
+      "produtos_clientes_depara": false
+    },
+    "347": {
+      "cd_produto_comprador": 534,
+      "ds_produto_comprador": "SONDA FOLEY Nº 14 C/ 2 VIAS - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "348": {
+      "cd_produto_comprador": 535,
+      "ds_produto_comprador": "SONDA FOLEY Nº 16 C/ 2 VIAS - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "349": {
+      "cd_produto_comprador": 536,
+      "ds_produto_comprador": "SONDA FOLEY Nº 18 C/ 2 VIAS - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "350": {
+      "cd_produto_comprador": 537,
+      "ds_produto_comprador": "SONDA FOLEY Nº 20 C/ 2 VIAS - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "351": {
+      "cd_produto_comprador": 3721,
+      "ds_produto_comprador": "SONDA FOLEY Nº 20 C/ 3 VIAS - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "352": {
+      "cd_produto_comprador": 539,
+      "ds_produto_comprador": "SONDA FOLEY Nº 22 C/ 3 VIAS - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "353": {
+      "cd_produto_comprador": 546,
+      "ds_produto_comprador": "SONDA NASO-GASTRICA LONGA Nº 18 - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "354": {
+      "cd_produto_comprador": 4162,
+      "ds_produto_comprador": "SONDA NASO-GASTRICA LONGA Nº 20 - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "355": {
+      "cd_produto_comprador": 548,
+      "ds_produto_comprador": "SONDA URETRAL Nº 04 - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "356": {
+      "cd_produto_comprador": 549,
+      "ds_produto_comprador": "SONDA URETRAL Nº 06 - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "357": {
+      "cd_produto_comprador": 551,
+      "ds_produto_comprador": "SONDA URETRAL Nº 10 - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "358": {
+      "cd_produto_comprador": 552,
+      "ds_produto_comprador": "SONDA URETRAL Nº 12 - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "359": {
+      "cd_produto_comprador": 553,
+      "ds_produto_comprador": "SONDA URETRAL Nº14 - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "360": {
+      "cd_produto_comprador": 13083,
+      "ds_produto_comprador": "SPRAY BARREIRA DURAVEL CAVILON",
+      "produtos_clientes_depara": false
+    },
+    "361": {
+      "cd_produto_comprador": 12417,
+      "ds_produto_comprador": "SUGAMADEX SODICO 100MG/ML AMP 2ML",
+      "produtos_clientes_depara": false
+    },
+    "362": {
+      "cd_produto_comprador": 1820,
+      "ds_produto_comprador": "SULFADIAZINA 500MG COMP",
+      "produtos_clientes_depara": false
+    },
+    "363": {
+      "cd_produto_comprador": 10433,
+      "ds_produto_comprador": "SULFADIAZINA DE PRATA 0.1%+NITRATO DE CERIO 0.4% CREME 50G",
+      "produtos_fornecedores_sintese": false
+    },
+    "364": {
+      "cd_produto_comprador": 1226,
+      "ds_produto_comprador": "SULFADIAZINA DE PRATA 1% POMADA",
+      "produtos_clientes_depara": false
+    },
+    "365": {
+      "cd_produto_comprador": 1602,
+      "ds_produto_comprador": "SULFAMETOXAZOL+TRIMETOPRIMA 400+80MG AMP.",
+      "produtos_clientes_depara": false
+    },
+    "366": {
+      "cd_produto_comprador": 1181,
+      "ds_produto_comprador": "SULFATO DE MAGNESIO 50% 10ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "367": {
+      "cd_produto_comprador": 554,
+      "ds_produto_comprador": "SURGICEL HEM ABSORVIVEL 5.1CM X 7.6CM - ENVELOPE",
+      "produtos_clientes_depara": false
+    },
+    "368": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "BLAU",
+          "codigo": 4776,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 175,
+          "unidade": "FA",
+          "validade": "29/11/2024",
+          "descricao": "CLORETO DE SUXAMETONIO 100MG SUCCITRAT",
+          "id_artigo": 144632661,
+          "sequencia": 369,
+          "obs_produto": "",
+          "qtd_unidade": 10,
+          "apresentacao": "",
+          "preco_oferta": 9.9,
+          "tabela_precos": 9.9,
+          "nome_comercial": "CLORETO DE SUXAMETONIO 100MG SUCCITRAT",
+          "preco_unitario": 9.9,
+          "qtd_solicitada": 250,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 1750,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Frasco",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 1272,
+      "ds_produto_comprador": "SUXAMETONIO 100MG - FRASCO"
+    },
+    "369": {
+      "cd_produto_comprador": 11125,
+      "ds_produto_comprador": "TACROLIMUS 5MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "370": {
+      "cd_produto_comprador": 8817,
+      "ds_produto_comprador": "TAMPA P/ VEDAR SER. EQUIPOS E CON. MACHO E FEMEA",
+      "produtos_fornecedores_sintese": false
+    },
+    "371": {
+      "cd_produto_comprador": 6515,
+      "ds_produto_comprador": "TESTE  DE BOWIE DICK REF. 00135 - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "372": {
+      "cd_produto_comprador": 2757,
+      "ds_produto_comprador": "TESTE PARA UREASE - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "373": {
+      "cd_produto_comprador": 5251,
+      "ds_produto_comprador": "TOALHA COMPRESSA MAO BRANCA 70GR TAM: 0,30 X 0,35",
+      "produtos_clientes_depara": false
+    },
+    "374": {
+      "cd_produto_comprador": 577,
+      "ds_produto_comprador": "TORNEIRINHA DESC. 3 VIAS LUER LOCK - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "375": {
+      "cd_produto_comprador": 1255,
+      "ds_produto_comprador": "TRAMADOL 50MG/ML 1 ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "376": {
+      "cd_produto_comprador": 578,
+      "ds_produto_comprador": "TUBO DE LATEX 200 C/15 MTS",
+      "produtos_clientes_depara": false
+    },
+    "377": {
+      "cd_produto_comprador": 614,
+      "ds_produto_comprador": "TUBO ENDOBRONQUIAL BRONCO-CATH - LD DIREITO Nº 37",
+      "produtos_clientes_depara": false
+    },
+    "378": {
+      "cd_produto_comprador": 615,
+      "ds_produto_comprador": "TUBO ENDOBRONQUIAL BRONCO-CATH - LD ESQUE Nº 37",
+      "produtos_clientes_depara": false
+    },
+    "379": {
+      "cd_produto_comprador": 4542,
+      "ds_produto_comprador": "TUBO ENDOBRONQUIAL BRONCO-CATH - LD ESQUERDO Nº 35",
+      "produtos_clientes_depara": false
+    },
+    "380": {
+      "cd_produto_comprador": 587,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL ARAMADO 7.5MM C/BALAO - - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "381": {
+      "cd_produto_comprador": 586,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL ARAMADO 7MM C/BALAO - 3 - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "382": {
+      "cd_produto_comprador": 589,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL ARAMADO 8MM C/BALAO - 3 - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "383": {
+      "cd_produto_comprador": 592,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL DESCARTAVEL 2.5MM S/BAL - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "384": {
+      "cd_produto_comprador": 596,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL DESCARTAVEL 3.5MM S/BAL - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "385": {
+      "cd_produto_comprador": 593,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL DESCARTAVEL 3MM S/BALA - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "386": {
+      "cd_produto_comprador": 598,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL DESCARTAVEL 4MM S/BALA - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "387": {
+      "cd_produto_comprador": 607,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL DESCARTAVEL 7.5MM C/BAL - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "388": {
+      "cd_produto_comprador": 606,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL DESCARTAVEL 7MM C/BALA - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "389": {
+      "cd_produto_comprador": 609,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL DESCARTAVEL 8.5MM C/BAL - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "390": {
+      "cd_produto_comprador": 608,
+      "ds_produto_comprador": "TUBO ENDOTRAQUEAL DESCARTAVEL 8MM C/BALA - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "391": {
+      "cd_produto_comprador": 6714,
+      "ds_produto_comprador": "TUBO EXTENSOR 3FR X 120 CM",
+      "produtos_clientes_depara": false
+    },
+    "392": {
+      "cd_produto_comprador": 7324,
+      "ds_produto_comprador": "TUBO EXTENSOR DESC P/ASPI ESTERIL 3 MT - UNIDADE",
+      "produtos_clientes_depara": false
+    },
+    "393": {
+      "cd_produto_comprador": 7323,
+      "ds_produto_comprador": "TUBO EXTENSOR DESC P/OXIGENOT ESTERIL 2 M - UNIDADE",
+      "produtos_fornecedores_sintese": false
+    },
+    "394": {
+      "cd_produto_comprador": 17625,
+      "ds_produto_comprador": "TUBO RETRATIL PARA AEROSSOLTERAPIA AEROPUFF PLASTSIL",
+      "produtos_clientes_depara": false
+    },
+    "395": {
+      "cd_produto_comprador": 17413,
+      "ds_produto_comprador": "VASOPRESSINA 20UI/ML",
+      "produtos_fornecedores_sintese": false
+    },
+    "396": {
+      "cd_produto_comprador": 13614,
+      "ds_produto_comprador": "VASOPRESSINA 20UI/ML AMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "397": {
+      "cd_produto_comprador": 1419,
+      "ds_produto_comprador": "VITAMINA B1 300MG COMP",
+      "produtos_fornecedores_sintese": false
+    },
+    "398": {
+      "cd_produto_comprador": 2773,
+      "ds_produto_comprador": "VITAMINA C 500 MG/5ML - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "399": {
+      "cd_produto_comprador": 1198,
+      "ds_produto_comprador": "VITAMINA COMPLEXO B - AMPOLA",
+      "produtos_fornecedores_sintese": false
+    },
+    "400": {
+      "cd_produto_comprador": 1196,
+      "ds_produto_comprador": "VITAMINA COMPLEXO B - DRAGEA",
+      "produtos_fornecedores_sintese": false
+    },
+    "401": {
+      "cd_produto_comprador": 22323,
+      "ds_produto_comprador": "VITAMINA D PURA GOTAS 1000UI / GOTA",
+      "produtos_clientes_depara": false
+    },
+    "402": {
+      "cd_produto_comprador": 15107,
+      "ds_produto_comprador": "VITAMINA D PURA GOTAS 200UI / GOTA",
+      "produtos_clientes_depara": false
+    },
+    "403": {
+      "produtos_fornecedor": {
+        "0": {
+          "marca": "HIPOLABOR",
+          "codigo": 4210,
+          "oferta": {
+            "submitSintese": true
+          },
+          "estoque": 4831,
+          "unidade": "AMP",
+          "validade": "31/05/2024",
+          "descricao": "VIT K 10MG/ML 1ML - FITOMENADION IM/SC ESKAVIT",
+          "id_artigo": 144632696,
+          "sequencia": 404,
+          "obs_produto": "",
+          "qtd_unidade": 50,
+          "apresentacao": "",
+          "preco_oferta": 2.29,
+          "tabela_precos": 2.29,
+          "nome_comercial": "VIT K 10MG/ML 1ML - FITOMENADION IM/SC ESKAVIT",
+          "preco_unitario": 2.29,
+          "qtd_solicitada": 300,
+          "desconto_padrao": 0.0,
+          "estoque_unidade": 241550,
+          "desconto_vendaDif": 0,
+          "ds_unidade_compra": "Ampola",
+          "vl_desconto_final": 0,
+          "vl_desconto_aplicado": 0,
+          "tipo_desconto_aplicado": "NENHUM"
+        }
+      },
+      "cd_produto_comprador": 2777,
+      "ds_produto_comprador": "VITAMINA K IM 10MG/ML - AMPOLA"
+    }
+  },
+  "VALOR-TOTAL": 96085.35799999998
+}

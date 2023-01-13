@@ -65,7 +65,7 @@
                         <strong>Número</strong> <br>
                         <?php echo $oc['Cd_Ordem_Compra']; ?>
                     </div>
-                    <div class="col-12 col-lg-4">
+                    <div class="col-12 col-lg-4" <?php if (isset($oc['usuario_cancelamento'])) echo "data-toggle='tooltip' data-title='RESPONSAVEL CANCELAMENTO: {$oc['usuario_cancelamento']['id']} - {$oc['usuario_cancelamento']['email']}' " ?>>
                         <strong>Situação</strong> <br>
                         <?php echo $oc['situacao']; ?>
                     </div>
@@ -136,6 +136,22 @@
         <?php if (isset($oc['produtos'])) { ?>
             <?php foreach ($oc['produtos'] as $kk => $produto) { ?>
                 <div class="card">
+
+                    <?php if ($oc['integrador'] == 100) { ?>
+                        <div class="card-header text-right <?php if ($produto['situacao'] == 9) echo "bg-danger"; ?>">
+                            <?php if ($produto['situacao'] == 9) { ?>
+                                <p class="text-center text-white">ITEM REJEITADO -
+                                    (<?php echo $produto['motivo_situacao']; ?>)</p>
+                            <?php } else { ?>
+                                <button data-idProduto="<?php echo $produto['id']; ?>"
+                                        data-href="<?php echo "{$url_cancel_item}{$produto['id']}"; ?>"
+                                        class="btn btn-sm btn-danger btnCancelItem"><i class="fa fa-ban"></i> Rejeitar
+                                    item
+                                </button>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
+
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2">
@@ -247,6 +263,78 @@
 
     $(function () {
 
+        $('.btnCancelItem').click(function (e) {
+
+            var url = $(this).data('href');
+
+            Swal.fire({
+                title: 'Deseja rejeitar este item?',
+                text: 'Informe o motivo do cancelamento',
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    required: true
+                },
+                inputValidator: (value) => {
+                    if (value.length == 0) {
+                        return 'Informe o motivo'
+                    }
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Rejeitar Item',
+                cancelButtonText: 'Fechar',
+                showLoaderOnConfirm: true
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    $.post(url, {motivo: result.value}, function (xhr) {
+                        window.location.reload();
+                    })
+                }
+            })
+        });
+
+        $('#btnCancelOc').click(function (e) {
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+
+            Swal.fire({
+                title: 'Deseja rejeitar esta ordem de compra?',
+                text: 'Informe o motivo do cancelamento',
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    required: true
+                },
+                inputValidator: (value) => {
+                    if (value.length == 0) {
+                        return 'Informe o motivo'
+                    }
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Rejeitar Item',
+                cancelButtonText: 'Fechar',
+                showLoaderOnConfirm: true
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+
+                    $.post(url, {motivo: result.value}, function (xhr) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: xhr.type,
+                            title: xhr.message,
+                            showConfirmButton: false,
+                            timer: 3000
+                        }).then(function() {
+                            window.location = xhr.redir;
+                        });
+                    })
+                }
+            })
+        });
 
         $("#btnChangeStatus").on('click', function (e) {
 

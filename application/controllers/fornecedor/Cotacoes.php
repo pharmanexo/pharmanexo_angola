@@ -454,18 +454,31 @@ class Cotacoes extends MY_Controller
 
             case 'BIONEXO':
 
-                $deleteDePara = $this->db
-                    ->where('id_produto_sintese', $post['sintese'])
-                    ->where('cd_produto', $post['dados']['cod_prod'])
-                    ->where('id_cliente', $post['cliente'])
-                    ->delete('produtos_fornecedores_sintese');
-                if ($deleteDePara) {
-                    $retorno = ['type' => 'success', 'message' => 'Produto removido'];
-                } else {
-                    $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
+                $produtoSintese = $this->db->where('cd_produto', $post['dados']['prod_comprador'])
+                    ->where('id_cliente', $post['dados']['cliente'])
+                    ->get('produtos_clientes_depara')->result_array();
+                $idSintese = [];
+                foreach ($produtoSintese as $p) {
+                    $idSintese[] = $p['id_produto_sintese'];
                 }
-                $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
-
+                $this->db->where_in('id_produto', $idSintese);
+                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
+                $fornecedorSintese = [];
+                foreach ($marcaSintese as $s) {
+                    $fornecedorSintese[] = $s['id_sintese'];
+                }
+                if (count($fornecedorSintese) > 0) {
+                    $deleteDePara = $this->db->where_in('id_sintese', $fornecedorSintese)
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->where('cd_produto', $post['dados']['cod_prod'])
+                        ->delete('produtos_fornecedores_sintese');
+                    if ($deleteDePara) {
+                        $retorno = ['type' => 'success', 'message' => 'Produto removido'];
+                    } else {
+                        $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
+                    }
+                    $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
+                }
                 break;
             case 'APOIO':
 

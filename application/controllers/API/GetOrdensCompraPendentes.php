@@ -41,7 +41,7 @@ class GetOrdensCompraPendentes extends CI_Controller
         $log = '';
         $fornecedores = $this->db->select('id, cnpj')
             ->where('sintese', 1)
-            #  ->where('id', 115)
+              //->where('id', 12)
             ->get('fornecedores')->result_array();
 
 
