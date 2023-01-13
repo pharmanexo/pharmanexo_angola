@@ -135,9 +135,18 @@ class Pendentes extends MY_Controller
         $page_title = "Ordem de Compra";
 
         $data['oc'] = $this->getOC($idOC);
-        $status = $this->oc->get_status($data['oc']['Status_OrdemCompra']);
+        if (!empty($data['oc']['id_usuario_cancelamento'])) {
+            $data['oc']['usuario_cancelamento'] = $this->db
+                ->select('id, nickname, email')
+                ->where('id', $data['oc']['id_usuario_cancelamento'])
+                ->get('usuarios')
+                ->row_array();
+        }
 
-        $data['oc']['situacao'] = (!empty($status) && !empty($status['descricao'])) ? $status['descricao'] : '';
+
+        /*  $status = $this->oc->get_status($data['oc']['Status_OrdemCompra']);
+
+          $data['oc']['situacao'] = (!empty($status) && !empty($status['descricao'])) ? $status['descricao'] : '';*/
 
 
         $fp = $this->oc->getCotFormaPagamento($data['oc']['id_fornecedor'], $data['oc']['Cd_Cotacao']);
@@ -169,6 +178,8 @@ class Pendentes extends MY_Controller
         $data['to_datatable'] = "{$this->route}/to_datatable_produtos";
         $data['url_resgate'] = "{$this->route}/resgatar/{$idOC}";
         $data['url_codigo'] = "{$this->route}/addCodigo/{$idOC}";
+        $data['url_cancel_item'] = "{$this->route}/cancelItem/";
+        $data['url_cancel_oc'] = "{$this->route}/cancelOrdem/{$idOC}";
         $data['url_list'] = "{$this->route}";
         $data['urlChangeStatusPending'] = "{$this->route}/changeStatusPending/{$idOC}";
 
@@ -201,6 +212,14 @@ class Pendentes extends MY_Controller
                     'class' => 'btn-success',
                     'icone' => 'fa-tasks',
                     'label' => 'Marcar como resgatada'
+                ],
+                [
+                    'type' => 'button',
+                    'id' => 'btnCancelOc',
+                    'url' => $data['url_cancel_oc'],
+                    'class' => 'btn-danger',
+                    'icone' => 'fa-ban',
+                    'label' => 'Cancelar Ordem de Compra'
                 ],
                 [
                     'type' => 'button',
@@ -255,6 +274,130 @@ class Pendentes extends MY_Controller
         }
     }
 
+    public function cancelItem($idProd)
+    {
+        if ($this->input->method()) {
+            $post = $this->input->post();
+
+            $produto = $this->db->where('id', $idProd)->get('ocs_sintese_produtos')->row_array();
+            if (!empty($produto)) {
+                $oc = $this->db->where('id', $produto['id_ordem_compra'])->get('ocs_sintese')->row_array();
+
+                if (!empty($oc)) {
+                    $pedidoConvidado = $this->db
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->where('ordem_compra', $oc['Cd_Ordem_Compra'])
+                        ->get('conv_pedidos')->row_array();
+
+
+                    $updateProd = [
+                        'situacao' => 9,
+                        'motivo_situacao' => $post['motivo'],
+                        'id_usuario_cancelamento' => $this->session->id_usuario
+                    ];
+
+                    // atualiza o produto na OC
+                    $this->db->where('id', $idProd)
+                        ->update('ocs_sintese_produtos', $updateProd);
+
+                    //atualiza item no pedido convidado
+                    $this->db
+                        ->where('codigo', $produto['codigo'])
+                        ->where('id_pedido', $pedidoConvidado['id'])
+                        ->update('conv_pedidos_produtos', $updateProd);
+
+                    //verifica se o pedido ainda tem itens aprovados
+                    $verificaItensAprovados = $this->db
+                        ->where('id_pedido', $pedidoConvidado['id'])
+                        ->where('situacao', 1)
+                        ->get('conv_pedidos_produtos');
+
+                    if ($verificaItensAprovados->num_rows() > 0) {
+                        // atualiza a situação do pedido e OC
+                        $this->db
+                            ->where('id', $pedidoConvidado['id'])
+                            ->update('conv_pedidos', ['situacao' => 6]);
+                    } else {
+                        // atualiza a situação do pedido e OC
+                        $this->db
+                            ->where('id', $pedidoConvidado['id'])
+                            ->update('conv_pedidos', ['situacao' => 4]);
+
+                        $this->db
+                            ->where('id', $oc['id'])
+                            ->update('ocs_sintese', ['pendente' => 0, 'Status_OrdemCompra' => 11, 'motivo_cancelamento' => 'TODOS ITENS FORAM REJEITADOS PELO DISTRIBUIDOR']);
+                    }
+
+
+                }
+            }
+
+
+        }
+
+
+    }
+
+    public function cancelOrdem($idOc)
+    {
+        if ($this->input->method()) {
+            $post = $this->input->post();
+
+            $oc = $this->db->where('id', $idOc)->get('ocs_sintese')->row_array();
+
+            $updateProd = [
+                'situacao' => 9,
+                'motivo_situacao' => $post['motivo'],
+                'id_usuario_cancelamento' => $this->session->id_usuario
+            ];
+
+            if (!empty($oc)) {
+                $pedidoConvidado = $this->db
+                    ->where('id_fornecedor', $this->session->id_fornecedor)
+                    ->where('ordem_compra', $oc['Cd_Ordem_Compra'])
+                    ->get('conv_pedidos')->row_array();
+
+                if (!empty($pedidoConvidado)) {
+                    $this->db
+                        ->where('id', $pedidoConvidado['id'])
+                        ->update('conv_pedidos', ['situacao' => 4]);
+
+
+                    //atualiza item no pedido convidado
+                    $this->db
+                        ->where('id_pedido', $pedidoConvidado['id'])
+                        ->update('conv_pedidos_produtos', $updateProd);
+
+                }
+
+                // atualiza o produto na OC
+                $this->db->where('id_ordem_compra', $idOc)
+                    ->update('ocs_sintese_produtos', $updateProd);
+
+                $this->db
+                    ->where('id', $oc['id'])
+                    ->update('ocs_sintese',
+                        [
+                            'pendente' => 0,
+                            'Status_OrdemCompra' => 11,
+                            'motivo_cancelamento' => $post['motivo'],
+                            'id_usuario_cancelamento' => $this->session->id_usuario
+                        ]
+                    );
+
+                $warn = [
+                    'type' => 'success',
+                    'message' => 'Ordem de compra cancelada. Aguarde que vamos redirecionar a página.',
+                    'redir' => $this->route
+                ];
+            }
+
+
+            $this->output->set_content_type('application/json')->set_output(json_encode($warn));
+
+        }
+    }
+
     /**
      * Excuta o resgate na sintese da oc
      *
@@ -262,101 +405,132 @@ class Pendentes extends MY_Controller
      */
     public function resgatar($oc)
     {
-
         if ($this->input->is_ajax_request()) {
 
             $post = $this->input->post();
 
             $idForn = $this->session->id_fornecedor;
             $oc = $this->oc->find('*', "id = '{$oc}' and id_fornecedor = {$idForn}", true);
-            $ocProds = $this->db->select("*")->where('id_ordem_compra', $oc['id'])->get('ocs_sintese_produtos')->result_array();
 
+            $ocProds = $this->db->select("*")
+                ->where('id_ordem_compra', $oc['id'])
+                ->where('situacao is null')
+                ->get('ocs_sintese_produtos')->result_array();
 
-            $prods = [];
+            if (!empty($ocProds)) {
+                $prods = [];
 
-            foreach ($ocProds as $prod) {
+                foreach ($ocProds as $prod) {
 
-                $prod['Qt_Embalagem'] = ($prod['Qt_Embalagem'] > 0) ? $prod['Qt_Embalagem'] : 1;
+                    $prod['Qt_Embalagem'] = ($prod['Qt_Embalagem'] > 0) ? $prod['Qt_Embalagem'] : 1;
 
-                $qtd = round($prod['Qt_Produto'] / $prod['Qt_Embalagem']);
+                    $qtd = round($prod['Qt_Produto'] / $prod['Qt_Embalagem']);
 
-                $prods[] = [
-                    "codigo" => $prod['codigo'],
-                    "quantidade" => $qtd,
-                    "preco" => ($prod['Vl_Preco_Produto'] * $prod['Qt_Embalagem']),
-                    "cod_vol" => $this->getUnidVenda($prod['codigo'], $idForn),
-                    'qtd_emb' => $this->getQtdEmb($prod['codigo'], $idForn)
-                ];
+                    $prods[] = [
+                        "codigo" => $prod['codigo'],
+                        "quantidade" => $qtd,
+                        "preco" => ($prod['Vl_Preco_Produto'] * $prod['Qt_Embalagem']),
+                        "cod_vol" => $this->getUnidVenda($prod['codigo'], $idForn),
+                        'qtd_emb' => $this->getQtdEmb($prod['codigo'], $idForn)
+                    ];
 
-            }
-
-            $post = [
-                "cod_oc" => $oc['Cd_Ordem_Compra'],
-                "data" => $oc['Dt_Ordem_Compra'],
-                "data_entrega" => date('d/m/Y', strtotime($oc['Dt_Previsao_Entrega'])),
-                "id_fornecedor" => $idForn,
-                "cnpj" => $oc['Cd_Comprador'],
-                "products" => $prods,
-                "id_forma_pagamento" => (isset($post['forma_pagto'])) ? $post['forma_pagto'] : $oc['Cd_Condicao_Pagamento'],
-                "usuario" => isset($post['usuario_resgate']) ? $post['usuario_resgate'] : $this->session->nome
-            ];
-
-            $ch = curl_init('https://pharmanexo.com.br/pharma_integra/OrdemCompra');
-            $payload = json_encode($post);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $result = curl_exec($ch);
-
-            $result = json_decode($result, true);
-
-
-            if (isset($result['type']) && $result['type'] == 'success') {
-
-                # Registra resgate
-                $this->db->where("id", $oc['id']);
-                $this->db->update('ocs_sintese', [
-                    'id_usuario_resgate' => $this->session->id_usuario,
-                    'Status_OrdemCompra' => 4,
-                    'data_resgate' => date("Y-m-d H:i:s")
-                ]);
-
-                # Registra resgate produtos
-                $this->db->where("id_ordem_compra", $oc['id']);
-                $this->db->update('ocs_sintese_produtos', [
-                    'resgatado' => 1,
-                    'data_resgate' => date("Y-m-d H:i:s")
-                ]);
-
-                # Enviao de espelho
-                $sendEmail = $this->sendEmail($oc['id']);
-
-                $route = base_url("fornecedor/ordens_compra/resgatadas/espelho/{$oc['id']}");
-
-                $output = ['type' => 'success', 'message' => 'Resgate efetuado com sucesso', 'route' => $route];
-
-                switch (intval($oc['integrador'])) {
-                    case 1:
-                        #resgate sintese
-                        $this->resgateSintese(preg_replace('/[^\d\-]/', '', $oc['Cd_Fornecedor']), $oc['Cd_Ordem_Compra']);
-                        break;
-                    case 2:
-                        $resg = [];
-                        break;
-                    case 3:
-                        #resgate sintese
-                        $this->resgateApoio($oc['id_fornecedor'], $oc['Cd_Ordem_Compra']);
-                        break;
                 }
 
+                $post = [
+                    "cod_oc" => $oc['Cd_Ordem_Compra'],
+                    "data" => $oc['Dt_Ordem_Compra'],
+                    "data_entrega" => date('d/m/Y', strtotime($oc['Dt_Previsao_Entrega'])),
+                    "id_fornecedor" => $idForn,
+                    "cnpj" => $oc['Cd_Comprador'],
+                    "products" => $prods,
+                    "id_forma_pagamento" => (isset($post['forma_pagto'])) ? $post['forma_pagto'] : $oc['Cd_Condicao_Pagamento'],
+                    "usuario" => isset($post['usuario_resgate']) ? $post['usuario_resgate'] : $this->session->nome
+                ];
 
+                $ch = curl_init('https://pharmanexo.com.br/pharma_integra/OrdemCompra');
+                $payload = json_encode($post);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                $result = curl_exec($ch);
+
+                $result = json_decode($result, true);
+
+
+                if (isset($result['type']) && $result['type'] == 'success') {
+
+                    $pedidoConvidado = $this->db
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->where('ordem_compra', $oc['Cd_Ordem_Compra'])
+                        ->get('conv_pedidos')->row_array();
+
+                    // verifica se existem itens cancelado
+                    $itensCancelados = $this->db
+                        ->where('id_ordem_compra', $oc['id'])
+                        ->where('situacao', 9)
+                        ->get('ocs_sintese_produtos');
+
+
+                    if (!empty($pedidoConvidado)) {
+                        if ($itensCancelados->num_rows() > 0) {
+                            $this->db
+                                ->where('id', $pedidoConvidado['id'])
+                                ->update('conv_pedidos', ['situacao' => 7]);
+                        } else {
+                            $this->db
+                                ->where('id', $pedidoConvidado['id'])
+                                ->update('conv_pedidos', ['situacao' => 7]);
+                        }
+                    }
+
+                    # Registra resgate
+                    $this->db->where("id", $oc['id']);
+                    $this->db->update('ocs_sintese', [
+                        'id_usuario_resgate' => $this->session->id_usuario,
+                        'Status_OrdemCompra' => 4,
+                        'data_resgate' => date("Y-m-d H:i:s")
+                    ]);
+
+                    # Registra resgate produtos
+                    $this->db->where("id_ordem_compra", $oc['id']);
+                    $this->db->update('ocs_sintese_produtos', [
+                        'resgatado' => 1,
+                        'data_resgate' => date("Y-m-d H:i:s")
+                    ]);
+
+                    # Enviao de espelho
+                    $sendEmail = $this->sendEmail($oc['id']);
+
+                    $route = base_url("fornecedor/ordens_compra/resgatadas/espelho/{$oc['id']}");
+
+                    $output = ['type' => 'success', 'message' => 'Resgate efetuado com sucesso', 'route' => $route];
+
+                    switch (intval($oc['integrador'])) {
+                        case 1:
+                            #resgate sintese
+                            $this->resgateSintese(preg_replace('/[^\d\-]/', '', $oc['Cd_Fornecedor']), $oc['Cd_Ordem_Compra']);
+                            break;
+                        case 2:
+                            $resg = [];
+                            break;
+                        case 3:
+                            #resgate sintese
+                            $this->resgateApoio($oc['id_fornecedor'], $oc['Cd_Ordem_Compra']);
+                            break;
+                    }
+
+
+                } else {
+
+                    $output = ['type' => 'warning', 'message' => $result['message']];
+                }
             } else {
-
-                $output = ['type' => 'warning', 'message' => $result['message']];
+                $output = ['type' => 'warning', 'message' => 'Nenhum item pendente de resgate, verifique com o suporte'];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($output));
         }
+
     }
 
     /**
@@ -490,13 +664,13 @@ class Pendentes extends MY_Controller
 
         $oc['oferta'] = $oferta;
 
-        if (isset($oc['Tp_Situacao'])) {
+        $situacao = $this->db
+            ->where('codigo', $oc['Status_OrdemCompra'])->get('ocs_sintese_status')->row_array();
 
-            switch ($oc['Tp_Situacao']) {
-                case '1':
-                    $oc['situacao'] = 'Aprovada';
-                    break;
-                case '3':
+        if (!empty($situacao)) {
+
+            switch ($situacao['codigo']) {
+                case '4':
 
                     if (isset($oc['Dt_Resgate']) && !empty($oc['Dt_Resgate'])) {
                         $oc['situacao'] = 'Resgatada pelo fornecedor';
@@ -507,14 +681,12 @@ class Pendentes extends MY_Controller
                     }
 
                     break;
-                case '4':
-                    $oc['situacao'] = 'Aprovada';
-                    break;
-                case '12':
-                    $oc['situacao'] = 'Aprovada';
+                default:
+                    $oc['situacao'] = $situacao['descricao'];
                     break;
             }
         }
+
 
         $oc['produtos'] = $this->oc->get_products($idOC);
 

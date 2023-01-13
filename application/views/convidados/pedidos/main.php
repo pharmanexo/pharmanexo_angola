@@ -18,9 +18,9 @@
                         <div class="form-group">
                             <label for="filtro-situacao">Filtrar por situação</label>
                             <select class="select2" id="filtro-situacao" data-index="5">
-                                <option value="">Selecione</option>
-                                <?php foreach($situacao as $key => $value) { ?>
-                                    <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                                <option value="">Todos</option>
+                                <?php foreach($status as $value) { ?>
+                                    <option value="<?php echo $value['id']; ?>"><?php echo $value['descricao']; ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -28,11 +28,11 @@
                     <div class="col-md-6 col-xs-12 form-group">
                         <label for="filtro-data-emissao">Data do Pedido</label>
                         <div class="input-group date">
-                            <input type="text" class="form-control" id="filter-start-date" data-index="2">
+                            <input type="text" class="form-control" id="filter-start-date" data-index="1">
                             <div class="input-group-append">
                                 <span class="input-group-text bg-light">a</span>
                             </div>
-                            <input type="text" class="form-control" id="filter-end-date" data-index="2">
+                            <input type="text" class="form-control" id="filter-end-date" data-index="1">
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,6 @@
                         nw_data.columns[1].search.type = 'date';
                     }
 
-                    console.log(nw_data);
                     return nw_data;
                 }
             },
@@ -117,16 +116,18 @@
                 $(row).data('id', data.id).css('cursor', 'pointer');
 
                 switch (data.situacao) {
-                    case '0':
+                    case '1':
                         $(row).addClass('table-light');
                         break;
-                    case '1':
+                    case '2':
                         $(row).addClass('table-info');
                         break;
-                    case '2':
+                    case '3':
+                    case '7':
                         $(row).addClass('table-success');
                         break;
-                    case '3':
+                    case '4':
+                    case '5':
                         $(row).addClass('table-danger');
                         break;
                 }

@@ -191,11 +191,12 @@
                                 <th>Preço (R$)</th>
                                 <th>Total (R$)</th>
                                 <th>Entrega</th>
+                                <th>Situacao</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php foreach ($ordem_compra['produtos'] as $oc): ?>
-                                <tr>
+                                <tr class="<?php if ($oc['situacao'] == 9) echo 'table-danger'; ?>" >
                                     <td><?php echo (isset($oc['produto_catalogo'])) ? $oc['produto_catalogo'] : ''; ?></td>
                                     <td><?php echo $oc['Ds_Produto_Comprador']; ?></td>
                                     <td><?php echo $oc['codigo']; ?></td>
@@ -206,6 +207,7 @@
                                     <td><?php echo number_format($oc['Vl_Preco_Produto'] * $oc['Qt_Produto'], 4, ',', '.'); ?></td>
                                     <td><?php if (isset($oc['programacao']['Data'])) echo $oc['programacao']['Data']; ?>
                                         <?php if (isset($oc['programacao']['Quantidade'])) echo 'Qtd.: ' . intval($oc['programacao']['Quantidade']) ?></td>
+                                    <td><?php echo ($oc['situacao'] == 9 ) ? 'Rejeitado' : 'Aprovado' ?></td>
                                 </tr>
                                 <?php if (isset($oc['obs_cot_produto'])) { ?>
                                     <tr>
