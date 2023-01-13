@@ -23,6 +23,19 @@ if (!function_exists('getMotivosRecusa')) {
 }
 
 
+function arrayFormat($array)
+{
+    if (!isset($array[0])) {
+
+        $arrayCopy = $array;
+
+        unset($array);
+
+        $array[0] = $arrayCopy;
+    }
+    return $array;
+}
+
 function getStatusPedidos($stts = null)
 {
 
