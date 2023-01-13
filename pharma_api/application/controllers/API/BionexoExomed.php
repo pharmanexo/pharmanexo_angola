@@ -86,10 +86,7 @@ class BionexoExomed extends CI_Controller
         } else {
             $resp = $client->__soapCall($type, $p);
         }
-
-
-        var_dump($resp);
-        exit();
+        
 
         $strxml = substr($resp, strpos($resp, '<?xml'));
 

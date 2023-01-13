@@ -24,17 +24,6 @@ class DownloadPedidos extends CI_Controller
         $this->login = loginApoio();
         $this->bio = $this->load->database('apoio', true);
 
-        /* switch (ENV) {
-
-             case 'development';
-                 $this->wsdl = 'http://homologacao.apoiocotacoes.com.br/app/fornecedores/WSFornecedores?wsdl';
-                 break;
-
-             default:
-                 $this->wsdl = 'http://ws.apoiocotacoes.com.br/app/fornecedores/WSFornecedores?wsdl';
-                 break;
-         }*/
-
         $this->wsdl = 'http://ws.apoiocotacoes.com.br/app/fornecedores/WSFornecedores?wsdl';
     }
 

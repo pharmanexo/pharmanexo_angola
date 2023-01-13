@@ -84,7 +84,7 @@ class RequestCotacao extends CI_Controller
     public function index()
     {
         # Obtem fornecedores
-        $fornecedores = $this->DB1->where('id not in(12,111,112,115,120,123,125,126,5038, 20, 180, 1002, 5039, 5018, 5046, 5010, 5042,5043, 5044)')->where('sintese', 1)->get('fornecedores')->result_array();
+        $fornecedores = $this->DB1->where('id not in(12,111,112,115,120,123,125,126,5038, 20, 180, 1002, 5039, 5018, 5046, 5010, 5042,5043, 5044, 127, 5002)')->where('sintese', 1)->get('fornecedores')->result_array();
 
        // $fornecedores = $this->DB1->where('id', 126)->where('sintese', 1)->get('fornecedores')->result_array();
 

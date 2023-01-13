@@ -38,13 +38,6 @@ class CompradoresDeparaMensal extends CI_Controller
                             )
         ")->result_array();
 
-        /*  $fornecedores = $this->db->query("
-                          select f.id, f.nome_fantasia, f.id_matriz, pm.nome
-                              from fornecedores f
-                              left join fornecedores_matriz pm on pm.id = f.id_matriz
-                              where f.id = 20
-          ")->result_array();*/
-
 
         foreach ($fornecedores as $fornecedor) {
             if (!empty($fornecedor['nome'])) {
@@ -105,6 +98,7 @@ class CompradoresDeparaMensal extends CI_Controller
 
     }
 
+
     public function output_csv($filter)
     {
 
@@ -118,6 +112,7 @@ class CompradoresDeparaMensal extends CI_Controller
 
         $data = [];
         $sint = $this->load->database('sintese', true);
+
         $cotacoesProdutos = $sint
             ->select('ct.cd_cotacao, ct.id_cliente, id_produto_sintese, cd_produto_comprador')
             ->from('cotacoes ct')

@@ -42,13 +42,12 @@ class RequestCotacaoExomed extends CI_Controller
 
                 $resposta = $result->ObterCotacoesResult;
 
-
                 if (strpos($resposta, 'source')) {
 
                     $data = date("d/m/Y H:i:s");
 
                     $errorMsg = [
-                        "to" => "marlon.boecker@pharmanexo.com.br",
+                        "to" => "marlon.boecker@pharmanexo.com.br,felipe.lima@pharmanexo.com.br",
                         "greeting" => "",
                         "subject" => "Erro URL Client cotações Sintese",
                         "message" => "<b>Fornecedor:</b> {$fornecedor['razao_social']} <br>

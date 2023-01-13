@@ -38,6 +38,23 @@ class CompradoresDeparaMensalBionexo extends CI_Controller
                               )
           ")->result_array();*/
 
+
+        $fornecedores = $this->db->query("
+                        select f.id, f.nome_fantasia, f.id_matriz, pm.nome
+                            from fornecedores f
+                            left join fornecedores_matriz pm on pm.id = f.id_matriz
+                            where f.id in (select id_fornecedor
+                                         from cotacoes_produtos
+                                         where month(data_criacao) = '{$filtro_mes}'
+                                           and year(data_criacao) = '{$filtro_ano}' and integrador = 'BIONEXO'
+                                         group by id_fornecedor
+                            )
+        ")->result_array();
+
+        var_dump($this->db->last_query());
+        exit();
+
+
         $fornecedores = $this->db->query("
                           select f.id, f.nome_fantasia, f.id_matriz, pm.nome
                               from fornecedores f
@@ -129,15 +146,16 @@ class CompradoresDeparaMensalBionexo extends CI_Controller
                                 "
             )
             ->group_by('ct.cd_cotacao, cd_produto_comprador')
+            ->limit(100)
             ->get()
             ->result_array();
-
 
         $clientes = [];
 
         foreach ($cotacoesProdutos as $produto) {
             $clientes[$produto['id_cliente']][$produto['cd_cotacao']][] = $produto;
         }
+
 
         foreach ($clientes as $k => $cotacoes) {
 
@@ -181,6 +199,9 @@ class CompradoresDeparaMensalBionexo extends CI_Controller
                     ->where("id_fornecedor in ({$filter['ids']})")
                     ->where('submetido', 1)
                     ->get('cotacoes_produtos');
+
+                var_dump($this->db->last_query());
+                exit();
 
                 $count = $ofertas->num_rows();
                 $itensOfertados = ($itensOfertados + $count);

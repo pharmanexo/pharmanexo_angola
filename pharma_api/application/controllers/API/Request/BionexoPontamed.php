@@ -39,7 +39,7 @@ class BionexoPontamed extends CI_Controller
                     'id_fornecedor' => 5018,
                     'user' => 'ws_pontamed_pr',
                     'password' => '4hyamzzs'
-                ]
+                ],
         ];
 
         $this->time = '60 minutes';
@@ -57,7 +57,7 @@ class BionexoPontamed extends CI_Controller
                 break;
         }
 
-    //   $this->wsdl = 'http://ws.sandbox.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean?wsdl';
+        //   $this->wsdl = 'http://ws.sandbox.bionexo.com.br/bionexo-wsEAR-bionexo-wsn/BionexoBean?wsdl';
 
     }
 
@@ -86,6 +86,9 @@ class BionexoPontamed extends CI_Controller
         } else {
             $resp = $client->__soapCall($type, $p);
         }
+
+        /*var_dump($resp);
+        exit();*/
 
 
         $strxml = substr($resp, strpos($resp, '<?xml'));
@@ -185,10 +188,13 @@ class BionexoPontamed extends CI_Controller
 
 
             $dt_begin = date('d/m/Y H:i:s', strtotime('-2hour'));
-            $dt_end = date('d/m/Y H:i:s', strtotime('+2hour'));
+            $dt_end = date('d/m/Y H:i:s', strtotime('+1hour'));
+/*
+             $dt_begin = '10/01/2023 00:00:00';
+             $dt_end = '10/01/2023 23:59:00';*/
 
-          /*  $dt_begin = '30/09/2021 08:00:00';
-            $dt_end = '30/09/2021 11:59:00';*/
+            /*var_dump($dt_begin);
+            exit();*/
 
             foreach ($this->login as $login) {
 
@@ -202,15 +208,14 @@ class BionexoPontamed extends CI_Controller
                 $WGG = $this->request('WGG', [
                     'DT_BEGIN' => $dt_begin,
                     'DT_END' => $dt_end,
-                   # 'REGION' => 'ES',
-                  #  'ID' => 245221403,
+                    // 'REGION' => 'GO',
+                    //'ID' => 264971537,
                     'LAYOUT' => 'WG',
                     #'TOKEN' => 109849401,
                     'ISO' => 0,
                 ]);
 
                 $cotacoes = isset($WGG['data']['Pedido'][0]) ? $WGG['data']['Pedido'] : arrayFormat($WGG['data']['Pedido']);
-
 
                 foreach ($cotacoes as $cotacao) {
 
@@ -292,8 +297,8 @@ class BionexoPontamed extends CI_Controller
                     $cd_cotacao = $cabecalho["Id_Pdc"];
 
 
-                    if (is_array($cd_cotacao)){
-                      continue;
+                    if (is_array($cd_cotacao)) {
+                        continue;
                     }
 
                     $cnpj_format = str_replace('.', '', str_replace('-', '', str_replace('/', '', $cabecalho["CNPJ_Hospital"])));
@@ -304,13 +309,14 @@ class BionexoPontamed extends CI_Controller
 
                     $total_itens = count($itens);
 
-                    if (is_array($cabecalho["UF_Hospital"])){
+                    if (is_array($cabecalho["UF_Hospital"]) || empty($cabecalho['UF_Hospital'])) {
                         $cabecalho["UF_Hospital"] = isset($cliente['estado']) ? $cliente['estado'] : '';
                     }
 
-                    if (is_array($cabecalho["Cidade_Hospital"])){
+                    if (is_array($cabecalho["Cidade_Hospital"]) || empty($cabecalho['Cidade_Hospital'])) {
                         $cabecalho["Cidade_Hospital"] = isset($cliente['cidade']) ? $cliente['cidade'] : '';
                     }
+
 
                     $arrCabecalho =
                         [
@@ -333,7 +339,6 @@ class BionexoPontamed extends CI_Controller
                         ];
 
 
-
                     $this->bio->trans_begin();
 
                     $checkCotacao = $this->bio
@@ -342,7 +347,6 @@ class BionexoPontamed extends CI_Controller
                         ->limit(1)
                         ->get('cotacoes')
                         ->row_array();
-
 
 
                     $id_cotacao = 0;

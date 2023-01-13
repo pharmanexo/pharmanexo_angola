@@ -12,6 +12,7 @@ class RequestCotacaoHospidrogas extends CI_Controller
 
     public function __construct()
     {
+
         parent::__construct();
 
         $this->urlCliente = $this->config->item('db_config')['url_client'];

@@ -45,11 +45,17 @@ function loginApoio(): array
                     'user' => 'HOSPIDROGAS',
                     'password' => 'hsp@2019'
                 ],
-            "LONDRICIR" =>
+            /*"LONDRICIR" =>
                 [
                     'id_fornecedor' => 5039,
                     'user' => 'londricir.ws',
                     'password' => 'lo3dr1cir.w5'
+                ],*/
+            "PONTAMED" =>
+                [
+                    'id_fornecedor' => 5018,
+                    'user' => 'anderson.yudi',
+                    'password' => 'Ponta.2023'
                 ],
         ];
 

@@ -341,38 +341,121 @@ class AutomaticBionexoPontamed extends CI_Controller
 
                 $params = array_merge($params, ['desconto_percentual' => $desconto_percentual]);
 
-                $qtd_solicitada = $params['qt_produto_total'];
+                $qtd_solicitada = intval($params['qt_produto_total']);
 
                 $checkEstoque = $this->Engine->getEstoque($params, $this->configs);
 
                 if (!$checkEstoque['status']) {
-
-                    $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
-                    ['restricao']['productStock'] = FALSE;
-
-                    continue;
+                    $estoque_unidade = 0;
+                }else{
+                    $estoque_unidade = ($checkEstoque['result']['total'] * intval($params['qtd_unidade']));
                 }
 
-                $estoque_unidade = ($checkEstoque['result']['total'] * intval($params['qtd_unidade']));
-
-                $validade = $checkEstoque['result']['validade'];
+                $validade = (isset($checkEstoque['result']['validade']) ? $checkEstoque['result']['validade'] : '');
 
                 $obsProd = "";
 
                 if (isset($params['confValidade'])) {
 
-                    if (boolval($params['confValidade']))
+                    if (boolval($params['confValidade']) && !empty($validade))
                         $obsProd = "Validade: {$validade}";
                 }
 
-                $qtd_aceitavel = $qtd_solicitada;
+                /* ****************** define a margem de segurança do estoque ********************** */
+                $margem = $params['margem_estoque'];
 
-                if (!IS_NULL($params['margem_estoque']))
-                    $qtd_aceitavel = (floatval($params['margem_estoque']) / 100) * $qtd_solicitada;
 
-                if ($qtd_aceitavel > $estoque_unidade) {
-                    $obsProd .= " - Produto atendido parcialmente!";
+                if (!empty($margem)){
+                    $margemDisp = (100 - intval($margem['margem']));
+
+                    //calcula o estoque disponivel com a margem de segurança
+                    if ($margemDisp > 0) {
+                        $estoque_unidade = intval((floatval($margemDisp) / 100) * $estoque_unidade);
+                    }
+
+                    //caso estoque for MAIOR que ZERO
+                    if ($estoque_unidade > 0){
+
+                        //CASO ESTOQUE PARCIAL
+                        if ($estoque_unidade < $qtd_solicitada) {
+                            // NÃO ENVIAR OFERTAS COM ESTOQUE PARCIAL
+                            if (isset($margem['oferta_parcial']) && $margem['oferta_parcial'] == 0) {
+
+                                $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                                ['restricao']['qtdSolicitada'] = $qtd_solicitada;
+
+                                $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                                ['restricao']['estoque'] = $estoque_unidade;
+
+                                $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                                ['restricao']['ofertaParcial'] = FALSE;
+
+                                continue;
+
+                            } else {
+
+                                if (isset($margem['envia_obs']) && $margem['envia_obs'] == 1) {
+                                    $obsProd .= " - Produto atendido parcialmente!";
+                                }
+
+                            }
+                        }
+
+
+                    }else{
+
+                        //envia ofertas com estoque zeradp
+                        if (isset($margem['responder_zerados']) && $margem['responder_zerados'] == 1) {
+                            $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                            ['restricao']['respondeZerados'] = TRUE;
+
+
+                            //notifica ofertas com estoque zerado
+                            if (isset($margem['notificar_zerado']) && $margem['notificar_zerado'] == 1) {
+
+                                $produtosSemEstoque[] = [
+                                    'codigo' => $params['codigo'],
+                                    'id_artigo' => $prod['id_artigo'],
+                                    'sequencia' => $prod['sequencia'],
+                                    'qtd_solicitada' => $qtd_solicitada,
+                                    'unidade' => $value['unidade'],
+                                    'descricao' => strtoupper(str_replace(['%28', '%29'], ['(', ')'], $value['descricao'])),
+                                    'apresentacao' => strtoupper(str_replace(['%28', '%29'], ['(', ')'], $value['apresentacao'])),
+                                    'nome_comercial' => strtoupper(str_replace(['%28', '%29'], ['(', ')'], $value['nome_comercial'])),
+                                ];
+
+                            }
+                        }else{
+
+                            // log caso nao autorize ofertas com estoque zerado
+                            $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                            ['restricao']['respondeZerados'] = FALSE;
+                            continue;
+
+                        }
+                    }
+
+                }else{
+                    if ($estoque_unidade == 0){
+
+                        $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                        ['restricao']['productStock'] = FALSE;
+
+                        $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                        ['restricao']['configStock'] = FALSE;
+
+                        continue;
+                    }else{
+                        if ($estoque_unidade < $qtd_solicitada){
+                            $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                            ['restricao']['productStock'] = FALSE;
+
+                            $this->logs['PRODS-COT'][$key]['produtos_fornecedor'][$keyProd]
+                            ['restricao']['configStock'] = 'NÃO ENVIAR PARCIAL';
+                        }
+                    }
                 }
+                /* ****************** -- define a margem de segurança do estoque -- ********************** */
 
                 $checkPrice = $this->Engine->getPriceProd($params, $this->configs);
 
@@ -446,6 +529,26 @@ class AutomaticBionexoPontamed extends CI_Controller
             $params['qtd_unidade'],
             $params['desconto_percentual']
         );
+
+        // envia o email caso o distribuidor queira receber notificação de produtos cotados sem estoque
+        if (!empty($produtosSemEstoque) && isset($margem['destinatarios']) && !empty($margem['destinatarios'])) {
+            $produtosTxt = '';
+
+            foreach ($produtosSemEstoque as $prod) {
+                $produtosTxt .= "PRODUTO {$prod['codigo']} - {$prod['nome_comercial']} foi ofertado sem estoque. 
+                Quantidade solicitada: {$prod['qtd_solicitada']} {$prod['unidade']} \n";
+            }
+
+            $mail = [
+                "from" => "suporte@pharmanexo.com.br",
+                "from-name" => "Portal Pharmanexo",
+                "assunto" => "COTACAO {$params['cd_cotacao']} PRODUTOS OFERTADOS SEM ESTOQUE",
+                "destinatario" => $margem['destinatarios'],
+                "msg" => $produtosTxt
+            ];
+
+            $this->Engine->sendEmail($mail);
+        }
 
         return $array['cotacao'] =
             [

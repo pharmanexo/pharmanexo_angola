@@ -24,27 +24,6 @@ class DownloadPedidos extends CI_Controller
         $this->load->model('m_compradores', 'comprador');
         $this->login = loginBionexo();
 
-        $this->login = [
-            "HOSPIDROGAS" =>
-                [
-                    'id_fornecedor' => 20,
-                    'user' => 'ws_hospidrogas_pharm',
-                    'password' => '3fjwk3dm'
-                ],
-          /*  "PONTAMED" =>
-                [
-                    'id_fornecedor' => 5018,
-                    'user' => 'ws_pontamed_pr',
-                    'password' => '4hyamzzs'
-                ],
-            "LONDRICIR" =>
-                [
-                    'id_fornecedor' => 5039,
-                    'user' => 'ws_londricir_pr',
-                    'password' => '3g8tvvcs'
-                ],*/
-
-        ];
 
         $this->bio = $this->load->database('bionexo', true);
 
@@ -87,7 +66,8 @@ class DownloadPedidos extends CI_Controller
             $resp = $client->__soapCall($type, $p);
         }
 
-
+        var_dump($resp);
+        exit();
 
         $strxml = substr($resp, strpos($resp, '<?xml'));
 
@@ -181,8 +161,8 @@ class DownloadPedidos extends CI_Controller
         $dtBegin = date("d/m/Y 00:00:00", strtotime("-1day"));
         $dtEnd = date("d/m/Y 23:59:59", strtotime("+1day"));
 
-       /* $dtBegin = date("21/11/2022 00:00:00", strtotime("-1day"));
-        $dtEnd = date("21/11/2022 23:59:59", strtotime("+1day"));*/
+        $dtBegin = date("31/12/2022 00:00:00", strtotime("-1day"));
+        $dtEnd = date("31/12/2022 23:59:59", strtotime("+1day"));
 
         try {
 
@@ -198,7 +178,7 @@ class DownloadPedidos extends CI_Controller
                     'DT_BEGIN' => $dtBegin,
                     'DT_END' => $dtEnd,
                     #'REGION' => 'SP',
-                  //   'ID' => 252680177,
+                     'ID' => 262691194,
                     'LAYOUT' => 'WJ',
                     #'TOKEN' => 202344657,
                     'ISO' => 0,
@@ -208,6 +188,9 @@ class DownloadPedidos extends CI_Controller
 
 
                 $pedidos = $WGG['data']['Confirmado'];
+
+                var_dump($pedidos);
+                exit();
 
                 if (!isset($pedidos[0])) {
                     $a = $pedidos;

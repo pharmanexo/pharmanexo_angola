@@ -27,6 +27,31 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
+$db['digital_ocean'] = array(
+    'dsn'	=> '',
+    'hostname' => '146.190.219.81',
+    #'username' => 'pharmanexo',
+    'username' => 'adm_pharmanexo',
+    #'password' => '@PharmanexoNext',
+    'password' => 'I#ksndjns781snc',
+    'database' => 'pharmanexo',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => false,
+    // 'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '/cache',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
 $db['teste_pharmanexo'] = array(
     'dsn'	=> '',
     'hostname' => '10.101.70.4',
