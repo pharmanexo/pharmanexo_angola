@@ -38,10 +38,10 @@
  */
 
 if (file_exists('../.env.local')) {
-	$envs = explode("\n", file_get_contents('.env.local'));
+	$envs = explode("\n", file_get_contents('../.env.local'));
 } else {
 	if (file_exists('../.env')) {
-		$envs = explode("\n", file_get_contents('.env'));
+		$envs = explode("\n", file_get_contents('../.env'));
 	}
 }
 
