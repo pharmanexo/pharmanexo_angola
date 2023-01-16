@@ -83,7 +83,180 @@ class RequestCotacaoOncoprodSP extends CI_Controller
      */
     public function index()
     {
-        echo ('hello world');
+        # Obtem fornecedores
+        //$fornecedores = $this->DB1->where('sintese', 1)->get('fornecedores')->result_array();
+        $fornecedores = $this->DB1->where_in('id', [115,125])->where('sintese', 1)->get('fornecedores')->result_array();
+       
+
+        foreach ($fornecedores as $fornecedor) {
+
+            try {
+
+                $result = $this->connectSintese($fornecedor);
+                $result = str_replace('&#x2;', '', $result);
+
+                if ($result != false) {
+
+                    $xml = simplexml_load_string($result);
+
+                    libxml_use_internal_errors(true);
+                    $xml = simplexml_load_string($result);
+
+                    if ($xml == false) {
+                        $errors = libxml_get_errors();
+
+                        $log1 = [
+                            "mensagem" => "Erro  no XML - " . json_encode($errors),
+                            "id_fornecedor" => $fornecedor['id'],
+                            "cnpj_fornecedor" => $fornecedor['cnpj'],
+                        ];
+
+                        $this->DB1->insert('log_cotacoes_sintese', $log1);
+                        continue;
+                    }
+
+                    # Foreach de cotações
+                    foreach ($xml as $cotacao) {
+
+                        $cotacao2 = (array)$cotacao;
+
+                        $cnpj = mask($cotacao2['Cd_Comprador'], '##.###.###/####-##');
+
+                        $comprador = $this->customers->checkComprador($cnpj);
+
+                        if (!empty($comprador)) {
+
+                            $this->DB2->where('cd_cotacao', $cotacao2['Cd_Cotacao']);
+                            $this->DB2->where('id_fornecedor', $fornecedor['id']);
+                            $cotacao_existente = $this->DB2->get('cotacoes');
+
+                            if ($cotacao_existente->num_rows() < 1) {
+
+                                $produtos = $cotacao->Produtos_Cotacao->Produto_Cotacao;
+
+                                // Dados da cotação
+                                $dataCotacao = [
+                                    'tp_movimento' => "1",
+                                    'cd_cotacao' => $cotacao2['Cd_Cotacao'],
+                                    'cd_comprador' => rtrim($cotacao2['Cd_Comprador']),
+                                    "id_cliente" => $comprador['id'],
+                                    'cd_condicao_pagamento' => $cotacao2['Cd_Condicao_Pagamento'],
+                                    'dt_inicio_cotacao' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $cotacao2['Dt_Inicio_Cotacao']))),
+                                    'dt_fim_cotacao' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $cotacao2['Dt_Fim_Cotacao']))),
+                                    'dt_validade_preco' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $cotacao2['Dt_Validade_Preco']))),
+                                    'ds_entrega' => $cotacao2['Ds_Entrega'],
+                                    'ds_filiais' => $cotacao2['Ds_Filiais'],
+                                    'ds_cotacao' => utf8_decode($cotacao2['Ds_Cotacao']),
+                                    'nm_usuario' => utf8_decode($cotacao2['Nm_Usuario']),
+                                    'ds_observacao' => utf8_decode($cotacao2['Ds_Observacao']),
+                                    'id_fornecedor' => $fornecedor['id'],
+                                    'uf_cotacao' => $comprador['estado'],
+                                    'total_itens' => count($produtos)
+                                ];
+
+                                $this->DB2->insert('cotacoes', $dataCotacao);
+
+                                foreach ($produtos as $produto) {
+
+                                    $produto2 = (array)$produto;
+
+                                    $dataCotacaoProdutos = [
+                                        'id_produto_sintese' => $produto2['Id_Produto_Sintese'],
+                                        'id_fornecedor' => $fornecedor['id'],
+                                        'cd_produto_comprador' => $produto2['Cd_Produto_Comprador'],
+                                        'ds_produto_comprador' => utf8_decode($produto2['Ds_Produto_Comprador']),
+                                        'ds_unidade_compra' => utf8_decode($produto2['Ds_Unidade_Compra']),
+                                        'ds_complementar' => utf8_decode($produto2['Ds_Complementar']),
+                                        'qt_produto_total' => $produto2['Qt_Produto_Total'],
+                                        'cd_cotacao' => $cotacao2['Cd_Cotacao'],
+                                    ];
+
+                                    $this->DB2->insert('cotacoes_produtos', $dataCotacaoProdutos);
+                                }
+                            } else {
+
+                                $dataExistente = $cotacao_existente->row_array()['dt_fim_cotacao'];
+
+                                if ($dataExistente != $cotacao2['Dt_Fim_Cotacao']) {
+
+                                    $update = [
+                                        'dt_fim_cotacao' => date('Y-m-d H:i:s', strtotime(str_replace('/', '-', $cotacao2['Dt_Fim_Cotacao']))),
+                                        'data_atualizacao' => date("Y-m-d H:i:s")
+                                    ];
+
+                                    $this->DB2->where('cd_cotacao', $cotacao2['Cd_Cotacao']);
+                                    $this->DB2->where('id_fornecedor', $fornecedor['id']);
+                                    $this->DB2->update('cotacoes', $update);
+                                }
+                            }
+                        } else {
+
+                            $comp = (isset($cotacao2['Cd_Comprador'])) ? $cotacao2['Cd_Comprador'] : 'sem registro';
+                            $cot = (isset($cotacao2['Cd_Cotacao'])) ? $cotacao2['Cd_Cotacao'] : 'sem registro';
+
+                            $log1 = [
+                                "mensagem" => "Comprador com CNPJ {$comp} da cotação {$cot}  não foi identificado.",
+                                "id_fornecedor" => $fornecedor['id'],
+                                "cnpj_fornecedor" => $fornecedor['cnpj'],
+                                "cnpj_comprador" => $comp
+                            ];
+
+                            $this->DB1->insert('log_cotacoes_sintese', $log1);
+                        }
+                    }
+                } else {
+
+                    $data = date('d/m/Y H:i:s');
+
+                    $errorMsg = [
+                        "to" => "marlon.boecker@pharmanexo.com.br",
+                        "greeting" => "",
+                        "subject" => "Erro URL Client cotações Sintese",
+                        "message" => "<b>Fornecedor:</b> {$fornecedor['razao_social']} <br>
+                        <b>Data de Envio:</b> {$data} <br>
+                        "
+                    ];
+
+                    $this->notify->send($errorMsg);
+                }
+            } catch (Exception $ex) {
+
+                if (isset($xml) && !$xml) {
+
+                    $errors = libxml_get_errors();
+
+                    if ($errors != "" && $errors != null) {
+                        $message = "<br>* " . implode('<br> ', array_column($errors, 'message'));
+
+                        libxml_clear_errors();
+
+                        $data = date('d/m/Y H:i:s');
+
+                        $email = [
+                            "to" => "marlon.boecker@pharmanexo.com.br",
+                            "greeting" => "",
+                            "subject" => "Erro ao ler XML",
+                            "message" => "<b>Fornecedor:</b> {$fornecedor['razao_social']} <br>
+                            <b>Data de Envio:</b> {$data} <br>
+                            Não foi possivel ler o arquivo XML devido os seguintes erros: {$message}"
+                        ];
+
+                        $this->notify->send($email);
+                    }
+                }
+
+                if (isset($result) && !empty($result)) {
+
+                    $log = [
+                        "mensagem" => $result,
+                        "id_fornecedor" => $fornecedor['id'],
+                        "cnpj_fornecedor" => $fornecedor['cnpj'],
+                    ];
+
+                    $this->DB1->insert('log_cotacoes_sintese', $log);
+                }
+            }
+        }
     }
 
     /**

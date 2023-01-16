@@ -64,6 +64,7 @@ $route['mix'] = 'admin/relatorios/mix';
 $route['home'] = 'home';
 $route['adesao'] = 'adesao';
 $route['web'] = 'home';
+$route['API/Request/OncoSP'] = 'API/Request/RequestCotacaoOncoprodSP';
 
 $route['fornecedor/estoque/produtos_vencer/(:num)/(:num)'] = 'fornecedor/estoque/produtos_vencer/index/$1/$2';
 
