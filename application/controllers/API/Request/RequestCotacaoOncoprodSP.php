@@ -35,7 +35,6 @@ class RequestCotacaoOncoprodSP extends CI_Controller
 
                 $function = 'ObterCotacoes';
                 $arguments = array('ObterCotacoes' => array('cnpj' => preg_replace("/\D+/", "", $fornecedor['cnpj']),));
-                var_dump($function);exit;
                 libxml_disable_entity_loader(false);
                 $options = array('location' => $url);
                 $result = $client->__soapCall($function, $arguments, $options);
