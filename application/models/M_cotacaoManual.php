@@ -1663,7 +1663,7 @@ class M_cotacaoManual extends MY_Model
                         $produtoSint = $this->db
                             ->where('id_produto', $row['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
+                            ->get('produtos_marca_sintese')
                             ->row_array();
 
                         if (!empty($produtoSint)) {
@@ -1686,8 +1686,6 @@ class M_cotacaoManual extends MY_Model
                                 $this->db->insert('produtos_fornecedores_sintese', $data);
                             }
                         }
-                    } else {
-                        return ['type' => false, 'message' => 'Produto do catalo sem De -> Para'];
                     }
                 }
                 break;
@@ -1705,10 +1703,14 @@ class M_cotacaoManual extends MY_Model
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
+                            ->get('produtos_marca_sintese')
                             ->row_array();
                     } else {
-                        return ['type' => false, 'message' => 'Produto do catalo sem De -> Para'];
+                        $produtoSint = $this->db
+                            ->where('id_sintese', $produtoForn['id_sintese'])
+                            ->limit(1)
+                            ->get('produtos_marca_sintese')
+                            ->row_array();
                     }
 
                     if (!empty($produtoSint)) {
@@ -1731,7 +1733,7 @@ class M_cotacaoManual extends MY_Model
                     } else {
 
                         $this->db->trans_rollback();
-                        return ['type' => false, 'message' => 'Produto Pharmanexo não encontrado'];
+                        return false;
                     }
                 }
                 break;
@@ -1749,10 +1751,8 @@ class M_cotacaoManual extends MY_Model
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
+                            ->get('produtos_marca_sintese')
                             ->row_array();
-                    } else {
-                        return ['type' => false, 'message' => 'Produto do catalo sem De -> Para'];
                     }
 
                     if (!empty($produtoSint)) {
@@ -1775,7 +1775,7 @@ class M_cotacaoManual extends MY_Model
                     } else {
 
                         $this->db->trans_rollback();
-                        return ['type' => false, 'message' => 'Produto Pharmanexo não encontrado'];
+                        return false;
                     }
                 }
                 break;
