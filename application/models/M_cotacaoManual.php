@@ -1698,14 +1698,14 @@ class M_cotacaoManual extends MY_Model
                         ->where('cd_produto', $row['cd_produto'])
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->limit(1)
-                        ->get('produtos_fornecedores_sintese')
+                        ->get('produtos_fornecedores_sintese') //Tabela de De -> Para inicial
                         ->row_array();
 
                     if (!empty($produtoForn)) {
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese')
+                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
                             ->row_array();
                     } else {
                         return ['type' => false, 'message' => 'Produto do catalo sem De -> Para!'];
@@ -1742,7 +1742,7 @@ class M_cotacaoManual extends MY_Model
                         ->where('cd_produto', $row['cd_produto'])
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->limit(1)
-                        ->get('produtos_fornecedores_sintese')
+                        ->get('produtos_fornecedores_sintese') //Tabela de De -> Para inicial
                         ->row_array();
 
 
@@ -1750,7 +1750,7 @@ class M_cotacaoManual extends MY_Model
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese')
+                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
                             ->row_array();
                     } else {
                         return ['type' => false, 'message' => 'Produto do catalo sem De -> Para!'];
@@ -1787,12 +1787,12 @@ class M_cotacaoManual extends MY_Model
 
             $this->db->trans_rollback();
 
-            return false;
+            return ['type' => false, 'message' => 'Erro ao Realizar De -> Para!'];
         } else {
 
             $this->db->trans_commit();
 
-            return true;
+            return ['type' => true, 'message' => 'Produto Pharmanexo não encontrado!'];
         }
     }
 

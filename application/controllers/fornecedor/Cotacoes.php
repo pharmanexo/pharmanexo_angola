@@ -1283,12 +1283,12 @@ class Cotacoes extends MY_Controller
 
             $depara = $this->COTACAO_MANUAL->depara($integrador, $post);
 
-            if ($depara) {
+            if ($depara['type']) {
 
-                $warning = ["type" => "success", "message" => "Combinação de produtos realizada."];
+                $warning = ["type" => "success", "message" => $depara['message']];
             } else {
 
-                $warning = ["type" => "warning", "message" => "Erro ao combinar produtos"];
+                $warning = ["type" => "warning", "message" => $depara['message']];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($warning));
