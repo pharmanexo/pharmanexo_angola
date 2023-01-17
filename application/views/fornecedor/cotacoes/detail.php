@@ -335,11 +335,11 @@
                 var prod_comprador = $(this).data('codcomprador');
                 var integrador = $(this).data('integrador');
                 var dados = {
-                    cod_prod: cod_prod,
+                    cod_prod: cod_prod, //produto catalogo
                     cliente: cliente,
                     sintese: sintese,
                     id_produto_sintese: idprodutosintese,
-                    prod_comprador: prod_comprador
+                    prod_comprador: prod_comprador //produto cotado
                 };
 
                 Swal.fire({
