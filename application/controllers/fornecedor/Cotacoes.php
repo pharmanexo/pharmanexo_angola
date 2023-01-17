@@ -454,7 +454,7 @@ class Cotacoes extends MY_Controller
                     ->where('id_fornecedor', $this->session->id_fornecedor)
                     ->where('id_integrador', 2)
                     ->where('cd_produto', $post['dados']['cod_prod'])
-                    ->delete('produtos_fornecedores_sintese');
+                    ->delete('produtos_cliente_depara');
                 if ($deleteDePara) {
                     $retorno = ['type' => 'success', 'message' => 'Produto removido'];
                 } else {
@@ -468,7 +468,7 @@ class Cotacoes extends MY_Controller
                     ->where('id_fornecedor', $this->session->id_fornecedor)
                     ->where('id_integrador', 3)
                     ->where('cd_produto', $post['dados']['cod_prod'])
-                    ->delete('produtos_fornecedores_sintese');
+                    ->delete('produtos_cliente_depara');
                 if ($deleteDePara) {
                     $retorno = ['type' => 'success', 'message' => 'Produto removido'];
                 } else {
