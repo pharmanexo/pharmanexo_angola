@@ -451,7 +451,7 @@ class Cotacoes extends MY_Controller
 
             case 'BIONEXO':
                 $deleteDePara = $this->db->where('id_produto_sintese', $post['dados']['id_produto_sintese'])
-                    ->where('id_fornecedor', $this->session->id_fornecedor)
+                    ->where('id_cliente', $post['dados']['id_cliente'])
                     ->where('id_integrador', 2)
                     ->where('cd_produto', $post['dados']['cod_prod'])
                     ->delete('produtos_cliente_depara');
@@ -465,7 +465,7 @@ class Cotacoes extends MY_Controller
 
             case 'APOIO':
                 $deleteDePara = $this->db->where('id_produto_sintese', $post['dados']['id_produto_sintese'])
-                    ->where('id_fornecedor', $this->session->id_fornecedor)
+                    ->where('id_cliente', $post['dados']['id_cliente'])
                     ->where('id_integrador', 3)
                     ->where('cd_produto', $post['dados']['cod_prod'])
                     ->delete('produtos_cliente_depara');
