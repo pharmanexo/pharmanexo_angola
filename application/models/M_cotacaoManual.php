@@ -1663,7 +1663,7 @@ class M_cotacaoManual extends MY_Model
                         $produtoSint = $this->db
                             ->where('id_produto', $row['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese')
+                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
                             ->row_array();
 
                         if (!empty($produtoSint)) {
@@ -1686,6 +1686,8 @@ class M_cotacaoManual extends MY_Model
                                 $this->db->insert('produtos_fornecedores_sintese', $data);
                             }
                         }
+                    } else {
+                        return ['type' => false, 'message' => 'Produto do catalo sem De -> Para'];
                     }
                 }
                 break;
@@ -1703,14 +1705,10 @@ class M_cotacaoManual extends MY_Model
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese')
+                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
                             ->row_array();
                     } else {
-                        $produtoSint = $this->db
-                            ->where('id_sintese', $produtoForn['id_sintese'])
-                            ->limit(1)
-                            ->get('produtos_marca_sintese')
-                            ->row_array();
+                        return ['type' => false, 'message' => 'Produto do catalo sem De -> Para'];
                     }
 
                     if (!empty($produtoSint)) {
@@ -1733,7 +1731,7 @@ class M_cotacaoManual extends MY_Model
                     } else {
 
                         $this->db->trans_rollback();
-                        return false;
+                        return ['type' => false, 'message' => 'Produto Pharmanexo não encontrado'];
                     }
                 }
                 break;
@@ -1747,13 +1745,14 @@ class M_cotacaoManual extends MY_Model
                         ->get('produtos_fornecedores_sintese')
                         ->row_array();
 
-
                     if (!empty($produtoForn)) {
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese')
+                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
                             ->row_array();
+                    } else {
+                        return ['type' => false, 'message' => 'Produto do catalo sem De -> Para'];
                     }
 
                     if (!empty($produtoSint)) {
@@ -1776,7 +1775,7 @@ class M_cotacaoManual extends MY_Model
                     } else {
 
                         $this->db->trans_rollback();
-                        return false;
+                        return ['type' => false, 'message' => 'Produto Pharmanexo não encontrado'];
                     }
                 }
                 break;
@@ -2829,7 +2828,7 @@ class M_cotacaoManual extends MY_Model
                                                 $xml,
                                             ];*/
 
-
+apoio
                     if (isset($xml['Cabecalho']['Observacoes'])) {
                         if (empty($xml['Cabecalho']['Observacoes'])) {
                             $xml['Cabecalho']['Observacoes'] = '';
