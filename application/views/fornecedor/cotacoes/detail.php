@@ -331,12 +331,14 @@
                 var cod_prod = $(this).data('cod');
                 var cliente = $(this).data('cliente');
                 var sintese = $(this).data('sintese');
+                var idprodutosintese = $(this).data('idprodutosintese');
                 var prod_comprador = $(this).data('codcomprador');
                 var integrador = $(this).data('integrador');
                 var dados = {
                     cod_prod: cod_prod,
                     cliente: cliente,
                     sintese: sintese,
+                    id_produto_sintese: idprodutosintese,
                     prod_comprador: prod_comprador
                 };
 
