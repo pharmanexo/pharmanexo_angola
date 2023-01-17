@@ -453,7 +453,7 @@ class Cotacoes extends MY_Controller
                 $deleteDePara = $this->db->where('id_produto_sintese', $post['dados']['id_produto_sintese'])
                     ->where('id_cliente', $post['dados']['id_cliente'])
                     ->where('id_integrador', 2)
-                    ->where('cd_produto', $post['dados']['cod_prod'])
+                    ->where('cd_produto', $post['dados']['prod_comprador'])
                     ->delete('produtos_cliente_depara');
                 if ($deleteDePara) {
                     $retorno = ['type' => 'success', 'message' => 'Produto removido'];
@@ -467,7 +467,7 @@ class Cotacoes extends MY_Controller
                 $deleteDePara = $this->db->where('id_produto_sintese', $post['dados']['id_produto_sintese'])
                     ->where('id_cliente', $post['dados']['id_cliente'])
                     ->where('id_integrador', 3)
-                    ->where('cd_produto', $post['dados']['cod_prod'])
+                    ->where('cd_produto', $post['dados']['prod_comprador'])
                     ->delete('produtos_cliente_depara');
                 if ($deleteDePara) {
                     $retorno = ['type' => 'success', 'message' => 'Produto removido'];
