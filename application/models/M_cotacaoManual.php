@@ -80,6 +80,15 @@ class M_cotacaoManual extends MY_Model
         $condicao_pagamento = ($integrador == 'SINTESE') ?
             $this->forma_pagamento->findById($cotacao['cd_condicao_pagamento'])['descricao'] : $cotacao['forma_pagamento'];
 
+        #obs cotação
+        $obs = " - ";
+
+        if(isset($cotacao['observacao']) && !empty($cotacao['observacao'])){
+            $obs = $cotacao['observacao'];
+        }elseif (isset($cotacao['ds_observacao']) && !empty($cotacao['ds_observacao'])){
+            $obs = $cotacao['ds_cotacao'];
+        }
+
         # Cabeçalho de cada produto
         $data = [
             "id_cotacao" => $cotacao['id'],
@@ -93,6 +102,8 @@ class M_cotacaoManual extends MY_Model
             "data_fim" => $cotacao['dt_fim_cotacao'],
             "uf_cotacao" => $cotacao['uf_cotacao'],
             "Ds_Cotacao" => $cotacao['ds_cotacao'],
+            "observacao" => $obs,
+            "contato" => isset($cotacao['contato']) ? $cotacao['contato'] : '',
             "condicao_pagamento" => $condicao_pagamento,
             "itens" => count($produtos),
             "produtos" => $produtos
@@ -847,7 +858,7 @@ class M_cotacaoManual extends MY_Model
 	    		";
         }
 
-        # Add preço 
+        # Add preço
         if (isset($exibirPreco)) {
 
             if (is_null($estado)) {
@@ -1700,12 +1711,6 @@ class M_cotacaoManual extends MY_Model
                         ->row_array();
 
                     if (!empty($produtoForn)) {
-                        $produtoSint = $this->db
-                            ->where('id_sintese', $produtoForn['id_sintese'])
-                            ->limit(1)
-                            ->get('produtos_marca_sintese')
-                            ->row_array();
-                    } else {
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
@@ -2791,19 +2796,9 @@ class M_cotacaoManual extends MY_Model
             $operacao = ($total > 0) ? 'WHU' : 'WHS';
             //  $operacao = 'WHS';
 
-
-         /*   $dom = new DOMDocument();
-            $dom->recover = TRUE;
-            $dom->load($dadosFornecedor['xml']);
-            $xml = $dom->saveXML();*/
-
             $xml = file_get_contents($dadosFornecedor['xml']);
-            $xml = str_replace('<?xml version="1.0"?>', '', $xml);
-            $xml = simplexml_load_string($xml, "SimpleXMLElement", LIBXML_NOCDATA);
-            $json = json_encode($xml);
-            $array = json_decode($json,TRUE);
-
-            $xml = $array;
+            $xml = simplexml_load_string($xml);
+            $xml = json_decode(json_encode($xml), true);
 
             foreach ($this->urlCliente_apoio as $url) {
 
@@ -2836,7 +2831,6 @@ class M_cotacaoManual extends MY_Model
                         }
                     }
 
-
                     $params = array(
                         'post' => array(
                             'usuario' => $credencial_apoio['login'],
@@ -2849,18 +2843,20 @@ class M_cotacaoManual extends MY_Model
                     );
 
 
-
-                    $resp = $client->__soapCall('post', $params);
-                 /*
                     $resp = $client->__soapCall('post', $params);
 
-                    echo "REQUEST:\n" . $client->__getLastRequest() . "\n";
-                    exit();*/
+                    /* echo "REQUEST:\n" . $client->__getLastRequest() . "\n";
+                     exit();*/
 
                     //     $response = explode(';', $resp->String);
 
                     $response = explode(';', $resp->String);
 
+
+                    /*  if ($this->session->id_fornecedor == 5018){
+                          var_dump($response);
+                          exit();
+                      }*/
 
 
                     if (intval($response[0]) < 0) {
@@ -2913,77 +2909,6 @@ class M_cotacaoManual extends MY_Model
 
             return $warning;
         }
-    }
-
-    private function request_curl($p, $url)
-    {
-        $xml_post_string = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cot="http://cotacao.fornecedores.client.webService.apoio.com.br/" xmlns:apo="http://www.apoiocotacoes.com.br">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <cot:post>
-         <!--Optional:-->
-         <usuario>' . $p['user'] . '</usuario>
-         <!--Optional:-->
-         <senha>' . $p['senha'] . '</senha>
-         <!--Optional:-->
-         <operacao>' . $p['operacao'] . '</operacao>
-         <!--Optional:-->
-         <parametros></parametros>
-         <!--Optional:-->
-         <xml>
-            ' . $p['xml'] . '
-         </xml>
-      </cot:post>
-   </soapenv:Body>
-</soapenv:Envelope>';
-
-
-        $headers = array(
-            "Content-type: text/xml;charset=\"utf-8\"",
-            "Accept: text/xml",
-            "Cache-Control: no-cache",
-            "Pragma: no-cache",
-            "Content-length: " . strlen($xml_post_string),
-        ); //SOAPAction: your op URL
-
-        $url = str_replace("?wsdl", "", $url);
-
-        // PHP cURL  for https connection with auth
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 120);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml_post_string); // the SOAP request
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-        // converting
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        var_dump($response);
-        exit();
-
-        $xml = html_entity_decode($response);
-
-        $xmlInit = "<?xml version='1.0' encoding='UTF-8'?>";
-        $xml = str_replace($xmlInit, "", $xml);
-
-        $init = '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:requestResponse xmlns:ns2="http://cotacao.fornecedores.client.webService.apoio.com.br/"><String>';
-        $xml = str_replace($init, "", $xml);
-
-        $end = "</String></ns2:requestResponse></S:Body></S:Envelope>";
-        $xml = str_replace($end, "", $xml);
-
-
-        return $xml;
-
-        /* $t = substr($xml,stripos($xml, '<?xml'));
-
-         $x = simplexml_load_string($t);*/
-
-
     }
 
     /**
