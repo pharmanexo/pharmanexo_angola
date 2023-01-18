@@ -309,9 +309,16 @@
                 var idElem = $(this).data('idelem');
                 var produto = $(this).data('produto');
                 var cod_prod = $(this).data('codproduto');
+<<<<<<< HEAD
 
                 if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
                     loadDatatables(idElem, produto, cod_prod);
+=======
+                var idprodutosintese = $(this).data('idprodutosintese');
+
+                if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
+                    loadDatatables(idElem, produto, cod_prod, idprodutosintese);
+>>>>>>> d6f7072fde41316cf51b097b06241410a9790265
                 }
             });
 
@@ -323,6 +330,10 @@
                 var produtoN = $(this).data('produton');
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
+<<<<<<< HEAD
+=======
+                var idprodutosintese = $(this).data('idprodutosintese');
+>>>>>>> d6f7072fde41316cf51b097b06241410a9790265
                 var data_tabela = [];
                 var codigo_tabela = $('.codigoTabela' + cod_prodU).each(function() {
                     var valor = $(this).data('tabela');
@@ -332,11 +343,19 @@
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
+<<<<<<< HEAD
                     loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
                 } else {
                     $('.modalUpgradeDePara table').DataTable().destroy();
                     setTimeout(function() {
                         loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
+=======
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, idprodutosintese, data_tabela);
+                } else {
+                    $('.modalUpgradeDePara table').DataTable().destroy();
+                    setTimeout(function() {
+                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, idprodutosintese, data_tabela);
+>>>>>>> d6f7072fde41316cf51b097b06241410a9790265
                     }, 0);
                 }
 
@@ -348,13 +367,15 @@
                 var cod_prod = $(this).data('cod');
                 var cliente = $(this).data('cliente');
                 var sintese = $(this).data('sintese');
+                var idprodutosintese = $(this).data('idprodutosintese');
                 var prod_comprador = $(this).data('codcomprador');
                 var integrador = $(this).data('integrador');
                 var dados = {
-                    cod_prod: cod_prod,
+                    cod_prod: cod_prod, //produto catalogo
                     cliente: cliente,
                     sintese: sintese,
-                    prod_comprador: prod_comprador
+                    id_produto_sintese: idprodutosintese,
+                    prod_comprador: prod_comprador //produto cotado
                 };
 
                 Swal.fire({
@@ -1212,6 +1233,10 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: $('#data-tableDePara' + id).data('sintese'),
+<<<<<<< HEAD
+=======
+                        id_idprodutosintese: $('#data-tableDePara' + id).data('idprodutosintese'),
+>>>>>>> d6f7072fde41316cf51b097b06241410a9790265
                         id_cliente: $('#id_cliente').val(),
                         id_produto_comprado: codprod //produto cotado
                     });
@@ -1259,7 +1284,11 @@
 
         }
 
+<<<<<<< HEAD
         function loadDatatableUpgrade(id, produto, codprod, idsintese, data_tabela) {
+=======
+        function loadDatatableUpgrade(id, produto, codprod, idsintese, idprodutosintese, data_tabela) {
+>>>>>>> d6f7072fde41316cf51b097b06241410a9790265
             var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
@@ -1327,6 +1356,10 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: idsintese,
+<<<<<<< HEAD
+=======
+                        id_idprodutosintese: idprodutosintese,
+>>>>>>> d6f7072fde41316cf51b097b06241410a9790265
                         id_cliente: $('#id_cliente').val(),
                         id_produto_comprado: codprod //produto cotado
                     });
