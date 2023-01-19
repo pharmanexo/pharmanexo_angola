@@ -638,7 +638,7 @@ class Dashboard extends MY_Controller
         }
 
         for ($i = 1; $i <= 12; $i++) {
-            $cotEnvProd[$i] = ($cotProd[$i] != 0 && $cotEnv[$i] != 0) ? number_format(($cotEnv[$i] / $cotProd[$i]) * 100, 2) : "Divisão por 0";
+            $cotEnvProd[$i] = ($cotProd[$i] != 0 && $cotEnv[$i] != 0) ? number_format(($cotEnv[$i] / $cotProd[$i]) * 100, 1) : "Divisão por 0";
         }
 
         $data = [
