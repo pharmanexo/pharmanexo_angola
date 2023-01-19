@@ -68,7 +68,11 @@
 
         $('#formNotificacoes').on('submit', function(e) {
             e.preventDefault();
-
+            Swal.fire({
+                    title: 'Registro adicionado',
+                    text: "falta concluir a logica de envio de sms e e-mail",
+                    icon: 'question',
+                });
             var $form = $(this);
 
             $.ajax({
