@@ -151,6 +151,25 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
+                                <label for="obs">Observações comprador</label>
+                                <?php if (isset($cotacao['ds_observacao'])) { ?>
+                                    <p><?php echo ($cotacao['ds_observacao']); ?></p>
+                                <?php } else if(isset($cotacao['observacao'])) { ?>
+                                    <p><?php echo ($cotacao['observacao']); ?></p>
+                                <?php }else{
+                                    echo "<p>-</p>";
+                                } ?>
+
+                                <?php if (isset($cotacao['contato'])) { ?>
+                                <p><strong>Contatos:</strong> <?php echo ($cotacao['contato']); ?></p>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
                                 <label for="obs">Observações da cotação</label> <input type="text" name="obs" id="obs" class="form-control" maxlength="<?php echo (strtoupper($integrador) == 'SINTESE') ? '500' : '300'; ?>" value="<?php if (isset($observacao)) echo $observacao ?>">
                             </div>
                         </div>
@@ -290,10 +309,9 @@
                 var idElem = $(this).data('idelem');
                 var produto = $(this).data('produto');
                 var cod_prod = $(this).data('codproduto');
-                var idprodutosintese = $(this).data('idprodutosintese');
 
                 if (!$.fn.DataTable.isDataTable('#data-tableDePara' + idElem)) {
-                    loadDatatables(idElem, produto, cod_prod, idprodutosintese);
+                    loadDatatables(idElem, produto, cod_prod);
                 }
             });
 
@@ -305,7 +323,6 @@
                 var produtoN = $(this).data('produton');
                 var cod_prodU = $(this).data('codprodutou');
                 var idsintese = $(this).data('sintese');
-                var idprodutosintese = $(this).data('idprodutosintese');
                 var data_tabela = [];
                 var codigo_tabela = $('.codigoTabela' + cod_prodU).each(function() {
                     var valor = $(this).data('tabela');
@@ -315,11 +332,11 @@
                 $('.data-tableUpgradeDePara').attr('id', 'data-tableUpgradeDePara' + idElemU);
                 $('.upgradeModal').text(produtoN);
                 if (!$.fn.DataTable.isDataTable('#data-tableUpgradeDePara' + idElemU)) {
-                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, idprodutosintese, data_tabela);
+                    loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
                 } else {
                     $('.modalUpgradeDePara table').DataTable().destroy();
                     setTimeout(function() {
-                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, idprodutosintese, data_tabela);
+                        loadDatatableUpgrade(idElemU, produtoU, cod_prodU, idsintese, data_tabela);
                     }, 0);
                 }
 
@@ -331,15 +348,13 @@
                 var cod_prod = $(this).data('cod');
                 var cliente = $(this).data('cliente');
                 var sintese = $(this).data('sintese');
-                var idprodutosintese = $(this).data('idprodutosintese');
                 var prod_comprador = $(this).data('codcomprador');
                 var integrador = $(this).data('integrador');
                 var dados = {
-                    cod_prod: cod_prod, //produto catalogo
+                    cod_prod: cod_prod,
                     cliente: cliente,
                     sintese: sintese,
-                    id_produto_sintese: idprodutosintese,
-                    prod_comprador: prod_comprador //produto cotado
+                    prod_comprador: prod_comprador
                 };
 
                 Swal.fire({
@@ -1132,7 +1147,7 @@
         });
 
 
-        function loadDatatables(id, produto, codprod, ) {
+        function loadDatatables(id, produto, codprod) {
             var url_combinar = $('#data-table' + id).data('url2');
             var table = $('#data-tableDePara' + id).DataTable({
                 serverSide: false,
@@ -1197,9 +1212,8 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: $('#data-tableDePara' + id).data('sintese'),
-                        id_idprodutosintese: $('#data-tableDePara' + id).data('idprodutosintese'),
                         id_cliente: $('#id_cliente').val(),
-                        id_produto_cotado: codprod //produto cotado
+                        id_produto_comprado: codprod //produto cotado
                     });
                 });
 
@@ -1245,7 +1259,7 @@
 
         }
 
-        function loadDatatableUpgrade(id, produto, codprod, idsintese, idprodutosintese, data_tabela) {
+        function loadDatatableUpgrade(id, produto, codprod, idsintese, data_tabela) {
             var url_combinar = $('#data-tableUpgradeDePara' + id).data('url2');
             var table = $('#data-tableUpgradeDePara' + id).DataTable({
                 serverSide: false,
@@ -1313,9 +1327,8 @@
                         id_fornecedor: item.id_fornecedor,
                         cd_produto: item.codigo,
                         id_sintese: idsintese,
-                        id_idprodutosintese: idprodutosintese,
                         id_cliente: $('#id_cliente').val(),
-                        id_produto_cotado: codprod //produto cotado
+                        id_produto_comprado: codprod //produto cotado
                     });
                 });
 

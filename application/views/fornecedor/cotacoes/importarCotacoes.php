@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <?php if (isset($cotacao) && !empty($cotacao)) { ?>
+        <?php if (isset($cotacao['Id_Pdc']) && !empty($cotacao['Id_Pdc'])) { ?>
             <div class="card">
                 <div class="card-body">
                     <h3 class="text-center">Cotação localizada, confira os dados e clique no botão importar</h3>
