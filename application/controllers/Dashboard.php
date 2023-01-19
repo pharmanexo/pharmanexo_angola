@@ -585,7 +585,6 @@ class Dashboard extends MY_Controller
     {
 
         $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
-        $grafico = $this->db->;
 
         $totalCot = [];
         $cotEnv = [];
