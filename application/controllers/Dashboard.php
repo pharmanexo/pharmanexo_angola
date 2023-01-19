@@ -665,9 +665,9 @@ class Dashboard extends MY_Controller
             ],
             [
                 'name' => '%',
-                'type' => 'column',
+                'type' => 'line',
                 'data' => [
-                    ($totalCot[1] / $totalCot[2]) , $totalCot[2], $totalCot[3], $totalCot[4], $totalCot[5], $totalCot[6],
+                    ($totalCot[1] / 2) , $totalCot[2], $totalCot[3], $totalCot[4], $totalCot[5], $totalCot[6],
                     $totalCot[7], $totalCot[8], $totalCot[9], $totalCot[10], $totalCot[11], $totalCot[12]
                 ]
             ]
