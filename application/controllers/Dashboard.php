@@ -688,10 +688,7 @@ class Dashboard extends MY_Controller
             foreach ($resp as $row) {
 
                 $indice = intval($row['mes']);
-
-
                 (isset($totalCot[$indice])) ? $totalCot[$indice] += 1 : $totalCot[$indice] = 1;
-
 
                 if ($row['depara'] == "S") {
 
@@ -764,8 +761,7 @@ class Dashboard extends MY_Controller
                 $this->output->set_content_type('application/json')->set_output(json_encode($data));
             } else {
 
-                return var_dump($novoGrafico);
-                exit;
+                return $novoGrafico;
             }
         }
     }
