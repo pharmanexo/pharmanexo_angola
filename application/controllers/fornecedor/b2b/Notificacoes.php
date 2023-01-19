@@ -12,8 +12,8 @@ class Notificacoes extends CI_Controller
     {
         parent::__construct();
 
-        $this->route = base_url('fornecedor/b2b/email');
-        $this->views = 'fornecedor/b2b/email';
+        $this->route = base_url('fornecedor/b2b');
+        $this->views = 'fornecedor/b2b';
 
         $this->load->model('m_compradores', 'comprador');
 

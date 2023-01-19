@@ -27,12 +27,8 @@
                                     <label class="checkbox__label" for="checkall"></label>
                                 </div>
                             </th>
-                            <th>Comprador</th>
                             <th>Celular</th>
-                            <th>Gerente</th>
-                            <th>Consultor</th>
-                            <th>Geral</th>
-                            <th>Grupo</th>
+                            <th>E-mail</th>
                         </tr>
                         </thead>
                     </table>
