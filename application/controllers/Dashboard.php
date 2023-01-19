@@ -742,7 +742,7 @@ class Dashboard extends MY_Controller
                     'mes' => $i,
                     'id_fornecedor' => $id_fornecedor
                 ));
-                $this->db->update('graficos', $dataGrafico);
+                $velhoGrafico = $this->db->update('graficos', $dataGrafico);
             } else {
                 $dataGrafico = array(
                     'ano' => $ano,
@@ -761,7 +761,7 @@ class Dashboard extends MY_Controller
             $this->output->set_content_type('application/json')->set_output(json_encode($data));
         } else {
 
-            return var_dump($novoGrafico);
+            return var_dump($grafico, $novoGrafico, $velhoGrafico);
             exit;
         }
     }
