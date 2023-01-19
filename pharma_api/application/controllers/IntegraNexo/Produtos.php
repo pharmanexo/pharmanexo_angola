@@ -115,7 +115,7 @@ class Produtos extends MY_Controller
                             'ean' => isset($produto['ean']) ? $produto['ean'] : '',
                             'rms' => isset($produto['rms']) ? $produto['rms'] : '',
                             'id_fornecedor' => $_SESSION['id_fornecedor'],
-                            "apresentacao" => $produto['apresentacao'],
+                            "apresentacao" => (isset($produto['apresentacao']) && !empty($produto['apresentacao'])) ? $produto['apresentacao'] : $produto['nome_comercial'] ,
                             "id_marca" => isset($produto['id_marca']) ? $produto['id_marca'] : '',
                             "bloqueado" => (intval($produto['ativo']) == 1) ? 0 : 1,
                             "ativo" => (isset($produto['ativo']) ? $produto['ativo'] : ''),
@@ -125,7 +125,7 @@ class Produtos extends MY_Controller
 
                         $update = [
                             'nome_comercial' => $produto['nome_comercial'],
-                            "apresentacao" => $produto['apresentacao'],
+                            "apresentacao" => (isset($produto['apresentacao']) && !empty($produto['apresentacao'])) ? $produto['apresentacao'] : $produto['nome_comercial'] ,
                             'marca' => $produto['marca'],
                             'ean' => isset($produto['ean']) ? $produto['ean'] : '',
                             'rms' => isset($produto['rms']) ? $produto['rms'] : '',

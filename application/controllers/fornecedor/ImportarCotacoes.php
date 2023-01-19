@@ -44,6 +44,10 @@ class ImportarCotacoes extends CI_Controller
             $id_fornecedor = $this->session->id_fornecedor;
 
             switch ($post['integrador']) {
+                case 1:
+                    $data['cotacao'] = $this->getCotacaoSintese($post);
+                    $data['cotacao']['urlImport'] = "https://pharmanexo.com.br/pharma_api/API/Request/Bionexo?id={$id_fornecedor}&cotacao={$post['cotacao']}";
+                    break;
                 case 2:
                 {
                     $data['cotacao'] = $this->getCotacaoBionexo($post);
@@ -115,7 +119,7 @@ class ImportarCotacoes extends CI_Controller
                         'Data_Envio_Mercado' => $item['Data_Envio_Mercado'],
                         'Data_Vencimento' => $item['Data_Vencimento'],
                     ];
-                }else{
+                } else {
                     $data = null;
                 }
 
@@ -155,8 +159,7 @@ class ImportarCotacoes extends CI_Controller
                 curl_close($ch);
 
 
-
-                if (!empty($resposta)){
+                if (!empty($resposta)) {
                     $data = [
                         'Id_Pdc' => $resposta['Id_Pdc'],
                         'CNPJ_Hospital' => $resposta['CNPJ_Hospital'],
@@ -164,7 +167,7 @@ class ImportarCotacoes extends CI_Controller
                         'Data_Envio_Mercado' => $resposta['Data_Vencimento'] . " {$resposta['Hora_Vencimento']}",
                         'Data_Vencimento' => $resposta['Data_Vencimento'] . " {$resposta['Hora_Vencimento']}",
                     ];
-                }else{
+                } else {
                     $data = null;
                 }
 
@@ -173,6 +176,43 @@ class ImportarCotacoes extends CI_Controller
 
         }
 
+
+    }
+
+    private function getCotacaoSintese($data)
+    {
+        $fornecedor = $this->db->where('id', $this->session->id_fornecedor)->get('fornecedores')->row_array();
+
+        $url = $this->config->item('db_config')['url_client'];
+        if (isset($url['principal'])) $url = $url['principal'];
+
+        $client = new SoapClient("{$url}?WSDL");
+
+        $function = 'ObterCotacoes';
+        $arguments = array(
+            'ObterCotacoes' => array(
+                'cnpj' => preg_replace("/\D+/", "", $fornecedor['cnpj']),
+                'codigoCotacao' => $data['cotacao']
+            )
+        );
+
+        libxml_disable_entity_loader(false);
+        $options = array('location' => $url);
+        $result = $client->__soapCall($function, $arguments, $options);
+
+        $result = $result->ObterCotacoesResult;
+
+        var_dump($result);
+        exit();
+
+        $xml = simplexml_load_string($result);
+
+        libxml_use_internal_errors(true);
+        $xml = simplexml_load_string($result);
+
+
+        var_dump($xml);
+        exit();
 
     }
 

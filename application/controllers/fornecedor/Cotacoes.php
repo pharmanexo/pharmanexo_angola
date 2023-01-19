@@ -1,8 +1,5 @@
 <?php
 date_default_timezone_set('America/Sao_Paulo');
-ini_set('display_errors', '0');
-ini_set('display_startup_errors', '0');
-error_reporting(0);
 
 class Cotacoes extends MY_Controller
 {
@@ -453,60 +450,31 @@ class Cotacoes extends MY_Controller
                 break;
 
             case 'BIONEXO':
-
-                $produtoSintese = $this->db->where('cd_produto', $post['dados']['prod_comprador'])
+                $deleteDePara = $this->db->where('id_produto_sintese', $post['dados']['id_produto_sintese'])
                     ->where('id_cliente', $post['dados']['cliente'])
-                    ->get('produtos_clientes_depara')->result_array();
-                $idSintese = [];
-                foreach ($produtoSintese as $p) {
-                    $idSintese[] = $p['id_produto_sintese'];
+                    ->where('id_integrador', 2)
+                    ->where('cd_produto', $post['dados']['prod_comprador'])
+                    ->delete('produtos_clientes_depara');
+                if ($deleteDePara) {
+                    $retorno = ['type' => 'success', 'message' => 'Produto removido'];
+                } else {
+                    $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
                 }
-                $this->db->where_in('id_produto', $idSintese);
-                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
-                $fornecedorSintese = [];
-                foreach ($marcaSintese as $s) {
-                    $fornecedorSintese[] = $s['id_sintese'];
-                }
-                if (count($fornecedorSintese) > 0) {
-                    $deleteDePara = $this->db->where_in('id_sintese', $fornecedorSintese)
-                        ->where('id_fornecedor', $this->session->id_fornecedor)
-                        ->where('cd_produto', $post['dados']['cod_prod'])
-                        ->delete('produtos_fornecedores_sintese');
-                    if ($deleteDePara) {
-                        $retorno = ['type' => 'success', 'message' => 'Produto removido'];
-                    } else {
-                        $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
-                    }
-                    $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
-                }
+                $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 break;
-            case 'APOIO':
 
-                $produtoSintese = $this->db->where('cd_produto', $post['dados']['prod_comprador'])
+            case 'APOIO':
+                $deleteDePara = $this->db->where('id_produto_sintese', $post['dados']['id_produto_sintese'])
                     ->where('id_cliente', $post['dados']['cliente'])
-                    ->get('produtos_clientes_depara')->result_array();
-                $idSintese = [];
-                foreach ($produtoSintese as $p) {
-                    $idSintese[] = $p['id_produto_sintese'];
+                    ->where('id_integrador', 3)
+                    ->where('cd_produto', $post['dados']['prod_comprador'])
+                    ->delete('produtos_clientes_depara');
+                if ($deleteDePara) {
+                    $retorno = ['type' => 'success', 'message' => 'Produto removido'];
+                } else {
+                    $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
                 }
-                $this->db->where_in('id_produto', $idSintese);
-                $marcaSintese = $this->db->select('id_sintese')->get('produtos_marca_sintese')->result_array();
-                $fornecedorSintese = [];
-                foreach ($marcaSintese as $s) {
-                    $fornecedorSintese[] = $s['id_sintese'];
-                }
-                if (count($fornecedorSintese) > 0) {
-                    $deleteDePara = $this->db->where_in('id_sintese', $fornecedorSintese)
-                        ->where('id_fornecedor', $this->session->id_fornecedor)
-                        ->where('cd_produto', $post['dados']['cod_prod'])
-                        ->delete('produtos_fornecedores_sintese');
-                    if ($deleteDePara) {
-                        $retorno = ['type' => 'success', 'message' => 'Produto removido'];
-                    } else {
-                        $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
-                    }
-                    $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
-                }
+                $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 break;
         }
     }
@@ -1286,12 +1254,12 @@ class Cotacoes extends MY_Controller
 
             $depara = $this->COTACAO_MANUAL->depara($integrador, $post);
 
-            if ($depara) {
+            if ($depara['type']) {
 
-                $warning = ["type" => "success", "message" => "Combinação de produtos realizada."];
+                $warning = ["type" => "success", "message" => $depara['message']];
             } else {
 
-                $warning = ["type" => "warning", "message" => "Erro ao combinar produtos"];
+                $warning = ["type" => "warning", "message" => $depara['message']];
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($warning));

@@ -6,9 +6,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.101.70.5',
-	'username' => 'adm_pharmanexo',
-	'password' => 'Pisdnm238shdn',
+	'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
 	'database' => 'pharmanexo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -27,13 +27,34 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
+$db['digital_ocean'] = array(
+    'dsn'	=> '',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
+    'database' => 'pharmanexo',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => false,
+    // 'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '/cache',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
 $db['teste_pharmanexo'] = array(
     'dsn'	=> '',
-    'hostname' => '10.101.70.4',
-    #'username' => 'pharmanexo',
-    'username' => 'adm_pharmanexo',
-    #'password' => '@PharmanexoNext',
-    'password' => 'f}*=p8S1Bo4OnK',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
     'database' => 'pharmanexo',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
@@ -54,9 +75,9 @@ $db['teste_pharmanexo'] = array(
 
 $db['sintese'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.101.70.5',
-	'username' => 'adm_pharmanexo',
-	'password' => 'Pisdnm238shdn',
+	'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
 	'database' => 'cotacoes_sintese',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -76,11 +97,9 @@ $db['sintese'] = array(
 
 $db['teste_sintese'] = array(
     'dsn'	=> '',
-    'hostname' => '10.101.70.4',
-    #'username' => 'pharmanexo',
-    'username' => 'adm_pharmanexo',
-    #'password' => '@PharmanexoNext',
-    'password' => 'f}*=p8S1Bo4OnK',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
     'database' => 'cotacoes_sintese',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
@@ -100,11 +119,9 @@ $db['teste_sintese'] = array(
 
 $db['bionexo'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.101.70.5',
-	#'username' => 'pharmanexo',
-	'username' => 'adm_pharmanexo',
-	#'password' => '@PharmanexoNext',
-	'password' => 'Pisdnm238shdn',
+	'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
 	'database' => 'cotacoes_bionexo',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -124,11 +141,9 @@ $db['bionexo'] = array(
 
 $db['apoio'] = array(
     'dsn'	=> '',
-    'hostname' => '10.101.70.5',
-    #'username' => 'pharmanexo',
-    'username' => 'adm_pharmanexo',
-    #'password' => '@PharmanexoNext',
-    'password' => 'Pisdnm238shdn',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
     'database' => 'cotacoes_apoio',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
@@ -148,11 +163,9 @@ $db['apoio'] = array(
 
 $db['teste_bionexo'] = array(
     'dsn'	=> '',
-    'hostname' => '10.101.70.4',
-    #'username' => 'pharmanexo',
-    'username' => 'adm_pharmanexo',
-    #'password' => '@PharmanexoNext',
-    'password' => 'f}*=p8S1Bo4OnK',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
     'database' => 'cotacoes_bionexo',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
@@ -172,11 +185,9 @@ $db['teste_bionexo'] = array(
 
 $db['apoio'] = array(
     'dsn'	=> '',
-    'hostname' => '10.101.70.5',
-    #'username' => 'pharmanexo',
-    'username' => 'adm_pharmanexo',
-    #'password' => '@PharmanexoNext',
-    'password' => 'Pisdnm238shdn',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
     'database' => 'cotacoes_apoio',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
@@ -196,11 +207,9 @@ $db['apoio'] = array(
 
 $db['mix'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.101.70.5',
-	#'username' => 'pharmanexo',
-	'username' => 'adm_pharmanexo',
-	#'password' => '@PharmanexoNext',
-	'password' => 'Pisdnm238shdn',
+	'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
 	'database' => 'mix',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
@@ -220,11 +229,9 @@ $db['mix'] = array(
 
 $db['teste_mix'] = array(
 	'dsn'	=> '',
-	'hostname' => '10.101.70.4',
-	#'username' => 'pharmanexo',
-	'username' => 'adm_pharmanexo',
-	#'password' => '@PharmanexoNext',
-	'password' => 'f}*=p8S1Bo4OnK',
+	'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
 	'database' => 'mix',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

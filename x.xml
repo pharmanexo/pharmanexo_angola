@@ -1,56 +1,96 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:cot="http://cotacao.fornecedores.client.webService.apoio.com.br/" xmlns:apo="http://www.apoiocotacoes.com.br">
-    <soapenv:Header/>
-    <soapenv:Body>
-        <cot:post>
-            <!--Optional:-->
-            <usuario>HOSPIDROGAS</usuario>
-            <!--Optional:-->
-            <senha>hsp@2019</senha>
-            <!--Optional:-->
-            <operacao>WHS</operacao>
-            <!--Optional:-->
-            <parametros></parametros>
-            <!--Optional:-->
-            <xml>
-                <Resposta>
-                    <Cabecalho>
-                        <Id_Pdc>668905</Id_Pdc>
-                        <CNPJ_Hospital>47.074.851/0009-08</CNPJ_Hospital>
-                        <Faturamento_Minimo>1000.0000</Faturamento_Minimo>
-                        <Prazo_Entrega>3</Prazo_Entrega>
-                        <Validade_Proposta>31/12/2022</Validade_Proposta>
-                        <Id_Forma_Pagamento>3</Id_Forma_Pagamento>
-                        <Frete>CIF</Frete>
-                        <Custo_Estimado_Frete> - </Custo_Estimado_Frete>
-                        <Observacoes/>
-                    </Cabecalho>
-                    <Itens_Pdc>
-                        <Item_Pdc>
-                            <Sequencia>1</Sequencia>
-                            <Id_Artigo>439188</Id_Artigo>
-                            <Codigo_Produto>00000086</Codigo_Produto>
-                            <Preco_Unitario>1.4025</Preco_Unitario>
-                            <Preco_Unitario_Liquido>1.4025</Preco_Unitario_Liquido>
-                            <Classificacao_Anvisa>-</Classificacao_Anvisa>
-                            <NCM>-</NCM>
-                            <IVA>-</IVA>
-                            <ICMS>-</ICMS>
-                            <IPI>-</IPI>
-                            <Valor_Frete>-</Valor_Frete>
-                            <Fabricante>AMED - AMERICAN</Fabricante>
-                            <Embalagem>unidade</Embalagem>
-                            <Quantidade_Embalagem>1</Quantidade_Embalagem>
-                            <Comentario> - </Comentario>
-                            <Codigo_Rastreabilidade>18851</Codigo_Rastreabilidade>
-                            <Codigo_Fornecedor>35.997.345/0001-46</Codigo_Fornecedor>
-                            <Campo_Extra>
-                                <Nome>Codigo_Produto_Fornecedor</Nome>
-                                <Valor>18851</Valor>
-                            </Campo_Extra>
-                        </Item_Pdc>
-                    </Itens_Pdc>
-                </Resposta>
-            </xml>
-        </cot:post>
-    </soapenv:Body>
-</soapenv:Envelope>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Cotacoes>
+    <Cotacao>
+        <Cd_Cotacao>COT13645-1197</Cd_Cotacao>
+        <Cd_Comprador>11344038001684</Cd_Comprador>
+        <Cd_Condicao_Pagamento>Condição de Pagamento com erro. 30 DIAS, COM DEPÓSITO EM CONTA.</Cd_Condicao_Pagamento>
+        <Dt_Inicio_Cotacao>17/01/2023 18:16:54</Dt_Inicio_Cotacao>
+        <Dt_Fim_Cotacao>25/01/2023 10:00:00</Dt_Fim_Cotacao>
+        <Dt_Validade_Preco>09/02/2023 10:00:00</Dt_Validade_Preco>
+        <Ds_Entrega>23/01/2023;</Ds_Entrega>
+        <Ds_Filiais>11344038001684;</Ds_Filiais>
+        <Ds_Cotacao>DIETA E NUTRIÇÃO</Ds_Cotacao>
+        <Nm_Usuario>MARCLEI JONE DE ALMEIDA NUNES</Nm_Usuario>
+        <Ds_Observacao></Ds_Observacao>
+        <Produtos_Cotacao>
+            <Produto_Cotacao>
+                <Id_Produto_Sintese>20613</Id_Produto_Sintese>
+                <Cd_Produto_Comprador>D0049</Cd_Produto_Comprador>
+                <Ds_Produto_Comprador>DIETA PADRÃO: HIPERCALÓRICA (DENSIDADE CALÓRICA: 1,5 KCAL/ML), HIPERPROTEICA COM
+                    MINÍMO DE 75 G/L, NORMOLIPÍDICA, NORMOGLICÍDICA, ISENTA DE FIBRAS, SACAROSE, LACTOSE E GLÚTEN. 1 L -
+                    D0049
+                </Ds_Produto_Comprador>
+                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
+                <Ds_Complementar></Ds_Complementar>
+                <Qt_Produto_Total>150</Qt_Produto_Total>
+            </Produto_Cotacao>
+            <Produto_Cotacao>
+                <Id_Produto_Sintese>20613</Id_Produto_Sintese>
+                <Cd_Produto_Comprador>D0050</Cd_Produto_Comprador>
+                <Ds_Produto_Comprador>DIETA PADRÃO: HIPERCALÓRICA (DENSIDADE CALÓRICA: 2.0 KCAL/ML), HIPERPROTEICA,
+                    NORMOLIPÍDICA, NORMOGLICÍDICA, ISENTA DE FIBRAS, SACAROSE, LACTOSE E GLÚTEN. 500ML - D0050
+                </Ds_Produto_Comprador>
+                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
+                <Ds_Complementar></Ds_Complementar>
+                <Qt_Produto_Total>200</Qt_Produto_Total>
+            </Produto_Cotacao>
+            <Produto_Cotacao>
+                <Id_Produto_Sintese>18328</Id_Produto_Sintese>
+                <Cd_Produto_Comprador>D0064</Cd_Produto_Comprador>
+                <Ds_Produto_Comprador>ESPESSANTE ALIMENTAR EM SACHÊ - D0064</Ds_Produto_Comprador>
+                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
+                <Ds_Complementar></Ds_Complementar>
+                <Qt_Produto_Total>96</Qt_Produto_Total>
+            </Produto_Cotacao>
+            <Produto_Cotacao>
+                <Id_Produto_Sintese>8333</Id_Produto_Sintese>
+                <Cd_Produto_Comprador>D0071</Cd_Produto_Comprador>
+                <Ds_Produto_Comprador>PROTEINA ISOLADA DO SORO DO LEITE EM SACHÊ - D0071</Ds_Produto_Comprador>
+                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
+                <Ds_Complementar></Ds_Complementar>
+                <Qt_Produto_Total>250</Qt_Produto_Total>
+            </Produto_Cotacao>
+            <Produto_Cotacao>
+                <Id_Produto_Sintese>8425</Id_Produto_Sintese>
+                <Cd_Produto_Comprador>D0055</Cd_Produto_Comprador>
+                <Ds_Produto_Comprador>SUPLEMENTO ORAL HIPERCALÓRICO, HIPERPROTEÍCO NORMOLIPÍDICO, NORMOGLICÍDICO, SEM
+                    FIBRAS, APRESENTAÇÃO DE 200ML - D0055
+                </Ds_Produto_Comprador>
+                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
+                <Ds_Complementar></Ds_Complementar>
+                <Qt_Produto_Total>300</Qt_Produto_Total>
+            </Produto_Cotacao>
+            <Produto_Cotacao>
+                <Id_Produto_Sintese>8425</Id_Produto_Sintese>
+                <Cd_Produto_Comprador>D0056</Cd_Produto_Comprador>
+                <Ds_Produto_Comprador>SUPLEMENTO ORAL HIPERCALÓRICO, NORMOPROTEÍCO NORMOLIPÍDICO, NORMOGLICÍDICO, SEM
+                    FIBRAS, APRESENTAÇÃO DE 200ML - D0056
+                </Ds_Produto_Comprador>
+                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
+                <Ds_Complementar></Ds_Complementar>
+                <Qt_Produto_Total>200</Qt_Produto_Total>
+            </Produto_Cotacao>
+            <Produto_Cotacao>
+                <Id_Produto_Sintese>25646</Id_Produto_Sintese>
+                <Cd_Produto_Comprador>D0060</Cd_Produto_Comprador>
+                <Ds_Produto_Comprador>SUPLEMENTO ORAL NORMOCALORICO E HIPERPROTEICO  200ML  - SEM SACAROSE - D0060
+                </Ds_Produto_Comprador>
+                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
+                <Ds_Complementar></Ds_Complementar>
+                <Qt_Produto_Total>200</Qt_Produto_Total>
+            </Produto_Cotacao>
+            <Produto_Cotacao>
+                <Id_Produto_Sintese>8435</Id_Produto_Sintese>
+                <Cd_Produto_Comprador>D0057</Cd_Produto_Comprador>
+                <Ds_Produto_Comprador>SUPLEMENTO ORAL PARA CONTROLE GLICÊMICO HIPERCALÓRICO  E HIPERPROTÉICO (200ML) -
+                    D0057
+                </Ds_Produto_Comprador>
+                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
+                <Ds_Complementar></Ds_Complementar>
+                <Qt_Produto_Total>50</Qt_Produto_Total>
+            </Produto_Cotacao>
+        </Produtos_Cotacao>
+    </Cotacao>
+</Cotacoes>]]></ObterCotacoesResult>
+        </ObterCotacoesResponse>
+        </soap:Body>

@@ -13,7 +13,7 @@ class Pegacsv extends CI_Controller
         $header = fgetcsv($handle, '', ";");
         $teste = [];
         $id_fornecedor = 0;
-        while($row = fgetcsv($handle, '', ";")){
+        while ($row = fgetcsv($handle, '', ";")) {
 
             $teste[] = [
                 'codigo' => $row[0],
@@ -23,7 +23,7 @@ class Pegacsv extends CI_Controller
                 'id_fornecedor' => $id_fornecedor
             ];
 
-            $id_fornecedor ++;
+            $id_fornecedor++;
         }
 //        $this->output->set_content_type('application/json')->set_status_header(200)->set_output(json_encode(
 //            [
@@ -36,5 +36,23 @@ class Pegacsv extends CI_Controller
         $insert = $this->db->insert_batch('teste_lote', $teste);
         var_dump($this->db->error());
 //        $this->output->set_content_type('application/json')->set_status_header(200)->set_output(json_encode($insert));
+    }
+
+    public function insertForn()
+    {
+        $forns = $this->db->where('credencial_apoio is not null')->get('fornecedores')->result_array();
+
+        foreach ($forns as $forn){
+
+            $data = [
+                'id_fornecedor' => $forn['id'],
+                'id_portal' => 3,
+                'config' => $forn['credencial_apoio']
+            ];
+
+
+            $this->db->insert('fornecedores_portais', $data);
+
+        }
     }
 }

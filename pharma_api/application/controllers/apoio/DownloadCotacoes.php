@@ -1,9 +1,9 @@
 <?php
 
 header('Content-Type: text/html; charset=utf-8');
-error_reporting(1);
+/*error_reporting(1);
 @ini_set('display_errors', E_ALL);
-ini_set('default_socket_timeout', 600);
+ini_set('default_socket_timeout', 600);*/
 date_default_timezone_set("America/Fortaleza");
 
 
@@ -33,7 +33,7 @@ class DownloadCotacoes extends CI_Controller
     {
         parent::__construct();
 
-        $this->login = $this->getFornecedores();
+        $this->login = [];
 
         $this->time = '60 minutes';
 
@@ -43,24 +43,31 @@ class DownloadCotacoes extends CI_Controller
 
     }
 
-    private function getFornecedores(){
-       $fornecedores = $this->db
-           ->select('id, nome_fantasia, credencial_apoio')
-           ->where('credencial_apoio is not null')
-          // ->where('id = 5039')
-           ->get('fornecedores')->result_array();
+    private function getFornecedores($id = null)
+    {
+        $where = "credencial_apoio is not null";
 
-       foreach ($fornecedores as $k => $fornecedor){
-           $json = json_decode($fornecedor['credencial_apoio'], true);
-           if (empty($json['login']) || empty($json['password'])){
-               unset($fornecedores[$k]);
-           }else{
-               $fornecedores[$k]['credencial_apoio'] = $json;
-           }
-       }
+        if (!is_null($id)) {
+            $where = "credencial_apoio is not null and id = {$id}";
+        }
+
+        $fornecedores = $this->db
+            ->select('id, nome_fantasia, credencial_apoio')
+            ->where($where)
+            //  ->where('id = 5046')
+            ->get('fornecedores')->result_array();
+
+        foreach ($fornecedores as $k => $fornecedor) {
+            $json = json_decode($fornecedor['credencial_apoio'], true);
+            if (empty($json['login']) || empty($json['password'])) {
+                unset($fornecedores[$k]);
+            } else {
+                $fornecedores[$k]['credencial_apoio'] = $json;
+            }
+        }
 
 
-       return $fornecedores;
+        return $fornecedores;
 
     }
 
@@ -91,6 +98,8 @@ class DownloadCotacoes extends CI_Controller
             $resp = $client->__soapCall($type, $p);
         }
 
+
+        $resp = utf8_encode($resp);
 
         $strxml = substr($resp, strpos($resp, '<?xml'));
 
@@ -173,7 +182,6 @@ class DownloadCotacoes extends CI_Controller
         $xml = str_replace($xmlInit, "", $xml);
 
 
-
         $init = '<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><S:Body><ns2:requestResponse xmlns:ns2="http://cotacao.fornecedores.client.webService.apoio.com.br/"><String>';
         $xml = str_replace($init, "", $xml);
 
@@ -181,7 +189,6 @@ class DownloadCotacoes extends CI_Controller
         $xml = str_replace($end, "", $xml);
 
         return $xml;
-
 
 
         /* $t = substr($xml,stripos($xml, '<?xml'));
@@ -201,11 +208,9 @@ class DownloadCotacoes extends CI_Controller
 
         try {
 
-            /*  $dt_now = new DateTime();
-              $dt_end = date('d/m/Y 23:59:00', time());
-              $dt_begin = date_sub($dt_now, date_interval_create_from_date_string($this->time));
-              $dt_begin = $dt_begin->format('d/m/Y H:i:00');*/
-
+            if (isset($_GET['id'])) {
+                $this->login = $this->getFornecedores($_GET['id']);
+            }
 
             $dt_begin = date("d/m/Y H:i:s", strtotime('-15minutes'));
             $dt_end = date("d/m/Y H:i:s", time());
@@ -218,18 +223,29 @@ class DownloadCotacoes extends CI_Controller
                 $this->password = $login['credencial_apoio']['password'];
                 //	$ws = new Bionexo('ws_exomed_pe', 'Bionexo123');
 
-
-                # Operação WGG - Recuperar solicitação de cotação
-                # Recupera solicitação de cotação gerada(s) pela(s) empresa(s) compradora(s).
-                $WGG = $this->request('WGG', [
-                    'DT_BEGIN' => $dt_begin,
-                    'DT_END' => $dt_end,
-                    #'REGION' => 'SP',
-                    //'ID' => 536737,
-                    #'LAYOUT' => 'WGG',
-                    #'TOKEN' => 202344657,
-                    'ISO' => 0,
-                ]);
+                if (isset($_GET['cotacao'])) {
+                    # Operação WGG - Recuperar solicitação de cotação
+                    # Recupera solicitação de cotação gerada(s) pela(s) empresa(s) compradora(s).
+                    $WGG = $this->request('WGG', [
+                        'DT_BEGIN' => $dt_begin,
+                        'DT_END' => $dt_end,
+                        #'REGION' => 'SP',
+                        'ID' => $_GET['cotacao'],
+                        #'LAYOUT' => 'WGG',
+                        #'TOKEN' => 202344657,
+                        'ISO' => 0,
+                    ]);
+                } else {
+                    $WGG = $this->request('WGG', [
+                        'DT_BEGIN' => $dt_begin,
+                        'DT_END' => $dt_end,
+                        #'REGION' => 'SP',
+                        //  'ID' => 678259,
+                        #'LAYOUT' => 'WGG',
+                        #'TOKEN' => 202344657,
+                        'ISO' => 0,
+                    ]);
+                }
 
 
                 $cotacoes = arrayFormat($WGG['data']['Pedido']);
@@ -277,8 +293,8 @@ class DownloadCotacoes extends CI_Controller
 
                         $arr =
                             [
-                                'razao_social' => $cabecalho["Nome_Hospital"],
-                                'nome_fantasia' => $cabecalho["Nome_Hospital"],
+                                'razao_social' => utf8_decode($cabecalho["Nome_Hospital"]),
+                                'nome_fantasia' => utf8_decode($cabecalho["Nome_Hospital"]),
                                 'cnpj' => $cnpj_hosp,
                                 'estado' => $client->uf,
                                 'cidade' => $client->municipio,
@@ -327,24 +343,30 @@ class DownloadCotacoes extends CI_Controller
 
                     $total_itens = count($itens);
 
+                    if (isset($cabecalho["Observacao"])) {
+                        $obsCot = (is_array($cabecalho["Observacao"])) ? json_encode($cabecalho["Observacao"]) : $cabecalho["Observacao"];
+                    } else {
+                        $obsCot = NULL;
+                    }
+
                     $arrCabecalho =
                         [
                             "id_fornecedor" => $login['id'],
                             "id_cliente" => $id_cliente,
                             "cd_cotacao" => $cd_cotacao,
-                            "ds_cotacao" => $cabecalho["Titulo_Pdc"],
+                            "ds_cotacao" => utf8_decode($cabecalho["Titulo_Pdc"]),
                             "dt_inicio_cotacao" => $dt_bg,
                             "dt_fim_cotacao" => $dt_fim,
-                            "nome_hospital" => $cabecalho["Nome_Hospital"],
+                            "nome_hospital" => utf8_decode($cabecalho["Nome_Hospital"]),
                             "cd_comprador" => $cnpj_format,
                             "uf_cotacao" => $comprador['estado'],
                             "cidade" => $comprador['cidade'],
                             "endereco" => $cabecalho["Endereco_Entrega"],
                             "contato" => $cabecalho["Contato"],
-                            "id_forma_pagamento" => $cabecalho["Id_Forma_Pagamento"],
+                            "id_forma_pagamento" => isset($cabecalho["Id_Forma_Pagamento"]) ? $cabecalho["Id_Forma_Pagamento"] : NULL,
                             "total_itens" => $total_itens,
-                           // "forma_pagamento" => (is_array($cabecalho["Condicoes"])) ? json_encode($cabecalho["Condicoes"]) : $cabecalho["Condicoes"],
-                            "observacao" => (is_array($cabecalho["Observacao"])) ? json_encode($cabecalho["Observacao"]) : $cabecalho["Observacao"]
+                            // "forma_pagamento" => (is_array($cabecalho["Condicoes"])) ? json_encode($cabecalho["Condicoes"]) : $cabecalho["Condicoes"],
+                            "observacao" => $obsCot
                         ];
 
 
@@ -408,6 +430,12 @@ class DownloadCotacoes extends CI_Controller
 
                     foreach ($itens as $keyItem => $item) {
 
+                        if (isset($item['Marca_Favorita'])) {
+                            $marcFav = is_array($item['Marca_Favorita']) ? json_encode($item['Marca_Favorita']) : $item['Marca_Favorita'];
+                        } else {
+                            $marcFav = NULL;
+                        }
+
                         $arrItens[$keyItem] =
                             [
                                 "id_cotacao" => $id_cotacao,
@@ -417,8 +445,8 @@ class DownloadCotacoes extends CI_Controller
                                 "ds_produto_comprador" => $item['Descricao_Produto'],
                                 "qt_produto_total" => $item['Quantidade'],
                                 "ds_unidade_compra" => $item['Unidade_Medida'],
-                                "id_unidade" => $item['Id_Unidade_Medida'],
-                                "marca_favorita" => is_array($item['Marca_Favorita']) ? json_encode($item['Marca_Favorita']) : $item['Marca_Favorita'],
+                                "id_unidade" => isset($item['Id_Unidade_Medida']) ? $item['Id_Unidade_Medida'] : NULL,
+                                "marca_favorita" => $marcFav,
                                 "id_categoria" => isset($item['Id_Categoria']) ? $item['Id_Categoria'] : ''
                             ];
 
@@ -506,16 +534,65 @@ class DownloadCotacoes extends CI_Controller
                         $this->apoio->trans_commit();
 
                     } else {
-
+                        echo json_encode($this->db->error());
                         $this->apoio->trans_rollback();
 
                     }
+                }
+
+
+                if (isset($_GET['cotacao'])){
+                    if (!empty($cotacoes)){
+                        $ret = ['msg' => 'sucesso'];
+                    }else{
+                        $ret = ['msg' => 'erro'];
+                    }
+
+                    $this->output->set_content_type('application/json')->set_output(json_encode($ret));
                 }
             }
 
         } catch (\Exception $e) {
             echo $e->getMessage();
         }
+    }
+
+    public function getCotacao()
+    {
+
+        if (isset($_GET['id'])) {
+            $this->login = $this->getFornecedores($_GET['id']);
+        }
+
+        foreach ($this->login as $login) {
+
+            $this->user = $login['credencial_apoio']['login'];
+            $this->password = $login['credencial_apoio']['password'];
+            //	$ws = new Bionexo('ws_exomed_pe', 'Bionexo123');
+
+
+            $WGG = $this->request('WGG', [
+                // 'DT_BEGIN' => $dt_begin,
+                //'DT_END' => $dt_end,
+                #'REGION' => 'SP',
+                'ID' => $_GET['cotacao'],
+                #'LAYOUT' => 'WGG',
+                #'TOKEN' => 202344657,
+                'ISO' => 0,
+            ]);
+
+            $cotacao = arrayFormat($WGG['data']['Pedido']);
+
+
+            if (empty($cotacao)) {
+                $cotacao = [
+                    'msg' => 'Cotação não localizada para download'
+                ];
+            }
+
+            $this->output->set_content_type('application/json')->set_output(json_encode($cotacao));
+        }
+
     }
 
     public function getCnpjReceita($cnpj)
@@ -526,10 +603,10 @@ class DownloadCotacoes extends CI_Controller
 
     }
 
-                private
-                function strip_bom($str)
-                {
-                    return preg_replace('/^(\x00\x00\xFE\xFF|\xFF\xFE\x00\x00|\xFE\xFF|\xFF\xFE|\xEF\xBB\xBF)/', "", $str);
-                }
-            } // class
+    private
+    function strip_bom($str)
+    {
+        return preg_replace('/^(\x00\x00\xFE\xFF|\xFF\xFE\x00\x00|\xFE\xFF|\xFF\xFE|\xEF\xBB\xBF)/', "", $str);
+    }
+} // class
 

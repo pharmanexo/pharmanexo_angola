@@ -71,7 +71,9 @@ class M_bionexo extends MY_Model
     public function insertCabecalho($data)
     {
         if (empty($data)) return false;
-        return $this->db->insert('ocs_sintese', $data);
+        $r = $this->db->insert('ocs_sintese', $data);
+
+        return $r;
     }
 
     public function insertProds($data)
