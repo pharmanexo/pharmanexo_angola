@@ -592,6 +592,7 @@ class Dashboard extends MY_Controller
         $totalCot = [];
         $cotEnv = [];
         $cotProd = [];
+        $cotEnvProd = [];
 
         foreach ($resp as $row) {
 
