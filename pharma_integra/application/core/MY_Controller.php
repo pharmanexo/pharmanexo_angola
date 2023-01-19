@@ -35,7 +35,7 @@ class MY_Controller extends REST_Controller
         }
     }
 
-    protected function sendEmail($array): bool
+    protected function sendEmail($array)
     {
         $this->email->from($array['from'], $array['from-name']);
         $this->email->subject($array['assunto']);
