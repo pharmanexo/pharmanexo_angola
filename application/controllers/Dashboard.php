@@ -637,18 +637,9 @@ class Dashboard extends MY_Controller
             $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($id_fornecedor, 'current');
         }
 
-        $cotEnvProd[1] = ($cotProd[1] != 0 && $cotEnv[1] != 0) ? ($cotEnv[1] / $cotProd[1]) * 100 : "Divisão por 0";
-        $cotEnvProd[2] = ($cotProd[2] != 0 && $cotEnv[2] != 0) ? ($cotEnv[2] / $cotProd[2]) * 100 : "Divisão por 0";
-        $cotEnvProd[3] = ($cotProd[3] != 0 && $cotEnv[3] != 0) ? ($cotEnv[3] / $cotProd[3]) * 100 : "Divisão por 0";
-        $cotEnvProd[4] = ($cotProd[4] != 0 && $cotEnv[4] != 0) ? ($cotEnv[4] / $cotProd[4]) * 100 : "Divisão por 0";
-        $cotEnvProd[5] = ($cotProd[5] != 0 && $cotEnv[5] != 0) ? ($cotEnv[5] / $cotProd[5]) * 100 : "Divisão por 0";
-        $cotEnvProd[6] = ($cotProd[6] != 0 && $cotEnv[6] != 0) ? ($cotEnv[6] / $cotProd[6]) * 100 : "Divisão por 0";
-        $cotEnvProd[7] = ($cotProd[7] != 0 && $cotEnv[7] != 0) ? ($cotEnv[7] / $cotProd[7]) * 100 : "Divisão por 0";
-        $cotEnvProd[8] = ($cotProd[8] != 0 && $cotEnv[8] != 0) ? ($cotEnv[8] / $cotProd[8]) * 100 : "Divisão por 0";
-        $cotEnvProd[9] = ($cotProd[9] != 0 && $cotEnv[9] != 0) ? ($cotEnv[9] / $cotProd[9]) * 100 : "Divisão por 0";
-        $cotEnvProd[10] = ($cotProd[10] != 0 && $cotEnv[10] != 0) ? ($cotEnv[10] / $cotProd[10]) * 100 : "Divisão por 0";
-        $cotEnvProd[11] = ($cotProd[11] != 0 && $cotEnv[11] != 0) ? ($cotEnv[11] / $cotProd[11]) * 100 : "Divisão por 0";
-        $cotEnvProd[12] = ($cotProd[12] != 0 && $cotEnv[12] != 0) ? ($cotEnv[12] / $cotProd[12]) * 100 : "Divisão por 0";
+        for ($i = 1; $i <= 12; $i++) {
+            $cotEnvProd[$i] = ($cotProd[$i] != 0 && $cotEnv[$i] != 0) ? number_format(($cotEnv[$i] / $cotProd[$i]) * 100, 2) : "Divisão por 0";
+        }
 
         $data = [
             [
