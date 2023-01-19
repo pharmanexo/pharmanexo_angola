@@ -675,103 +675,99 @@ class Dashboard extends MY_Controller
 
     public function graficoCotacoes($id_fornecedor, $ano, $return = null)
     {
-        
-        $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
+        $this->db->select('id');
+        $query = $this->db->get('fornecedores');
+        $result = $query->result();
+
+        foreach ($result as $idFornecedor) {
+
+            $resp = $this->grafico->getDadosCotacaoMensal($idFornecedor->id, $ano, 'SINTESE');
+            $totalCot = [];
+            $cotEnv = [];
+            $cotProd = [];
+
+            foreach ($resp as $row) {
+
+                $indice = intval($row['mes']);
 
 
-        $totalCot = [];
-        $cotEnv = [];
-        $cotProd = [];
-
-        foreach ($resp as $row) {
-
-            $indice = intval($row['mes']);
+                (isset($totalCot[$indice])) ? $totalCot[$indice] += 1 : $totalCot[$indice] = 1;
 
 
-            (isset($totalCot[$indice])) ? $totalCot[$indice] += 1 : $totalCot[$indice] = 1;
+                if ($row['depara'] == "S") {
 
+                    (isset($cotProd[$indice])) ? $cotProd[$indice] += 1 : $cotProd[$indice] = 1;
+                }
 
-            if ($row['depara'] == "S") {
+                if ($row['depara'] == "S" && $row['oferta'] == "S") {
 
-                (isset($cotProd[$indice])) ? $cotProd[$indice] += 1 : $cotProd[$indice] = 1;
-            }
+                    if ($row['nivel'] == 'S') {
 
-            if ($row['depara'] == "S" && $row['oferta'] == "S") {
+                        (isset($cotEnv[$indice])) ? $cotEnv[$indice] += 2 : $cotEnv[$indice] = 2;
+                    } else {
 
-                if ($row['nivel'] == 'S') {
-
-                    (isset($cotEnv[$indice])) ? $cotEnv[$indice] += 2 : $cotEnv[$indice] = 2;
-                } else {
-
-                    (isset($cotEnv[$indice])) ? $cotEnv[$indice] += 1 : $cotEnv[$indice] = 1;
+                        (isset($cotEnv[$indice])) ? $cotEnv[$indice] += 1 : $cotEnv[$indice] = 1;
+                    }
                 }
             }
-        }
 
-        for ($i = 1; $i <= 12; $i++) {
-            if (!isset($totalCot[$i])) $totalCot[$i] = 0;
-        }
-        for ($i = 1; $i <= 12; $i++) {
-            if (!isset($cotEnv[$i])) $cotEnv[$i] = 0;
-        }
-        for ($i = 1; $i <= 12; $i++) {
-            if (!isset($cotProd[$i])) $cotProd[$i] = 0;
-        }
+            for ($i = 1; $i <= 12; $i++) {
+                if (!isset($totalCot[$i])) $totalCot[$i] = 0;
+            }
+            for ($i = 1; $i <= 12; $i++) {
+                if (!isset($cotEnv[$i])) $cotEnv[$i] = 0;
+            }
+            for ($i = 1; $i <= 12; $i++) {
+                if (!isset($cotProd[$i])) $cotProd[$i] = 0;
+            }
 
-        $dataCurrente = date('m', time());
-        $anoCurrente = date('Y', time());
-        $key = intval($dataCurrente);
+            $dataCurrente = date('m', time());
+            $anoCurrente = date('Y', time());
+            $key = intval($dataCurrente);
 
-        if ($ano == $anoCurrente) {
-            $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($id_fornecedor, 'current');
-        }
+            if ($ano == $anoCurrente) {
+                $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($id_fornecedor, 'current');
+            }
 
+            for ($i = 1; $i <= 12; $i++) {
+                $grafico = $this->db->get_where('graficos', array(
+                    'ano' => $ano,
+                    'mes' => $i,
+                    'id_fornecedor' => $id_fornecedor
+                ));
+                if ($grafico) {
+                    $dataGrafico = array(
+                        'total_cotacao' => $totalCot[$i],
+                        'cotacao_produto' => $cotProd[$i],
+                        'cotacao_enviada' => $cotEnv[$i],
+                    );
+                    $this->db->where(array(
+                        'ano' => $ano,
+                        'mes' => $i,
+                        'id_fornecedor' => $id_fornecedor
+                    ));
+                    $this->db->update('graficos', $dataGrafico);
+                } else {
+                    $dataGrafico = array(
+                        'ano' => $ano,
+                        'mes' => $i,
+                        'id_fornecedor' =>   $id_fornecedor,
+                        'total_cotacao' =>   $totalCot[$i],
+                        'cotacao_produto' => $cotProd[$i],
+                        'cotacao_enviada' => $cotEnv[$i],
+                    );
+                    $novoGrafico = $this->db->insert('graficos', $dataGrafico);
+                }
+            }
 
-        $data = [
-            [
-                'name' => 'TOTAL COT',
-                'type' => 'column',
-                'data' => [
-                    $totalCot[1], $totalCot[2], $totalCot[3], $totalCot[4], $totalCot[5], $totalCot[6],
-                    $totalCot[7], $totalCot[8], $totalCot[9], $totalCot[10], $totalCot[11], $totalCot[12]
-                ]
-            ],
-            [
-                'name' => 'COT COM PROD',
-                'type' => 'line',
-                'data' => [
-                    $cotProd[1], $cotProd[2], $cotProd[3], $cotProd[4], $cotProd[5], $cotProd[6],
-                    $cotProd[7], $cotProd[8], $cotProd[9], $cotProd[10], $cotProd[11], $cotProd[12]
-                ]
+            if (isset($return)) {
 
-            ],
-            [
-                'name' => 'COT ENVIADA',
-                'type' => 'line',
-                'data' => [
-                    $cotEnv[1], $cotEnv[2], $cotEnv[3], $cotEnv[4], $cotEnv[5], $cotEnv[6],
-                    $cotEnv[7], $cotEnv[8], $cotEnv[9], $cotEnv[10], $cotEnv[11], $cotEnv[12]
-                ]
-            ],
-        ];
-        for ($i = 1; $i <= 12; $i++) {
-            $dataGrafico = array(
-                'ano' => $ano,
-                'mes' => $i,
-                'id_fornecedor' =>   $id_fornecedor,
-                'total_cotacao' =>   $totalCot[$i],
-                'cotacao_produto' => $cotProd[$i],
-                'cotacao_enviada' => $cotEnv[$i],
-            );
-            $novoGrafico = $this->db->insert('graficos', $dataGrafico);
-        }
+                $this->output->set_content_type('application/json')->set_output(json_encode($data));
+            } else {
 
-        if (isset($return)) {
-
-            $this->output->set_content_type('application/json')->set_output(json_encode($data));
-        } else {
-
-            return var_dump($novoGrafico);exit;
+                return var_dump($novoGrafico);
+                exit;
+            }
         }
     }
 
@@ -973,31 +969,12 @@ class Dashboard extends MY_Controller
 
     public function grafico()
     {
-        $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
-        foreach ($resp as $row) {
-
-            $indice = intval($row['mes']);
-
-
-            (isset($totalCot[$indice])) ? $totalCot[$indice] += 1 : $totalCot[$indice] = 1;
-
-
-            if ($row['depara'] == "S") {
-
-                (isset($cotProd[$indice])) ? $cotProd[$indice] += 1 : $cotProd[$indice] = 1;
-            }
-
-            if ($row['depara'] == "S" && $row['oferta'] == "S") {
-
-                if ($row['nivel'] == 'S') {
-
-                    (isset($cotEnv[$indice])) ? $cotEnv[$indice] += 2 : $cotEnv[$indice] = 2;
-                } else {
-
-                    (isset($cotEnv[$indice])) ? $cotEnv[$indice] += 1 : $cotEnv[$indice] = 1;
-                }
-            }
-        }
+        $this->db->select('id');
+        $query = $this->db->get('fornecedores');
+        $result = $query->result();
+        foreach ($result as $r) {
+            var_dump($r->id);
+        };
     }
 
     function porcentagem_nx($parcial, $total)
