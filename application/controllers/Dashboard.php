@@ -758,10 +758,10 @@ class Dashboard extends MY_Controller
             $dataGrafico = array(
                 'ano' => $ano,
                 'mes' => $i,
-                'id_fornecedor' => $id_fornecedor,
-                'total_cotacao' => $cotProd[$i],
+                'id_fornecedor' =>   $id_fornecedor,
+                'total_cotacao' =>   $totalCot[$i],
                 'cotacao_produto' => $cotProd[$i],
-                'cotacao_enviada' => $cotProd[$i],
+                'cotacao_enviada' => $cotEnv[$i],
             );
             $novoGrafico = $this->db->insert('graficos', $dataGrafico);
         }
