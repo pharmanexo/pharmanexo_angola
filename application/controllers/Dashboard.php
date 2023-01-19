@@ -422,7 +422,9 @@ class Dashboard extends MY_Controller
 
             $integrador = (isset($post['integrador'])) ? $post['integrador'] : 'SINTESE';
 
-            $data['chartLine'] = $this->graficoCotacoes($this->session->id_fornecedor, $post['ano']);
+            $this->graficoCotacoes($this->session->id_fornecedor, $post['ano']);
+
+            $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
 
             $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
 
@@ -722,7 +724,7 @@ class Dashboard extends MY_Controller
         if ($ano == $anoCurrente) {
             $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($id_fornecedor, 'current');
         }
-        
+
         for ($i = 1; $i <= 12; $i++) {
             $grafico = $this->db->get_where('graficos', array(
                 'ano' => $ano,
