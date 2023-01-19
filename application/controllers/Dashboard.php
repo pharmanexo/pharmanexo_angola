@@ -585,7 +585,7 @@ class Dashboard extends MY_Controller
     {
 
         $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
-
+        $grafico = $this->db->;
 
         $totalCot = [];
         $cotEnv = [];
@@ -765,7 +765,7 @@ class Dashboard extends MY_Controller
                 $this->output->set_content_type('application/json')->set_output(json_encode($data));
             } else {
 
-                return var_dump($grafico);
+                return var_dump($novoGrafico);
                 exit;
             }
         }
