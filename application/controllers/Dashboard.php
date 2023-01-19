@@ -422,9 +422,9 @@ class Dashboard extends MY_Controller
 
             $integrador = (isset($post['integrador'])) ? $post['integrador'] : 'SINTESE';
 
-            $this->graficoCotacoes($this->session->id_fornecedor, $post['ano']);
+            // $this->graficoCotacoes($this->session->id_fornecedor, $post['ano']);
 
-            $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
+            $data['chartLine'] = $this->graficoCotacoes($this->session->id_fornecedor, $post['ano']);
 
             $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
 
