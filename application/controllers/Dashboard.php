@@ -424,7 +424,7 @@ class Dashboard extends MY_Controller
 
             // $this->graficoCotacoes($this->session->id_fornecedor, $post['ano']);
 
-            $data['chartLine'] = $this->graficoCotacoes($this->session->id_fornecedor, $post['ano']);
+            $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
 
             $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
 
@@ -585,7 +585,7 @@ class Dashboard extends MY_Controller
 
     public function createChartTotalCotacoes($id_fornecedor, $ano, $return = null)
     {
-
+        
         $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
 
 

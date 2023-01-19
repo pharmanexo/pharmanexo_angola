@@ -70,8 +70,8 @@
             e.preventDefault();
             Swal.fire({
                     title: 'Registro adicionado',
-                    text: "falta concluir a logica de envio de sms e e-mail",
-                    icon: 'question',
+                    text: "Pendente logica de envio de ofertas e promoções",
+                    icon: 'info',
                 });
             var $form = $(this);
 
