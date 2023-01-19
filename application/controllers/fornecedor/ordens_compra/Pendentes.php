@@ -586,11 +586,21 @@ class Pendentes extends MY_Controller
 
             $nome_hospital = (!empty($cliente['nome_fantasia'])) ? $cliente['nome_fantasia'] : $cliente['razao_social'];
 
+            //assunto
+            $assunto = "PHARMANEXO | Pedido {$data['ordem_compra']['Cd_Ordem_Compra']} - {$nome_hospital}";
+
+            if (isset($data['ordem_compra']['integrador'])) {
+                $integrador = $this->db->where('id', $data['ordem_compra']['integrador'])->get('integradores')->row_array();
+                if (!empty($integrador)){
+                    $assunto = "PEDIDO {$integrador['desc']} {$data['ordem_compra']['Cd_Ordem_Compra']} - {$nome_hospital}";
+                }
+            }
+
             # notificar por e-mail
             $notificar = [
                 "to" => $destinatarios,
                 "greeting" => "",
-                "subject" => "Pedido Sintese {$data['ordem_compra']['Cd_Ordem_Compra']} - {$nome_hospital}",
+                "subject" => $assunto,
                 "message" => $mirror,
                 "oncoprod" => 1
             ];
