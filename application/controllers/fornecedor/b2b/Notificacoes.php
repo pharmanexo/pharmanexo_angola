@@ -13,7 +13,7 @@ class Notificacoes extends CI_Controller
         parent::__construct();
 
         $this->route = base_url('fornecedor/b2b');
-        $this->views = 'fornecedor/b2b';
+        $this->views = 'fornecedor/b2b/notificacoes';
 
         $this->load->model('m_compradores', 'comprador');
 
