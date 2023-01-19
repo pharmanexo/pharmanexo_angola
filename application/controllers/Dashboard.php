@@ -726,14 +726,14 @@ class Dashboard extends MY_Controller
             $key = intval($dataCurrente);
 
             if ($ano == $anoCurrente) {
-                $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($id_fornecedor, 'current');
+                $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($idFornecedor->id, 'current');
             }
 
             for ($i = 1; $i <= 12; $i++) {
                 $grafico = $this->db->get_where('graficos', array(
                     'ano' => $ano,
                     'mes' => $i,
-                    'id_fornecedor' => $id_fornecedor
+                    'id_fornecedor' => $idFornecedor->id
                 ));
                 if ($grafico) {
                     $dataGrafico = array(
@@ -744,14 +744,14 @@ class Dashboard extends MY_Controller
                     $this->db->where(array(
                         'ano' => $ano,
                         'mes' => $i,
-                        'id_fornecedor' => $id_fornecedor
+                        'id_fornecedor' => $idFornecedor->id
                     ));
                     $this->db->update('graficos', $dataGrafico);
                 } else {
                     $dataGrafico = array(
                         'ano' => $ano,
                         'mes' => $i,
-                        'id_fornecedor' =>   $id_fornecedor,
+                        'id_fornecedor' =>   $idFornecedor->id,
                         'total_cotacao' =>   $totalCot[$i],
                         'cotacao_produto' => $cotProd[$i],
                         'cotacao_enviada' => $cotEnv[$i],
@@ -765,7 +765,7 @@ class Dashboard extends MY_Controller
                 $this->output->set_content_type('application/json')->set_output(json_encode($data));
             } else {
 
-                return var_dump($novoGrafico);
+                return var_dump($grafico);
                 exit;
             }
         }
