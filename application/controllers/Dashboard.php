@@ -662,16 +662,6 @@ class Dashboard extends MY_Controller
                     $cotEnv[1], $cotEnv[2], $cotEnv[3], $cotEnv[4], $cotEnv[5], $cotEnv[6],
                     $cotEnv[7], $cotEnv[8], $cotEnv[9], $cotEnv[10], $cotEnv[11], $cotEnv[12]
                 ]
-            ],
-            [
-                'name' => '%',
-                'type' => 'column',
-                'data' => [
-                    ($cotEnv[1] / $cotProd[1]) * 100, ($cotEnv[2] / $cotProd[2]) * 100, ($cotEnv[3] / $cotProd[3]) * 100,
-                    ($cotEnv[4] / $cotProd[4]) * 100, ($cotEnv[5] / $cotProd[5]) * 100, ($cotEnv[6] / $cotProd[6]) * 100,
-                    ($cotEnv[7] / $cotProd[7]) * 100, ($cotEnv[8] / $cotProd[8]) * 100, ($cotEnv[9] / $cotProd[9]) * 100,
-                    ($cotEnv[10] / $cotProd[10]) * 100, ($cotEnv[11] / $cotProd[11]) * 100, ($cotEnv[12] / $cotProd[12]) * 100
-                ]
             ]
         ];
 
