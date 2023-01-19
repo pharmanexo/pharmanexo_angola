@@ -667,7 +667,7 @@ class Dashboard extends MY_Controller
                 'name' => '%',
                 'type' => 'column',
                 'data' => [
-                    ($cotProd[1] / $cotEnv[1]) * 100, $cotEnv[2], $cotEnv[3], $cotEnv[4], $cotEnv[5], $cotEnv[6],
+                    $cotProd[1], $cotEnv[2], $cotEnv[3], $cotEnv[4], $cotEnv[5], $cotEnv[6],
                     $cotEnv[7], $cotEnv[8], $cotEnv[9], $cotEnv[10], $cotEnv[11], $cotEnv[12]
                 ]
             ]
