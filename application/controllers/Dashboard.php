@@ -726,34 +726,15 @@ class Dashboard extends MY_Controller
         }
 
         for ($i = 1; $i <= 12; $i++) {
-            $grafico = $this->db->get_where('graficos', array(
+            $dataGrafico = array(
                 'ano' => $ano,
                 'mes' => $i,
-                'id_fornecedor' => $id_fornecedor
-            ));
-            if ($grafico) {
-                $dataGrafico = array(
-                    'total_cotacao' => $totalCot[$i],
-                    'cotacao_produto' => $cotProd[$i],
-                    'cotacao_enviada' => $cotEnv[$i],
-                );
-                $this->db->where(array(
-                    'ano' => $ano,
-                    'mes' => $i,
-                    'id_fornecedor' => $id_fornecedor
-                ));
-                $this->db->update('graficos', $dataGrafico);
-            } else {
-                $dataGrafico = array(
-                    'ano' => $ano,
-                    'mes' => $i,
-                    'id_fornecedor' =>   $id_fornecedor,
-                    'total_cotacao' =>   $totalCot[$i],
-                    'cotacao_produto' => $cotProd[$i],
-                    'cotacao_enviada' => $cotEnv[$i],
-                );
-                $novoGrafico = $this->db->insert('graficos', $dataGrafico);
-            }
+                'id_fornecedor' =>   $id_fornecedor,
+                'total_cotacao' =>   $totalCot[$i],
+                'cotacao_produto' => $cotProd[$i],
+                'cotacao_enviada' => $cotEnv[$i],
+            );
+            $novoGrafico = $this->db->insert('graficos', $dataGrafico);
         }
 
         if (isset($return)) {
