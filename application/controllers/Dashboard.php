@@ -585,7 +585,7 @@ class Dashboard extends MY_Controller
 
     public function createChartTotalCotacoes($id_fornecedor, $ano, $return = null)
     {
-        
+
         $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
 
 
@@ -661,6 +661,14 @@ class Dashboard extends MY_Controller
                 'data' => [
                     $cotEnv[1], $cotEnv[2], $cotEnv[3], $cotEnv[4], $cotEnv[5], $cotEnv[6],
                     $cotEnv[7], $cotEnv[8], $cotEnv[9], $cotEnv[10], $cotEnv[11], $cotEnv[12]
+                ]
+            ],
+            [
+                'name' => '%',
+                'type' => 'column',
+                'data' => [
+                    $totalCot[1] / $totalCot[2] , $totalCot[2], $totalCot[3], $totalCot[4], $totalCot[5], $totalCot[6],
+                    $totalCot[7], $totalCot[8], $totalCot[9], $totalCot[10], $totalCot[11], $totalCot[12]
                 ]
             ]
         ];
