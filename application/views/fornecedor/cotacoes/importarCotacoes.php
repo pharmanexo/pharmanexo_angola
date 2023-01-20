@@ -8,7 +8,7 @@
     <div class="content">
         <?php echo $heading; ?>
         <div class="content__inner">
-            <div class="alert alert-info" role="alert"> Importação ainda não disponível para o Portal Síntese.
+            <div class="alert alert-info" role="alert"> Portal Síntese ainda não suporta esse tipo de importação.
             </div>
             <div class="card">
                 <div class="card-body">
