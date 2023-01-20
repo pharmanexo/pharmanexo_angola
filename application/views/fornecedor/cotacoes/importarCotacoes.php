@@ -20,7 +20,9 @@
                                     <select name="integrador" id="integrador" class="form-control">
                                         <option value="">Selecione</option>
                                         <?php foreach ($portais as $portal) { ?>
+                                            <?php if ($portal['id'] != 1) {?>
                                             <option value="<?php echo $portal['id']; ?>"><?php echo $portal['desc']; ?></option>
+                                            <?php }  ?>
                                         <?php } ?>
                                     </select>
                                 </div>
