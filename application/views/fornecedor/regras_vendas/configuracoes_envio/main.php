@@ -27,6 +27,7 @@
                                     </th>
                                     <th>Estado</th>
                                     <th>Tipo</th>
+                                    <th>Portal</th>
                                 </tr>
                                 </thead>
                             </table>
@@ -58,6 +59,7 @@
                 { defaultContent: '', width: '120px', orderable: false, searchable: false},
                 { name: 'e.estado', data: 'estado'},
                 { name: 'config.tipo', data: 'tipo'},
+                { name: 'config.integrador', data: 'integrador'},
             ],
             columnDefs: [
                 {orderable: false, className: 'select-checkbox', targets: 0 },
