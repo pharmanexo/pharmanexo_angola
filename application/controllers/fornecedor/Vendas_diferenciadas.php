@@ -729,13 +729,11 @@ class Vendas_diferenciadas extends MY_Controller
             'title' => "Vendas Diferenciadas",
             'form_action' => "{$this->route}/update/{$id}"
         ];
-
         $this->db->select("SUM(estoque) as total")
             ->where('codigo', $data['dados']['codigo'])
-            ->where('id_fornecedor', $this->session->userdata('id_fornecedor'))
-            ->where('id_estado', $this->session->userdata('id_estado'));
+            ->where('id_fornecedor', $this->session->userdata('id_fornecedor'));
 
-        $estoque = $this->db->get('produtos_fornecedores_validades')->row_array()['total'];
+        $estoque = $this->db->get('produtos_lote')->row_array()['total'];
         $data['dados']['estoque_uf'] = $estoque;
 
         $this->load->view("{$this->views}/modalUpdate", $data);

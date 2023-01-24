@@ -585,13 +585,14 @@ class Dashboard extends MY_Controller
 
     public function createChartTotalCotacoes($id_fornecedor, $ano, $return = null)
     {
-        
+
         $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
 
 
         $totalCot = [];
         $cotEnv = [];
         $cotProd = [];
+        $cotEnvProd = [];
 
         foreach ($resp as $row) {
 
@@ -636,6 +637,9 @@ class Dashboard extends MY_Controller
             $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($id_fornecedor, 'current');
         }
 
+        for ($i = 1; $i <= 12; $i++) {
+            $cotEnvProd[$i] = ($cotProd[$i] != 0 && $cotEnv[$i] != 0) ? intval(($cotEnv[$i] / $cotProd[$i]) * 100) : "Divisão por 0";
+        }
 
         $data = [
             [
@@ -661,6 +665,14 @@ class Dashboard extends MY_Controller
                 'data' => [
                     $cotEnv[1], $cotEnv[2], $cotEnv[3], $cotEnv[4], $cotEnv[5], $cotEnv[6],
                     $cotEnv[7], $cotEnv[8], $cotEnv[9], $cotEnv[10], $cotEnv[11], $cotEnv[12]
+                ]
+            ],
+            [
+                'name' => '%',
+                'type' => 'line',
+                'data' => [
+                    $cotEnvProd[1], $cotEnvProd[2], $cotEnvProd[3], $cotEnvProd[4], $cotEnvProd[5], $cotEnvProd[6],
+                    $cotEnvProd[7], $cotEnvProd[8], $cotEnvProd[9], $cotEnvProd[10], $cotEnvProd[11], $cotEnvProd[12]
                 ]
             ]
         ];

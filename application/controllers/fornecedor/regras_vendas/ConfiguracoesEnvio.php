@@ -76,6 +76,7 @@ class ConfiguracoesEnvio extends MY_Controller
     {
         $data['form_action'] = "{$this->route}/save";
         $data['estados'] = $this->estado->getList();
+        $data['integradores'] = $this->db->get('integradores')->result_array();
 
         $this->load->view("{$this->views}/modal", $data);
     }
@@ -85,6 +86,7 @@ class ConfiguracoesEnvio extends MY_Controller
         $data['form_action'] = "{$this->route}/update";
         $data['dados'] = $this->config_envio->findById($id);
         $data['estados'] = $this->estado->getList();
+        $data['integradores'] = $this->db->get('integradores')->result_array();
 
         $this->load->view("{$this->views}/modal", $data);
     }
@@ -101,6 +103,7 @@ class ConfiguracoesEnvio extends MY_Controller
 
         $this->form_validation->set_rules('observacao', 'Observação', 'required');
         $this->form_validation->set_rules('tipo', 'Tipo', 'required');
+        $this->form_validation->set_rules('integrador', 'Integradores', 'required');
         $this->form_validation->set_rules('estados[]', 'Estados', 'required');
 
         if ($this->form_validation->run() === FALSE) {
@@ -233,6 +236,19 @@ class ConfiguracoesEnvio extends MY_Controller
                             break;
                     }
                 }],
+                ['db' => 'config.integrador', 'dt' => 'integrador', "formatter" => function ($value, $row) {
+                    switch ($value) {
+                        case '1':
+                            return 'Síntese';
+                            break;
+                        case '2':
+                            return 'Bionexo';
+                            break;
+                        case '3':
+                            return 'Apoio';
+                            break;
+                    }
+                }],
                 ['db' => 'e.uf', 'dt' => 'uf'],
                 ['db' => 'e.descricao', 'dt' => 'estado', 'formatter' => function ($value, $row) {
 
@@ -262,6 +278,9 @@ class ConfiguracoesEnvio extends MY_Controller
     {
         
         $this->db->select("(CASE 
+            WHEN config.integrador = '1' THEN 'Síntese'
+            WHEN config.integrador = '2' THEN 'Bionexo'
+            WHEN config.integrador = '3' THEN 'Apoio'
             WHEN config.tipo = '1' THEN 'Automático'
             WHEN config.tipo = '2' THEN 'Manual'
             WHEN config.tipo = '3' THEN 'Manual e Automático' END) tipo,
@@ -278,6 +297,7 @@ class ConfiguracoesEnvio extends MY_Controller
         if (count($query) < 1 ) {
            $query[] = [
                 'tipo' => '',
+                'integrador' => '',
                 'estado' => '',
                 'observacao' => ''
            ];
