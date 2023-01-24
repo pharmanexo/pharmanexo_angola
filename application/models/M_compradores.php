@@ -3,7 +3,9 @@
  * Criado por:  Marlon Boecker
  * Criado em: 31/07/2019 07:58
  */
-
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 class M_compradores extends MY_Model
 {
 
