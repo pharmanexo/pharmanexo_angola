@@ -816,7 +816,7 @@ class Cotacoes_oncoprod extends MY_Controller
         if ($this->input->method() == 'post') {
             $post = $this->input->post();
 
-           // $exist = $this->cotacoes->verificaResposta($post['cotacao'], $this->session->id_fornecedor);
+            // $exist = $this->cotacoes->verificaResposta($post['cotacao'], $this->session->id_fornecedor);
 
             $updateCot = [
                 'motivo_recusa' => $post['motivo'],
@@ -843,9 +843,9 @@ class Cotacoes_oncoprod extends MY_Controller
             $dbCot->where('id_fornecedor', $this->session->id_fornecedor);
             $r = $dbCot->update('cotacoes', $updateCot);
 
-            if ($r){
+            if ($r) {
                 $output = ['type' => 'success', 'message' => 'Cotação descartada'];
-            }else{
+            } else {
                 $output = ['type' => 'warning', 'message' => 'Cotação não autoriza descarte.'];
             }
 
@@ -1414,9 +1414,17 @@ class Cotacoes_oncoprod extends MY_Controller
 
                     $estoqueTotalForn = [];
 
+
                     foreach ($estoqueFornecedores as $l => $estForn) {
                         foreach ($estForn as $j => $est) {
-                            $estoqueTotalForn[$l] = $estoqueTotalForn[$l] + $est;
+
+                            if (isset($estoqueTotalForn[$l])) {
+                                $estoqueTotalForn[$l] = $estoqueTotalForn[$l] + $est;
+                            } else {
+                                $estoqueTotalForn[$l] = $est;
+                            }
+
+
                         }
                     }
 
@@ -2636,12 +2644,12 @@ class Cotacoes_oncoprod extends MY_Controller
                 'codigoProdutoSintese' => $id_produto,
             ));
 
-           /* var_dump([
-                'cnpj' => preg_replace("/\D+/", "", $forn['cnpj']),
-                'chave' => $forn['chave_sintese'],
-                'codigoProdutoSintese' => $id_produto,
-            ]);
-            exit();*/
+            /* var_dump([
+                 'cnpj' => preg_replace("/\D+/", "", $forn['cnpj']),
+                 'chave' => $forn['chave_sintese'],
+                 'codigoProdutoSintese' => $id_produto,
+             ]);
+             exit();*/
 
 
             $options = array('location' => $location);

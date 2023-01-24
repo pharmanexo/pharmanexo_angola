@@ -102,7 +102,7 @@
         var dt = $('#data-table').DataTable({
             processing: true,
             serverSide: true,
-            pageLength: 50,
+            pageLength: 20,
             ajax: {
                 url: $('#data-table').data('url'),
                 type: 'post',
