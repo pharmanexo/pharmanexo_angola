@@ -42,7 +42,7 @@
                                 <select class="form-control" name="integradores" id="integradores" multiple="multiple" style="heigth: 60%" data-live-search="true" title="Selecione" <?php if (isset($dados)) echo 'disabled'; ?>>
                                     <option value="0" <?php if (isset($dados) && $dados['integrador'] == 0) echo 'selected'; ?>>Todos</option>
                                     <?php foreach ($integradores as $integrador) : ?>
-                                        <option value="<?php echo $integrador['id']; ?>" <?php if (isset($dados) && $dados['integrador'] == $integrador['id']) echo 'selected'; ?>><?php echo $integrador['integrador']; ?></option>
+                                        <option value="<?php echo $integrador['id']; ?>" <?php if (isset($dados) && $dados['integrador'] == $integrador['id']) echo 'selected'; ?>><?php echo $integrador['desc']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -73,6 +73,7 @@
         reloadPlugin();
 
         $('#estados').selectpicker();
+        $('#integradores').selectpicker();
         $("#tipo").select2({
             dropdownParent: $('#modalConfiguracoes')
         });
