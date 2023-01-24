@@ -34,7 +34,7 @@ class M_configuracoes_envio extends MY_Model
 				# Verifica se o tipo da configuração ja possui registro para todos
 				$this->db->where("id_fornecedor", $this->session->id_fornecedor);
 				$this->db->where("tipo", $post['tipo']);
-				$this->db->where("integrador", $post['integrador']);
+				$this->db->where("integrador", $post['integradores']);
 				$existe = $this->db->get($this->table)->row_array();
 
 
@@ -53,7 +53,8 @@ class M_configuracoes_envio extends MY_Model
 				];
 
 				break;
-			} else {
+			}
+			 else {
 
 				$this->db->select("id");
 				$this->db->where('id_estado', $id_estado);

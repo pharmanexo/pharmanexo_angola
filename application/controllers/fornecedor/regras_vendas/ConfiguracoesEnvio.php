@@ -103,7 +103,7 @@ class ConfiguracoesEnvio extends MY_Controller
 
         $this->form_validation->set_rules('observacao', 'Observação', 'required');
         $this->form_validation->set_rules('tipo', 'Tipo', 'required');
-        $this->form_validation->set_rules('integrador', 'Integradores', 'required');
+        $this->form_validation->set_rules('integradores[]', 'Integradores', 'required');
         $this->form_validation->set_rules('estados[]', 'Estados', 'required');
 
         if ($this->form_validation->run() === FALSE) {

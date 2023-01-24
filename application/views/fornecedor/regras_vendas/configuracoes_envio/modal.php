@@ -39,7 +39,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="estados"><?php echo (isset($dados)) ? 'Integrador' : 'Integradores'; ?></label>
-                                <select class="form-control" name="integradores" id="integradores" multiple="multiple" style="heigth: 60%" data-live-search="true" title="Selecione" <?php if (isset($dados)) echo 'disabled'; ?>>
+                                <select class="form-control" name="integradores[]" id="integradores" multiple="multiple" style="heigth: 60%" data-live-search="true" title="Selecione" <?php if (isset($dados)) echo 'disabled'; ?>>
                                     <option value="0" <?php if (isset($dados) && $dados['integrador'] == 0) echo 'selected'; ?>>Todos</option>
                                     <?php foreach ($integradores as $integrador) : ?>
                                         <option value="<?php echo $integrador['id']; ?>" <?php if (isset($dados) && $dados['integrador'] == $integrador['id']) echo 'selected'; ?>><?php echo $integrador['desc']; ?></option>
