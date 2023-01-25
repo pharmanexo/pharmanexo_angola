@@ -568,6 +568,8 @@
             var url = $(this).attr('action');
             var data = $(this).serialize();
             var mess = $('#messageReturn');
+            var btn = $('.btnSubmit');
+            btn.html("<i class='fas fa-spin fa-spinner'></i> Enviando...").attr('disabled', true);
             grecaptcha.ready(function() {
                 // do request for recaptcha token
                 // response is promise with passed token
@@ -605,28 +607,6 @@
 
 
         })
-
-        $('#formSupport').submit(function(e) {
-            e.preventDefault();
-            var me = $(this);
-            var btn = $('.btnSubmit');
-            btn.html("<i class='fas fa-spin fa-spinner'></i> Enviando...").attr('disabled', true);
-            $.post(me.attr('action'), me.serialize(), function(xhr) {
-                btn.html("Enviar Mensagem").attr('disabled', false);
-                if (xhr.type === 'success') {
-                    $('.text-success', '#formSupport').html(xhr.message);
-                } else {
-                    $('.error-message', '#formSupport').html(xhr.message);
-                }
-
-            }, 'JSON')
-        })
-
-        $('#exampleModal').on('hidden.bs.modal', function() {
-            $('input, textarea', '#formSupport').val('');
-            $('.text-success', '#formSupport').html('');
-            $('.error-message', '#formSupport').html('');
-        });
 
     })
 </script>
