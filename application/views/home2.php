@@ -278,7 +278,6 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form_container">
-                            <div id="messageReturn"></div>
                             <form id="FormContact" action="<?php echo base_url('contato/sendMessage'); ?>" method="post" role="form">
                                 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
                                 <input type="hidden" name="action" value="validate_captcha">
@@ -305,7 +304,7 @@
                                     <div class="sent-message text-success"></div>
                                 </div>
                                 <div class="btnsubmit">
-                                    <button id="btnContato" type="submit">
+                                    <button class="btnSubmit" id="btnContato" type="submit">
                                         ENVIAR
                                     </button>
                                 </div>
@@ -436,8 +435,7 @@
             var me = $(this);
             var url = $(this).attr('action');
             var data = $(this).serialize();
-            var mess = $('#messageReturn');
-            var btn = $('.btnSubmit');
+            var btn = $('#btnContato');
             btn.html("<i class='fas fa-spin fa-spinner'></i> Enviando...").attr('disabled', true);
             grecaptcha.ready(function() {
                 // do request for recaptcha token
@@ -452,7 +450,7 @@
                         btn.html("Enviar Mensagem").attr('disabled', false);
                         if (xhr.type === 'success') {
                             Swal.fire({
-                                title: 'Enviamos sua solicitação com sucesso, em breve alguém de nosso time entrará em contato!',
+                                title: 'Enviamos sua solicitação com sucesso, em breve alguém do nosso time entrará em contato!',
                                 icon: 'success',
                             }).then((result) => {
                                 $('.contato').val('');
