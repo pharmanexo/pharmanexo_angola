@@ -285,20 +285,20 @@
                                 <div class="form-row">
                                     <div class="col-lg-6">
                                         <div>
-                                            <input required type="text" name="nome" placeholder="Seu Nome *" />
+                                            <input required class="contato" type="text" name="nome" placeholder="Seu Nome *" />
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div>
-                                            <input required type="text" name="telefone" placeholder="Seu melhor número *" />
+                                            <input required class="contato" type="text" name="telefone" placeholder="Seu melhor número *" />
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="email" required name="email" placeholder="Seu melhor Email *" />
+                                    <input type="email" required class="contato" name="email" placeholder="Seu melhor Email *" />
                                 </div>
                                 <div>
-                                    <input type="text" name="mensagem" required class="message-box" placeholder="Nos conte do que precisa *" />
+                                    <input type="text" name="mensagem" required class="message-box contato" placeholder="Nos conte do que precisa *" />
                                 </div>
                                 <div class="mb-3">
                                     <div class="error-message text-danger"></div>
@@ -451,10 +451,11 @@
                     $.post(me.attr('action'), me.serialize(), function(xhr) {
                         btn.html("Enviar Mensagem").attr('disabled', false);
                         if (xhr.type === 'success') {
-                            $('input, textarea', '#formContact').val('');
                             Swal.fire({
                                 title: 'Enviamos sua solicitação com sucesso, em breve alguém de nosso time entrará em contato!',
                                 icon: 'success',
+                            }).then((result) => {
+                                $('.contato').val('');
                             })
                         } else {
                             Swal.fire({
