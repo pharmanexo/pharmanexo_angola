@@ -451,20 +451,17 @@
                     $.post(me.attr('action'), me.serialize(), function(xhr) {
                         btn.html("Enviar Mensagem").attr('disabled', false);
                         if (xhr.type === 'success') {
-                            console.log(xhr);
-                            $('.sent-message', '#formContact').html(xhr.message);
-                            alert('teste');
-                        } else {
-                            $('.error-message', '#formContact').html(xhr.message);
-
-                        }
-
-                        setTimeout(function() {
                             $('input, textarea', '#formContact').val('');
-                            $('.sent-message', '#formContact').html('');
-                            $('.error-message', '#formContact').html('');
-
-                        }, 5000);
+                            Swal.fire({
+                                title: 'Enviamos sua solicitação com sucesso, em breve alguém de nosso time entrará em contato!',
+                                icon: 'success',
+                            })
+                        } else {
+                            Swal.fire({
+                                title: 'Houve um erro ao enviar sua mensagem, nos comunique por helpdesk@pharmanexo.com.br.',
+                                icon: 'error',
+                            })
+                        }
 
 
 
