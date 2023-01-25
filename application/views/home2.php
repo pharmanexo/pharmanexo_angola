@@ -300,6 +300,10 @@
                                 <div>
                                     <input type="text" name="mensagem" required class="message-box" placeholder="Nos conte do que precisa *" />
                                 </div>
+                                <div class="mb-3">
+                                    <div class="error-message text-danger"></div>
+                                    <div class="sent-message text-success"></div>
+                                </div>
                                 <div class="btnsubmit">
                                     <button id="btnContato" type="submit">
                                         ENVIAR
@@ -320,106 +324,6 @@
             </div>
         </section>
         <!-- end contact section -->
-
-        <!-- client section
-
-<section class="client_section layout_padding-bottom">
-<div class="container">
-  <div class="heading_container heading_center ">
-    <h2>
-      Testimonial
-    </h2>
-  </div>
-  <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="row">
-          <div class="col-md-11 col-lg-10 mx-auto">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <div class="name">
-                  <h6>
-                    Alan Emerson
-                  </h6>
-                </div>
-                <p>
-                  Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                  nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                  inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
-                </p>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-11 col-lg-10 mx-auto">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <div class="name">
-                  <h6>
-                    Alan Emerson
-                  </h6>
-                </div>
-                <p>
-                  Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                  nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                  inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
-                </p>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-11 col-lg-10 mx-auto">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <div class="name">
-                  <h6>
-                    Alan Emerson
-                  </h6>
-                </div>
-                <p>
-                  Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                  nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                  inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
-                </p>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel_btn-container">
-      <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
-        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</div>
-</section>-->
-
-        <!-- end client section -->
 
         <!-- footer section -->
         <footer class="footer_section">
@@ -466,41 +370,6 @@
                             </a>
                         </div>
                     </div>
-                    <!--<div class="col-md-6 col-lg-3 footer_col">
-      <div class="footer_detail">
-        <h4>
-          About
-        </h4>
-        <p>
-          Beatae provident nobis mollitia magnam voluptatum, unde dicta facilis minima veniam corporis laudantium
-          alias tenetur eveniet illum reprehenderit fugit a delectus officiis blanditiis ea.
-        </p>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-2 mx-auto footer_col">
-      <div class="footer_link_box">
-        <h4>
-          Links
-        </h4>
-        <div class="footer_links">
-          <a class="active" href="index.html">
-            Home
-          </a>
-          <a class="" href="about.html">
-            About
-          </a>
-          <a class="" href="departments.html">
-            Departments
-          </a>
-          <a class="" href="doctors.html">
-            Doctors
-          </a>
-          <a class="" href="contact.html">
-            Contact Us
-          </a>
-        </div>
-      </div>
-    </div>-->
                 </div>
                 <div class="footer-info">
                     <p>
