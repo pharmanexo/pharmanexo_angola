@@ -278,30 +278,33 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form_container">
-                            <div id="messageReturn"></div>
                             <form id="FormContact" action="<?php echo base_url('contato/sendMessage'); ?>" method="post" role="form">
                                 <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
                                 <input type="hidden" name="action" value="validate_captcha">
                                 <div class="form-row">
                                     <div class="col-lg-6">
                                         <div>
-                                            <input required type="text" name="nome" placeholder="Seu Nome *" />
+                                            <input required class="contato" type="text" name="nome" placeholder="Seu Nome *" />
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div>
-                                            <input required type="text" name="telefone" placeholder="Seu melhor número *" />
+                                            <input required class="contato" type="text" name="telefone" placeholder="Seu melhor número *" />
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <input type="email" required name="email" placeholder="Seu melhor Email *" />
+                                    <input type="email" required class="contato" name="email" placeholder="Seu melhor Email *" />
                                 </div>
                                 <div>
-                                    <input type="text" name="mensagem" required class="message-box" placeholder="Nos conte do que precisa *" />
+                                    <input type="text" name="mensagem" required class="message-box contato" placeholder="Nos conte do que precisa *" />
+                                </div>
+                                <div class="mb-3">
+                                    <div class="error-message text-danger"></div>
+                                    <div class="sent-message text-success"></div>
                                 </div>
                                 <div class="btnsubmit">
-                                    <button id="btnContato" type="submit">
+                                    <button class="btnSubmit" id="btnContato" type="submit">
                                         ENVIAR
                                     </button>
                                 </div>
@@ -320,106 +323,6 @@
             </div>
         </section>
         <!-- end contact section -->
-
-        <!-- client section
-
-<section class="client_section layout_padding-bottom">
-<div class="container">
-  <div class="heading_container heading_center ">
-    <h2>
-      Testimonial
-    </h2>
-  </div>
-  <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <div class="row">
-          <div class="col-md-11 col-lg-10 mx-auto">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <div class="name">
-                  <h6>
-                    Alan Emerson
-                  </h6>
-                </div>
-                <p>
-                  Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                  nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                  inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
-                </p>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-11 col-lg-10 mx-auto">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <div class="name">
-                  <h6>
-                    Alan Emerson
-                  </h6>
-                </div>
-                <p>
-                  Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                  nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                  inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
-                </p>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="row">
-          <div class="col-md-11 col-lg-10 mx-auto">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/client.jpg" alt="" />
-              </div>
-              <div class="detail-box">
-                <div class="name">
-                  <h6>
-                    Alan Emerson
-                  </h6>
-                </div>
-                <p>
-                  Enim consequatur odio assumenda voluptas voluptatibus esse nobis officia. Magnam, aspernatur
-                  nostrum explicabo, distinctio laudantium delectus deserunt quia quidem magni corporis earum
-                  inventore totam consectetur corrupti! Corrupti, nihil sunt? Natus.
-                </p>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel_btn-container">
-      <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
-        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
-        <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</div>
-</section>-->
-
-        <!-- end client section -->
 
         <!-- footer section -->
         <footer class="footer_section">
@@ -466,41 +369,6 @@
                             </a>
                         </div>
                     </div>
-                    <!--<div class="col-md-6 col-lg-3 footer_col">
-      <div class="footer_detail">
-        <h4>
-          About
-        </h4>
-        <p>
-          Beatae provident nobis mollitia magnam voluptatum, unde dicta facilis minima veniam corporis laudantium
-          alias tenetur eveniet illum reprehenderit fugit a delectus officiis blanditiis ea.
-        </p>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-2 mx-auto footer_col">
-      <div class="footer_link_box">
-        <h4>
-          Links
-        </h4>
-        <div class="footer_links">
-          <a class="active" href="index.html">
-            Home
-          </a>
-          <a class="" href="about.html">
-            About
-          </a>
-          <a class="" href="departments.html">
-            Departments
-          </a>
-          <a class="" href="doctors.html">
-            Doctors
-          </a>
-          <a class="" href="contact.html">
-            Contact Us
-          </a>
-        </div>
-      </div>
-    </div>-->
                 </div>
                 <div class="footer-info">
                     <p>
@@ -567,7 +435,8 @@
             var me = $(this);
             var url = $(this).attr('action');
             var data = $(this).serialize();
-            var mess = $('#messageReturn');
+            var btn = $('#btnContato');
+            btn.html("<i class='fas fa-spin fa-spinner'></i> Enviando...").attr('disabled', true);
             grecaptcha.ready(function() {
                 // do request for recaptcha token
                 // response is promise with passed token
@@ -580,20 +449,18 @@
                     $.post(me.attr('action'), me.serialize(), function(xhr) {
                         btn.html("Enviar Mensagem").attr('disabled', false);
                         if (xhr.type === 'success') {
-                            console.log(xhr);
-                            $('.sent-message', '#formContact').html(xhr.message);
-                            alert('teste');
+                            Swal.fire({
+                                title: 'Enviamos sua solicitação com sucesso, em breve alguém do nosso time entrará em contato!',
+                                icon: 'success',
+                            }).then((result) => {
+                                $('.contato').val('');
+                            })
                         } else {
-                            $('.error-message', '#formContact').html(xhr.message);
-
+                            Swal.fire({
+                                title: 'Houve um erro ao enviar sua mensagem, nos comunique por helpdesk@pharmanexo.com.br.',
+                                icon: 'error',
+                            })
                         }
-
-                        setTimeout(function() {
-                            $('input, textarea', '#formContact').val('');
-                            $('.sent-message', '#formContact').html('');
-                            $('.error-message', '#formContact').html('');
-
-                        }, 5000);
 
 
 
@@ -605,28 +472,6 @@
 
 
         })
-
-        $('#formSupport').submit(function(e) {
-            e.preventDefault();
-            var me = $(this);
-            var btn = $('.btnSubmit');
-            btn.html("<i class='fas fa-spin fa-spinner'></i> Enviando...").attr('disabled', true);
-            $.post(me.attr('action'), me.serialize(), function(xhr) {
-                btn.html("Enviar Mensagem").attr('disabled', false);
-                if (xhr.type === 'success') {
-                    $('.text-success', '#formSupport').html(xhr.message);
-                } else {
-                    $('.error-message', '#formSupport').html(xhr.message);
-                }
-
-            }, 'JSON')
-        })
-
-        $('#exampleModal').on('hidden.bs.modal', function() {
-            $('input, textarea', '#formSupport').val('');
-            $('.text-success', '#formSupport').html('');
-            $('.error-message', '#formSupport').html('');
-        });
 
     })
 </script>
