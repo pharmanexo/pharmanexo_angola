@@ -559,7 +559,7 @@ class Usuarios extends Admin_controller
         $data['form_action'] = "{$this->route}/criar";
         $page_title = "Cadastro de usuários";
         $data['foto'] = base_url('images/usuarios/no-user.png');
-        $data['fornecedores'] = $this->fornecedor->get();
+        $data['fornecedores'] = $this->db->order_by('nome_fantasia ASC')->get('fornecedores')->result_array();;
         $data['url_perfis'] = "{$this->route}/getRoles";
         $data['url_route_success'] = $this->route;
 

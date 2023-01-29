@@ -11,6 +11,73 @@ class ImportDeivis extends CI_Controller
         $this->mix = $this->load->database('mix', true);
     }
 
+
+    public function index()
+    {
+
+        $dbSint = $this->load->database('sintese', true);
+
+        $cotacoes = $dbSint
+            ->select('cd_cotacao')
+            ->from('cotacoes')
+            ->where('cd_cotacao', 'COT19393-10')
+            // ->where("dt_inicio_cotacao between '2022-12-01' and '2022-12-10'")
+            ->where_in('id_fornecedor', [12, 112, 115, 120, 123, 125, 126, 127])
+            ->group_by('cd_cotacao')
+            ->get()
+            ->result_array();
+
+        foreach ($cotacoes as $cotacao) {
+
+            $produtosCotacao = $dbSint
+                ->where('cd_cotacao', $cotacao['cd_cotacao'])
+                ->group_by('id_produto_sintese, cd_produto_comprador')
+                ->get('cotacoes_produtos')
+                ->result_array();
+
+
+            $prodsRespondidos = $this->db
+                ->where('cd_cotacao', $cotacao['cd_cotacao'])
+                ->where_in('id_fornecedor', [12, 112, 115, 120, 123, 125, 126, 127])
+                ->get('cotacoes_produtos')
+                ->result_array();
+
+            $prodsGanhadores = $this->db
+                ->select('osp.*')
+                ->from('ocs_sintese_produtos osp')
+                ->join('ocs_sintese os', 'osp.id_ordem_compra = os.id')
+                ->where('os.Cd_Cotacao', $cotacao['cd_cotacao'])
+                ->where_in('os.id_fornecedor', [12, 112, 115, 120, 123, 125, 126, 127])
+                ->get()
+                ->result_array();
+
+
+
+            if (empty($prodsRespondidos)) {
+                continue;
+            }
+
+            foreach ($produtosCotacao as $k => $prodCot) {
+                foreach ($prodsRespondidos as $prodResp) {
+
+                    if (($prodCot['cd_produto_comprador'] == $prodResp['cd_produto_comprador']) && ($prodCot['id_produto_sintese'] == $prodResp['id_sintese'])) {
+                        $produtosCotacao[$k]['respondido'] = 'SIM';
+                    }
+
+                }
+
+                foreach ($prodsGanhadores as $prodG){
+                    if (($prodCot['cd_produto_comprador'] == $prodG['Cd_Produto_Comprador']) && ($prodCot['id_produto_sintese'] == $prodG['Id_Produto_Sintese'])) {
+                        $produtosCotacao[$k]['ganhou'] = 'SIM';
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
     public function importRest()
     {
         exit();
@@ -102,6 +169,39 @@ class ImportDeivis extends CI_Controller
 
         $this->db->insert_batch("email_notificacao", $insert);
     }
+
+    public function importCatalogo()
+    {
+        $file = fopen('catalogo_promepharma.csv', 'r');
+        $linhas = [];
+
+        while (($line = fgetcsv($file, null, ';')) !== false) {
+
+            $cod = intval($line[0]);
+            if ($cod > 0) {
+                $linhas[] = [
+                    'codigo' => $line[0],
+                    'nome_comercial' => $line[1],
+                    'marca' => $line[3],
+                    'quantidade_unidade' => intval($line[4]),
+                    'unidade' => $line[5],
+                    'rms' => $line[6],
+                    'ean' => $line[7],
+                    'ncm' => $line[8],
+                    'id_fornecedor' => 5007,
+                    'ativo' => 1,
+                    'bloqueado' => 0
+                ];
+            }
+
+
+        }
+        fclose($file);
+
+
+        $this->db->insert_batch("produtos_catalogo", $linhas);
+    }
+
 
     public function importMapa()
     {

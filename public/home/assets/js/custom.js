@@ -1,5 +1,5 @@
 // to get current year
-function getYear() {
+/*function getYear() {
     var currentDate = new Date();
     var currentYear = currentDate.getFullYear();
     if (currentYear !== null){
@@ -8,7 +8,7 @@ function getYear() {
 
 }
 
-getYear();
+getYear();*/
 
 
 // client section owl carousel
