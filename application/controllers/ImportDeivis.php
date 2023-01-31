@@ -60,7 +60,7 @@ class ImportDeivis extends CI_Controller
             foreach ($produtosCotacao as $k => $prodCot) {
                 foreach ($prodsRespondidos as $prodResp) {
 
-                    if (($prodCot['cd_produto_comprador'] == $prodResp['cd_produto_comprador']) && ($prodCot['id_produto_sintese'] == $prodResp['id_sintese'])) {
+                    if (($prodCot['cd_produto_comprador'] == $prodResp['cd_produto_comprador']) && ($prodCot['id_produto_sintese'] == $prodResp['id_produto'])) {
                         $produtosCotacao[$k]['respondido'] = 'SIM';
                     }
 
