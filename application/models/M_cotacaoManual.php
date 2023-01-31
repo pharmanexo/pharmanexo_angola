@@ -780,6 +780,9 @@ class M_cotacaoManual extends MY_Model
         ";
 
 
+        var_dump($query);
+        exit();
+
         $data = $this->db->query($query)->result_array();
         foreach ($data as $k => $item) {
 
