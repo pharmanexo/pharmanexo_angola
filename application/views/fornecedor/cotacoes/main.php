@@ -178,9 +178,16 @@
 
 
                     var icon = "";
-                    if (data.oferta == 1) {
 
-                        icon = '<a data-toggle="tooltip" title="Está cotação possui itens com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>';
+                    if (data.oferta > 0) {
+
+                        if (data.oferta > 1){
+                            icon = `<a data-toggle="tooltip" title="Está cotação possui (${data.oferta}) produto(s) com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>`;
+                        }else{
+                            icon = `<a data-toggle="tooltip" title="Está cotação possui produtos com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>`;
+                        }
+
+
                     }
 
                     var integradorBtn;
