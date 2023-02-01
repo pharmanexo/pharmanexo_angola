@@ -18,12 +18,13 @@ class ImportDeivis extends CI_Controller
         $dbSint = $this->load->database('sintese', true);
 
         $cotacoes = $dbSint
-            ->select('cd_cotacao')
-            ->from('cotacoes')
-            ->where('cd_cotacao', 'COT19393-10')
+            ->select('c.cd_cotacao, c.motivo_recusa, c.usuario_recusa, c.data_recusa, c.obs_recusa, cp.cnpj, cp.nome_fantasia, cp.razao_social')
+            ->from('cotacoes c')
+            ->join('pharmanexo.compradores cp', 'cp.id = c.id_cliente')
+            ->where('c.cd_cotacao', 'COT19393-10')
             // ->where("dt_inicio_cotacao between '2022-12-01' and '2022-12-10'")
-            ->where_in('id_fornecedor', [12, 112, 115, 120, 123, 125, 126, 127])
-            ->group_by('cd_cotacao')
+            ->where_in('c.id_fornecedor', [12, 112, 115, 120, 123, 125, 126, 127])
+            ->group_by('c.cd_cotacao')
             ->get()
             ->result_array();
 
@@ -60,8 +61,9 @@ class ImportDeivis extends CI_Controller
             foreach ($produtosCotacao as $k => $prodCot) {
                 foreach ($prodsRespondidos as $prodResp) {
 
-                    if (($prodCot['cd_produto_comprador'] == $prodResp['cd_produto_comprador']) && ($prodCot['id_produto_sintese'] == $prodResp['id_sintese'])) {
+                    if (($prodCot['cd_produto_comprador'] == $prodResp['cd_produto_comprador']) && ($prodCot['id_produto_sintese'] == $prodResp['id_produto'])) {
                         $produtosCotacao[$k]['respondido'] = 'SIM';
+                        $produtosCotacao[$k]['respondido_por'] = $prodResp['id_usuario'];
                     }
 
                 }
@@ -74,6 +76,8 @@ class ImportDeivis extends CI_Controller
 
             }
 
+            var_dump($produtosCotacao);
+            exit();
         }
 
     }
