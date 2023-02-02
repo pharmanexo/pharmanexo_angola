@@ -57,6 +57,15 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row mx-auto">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="observacao">Enviar validade na observação</label>
+                                <input type="checkbox" <?php if (isset($dados['validade']) && $dados['validade'] == 1) echo 'checked'; ?> value="1" name="validade" id="validade"> SIM
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
 
