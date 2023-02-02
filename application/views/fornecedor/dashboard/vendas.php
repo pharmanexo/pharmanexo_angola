@@ -168,7 +168,8 @@
                                 <!-- <th>Descrição</th> -->
                                 <th>Itens</th>
                                 <th>Revisada</th>
-                                <th><i class="fas fa-ban" data-toggle="tooltip" title="REMOVER ORDENAÇÃO" id="removeOrder"></i></th>
+                                <th><i class="fas fa-ban" data-toggle="tooltip" title="REMOVER ORDENAÇÃO"
+                                       id="removeOrder"></i></th>
                                 <th></th>
                                 <th></th>
                                 <th></th>
@@ -197,17 +198,17 @@
 
     <script>
 
-        $.fn.dataTable.Api.register( 'order.neutral()', function () {
-            return this.iterator( 'table', function ( s ) {
+        $.fn.dataTable.Api.register('order.neutral()', function () {
+            return this.iterator('table', function (s) {
                 s.aaSorting.length = 0;
-                s.aiDisplay.sort( function (a,b) {
-                    return a-b;
-                } );
-                s.aiDisplayMaster.sort( function (a,b) {
-                    return a-b;
-                } );
-            } );
-        } );
+                s.aiDisplay.sort(function (a, b) {
+                    return a - b;
+                });
+                s.aiDisplayMaster.sort(function (a, b) {
+                    return a - b;
+                });
+            });
+        });
 
         var url_cotacao = $('#data-table').data('cotacao');
         var url_ocultar = $('#data-table').data('ocultar');
@@ -234,7 +235,6 @@
                 localStorage.setItem(`informe`, 'off');
                 $('#informativo').remove();
             })
-
 
 
             ///Function para manter a sessão no select2
@@ -348,9 +348,10 @@
                     $('td:eq(7)', row).html(revisada);
 
                     var icon = "";
-                    if (data.oferta == 1) {
-
-                        icon = '<a data-toggle="tooltip" title="Está cotação possui itens com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>';
+                    if (data.oferta > 1) {
+                        icon = `<a data-toggle="tooltip" title="Está cotação possui (${data.oferta}) produto(s) com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>`;
+                    } else if (data.oferta == 1) {
+                        icon = `<a data-toggle="tooltip" title="Está cotação possui produtos com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>`;
                     }
 
                     var integradorBtn;
@@ -460,7 +461,7 @@
             });
 
 
-            $('#removeOrder').click(function(){
+            $('#removeOrder').click(function () {
                 table.order([11, "ASC"]).draw();
             });
 
