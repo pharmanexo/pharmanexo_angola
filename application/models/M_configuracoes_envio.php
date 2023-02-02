@@ -12,112 +12,120 @@ class M_configuracoes_envio extends MY_Model
     {
         parent::__construct();
     }
-	
+
     /**
      * Salva a observação por estado para exibir no envio da cotação manual e automatica
      *
      * @param - POST - request do form
      * @return bool
      */
-	public function gravar($post)
-	{
+    public function gravar($post)
+    {
 
-		$insert = [];
+        $insert = [];
 
-		$this->db->trans_begin();
+        $this->db->trans_begin();
 
-		foreach ($post['estados'] as $id_estado) {
+       foreach ($post['integradores'] as $integrador){
+           foreach ($post['estados'] as $id_estado) {
 
-			# Se o usuario marcar a opção todos, registra somente um registro
-			if ( in_array(0, $post['estados']) ) {
+               # Se o usuario marcar a opção todos, registra somente um registro
+               if (in_array(0, $post['estados'])) {
 
-				# Verifica se o tipo da configuração ja possui registro para todos
-				$this->db->where("id_fornecedor", $this->session->id_fornecedor);
-				$this->db->where("tipo", $post['tipo']);
-				$this->db->where("integrador", $post['integradores']);
-				$existe = $this->db->get($this->table)->row_array();
+                   # Verifica se o tipo da configuração ja possui registro para todos
+                   $this->db->where("id_fornecedor", $this->session->id_fornecedor);
+                   $this->db->where("tipo", $post['tipo']);
+                   $this->db->where("integrador", $integrador);
+                   $existe = $this->db->get($this->table)->row_array();
 
 
-				if ( isset($existe) && !empty($existe) ) {
-					
-					# Remove todos os registros anterior
-					$this->db->where('tipo', $post['tipo'])->where("id_fornecedor", $this->session->id_fornecedor)->delete($this->table);
-				}
-				
-				$insert[] = [
-					'observacao' => $post['observacao'],
-					'tipo' => $post['tipo'],
-					'integrador' => $post['integrador'],
-					'id_estado' => $id_estado,
-					'id_fornecedor' => $this->session->id_fornecedor
-				];
+                   if (isset($existe) && !empty($existe)) {
 
-				break;
-			}
-			 else {
+                       # Remove todos os registros anterior
+                       $this->db->where('tipo', $post['tipo'])->where("id_fornecedor", $this->session->id_fornecedor)->delete($this->table);
+                   }
 
-				$this->db->select("id");
-				$this->db->where('id_estado', $id_estado);
-				$this->db->where('tipo', $post['tipo']);
-				$this->db->where('integrador', $post['integrador']);
-				$this->db->where('id_fornecedor', $this->session->id_fornecedor);
-				$config = $this->db->get($this->table)->row_array();
+                   $insert[] = [
+                       'observacao' => $post['observacao'],
+                       'tipo' => $post['tipo'],
+                       'integrador' => $integrador,
+                       'validade' => isset($post['validade']) ? $post['validade'] : 0,
+                       'id_estado' => $id_estado,
+                       'id_fornecedor' => $this->session->id_fornecedor
+                   ];
 
-				if ( isset($config) && !empty($config) ) {
-					
-					$this->db->where("id", $config['id'])->update($this->table, [
-						'observacao' => $post['observacao'],
-						'tipo' => $post['tipo'],
-						'integrador' => $post['integrador'],
-					]);
-				} else {
+                   break;
+               } else {
 
-					$insert[] = [
-						'observacao' => $post['observacao'],
-						'tipo' => $post['tipo'],
-						'integrador' => $post['integrador'],
-						'id_estado' => $id_estado,
-						'id_fornecedor' => $this->session->id_fornecedor
-					];
-				}
-			}
-		}
+                   $this->db->select("id");
+                   $this->db->where('id_estado', $id_estado);
+                   $this->db->where('tipo', $post['tipo']);
+                   $this->db->where('integrador', $integrador);
+                   $this->db->where('id_fornecedor', $this->session->id_fornecedor);
+                   $config = $this->db->get($this->table)->row_array();
 
-		if ( !empty($insert) ) {
-			
-			$this->db->insert_batch($this->table, $insert);
-		}
+                   if (isset($config) && !empty($config)) {
 
-		if ($this->db->trans_status() === false) {
+                       $this->db->where("id", $config['id'])->update($this->table, [
+                           'observacao' => $post['observacao'],
+                           'tipo' => $post['tipo'],
+                           'integrador' => $integrador,
+                       ]);
+                   } else {
 
-	        $this->db->trans_rollback();
+                       $insert[] = [
+                           'observacao' => $post['observacao'],
+                           'tipo' => $post['tipo'],
+                           'integrador' => $integrador,
+                           'validade' => isset($post['validade']) ? $post['validade'] : 0,
+                           'id_estado' => $id_estado,
+                           'id_fornecedor' => $this->session->id_fornecedor
+                       ];
+                   }
+               }
+           }
+       }
 
-	        return false;
-		} else {
 
-	        $this->db->trans_commit();
 
-	        return true;
-		}
-	}
+        if (!empty($insert)) {
 
-	/**
+            $this->db->insert_batch($this->table, $insert);
+        }
+
+        if ($this->db->trans_status() === false) {
+
+            $this->db->trans_rollback();
+
+            return false;
+        } else {
+
+            $this->db->trans_commit();
+
+            return true;
+        }
+    }
+
+    /**
      * Atualiza a observação exibida no envio da cotação manual e automatica
      *
      * @param - POST - request do form
      * @return bool
      */
-	public function atualizar($post)
-	{
+    public function atualizar($post)
+    {
+        $data = [
+            'observacao' => $post['observacao'],
+            'validade' => isset($post['validade']) ? $post['validade'] : 0,
+        ];
+        $updt = $this->db->where("id", $post['id'])->update($this->table, $data);
 
-		$updt = $this->db->where("id", $post['id'])->update($this->table, ['observacao' => $post['observacao'] ]);
+        if ($updt) {
 
-		if ( $updt ) {
-			
-			return true;
-		} else {
+            return true;
+        } else {
 
-			return false;
-		}
-	}
+            return false;
+        }
+    }
 }
