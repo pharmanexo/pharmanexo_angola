@@ -721,7 +721,7 @@ class M_cotacaoManual extends MY_Model
     		SELECT 
     			cot.cd_cotacao,
 	            cot_prods.ds_produto_comprador,
-	            cot_prods.id_produto_sintese,
+	            coalesce(pms.id_produto, marc_sint.id_produto) as id_produto_sintese,
                 cot_prods.cd_produto_comprador,
 	            pc.codigo,
 	            pc.id,
@@ -753,8 +753,9 @@ class M_cotacaoManual extends MY_Model
             JOIN cotacoes_sintese.cotacoes_produtos cot_prods
                 ON cot_prods.id_fornecedor = cot.id_fornecedor
                 AND cot_prods.cd_cotacao = cot.cd_cotacao
-            LEFT JOIN pharmanexo.produtos_marca_sintese marc_sint
-                ON marc_sint.id_produto = cot_prods.id_produto_sintese
+                 left join produtos_materiais_sintese pms
+                   on pms.cd_produto_comprador = cot_prods.cd_produto_comprador and pms.id_cliente = cot.id_cliente
+            LEFT JOIN pharmanexo.produtos_marca_sintese marc_sint ON marc_sint.id_produto = coalesce(pms.id_produto, marc_sint.id_produto)
             LEFT JOIN pharmanexo.produtos_fornecedores_sintese forn_sint
                 ON forn_sint.id_fornecedor = cot.id_fornecedor
                 AND forn_sint.id_sintese = marc_sint.id_sintese
@@ -779,9 +780,6 @@ class M_cotacaoManual extends MY_Model
             ORDER BY cot_prods.ds_produto_comprador ASC, cot_prods.id_fornecedor
         ";
 
-
-        var_dump($query);
-        exit();
 
         $data = $this->db->query($query)->result_array();
         foreach ($data as $k => $item) {
@@ -901,13 +899,14 @@ class M_cotacaoManual extends MY_Model
             GROUP BY 
                cot.cd_cotacao,
                 forn_sint.cd_produto,
-                CONCAT(pc.nome_comercial, ' - ', (case when (pc.apresentacao is null OR pc.apresentacao = '') then pc.descricao else pc.apresentacao end)),
+                cot_prods.cd_produto_comprador,
                 pc.marca,
                 pc.id_marca,
                 pc.quantidade_unidade
             HAVING forn_sint.cd_produto is not null
             ORDER BY cot_prods.ds_produto_comprador ASC
         ";
+
 
         $q = $this->db->query($query)->result_array();
 
@@ -1700,8 +1699,6 @@ class M_cotacaoManual extends MY_Model
                                 $this->db->insert('produtos_fornecedores_sintese', $data);
                             }
                         }
-                    } else {
-                        return ['type' => false, 'message' => 'Produto Pharmanexo não encontrado!'];
                     }
                 }
                 break;
@@ -1712,18 +1709,15 @@ class M_cotacaoManual extends MY_Model
                         ->where('cd_produto', $row['cd_produto'])
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->limit(1)
-                        ->get('produtos_fornecedores_sintese') //Tabela de De -> Para inicial
+                        ->get('produtos_fornecedores_sintese')
                         ->row_array();
 
                     if (!empty($produtoForn)) {
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
+                            ->get('produtos_marca_sintese')
                             ->row_array();
-                    } else {
-                        return ['type' => false, 'message' => 'Produto do catalo sem De -> Para!'];
-
                     }
 
                     if (!empty($produtoSint)) {
@@ -1746,7 +1740,7 @@ class M_cotacaoManual extends MY_Model
                     } else {
 
                         $this->db->trans_rollback();
-                        return ['type' => false, 'message' => 'Produto Pharmanexo não encontrado!'];
+                        return false;
                     }
                 }
                 break;
@@ -1757,7 +1751,7 @@ class M_cotacaoManual extends MY_Model
                         ->where('cd_produto', $row['cd_produto'])
                         ->where('id_fornecedor', $this->session->id_fornecedor)
                         ->limit(1)
-                        ->get('produtos_fornecedores_sintese') //Tabela de De -> Para inicial
+                        ->get('produtos_fornecedores_sintese')
                         ->row_array();
 
 
@@ -1765,10 +1759,8 @@ class M_cotacaoManual extends MY_Model
                         $produtoSint = $this->db
                             ->where('id_sintese', $produtoForn['id_sintese'])
                             ->limit(1)
-                            ->get('produtos_marca_sintese') //Tabela de catalogo do Pharmanexo
+                            ->get('produtos_marca_sintese')
                             ->row_array();
-                    } else {
-                        return ['type' => false, 'message' => 'Produto do catalo sem De -> Para!'];
                     }
 
                     if (!empty($produtoSint)) {
@@ -1791,7 +1783,7 @@ class M_cotacaoManual extends MY_Model
                     } else {
 
                         $this->db->trans_rollback();
-                        return ['type' => false, 'message' => 'Produto Pharmanexo não encontrado!'];
+                        return false;
                     }
                 }
                 break;
@@ -1802,12 +1794,12 @@ class M_cotacaoManual extends MY_Model
 
             $this->db->trans_rollback();
 
-            return ['type' => false, 'message' => 'Erro ao Realizar De -> Para!'];
+            return false;
         } else {
 
             $this->db->trans_commit();
 
-            return ['type' => true, 'message' => 'Produto Pharmanexo não encontrado!'];
+            return true;
         }
     }
 

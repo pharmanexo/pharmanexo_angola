@@ -1,96 +1,47 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Cotacoes>
-    <Cotacao>
-        <Cd_Cotacao>COT13645-1197</Cd_Cotacao>
-        <Cd_Comprador>11344038001684</Cd_Comprador>
-        <Cd_Condicao_Pagamento>Condição de Pagamento com erro. 30 DIAS, COM DEPÓSITO EM CONTA.</Cd_Condicao_Pagamento>
-        <Dt_Inicio_Cotacao>17/01/2023 18:16:54</Dt_Inicio_Cotacao>
-        <Dt_Fim_Cotacao>25/01/2023 10:00:00</Dt_Fim_Cotacao>
-        <Dt_Validade_Preco>09/02/2023 10:00:00</Dt_Validade_Preco>
-        <Ds_Entrega>23/01/2023;</Ds_Entrega>
-        <Ds_Filiais>11344038001684;</Ds_Filiais>
-        <Ds_Cotacao>DIETA E NUTRIÇÃO</Ds_Cotacao>
-        <Nm_Usuario>MARCLEI JONE DE ALMEIDA NUNES</Nm_Usuario>
-        <Ds_Observacao></Ds_Observacao>
-        <Produtos_Cotacao>
-            <Produto_Cotacao>
-                <Id_Produto_Sintese>20613</Id_Produto_Sintese>
-                <Cd_Produto_Comprador>D0049</Cd_Produto_Comprador>
-                <Ds_Produto_Comprador>DIETA PADRÃO: HIPERCALÓRICA (DENSIDADE CALÓRICA: 1,5 KCAL/ML), HIPERPROTEICA COM
-                    MINÍMO DE 75 G/L, NORMOLIPÍDICA, NORMOGLICÍDICA, ISENTA DE FIBRAS, SACAROSE, LACTOSE E GLÚTEN. 1 L -
-                    D0049
-                </Ds_Produto_Comprador>
-                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
-                <Ds_Complementar></Ds_Complementar>
-                <Qt_Produto_Total>150</Qt_Produto_Total>
-            </Produto_Cotacao>
-            <Produto_Cotacao>
-                <Id_Produto_Sintese>20613</Id_Produto_Sintese>
-                <Cd_Produto_Comprador>D0050</Cd_Produto_Comprador>
-                <Ds_Produto_Comprador>DIETA PADRÃO: HIPERCALÓRICA (DENSIDADE CALÓRICA: 2.0 KCAL/ML), HIPERPROTEICA,
-                    NORMOLIPÍDICA, NORMOGLICÍDICA, ISENTA DE FIBRAS, SACAROSE, LACTOSE E GLÚTEN. 500ML - D0050
-                </Ds_Produto_Comprador>
-                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
-                <Ds_Complementar></Ds_Complementar>
-                <Qt_Produto_Total>200</Qt_Produto_Total>
-            </Produto_Cotacao>
-            <Produto_Cotacao>
-                <Id_Produto_Sintese>18328</Id_Produto_Sintese>
-                <Cd_Produto_Comprador>D0064</Cd_Produto_Comprador>
-                <Ds_Produto_Comprador>ESPESSANTE ALIMENTAR EM SACHÊ - D0064</Ds_Produto_Comprador>
-                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
-                <Ds_Complementar></Ds_Complementar>
-                <Qt_Produto_Total>96</Qt_Produto_Total>
-            </Produto_Cotacao>
-            <Produto_Cotacao>
-                <Id_Produto_Sintese>8333</Id_Produto_Sintese>
-                <Cd_Produto_Comprador>D0071</Cd_Produto_Comprador>
-                <Ds_Produto_Comprador>PROTEINA ISOLADA DO SORO DO LEITE EM SACHÊ - D0071</Ds_Produto_Comprador>
-                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
-                <Ds_Complementar></Ds_Complementar>
-                <Qt_Produto_Total>250</Qt_Produto_Total>
-            </Produto_Cotacao>
-            <Produto_Cotacao>
-                <Id_Produto_Sintese>8425</Id_Produto_Sintese>
-                <Cd_Produto_Comprador>D0055</Cd_Produto_Comprador>
-                <Ds_Produto_Comprador>SUPLEMENTO ORAL HIPERCALÓRICO, HIPERPROTEÍCO NORMOLIPÍDICO, NORMOGLICÍDICO, SEM
-                    FIBRAS, APRESENTAÇÃO DE 200ML - D0055
-                </Ds_Produto_Comprador>
-                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
-                <Ds_Complementar></Ds_Complementar>
-                <Qt_Produto_Total>300</Qt_Produto_Total>
-            </Produto_Cotacao>
-            <Produto_Cotacao>
-                <Id_Produto_Sintese>8425</Id_Produto_Sintese>
-                <Cd_Produto_Comprador>D0056</Cd_Produto_Comprador>
-                <Ds_Produto_Comprador>SUPLEMENTO ORAL HIPERCALÓRICO, NORMOPROTEÍCO NORMOLIPÍDICO, NORMOGLICÍDICO, SEM
-                    FIBRAS, APRESENTAÇÃO DE 200ML - D0056
-                </Ds_Produto_Comprador>
-                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
-                <Ds_Complementar></Ds_Complementar>
-                <Qt_Produto_Total>200</Qt_Produto_Total>
-            </Produto_Cotacao>
-            <Produto_Cotacao>
-                <Id_Produto_Sintese>25646</Id_Produto_Sintese>
-                <Cd_Produto_Comprador>D0060</Cd_Produto_Comprador>
-                <Ds_Produto_Comprador>SUPLEMENTO ORAL NORMOCALORICO E HIPERPROTEICO  200ML  - SEM SACAROSE - D0060
-                </Ds_Produto_Comprador>
-                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
-                <Ds_Complementar></Ds_Complementar>
-                <Qt_Produto_Total>200</Qt_Produto_Total>
-            </Produto_Cotacao>
-            <Produto_Cotacao>
-                <Id_Produto_Sintese>8435</Id_Produto_Sintese>
-                <Cd_Produto_Comprador>D0057</Cd_Produto_Comprador>
-                <Ds_Produto_Comprador>SUPLEMENTO ORAL PARA CONTROLE GLICÊMICO HIPERCALÓRICO  E HIPERPROTÉICO (200ML) -
-                    D0057
-                </Ds_Produto_Comprador>
-                <Ds_Unidade_Compra>UNIDADE</Ds_Unidade_Compra>
-                <Ds_Complementar></Ds_Complementar>
-                <Qt_Produto_Total>50</Qt_Produto_Total>
-            </Produto_Cotacao>
-        </Produtos_Cotacao>
-    </Cotacao>
-</Cotacoes>]]></ObterCotacoesResult>
-        </ObterCotacoesResponse>
-        </soap:Body>
+<Produto>
+    <Produto>
+        <Dt_Gravacao>02/02/2023 16:58:21</Dt_Gravacao>
+        <Cd_Fornecedor>35997345000146</Cd_Fornecedor>
+        <Id_Produto>21462</Id_Produto>
+        <Ds_Produto>Agulha de aspiração ponta romba 18g x 1 (1,2mm x 25mm) - und</Ds_Produto>
+        <Produtos_Marca>
+            <Produto_Marca>
+                <Id_Produto_Marca>479393</Id_Produto_Marca>
+                <Ds_Marca></Ds_Marca>
+                <Id_Marca>32</Id_Marca>
+            </Produto_Marca>
+            <Produto_Marca>
+                <Id_Produto_Marca>479052</Id_Produto_Marca>
+                <Ds_Marca></Ds_Marca>
+                <Id_Marca>879</Id_Marca>
+            </Produto_Marca>
+            <Produto_Marca>
+                <Id_Produto_Marca>562656</Id_Produto_Marca>
+                <Ds_Marca></Ds_Marca>
+                <Id_Marca>1876</Id_Marca>
+            </Produto_Marca>
+            <Produto_Marca>
+                <Id_Produto_Marca>484908</Id_Produto_Marca>
+                <Ds_Marca></Ds_Marca>
+                <Id_Marca>3331</Id_Marca>
+            </Produto_Marca>
+            <Produto_Marca>
+                <Id_Produto_Marca>478987</Id_Produto_Marca>
+                <Ds_Marca></Ds_Marca>
+                <Id_Marca>6656</Id_Marca>
+            </Produto_Marca>
+            <Produto_Marca>
+                <Id_Produto_Marca>478825</Id_Produto_Marca>
+                <Ds_Marca></Ds_Marca>
+                <Id_Marca>8104</Id_Marca>
+            </Produto_Marca>
+            <Produto_Marca>
+                <Id_Produto_Marca>479084</Id_Produto_Marca>
+                <Ds_Marca>Agulha de aspiração ponta romba 18g x 1 (1,2mm x 25mm) - und</Ds_Marca>
+                <Id_Marca>17151</Id_Marca>
+            </Produto_Marca>
+        </Produtos_Marca>
+    </Produto>
+</Produto>]]></ObterProdutosResult>
+        </ObterProdutosResponse>
