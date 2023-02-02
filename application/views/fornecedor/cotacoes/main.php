@@ -178,16 +178,10 @@
 
 
                     var icon = "";
-
-                    if (data.oferta > 0) {
-
-                        if (data.oferta > 1){
-                            icon = `<a data-toggle="tooltip" title="Está cotação possui (${data.oferta}) produto(s) com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>`;
-                        }else{
-                            icon = `<a data-toggle="tooltip" title="Está cotação possui produtos com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>`;
-                        }
-
-
+                    if (data.oferta > 1) {
+                        icon = `<a data-toggle="tooltip" title="Está cotação possui (${data.oferta}) produto(s) com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>`;
+                    } else if (data.oferta == 1) {
+                        icon = `<a data-toggle="tooltip" title="Está cotação possui produtos com de/para que podem ser respondidos" ><i class="fas fa-circle" style="font-size: 12px; color: #28a745" ></i></a>`;
                     }
 
                     var integradorBtn;
@@ -217,7 +211,7 @@
                             <div class="dropdown-menu">
                                 <a data-action="list" data-href="${url_info}${data.integrador}/${data.cd_cotacao}/1" class="dropdown-item">Listar Produtos</a>
                                 <a data-action="details" data-href="${url_info}${data.integrador}/${data.cd_cotacao}" class="dropdown-item">Dados Cotação</a>
-                                <a href="${url_ocultar}${data.integrador}/${data.cd_cotacao}" class="dropdown-item">Ocultar Cotação</a>
+                                <a data-esconder="ocultar" data-href="${url_ocultar}${data.integrador}/${data.cd_cotacao}" class="dropdown-item">Ocultar Cotação</a>
                             </div>
                         </div>
                     `;
@@ -260,12 +254,12 @@
                         return false;
                     });
 
-                    $('[data-ocultar]').click(function (e) {
+                    $('[data-esconder]').click(function (e) {
                         e.preventDefault();
 
-                        var url = $(this).attr('href');
+                        var url = $(this).data('href');
 
-                      /*  $.ajax({
+                        $.ajax({
                             url: url,
                             type: 'post',
                             contentType: false,
@@ -279,7 +273,7 @@
 
                             },
                             error: function(xhr) {}
-                        });*/
+                        });
                     });
                 }
             });
