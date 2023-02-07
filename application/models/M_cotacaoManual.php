@@ -721,7 +721,7 @@ class M_cotacaoManual extends MY_Model
     		SELECT 
     			cot.cd_cotacao,
 	            cot_prods.ds_produto_comprador,
-	            coalesce(pms.id_produto, marc_sint.id_produto) as id_produto_sintese,
+	            cot_prods.id_produto_sintese,
                 cot_prods.cd_produto_comprador,
 	            pc.codigo,
 	            pc.id,
@@ -753,9 +753,8 @@ class M_cotacaoManual extends MY_Model
             JOIN cotacoes_sintese.cotacoes_produtos cot_prods
                 ON cot_prods.id_fornecedor = cot.id_fornecedor
                 AND cot_prods.cd_cotacao = cot.cd_cotacao
-                 left join produtos_materiais_sintese pms
-                   on pms.cd_produto_comprador = cot_prods.cd_produto_comprador and pms.id_cliente = cot.id_cliente
-            LEFT JOIN pharmanexo.produtos_marca_sintese marc_sint ON marc_sint.id_produto = coalesce(pms.id_produto, marc_sint.id_produto)
+            LEFT JOIN pharmanexo.produtos_marca_sintese marc_sint
+                ON marc_sint.id_produto = cot_prods.id_produto_sintese
             LEFT JOIN pharmanexo.produtos_fornecedores_sintese forn_sint
                 ON forn_sint.id_fornecedor = cot.id_fornecedor
                 AND forn_sint.id_sintese = marc_sint.id_sintese

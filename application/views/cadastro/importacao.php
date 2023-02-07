@@ -108,43 +108,56 @@
                     <form action="<?php echo $form_action; ?>" class="" id="formCad">
                         <div class="row">
                             <div class="col-12">
-                                <p>Olá, seja bem-vindo ao Pharmanexo.</p>
-                                <p>Vamos prosseguir com seu cadastro, carregamos os dados para facilitar o
-                                    preenchimento, fique a vontade para alterar caso encontre alguma informação
-                                    divergente/desatualizada.</p>
+                                <h4>Conectado como: <?php if (isset($dados['nome_fantasia'])) echo $dados['nome_fantasia']; ?>.</h4>
+                                <p>Agora que cadastramos a empresa, precisamos de alguns documentos e iniciaremos a importação do catálogo de produtos</p>
                             </div>
                         </div>
+                        <br>
+                        <h4>Documentos</h4>
+                        <hr style="background-color: #0b0f3d">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="cartao_cnpj" class="btn btn-outline-primary btn-block">
+                                        Enviar Cartão CNPJ
+                                        <input type="file" id="cartao_cnpj" hidden name="cartao_cnpj">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <h4>Importação inicial de dados</h4>
+                        <p>Vamos importar o seu cadastro de produtos, preços e estoque. <br> Para isso disponibilizamos os botões abaixo, junto com modelo de cada arquivo e um manual para auxiliar nesse processo.
+                            <a href="">Clique para baixar o manual</a></p>
                         <hr style="background-color: #0b0f3d">
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="">CNPJ</label>
-                                    <input type="text" id="cnpj" name="cnpj" required  value="<?php if (isset($dados['cnpj'])) echo $dados['cnpj']; ?>" class="form-control text-center">
+                                    <label for="cartao_cnpj" class="btn btn-outline-info btn-block">
+                                        Enviar Produtos
+                                        <input type="file" id="cartao_cnpj" hidden name="cartao_cnpj">
+                                    </label>
                                 </div>
+                                <a href="" class="text-center">Baixa template</a>
                             </div>
-                            <div class="col-8">
+                            <div class="col-4">
                                 <div class="form-group">
-                                    <label for="">Nome Fantasia</label>
-                                    <input type="text" id="nome_fantasia" required  value="<?php if (isset($dados['nome_fantasia'])) echo $dados['nome_fantasia']; ?>" name="nome_fantasia" class="form-control text-center">
+                                    <label for="cartao_cnpj" class="btn btn-outline-info btn-block">
+                                        Enviar Estoque/Lotes
+                                        <input type="file" id="cartao_cnpj" hidden name="cartao_cnpj">
+                                    </label>
                                 </div>
+                                <a href="">Baixa template</a>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Razão Social</label>
-                            <input type="text" id="razao_social" required  value="<?php if (isset($dados['razao_social'])) echo $dados['razao_social']; ?>" name="razao_social" class="form-control text-center">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="">Seu Nome</label>
-                            <input type="text" id="nome"   name="nome" class="form-control text-center">
-                        </div>
-                        <div class="form-group">
-                            <label for="">Celular</label>
-                            <input type="text" id="celular"   name="celular" class="form-control text-center">
-                        </div>
-                        <div class="form-group">
-                            <label for="">E-mail</label>
-                            <input type="text" id="email"   name="email" class="form-control text-center">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="cartao_cnpj" class="btn btn-outline-info btn-block">
+                                        Enviar Preços
+                                        <input type="file" id="cartao_cnpj" hidden name="cartao_cnpj">
+                                    </label>
+                                </div>
+                                <a href="">Baixa template</a>
+                            </div>
                         </div>
                         <hr>
                         <div class="text-right">
@@ -302,11 +315,7 @@
                 Swal.fire({
                     icon: xhr.type,
                     text: xhr.message
-                }).then(function (e){
-                    if (xhr.url != ''){
-                        window.location = xhr.url;
-                    }
-                });
+                })
 
                 if (xhr.type == 'success'){
                     $('#formCad').reset();

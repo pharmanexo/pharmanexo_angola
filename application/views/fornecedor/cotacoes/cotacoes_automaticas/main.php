@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-3 form-group">
                         <label for="filtro-cliente">Comprador</label>
-                        <select class="select2" id="filtro-cliente" data-index="1">
+                        <select class="select2" id="filtro-cliente" data-index="5">
                             <option value="">Selecione</option>
                             <?php foreach($compradores as $comprador) { ?>
                              <option value="<?php echo $comprador['id'] ?>"><?php echo "{$comprador['razao_social']} - {$comprador['cnpj']}" ?></option>
@@ -120,8 +120,8 @@
                     }
 
                     if ($('#filtro-cliente').val() !== '') {
-                        nw_data.columns[4].search.value = $('#filtro-cliente').val();
-                        nw_data.columns[4].search.type = 'equal';
+                        nw_data.columns[5].search.value = $('#filtro-cliente').val();
+                        nw_data.columns[5].search.type = 'equal';
                     }
 
                     if ($('#cd_cotacao').val() !== '') {

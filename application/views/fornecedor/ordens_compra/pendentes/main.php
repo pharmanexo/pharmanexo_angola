@@ -140,14 +140,14 @@
 
                     if ($('#id_cliente').val() != '') {
 
-                        data.columns[8].search.value = $('#id_cliente').val().toString();
-                        data.columns[8].search.type = 'equal';
+                        data.columns[9].search.value = $('#id_cliente').val().toString();
+                        data.columns[9].search.type = 'equal';
                     }
 
                     if ( $("#id_integrador").val() != '' ) {
 
-                        data.columns[9].search.value = $('#id_integrador').val();
-                        data.columns[9].search.type = 'equal';
+                        data.columns[10].search.value = $('#id_integrador').val();
+                        data.columns[10].search.type = 'equal';
                     }
 
                     if ($('#estados').val() !== '') {

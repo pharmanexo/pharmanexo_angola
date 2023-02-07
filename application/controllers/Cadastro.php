@@ -27,18 +27,133 @@ class Cadastro extends CI_Controller
 
     }
 
-    public function novoRegistro()
+    public function arquivos()
     {
+        if (!isset($_SESSION['novoDist'])){
+            redirect($this->route);
+        }
+
         $data['header'] = $this->template->homeheader([]);
         $data['navbar'] = $this->template->homenavbar([]);
         $data['banner'] = $this->template->homebanner([]);
         $data['scripts'] = $this->template->homescripts([]);
         $data['footer'] = $this->template->homefooter([]);
 
-        $data['form_action'] = "{$this->route}/getCnpj";
+        $data['form_action'] = "{$this->route}/uploadFiles";
+        $data['dados'] = $_SESSION['novoDist'];
+
+        $this->load->view('cadastro/importacao', $data, FALSE);
+
+    }
+
+    public function novoRegistro()
+    {
+
+        $data['header'] = $this->template->homeheader([]);
+        $data['navbar'] = $this->template->homenavbar([]);
+        $data['banner'] = $this->template->homebanner([]);
+        $data['scripts'] = $this->template->homescripts([]);
+        $data['footer'] = $this->template->homefooter([]);
+
+        $data['form_action'] = "{$this->route}/salvar";
         $data['dados'] = (isset($_SESSION['novoCadastro']['data'])) ? $_SESSION['novoCadastro']['data'] : [];
 
         $this->load->view('cadastro/step_1', $data, FALSE);
+    }
+
+    public function salvar()
+    {
+        if ($this->input->method() == 'post') {
+            $post = $this->input->post();
+
+            $this->form_validation->set_error_delimiters('', '');
+            $this->form_validation->set_rules('cnpj', 'CNPJ', 'required');
+            $this->form_validation->set_rules('nome_fantasia', 'Nome Fantasia', 'required');
+            $this->form_validation->set_rules('razao_social', 'Razão Social', 'required');
+            $this->form_validation->set_rules('nome', 'Nome de Contato', 'required');
+            $this->form_validation->set_rules('celular', 'Celular', 'required');
+            $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email');
+
+
+            if ($this->form_validation->run() == FALSE) {
+                $erros = $this->form_validation->error_string();
+
+                $output = [
+                    'type' => 'warning',
+                    'message' => 'Existem campos com erro: ' . $erros
+                ];
+
+            } else {
+
+                $this->db->trans_begin();
+                //verificar se o distribuidor ja existe
+                $dist = $this->db->select('id')->where('cnpj', $post['cnpj'])->get('fornecedores')->row_array();
+
+                if (!empty($dist)){
+                    var_dump($dist);
+                    exit();
+                }else{
+                    $novoDist = [
+                        'cnpj' => $post['cnpj'],
+                        'nome_fantasia' => $post['nome_fantasia'],
+                        'razao_social' => $post['razao_social'],
+                    ];
+
+
+                    $this->db->insert("fornecedores", $novoDist);
+                    $idDist = $this->db->insert_id();
+
+                    $novoContatoDist = [
+                        [
+                            'id_fornecedor' => $idDist,
+                            'nome' => $post['nome'],
+                            'tipo' => 'email',
+                            'valor' => $post['email'],
+                            'data_cadastro' => date("Y-m-y H:i:s", time())
+                        ],
+                        [
+                            'id_fornecedor' => $idDist,
+                            'nome' => $post['nome'],
+                            'tipo' => 'celular',
+                            'valor' => $post['celular'],
+                            'data_cadastro' => date("Y-m-y H:i:s", time())
+                        ]
+                    ];
+
+                    $this->db->insert_batch('fornecedores_contatos', $novoContatoDist);
+
+                }
+
+                if ($this->db->trans_status() === FALSE)
+                {
+                    $this->db->trans_rollback();
+
+                    $output = [
+                        'type' => 'warning',
+                        'message' => 'Não foi possível realizar o cadastro, entrem em contato com o suporte'
+                    ];
+                }
+                else
+                {
+                    $this->db->trans_commit();
+
+                    $post['id_dist'] = $idDist;
+                    $_SESSION['novoDist'] = $post;
+
+                    $output = [
+                        'type' => 'success',
+                        'message' => 'Cadastro realizado com sucesso.',
+                        'url' => "{$this->route}/arquivos"
+                    ];
+                }
+
+            }
+
+
+            if (!empty($output)) {
+                $this->output->set_content_type('application/json')->set_output(json_encode($output));
+            }
+        }
     }
 
     public function politica_cookies()
@@ -279,11 +394,11 @@ class Cadastro extends CI_Controller
                     $getCnpjReceita = file_get_contents("https://receitaws.com.br/v1/cnpj/{$cnpj}");
                     $array = json_decode($getCnpjReceita, true);
 
-                    if (isset($array['none'])){
+                    if (isset($array['none'])) {
                         $post['razao_social'] = $array['none'];
                     }
 
-                    if (isset($array['fantasia'])){
+                    if (isset($array['fantasia'])) {
                         $post['nome_fantasia'] = $array['fantasia'];
                     }
 
@@ -298,14 +413,12 @@ class Cadastro extends CI_Controller
 
             }
 
-            if (!empty($output)){
+            if (!empty($output)) {
 
                 $_SESSION['novoCadastro'] = $output;
                 $this->output->set_content_type('application/json')->set_output(json_encode($output));
 
             }
-
-
 
 
         }

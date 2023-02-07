@@ -14,27 +14,34 @@
         <div class="card-body">
 
 
-            <form action="<?php if(isset($url_filtros)) echo $url_filtros; ?>" method="post" id="formFiltro">
+            <form action="<?php if (isset($url_filtros)) echo $url_filtros; ?>" method="post" id="formFiltro">
                 <div class="row">
-                    <div class="col-2" <?php echo ( $this->session->has_userdata('credencial_bionexo') ) ? '' : 'hidden'; ?>>
+                    <div class="col-2" <?php echo ($this->session->has_userdata('credencial_bionexo')) ? '' : 'hidden'; ?>>
                         <div class="form-group">
                             <label for="integrador">Integrador</label>
                             <br>
-                            <select class="select2" name="integrador" id="integrador" data-placeholder="Todas" data-allow-clear="true">
+                            <select class="select2" name="integrador" id="integrador" data-placeholder="Todas"
+                                    data-allow-clear="true">
                                 <option></option>
-                                <option value="SINTESE" <?php echo ( isset($_SESSION['filtros']['integrador']) && $_SESSION['filtros']['integrador'] == 'SINTESE') ? 'selected' : ''; ?>>Sintese</option>
-                                <option value="BIONEXO" <?php echo ( isset($_SESSION['filtros']['integrador']) && $_SESSION['filtros']['integrador'] == 'BIONEXO') ? 'selected' : ''; ?>>Bionexo</option>
-                                <option value="APOIO" <?php echo ( isset($_SESSION['filtros']['integrador']) && $_SESSION['filtros']['integrador'] == 'APOIO') ? 'selected' : ''; ?>>Apoio</option>
+                                <option value="SINTESE" <?php echo (isset($_SESSION['filtros']['integrador']) && $_SESSION['filtros']['integrador'] == 'SINTESE') ? 'selected' : ''; ?>>
+                                    Sintese
+                                </option>
+                                <option value="BIONEXO" <?php echo (isset($_SESSION['filtros']['integrador']) && $_SESSION['filtros']['integrador'] == 'BIONEXO') ? 'selected' : ''; ?>>
+                                    Bionexo
+                                </option>
+                                <option value="APOIO" <?php echo (isset($_SESSION['filtros']['integrador']) && $_SESSION['filtros']['integrador'] == 'APOIO') ? 'selected' : ''; ?>>
+                                    Apoio
+                                </option>
                             </select>
                         </div>
                     </div>
-                    <div class="<?php echo ( $this->session->has_userdata('credencial_bionexo') ) ? 'col-2' : 'col-4'; ?>">
+                    <div class="<?php echo ($this->session->has_userdata('credencial_bionexo')) ? 'col-2' : 'col-4'; ?>">
                         <div class="form-group">
                             <label for="estados">Filtrar por Estado</label>
                             <select class="select2" id="estados" data-placeholder="Todas" data-allow-clear="true">
                                 <option data-url="<?php echo base_url("fornecedor/cotacoes"); ?>"></option>
                                 <?php foreach ($estados as $e): ?>
-                                    <option data-url="<?php echo base_url("fornecedor/cotacoes?uf={$e['uf']}"); ?>" <?php echo ( isset($_GET['uf']) && $e['uf'] == strtoupper($_GET['uf']) ) ? 'selected' : ''; ?> ><?php echo $e['estado']; ?></option>
+                                    <option data-url="<?php echo base_url("fornecedor/cotacoes?uf={$e['uf']}"); ?>" <?php echo (isset($_GET['uf']) && $e['uf'] == strtoupper($_GET['uf'])) ? 'selected' : ''; ?> ><?php echo $e['estado']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -43,10 +50,11 @@
                         <div class="form-group">
                             <label for="cd_cotacao">Filtrar por Cotação</label>
                             <br>
-                            <select class="select2" id="cd_cotacao" name="cd_cotacao" data-placeholder="Todas" data-allow-clear="true">
+                            <select class="select2" id="cd_cotacao" name="cd_cotacao" data-placeholder="Todas"
+                                    data-allow-clear="true">
                                 <option></option>
                                 <?php foreach ($cotacoes as $cotacao): ?>
-                                    <option value="<?php echo $cotacao['cd_cotacao']; ?>" <?php echo ( isset($_SESSION['filtros']['cd_cotacao']) && $_SESSION['filtros']['cd_cotacao'] == $cotacao['cd_cotacao']) ? 'selected' : ''; ?> ><?php echo $cotacao['cd_cotacao']; ?></option>
+                                    <option value="<?php echo $cotacao['cd_cotacao']; ?>" <?php echo (isset($_SESSION['filtros']['cd_cotacao']) && $_SESSION['filtros']['cd_cotacao'] == $cotacao['cd_cotacao']) ? 'selected' : ''; ?> ><?php echo $cotacao['cd_cotacao']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -55,10 +63,11 @@
                         <div class="form-group">
                             <label for="id_cliente">Filtrar por Comprador</label>
                             <br>
-                            <select class="select2" id="id_cliente" name="id_cliente" data-placeholder="Todas" data-allow-clear="true" data-toggle="tooltip" title="Clique para selecionar">
+                            <select class="select2" id="id_cliente" name="id_cliente" data-placeholder="Todas"
+                                    data-allow-clear="true" data-toggle="tooltip" title="Clique para selecionar">
                                 <option></option>
                                 <?php foreach ($compradores as $comprador): ?>
-                                    <option value="<?php echo $comprador['id']; ?>" <?php echo ( isset($_SESSION['filtros']['id_cliente']) && $_SESSION['filtros']['id_cliente'] == $comprador['id']) ? 'selected' : ''; ?> ><?php echo $comprador['comprador']; ?></option>
+                                    <option value="<?php echo $comprador['id']; ?>" <?php echo (isset($_SESSION['filtros']['id_cliente']) && $_SESSION['filtros']['id_cliente'] == $comprador['id']) ? 'selected' : ''; ?> ><?php echo $comprador['comprador']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -69,9 +78,11 @@
             <div class="row mb-3">
                 <div class="col-12">
                     <div class="col-12">
-                        <div class="cot-info" style="width: 15px; height: 15px; border-radius: 20%; border: 1px solid; display: inline-block; "></div>
+                        <div class="cot-info"
+                             style="width: 15px; height: 15px; border-radius: 20%; border: 1px solid; display: inline-block; "></div>
                         &nbsp;Respondida&nbsp;Manual |
-                        <div class="cot-success" style="width: 15px; height: 15px; border-radius: 20%; border: 1px solid; display: inline-block;"></div>
+                        <div class="cot-success"
+                             style="width: 15px; height: 15px; border-radius: 20%; border: 1px solid; display: inline-block;"></div>
                         &nbsp;Respondida&nbsp;Automática
                     </div>
                 </div>
@@ -138,7 +149,6 @@
             sessionToSelect2("#id_cliente");
 
 
-
             var table = $('#data-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -151,7 +161,7 @@
                 },
                 order: [[10, "DESC"], [11, "ASC"]],
                 columns: [
-                    { defaultContent: '', orderable: false, searchable: false },
+                    {defaultContent: '', orderable: false, searchable: false},
                     {name: 'cot.oferta', data: 'oferta', orderable: false, searchable: false},
                     {name: 'cot.cd_cotacao', data: 'cd_cotacao'},
                     {name: 'cot.dt_fim_cotacao', data: 'datafim', searchable: false},
@@ -209,6 +219,7 @@
                                 <i class="fas fa-list-ul" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                             </a>
                             <div class="dropdown-menu">
+                                <a target="_blank" href="${url_cotacao}/${data.integrador}/${data.cd_cotacao}" class="dropdown-item">Abrir nova guia</a>
                                 <a data-action="list" data-href="${url_info}${data.integrador}/${data.cd_cotacao}/1" class="dropdown-item">Listar Produtos</a>
                                 <a data-action="details" data-href="${url_info}${data.integrador}/${data.cd_cotacao}" class="dropdown-item">Dados Cotação</a>
                                 <a data-esconder="ocultar" data-href="${url_ocultar}${data.integrador}/${data.cd_cotacao}" class="dropdown-item">Ocultar Cotação</a>
@@ -230,9 +241,9 @@
                     });
 
                     if (data.respondido > 0) {
-                        if (data.total_oferta_manual > 0 ){
+                        if (data.total_oferta_manual > 0) {
                             $(row).addClass('cot-info');
-                        }else if(data.total_oferta_aut > 0 ){
+                        } else if (data.total_oferta_aut > 0) {
                             $(row).addClass('cot-success');
                         }
                     }
@@ -265,14 +276,15 @@
                             contentType: false,
                             processData: false,
                             data: {},
-                            success: function(xhr) {
-                                if (xhr.type != ''){
+                            success: function (xhr) {
+                                if (xhr.type != '') {
                                     formWarning(xhr);
                                     table.draw();
                                 }
 
                             },
-                            error: function(xhr) {}
+                            error: function (xhr) {
+                            }
                         });
                     });
                 }
@@ -288,11 +300,12 @@
                     url: form.attr('action'),
                     type: 'post',
                     data: form.serialize(),
-                    success: function(xhr) {
+                    success: function (xhr) {
 
                         table.draw();
                     },
-                    error: function(xhr) {}
+                    error: function (xhr) {
+                    }
                 });
             });
 

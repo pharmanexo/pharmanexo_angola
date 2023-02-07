@@ -22,7 +22,7 @@ class ImportDeivis extends CI_Controller
             ->from('cotacoes c')
             ->join('pharmanexo.compradores cp', 'cp.id = c.id_cliente')
             // ->where('c.cd_cotacao', 'COT19393-10')
-            ->where("dt_inicio_cotacao between '2022-12-01' and '2022-12-31'")
+            ->where("dt_inicio_cotacao between '2023-01-01 00:00:00' and '2023-01-31 23:59:59'")
             ->where_in('c.id_fornecedor', [12, 112, 115, 120, 123, 125, 126, 127])
             ->group_by('c.cd_cotacao')
             ->get()
@@ -30,6 +30,7 @@ class ImportDeivis extends CI_Controller
 
 
         foreach ($cotacoes as $cotacao) {
+
 
             $produtosCotacao = $dbSint
                 ->where('cd_cotacao', $cotacao['cd_cotacao'])
@@ -47,6 +48,8 @@ class ImportDeivis extends CI_Controller
                 ->get()
                 ->result_array();
 
+
+
             $prodsGanhadores = $this->db
                 ->select('osp.*, os.Cd_Ordem_Compra, os.id_fornecedor')
                 ->from('ocs_sintese_produtos osp')
@@ -55,6 +58,7 @@ class ImportDeivis extends CI_Controller
                 ->where_in('os.id_fornecedor', [12, 112, 115, 120, 123, 125, 126, 127])
                 ->get()
                 ->result_array();
+
 
 
             if (empty($prodsRespondidos)) {
@@ -106,6 +110,71 @@ class ImportDeivis extends CI_Controller
 
         }
 
+    }
+
+    public function oc_oncoprod()
+    {
+        $file = fopen('fechamento.csv', 'r');
+        $linhas = [];
+
+        while (($line = fgetcsv($file, null, ';')) !== false) {
+
+            $valor = str_replace(["R$", " ", ".", ","], ["", "", "", "."], trim($line['0']));
+
+            $oc = $this->db
+                ->where('Cd_Ordem_Compra', $line['4'])
+                ->where_in('id_fornecedor', [12, 112, 115, 123, 125, 126, 127, 120])
+                ->get('ocs_sintese')
+                ->row_array();
+
+            if (!empty($oc)) {
+                $total = $this->db
+                    ->select('sum(Qt_Produto * Vl_Preco_Produto) as total')
+                    ->where('id_ordem_compra', $oc['id'])
+                    ->get('ocs_sintese_produtos')
+                    ->row_array();
+
+                if (!empty($total['total'])){
+                    if ($total['total'] != $valor){
+                        $line['valor_divergente'] = 'SIM';
+                    }
+                }
+
+                $ordem = [
+                    'oc_id' => $oc['id'],
+                    'total' => (!empty($total['total']) ? $total['total'] : 0)
+                ];
+
+                $line['dados_oc'] = $ordem;
+                $line['data_oc_phn'] = $oc['Dt_Ordem_Compra'];
+                $line['oc_encontrada'] = 'SIM';
+            } else {
+
+                $line['dados_oc'] = [];
+                $line['oc_encontrada'] = 'NÃO';
+            }
+
+
+
+            $linhas[] = [
+                'total' => $line[0],
+                'data_oc' => $line[1],
+                'oc' => $line[4],
+                'loja' => $line[5],
+                'comprador' => $line[6],
+                'uf_comprador' => $line[7],
+                'oc_encontrada' => isset($line['oc_encontrada']) ? $line['oc_encontrada'] : 'NÃO',
+                'valor_divergente' => (isset($line['valor_divergente'])) ? $line['valor_divergente'] : 'NÃO',
+                'data_oc_phn' => (isset($line['data_oc_phn'])) ? $line['data_oc_phn'] : ''
+            ];
+
+        }
+
+
+
+        $this->db->insert_batch('temp_ocs_oncoprod', $linhas);
+
+        fclose($file);
     }
 
     public function importRest()
@@ -231,7 +300,6 @@ class ImportDeivis extends CI_Controller
 
         $this->db->insert_batch("produtos_catalogo", $linhas);
     }
-
 
     public function importMapa()
     {

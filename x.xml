@@ -1,47 +1,43 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<Produto>
-    <Produto>
-        <Dt_Gravacao>02/02/2023 16:58:21</Dt_Gravacao>
-        <Cd_Fornecedor>35997345000146</Cd_Fornecedor>
-        <Id_Produto>21462</Id_Produto>
-        <Ds_Produto>Agulha de aspiração ponta romba 18g x 1 (1,2mm x 25mm) - und</Ds_Produto>
-        <Produtos_Marca>
-            <Produto_Marca>
-                <Id_Produto_Marca>479393</Id_Produto_Marca>
-                <Ds_Marca></Ds_Marca>
-                <Id_Marca>32</Id_Marca>
-            </Produto_Marca>
-            <Produto_Marca>
-                <Id_Produto_Marca>479052</Id_Produto_Marca>
-                <Ds_Marca></Ds_Marca>
-                <Id_Marca>879</Id_Marca>
-            </Produto_Marca>
-            <Produto_Marca>
-                <Id_Produto_Marca>562656</Id_Produto_Marca>
-                <Ds_Marca></Ds_Marca>
-                <Id_Marca>1876</Id_Marca>
-            </Produto_Marca>
-            <Produto_Marca>
-                <Id_Produto_Marca>484908</Id_Produto_Marca>
-                <Ds_Marca></Ds_Marca>
-                <Id_Marca>3331</Id_Marca>
-            </Produto_Marca>
-            <Produto_Marca>
-                <Id_Produto_Marca>478987</Id_Produto_Marca>
-                <Ds_Marca></Ds_Marca>
-                <Id_Marca>6656</Id_Marca>
-            </Produto_Marca>
-            <Produto_Marca>
-                <Id_Produto_Marca>478825</Id_Produto_Marca>
-                <Ds_Marca></Ds_Marca>
-                <Id_Marca>8104</Id_Marca>
-            </Produto_Marca>
-            <Produto_Marca>
-                <Id_Produto_Marca>479084</Id_Produto_Marca>
-                <Ds_Marca>Agulha de aspiração ponta romba 18g x 1 (1,2mm x 25mm) - und</Ds_Marca>
-                <Id_Marca>17151</Id_Marca>
-            </Produto_Marca>
-        </Produtos_Marca>
-    </Produto>
-</Produto>]]></ObterProdutosResult>
-        </ObterProdutosResponse>
+<Cotacao>
+    <Tp_Movimento>1</Tp_Movimento>
+    <Dt_Gravacao>06/02/2023 12:58:41</Dt_Gravacao>
+    <Cd_Fornecedor>02816696000154</Cd_Fornecedor>
+    <Cd_Cotacao>COT14378-3084</Cd_Cotacao>
+    <Cd_Condicao_Pagamento>20</Cd_Condicao_Pagamento>
+    <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+    <Ds_Observacao>-</Ds_Observacao>
+    <Qt_Prz_Minimo_Entrega>3</Qt_Prz_Minimo_Entrega>
+    <Vl_Minimo_Pedido>1200,00</Vl_Minimo_Pedido>
+    <Ds_Observacao_Fornecedor>Mediante a analise cadastral e financeira, adequamos a forma de pagamento, estamos sempre abertos a negociacao de precos dos itens. Pedido mínimo de R$ 1.200. whats 42 9 9116-8500.</Ds_Observacao_Fornecedor>
+    <Produtos_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>27125</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>05989</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>7328</Id_Marca>
+                    <Ds_Marca>FRESENIUS</Ds_Marca>
+                    <Qt_Embalagem>1</Qt_Embalagem>
+                    <Vl_Preco_Produto>4,4160</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>Produto atendido parcialmente!</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>4631</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>27125</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>05990</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>7328</Id_Marca>
+                    <Ds_Marca>FRESENIUS</Ds_Marca>
+                    <Qt_Embalagem>1</Qt_Embalagem>
+                    <Vl_Preco_Produto>4,4160</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>Produto atendido parcialmente!</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>4631</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+    </Produtos_Cotacao>
+</Cotacao>

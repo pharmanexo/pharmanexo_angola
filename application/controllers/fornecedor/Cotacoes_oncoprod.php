@@ -1316,7 +1316,12 @@ class Cotacoes_oncoprod extends MY_Controller
     {
 
         # Lista das filiais da ONCOPROD
-        $fornecedores_oncoprod = $this->fornecedores->find("*", "id in (" . implode(',', $this->oncoprod) . ")");
+        $fornecedores_oncoprod = $this->db
+            ->where('id_matriz', 1)
+            ->where('bloqueado', 0)
+            ->where('sintese', 1)
+            ->get('fornecedores')
+            ->result_array();
 
 
         $produtosSemEstoque = [];
@@ -1396,7 +1401,7 @@ class Cotacoes_oncoprod extends MY_Controller
                     // $produtos[$kk]['encontrados'][$k]['estoque'] = $this->getStock($p['codigo'], $p['id_fornecedor']);
 
                     # Obtem todos os lotes do produto
-                    $this->db->where_in('id_fornecedor', [12, 111, 112, 115, 120, 123, 126]);
+                    $this->db->where_in('id_fornecedor', [12, 112, 115, 123, 125, 126, 127]);
                     $this->db->where('codigo', $p['codigo']);
                     $estq = $this->db->get('produtos_lote')->result_array();
 
@@ -3208,7 +3213,7 @@ class Cotacoes_oncoprod extends MY_Controller
         $lotes = $this->db
             ->select('pl.*, f.nome_fantasia')
             ->join('fornecedores f', 'f.id = pl.id_fornecedor')
-            ->where_in('pl.id_fornecedor', [12, 111, 112, 115, 120, 126])
+            ->where_in('pl.id_fornecedor', [12, 111, 112, 115, 120, 126, 125, 127])
             ->where('pl.codigo', $codigo)
             ->get('produtos_lote pl')
             ->result_array();
