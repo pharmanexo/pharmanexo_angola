@@ -15,6 +15,7 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 
+/.idea
 .DS_Store
 .idea
 /.env.local
