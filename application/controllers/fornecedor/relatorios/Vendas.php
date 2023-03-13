@@ -61,6 +61,17 @@ class Vendas extends MY_Controller
                 'https://cdn.jsdelivr.net/npm/apexcharts'
             ]
         ]);
+        $data['heading'] = $this->template->heading(['page_title' => $page_title, 
+        'buttons' => [
+            [
+                'type' => 'a',
+                'id' => 'btnVoltar',
+               'url' => "javascript:history.back(1)",
+                'class' => 'btn-secondary',
+                'icone' => 'fa-arrow-left',
+                'label' => 'Retornar'
+            ]]]);
+
 
 
         if ($this->session->has_userdata('id_matriz')) {

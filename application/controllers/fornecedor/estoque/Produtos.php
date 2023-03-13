@@ -194,6 +194,14 @@ class Produtos extends MY_Controller
 
             $buttons = [
                 [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
+                [
                     'type' => 'button',
                     'id' => 'btnExport',
                     'url' => "{$this->route}/exportar_produtos",
@@ -214,6 +222,14 @@ class Produtos extends MY_Controller
         } else {
 
             $buttons = [
+                [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
                 [
                     'type' => 'button',
                     'id' => 'btnExport',

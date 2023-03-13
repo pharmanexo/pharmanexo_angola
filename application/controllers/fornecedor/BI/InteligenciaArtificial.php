@@ -51,6 +51,15 @@ class InteligenciaArtificial extends MY_Controller
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title,
             'buttons' => [
+
+                [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                    'url' => "produtosPreco",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
                 [
                     'type'  => 'submit',
                     'id'    => 'btnExcel',

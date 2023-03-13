@@ -38,6 +38,14 @@ class Usuarios extends MY_Controller
                 'buttons' => [
                     [
                         'type' => 'a',
+                        'id' => 'btnVoltar',
+                       'url' => "javascript:history.back(1)",
+                        'class' => 'btn-secondary',
+                        'icone' => 'fa-arrow-left',
+                        'label' => 'Retornar'
+                    ],
+                    [
+                        'type' => 'a',
                         'id' => 'btnNovo',
                         'url' => "{$this->route}/insert",
                         'class' => 'btn-primary',
