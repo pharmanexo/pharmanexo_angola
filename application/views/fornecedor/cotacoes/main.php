@@ -159,7 +159,7 @@
                     type: 'post',
                     dataType: 'json'
                 },
-                order: [[10, "DESC"], [11, "ASC"]],
+                order: [[3, "ASC"]],
                 columns: [
                     {defaultContent: '', orderable: false, searchable: false},
                     {name: 'cot.oferta', data: 'oferta', orderable: false, searchable: false},

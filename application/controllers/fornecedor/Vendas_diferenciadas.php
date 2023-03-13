@@ -526,6 +526,8 @@ class Vendas_diferenciadas extends MY_Controller
                     // Se existe armazena no array de atualizações
                     if (!empty($verifica)) {
 
+
+
                         // Armazena as colunas de atualização junto com o ID já existente
                         $dataAtualiza[] = [
                             'id' => $verifica['id'],
@@ -575,7 +577,7 @@ class Vendas_diferenciadas extends MY_Controller
                         $dataNovo[] = [
                             'id_cliente' => $id_cliente,
                             'id_fornecedor' => $this->session->userdata('id_fornecedor'),
-                            'desconto_percentual' => $v['desconto_percentual'],
+                            'desconto_percentual' => dbNumberFormat($v['desconto_percentual']),
                             'codigo' => $v['codigo'],
                             'regra_venda' => $v['regra_venda']
                         ];

@@ -50,6 +50,22 @@
                             </div>
                             <div class="card">
                                 <div class="card-header">
+                                    <h5 class="card-title">API Token</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group mb-2">
+                                                <label for="">Token</label>
+                                                <textarea name="" id="" readonly cols="30" rows="3" class="form-control"><?php if (isset($fornecedor['api_token']) && !empty($fornecedor['api_token'])) echo $fornecedor['api_token']; ?></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-header">
                                     <h5 class="card-title">Credencial Bionexo</h5>
                                 </div>
                                 <div class="card-body">

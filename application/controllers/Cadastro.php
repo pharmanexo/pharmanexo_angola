@@ -29,7 +29,7 @@ class Cadastro extends CI_Controller
 
     public function arquivos()
     {
-        if (!isset($_SESSION['novoDist'])){
+        if (!isset($_SESSION['novoDist'])) {
             redirect($this->route);
         }
 
@@ -89,10 +89,10 @@ class Cadastro extends CI_Controller
                 //verificar se o distribuidor ja existe
                 $dist = $this->db->select('id')->where('cnpj', $post['cnpj'])->get('fornecedores')->row_array();
 
-                if (!empty($dist)){
+                if (!empty($dist)) {
                     var_dump($dist);
                     exit();
-                }else{
+                } else {
                     $novoDist = [
                         'cnpj' => $post['cnpj'],
                         'nome_fantasia' => $post['nome_fantasia'],
@@ -124,17 +124,14 @@ class Cadastro extends CI_Controller
 
                 }
 
-                if ($this->db->trans_status() === FALSE)
-                {
+                if ($this->db->trans_status() === FALSE) {
                     $this->db->trans_rollback();
 
                     $output = [
                         'type' => 'warning',
                         'message' => 'Não foi possível realizar o cadastro, entrem em contato com o suporte'
                     ];
-                }
-                else
-                {
+                } else {
                     $this->db->trans_commit();
 
                     $post['id_dist'] = $idDist;
@@ -391,8 +388,22 @@ class Cadastro extends CI_Controller
 
                 } else {
                     $cnpj = soNumero($post['cnpj']);
-                    $getCnpjReceita = file_get_contents("https://receitaws.com.br/v1/cnpj/{$cnpj}");
-                    $array = json_decode($getCnpjReceita, true);
+
+                    // Iniciamos a função do CURL:
+                    $ch = curl_init("https://receitaws.com.br/v1/cnpj/{$cnpj}");
+
+                    curl_setopt_array($ch, [
+                        CURLOPT_CUSTOMREQUEST => 'GET',
+                        CURLOPT_HTTPHEADER => [
+                            'Auth: 84353f174a4cdd90ce96a58ec0768e8174df95874c6988dc22ec1eb3e6284882'
+                        ],
+                        CURLOPT_RETURNTRANSFER => 1,
+                    ]);
+
+                    $array = json_decode(curl_exec($ch), true);
+                    curl_close($ch);
+
+
 
                     if (isset($array['none'])) {
                         $post['razao_social'] = $array['none'];

@@ -1178,6 +1178,10 @@
                         name: 'marca',
                         data: 'marca'
                     },
+                    {
+                        name: 'unidade',
+                        data: 'unidade'
+                    },
                 ],
                 columnDefs: [{
                     orderable: false,

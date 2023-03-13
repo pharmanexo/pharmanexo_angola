@@ -1,43 +1,41 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-<Cotacao>
-    <Tp_Movimento>1</Tp_Movimento>
-    <Dt_Gravacao>06/02/2023 12:58:41</Dt_Gravacao>
-    <Cd_Fornecedor>02816696000154</Cd_Fornecedor>
-    <Cd_Cotacao>COT14378-3084</Cd_Cotacao>
-    <Cd_Condicao_Pagamento>20</Cd_Condicao_Pagamento>
-    <Nm_Usuario>PHARMAINT321</Nm_Usuario>
-    <Ds_Observacao>-</Ds_Observacao>
-    <Qt_Prz_Minimo_Entrega>3</Qt_Prz_Minimo_Entrega>
-    <Vl_Minimo_Pedido>1200,00</Vl_Minimo_Pedido>
-    <Ds_Observacao_Fornecedor>Mediante a analise cadastral e financeira, adequamos a forma de pagamento, estamos sempre abertos a negociacao de precos dos itens. Pedido mínimo de R$ 1.200. whats 42 9 9116-8500.</Ds_Observacao_Fornecedor>
-    <Produtos_Cotacao>
-        <Produto_Cotacao>
-            <Id_Produto_Sintese>27125</Id_Produto_Sintese>
-            <Cd_Produto_Comprador>05989</Cd_Produto_Comprador>
-            <Marcas_Oferta>
-                <Marca_Oferta>
-                    <Id_Marca>7328</Id_Marca>
-                    <Ds_Marca>FRESENIUS</Ds_Marca>
-                    <Qt_Embalagem>1</Qt_Embalagem>
-                    <Vl_Preco_Produto>4,4160</Vl_Preco_Produto>
-                    <Ds_Obs_Oferta_Fornecedor>Produto atendido parcialmente!</Ds_Obs_Oferta_Fornecedor>
-                    <Cd_produtoERP>4631</Cd_produtoERP>
-                </Marca_Oferta>
-            </Marcas_Oferta>
-        </Produto_Cotacao>
-        <Produto_Cotacao>
-            <Id_Produto_Sintese>27125</Id_Produto_Sintese>
-            <Cd_Produto_Comprador>05990</Cd_Produto_Comprador>
-            <Marcas_Oferta>
-                <Marca_Oferta>
-                    <Id_Marca>7328</Id_Marca>
-                    <Ds_Marca>FRESENIUS</Ds_Marca>
-                    <Qt_Embalagem>1</Qt_Embalagem>
-                    <Vl_Preco_Produto>4,4160</Vl_Preco_Produto>
-                    <Ds_Obs_Oferta_Fornecedor>Produto atendido parcialmente!</Ds_Obs_Oferta_Fornecedor>
-                    <Cd_produtoERP>4631</Cd_produtoERP>
-                </Marca_Oferta>
-            </Marcas_Oferta>
-        </Produto_Cotacao>
-    </Produtos_Cotacao>
-</Cotacao>
+<?xml version="1.0"?>
+<Resposta>
+    <Cabecalho>
+        <Id_Pdc>706831</Id_Pdc>
+        <CNPJ_Hospital>21..99.8.6/35/0-00</CNPJ_Hospital>
+        <Faturamento_Minimo>900.00</Faturamento_Minimo>
+        <Prazo_Entrega>2</Prazo_Entrega>
+        <Validade_Proposta>14/03/2023</Validade_Proposta>
+        <Id_Forma_Pagamento>8</Id_Forma_Pagamento>
+        <Frete>CIF</Frete>
+        <Custo_Estimado_Frete>-</Custo_Estimado_Frete>
+        <Observacoes>Mediante a analise cadastral e financeira, adequamos a forma de pagamento, estamos sempre abertos a
+            negociacao de precos dos itens. Pedido m&#xED;nimo de R$ 900. whats 42 9 9116-8500.
+        </Observacoes>
+    </Cabecalho>
+    <Itens_Pdc>
+        <Item_Pdc>
+            <Sequencia>19</Sequencia>
+            <Id_Artigo>3444101</Id_Artigo>
+            <Codigo_Produto>231</Codigo_Produto>
+            <Preco_Unitario>17.56</Preco_Unitario>
+            <Preco_Unitario_Liquido>17.56</Preco_Unitario_Liquido>
+            <Classificacao_Anvisa>-</Classificacao_Anvisa>
+            <NCM>-</NCM>
+            <IVA>-</IVA>
+            <ICMS>-</ICMS>
+            <IPI>-</IPI>
+            <Valor_Frete>-</Valor_Frete>
+            <Fabricante>MINASREY</Fabricante>
+            <Embalagem>unidade</Embalagem>
+            <Quantidade_Embalagem>1</Quantidade_Embalagem>
+            <Comentario>Validade: 29/01/2028</Comentario>
+            <Codigo_Rastreabilidade>221</Codigo_Rastreabilidade>
+            <Codigo_Fornecedor>02.816.696/0001-54</Codigo_Fornecedor>
+            <Campo_Extra>
+                <Nome>Codigo_Produto_Fornecedor</Nome>
+                <Valor>221</Valor>
+            </Campo_Extra>
+        </Item_Pdc>
+    </Itens_Pdc>
+</Resposta>

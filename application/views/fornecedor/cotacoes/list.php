@@ -297,6 +297,7 @@
                                                 <th>Código</th>
                                                 <th>Produto</th>
                                                 <th>Marca</th>
+                                                <th>Embalagem</th>
                                             </tr>
                                         </thead>
                                     </table>

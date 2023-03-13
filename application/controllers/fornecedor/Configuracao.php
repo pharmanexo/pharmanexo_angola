@@ -39,6 +39,8 @@ class Configuracao extends MY_Controller
         }
 
         $fornecedor['logo'] = $logo;
+        $fornecedor['token'] = $fornecedor['api_token'];
+
         $data = [
             'header' => $this->template->header(['title' => $page_title]),
             'navbar' => $this->template->navbar(),

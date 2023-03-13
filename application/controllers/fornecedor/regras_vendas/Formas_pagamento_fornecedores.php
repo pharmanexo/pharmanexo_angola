@@ -312,7 +312,7 @@ class Formas_pagamento_fornecedores extends MY_Controller
         }
 
         $this->output->set_content_type('application/json')->set_output(json_encode($this->select2->exec(
-            array_merge($this->input->post(), $data),
+            array_merge($this->input->get(), $data),
             "formas_pagamento",
             [
                 ['db' => 'id',        'dt' => 'id'],

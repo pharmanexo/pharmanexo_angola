@@ -3,7 +3,7 @@ date_default_timezone_set('America/Sao_Paulo');
 error_reporting(0);
 ini_set("display_errors", 0);
 
-class Cotacoes_oncoprod extends MY_Controller
+class Cotacoes_oncoprod_hmg extends MY_Controller
 {
     private $urlCliente;
     private $host;
@@ -19,7 +19,7 @@ class Cotacoes_oncoprod extends MY_Controller
     {
         parent::__construct();
 
-        $this->route = base_url('/fornecedor/cotacoes_oncoprod/');
+        $this->route = base_url('/fornecedor/cotacoes_oncoprod_hmg/');
         $this->views = 'fornecedor/cotacoes_oncoprod/';
 
         $this->load->model('m_fornecedor', 'fornecedores');
@@ -807,7 +807,7 @@ class Cotacoes_oncoprod extends MY_Controller
 
         $data['recusa'] = $this->cotacoes->verificaRecusa($cd_cotacao, $this->session->id_fornecedor, $idIntegrador);
 
-        $this->load->view("{$this->views}detail", $data);
+        $this->load->view("{$this->views}detail_hmg", $data);
     }
 
 
@@ -1598,29 +1598,6 @@ class Cotacoes_oncoprod extends MY_Controller
                         $class = 'table-danger';
 
 
-                        #
-                        /*$produtosSemEstoque['cd_cotacao'] = $p['cd_cotacao'];
-                        $produtosSemEstoque['produtos'][] = [$p['codigo']];
-
-                        # Consulta se existe registro
-                        $consultar_sem_estoque = $this->db->select('id')
-                            ->where('id_produto', $produto['cotado']['id_produto_sintese'])
-                            ->where('codigo', $p['codigo'])
-                            ->where('id_fornecedor', $p['id_fornecedor'])
-                            ->where('cd_cotacao', $p['cd_cotacao'])
-                            ->get('produtos_sem_estoque');
-
-
-                        # Se não existir, armazena no array para registrar
-                        if ($consultar_sem_estoque->num_rows() < 1) {
-
-                            $sem_estoque[] = [
-                                'id_produto' => $produto['cotado']['id_produto_sintese'],
-                                'codigo' => $p['codigo'],
-                                'id_fornecedor' => $p['id_fornecedor'],
-                                'cd_cotacao' => $p['cd_cotacao']
-                            ];
-                        }*/
 
 
                     } # Se o estoque for maior que o slicitado
@@ -1816,7 +1793,6 @@ class Cotacoes_oncoprod extends MY_Controller
             $root->appendChild($dom->createElement("Nm_Usuario", 'PHARMAINT321'));
             $root->appendChild($dom->createElement("Ds_Observacao_Fornecedor", utf8_encode($info['obs'])));
             $root->appendChild($dom->createElement("Qt_Prz_Minimo_Entrega", $info['prazo_entrega']));
-            $root->appendChild($dom->createElement("Sn_Permite_Alterar_Oferta", "Nao"));
             $root->appendChild($dom->createElement("Vl_Minimo_Pedido", str_replace(".", ",", $produtos_sintese['valor_minimo'])));
 
             $produtos = $dom->createElement("Produtos_Cotacao");

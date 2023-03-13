@@ -22,7 +22,7 @@ if (isset($header)) echo $header;
                             </a>
                         </div>
                         <h3 style="margin-top: 110px; padding: 100px; text-align: center">
-                            <p class="bluepharma"> MAIOR PORTAL DE INTEGRAÇÃO MULTIPLAFORMAS PARA PRODUTOS FARMACÊUTICOS DO BRASIL</p><br>
+                            <p class="bluepharma"> MAIOR PORTAL DE INTEGRAÇÃO MULTIPLATAFORMAS PARA PRODUTOS FARMACÊUTICOS DO BRASIL</p><br>
                             <a href="<?php echo base_url('home') ?>" class="btn1">Conheça a Pharmanexo</a>
                         </h3>
                         <div class="text-center w-100 position-absolute" style="bottom: 0">

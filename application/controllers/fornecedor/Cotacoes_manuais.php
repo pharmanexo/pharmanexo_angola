@@ -13,13 +13,11 @@ class Cotacoes_manuais extends MY_Controller
         parent::__construct();
         $this->route = base_url('fornecedor/cotacoes_manuais');
         $this->views = "fornecedor/cotacoes/cotacoes_manuais";
-
         $this->load->model('m_fornecedor', 'fornecedor');
         $this->load->model('m_marca', 'marca');
         $this->load->model('m_compradores', 'compradores');
         $this->load->model('m_cotacoes', 'cotacoes');
         $this->load->model('m_forma_pagamento', 'forma_pagamento');
-
         $this->oncoprod = explode(',', ONCOPROD);
         $this->DB_COTACAO = $this->load->database('sintese', TRUE);
     }

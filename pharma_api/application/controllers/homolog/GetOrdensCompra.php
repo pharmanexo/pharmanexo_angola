@@ -18,9 +18,9 @@ class GetOrdensCompra extends CI_Controller
 
 		$this->sint = $this->load->database('sintese', true);
 
-		$this->urlClient = 'http://integracao.plataformasintese.com/IntegrationService.asmx?WSDL';
+		$this->urlClient = 'https://ws-sintese.bionexo.com/IntegrationService.asmx?WSDL';
 
-		$this->location = 'http://integracao.plataformasintese.com/IntegrationService.asmx';
+		$this->location = 'https://ws-sintese.bionexo.com/IntegrationService.asmx';
 
 	}
 
