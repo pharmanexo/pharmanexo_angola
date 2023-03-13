@@ -5,6 +5,7 @@
 <?php echo $navbar; ?>
 <?php echo $sidebar; ?>
 <div class="content">
+    <?php echo $heading; ?>
 
    
     <div id="dash">

@@ -43,7 +43,17 @@ class Cotacoes extends MY_Controller
         ]);
         $data['navbar'] = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
-        $data['heading'] = $this->template->heading(['page_title' => $page_title]);
+        $data['heading'] = $this->template->heading(['page_title' => $page_title,
+        'buttons' => [
+
+            [
+                'type' => 'a',
+                'id' => 'btnVoltar',
+                'url' => "produtosPreco",
+                'class' => 'btn-secondary',
+                'icone' => 'fa-arrow-left',
+                'label' => 'Retornar'
+            ]]]);
         $data['scripts'] = $this->template->scripts([
             'scripts' => [
                 'https://cdn.jsdelivr.net/npm/apexcharts',
