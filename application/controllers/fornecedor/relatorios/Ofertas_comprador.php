@@ -38,6 +38,15 @@ class Ofertas_comprador extends MY_Controller
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title, 
             'buttons' => [
+
+                [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
                 [
                     'type' => 'button',
                     'id' => 'btnExport',

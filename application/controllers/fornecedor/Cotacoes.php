@@ -95,6 +95,14 @@ class Cotacoes extends MY_Controller
             'buttons' => [
                 [
                     'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
+                [
+                    'type' => 'a',
                     'id' => 'btnDesocultar',
                     'url' => "{$this->route}ocultadas",
                     'class' => 'btn-secondary',

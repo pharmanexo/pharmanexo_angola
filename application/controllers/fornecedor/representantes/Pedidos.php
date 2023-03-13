@@ -35,6 +35,14 @@ class Pedidos extends MY_Controller
             'title' => $page_title,
             'buttons' => [
                 [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
+                [
                     'type' => 'button',
                     'id' => 'btnExport',
                     'url' => "{$this->route}/exportar",

@@ -321,6 +321,14 @@ class Chamados extends MY_Controller
             'buttons' => [
                 [
                     'type' => 'a',
+                    'id' => 'btnVoltar',
+                    'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
+                [
+                    'type' => 'a',
                     'id' => 'btnInsert',
                     'url' => "{$this->route}/insert",
                     'class' => 'btn-primary',
