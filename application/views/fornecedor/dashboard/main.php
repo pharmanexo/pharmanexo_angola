@@ -416,10 +416,14 @@
                         show: false
                     }
                 },
-                colors: ['#77B6EA', '#2196F3', '#545454'],
+                colors: ['#77B6EA', '#2196F3', '#545454', '#192069'],
                 dataLabels: {
                     enabled: true,
-                    enabledOnSeries: [1, 2]
+                    enabledOnSeries: [3],
+                    offsetY: -20,
+                    formatter: function(val) {
+                        return val + "%";
+                    },
                 },
                 stroke: {
                     curve: 'smooth'
@@ -441,7 +445,7 @@
                     show: true
                 },
                 legend: {
-                    position: 'bottom'
+                    position: 'top'
                 },
                 grid: {
                     show: true
