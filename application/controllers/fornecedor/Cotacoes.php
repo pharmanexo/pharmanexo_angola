@@ -250,7 +250,7 @@ class Cotacoes extends MY_Controller
         # Validação de exibir botão de envio
 
         // TRATAR HORA QUANDO ESTIVER NO LINUX
-        if ($data['cotacao']['data_fim'] > date('Y-m-d H:i:s', strtotime("-1 hour")) || $_SESSION['id_usuario'] == 187) {
+        if ($data['cotacao']['data_fim'] > date('Y-m-d H:i:s',time()) || $_SESSION['id_usuario'] == 187) {
 
             $btns[] = [
                 'type' => 'button',
@@ -598,7 +598,6 @@ class Cotacoes extends MY_Controller
      */
     public function espelho($integrador, $cd_cotacao, $id_cliente)
     {
-
         $dataView = [
             'header' => $this->template->header(['title' => '']),
             'navbar' => $this->template->navbar(),
