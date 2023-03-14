@@ -40,6 +40,8 @@ class Dashboard extends MY_Controller
         $this->DB_COTACAO = $this->load->database('sintese', TRUE);
         $this->MIX = $this->load->database('mix', TRUE);
         $this->bio = $this->load->database('bionexo', TRUE);
+        $this->apoio = $this->load->database('apoio', TRUE);
+        $this->huma = $this->load->database('huma', TRUE);
     }
 
     /**
@@ -330,8 +332,24 @@ class Dashboard extends MY_Controller
             ->get('cotacoes')
             ->result_array();
 
+        $cotacoes_apoio = $this->apoio->select('cd_cotacao')
+            ->where('id_fornecedor', $this->session->id_fornecedor)
+            ->where("dt_fim_cotacao > now()")
+            ->group_by('cd_cotacao')
+            ->order_by('cd_cotacao ASC')
+            ->get('cotacoes')
+            ->result_array();
 
-        $data['cotacoes'] = array_merge($cotacoes_sintese, $cotacoes_bionexo);
+        $cotacoes_huma = $this->huma->select('cd_cotacao')
+            ->where('id_fornecedor', $this->session->id_fornecedor)
+            ->where("dt_fim_cotacao > now()")
+            ->group_by('cd_cotacao')
+            ->order_by('cd_cotacao ASC')
+            ->get('cotacoes')
+            ->result_array();
+
+
+        $data['cotacoes'] = array_merge($cotacoes_sintese, $cotacoes_bionexo, $cotacoes_apoio, $cotacoes_huma);
 
         if (in_array($this->session->id_fornecedor, explode(',', ONCOPROD))) {
             $data['url_cotacao'] = base_url("fornecedor/cotacoes_oncoprod/detalhes");
@@ -561,22 +579,15 @@ class Dashboard extends MY_Controller
 
     public function createChartTotalCotacoes($id_fornecedor, $ano, $return = null)
     {
-        $mes = date('m');
-        $year = date('Y');
-        $resp = [];
-        if ($ano == $year) {
-            $resp = $this->grafico->getDadosCotacaoMensalPorAnoMes($this->session->id_fornecedor, $ano, $mes, 'SINTESE');
-        }
+        
+        $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
+
 
         $totalCot = [];
         $cotEnv = [];
         $cotProd = [];
-        $cotEnvProd = [];
-        for ($i = 1; $i <= 12; $i++) {
-            if (!isset($totalCot[$i])) $totalCot[$i] = 0;
-            if (!isset($cotEnv[$i])) $cotEnv[$i] = 0;
-            if (!isset($cotProd[$i])) $cotProd[$i] = 0;
-        }
+
+
 
         foreach ($resp as $row) {
 
@@ -628,14 +639,7 @@ class Dashboard extends MY_Controller
                 }
             } else {
                 $novosDados = $this->populateDataCharCotacoes($ano, $i);
-
-                $totalCot[$novosDados['mes']] = $novosDados['total_cot'];
-                $cotEnv[$novosDados['mes']] = $novosDados['cot_enviada'];
-                $cotProd[$novosDados['mes']] = $novosDados['cot_com_prod'];
-                $cotEnvProd[$novosDados['mes']] = $novosDados['porcentagem'];
-            }
-        }
-
+                
         $data = [
             [
                 'name' => 'TOTAL COT',
@@ -662,14 +666,6 @@ class Dashboard extends MY_Controller
                     $cotEnv[7], $cotEnv[8], $cotEnv[9], $cotEnv[10], $cotEnv[11], $cotEnv[12]
                 ]
             ],
-            [
-                'name' => '%',
-                'type' => 'line',
-                'data' => [
-                    $cotEnvProd[1], $cotEnvProd[2], $cotEnvProd[3], $cotEnvProd[4], $cotEnvProd[5], $cotEnvProd[6],
-                    $cotEnvProd[7], $cotEnvProd[8], $cotEnvProd[9], $cotEnvProd[10], $cotEnvProd[11], $cotEnvProd[12]
-                ]
-            ]
         ];
 
         if (isset($return)) {

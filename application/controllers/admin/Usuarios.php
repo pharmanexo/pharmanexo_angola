@@ -96,7 +96,7 @@ class Usuarios extends Admin_controller
 
             $this->form_validation->set_error_delimiters('<span>', '</span>');
             $this->form_validation->set_rules('email', 'E-mail', 'required|valid_email|is_unique[usuarios.email]');
-            $this->form_validation->set_rules('cpf', 'CPF', 'required|is_unique[usuarios.cpf]');
+
 
             if ($this->form_validation->run() === false) {
 
@@ -113,13 +113,11 @@ class Usuarios extends Admin_controller
             } else {
 
                 $data = [
-                    'nome' => $post['nome'],
+                    'nickname' => $post['nickname'],
                     'email' => $post['email'],
                     'senha' => password_hash($password, PASSWORD_DEFAULT),
                     'telefone' => $post['telefone'],
                     'celular' => $post['celular'],
-                    'cpf' => $post['cpf'],
-                    'rg' => $post['rg'],
                     'nivel' => $post['nivel'],
                     'login_fe' => isset($post['login_fe']) ? 1 : 0
                 ];

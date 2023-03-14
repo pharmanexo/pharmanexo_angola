@@ -17,9 +17,9 @@ class GetOrdensCompraPendentes extends CI_Controller
     {
         parent::__construct();
 
-        $this->urlCliente = 'http://integracao.plataformasintese.com/IntegrationService.asmx?WSDL';
+        $this->urlCliente = 'https://ws-sintese.bionexo.com/IntegrationService.asmx?WSDL';
         $this->client = new SoapClient($this->urlCliente);
-        $this->location = 'http://integracao.plataformasintese.com/IntegrationService.asmx';
+        $this->location = 'https://ws-sintese.bionexo.com/IntegrationService.asmx';
 
         #url de teste
         /* $this->urlCliente = 'https://integracao.plataformasintese.com:8082/IntegrationService.asmx?WSDL';

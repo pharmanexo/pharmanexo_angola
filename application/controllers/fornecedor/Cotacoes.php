@@ -95,6 +95,14 @@ class Cotacoes extends MY_Controller
             'buttons' => [
                 [
                     'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
+                [
+                    'type' => 'a',
                     'id' => 'btnDesocultar',
                     'url' => "{$this->route}ocultadas",
                     'class' => 'btn-secondary',
@@ -469,16 +477,7 @@ class Cotacoes extends MY_Controller
                     $fornecedorSintese[] = $s['id_sintese'];
                 }
                 if (count($fornecedorSintese) > 0) {
-                    $deleteDePara = $this->db->where_in('id_sintese', $fornecedorSintese)
-                        ->where('id_fornecedor', $this->session->id_fornecedor)
-                        ->where('cd_produto', $post['dados']['cod_prod'])
-                        ->delete('produtos_fornecedores_sintese');
-                    if ($deleteDePara) {
-                        $retorno = ['type' => 'success', 'message' => 'Produto removido'];
-                    } else {
-                        $retorno = ['type' => 'error', 'message' => 'Erro ao remover'];
-                    }
-                    $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
+
                 }
                 break;
             case 'APOIO':
@@ -508,6 +507,9 @@ class Cotacoes extends MY_Controller
                     }
                     $this->output->set_content_type('application/json')->set_output(json_encode($retorno));
                 }
+                break;
+            case 'HUMA':
+
                 break;
         }
     }
@@ -608,7 +610,7 @@ class Cotacoes extends MY_Controller
                     [
                         'type' => 'a',
                         'id' => 'btnBack',
-                        'url' => "{$this->route}detalhes/{$cd_cotacao}",
+                        'url' => "{$this->route}detalhes/{$integrador}/{$cd_cotacao}",
                         'class' => 'btn-secondary',
                         'icone' => 'fa-arrow-left',
                         'label' => 'Voltar'
@@ -1287,13 +1289,23 @@ class Cotacoes extends MY_Controller
 
             $depara = $this->COTACAO_MANUAL->depara($integrador, $post);
 
-            if ($depara) {
+            if(isset($depara['type'])){
+                if ($depara['type'] == 'error'){
+                    $warning = ["type" => "warning", "message" => $depara['message']];
+                }else{
+                    $warning = ["type" => "success", "message" => "Combinação de produtos realizada."];
+                }
+            }else{
+                if ($depara) {
 
-                $warning = ["type" => "success", "message" => "Combinação de produtos realizada."];
-            } else {
+                    $warning = ["type" => "success", "message" => "Combinação de produtos realizada."];
+                } else {
 
-                $warning = ["type" => "warning", "message" => "Erro ao combinar produtos"];
+                    $warning = ["type" => "warning", "message" => "Erro ao combinar produtos"];
+                }
             }
+
+
 
             $this->output->set_content_type('application/json')->set_output(json_encode($warning));
         }
@@ -1456,6 +1468,7 @@ class Cotacoes extends MY_Controller
                 ['db' => 'descricao', 'dt' => 'descricao'],
                 ['db' => 'nome_comercial', 'dt' => 'nome_comercial'],
                 ['db' => 'id_fornecedor', 'dt' => 'id_fornecedor'],
+                ['db' => 'unidade', 'dt' => 'unidade'],
                 ['db' => 'apresentacao', 'dt' => 'apresentacao', 'formatter' => function ($value, $row) {
 
                     if (!empty($row['descricao'])) {

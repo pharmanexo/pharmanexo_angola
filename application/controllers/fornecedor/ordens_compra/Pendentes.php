@@ -64,6 +64,15 @@ class Pendentes extends MY_Controller
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title,
             'buttons' => [
+
+                [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
                 [
                     'type' => 'button',
                     'id' => 'btnExport',
@@ -701,6 +710,10 @@ class Pendentes extends MY_Controller
         $oc['produtos'] = $this->oc->get_products($idOC);
 
         $oc['comprador'] = (isset($oc['id_comprador']) && !empty($oc['id_comprador'])) ? $this->comp->findById($oc['id_comprador']) : 'Comprador não localizado';
+
+        /*var_dump($oc['comprador']);
+        exit();*/
+
         if (isset($oc['Cd_Condicao_Pagamento']) && !empty($oc['Cd_Condicao_Pagamento'])) {
             $id = $oc['Cd_Condicao_Pagamento'];
             $select = $this->db->where('id', $id)->get('formas_pagamento')->row_array();

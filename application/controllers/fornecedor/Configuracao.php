@@ -39,6 +39,8 @@ class Configuracao extends MY_Controller
         }
 
         $fornecedor['logo'] = $logo;
+        $fornecedor['token'] = $fornecedor['api_token'];
+
         $data = [
             'header' => $this->template->header(['title' => $page_title]),
             'navbar' => $this->template->navbar(),
@@ -47,6 +49,14 @@ class Configuracao extends MY_Controller
                 'page_title' => $page_title,
                 'buttons' => [
 
+                    [
+                        'type' => 'a',
+                        'id' => 'btnVoltar',
+                       'url' => "javascript:history.back(1)",
+                        'class' => 'btn-secondary',
+                        'icone' => 'fa-arrow-left',
+                        'label' => 'Retornar'
+                    ],
                 ]
             ]),
             'scripts' => $this->template->scripts([

@@ -1816,6 +1816,7 @@ class Cotacoes_oncoprod extends MY_Controller
             $root->appendChild($dom->createElement("Nm_Usuario", 'PHARMAINT321'));
             $root->appendChild($dom->createElement("Ds_Observacao_Fornecedor", utf8_encode($info['obs'])));
             $root->appendChild($dom->createElement("Qt_Prz_Minimo_Entrega", $info['prazo_entrega']));
+            $root->appendChild($dom->createElement("Sn_Permite_Alterar_Oferta", "Nao"));
             $root->appendChild($dom->createElement("Vl_Minimo_Pedido", str_replace(".", ",", $produtos_sintese['valor_minimo'])));
 
             $produtos = $dom->createElement("Produtos_Cotacao");
@@ -2637,8 +2638,8 @@ class Cotacoes_oncoprod extends MY_Controller
             $output = ['type' => 'success', 'message' => 'Produto encontrado!', 'link' => "{$this->route}index_depara/{$id_produto}"];
         } else {
 
-            $client = new SoapClient("http://integracao.plataformasintese.com/IntegrationService.asmx?WSDL");
-            $location = 'http://integracao.plataformasintese.com/IntegrationService.asmx';
+            $client = new SoapClient("https://ws-sintese.bionexo.com/IntegrationService.asmx?WSDL");
+            $location = 'https://ws-sintese.bionexo.com/IntegrationService.asmx';
 
             $forn = $this->fornecedores->findById(123);
 

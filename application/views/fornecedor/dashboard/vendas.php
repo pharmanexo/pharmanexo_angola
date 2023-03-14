@@ -10,15 +10,25 @@
 
 <div class="content">
 
-    <div class="alert alert-warning" role="alert" id="informativo">
+    <div class="alert alert-info" hidden>
+        <h4 class="alert-heading">Informações Importantes</h4>
+        <p class="alert alert-info">A Síntese está passando por uma instabilidade em seus servidores o que prejudica
+            diretamente a integração com o Pharmanexo.
+            Já acionamos o suporte para que façam uma verificação e solucionem o problema.
+        </p>
+    </div>
+
+    <div hidden class="alert alert-warning" role="alert" id="informativo">
         <button type="button" class="close" id="closeInforme">
             <span aria-hidden="true">&times;</span>
         </button>
         <h4 class="alert-heading">Informações Importantes</h4>
-        <p>Foi publicado uma atualização de segurança da Síntese visando melhorar a comunicação com a
-            integração, está atualização impacta diretamente o processo de envio das ofertas.</p>
-        <a href="https://pharmanexo.com.br/homolog/Documentos_sintese.pdf" target="_blank" class="btn btn-secondary">Abrir
-            Informativo</a>
+        <p class="alert alert-info">A Síntese está passando por uma instabilidade em seus servidores o que prejudica
+            diretamente a integração com o Pharmanexo.
+            Já acionamos o suporte para que façam uma verificação e solucionem o problema.
+        </p>
+
+        </p>
     </div>
     <?php if (isset($_SESSION['id_fornecedor']) && $_SESSION['id_fornecedor'] == 104) { ?>
         <div class="alert alert-primary" role="alert">
@@ -73,7 +83,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-2" <?php echo ($this->session->has_userdata('credencial_bionexo')) ? '' : 'hidden'; ?>>
+                        <div class="col-2" >
                             <div class="form-group">
                                 <label for="integrador">Integrador</label>
                                 <br>
@@ -82,10 +92,11 @@
                                     <option value="SINTESE">Sintese</option>
                                     <option value="BIONEXO">Bionexo</option>
                                     <option value="APOIO">Apoio</option>
+                                    <option value="HUMA">Huma</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="<?php echo ($this->session->has_userdata('credencial_bionexo')) ? 'col-2' : 'col-4'; ?>">
+                        <div class="col-2">
                             <div class="form-group">
                                 <label for="estados">Filtrar por Estado</label>
                                 <br>
@@ -358,13 +369,17 @@
 
                     switch (data.integrador) {
                         case 'SINTESE':
-                            integradorBtn = '<a data-toggle="tooltip" title="Sintese" ><i class="fab fa-stripe-s" style="font-size: 20px"></i></a>';
+                            integradorBtn = '<a data-toggle="tooltip" title="Sintese"  style="font-size: 20px" >S</a>';
                             break;
                         case 'BIONEXO':
-                            integradorBtn = '<a data-toggle="tooltip" title="Bionexo" ><i class="fab fa-bootstrap" style="font-size: 20px"></i></a>';
+                            integradorBtn = '<a data-toggle="tooltip" title="Bionexo"  style="font-size: 20px" >B</a>';
                             break;
                         case 'APOIO':
-                            integradorBtn = '<a data-toggle="tooltip" title="Apoio" ><i class="fab fa-atlassian" style="font-size: 20px"></i></a>';
+                            integradorBtn = '<a data-toggle="tooltip" title="Apoio"  style="font-size: 20px" >A</a>';
+                            break;
+
+                        case 'HUMA':
+                            integradorBtn = '<a data-toggle="tooltip" title="Huma" class="text-center" style="font-size: 20px" >H</a>';
                             break;
                     }
 

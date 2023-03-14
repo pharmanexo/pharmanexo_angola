@@ -27,12 +27,20 @@ class ImportarCotacoes extends CI_Controller
         $data['heading'] = $this->template->heading([
             'page_title' => $page_title,
             'buttons' => [
+                [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
 
             ]
         ]);
 
         $data['portais'] = $this->db->get('integradores')->result_array();
-        $data['formAction'] = "{$this->route}/buscar";
+        $data['formAction'] = "{$this->route}buscar";
 
         $this->load->view("{$this->views}/importarCotacoes", $data);
     }
@@ -42,6 +50,7 @@ class ImportarCotacoes extends CI_Controller
         if ($this->input->method() == 'post') {
             $post = $this->input->post();
             $id_fornecedor = $this->session->id_fornecedor;
+
 
             switch ($post['integrador']) {
                 case 1:
@@ -77,7 +86,7 @@ class ImportarCotacoes extends CI_Controller
         ]);
 
         $data['portais'] = $this->db->get('integradores')->result_array();
-        $data['formAction'] = "{$this->route}/buscar";
+        $data['formAction'] = "{$this->route}buscar";
 
         $this->load->view("{$this->views}/importarCotacoes", $data);
 
@@ -136,9 +145,9 @@ class ImportarCotacoes extends CI_Controller
     {
         $fornecedor = $this->db->where('id', $this->session->id_fornecedor)->get('fornecedores')->row_array();
 
-        if (!empty($fornecedor['credencial_apoio'])) {
+        if (!empty($fornecedor['credencial_bionexo'])) {
 
-            $credenciais = json_decode($fornecedor['credencial_apoio'], true);
+            $credenciais = json_decode($fornecedor['credencial_bionexo'], true);
 
             if (!empty($credenciais['login']) && !empty($credenciais['password'])) {
 
@@ -155,6 +164,7 @@ class ImportarCotacoes extends CI_Controller
                 ]);
 
                 $resposta = json_decode(curl_exec($ch), true);
+
 
                 curl_close($ch);
 

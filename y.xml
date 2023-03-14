@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Cotacao>
+    <Tp_Movimento>1</Tp_Movimento>
+    <Dt_Gravacao>13/03/2023 09:32:03</Dt_Gravacao>
+    <Cd_Fornecedor>07015691000146</Cd_Fornecedor>
+    <Cd_Cotacao>COT9621-3504</Cd_Cotacao>
+    <Cd_Condicao_Pagamento>1</Cd_Condicao_Pagamento>
+    <Nm_Usuario>PHARMAINT321</Nm_Usuario>
+    <Ds_Observacao>-</Ds_Observacao>
+    <Sn_Permite_Alterar_Oferta>Nao</Sn_Permite_Alterar_Oferta>
+    <Qt_Prz_Minimo_Entrega>2</Qt_Prz_Minimo_Entrega>
+    <Vl_Minimo_Pedido>800,00</Vl_Minimo_Pedido>
+    <Ds_Observacao_Fornecedor>CENTRAL DE ATENDIMENTO - TEL 11 3508-2933  RAMAL 604 WHATSAPP (11) 94474-8503&#13;
+        E-MAIL: PORTAISPJ@4BIO.COM.BR; &#13;
+        MEDICAMENTOS REFRIGERADOS ENVIAMOS DE SEGUNDA A QUARTA-FEIRA&#13;
+        **SUJEITO ANÁLISE DE CRÉDITO ** VALIDADE DA PROPOSTA: 05 DIAS *CONFIRMAR ESTOQUE&#13;
+    </Ds_Observacao_Fornecedor>
+    <Produtos_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>34688</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>84587</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>18</Id_Marca>
+                    <Ds_Marca>ASTRAZENECA </Ds_Marca>
+                    <Qt_Embalagem>60</Qt_Embalagem>
+                    <Vl_Preco_Produto>658,3770</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>2562</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>6933</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>83830</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>902</Id_Marca>
+                    <Ds_Marca>BRISTOL-MYERS SQUIBB</Ds_Marca>
+                    <Qt_Embalagem>30</Qt_Embalagem>
+                    <Vl_Preco_Produto>411,1887</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>550</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>6944</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>83833</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>4285</Id_Marca>
+                    <Ds_Marca>ASTELLAS</Ds_Marca>
+                    <Qt_Embalagem>120</Qt_Embalagem>
+                    <Vl_Preco_Produto>88,9167</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>835</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>6689</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>83834</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>15632</Id_Marca>
+                    <Ds_Marca>NOVARTIS</Ds_Marca>
+                    <Qt_Embalagem>30</Qt_Embalagem>
+                    <Vl_Preco_Produto>426,6513</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>75</Cd_produtoERP>
+                </Marca_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>11806</Id_Marca>
+                    <Ds_Marca>NATCOFARMA</Ds_Marca>
+                    <Qt_Embalagem>28</Qt_Embalagem>
+                    <Vl_Preco_Produto>275,1529</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>2580</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>6988</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>84402</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>15632</Id_Marca>
+                    <Ds_Marca>NOVARTIS</Ds_Marca>
+                    <Qt_Embalagem>112</Qt_Embalagem>
+                    <Vl_Preco_Produto>131,3215</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>192</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>32574</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>84405</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>18</Id_Marca>
+                    <Ds_Marca>ASTRAZENECA </Ds_Marca>
+                    <Qt_Embalagem>56</Qt_Embalagem>
+                    <Vl_Preco_Produto>249,9318</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>2244</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+        <Produto_Cotacao>
+            <Id_Produto_Sintese>24943</Id_Produto_Sintese>
+            <Cd_Produto_Comprador>84411</Cd_Produto_Comprador>
+            <Marcas_Oferta>
+                <Marca_Oferta>
+                    <Id_Marca>18</Id_Marca>
+                    <Ds_Marca>ASTRAZENECA </Ds_Marca>
+                    <Qt_Embalagem>30</Qt_Embalagem>
+                    <Vl_Preco_Produto>1.008,3333</Vl_Preco_Produto>
+                    <Ds_Obs_Oferta_Fornecedor>-</Ds_Obs_Oferta_Fornecedor>
+                    <Cd_produtoERP>1202</Cd_produtoERP>
+                </Marca_Oferta>
+            </Marcas_Oferta>
+        </Produto_Cotacao>
+    </Produtos_Cotacao>
+</Cotacao>

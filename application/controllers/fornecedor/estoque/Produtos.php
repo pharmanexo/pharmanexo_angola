@@ -194,6 +194,14 @@ class Produtos extends MY_Controller
 
             $buttons = [
                 [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
+                [
                     'type' => 'button',
                     'id' => 'btnExport',
                     'url' => "{$this->route}/exportar_produtos",
@@ -214,6 +222,14 @@ class Produtos extends MY_Controller
         } else {
 
             $buttons = [
+                [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                   'url' => "javascript:history.back(1)",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
                 [
                     'type' => 'button',
                     'id' => 'btnExport',
@@ -752,6 +768,12 @@ class Produtos extends MY_Controller
         $dados_page = ['dados' => $query, 'titulo' => 'Produtos'];
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
+
+        $objPHPExcel = $exportar['result'];
+        $objPHPExcel->getActiveSheet()->getColumnDimension("A")->setWidth(20);
+
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save("planilha.xlsx");
 
         if ($exportar['status'] == false) {
 

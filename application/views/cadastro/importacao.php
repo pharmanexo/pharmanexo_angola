@@ -133,30 +133,30 @@
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="cartao_cnpj" class="btn btn-outline-info btn-block">
+                                    <label for="produtos" class="btn btn-outline-info btn-block">
                                         Enviar Produtos
-                                        <input type="file" id="cartao_cnpj" hidden name="cartao_cnpj">
+                                        <input type="file" id="produtos" hidden name="produtos">
                                     </label>
                                 </div>
-                                <a href="" class="text-center">Baixa template</a>
+                                <a href="https://pharmanexo.com.br/public/Pharmanexo_CATALOGO.csv" target="_blank" class="text-center">Baixa template</a>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="cartao_cnpj" class="btn btn-outline-info btn-block">
+                                    <label for="estoque" class="btn btn-outline-info btn-block">
                                         Enviar Estoque/Lotes
-                                        <input type="file" id="cartao_cnpj" hidden name="cartao_cnpj">
+                                        <input type="file" id="estoque" hidden name="estoque">
                                     </label>
                                 </div>
-                                <a href="">Baixa template</a>
+                                <a href="https://pharmanexo.com.br/public/Pharmanexo_ESTOQUE.csv" target="_blank">Baixa template</a>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="cartao_cnpj" class="btn btn-outline-info btn-block">
+                                    <label for="precos" class="btn btn-outline-info btn-block">
                                         Enviar Preços
-                                        <input type="file" id="cartao_cnpj" hidden name="cartao_cnpj">
+                                        <input type="file" id="precos" hidden name="precos">
                                     </label>
                                 </div>
-                                <a href="">Baixa template</a>
+                                <a href="https://pharmanexo.com.br/public/Pharmanexo_PRECO.csv" target="_blank">Baixa template</a>
                             </div>
                         </div>
                         <hr>

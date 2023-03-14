@@ -42,6 +42,7 @@ class M_cotacaoManual extends MY_Model
         $this->DB_SINTESE = $this->load->database('sintese', TRUE);
         $this->DB_BIONEXO = $this->load->database('bionexo', TRUE);
         $this->DB_APOIO = $this->load->database('apoio', TRUE);
+        $this->DB_HUMA = $this->load->database('huma', TRUE);
     }
 
 
@@ -256,6 +257,51 @@ class M_cotacaoManual extends MY_Model
                 $this->DB_APOIO->where('id_cotacao', $id_cotacao);
                 $this->DB_APOIO->group_by('cd_produto_comprador');
                 $produtos_cotacao = $this->DB_APOIO->get('cotacoes_produtos')->result_array();
+
+
+                # Faz a combinação dos produtos Pharmanexo x bionexo
+                foreach ($produtos_cotacao as $produto) {
+
+                    $encontrados = [];
+
+                    if (isset($depara) && !empty($depara)) {
+
+                        foreach ($depara as $prod) {
+
+                            if ($prod['cd_produto_comprador'] == $produto['cd_produto_comprador']) {
+
+                                $produto['id_produto_sintese'] = $prod['id_produto_sintese'];
+                                $encontrados[] = $prod;
+                            }
+                        }
+                    }
+
+                    $produto['cd_cotacao'] = $cd_cotacao;
+
+                    $produtos[] = [
+                        'cotado' => $produto,
+                        'encontrados' => $encontrados,
+                    ];
+                }
+                break;
+            case 'HUMA':
+                $depara = $this->queryDeparaHuma($cd_cotacao, $id_fornecedor, $estado, $exibirEstoque, 1);
+
+
+                # Lista dos produtos da cotação na APOIO
+                $this->DB_HUMA->select("id");
+                $this->DB_HUMA->select("id_artigo");
+                $this->DB_HUMA->select("id_artigo");
+                $this->DB_HUMA->select("TRIM(cd_produto_comprador) AS cd_produto_comprador");
+                $this->DB_HUMA->select("ds_produto_comprador");
+                $this->DB_HUMA->select("marca_favorita");
+                $this->DB_HUMA->select("ds_unidade_compra");
+                $this->DB_HUMA->select("SUM(qt_produto_total) AS qt_produto_total");
+                $this->DB_HUMA->where('id_cotacao', $id_cotacao);
+                $this->DB_HUMA->group_by('id_artigo');
+                $produtos_cotacao = $this->DB_HUMA->get('cotacoes_produtos')->result_array();
+
+
 
 
                 # Faz a combinação dos produtos Pharmanexo x bionexo
@@ -997,6 +1043,91 @@ class M_cotacaoManual extends MY_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function queryDeparaHuma($cd_cotacao, $id_Fornecedor, $estado, $exibirEstoque = null, $exibirPreco = null)
+    {
+
+        $query = "
+    		SELECT 
+    			cot.cd_cotacao,
+                cot_prods.ds_produto_comprador,
+                cot_prods.cd_produto_comprador,
+                depara.id_produto_sintese,
+                pc.id,
+                forn_sint.cd_produto codigo,
+                CONCAT(pc.nome_comercial, ' - ', (case when (pc.apresentacao is null OR pc.apresentacao = '') then pc.descricao else pc.apresentacao end)) produto_descricao,
+                pc.marca,
+                IF(pc.quantidade_unidade is null, 1, pc.quantidade_unidade) quantidade_unidade,
+                pc.id_marca,
+                marc_sint.id_produto,
+                cot.id_fornecedor
+    	";
+
+        # Add estoque
+        if (isset($exibirEstoque)) {
+
+            $query .= ",
+    			(SELECT (SUM(pl.estoque) * IF(pc2.quantidade_unidade is null, 1, pc2.quantidade_unidade))
+	                FROM pharmanexo.produtos_lote pl
+	                JOIN pharmanexo.produtos_catalogo pc2 ON pc2.codigo = pl.codigo
+	                    AND pc2.id_fornecedor = pl.id_fornecedor
+	                    AND pc2.ativo = 1
+	                    AND pc2.bloqueado = 0
+	                WHERE pl.codigo = forn_sint.cd_produto
+	                    AND pl.id_fornecedor = forn_sint.id_fornecedor) estoque
+	    		";
+        }
+
+        # Add preço
+        if (isset($exibirPreco)) {
+
+            if (is_null($estado)) {
+                $query .= ",
+    			  (SELECT pp.preco_unitario
+                    FROM pharmanexo.produtos_preco_max pp
+                    WHERE  pp.id_estado is null
+                      AND pp.id_fornecedor = forn_sint.id_fornecedor
+                      AND pp.codigo = forn_sint.cd_produto
+                    LIMIT 1)      preco_unitario
+                        ";
+            } else {
+                $query .= ",
+    			  (SELECT pp.preco_unitario
+                    FROM pharmanexo.produtos_preco_max pp
+                    WHERE (pp.id_estado = {$estado} or pp.id_estado is null)
+                      AND pp.id_fornecedor = forn_sint.id_fornecedor
+                      AND pp.codigo = forn_sint.cd_produto
+                    LIMIT 1)      preco_unitario
+                        ";
+            }
+        }
+
+        $query .= "
+            
+            FROM cotacoes_huma.cotacoes cot
+            JOIN cotacoes_huma.cotacoes_produtos cot_prods ON cot_prods.id_cotacao = cot.id
+            LEFT JOIN pharmanexo.produtos_clientes_depara depara ON depara.cd_produto = cot_prods.cd_produto_comprador AND depara.id_cliente = cot.id_cliente
+            LEFT join pharmanexo.produtos_marca_sintese marc_sint ON marc_sint.id_produto = depara.id_produto_sintese
+            LEFT JOIN pharmanexo.produtos_fornecedores_sintese forn_sint ON forn_sint.id_fornecedor = cot.id_fornecedor AND forn_sint.id_sintese = marc_sint.id_sintese
+            JOIN pharmanexo.produtos_catalogo pc
+                ON pc.codigo = forn_sint.cd_produto
+                AND pc.id_fornecedor = forn_sint.id_fornecedor
+                AND pc.ativo = 1
+                AND pc.bloqueado = 0
+            WHERE cot.cd_cotacao = '{$cd_cotacao}' AND cot.id_fornecedor  = {$id_Fornecedor}  and depara.id_integrador = 4
+            GROUP BY 
+               cot.cd_cotacao,
+                forn_sint.cd_produto,
+                CONCAT(pc.nome_comercial, ' - ', (case when (pc.apresentacao is null OR pc.apresentacao = '') then pc.descricao else pc.apresentacao end)),
+                pc.marca,
+                pc.id_marca,
+                pc.quantidade_unidade
+            HAVING forn_sint.cd_produto is not null
+            ORDER BY cot_prods.ds_produto_comprador ASC
+        ";
+
+        return $this->db->query($query)->result_array();
+    }
+
     /**
      * Oculta/Desoculta a cotação
      *
@@ -1594,6 +1725,11 @@ class M_cotacaoManual extends MY_Model
                 $this->DB_APOIO->where('id_fornecedor', $id_fornecedor);
                 $cotacao = $this->DB_APOIO->get('cotacoes')->row_array();
                 break;
+            case 'HUMA':
+                $this->DB_HUMA->where('cd_cotacao', $cd_cotacao);
+                $this->DB_HUMA->where('id_fornecedor', $id_fornecedor);
+                $cotacao = $this->DB_HUMA->get('cotacoes')->row_array();
+                break;
         }
 
         if (isset($cotacao) && !empty($cotacao)) {
@@ -1786,6 +1922,54 @@ class M_cotacaoManual extends MY_Model
                     }
                 }
                 break;
+            case 'HUMA':
+                foreach ($post['dados'] as $row) {
+
+                    $produtoForn = $this->db
+                        ->where('cd_produto', $row['cd_produto'])
+                        ->where('id_fornecedor', $this->session->id_fornecedor)
+                        ->limit(1)
+                        ->get('produtos_fornecedores_sintese')
+                        ->row_array();
+
+                    if (!empty($produtoForn)) {
+                        $produtoSint = $this->db
+                            ->where('id_sintese', $produtoForn['id_sintese'])
+                            ->limit(1)
+                            ->get('produtos_marca_sintese')
+                            ->row_array();
+
+                        if (!empty($produtoSint)) {
+
+                            $this->db->where('id_cliente', $row['id_cliente']);
+                            $this->db->where('cd_produto', $row['id_sintese']);
+                            $this->db->where('id_produto_sintese', $produtoSint['id_produto']);
+                            $this->db->where('id_integrador', 4);
+                            $old = $this->db->get('produtos_clientes_depara');
+
+                            $data = [
+                                "id_produto_sintese" => $produtoSint['id_produto'],
+                                "cd_produto" => $row['id_sintese'],
+                                "id_usuario" => $this->session->id_usuario,
+                                "id_integrador" => 4,
+                                "id_cliente" => $row['id_cliente']
+                            ];
+
+                            if ($old->num_rows() == 0) {
+                                $this->pcd->insert($data);
+                            }
+
+                        } else {
+
+                            $this->db->trans_rollback();
+                            return ['type' => 'error', 'message' => 'Produto base não localizado'];
+                        }
+                    }else{
+                        return ['type' => 'error', 'message' => 'Produto sem De/Para incial. Acesso o menu PRODUTOS -> DEPARA'];
+                    }
+
+                }
+                break;
         }
 
 
@@ -1804,8 +1988,10 @@ class M_cotacaoManual extends MY_Model
 
     private function getProdSintese($id_produto)
     {
-        $client = new SoapClient("http://integracao.plataformasintese.com/IntegrationService.asmx?WSDL");
-        $location = 'http://integracao.plataformasintese.com/IntegrationService.asmx';
+
+        /* TODO: mudar para config de banco */
+        $client = new SoapClient("https://ws-sintese.bionexo.com/IntegrationService.asmx?WSDL");
+        $location = 'https://ws-sintese.bionexo.com/IntegrationService.asmx';
 
         $forn = $this->fornecedor->findById($this->session->id_fornecedor);
 
@@ -1819,7 +2005,6 @@ class M_cotacaoManual extends MY_Model
 
         $options = array('location' => $location);
         $result = $client->__soapCall($function, $arguments, $options);
-
 
         $xml = new SimpleXMLElement($result->ObterProdutosResult);
 
@@ -1905,6 +2090,7 @@ class M_cotacaoManual extends MY_Model
                     $root->appendChild($dom->createElement("Nm_Usuario", 'PHARMAINT321'));
                     $root->appendChild($dom->createElement("Ds_Observacao_Fornecedor", utf8_encode($post['obs'])));
                     $root->appendChild($dom->createElement("Qt_Prz_Minimo_Entrega", $post['prazo_entrega']));
+                    $root->appendChild($dom->createElement("Sn_Permite_Alterar_Oferta", 'Nao'));
                     $root->appendChild($dom->createElement("Vl_Minimo_Pedido", str_replace(".", ",", $produtos_sintese['valor_minimo'])));
 
                     $produtos = $dom->createElement("Produtos_Cotacao");
@@ -1929,7 +2115,7 @@ class M_cotacaoManual extends MY_Model
                             $catalogo = $this->catalogo->find("marca, id_marca", "codigo = {$p['id_pfv']} AND id_fornecedor = {$p['id_fornecedor']}", true);
 
                             $id_marca = $dom->createElement("Id_Marca", $catalogo['id_marca']);
-                            $ds_marca = $dom->createElement("Ds_Marca", $catalogo['marca']);
+                            $ds_marca = $dom->createElement("Ds_Marca", htmlspecialchars($catalogo['marca']));
                             $qt_embalagem = $dom->createElement("Qt_Embalagem", $p['qtd_embalagem']);
                             $pr_unidade = $dom->createElement("Vl_Preco_Produto", number_format($p['preco_marca'], 4, ',', '.'));
                             $cd_produto = $dom->createElement("Cd_ProdutoERP", $p['id_pfv']);
@@ -2021,7 +2207,7 @@ class M_cotacaoManual extends MY_Model
                             $item->appendChild($dom->createElement('Id_Artigo', $prod['id_artigo']));
                             $item->appendChild($dom->createElement('Codigo_Produto', $p['cd_produto_comprador']));
                             $item->appendChild($dom->createElement('Preco_Unitario', $p['preco_marca']));
-                            $item->appendChild($dom->createElement('Fabricante', utf8_encode(utf8_decode("{$catalogo['nome_comercial']} - {$catalogo['marca']}"))));
+                            $item->appendChild($dom->createElement('Fabricante', utf8_encode(utf8_decode(htmlspecialchars("{$catalogo['nome_comercial']} - {$catalogo['marca']}")))));
                             $item->appendChild($dom->createElement('Embalagem', $catalogo['unidade']));
                             $item->appendChild($dom->createElement('Quantidade_Embalagem', $p['qtd_embalagem']));
                             $item->appendChild($dom->createElement('Comentario', $p['obs_produto']));

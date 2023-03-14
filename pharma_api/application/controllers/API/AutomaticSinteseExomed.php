@@ -578,7 +578,7 @@ class AutomaticSinteseExomed extends CI_Controller
                        </soapenv:Body>
                     </soapenv:Envelope>';
 
-			$soapUrl = 'http://integracao.plataformasintese.com/IntegrationService.asmx?WSDL';
+			$soapUrl = 'https://ws-sintese.bionexo.com/IntegrationService.asmx?WSDL';
 			// xml post structure
 			$headers = array(
 				"Host: integracao.plataformasintese.com",

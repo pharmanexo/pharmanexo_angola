@@ -89,7 +89,7 @@
                                     <div class="col-md-7">
                                         <div class="detail-box">
                                             <h1>
-                                                O MAIOR PORTAL DE INTEGRAÇÃO MULTIPLAFORMAS PARA PRODUTOS FARMACÊUTICOS DO
+                                                O MAIOR PORTAL DE INTEGRAÇÃO MULTIPLATAFORMAS PARA PRODUTOS FARMACÊUTICOS DO
                                                 BRASIL
                                             </h1>
                                             <p>
