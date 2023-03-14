@@ -403,39 +403,15 @@ class Dashboard extends MY_Controller
     public function getChartsFornecedor()
     {
         $json = [];
-        $file = "public/charts_{$this->session->id_fornecedor}.json";
+        $post = $this->input->post();
 
+        $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
 
-        if (file_exists($file)) {
-            $json = file_get_contents($file);
+        $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
 
-            // exclui arquivos com 1 dia de diferença
-            $fileDate = date_create(date("Y-m-d H:i:s", filectime($file)));
-            $date1 = date_create(date("Y-m-d H:i:s", time()));
-            $interval = date_diff($fileDate, $date1);
+        $data['chartMap'] = $this->createMap($this->session->id_fornecedor);
 
-            if ($interval->days > 0) {
-                unlink($file);
-            }
-        } else {
-            $post = $this->input->post();
-
-            $integrador = (isset($post['integrador'])) ? $post['integrador'] : 'SINTESE';
-
-            // $this->graficoCotacoes($this->session->id_fornecedor, $post['ano']);
-
-            $data['chartLine'] = $this->createChartTotalCotacoes($this->session->id_fornecedor, $post['ano']);
-
-            $data['chartColumn'] = $this->createChartProdutosVencer($this->session->id_fornecedor);
-
-            $data['chartMap'] = $this->createMap($this->session->id_fornecedor);
-
-            $json = json_encode($data);
-
-            $f = fopen($file, 'w+');
-            fwrite($f, $json);
-            fclose($f);
-        }
+        $json = json_encode($data);
 
         $this->output->set_content_type('application/json')->set_output($json);
     }
@@ -585,14 +561,22 @@ class Dashboard extends MY_Controller
 
     public function createChartTotalCotacoes($id_fornecedor, $ano, $return = null)
     {
-
-        $resp = $this->grafico->getDadosCotacaoMensal($this->session->id_fornecedor, $ano, 'SINTESE');
-
+        $mes = date('m');
+        $year = date('Y');
+        $resp = [];
+        if ($ano == $year) {
+            $resp = $this->grafico->getDadosCotacaoMensalPorAnoMes($this->session->id_fornecedor, $ano, $mes, 'SINTESE');
+        }
 
         $totalCot = [];
         $cotEnv = [];
         $cotProd = [];
         $cotEnvProd = [];
+        for ($i = 1; $i <= 12; $i++) {
+            if (!isset($totalCot[$i])) $totalCot[$i] = 0;
+            if (!isset($cotEnv[$i])) $cotEnv[$i] = 0;
+            if (!isset($cotProd[$i])) $cotProd[$i] = 0;
+        }
 
         foreach ($resp as $row) {
 
@@ -619,26 +603,37 @@ class Dashboard extends MY_Controller
             }
         }
 
-        for ($i = 1; $i <= 12; $i++) {
-            if (!isset($totalCot[$i])) $totalCot[$i] = 0;
-        }
-        for ($i = 1; $i <= 12; $i++) {
-            if (!isset($cotEnv[$i])) $cotEnv[$i] = 0;
-        }
-        for ($i = 1; $i <= 12; $i++) {
-            if (!isset($cotProd[$i])) $cotProd[$i] = 0;
-        }
+        // $dataCurrente = date('m', time());
+        // $anoCurrente = date('Y', time());
+        // $key = intval($dataCurrente);
 
-        $dataCurrente = date('m', time());
-        $anoCurrente = date('Y', time());
-        $key = intval($dataCurrente);
-
-        if ($ano == $anoCurrente) {
-            $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($id_fornecedor, 'current');
-        }
+        // if ($ano == $anoCurrente) {
+        //     $cotEnv[$key] = $this->cotacoes_produtos->getAmountCot($id_fornecedor, 'current');
+        // }
 
         for ($i = 1; $i <= 12; $i++) {
             $cotEnvProd[$i] = ($cotProd[$i] != 0 && $cotEnv[$i] != 0) ? intval(($cotEnv[$i] / $cotProd[$i]) * 100) : 0;
+        }
+        if ($ano != $year) {
+            $mes = 13;
+        }
+        for ($i = 1; $i < $mes; $i++) {
+            $resultQuery = $this->grafico->getDadosCotacaoMensalCalculadaPorAnoMes($this->session->id_fornecedor, $ano, $i);
+            if ($resultQuery) {
+                foreach ($resultQuery as $row) {
+                    $totalCot[$row['mes']] = $row['total_cot'];
+                    $cotProd[$row['mes']] = $row['cot_com_prod'];
+                    $cotEnv[$row['mes']] = $row['cot_enviada'];
+                    $cotEnvProd[$row['mes']] = $row['porcentagem'];
+                }
+            } else {
+                $novosDados = $this->populateDataCharCotacoes($ano, $i);
+
+                $totalCot[$novosDados['mes']] = $novosDados['total_cot'];
+                $cotEnv[$novosDados['mes']] = $novosDados['cot_enviada'];
+                $cotProd[$novosDados['mes']] = $novosDados['cot_com_prod'];
+                $cotEnvProd[$novosDados['mes']] = $novosDados['porcentagem'];
+            }
         }
 
         $data = [
@@ -677,14 +672,55 @@ class Dashboard extends MY_Controller
             ]
         ];
 
-
         if (isset($return)) {
-
             $this->output->set_content_type('application/json')->set_output(json_encode($data));
         } else {
-
             return $data;
         }
+    }
+
+    function populateDataCharCotacoes($ano, $mes)
+    {
+        $id_fornecedor = $this->session->id_fornecedor;
+        $resp = $this->grafico->getDadosCotacaoMensalPorAnoMes($id_fornecedor, $ano, $mes, 'SINTESE');
+        $totalCot = 0;
+        $cotEnv = 0;
+        $cotProd = 0;
+        $cotEnvProd = 0;
+
+        foreach ($resp as $row) {
+
+            (isset($totalCot)) ? $totalCot += 1 : $totalCot = 1;
+
+
+            if ($row['depara'] == "S") {
+
+                (isset($cotProd)) ? $cotProd += 1 : $cotProd = 1;
+            }
+
+            if ($row['depara'] == "S" && $row['oferta'] == "S") {
+
+                //if ($row['nivel'] == 'S') {
+
+                // (isset($cotEnv)) ? $cotEnv += 2 : $cotEnv = 2;
+                //} else {
+
+                (isset($cotEnv)) ? $cotEnv += 1 : $cotEnv = 1;
+                //}
+            }
+        }
+        $cotEnvProd = ($cotProd != 0 && $cotEnv != 0) ? intval(($cotEnv / $cotProd) * 100) : 0;
+        $dados = [
+            'id_fornecedor' => $id_fornecedor,
+            'ano' => $ano,
+            'mes' => $mes,
+            'total_cot' => $totalCot,
+            'cot_com_prod' => $cotProd,
+            'cot_enviada' => $cotEnv,
+            'porcentagem' => $cotEnvProd
+        ];
+        $this->db->insert('grafico_fornecedores', $dados);
+        return $dados;
     }
 
     public function graficoCotacoes($id_fornecedor, $ano, $return = null)
@@ -772,7 +808,6 @@ class Dashboard extends MY_Controller
 
             $this->output->set_content_type('application/json')->set_output(json_encode($data));
         } else {
-
             return var_dump($grafico, $novoGrafico, $velhoGrafico);
             exit;
         }
