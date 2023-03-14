@@ -34,6 +34,16 @@ class Sumarizado extends MY_Controller
         $data['navbar']  = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
         $data['scripts'] = $this->template->scripts();
+        $data['heading'] = $this->template->heading(['page_title' => $page_title, 
+        'buttons' => [
+            [
+                'type' => 'a',
+                'id' => 'btnVoltar',
+               'url' => "javascript:history.back(1)",
+                'class' => 'btn-secondary',
+                'icone' => 'fa-arrow-left',
+                'label' => 'Retornar'
+            ]]]);
 
         $data['clientes'] = $this->comprador->find('id, cnpj, nome_fantasia');
         $data['estados'] = $this->estados->find();

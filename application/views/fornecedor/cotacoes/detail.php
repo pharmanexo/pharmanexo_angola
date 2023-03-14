@@ -15,7 +15,7 @@
             <input type="hidden" name="razao_social" id="razao_social" value="<?php if (isset($cotacao['cliente']['razao_social'])) echo $cotacao['cliente']['razao_social']; ?>">
             <input type="hidden" name="id_cliente" id="id_cliente" value="<?php if (isset($cotacao['cliente']['id'])) echo $cotacao['cliente']['id']; ?>"> <input type="hidden" name="id_estado" id="id_estado" value="<?php if (isset($cotacao['estado']['id'])) echo $cotacao['estado']['id']; ?>"> <input type="hidden" name="uf_cotacao" id="uf_cotacao" value="<?php if (isset($cotacao['uf_cotacao'])) echo $cotacao['uf_cotacao']; ?>">
 
-            <?php if ($cotacao['data_fim'] < date('Y-m-d H:i:s', strtotime("-1 hour"))) : ?>
+            <?php if (strtotime($cotacao['data_fim']) < time()) : ?>
                 <div class="alert alert-danger" role="alert"><i class="fas fa-exclamation-triangle"></i> Esta cotação se
                     encontra encerrada.
                 </div>

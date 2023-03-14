@@ -232,37 +232,41 @@ class ImportDeivis extends CI_Controller
 
     public function importProds()
     {
-        $file = fopen('sint_dez.csv', 'r');
+        $file = fopen('preco_fec.csv', 'r');
         $linhas = [];
 
-        while (($line = fgetcsv($file, null, ';')) !== false) {
-            var_dump($line);
-            exit();
-            $linhas[] = $line;
-        }
-        fclose($file);
+        while (($line = fgetcsv($file, null, ',')) !== false) {
 
-        unset($linhas[0]);
-        foreach ($linhas as $line) {
-            var_dump($line);
-            exit();
+            if ($line[0] == 'codigo') {
+                continue;
+            }
 
-            $insert[] = [
+            $insert = [
                 "codigo" => intval($line[0]),
-                "produtos" => trim($line[1]),
+                "produto" => trim($line[1]),
                 "unidade" => trim($line[2]),
                 "marca" => trim($line[3]),
                 "valor" => intval($line[4]),
                 "qtd_embalagem" => trim($line[5]),
-                "qtd_solicitada" => date("Y-m-d", strtotime($line[6])),
-                "cotacao" => dbNumberFormat(trim($line[7])),
-                "cotacao" => dbNumberFormat(trim($line[7])),
-                "cotacao" => dbNumberFormat(trim($line[7])),
-                "cotacao" => dbNumberFormat(trim($line[7])),
+                "cotacao" => trim($line[5]),
+                "ordemcompra" => trim($line[5]),
+                "fornecedor" => trim($line[5]),
+                "data_cotacao" => $line[5],
+                "hospital" => trim($line[5]),
+                "qtd_comprador" => trim($line[5]),
             ];
-        }
 
-        $this->db->insert_batch("promocoes_convidados", $insert);
+            $i = $this->db->insert("temp_produtos_ofertas", $insert);
+
+            if (!$i){
+                var_dump($this->db->error());
+                exit();
+            }
+        }
+        fclose($file);
+
+
+
     }
 
     public function importPontamed()
@@ -321,31 +325,31 @@ class ImportDeivis extends CI_Controller
     {
         $_SESSION['id_usuario'] = 15;
 
-        $file = fopen('produtos.csv', 'r');
+        $file = fopen('produtos_gemmini.csv', 'r');
         $linhas = [];
 
-        while (($line = fgetcsv($file, null, ';')) !== false) {
+        while (($line = fgetcsv($file, null, ',')) !== false) {
 
-            // var_dump($line);
-
-            $cod = preg_replace('/[\x{200B}-\x{200D}\x{FEFF}]/u', '', $line[0]);
-
-
-            if (strpos($line[3], 'Conv') !== FALSE) {
-                $line[3] = 'Isento';
-            }
-
-            $this->db
-                ->where('codigo', $cod)
-                ->where_in('id_fornecedor', [5042, 5043, 5044])
-                ->update('produtos_catalogo', ['classe' => $line[3]]);
+            $linhas[] = [
+                'codigo' => $line[0],
+                'codigo_externo' => $line[1],
+                'nome_comercial' => "{$line[2]} - {$line[1]}",
+                'marca' => $line[4],
+                'rms' => $line[6],
+                'ean' => $line[7],
+                'unidade' => $line['8'],
+                'quantidade_unidade' => 1,
+                'ativo' => 1,
+                'id_fornecedor' => 5054
+            ];
 
         }
         fclose($file);
 
 
-        // $this->db->insert_batch("produtos_catalogo", $linhas);
+        $this->db->insert_batch("produtos_catalogo", $linhas);
     }
+
 
     public function regra4bio()
     {

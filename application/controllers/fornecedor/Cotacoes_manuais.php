@@ -49,6 +49,14 @@ class Cotacoes_manuais extends MY_Controller
             'page_title' => $page_title,
             'buttons' => [
                 [
+                    'type' => 'a',
+                    'id' => 'btnVoltar',
+                    'url' => "/fornecedor/cotacoes",
+                    'class' => 'btn-secondary',
+                    'icone' => 'fa-arrow-left',
+                    'label' => 'Retornar'
+                ],
+                [
                     'type' => 'button',
                     'id' => 'btnExport',
                     'url' => "{$this->route}/exportar",
