@@ -72,6 +72,28 @@ $db['sintese'] = array(
     'save_queries' => TRUE
 );
 
+$db['huma'] = array(
+    'dsn'	=> '',
+    'hostname' => $_SERVER['DB_HOST'],
+    'username' => $_SERVER['DB_USERNAME'],
+    'password' => $_SERVER['DB_PASSWORD'],
+    'database' => 'cotacoes_huma',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    //'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => TRUE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
 $db['bionexo'] = array(
     'dsn'	=> '',
     'hostname' => $_SERVER['DB_HOST'],

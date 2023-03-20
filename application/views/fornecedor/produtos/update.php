@@ -54,7 +54,7 @@
 
                                 <div class="col-12 col-md-6 col-lg-2 form-group">
                                     <label>Quantidade por Unidade</label>
-                                    <input type="number" id="qtd_unidade" value="<?php if (isset($produto['quantidade_unidade'])) echo $produto['quantidade_unidade'] ?>" class="form-control" placeholder="" maxlength="45" name="qtd_unidade">
+                                    <input type="number" id="qtd_unidade" value="<?php if (isset($produto['quantidade_unidade'])) echo $produto['quantidade_unidade'] ?>" class="form-control" placeholder="" maxlength="45" name="qtd_unidade" <?php if (isset($this->session->id_fornecedor) && $this->session->id_fornecedor == '5007') echo 'disabled=""'; ?>/>
                                 </div>
                             </div>
                         </div>
