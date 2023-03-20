@@ -509,20 +509,25 @@ class Login extends CI_Controller
 
         $post = $this->input->post();
 
-        $url = 'https://www.google.com/recaptcha/api/siteverify';
-        $data = array('secret' => '6LcSlLkUAAAAACT-qSeWEd0nrNRzgYJaUqwHuZkR', 'response' => $post['token']);
+       if ($_SERVER['HTTP_HOST']!='localhost') {
+           $url = 'https://www.google.com/recaptcha/api/siteverify';
+           $data = array('secret' => '6LcSlLkUAAAAACT-qSeWEd0nrNRzgYJaUqwHuZkR', 'response' => $post['token']);
 
-        $options = array(
-            'http' => array(
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context = stream_context_create($options);
-        $response = file_get_contents($url, false, $context);
-        $responseKeys = json_decode($response, true);
-        header('Content-type: application/json');
+           $options = array(
+               'http' => array(
+                   'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                   'method' => 'POST',
+                   'content' => http_build_query($data)
+               )
+           );
+           $context = stream_context_create($options);
+           $response = file_get_contents($url, false, $context);
+           $responseKeys = json_decode($response, true);
+           header('Content-type: application/json');
+       } else {
+           $responseKeys["success"] = true;
+           $responseKeys["score"] = 10;
+       }
 
         if ($responseKeys["success"]) {
 

@@ -260,6 +260,7 @@ class Produtos extends MY_Controller
 
     private function form($codigo = null)
     {
+
         $page_title = "Cadastro de Produtos";
 
         $data['slct_marcas'] = "{$this->route}to_select2_marcas";
@@ -267,6 +268,12 @@ class Produtos extends MY_Controller
         $data['form_action_produto'] = "{$this->route}saveProduct";
         $data['form_action_precosLotes'] = "{$this->route}savePriceLot";
         $view = "create";
+
+        if (isset($this->session->id_fornecedor) && $this->session->id_fornecedor == '5007' && isset($this->session->grupo) && $this->session->grupo == '2') {
+            $data['qtd_disabled'] = true;
+        } else {
+            $data['qtd_disabled'] = false;
+        }
 
         if (isset($codigo) && !empty($codigo)) {
             $page_title = "Edição de Produtos";
