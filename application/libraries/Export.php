@@ -3,7 +3,8 @@
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
-class Export{
+class Export
+{
 
     private $db;
     private $words = [1 => 'A', 2 => 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -34,19 +35,29 @@ class Export{
 
             $spreadsheet = new Spreadsheet();
 
-            if ( count($page1['dados']) > 0 ) {
-
+            if (count($page1['dados']) > 0) {
+                // Set the document header and center it by '&C'
                 $sheet = $spreadsheet->getActiveSheet()->setTitle($page1['titulo']);
+                $spreadsheet->getActiveSheet()->getRowDimension('1')->setRowHeight(55);
+                $spreadsheet->getActiveSheet()->getColumnDimension("A")->setAutoSize(true);
                 $spreadsheet->getActiveSheet()->getColumnDimension("B")->setAutoSize(true);
                 $spreadsheet->getActiveSheet()->getColumnDimension("C")->setAutoSize(true);
-                $countNumber = 1;
+                $spreadsheet->getActiveSheet()->setCellValue('A1', 'helpdesk@pharmanexo.com.br');
+                $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+                $drawing->setName('Pharmanexo logo');
+                $drawing->setPath('public/assets/img/logo_after.png');
+                $drawing->setHeight(50);
+                $drawing->setCoordinates('A1');
+                $drawing->setWorksheet($spreadsheet->getActiveSheet());
+
+                $countNumber = 2;
 
                 $data = $this->getHeader($page1['dados']);
 
-                foreach($data as $chave => $row) {
+                foreach ($data as $chave => $row) {
 
                     $countWord = 1;
-                    foreach($row as $column ) {
+                    foreach ($row as $column) {
                         $sheet->setCellValue("{$this->words[$countWord]}{$countNumber}", $column);
                         $countWord++;
                     }
@@ -54,7 +65,7 @@ class Export{
                 }
             }
 
-            if ( isset($page2['dados']) && count($page2['dados']) > 0 ) {
+            if (isset($page2['dados']) && count($page2['dados']) > 0) {
 
                 $sheet2 = $spreadsheet->createSheet()->setTitle($page2['titulo']);
 
@@ -62,10 +73,10 @@ class Export{
 
                 $data = $this->getHeader($page2['dados']);
 
-                foreach($data as $chave => $row) {
+                foreach ($data as $chave => $row) {
 
                     $countWord = 1;
-                    foreach($row as $column ) {
+                    foreach ($row as $column) {
                         $sheet2->setCellValue("{$this->words[$countWord]}{$countNumber}", $column);
                         $countWord++;
                     }
@@ -73,7 +84,7 @@ class Export{
                 }
             }
 
-            if ( isset($page3['dados']) && count($page3['dados']) > 0 ) {
+            if (isset($page3['dados']) && count($page3['dados']) > 0) {
 
                 $sheet3 = $spreadsheet->createSheet()->setTitle($page3['titulo']);
 
@@ -81,10 +92,10 @@ class Export{
 
                 $data = $this->getHeader($page3['dados']);
 
-                foreach($data as $chave => $row) {
+                foreach ($data as $chave => $row) {
 
                     $countWord = 1;
-                    foreach($row as $column ) {
+                    foreach ($row as $column) {
                         $sheet3->setCellValue("{$this->words[$countWord]}{$countNumber}", $column);
                         $countWord++;
                     }
@@ -99,7 +110,6 @@ class Export{
             $writer->save($name);
 
             force_download($name, NULL);
-
         } catch (\PhpOffice\PhpSpreadsheet\Reader\Exception $e) {
 
             return ['status' => false, 'message' => $e->getMessage()];
@@ -116,7 +126,7 @@ class Export{
     public function getHeader($data)
     {
         $titles = [];
-        foreach( array_keys($data[0]) as $title) {
+        foreach (array_keys($data[0]) as $title) {
 
             $titles["{$title}"] = $title;
         }
