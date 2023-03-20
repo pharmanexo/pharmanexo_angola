@@ -6,6 +6,7 @@ class M_cotacaoManual extends MY_Model
     private $DB_SINTESE;
     private $DB_BIONEXO;
     private $DB_APOIO;
+    private $DB_HUMA;
     private $urlCliente_sintese;
     private $urlCliente_bionexo;
     private $urlCliente_apoio;
@@ -84,10 +85,12 @@ class M_cotacaoManual extends MY_Model
         #obs cotação
         $obs = " - ";
 
-        if(isset($cotacao['observacao']) && !empty($cotacao['observacao'])){
-            $obs = $cotacao['observacao'];
-        }elseif (isset($cotacao['ds_observacao']) && !empty($cotacao['ds_observacao'])){
-            $obs = $cotacao['ds_cotacao'];
+        if (isset($cotacao['observacao']) && !empty($cotacao['observacao'])) {
+
+            $obs = "{$cotacao['ds_cotacao']} </br> {$cotacao['observacao']}";
+
+        } elseif (isset($cotacao['ds_observacao']) && !empty($cotacao['ds_observacao'])) {
+            $obs = "{$cotacao['ds_cotacao']} </br> {$cotacao['ds_observacao']}";
         }
 
         # Cabeçalho de cada produto
@@ -300,8 +303,6 @@ class M_cotacaoManual extends MY_Model
                 $this->DB_HUMA->where('id_cotacao', $id_cotacao);
                 $this->DB_HUMA->group_by('id_artigo');
                 $produtos_cotacao = $this->DB_HUMA->get('cotacoes_produtos')->result_array();
-
-
 
 
                 # Faz a combinação dos produtos Pharmanexo x bionexo
@@ -1964,7 +1965,7 @@ class M_cotacaoManual extends MY_Model
                             $this->db->trans_rollback();
                             return ['type' => 'error', 'message' => 'Produto base não localizado'];
                         }
-                    }else{
+                    } else {
                         return ['type' => 'error', 'message' => 'Produto sem De/Para incial. Acesso o menu PRODUTOS -> DEPARA'];
                     }
 
@@ -2403,6 +2404,11 @@ class M_cotacaoManual extends MY_Model
                         $this->DB_APOIO->where('id_cotacao', $post['id_cotacao']);
                         $this->DB_APOIO->where('cd_produto_comprador', $produto['cd_produto_comprador']);
                         $prod = $this->DB_APOIO->get('cotacoes_produtos')->row_array();
+                        break;
+                    case 'HUMA':
+                        $this->DB_HUMA->where('id_cotacao', $post['id_cotacao']);
+                        $this->DB_HUMA->where('cd_produto_comprador', $produto['cd_produto_comprador']);
+                        $prod = $this->DB_HUMA->get('cotacoes_produtos')->row_array();
                         break;
                 }
 
@@ -2855,7 +2861,7 @@ class M_cotacaoManual extends MY_Model
     }
 
     /**
-     * Envia o XML de cada fornecedor selecionado para a bionexo
+     * Envia o XML de cada fornecedor selecionado para a apoio
      *
      * @param - Array POST
      * @param - String Codigo da cotação
@@ -3096,6 +3102,106 @@ class M_cotacaoManual extends MY_Model
 
             return $warning;
         }
+    }
+
+    /**
+     * Envia o XML de cada fornecedor selecionado para a Huma
+     *
+     * @param - Array POST
+     * @param - String Codigo da cotação
+     * @param - INT ID do comprador
+     * @return  array
+     */
+    public function sendHuma($cd_cotacao, $id_cliente)
+    {
+
+        $dados = $this->session->cot_manual;
+        $user = $this->db->where('id', $this->session->id_usuario)->get('usuarios')->row_array();
+
+        $cotacao = $this->DB_HUMA
+            ->select('c.cd_cotacao, cp.*')
+            ->from('cotacoes c')
+            ->join('cotacoes_produtos cp', 'cp.id_cotacao = c.id')
+            ->where('c.cd_cotacao', $cd_cotacao)
+            ->where('c.id_fornecedor', $this->session->id_fornecedor)
+            ->get()
+            ->result_array();
+
+        $ofertas = $this->db
+            ->select('cp.*, pc.marca, pc.id_marca, pc.nome_comercial, pc.apresentacao')
+            ->from('cotacoes_produtos cp')
+            ->join('produtos_catalogo pc', 'pc.codigo = cp.id_pfv and cp.id_fornecedor = cp.id_fornecedor')
+            ->where('cd_cotacao', $cd_cotacao)
+            ->where('cp.id_fornecedor', $this->session->id_fornecedor)
+            ->get()
+            ->result_array();
+
+        foreach ($cotacao as $k => $item) {
+            foreach ($ofertas as $oferta) {
+                if ($item['id_artigo'] == $oferta['id_produto']) {
+                    $cotacao[$k]['ofertas'][] = $oferta;
+                }
+            }
+        }
+
+        $produtosOferta = [];
+
+        foreach ($cotacao as $cot) {
+            if (isset($cot['ofertas'])) {
+                foreach ($cot['ofertas'] as $oferta) {
+                    $produtosOferta[] = [
+                        'marca' => (isset($oferta['marca'])) ? $oferta['marca'] : '',
+                        'nãoCotar' => false,
+                        'observacoes' => (isset($oferta['obs_produto'])) ? $oferta['obs_produto'] : '',
+                        'produto' => [
+                            'id' => [
+                                "codigo" => $cot['codigoPessoa'],
+                                "codigoPessoa" => $oferta['id_produto']
+                            ]
+                        ],
+                        "quantidade" => $cot['qt_produto_total'],
+                        "quantidadeCotada" => $cot['qt_produto_total'],
+                        "referenciaProduto" => 'PHARMA',
+                        'unidade' => [
+                            'id' => $cot['id_unidade'],
+                            'descricao' => $cot['ds_unidade_compra']
+                        ],
+                        'valorCotacao' => number_format($oferta['preco_marca'], 2, ',', '.')
+                    ];
+                }
+            }
+        }
+
+        $url = "https://pharmanexo.com.br/pharma_api/huma/cotacoes/sendCotacao?id={$this->session->id_fornecedor}";
+
+        $postdata = json_encode($produtosOferta);
+
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        $post = [
+            'cd_cotacao' => $cd_cotacao,
+            'id_fornecedor' => $this->session->id_fornecedor,
+            'vendedor' => $user['nickname'] . " - " . $user['email'],
+            'obs' => $dados['obs'],
+            'prazoEntrega' => $dados['prazo_entrega'],
+            'formaPagamento' => $dados['id_forma_pagamento']
+        ];
+
+        return json_decode($result, true);
+
+
+        // atualiza a cotação
+
+        // envia email do espelho
+
+
     }
 
     /**

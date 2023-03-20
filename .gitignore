@@ -21,7 +21,6 @@ application/logs/*
 /.env
 /application/config/config.php
 /application/cache/database.php
-/public
 _BACKUP_840.env
 _BASE_840.env
 _LOCAL_840.env

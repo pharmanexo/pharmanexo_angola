@@ -290,7 +290,7 @@ class M_grafico extends MY_Model
 	              			AND sint.id_fornecedor = {$id_fornecedor}
 	            		GROUP BY competencia, ano, mes, sint.cd_cotacao 
 	            	) x
-union
+				union
           		SELECT 
 		            x.competencia,
 		            x.ano,
@@ -336,6 +336,106 @@ union
                  	) x
         	";
 
+
+        return $this->db->query($query)->result_array();
+    }
+
+    public function getDadosCotacaoMensalPorAnoMes($id_fornecedor, $ano, $mes, $integrador)
+    {
+
+        $query = "
+                SELECT 
+		            x.competencia,
+		            x.ano,
+		            x.mes,
+		            x.cd_cotacao,
+		            (CASE WHEN IF(x.depara = 1, 'S', 'N') = 'N' AND x.oferta = 'S' THEN 'S' ELSE IF(x.depara = 1, 'S', 'N') END) depara,
+		            x.oferta,
+		            x.nivel
+          		FROM 
+          			(
+	            		SELECT 
+							DATE_FORMAT(sint.dt_inicio_cotacao, '%Y-%m') competencia,
+							DATE_FORMAT(sint.dt_inicio_cotacao, '%Y') ano,
+							DATE_FORMAT(sint.dt_inicio_cotacao, '%m') mes,
+							sint.cd_cotacao,
+	              			(SELECT DISTINCT sint.oferta FROM cotacoes_sintese.cotacoes sint2 WHERE sint2.cd_cotacao = sint.cd_cotacao AND sint.id_fornecedor = {$id_fornecedor} ) depara,
+	              			IF((SELECT COUNT(DISTINCT ofer.cd_cotacao) FROM pharmanexo.cotacoes_produtos ofer WHERE ofer.id_fornecedor = {$id_fornecedor} AND ofer.cd_cotacao = sint.cd_cotacao) > 0, 'S', 'N') oferta,
+	              			IF(
+	              				(
+	              					SELECT 
+	              						GROUP_CONCAT(DISTINCT ofer.nivel ORDER BY ofer.nivel ASC)
+	                				FROM pharmanexo.cotacoes_produtos ofer
+	                				WHERE ofer.id_fornecedor = {$id_fornecedor}
+										AND ofer.cd_cotacao = sint.cd_cotacao
+										AND ofer.submetido = 1
+								) = '1,2', 'S', 'N'
+							) nivel
+	    				FROM cotacoes_sintese.cotacoes sint
+	            		WHERE YEAR(sint.dt_inicio_cotacao) = '{$ano}'
+							AND MONTH(sint.dt_inicio_cotacao) = '{$mes}'
+	              			AND sint.id_fornecedor = {$id_fornecedor}
+	            		GROUP BY competencia, ano, mes, sint.cd_cotacao 
+	            	) x
+				union
+          		SELECT 
+		            x.competencia,
+		            x.ano,
+		            x.mes,
+		            x.cd_cotacao,
+		            (CASE WHEN IF(x.depara = 1, 'S', 'N') = 'N' AND x.oferta = 'S' THEN 'S'ELSE IF(x.depara = 1, 'S', 'N') END) depara,
+		            x.oferta,
+		            x.nivel
+          		FROM 
+          			(
+            			SELECT 
+							DATE_FORMAT(bio.dt_inicio_cotacao, '%Y-%m') competencia,
+							DATE_FORMAT(bio.dt_inicio_cotacao, '%Y') ano,
+							DATE_FORMAT(bio.dt_inicio_cotacao, '%m') mes,
+							bio.cd_cotacao,
+          					(
+                				SELECT DISTINCT bio.oferta
+                				FROM cotacoes_bionexo.cotacoes bio2
+                				WHERE bio2.cd_cotacao = bio.cd_cotacao
+                				AND bio.id_fornecedor = {$id_fornecedor}) depara,
+                				IF(
+                					(
+                               			SELECT COUNT(DISTINCT ofer.cd_cotacao)
+                               			FROM pharmanexo.cotacoes_produtos ofer
+                               			WHERE ofer.id_fornecedor = {$id_fornecedor}
+                                			AND ofer.cd_cotacao = CAST(bio.cd_cotacao AS CHAR(50))
+                                			AND ofer.submetido = 1
+                                	) > 0,
+                       			'S', 'N') oferta,
+                        	IF(
+                        		(
+                               		SELECT GROUP_CONCAT(DISTINCT ofer.nivel ORDER BY ofer.nivel ASC)
+                               		FROM pharmanexo.cotacoes_produtos ofer
+                               		WHERE ofer.id_fornecedor = {$id_fornecedor}
+                                		AND ofer.cd_cotacao = CAST(bio.cd_cotacao AS CHAR(50))
+                                		AND ofer.submetido = 1
+                                ) = '1,2', 
+                            'S', 'N') nivel
+                 		FROM cotacoes_bionexo.cotacoes bio FORCE INDEX (IDX_GSYS_COTACOES_01)
+            			WHERE YEAR(bio.dt_inicio_cotacao) = '{$ano}'
+							AND MONTH(bio.dt_inicio_cotacao) = '{$mes}'
+                   			AND bio.id_fornecedor = {$id_fornecedor}
+                 		GROUP BY competencia, ano, mes, bio.cd_cotacao
+                 	) x
+        	";
+
+
+        return $this->db->query($query)->result_array();
+    }
+
+    public function getDadosCotacaoMensalCalculadaPorAnoMes($id_fornecedor, $ano, $mes)
+    {
+
+        $query = "SELECT ano, mes, total_cot, cot_com_prod, cot_enviada, porcentagem
+		FROM pharmanexo.grafico_fornecedores
+		where id_fornecedor = {$id_fornecedor}
+		and ano= {$ano}
+		and mes ={$mes}";
 
         return $this->db->query($query)->result_array();
     }

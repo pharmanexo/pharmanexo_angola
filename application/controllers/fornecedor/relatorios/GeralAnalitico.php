@@ -35,18 +35,7 @@ class GeralAnalitico extends CI_Controller
         $data['sidebar'] = $this->template->sidebar();
 
         $data['heading'] = $this->template->heading([
-            'page_title' => $page_title,
-
-            'buttons' => [
-                [
-                    'type' => 'a',
-                    'id' => 'btnVoltar',
-                   'url' => "javascript:history.back(1)",
-                    'class' => 'btn-secondary',
-                    'icone' => 'fa-arrow-left',
-                    'label' => 'Retornar'
-                ]
-            ]
+            'page_title' => $page_title
         ]);
 
         $data['scripts'] = $this->template->scripts();
@@ -64,6 +53,21 @@ class GeralAnalitico extends CI_Controller
         if ($this->input->method() == 'post') {
             $post = $this->input->post();
             $ids_forns = [];
+
+            if (isset($_SESSION['id_matriz']) && $_SESSION['id_matriz'] > 0) {
+                $fornecedores = $this->db
+                    ->select('id')
+                    ->where('id_matriz', $_SESSION['id_matriz'])
+                    ->get('fornecedores')
+                    ->result_array();
+
+                foreach ($fornecedores as $f) {
+                    $ids_forns[] = $f['id'];
+                }
+            } else {
+                $ids_forns[] = $this->session->id_fornecedor;
+            }
+
 
             $data = [
                 'fornecedor' => $this->session->id_fornecedor,
@@ -90,7 +94,8 @@ class GeralAnalitico extends CI_Controller
 
     private function _req($data)
     {
-        $url = 'http://reports2.pharmanexo.com.br/cotacoes-by-fornecedor';
+
+        $url = 'http://reports2.pharmanexo.com.br/cotacoes-by-fornecedores';
 
         $curl = curl_init();
 
