@@ -247,11 +247,10 @@ class Cotacoes extends MY_Controller
             ]
         ];
 
-
         # Validação de exibir botão de envio
 
         // TRATAR HORA QUANDO ESTIVER NO LINUX
-        if (strtotime($data['cotacao']['data_fim']) > time() || $_SESSION['id_usuario'] == 187) {
+        if ($data['cotacao']['data_fim'] > date('Y-m-d H:i:s',time()) || $_SESSION['id_usuario'] == 187) {
 
             $btns[] = [
                 'type' => 'button',
@@ -536,16 +535,15 @@ class Cotacoes extends MY_Controller
         # Criar XML
         $xml = $this->COTACAO_MANUAL->createXML($post, $produtosOrdenados, $post['integrador']);
 
-
         # Combinar espelho e XMl
-      //  $dados = $this->combineMirrorXml($mirror['fornecedores'], $xml);
+        $dados = $this->combineMirrorXml($mirror['fornecedores'], $xml);
 
 
         # Cria a session
         $this->session->set_userdata([
             'cot_manual' => [
                 'html' => $mirror['file'],
-                'list' => $mirror['fornecedores'],
+                'list' => $dados,
                 'id_forma_pagamento' => $post['id_forma_pagamento'],
                 'obs' => $post['obs'],
                 'prazo_entrega' => $post['prazo_entrega']
@@ -600,6 +598,7 @@ class Cotacoes extends MY_Controller
      */
     public function espelho($integrador, $cd_cotacao, $id_cliente)
     {
+
         $dataView = [
             'header' => $this->template->header(['title' => '']),
             'navbar' => $this->template->navbar(),
@@ -653,9 +652,6 @@ class Cotacoes extends MY_Controller
                     break;
                 case 'APOIO':
                     $warning = $this->COTACAO_MANUAL->sendApoio($cd_cotacao, $id_cliente);
-                    break;
-                case 'HUMA':
-                    $warning = $this->COTACAO_MANUAL->sendHuma($cd_cotacao, $id_cliente);
                     break;
             }
 
