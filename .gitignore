@@ -19,7 +19,6 @@ application/logs/*
 .DS_Store
 .idea
 /.env.local
-/.env
 /application/config/config.php
 /application/cache/database.php
 _BACKUP_840.env
