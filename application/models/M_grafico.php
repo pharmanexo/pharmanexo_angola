@@ -2,27 +2,27 @@
 
 class M_grafico extends MY_Model
 {
-	protected $DB_COTACAO;
+    protected $DB_COTACAO;
 
-	public function __construct()
-	{
-		parent::__construct();
+    public function __construct()
+    {
+        parent::__construct();
 
-		$this->DB_COTACAO = $this->load->database('sintese', TRUE);
-	}
+        $this->DB_COTACAO = $this->load->database('sintese', TRUE);
+    }
 
-	/**
-	 * Obtem a lista de fornecedores da filial
-	 *
-	 * @param - bool
-	 * @return array
-	 */
-	public function matrizFilial($trueArray = FALSE)
-	{
+    /**
+     * Obtem a lista de fornecedores da filial
+     *
+     * @param - bool
+     * @return array
+     */
+    public function matrizFilial($trueArray = FALSE)
+    {
 
-		$arr = [];
+        $arr = [];
 
-		$query = "
+        $query = "
 			SELECT 
       			x.filiais,
           		IF(x.matriz IS NULL, x.nome_fantasia, x.matriz) matriz
@@ -44,77 +44,77 @@ class M_grafico extends MY_Model
         	ORDER BY matriz ASC
 		";
 
-		$getFiliais = $this->db->query($query)->result_array();
+        $getFiliais = $this->db->query($query)->result_array();
 
-		if ($trueArray) {
+        if ($trueArray) {
 
-			foreach ($getFiliais as $getFilial) {
+            foreach ($getFiliais as $getFilial) {
 
-				$arr[$getFilial['matriz']] = $getFilial['filiais'];
-			}
+                $arr[$getFilial['matriz']] = $getFilial['filiais'];
+            }
 
-			return $arr;
-		} else {
+            return $arr;
+        } else {
 
-			foreach ($getFiliais as $getFilial) {
+            foreach ($getFiliais as $getFilial) {
 
-				$arr[$getFilial['matriz']] = explode(',', $getFilial['filiais']);
-			}
+                $arr[$getFilial['matriz']] = explode(',', $getFilial['filiais']);
+            }
 
-			function myInt($n)
-			{
-				return intval($n);
-			}
+            function myInt($n)
+            {
+                return intval($n);
+            }
 
-			foreach ($arr as $key => $ar) {
+            foreach ($arr as $key => $ar) {
 
-				$newArr[$key] = array_map("myInt", $ar);
-			}
+                $newArr[$key] = array_map("myInt", $ar);
+            }
 
-			return $newArr;
-		}
-	}
+            return $newArr;
+        }
+    }
 
-	/**
-	 * Obtem a quantidade de cotações, cot com produto e cot enviada por periodo
-	 *
-	 * @param - String nome do integrador
-	 * @param - String tipo de periodo
-	 * @return array
-	 */
-	public function getDadosCotacao($integrador, $periodo)
-	{
+    /**
+     * Obtem a quantidade de cotações, cot com produto e cot enviada por periodo
+     *
+     * @param - String nome do integrador
+     * @param - String tipo de periodo
+     * @return array
+     */
+    public function getDadosCotacao($integrador, $periodo)
+    {
 
-		switch ($periodo) {
-			case 'current':
-				$mes = date('m', time());
-				$ano = date('Y', time());
-				$where_periodo_sintese = "MONTH(sint.dt_inicio_cotacao) = '{$mes}' AND YEAR(dt_inicio_cotacao) = '{$ano}'";
-				$where_periodo_bionexo = "MONTH(bio.dt_inicio_cotacao) = '{$mes}' AND YEAR(dt_inicio_cotacao) = '{$ano}'";
-				break;
-			case '30days':
-				$inicio = date('Y-m-d', strtotime('-30days'));
-				$fim = date('Y-m-d', time());
-				$where_periodo_sintese = "DATE(sint.dt_inicio_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
-				$where_periodo_bionexo = "DATE(bio.dt_inicio_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
-				break;
-			case '6months':
-				$inicio = date('Y-m-d', strtotime('-6months'));
-				$fim = date('Y-m-d', time());
-				$where_periodo_sintese = "DATE(sint.dt_inicio_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
-				$where_periodo_bionexo = "DATE(bio.dt_inicio_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
-				break;
-		}
+        switch ($periodo) {
+            case 'current':
+                $mes = date('m', time());
+                $ano = date('Y', time());
+                $where_periodo_sintese = "MONTH(sint.dt_inicio_cotacao) = '{$mes}' AND YEAR(dt_inicio_cotacao) = '{$ano}'";
+                $where_periodo_bionexo = "MONTH(bio.dt_inicio_cotacao) = '{$mes}' AND YEAR(dt_inicio_cotacao) = '{$ano}'";
+                break;
+            case '30days':
+                $inicio = date('Y-m-d', strtotime('-30days'));
+                $fim = date('Y-m-d', time());
+                $where_periodo_sintese = "DATE(sint.dt_inicio_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
+                $where_periodo_bionexo = "DATE(bio.dt_inicio_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
+                break;
+            case '6months':
+                $inicio = date('Y-m-d', strtotime('-6months'));
+                $fim = date('Y-m-d', time());
+                $where_periodo_sintese = "DATE(sint.dt_inicio_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
+                $where_periodo_bionexo = "DATE(bio.dt_inicio_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
+                break;
+        }
 
-		$result = [];
+        $result = [];
 
-		$matriz = $this->matrizFilial(TRUE);
+        $matriz = $this->matrizFilial(TRUE);
 
-		foreach ($matriz as $key => $filiais) {
+        foreach ($matriz as $key => $filiais) {
 
-			if (strtoupper($integrador) == 'SINTESE') {
+            if (strtoupper($integrador) == 'SINTESE') {
 
-				$query = "
+                $query = "
             		SELECT 
             			x.competencia,
 						x.ano,
@@ -158,9 +158,9 @@ class M_grafico extends MY_Model
               			GROUP BY competencia, ano, mes, sint.cd_cotacao
               		) x 
           		";
-			} else {
+            } else {
 
-				$query = "
+                $query = "
 	            	SELECT
 						x.competencia,
 		                x.ano,
@@ -199,65 +199,65 @@ class M_grafico extends MY_Model
 		                WHERE {$where_periodo_bionexo} AND bio.id_fornecedor IN ({$filiais})
 		                GROUP BY competencia, ano, mes, bio.cd_cotacao) x 
 	            ";
-			}
+            }
 
-			$result[$key] = $this->db->query($query)->result_array();
-		}
+            $result[$key] = $this->db->query($query)->result_array();
+        }
 
-		$totalCot = [];
-		$cotProd = [];
-		$cotEnviada = [];
+        $totalCot = [];
+        $cotProd = [];
+        $cotEnviada = [];
 
-		foreach ($result as $key => $dados) {
+        foreach ($result as $key => $dados) {
 
-			$arrDepara = [];
-			$arrOferta = [];
+            $arrDepara = [];
+            $arrOferta = [];
 
-			array_push($totalCot, count($dados));
+            array_push($totalCot, count($dados));
 
-			foreach ($dados as $dado) {
+            foreach ($dados as $dado) {
 
-				if ($dado['depara'] == "S") {
+                if ($dado['depara'] == "S") {
 
-					$arrDepara[] = $dado;
-				}
+                    $arrDepara[] = $dado;
+                }
 
-				if ($dado['depara'] == "S" && $dado['oferta'] == "S") {
+                if ($dado['depara'] == "S" && $dado['oferta'] == "S") {
 
-					if ($dado['nivel'] == 'S') {
+                    if ($dado['nivel'] == 'S') {
 
-						$arrOferta[] = $dado;
-						$arrOferta[] = $dado;
-					} else {
+                        $arrOferta[] = $dado;
+                        $arrOferta[] = $dado;
+                    } else {
 
-						$arrOferta[] = $dado;
-					}
-				}
-			}
+                        $arrOferta[] = $dado;
+                    }
+                }
+            }
 
-			array_push($cotProd, count($arrDepara));
-			array_push($cotEnviada, count($arrOferta));
-		}
+            array_push($cotProd, count($arrDepara));
+            array_push($cotEnviada, count($arrOferta));
+        }
 
-		$data['totalCot'] = $totalCot;
-		$data['cotProd'] = $cotProd;
-		$data['cotEnviada'] = $cotEnviada;
-		$data['labels'] = array_keys($result);
+        $data['totalCot'] = $totalCot;
+        $data['cotProd'] = $cotProd;
+        $data['cotEnviada'] = $cotEnviada;
+        $data['labels'] = array_keys($result);
 
-		return $data;
-	}
+        return $data;
+    }
 
-	/**
-	 * Obtem a quantidade de cotações, cot com produto e cot enviada por periodo
-	 *
-	 * @param - String nome do integrador
-	 * @param - String tipo de periodo
-	 * @return array
-	 */
-	public function getDadosCotacaoMensal($id_fornecedor, $ano, $integrador)
-	{
+    /**
+     * Obtem a quantidade de cotações, cot com produto e cot enviada por periodo
+     *
+     * @param - String nome do integrador
+     * @param - String tipo de periodo
+     * @return array
+     */
+    public function getDadosCotacaoMensal($id_fornecedor, $ano, $integrador)
+    {
 
-		$query = "
+        $query = "
                 SELECT 
 		            x.competencia,
 		            x.ano,
@@ -337,13 +337,13 @@ class M_grafico extends MY_Model
         	";
 
 
-		return $this->db->query($query)->result_array();
-	}
+        return $this->db->query($query)->result_array();
+    }
 
-	public function getDadosCotacaoMensalPorAnoMes($id_fornecedor, $ano, $mes, $integrador)
-	{
+    public function getDadosCotacaoMensalPorAnoMes($id_fornecedor, $ano, $mes, $integrador)
+    {
 
-		$query = "
+        $query = "
                 SELECT 
 		            x.competencia,
 		            x.ano,
@@ -425,92 +425,92 @@ class M_grafico extends MY_Model
         	";
 
 
-		return $this->db->query($query)->result_array();
-	}
+        return $this->db->query($query)->result_array();
+    }
 
-	public function getDadosCotacaoMensalCalculadaPorAnoMes($id_fornecedor, $ano, $mes)
-	{
+    public function getDadosCotacaoMensalCalculadaPorAnoMes($id_fornecedor, $ano, $mes)
+    {
 
-		$query = "SELECT ano, mes, total_cot, cot_com_prod, cot_enviada, porcentagem
+        $query = "SELECT ano, mes, total_cot, cot_com_prod, cot_enviada, porcentagem
 		FROM pharmanexo.grafico_fornecedores
 		where id_fornecedor = {$id_fornecedor}
 		and ano= {$ano}
 		and mes ={$mes}";
 
-		return $this->db->query($query)->result_array();
-	}
+        return $this->db->query($query)->result_array();
+    }
 
-	/**
-	 * Obtem o total de cotações de acordo com o nivel por fornecedor
-	 *
-	 * @param - String nome do integrador
-	 * @param - String tipo do periodo
-	 * @param - INT ID do fornecedor
-	 * @param - INT nivel da oferta
-	 * @return array
-	 */
-	public function cotacoesPorFornecedor($integrador, $periodo, $id_fornecedor, $nivel)
-	{
+    /**
+     * Obtem o total de cotações de acordo com o nivel por fornecedor
+     *
+     * @param - String nome do integrador
+     * @param - String tipo do periodo
+     * @param - INT ID do fornecedor
+     * @param - INT nivel da oferta
+     * @return array
+     */
+    public function cotacoesPorFornecedor($integrador, $periodo, $id_fornecedor, $nivel)
+    {
 
-		$this->db->select('count(DISTINCT cd_cotacao) as total');
+        $this->db->select('count(DISTINCT cd_cotacao) as total');
 
-		switch ($periodo) {
-			case 'current':
-				$mes = date('m', time());
-				$ano = date('Y', time());
-				$this->db->where("month(data_cotacao) = '{$mes}' and year(data_cotacao) = '{$ano}'");
-				break;
-			case '30days':
-				$inicio = date('Y-m-d', strtotime('-30days'));
-				$fim = date('Y-m-d', time());
-				$this->db->where("date(data_cotacao) between '{$inicio}' and '{$fim}'");
-				break;
-			case '6months':
-				$inicio = date('Y-m-d', strtotime('-6months'));
-				$fim = date('Y-m-d', time());
-				$this->db->where("date(data_cotacao) between '{$inicio}' and '{$fim}'");
-				break;
-		}
+        switch ($periodo) {
+            case 'current':
+                $mes = date('m', time());
+                $ano = date('Y', time());
+                $this->db->where("month(data_cotacao) = '{$mes}' and year(data_cotacao) = '{$ano}'");
+                break;
+            case '30days':
+                $inicio = date('Y-m-d', strtotime('-30days'));
+                $fim = date('Y-m-d', time());
+                $this->db->where("date(data_cotacao) between '{$inicio}' and '{$fim}'");
+                break;
+            case '6months':
+                $inicio = date('Y-m-d', strtotime('-6months'));
+                $fim = date('Y-m-d', time());
+                $this->db->where("date(data_cotacao) between '{$inicio}' and '{$fim}'");
+                break;
+        }
 
-		$this->db->where('submetido', 1);
-		$this->db->where('nivel', $nivel);
-		$this->db->where('integrador', $integrador);
-		$this->db->where("id_fornecedor IN ({$id_fornecedor})");
+        $this->db->where('submetido', 1);
+        $this->db->where('nivel', $nivel);
+        $this->db->where('integrador', $integrador);
+        $this->db->where("id_fornecedor IN ({$id_fornecedor})");
 
-		$result = $this->db->get('cotacoes_produtos')->row_array();
+        $result = $this->db->get('cotacoes_produtos')->row_array();
 
-		return (isset($result) && !empty($result['total'])) ? $result['total'] : 0;
-	}
+        return (isset($result) && !empty($result['total'])) ? $result['total'] : 0;
+    }
 
-	/**
-	 * Obtem o valor total cotado por periodo
-	 *
-	 * @param - String nome do integrador
-	 * @param - String tipo do periodo
-	 * @return array
-	 */
-	public function getQuotePriceSent($integrador, $periodo)
-	{
+    /**
+     * Obtem o valor total cotado por periodo
+     *
+     * @param - String nome do integrador
+     * @param - String tipo do periodo
+     * @return array
+     */
+    public function getQuotePriceSent($integrador, $periodo)
+    {
 
-		switch ($periodo) {
-			case 'current':
-				$mes = date('m', time());
-				$ano = date('Y', time());
-				$temp = "MONTH(cp.data_cotacao) = '{$mes}' AND YEAR(data_cotacao) = '{$ano}'";
-				break;
-			case '30days':
-				$inicio = date('Y-m-d', strtotime('-30days'));
-				$fim = date('Y-m-d', time());
-				$temp = "DATE(cp.data_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
-				break;
-			case '6months':
-				$inicio = date('Y-m-d', strtotime('-6months'));
-				$fim = date('Y-m-d', time());
-				$temp = "DATE(cp.data_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
-				break;
-		}
+        switch ($periodo) {
+            case 'current':
+                $mes = date('m', time());
+                $ano = date('Y', time());
+                $temp = "MONTH(cp.data_cotacao) = '{$mes}' AND YEAR(data_cotacao) = '{$ano}'";
+                break;
+            case '30days':
+                $inicio = date('Y-m-d', strtotime('-30days'));
+                $fim = date('Y-m-d', time());
+                $temp = "DATE(cp.data_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
+                break;
+            case '6months':
+                $inicio = date('Y-m-d', strtotime('-6months'));
+                $fim = date('Y-m-d', time());
+                $temp = "DATE(cp.data_cotacao) BETWEEN '{$inicio}' AND '{$fim}'";
+                break;
+        }
 
-		$query = "
+        $query = "
         	SELECT 
           		SUM(sub.total) AS total,
 				(CASE WHEN sub.matriz IS NULL THEN sub.nome_fantasia ELSE sub.matriz END) AS matriz
@@ -529,6 +529,6 @@ class M_grafico extends MY_Model
         	GROUP BY (CASE WHEN sub.matriz IS NULL THEN sub.nome_fantasia ELSE sub.matriz END)
 		";
 
-		return $this->db->query($query)->result_array();
-	}
+        return $this->db->query($query)->result_array();
+    }
 }

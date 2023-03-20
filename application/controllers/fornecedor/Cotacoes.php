@@ -598,6 +598,7 @@ class Cotacoes extends MY_Controller
      */
     public function espelho($integrador, $cd_cotacao, $id_cliente)
     {
+
         $dataView = [
             'header' => $this->template->header(['title' => '']),
             'navbar' => $this->template->navbar(),

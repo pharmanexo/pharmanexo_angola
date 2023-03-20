@@ -84,10 +84,10 @@ class M_cotacaoManual extends MY_Model
         #obs cotação
         $obs = " - ";
 
-        if(isset($cotacao['observacao']) && !empty($cotacao['observacao'])){
-            $obs = $cotacao['observacao'];
-        }elseif (isset($cotacao['ds_observacao']) && !empty($cotacao['ds_observacao'])){
-            $obs = $cotacao['ds_cotacao'];
+        if (isset($cotacao['observacao']) && !empty($cotacao['observacao'])) {
+            $obs = "{$cotacao['ds_cotacao']} </br> {$cotacao['observacao']}";
+        } elseif (isset($cotacao['ds_observacao']) && !empty($cotacao['ds_observacao'])) {
+            $obs = "{$cotacao['ds_cotacao']} </br> {$cotacao['ds_observacao']}";
         }
 
         # Cabeçalho de cada produto

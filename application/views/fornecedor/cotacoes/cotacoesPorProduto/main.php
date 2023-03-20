@@ -46,7 +46,7 @@
                     </button>
                 </div>
 
-                <div class="table-responsive col-sm" id="campoTabela" hidden>
+
                     <table id="data-table" class="table table-condensend table-hover"
                     data-url="<?php echo $urlDatatable; ?>"
                     data-filtro="<?php echo $urlFiltro; ?>"
@@ -60,10 +60,11 @@
                             <th>Comprador</th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </tr>
                         </thead>
                     </table>
-                </div>
+
             </div>
         </div>
     </div>
@@ -107,18 +108,13 @@
                         { data: 'estado', className: 'text-nowrap  text-center' },
                         { data: 'comprador', className: 'text-nowrap'},
                         { data: 'dt_fim_cotacao', visible: false},
-                        { data: 'integrador', visible: false},
+                        { data: 'integrador', visible: true},
                         { defaultContent: '', orderable: false, searchable: false },
                     ],
                     rowCallback: function (row, data) {
                         $(row).css('cursor', 'pointer');
-
-                        $('td', row).each(function () {
-                            $(this).on('click', function () {
-
-                                window.location.href = $('#data-table').data('cotacao') + '/'+data.integrador+'/' + data.cd_cotacao;
-                            })
-                        })
+                        var urlCot = $('#data-table').data('cotacao') + '/'+data.integrador+'/' + data.cd_cotacao;
+                        $('td:eq(5)', row).html(`<a href="${urlCot}" target="_blank" class="btn btn-primary"><i class="fa fa-link"></i></a>`)
 
                     },
                     drawCallback: function() {
