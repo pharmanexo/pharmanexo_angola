@@ -45,6 +45,42 @@
 
         </form>
 
+        <div class="card">
+            <div class="card-header">
+                <p class="card-title">Ultimos relatórios emitidos</p>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($reportsHistory)) { ?>
+                    <table class="table">
+                        <tr>
+                            <th>Emitido em</th>
+                            <th>Emitido para</th>
+                            <th>Data Inicial / Data Final</th>
+                            <th>Arquivo</th>
+                        </tr>
+                        <?php foreach ($reportsHistory as $report) { ?>
+                            <tr>
+                                <td><?php echo $report['data']; ?></td>
+                                <td><?php echo implode(',', $report['extra']['sent_to']); ?></td>
+                                <td><?php echo date('d/m/Y', strtotime($report['extra']['data-inicial'])); ?> /
+                                    <?php echo date('d/m/Y', strtotime($report['extra']['data-final'])); ?></td>
+                                <td>
+                                    <?php $i=1; foreach ($report['arquivos'] as $k => $file) { ?>
+                                        <a href="<?php echo "http://reports2.pharmanexo.com.br/reports/" . $file; ?>" target="_blank" data-href="" class="btnDownload"><?php echo "Arquivo {$i}"?></a>
+                                        <?php $i++; } ?>
+
+
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+
+                <?php } else { ?>
+                    <p>Não encontramos relatórios solicitados</p>
+                <?php } ?>
+            </div>
+        </div>
+
     </div>
 </div>
 

@@ -32,11 +32,35 @@ class M_cotacoes extends MY_Model
 
         $filtros = ($this->session->has_userdata('filtros')) ? $this->session->filtros : null;
 
-        $where = "cot.id_fornecedor = {$this->session->id_fornecedor} AND cot.oculto != 1 AND ";
+
+        if (isset($_SESSION['id_matriz'])) {
+            $id_fornecedor = [];
+
+            $fornecedores = $this->db
+                ->select('id')
+                ->where('id_matriz', $_SESSION['id_matriz'])
+                ->get('fornecedores')->result_array();
+            if (!empty($fornecedores)) {
+                foreach ($fornecedores as $fornecedor) {
+                    $id_fornecedor[] = $fornecedor['id'];
+                }
+            }
+
+            if (!empty($id_fornecedor)) {
+                $id_fornecedor = implode(',', $id_fornecedor);
+                $where = "cot.id_fornecedor in ({$id_fornecedor}) AND cot.oculto != 1 AND ";
+            } else {
+                $where = "cot.id_fornecedor = {$this->session->id_fornecedor} AND cot.oculto != 1 AND ";
+            }
+
+        } else {
+            $where = "cot.id_fornecedor = {$this->session->id_fornecedor} AND cot.oculto != 1 AND ";
+        }
 
         if (isset($uf)) {
             $where .= "cot.uf_cotacao= '{$uf}' AND ";
         }
+
 
         if (!empty($filtros)) {
 
@@ -69,11 +93,12 @@ class M_cotacoes extends MY_Model
                 ['db' => 'cot.dt_fim_cotacao', 'dt' => 'dt_fim_cotacao'],
                 ['db' => 'c.cnpj', 'dt' => 'cnpj'],
                 ['db' => 'cot.revisada', 'dt' => 'revisada'],
+            //    ['db' => 'f.nome_fantasia', 'dt' => 'loja'],
                 ['db' => 'cot.ds_cotacao', 'dt' => 'ds_cotacao', 'formatter' => function ($value, $row) {
                     return "<small>{$value}</small>";
                 }],
                 ['db' => 'c.razao_social', 'dt' => 'comprador', 'formatter' => function ($value, $row) {
-                    $value = utf8_encode(substr($value, 0, 50));
+                   // $value = utf8_decode(utf8_encode(substr($value, 0, 50)));
                     return "<small data-toggle='tooltip' title='{$row['ds_cotacao']}'>{$row['cnpj']} - {$value}</small>";
                 }],
                 ['db' => 'cot.dt_fim_cotacao', 'dt' => 'datafim', 'formatter' => function ($value, $row) {
@@ -105,9 +130,11 @@ class M_cotacoes extends MY_Model
                 ],
             ],
             [
-                ['compradores c', 'c.id = cot.id_cliente ', 'left']
+                ['compradores c', 'c.id = cot.id_cliente ', 'left'],
+                ['fornecedores f', 'f.id = cot.id_fornecedor ', 'left'],
             ],
-            "{$where}"
+            "{$where}",
+            "cot.cd_cotacao, cot.id_cliente"
         );
 
         return $datatables;

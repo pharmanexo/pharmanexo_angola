@@ -220,7 +220,7 @@ a:focus {
 }
 
 .custom_nav-container .nav_search-btn:hover {
-  color: #27298a;
+  color: #110e0e;
 }
 
 .custom_nav-container .navbar-toggler {
@@ -311,7 +311,7 @@ a:focus {
 }
 
 .slider_section .detail-box {
-  color: #27298a;
+  color: #110e0e;
 }
 
 .slider_section .detail-box h1 {
@@ -356,18 +356,18 @@ a:focus {
 .btncontato {
   display: inline-block;
   padding: 10px 15px;
-  background-color: #27298a;
+  background-color: #110e0e;
   font-weight: bold;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid #27298a;
+  border: 1px solid #110e0e;
 }
 
 .btncontato:hover {
   background-color: transparent;
-  color: #27298a;
+  color: #110e0e;
 }
 
 .logos img {
@@ -448,7 +448,7 @@ a:focus {
   width: 90px;
   height: 90px;
   margin-bottom: 15px;
-  background-color: #27298a;
+  background-color: #110e0e;
   border-radius: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -474,12 +474,12 @@ a:focus {
 }
 
 .department_section .box .detail-box a {
-  color: #27298a;
+  color: #110e0e;
   font-weight: 600;
 }
 
 .department_section .box .detail-box a:hover {
-  color: #27298a;
+  color: #110e0e;
 }
 
 .department_section .btn-box {
@@ -495,17 +495,17 @@ a:focus {
 .department_section .btn-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: #27298a;
+  background-color: #110e0e;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid #27298a;
+  border: 1px solid #110e0e;
 }
 
 .department_section .btn-box a:hover {
   background-color: transparent;
-  color: #27298a;
+  color: #110e0e;
 }
 
 .about_section .row {
@@ -539,22 +539,22 @@ a:focus {
 .about_section .detail-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: #27298a;
+  background-color: #110e0e;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid #27298a;
+  border: 1px solid #110e0e;
   margin-top: 15px;
 }
 
 .about_section .detail-box a:hover {
   background-color: transparent;
-  color: #27298a;
+  color: #110e0e;
 }
 
 .doctor_section {
-  background: #27298a;
+  background: #110e0e;
 }
 
 .doctor_section .heading_container {
@@ -610,12 +610,12 @@ a:focus {
 }
 
 .doctor_section .box .detail-box .social_box a {
-  color: #27298a;
+  color: #110e0e;
   margin: 0 10px;
 }
 
 .doctor_section .box .detail-box .social_box a:hover {
-  color: #27298a;
+  color: #110e0e;
 }
 
 .doctor_section .box:hover .social_box {
@@ -636,17 +636,17 @@ a:focus {
 .doctor_section .btn-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: #27298a;
+  background-color: #110e0e;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid #27298a;
+  border: 1px solid #110e0e;
 }
 
 .doctor_section .btn-box a:hover {
   background-color: transparent;
-  color: #27298a;
+  color: #110e0e;
 }
 
 .contact_section {
@@ -709,12 +709,12 @@ a:focus {
   text-transform: uppercase;
   display: inline-block;
   padding: 12px 55px;
-  background-color: #27298a;
+  background-color: #110e0e;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid #27298a;
+  border: 1px solid #110e0e;
 }
 
 .contact_section .form_container button:hover {
@@ -796,7 +796,7 @@ a:focus {
 }
 
 .client_section .box .detail-box .name h6 {
-  color: #27298a;
+  color: #110e0e;
   font-size: 20px;
 }
 
@@ -819,7 +819,7 @@ a:focus {
   background-repeat: no-repeat;
   background-size: 12px;
   background-position: center;
-  background-color: #27298a;
+  background-color: #110e0e;
   background-position: center;
   border-radius: 5px;
   margin: 0 2.5px;
@@ -827,7 +827,7 @@ a:focus {
 
 .client_section .carousel-control-prev:hover,
 .client_section .carousel-control-next:hover {
-  background-color: #27298a;
+  background-color: #110e0e;
 }
 
 .client_section .carousel-control-next {
@@ -835,7 +835,7 @@ a:focus {
 }
 
 .footer_section {
-  background: #27298a;
+  background: #110e0e;
   color: #ffffff;
   padding: 30px 0 15px 0;
   position: relative;
@@ -927,7 +927,7 @@ a:focus {
 }
 
 .footer_section .footer_links a:hover {
-  color: #27298a;
+  color: #110e0e;
 }
 
 .footer_section form input {

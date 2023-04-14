@@ -42,10 +42,12 @@
                                         <label for="regra_venda">Regras de Venda</label>
                                         <select class="select2" id="regra_venda" name="regra_venda" data-placeholder="Selecione" data-allow-clear="true" required <?php echo (count($options) == 1) ?  'readonly' : '' ?>>
                                             <option></option>
-                                            <?php if (isset($options)) { ?>
+                                            <?php if (isset($options) && $this->session->grupo != 4) { ?>
                                                 <?php foreach ($options as $indice => $valor) { ?>
                                                     <option value="<?php echo $indice ?>" <?php echo (count($options) == 1) ?  'selected' : '' ?>> <?php echo $valor ?></option>
                                                 <?php } ?>
+                                            <?php }else if ($this->session->grupo == 4){ ?>
+                                                <option value="<?php echo "4" ?>" selected> <?php echo "Distribuidor x Distribuidor" ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>

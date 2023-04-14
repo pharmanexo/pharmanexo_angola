@@ -42,6 +42,10 @@ class GeralFinanceiro extends CI_Controller
         $data['estados'] = $this->estados->find();
         $data['clientes'] = $this->comprador->find();
 
+        $data['reportsHistory'] = $this->getHistoryReports();
+
+      /*  var_dump($data['reportsHistory']);
+        exit();*/
 
         $this->load->view("{$this->views}/main", $data);
 
@@ -95,7 +99,7 @@ class GeralFinanceiro extends CI_Controller
     private function _req($data)
     {
 
-        $url = 'http://reports2.pharmanexo.com.br/oc-by-fornecedor';
+        $url = 'http://reports2.pharmanexo.com.br/oncoprod-geral-produtos';
 
         $curl = curl_init();
 
@@ -118,7 +122,6 @@ class GeralFinanceiro extends CI_Controller
 
         $response = curl_exec($curl);
 
-
         if (curl_errno($curl)) {
             $error_msg = curl_error($curl);
 
@@ -129,6 +132,35 @@ class GeralFinanceiro extends CI_Controller
         }
 
         curl_close($curl);
+
+    }
+
+    private function getHistoryReports()
+    {
+        $url = "http://reports2.pharmanexo.com.br/search/by-fornecedor/{$this->session->id_fornecedor}";
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json',
+                'X-AUTH-TOKEN: pharma@ish#2022!',
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+
+        return json_decode($response, true);
 
     }
 

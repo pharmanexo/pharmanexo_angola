@@ -1,0 +1,196 @@
+[
+  main_settings: {
+    //General settings
+    width: '400', //'700' or 'responsive'
+    background_color: '#FFFFFF',
+    background_transparent: 'yes',
+    border_color: '#ffffff',
+
+    //State defaults
+    state_description: 'State description',
+    state_color: '#a2a5a7',
+    state_hover_color: '#f5a937',
+    state_url: '',
+    border_size: 1.5,
+    all_states_inactive: 'no',
+    all_states_zoomable: 'yes',
+
+    //Location defaults
+    location_description: 'Location description',
+    location_url: '',
+    location_color: '#FF0067',
+    location_opacity: 0.8,
+    location_hover_opacity: 1,
+    location_size: 25,
+    location_type: 'square',
+    location_image_source: 'frog.png',
+    location_border_color: '#FFFFFF',
+    location_border: 2,
+    location_hover_border: 2.5,
+    all_locations_inactive: 'no',
+    all_locations_hidden: 'no',
+
+    //Label defaults
+    label_color: '#d5ddec',
+    label_hover_color: '#d5ddec',
+    label_size: 22,
+    label_font: 'Arial',
+    hide_labels: 'no',
+    hide_eastern_labels: 'no',
+
+    //Zoom settings
+    zoom: 'yes',
+    manual_zoom: 'no',
+    back_image: 'no',
+    initial_back: 'no',
+    initial_zoom: '-1',
+    initial_zoom_solo: 'no',
+    region_opacity: 1,
+    region_hover_opacity: 0.6,
+    zoom_out_incrementally: 'yes',
+    zoom_percentage: 0.99,
+    zoom_time: 0.5,
+
+    //Popup settings
+    popup_color: 'white',
+    popup_opacity: 0.9,
+    popup_shadow: 1,
+    popup_corners: 5,
+    popup_font: '12px/1.5 Verdana, Arial, Helvetica, sans-serif',
+    popup_nocss: 'no',
+
+    //Advanced settings
+    div: 'map',
+    auto_load: 'yes',
+    url_new_tab: 'no',
+    images_directory: 'default',
+    fade_time: 0.1,
+    link_text: 'View Website',
+    popups: 'detect',
+    state_image_url: '',
+    state_image_position: '',
+    location_image_url: ''
+  },
+  state_specific: {
+    AGO1874: {
+      name: 'Lunda Norte',
+      description: '64 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1875: {
+      name: 'Lunda Sul',
+      description: '25 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1876: {
+      name: 'Malanje',
+      description: '11 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1877: {
+      name: 'Bengo',
+      description: '62 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1878: {
+      name: 'Cuanza Norte',
+      description: '35 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1879: {
+      name: 'Cuanza Sul',
+      description: '26 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1880: {
+      name: 'Luanda',
+      description: '11 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1881: {
+      name: 'Uíge',
+      description: '125 COT <br> 12 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1882: {
+      name: 'Zaire',
+      description: '112 COT <br> 4 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1885: {
+      name: 'Cabinda',
+      description: '10 COT <br> 21 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1886: {
+      name: 'Bié',
+      description: '12 COT <br> 22 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1887: {
+      name: 'Benguela',
+      description: '123 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1888: {
+      name: 'Cuando Cubango',
+      description: '10 COT <br> 2 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1889: {
+      name: 'Cunene',
+      description: '67 COT <br> 12 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1890: {
+      name: 'Huambo',
+      description: '102 COT <br> 23 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1891: {
+      name: 'Huíla',
+      description: '2 COT <br> 8 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1892: {
+      name: 'Moxico',
+      description: '11 COT <br> 0 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    },
+    AGO1893: {
+      name: 'Namibe',
+      description: '12 COT <br> 4 LIC',
+      zoomable: 'no',
+      url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg=1'
+    }
+  },
+  locations: {
+    '0': {
+      lat: '-8.836804',
+      lng: '13.233174',
+      name: 'Luanda'
+    }
+  },
+  labels: {},
+  legend: {
+    entries: []
+  },
+  regions: {}
+]

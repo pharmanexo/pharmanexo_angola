@@ -50,6 +50,7 @@ class De_para_pagamento extends CI_Controller
             ->select('fp.id, fp.id_integrador, fp.descricao, i.desc')
             ->from('formas_pagamento_integradores fp')
             ->join('integradores i', 'i.id = fp.id_integrador')
+            ->where('fp.id_integrador', 4)
             ->get()
             ->result_array();
 
@@ -61,30 +62,38 @@ class De_para_pagamento extends CI_Controller
     {
         if ($this->input->method() == 'post') {
             $post = $this->input->post();
-
-
-            var_dump($post);
-            exit();
+            $insert = [];
 
             foreach ($post['fp'] as $k => $item) {
+
+                switch ($k) {
+                    case 'Huma':
+                        foreach ($post['fp']['Huma'] as $item) {
+
+                            $fpExist = $this->db
+                                ->where('cd_forma_pagamento', $item['cd_forma_pagamento'])
+                                ->where('id_forma_pagamento', $item['id_forma_pagamento'])
+                                ->where('integrador', 4)
+                                ->get('formas_pagamento_depara');
+
+                            if ($fpExist->num_rows() == 0){
+                                $insert[] = [
+                                    'cd_forma_pagamento' => $item['cd_forma_pagamento'],
+                                    'id_forma_pagamento' => $item['id_forma_pagamento'],
+                                    'descricao' => $item['descricao'],
+                                    'integrador' => 4,
+                                    'ativo' => 1,
+                                    'qtd_dias' => 0,
+                                ];
+                            }
+                        }
+
+                }
+
                 if (empty($item['cd_forma_pagamento'])) {
                     unset($post['fp'][$k]);
                 }
             }
-
-            $insert = [];
-
-            foreach ($post['fp'] as $item) {
-                $insert[] = [
-                    'cd_forma_pagamento' => $item['cd_forma_pagamento'],
-                    'id_forma_pagamento' => $item['id_forma_pagamento'],
-                    'descricao' => $item['descricao'],
-                    'integrador' => 3,
-                    'ativo' => 1,
-                    'qtd_dias' => 0,
-                ];
-            }
-
 
             if ($this->db->insert_batch('formas_pagamento_depara', $insert) == 0) {
                 $array = array(

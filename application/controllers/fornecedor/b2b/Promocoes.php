@@ -193,6 +193,7 @@ class Promocoes extends MY_Controller
                     return $prazo['descricao'];
                 }],
                 ['db' => 'produtos_catalogo.apresentacao', 'dt' => 'apresentacao'],
+                ['db' => 'f.nome_fantasia', 'dt' => 'fornecedor'],
                 [
                     'db' => 'produtos_catalogo.descricao',
                     'dt' => 'descricao',
@@ -213,9 +214,9 @@ class Promocoes extends MY_Controller
                         }
 
                         if (!empty($row['descricao'])) {
-                            return "{$row['nome_comercial']} - {$row['descricao']} <br> <small>Marca: {$row['marca']}</small> {$validade} <br> {$row['codigo']} / {$row['id_fornecedor']}";
+                            return "{$row['nome_comercial']} - {$row['descricao']} <br> <small>Marca: {$row['marca']}</small> {$validade} <br> {$row['codigo']} / {$row['fornecedor']}";
                         }
-                        return "{$row['nome_comercial']} - {$row['apresentacao']} <br> <small>Marca: {$row['marca']}</small> {$validade} <br> {$row['codigo']} / {$row['id_fornecedor']}";
+                        return "{$row['nome_comercial']} - {$row['apresentacao']} <br> <small>Marca: {$row['marca']}</small> {$validade} <br> {$row['codigo']} / {$row['fornecedor']}";
                     }
                 ],
                 [
@@ -249,7 +250,8 @@ class Promocoes extends MY_Controller
             ],
             [
                 ['produtos_catalogo', 'produtos_catalogo.codigo = promocoes.codigo AND produtos_catalogo.id_fornecedor = promocoes.id_fornecedor'],
-                ['produtos_preco prod', 'produtos_catalogo.codigo = prod.codigo AND produtos_catalogo.id_fornecedor = prod.id_fornecedor', 'LEFT']
+                ['produtos_preco prod', 'produtos_catalogo.codigo = prod.codigo AND produtos_catalogo.id_fornecedor = prod.id_fornecedor', 'LEFT'],
+                ['fornecedores f', 'f.id = promocoes.id_fornecedor', 'LEFT']
 
             ],
             "promocoes.promocao = 1 AND 

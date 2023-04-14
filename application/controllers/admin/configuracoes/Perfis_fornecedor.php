@@ -65,6 +65,7 @@ class Perfis_fornecedor extends Admin_controller
 
             $update = $this->grupo_usuario_rota->updateAdmin($post, $id);
 
+
             if ($update) {
 
                 $output = ['type' => 'success', 'message' => notify_update ];

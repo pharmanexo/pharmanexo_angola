@@ -21,8 +21,8 @@
     <?php } ?>
 
     <!-- Favicons -->
-    <link href="<?php echo ASSETS_PATH ?>/img/main-master-favicon.ico" rel="icon">
-    <link href="<?php echo ASSETS_PATH ?>/img/main-master-favicon.ico" rel="apple-touch-icon">
+    <link href="<?php echo ASSETS_PATH ?>/img/ubuntu-icone.png" rel="icon">
+    <link href="<?php echo ASSETS_PATH ?>/img/ubuntu-icone.png" rel="apple-touch-icon">
 
     <link rel="stylesheet" href="<?php echo THIRD_PARTY . 'theme/css/app.min.css' ?>">
     <link rel="stylesheet" href="<?php echo THIRD_PARTY . 'theme/css/styles.custom.css' ?>">
@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="<?php echo THIRD_PARTY . 'plugins/Material-Design-Calculator-jQuery/css/creative.css' ?>">
 
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 
     <style type="text/css">
         .loading {
@@ -95,7 +97,7 @@
 
         .bluepharma {
 
-            color: #ed3237;
+            color: #000;
             text-shadow: 1px 1px #FFFFFF;
         }
 
@@ -116,13 +118,13 @@
         .btn1 {
             display: inline-block;
             padding: 10px 15px;
-            background-color: #27298a;
+            background-color: #000;
             font-weight: 300;
             color: #ffffff;
             border-radius: 5px;
             -webkit-transition: all 0.3s;
             transition: all 0.3s;
-            border: 1px solid #27298a;
+            border: 1px solid #000;
             text-shadow: 0px 0px #FFFFFF;
         }
 
@@ -137,8 +139,16 @@
         }
 
         .btn1:hover {
-            background-color: transparent;
-            color: #27298a;
+            background-color: #F5AA37;
+            color: #Fff;
+        }
+
+        .textLogin{
+            margin-top: 300px;
+            padding: 50px;
+            text-align: center;
+            /* padding: 20px; */
+            background: rgb(168 181 221 / 60%);
         }
 
         .btn2 {
@@ -255,32 +265,27 @@
                     calc(100% - var(--d)) 100%,
                     0% 100%);
         }
+
+        .formLogin{
+            padding: 0 130px;
+        }
+        .formBorder{
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .formLoginContent{
+            width: 100%;
+            height: 300px;
+        }
+
     </style>
 
 
-    <?php if (isset($warning)) { ?>
-        <script>
-            formWarning(JSON.parse('<?php echo $warning; ?>'));
-        </script>
-    <?php } ?>
+
     <script>
-        /*  var initDestroyTimeOutPace = function() {
-            var counter = 0;
-            var refreshIntervalId = setInterval(function() {
-                var progress;
-                if (typeof document.querySelector('.pace-progress').getAttribute('data-progress-text') !== 'undefined') {
-                    progress = Number(document.querySelector('.pace-progress').getAttribute('data-progress-text').replace("%", ''));
-                }
-                if (progress === 99) {
-                    counter++;
-                }
-                if (counter > 50) {
-                    clearInterval(refreshIntervalId);
-                    Pace.stop();
-                }
-            }, 100);
-        }
-        initDestroyTimeOutPace();*/
+
     </script>
 
     <link rel="stylesheet" href="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/themes/blue/pace-theme-corner-indicator.css' ?>">

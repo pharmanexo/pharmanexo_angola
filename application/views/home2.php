@@ -15,7 +15,7 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="<?php echo HOME_PATH ?>images/favicon.png" type="">
 
-    <title> Portal Pharmanexo </title>
+    <title> Pharmanexo Angola </title>
 
     <!-- bootstrap core css -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -42,14 +42,14 @@
         <div class="hero_area">
 
             <div class="hero_bg_box">
-                <img src="<?php echo HOME_PATH ?>images/hero.png" alt="">
+                <img src="<?php echo HOME_PATH ?>images/ubuntu_header_2.jpg" alt="">
             </div>
 
             <!-- header section strats -->
             <header class="header_section">
                 <div class="container">
                     <nav class="navbar navbar-expand-lg custom_nav-container ">
-                        <a class="logo mr-auto"><img src="<?php echo HOME_PATH ?>images/logopharmanexo.png" alt="Logo Pharmanexo" class="img-fluid"></a>
+                        <a class="logo mr-auto"><img src="<?php echo HOME_PATH ?>images/ubuntu.png" alt="Logo Pharmanexo" class="img-fluid" style="max-width: 280px"></a>
 
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class=""> </span>
@@ -59,9 +59,6 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item active">
                                     <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#portais">PORTAIS</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#sobre"> SOBRE</a>
@@ -89,12 +86,11 @@
                                     <div class="col-md-7">
                                         <div class="detail-box">
                                             <h1>
-                                                O MAIOR PORTAL DE INTEGRAÇÃO MULTIPLATAFORMAS PARA PRODUTOS FARMACÊUTICOS DO
-                                                BRASIL
+                                                O MAIOR PORTAL DE INTEGRAÇÃO PARA PRODUTOS FARMACÊUTICOS DO
+                                                CONTINENTE AFRICANO
                                             </h1>
                                             <p>
-                                                INTEGRANDO E AUTOMATIZANDO A RESPOSTA DE COTAÇÕES DA<br> INDÚSTRIA E
-                                                DISTRIBUIDORES CONVIDADOS
+                                                INTEGRANDO E AUTOMATIZANDO A CADEIA DE FORNECIMENTO DE PRODUTOS FARMACÊUTICOS
                                             </p>
                                             <div class="btn-box">
                                                 <a href="<?php echo base_url('login') ?>" class="btn1">
@@ -116,7 +112,7 @@
 
         <!-- department section -->
 
-        <section id="portais" class="department_section layout_padding">
+        <section id="portais" HIDDEN class="department_section layout_padding">
             <div class="department_container">
                 <div class="container ">
                     <div class="heading_container heading_center">
@@ -183,11 +179,11 @@
                             <p>
                                 O Pharmanexo é a maior ferramenta de integração transparente do Brasil, conectando
                                 distribuidores aos
-                                maiores portais de cotação.
+                                maiores portais de cotação, atuando também na Europa e África.
                             </p>
                             <p>
                                 Possuímos
-                                integração com diversos ERP's como: Totvs (Winthor, Protheus), Sankhya, SAP, Conta Azul,
+                                integração com os maiores ERP's do mundo: Oracle, Totvs (Winthor, Protheus), Sankhya, SAP,
                                 assim como,
                                 disponibilizamos
                                 API para integração com os mais diversos sistemas.
@@ -195,9 +191,9 @@
                             <p>
                                 Entregamos aos nossos clientes uma ferramenta validada e homologada pelos 4 maiores portais
                                 de
-                                cotação do mercado (Bionexo, Síntese, Apoio Cotações e Huma).
+                                cotação do mercado brasileiro (Bionexo, Síntese, Apoio Cotações e Huma).
                             <p>
-                                Nossos numeros falam um pouco sobre nosso resultado: mais de 1 milhão cotações processadas,
+                                Nossos números falam um pouco sobre nosso resultado: mais de 1 milhão cotações processadas,
                                 com
                                 aproximadamente R$ 8,2 bilhões em respostas enviadas, sendo 94,3% respondidas de forma
                                 totalmente
@@ -236,31 +232,39 @@
                         Sistemas (ERPs)
                     </h2>
                     <p class="col-md-10 mx-auto px-0">
-                        Temos integração com os maiores ERPs do mercado como: SAP, TOTVs, Sankhya, entre outros.
+                        Temos integração com os maiores ERPs do mercado como: Oracle ERP, SAP, TOTVs, Sankhya, entre outros.
                     </p>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6 col-lg-4 mx-auto">
+                    <div class="col-sm-6 col-lg-3 mx-auto">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="<?php echo HOME_PATH ?>images/oracle-erp.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3 mx-auto">
                         <div class="box">
                             <div class="img-box">
                                 <img src="<?php echo HOME_PATH ?>images/TOTVS.jpg" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 mx-auto">
+                    <div class="col-sm-6 col-lg-3 mx-auto">
                         <div class="box">
                             <div class="img-box">
                                 <img src="<?php echo HOME_PATH ?>images/SAP.png" alt="">
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 mx-auto">
+                    <div class="col-sm-6 col-lg-3 mx-auto">
                         <div class="box">
                             <div class="img-box">
                                 <img src="<?php echo HOME_PATH ?>images/sankhya.png" alt="">
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>
@@ -337,13 +341,13 @@
                                 <a href="">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                     <span>
-                                        administracao@pharmanexo.com.br
+                                        administracao@pharmanexo.ao
                                     </span>
                                 </a>
                                 <a href="#">
                                     <i class="fa fa-envelope" aria-hidden="true"></i>
                                     <span>
-                                        helpdesk@pharmanexo.com.br
+                                        helpdesk@pharmanexo.ao
                                     </span>
                                 </a>
                                 <a href="https://www.google.com/maps/place/Pharmanexo+Portal+de+Oportunidades+de+Produtos+Farmac%C3%AAuticos/@-20.3154362,-40.2932153,15z/data=!4m2!3m1!1s0x0:0x2f91e8604faf31ef?sa=X&ved=2ahUKEwik38ihsfH6AhUCJrkGHX4wDbMQ_BJ6BAhJEAU">

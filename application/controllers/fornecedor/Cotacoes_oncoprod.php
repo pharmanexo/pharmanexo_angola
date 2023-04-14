@@ -823,7 +823,8 @@ class Cotacoes_oncoprod extends MY_Controller
                 'usuario_recusa' => $this->session->id_usuario,
                 'data_recusa' => date('Y-m-d H:i', time()),
                 'obs_recusa' => $post['obs'],
-                'oculto' => 1
+                'oculto' => 1,
+                'revisao' => 1
             ];
 
             $dbCot = null;
@@ -839,9 +840,24 @@ class Cotacoes_oncoprod extends MY_Controller
                     break;
             }
 
-            $dbCot->where('cd_cotacao', $post['cotacao']);
-            $dbCot->where('id_fornecedor', $this->session->id_fornecedor);
-            $r = $dbCot->update('cotacoes', $updateCot);
+            if (isset($_SESSION['id_matriz'])) {
+                $forn = $this->db
+                    ->where('id_matriz', $_SESSION['id_matriz'])
+                    ->get('fornecedores')
+                    ->result_array();
+
+                if (!empty($forn)) {
+                    foreach ($forn as $f) {
+                        $dbCot->where('cd_cotacao', $post['cotacao']);
+                        $dbCot->where('id_fornecedor', $f['id']);
+                        $r = $dbCot->update('cotacoes', $updateCot);
+                    }
+                }
+            } else {
+                $dbCot->where('cd_cotacao', $post['cotacao']);
+                $dbCot->where('id_fornecedor', $this->session->id_fornecedor);
+                $r = $dbCot->update('cotacoes', $updateCot);
+            }
 
             if ($r) {
                 $output = ['type' => 'success', 'message' => 'Cotação descartada'];
@@ -967,10 +983,21 @@ class Cotacoes_oncoprod extends MY_Controller
      */
     public function get_item($cd_cotacao)
     {
+       $forns = $this->db
+            ->where('id_matriz', 1)
+            ->get('fornecedores')
+            ->result_array();
+        $ids = [];
+
+       foreach ($forns as $f){
+           $ids[] = $f['id'];
+       }
+
         # Obtem Cotação
         $this->DB_COTACAO->where('cd_cotacao', $cd_cotacao);
-        $this->DB_COTACAO->where('id_fornecedor', $this->session->id_fornecedor);
+        $this->DB_COTACAO->where_in('id_fornecedor', $ids);
         $cotacao = $this->DB_COTACAO->get('cotacoes')->row_array();
+
 
         if (is_null($cotacao)) {
             $_SESSION['warning'] = [
@@ -989,7 +1016,7 @@ class Cotacoes_oncoprod extends MY_Controller
         $estado = $this->estados->find("*", "uf = '{$cliente['estado']}'", true);
 
         # Realiza o depara dos produtos, monta com as informações pharmanexo e ordena os registros
-        $produtos = $this->matchProducts($cd_cotacao, $this->session->id_fornecedor, $cliente['id'], $estado['id']);
+        $produtos = $this->matchProducts($cd_cotacao, $cotacao['id_fornecedor'], $cliente['id'], $estado['id']);
 
 
         # Cabeçalho de cada produto
@@ -2821,10 +2848,25 @@ class Cotacoes_oncoprod extends MY_Controller
     {
         if ($this->input->is_ajax_request()) {
 
+
+            if (isset($_SESSION['id_matriz'])){
+                $forns = $this->db
+                    ->where('id_matriz', $_SESSION['id_matriz'])
+                    ->get('fornecedores')
+                    ->result_array();
+                $id_fornecedor = [];
+
+                foreach ($forns as $f){
+                    $id_fornecedor[] = $f['id'];
+                }
+            }else{
+                $id_fornecedor = [$this->session->id_fornecedor];
+            }
+
             $post = $this->input->post();
 
             if (isset($post['status'])) {
-                $this->DB_COTACAO->where('id_fornecedor', $this->session->id_fornecedor);
+                $this->DB_COTACAO->where_in('id_fornecedor', $id_fornecedor);
                 $this->DB_COTACAO->where('cd_cotacao', $cd_cotacao);
                 if ($this->DB_COTACAO->update('cotacoes', ['revisao' => $post['status']])) {
 

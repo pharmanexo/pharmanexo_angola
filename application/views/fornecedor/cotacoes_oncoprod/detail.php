@@ -59,6 +59,14 @@
                             <?php } ?>
                         </div>
                     </div>
+                    <hr>
+                    <div class="row mt-4 mb-3">
+                        <?php foreach ($options_fornecedores as $lojas){ ?>
+                            <div class="col text-center">
+                                <?php echo "<span  class='text-primary'>{$lojas['fornecedor']}</span>"; ?>
+                            </div>
+                        <?php } ?>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row">

@@ -56,8 +56,23 @@ class M_cotacaoManual extends MY_Model
      */
     public function getItem($cd_cotacao, $id_fornecedor, $integrador)
     {
-        if (empty($id_fornecedor)) {
-            $id_fornecedor = $this->session->id_fornecedor;
+
+        if (isset($_SESSION['id_matriz'])){
+            $forns = $this->db
+                ->where('id_matriz', $_SESSION['id_matriz'])
+                ->get('fornecedores')
+                ->result_array();
+            $id_fornecedor = [];
+
+            foreach ($forns as $f){
+                $id_fornecedor[] = $f['id'];
+            }
+        }else{
+            if (empty($id_fornecedor)) {
+                $id_fornecedor = [$this->session->id_fornecedor];
+            }else{
+                $id_fornecedor = [$id_fornecedor];
+            }
         }
 
         # Obtem Cotação
@@ -74,7 +89,7 @@ class M_cotacaoManual extends MY_Model
         $estado = $this->estados->find("*", "uf = '{$cliente['estado']}'", true);
 
         # Realiza o depara dos produtos, monta com as informações pharmanexo e ordena os registros
-        $produtos = $this->matchProducts($cd_cotacao, $cotacao['id'], $id_fornecedor, $cliente['id'], $estado['id'], $integrador);
+        $produtos = $this->matchProducts($cd_cotacao, $cotacao['id'], $cotacao['id_fornecedor'], $cliente['id'], $estado['id'], $integrador);
 
 
         # Condição de pagamento da cotação
@@ -109,6 +124,8 @@ class M_cotacaoManual extends MY_Model
             "itens" => count($produtos),
             "produtos" => $produtos
         ];
+
+
 
         return $data;
     }
@@ -300,8 +317,6 @@ class M_cotacaoManual extends MY_Model
                 $this->DB_HUMA->where('id_cotacao', $id_cotacao);
                 $this->DB_HUMA->group_by('id_artigo');
                 $produtos_cotacao = $this->DB_HUMA->get('cotacoes_produtos')->result_array();
-
-
 
 
                 # Faz a combinação dos produtos Pharmanexo x bionexo
@@ -995,7 +1010,7 @@ class M_cotacaoManual extends MY_Model
         # Add preço
         if (isset($exibirPreco)) {
 
-            if (is_null($estado)) {
+            if ($estado == 'is null') {
                 $query .= ",
     			  (SELECT pp.preco_unitario
                     FROM pharmanexo.produtos_preco_max pp
@@ -1139,6 +1154,19 @@ class M_cotacaoManual extends MY_Model
     public function changeHide($integrador, $cd_cotacao, $id_fornecedor)
     {
 
+        $idForns = [$this->session->id_fornecedor];
+        $forn = $this->db
+            ->where('id_matriz', $_SESSION['id_matriz'])
+            ->get('fornecedores')
+            ->result_array();
+
+        if (!empty($forn)) {
+            unset($idForns);
+            foreach ($forn as $f) {
+                $idForns[] = intval($f['id']);
+            }
+        }
+
         switch (strtoupper($integrador)) {
             case 'SINTESE':
                 $dbcot = $this->DB_SINTESE;
@@ -1149,16 +1177,19 @@ class M_cotacaoManual extends MY_Model
             case 'APOIO':
                 $dbcot = $this->DB_APOIO;
                 break;
+            case 'HUMA':
+                $dbcot = $this->DB_HUMA;
+                break;
         }
 
         $dbcot->where('cd_cotacao', $cd_cotacao);
-        $dbcot->where('id_fornecedor', $id_fornecedor);
+        $dbcot->where_in('id_fornecedor', $idForns);
         $cotacao = $dbcot->get('cotacoes')->row_array();
 
         $valor = ($cotacao['oculto'] == 1) ? 0 : 1;
 
         $dbcot->where('cd_cotacao', $cd_cotacao);
-        $dbcot->where('id_fornecedor', $id_fornecedor);
+        $dbcot->where_in('id_fornecedor', $idForns);
         $update = $dbcot->update('cotacoes', ['oculto' => $valor]);
 
         if ($update) {
@@ -1462,6 +1493,28 @@ class M_cotacaoManual extends MY_Model
 
                 return $forma_pagamento;
                 break;
+            case 'HUMA':
+                # Se não informou, obtem pelo fornecedor
+                $this->db->select("*");
+                $this->db->where("id_fornecedor", $id_fornecedor);
+                $this->db->group_start();
+                $this->db->where('id_cliente', $id_cliente);
+                $this->db->or_where('id_estado', $id_estado);
+                $this->db->group_end();
+
+                $forma_pagamento = $this->db->get('formas_pagamento_fornecedores')->row_array();
+
+                if (isset($forma_pagamento) && !empty($forma_pagamento)) {
+
+                    $this->db->where('integrador', 4);
+                    $this->db->where('id_forma_pagamento', $forma_pagamento['id_forma_pagamento']);
+                    $formaBionexo = $this->db->get('formas_pagamento_depara')->row_array();
+
+                    $forma_pagamento = (isset($formaBionexo) && !empty($formaBionexo)) ? $formaBionexo['cd_forma_pagamento'] : null;
+                }
+
+                return $forma_pagamento;
+                break;
         }
     }
 
@@ -1708,26 +1761,27 @@ class M_cotacaoManual extends MY_Model
      */
     public function getCotacao($integrador, $cd_cotacao, $id_fornecedor)
     {
-
         switch (strtoupper($integrador)) {
             case 'SINTESE':
                 $this->DB_SINTESE->where('cd_cotacao', $cd_cotacao);
-                $this->DB_SINTESE->where('id_fornecedor', $id_fornecedor);
+                $this->DB_SINTESE->where_in('id_fornecedor', $id_fornecedor);
                 $cotacao = $this->DB_SINTESE->get('cotacoes')->row_array();
                 break;
             case 'BIONEXO':
                 $this->DB_BIONEXO->where('cd_cotacao', $cd_cotacao);
-                $this->DB_BIONEXO->where('id_fornecedor', $id_fornecedor);
+                $this->DB_BIONEXO->where_in('id_fornecedor', $id_fornecedor);
                 $cotacao = $this->DB_BIONEXO->get('cotacoes')->row_array();
                 break;
             case 'APOIO':
+
                 $this->DB_APOIO->where('cd_cotacao', $cd_cotacao);
-                $this->DB_APOIO->where('id_fornecedor', $id_fornecedor);
+                $this->DB_APOIO->where_in('id_fornecedor', $id_fornecedor);
                 $cotacao = $this->DB_APOIO->get('cotacoes')->row_array();
+
                 break;
             case 'HUMA':
                 $this->DB_HUMA->where('cd_cotacao', $cd_cotacao);
-                $this->DB_HUMA->where('id_fornecedor', $id_fornecedor);
+                $this->DB_HUMA->where_in('id_fornecedor', $id_fornecedor);
                 $cotacao = $this->DB_HUMA->get('cotacoes')->row_array();
                 break;
         }
@@ -1964,7 +2018,7 @@ class M_cotacaoManual extends MY_Model
                             $this->db->trans_rollback();
                             return ['type' => 'error', 'message' => 'Produto base não localizado'];
                         }
-                    }else{
+                    } else {
                         return ['type' => 'error', 'message' => 'Produto sem De/Para incial. Acesso o menu PRODUTOS -> DEPARA'];
                     }
 
@@ -2304,7 +2358,7 @@ class M_cotacaoManual extends MY_Model
                             $item->appendChild($dom->createElement('ICMS', '-'));
                             $item->appendChild($dom->createElement('IPI', '-'));
                             $item->appendChild($dom->createElement('Valor_Frete', '-'));
-                            $item->appendChild($dom->createElement('Fabricante', utf8_encode(utf8_decode("{$catalogo['marca']}"))));
+                            $item->appendChild($dom->createElement('Fabricante', utf8_encode(utf8_decode(htmlspecialchars("{$catalogo['marca']}")))));
                             $item->appendChild($dom->createElement('Embalagem', 'unidade'));
                             $item->appendChild($dom->createElement('Quantidade_Embalagem', $p['qtd_embalagem']));
                             $item->appendChild($dom->createElement('Comentario', (isset($p['obs_produto']) && !empty($p['obs_produto'])) ? $p['obs_produto'] : ' - '));
@@ -2403,6 +2457,11 @@ class M_cotacaoManual extends MY_Model
                         $this->DB_APOIO->where('id_cotacao', $post['id_cotacao']);
                         $this->DB_APOIO->where('cd_produto_comprador', $produto['cd_produto_comprador']);
                         $prod = $this->DB_APOIO->get('cotacoes_produtos')->row_array();
+                        break;
+                    case 'HUMA':
+                        $this->DB_HUMA->where('id_cotacao', $post['id_cotacao']);
+                        $this->DB_HUMA->where('cd_produto_comprador', $produto['cd_produto_comprador']);
+                        $prod = $this->DB_HUMA->get('cotacoes_produtos')->row_array();
                         break;
                 }
 
@@ -2624,6 +2683,11 @@ class M_cotacaoManual extends MY_Model
                         $this->DB_APOIO->where('cd_cotacao', $cd_cotacao);
                         $this->DB_APOIO->where('id_fornecedor', $id_fornecedor);
                         $cot = $this->DB_APOIO->get('cotacoes')->row_array();
+                        break;
+                    case 'HUMA':
+                        $this->DB_HUMA->where('cd_cotacao', $cd_cotacao);
+                        $this->DB_HUMA->where('id_fornecedor', $id_fornecedor);
+                        $cot = $this->DB_HUMA->get('cotacoes')->row_array();
                         break;
                 }
 
@@ -3097,6 +3161,168 @@ class M_cotacaoManual extends MY_Model
             return $warning;
         }
     }
+
+    /**
+     * Envia o XML de cada fornecedor selecionado para a Huma
+     *
+     * @param - Array POST
+     * @param - String Codigo da cotação
+     * @param - INT ID do comprador
+     * @return  array
+     */
+    public function sendHuma($cd_cotacao, $id_cliente)
+    {
+
+        $dados = $this->session->cot_manual;
+        $user = $this->db->where('id', $this->session->id_usuario)->get('usuarios')->row_array();
+        $cliente = $this->db->where('id', $id_cliente)->get('compradores')->row_array();
+
+        $valorMinimo = $this->db
+            ->where('id_cliente', $id_cliente)
+            ->where('id_fornecedor', $this->session->id_fornecedor)
+            ->get('valor_minimo_cliente')->row_array();
+
+        if (empty($valorMinimo)) {
+            $estado = $this->db->where('uf', $cliente['estado'])->get('estados')->row_array();
+            $valorMinimo = $this->db
+                ->where('id_estado', $estado['id'])
+                ->where('id_fornecedor', $this->session->id_fornecedor)
+                ->get('valor_minimo_cliente')->row_array();
+        }
+
+        $cotacao = $this->DB_HUMA
+            ->select('c.cd_cotacao, cp.*')
+            ->from('cotacoes c')
+            ->join('cotacoes_produtos cp', 'cp.id_cotacao = c.id')
+            ->where('c.cd_cotacao', $cd_cotacao)
+            ->where('c.id_fornecedor', $this->session->id_fornecedor)
+            ->get()
+            ->result_array();
+
+        $ofertas = $this->db
+            ->select('cp.*, pc.marca, pc.id_marca, pc.nome_comercial, pc.apresentacao')
+            ->from('cotacoes_produtos cp')
+            ->join('produtos_catalogo pc', 'pc.codigo = cp.id_pfv and cp.id_fornecedor = cp.id_fornecedor')
+            ->where('cd_cotacao', $cd_cotacao)
+            ->where('cp.id_fornecedor', $this->session->id_fornecedor)
+            ->get()
+            ->result_array();
+
+        foreach ($cotacao as $k => $item) {
+            foreach ($ofertas as $oferta) {
+                if ($item['id_artigo'] == $oferta['id_produto']) {
+                    $cotacao[$k]['ofertas'][] = $oferta;
+                }
+            }
+        }
+
+        $produtosOferta = [];
+
+        foreach ($cotacao as $cot) {
+            if (isset($cot['ofertas'])) {
+                foreach ($cot['ofertas'] as $oferta) {
+                    if ($oferta['preco_marca'] == 0){
+                        $precoOferta = number_format(0.00, 2, ',', '.');
+                        $naoCotar = true;
+                    }else{
+                        $precoOferta = number_format($oferta['preco_marca'], 2, ',', '.');
+                        $naoCotar = false;
+                    }
+
+                    $produtosOferta[] = [
+                        'marca' => (isset($oferta['marca'])) ? $oferta['marca'] : '',
+                        'naoCotar' => $naoCotar,
+                        'observacoes' => (isset($oferta['obs_produto'])) ? $oferta['obs_produto'] : '',
+                        'produto' => [
+                            'id' => [
+                                "codigo" => $oferta['id_produto'],
+                                "codigoPessoa" => $cot['codigoPessoa']
+                            ]
+                        ],
+                        "quantidade" => $cot['qt_produto_total'],
+                        "quantidadeCotada" => $cot['qt_produto_total'],
+                        "referenciaProduto" => 'PHARMA',
+                        'unidade' => [
+                            'id' => $cot['id_unidade'],
+                            'descricao' => $cot['ds_unidade_compra']
+                        ],
+                        'valorCotacao' => $precoOferta
+                    ];
+                }
+            }else{
+                $produtosOferta[] = [
+                    'marca' => '',
+                    'naoCotar' => TRUE,
+                    'observacoes' => '',
+                    'produto' => [
+                        'id' => [
+                            "codigo" => $cot['cd_produto_comprador'],
+                            "codigoPessoa" => $cot['codigoPessoa']
+                        ]
+                    ],
+                    "quantidade" => $cot['qt_produto_total'],
+                    "quantidadeCotada" => $cot['qt_produto_total'],
+                    "referenciaProduto" => 'PHARMA',
+                    'unidade' => [
+                        'id' => $cot['id_unidade'],
+                        'descricao' => $cot['ds_unidade_compra']
+                    ],
+                    'valorCotacao' => '0,00'
+                ];
+            }
+        }
+
+        $url = "https://pharmanexo.com.br/pharma_api/huma/cotacoes/sendCotacao?id={$this->session->id_fornecedor}";
+
+        $post = [
+            'cd_cotacao' => $cd_cotacao,
+            'id_fornecedor' => $this->session->id_fornecedor,
+            'vendedor' => $user['nickname'] . " - " . $user['email'],
+            'obs' => $dados['obs'],
+            'prazoEntrega' => $dados['prazo_entrega'],
+            'formaPagamento' => $dados['id_forma_pagamento'],
+            'valorMinimo' => (isset($valorMinimo['valor_minimo'])) ? $valorMinimo['valor_minimo'] : '0,00',
+            'produtos' => $produtosOferta
+        ];
+
+        $postdata = json_encode($post);
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $postdata);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+
+        $resultArray = json_decode($result, true);
+
+        if (isset($resultArray['type']) && $resultArray['type'] == 'success') {
+            # Atualiza os itens para submetido
+            $updt = $this->atualizarEnvioCotacao($cd_cotacao);
+
+            foreach ($dados['list'] as $mail){
+                $sendEmails = $this->sendEmail(
+                    'HUMA',
+                    [
+                        'html' => file_get_contents($dados['html']),
+                        'filename' => $mail['mirror']
+                    ],
+
+                    $id_cliente,
+                    $mail['id_fornecedor'],
+                    $cd_cotacao
+                );
+            }
+
+            # Envia email com o espelho para o comprador
+
+        }
+
+      return $resultArray;
+    }
+
 
     /**
      * Registra log das ofertas de envio

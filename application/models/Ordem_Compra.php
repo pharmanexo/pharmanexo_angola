@@ -34,7 +34,7 @@ class Ordem_Compra extends MY_Model
         return $this->db->get('usuarios_resgate')->result_array();
     }
 
-    public function getCotFormaPagamento($id_fornecedor, $cot)
+    public function getCotFormaPagamento($id_fornecedor, $cot, $integrador)
     {
         $id_fp = $this->db
             ->select('id_forma_pagamento')
@@ -47,10 +47,14 @@ class Ordem_Compra extends MY_Model
 
         if (!empty($id_fp) && !is_null($id_fp)) {
             $fp = $this->db
-                ->where('id_forma_pagamento', $id_fp['id_forma_pagamento'])
-                ->where('integrador', 1)
-                ->get('formas_pagamento_depara')
+                ->select('fp.descricao')
+                ->from('formas_pagamento_depara fpd')
+                ->join('formas_pagamento fp', 'fp.id = fpd.id_forma_pagamento')
+                ->where('fpd.cd_forma_pagamento', $id_fp['id_forma_pagamento'])
+                ->where('fpd.integrador', $integrador)
+                ->get()
                 ->row_array();
+
             return $fp['descricao'];
         }
 

@@ -21,7 +21,6 @@ class Dashboard extends MY_Controller
     {
         parent::__construct();
 
-
         $this->route = base_url('dashboard/');
         $this->routelogin = base_url('login/');
 
@@ -54,11 +53,11 @@ class Dashboard extends MY_Controller
      */
     public function index()
     {
-        $tipo = $this->session->userdata('tipo_usuario');
-        $grupo = ($this->session->has_userdata('grupo')) ? $this->session->grupo : '';
+
+        $tipo = $this->session->userdata('id_perfil');
+
         $data['scripts'] = $this->template->scripts();
         $data['frm_actionverifica'] = "{$this->routelogin}verifica_email";
-
 
 
         if ($this->session->userdata('primeiro') == '1') {
@@ -66,43 +65,30 @@ class Dashboard extends MY_Controller
         } else {
 
 
+            if (isset($this->session->administrador) && $this->session->administrador == 1) {
 
-            if ($this->session->id_usuario == '15') {
-
-                $this->dashboard_vendas();
+                $this->dashboard_admin();
             } else {
 
-                if (isset($this->session->administrador) && $this->session->administrador == 1) {
+                switch ($tipo) {
 
-                    $this->dashboard_admin();
-                } else if ($tipo == 1) {
-
-                    switch ($grupo) {
-
-                        case '1':
-                            $this->dashboard_fornecedor();
-                            break;
-                        case  '2':
-                            $this->dashboard_vendas();
-                            break;
-                        case  '4':
-                            redirect(base_url('fornecedor/b2b/ofertas'));
-                            break;
-                        default:
-                            $this->dashboard_vendas();
-                            break;
-                    }
-                } else if ($tipo == 2) {
-                    $data = [
-                        'header' => $this->tmp->header(),
-                        'scripts' => $this->tmp->scripts(),
-                        'navbar' => $this->tmp->navbar()
-                    ];
-                    $view = "marketplace/home";
-
-                    $this->load->view($view, $data);
+                    case '1':
+                        $this->dashboard_hospitais();
+                        break;
+                    case  '3':
+                        $this->dashboard_governo();
+                        break;
+                    case  '4':
+                        $this->dashboard_regionais();
+                        break;
+                    case  '5':
+                        $this->dashboard_vendas();
+                        break;
+                    default:
+                        break;
                 }
             }
+
         }
     }
 
@@ -268,104 +254,11 @@ class Dashboard extends MY_Controller
         $this->load->view("fornecedor/dashboard/main", $data);
     }
 
-    /**
-     * Exibe o dashboard de vendas do fornecedor
-     *
-     * @return view
-     */
+
     private function dashboard_vendas()
     {
 
         $page_title = 'Dashboard Vendas';
-
-        $data['to_datatable'] = "{$this->route}/datatables_cotacoes";
-
-        $rede = $this->db
-            ->where('id_usuario', $this->session->id_usuario)
-            ->where('id_fornecedor', $this->session->id_fornecedor)
-            ->get('usuarios_rede_atendimento')
-            ->result_array();
-
-
-        $rede_estados = [];
-        $rede_clientes = [];
-
-        foreach ($rede as $item) {
-            if ($item['id_estado'] > 0) {
-                $rede_estados[] = $item;
-            } else {
-                $rede_clientes[] = $item;
-            }
-        }
-
-        # Selects
-        $data['estados'] = $this->estado->find("id, uf, CONCAT(uf, ' - ', descricao) AS estado", null, FALSE, 'estado ASC');
-        $data['compradores'] = $this->comprador->find("id, CONCAT(cnpj, ' - ', razao_social) AS comprador", null, FALSE, 'comprador ASC');
-        foreach ($rede_clientes as $rcli) {
-            foreach ($data['compradores'] as $k => $comprador) {
-                if ($comprador['id'] == $rcli['id_cliente']) {
-                    $data['compradores'][$k]['selected'] = true;
-                }
-            }
-        }
-
-
-        foreach ($rede_estados as $rest) {
-            foreach ($data['estados'] as $k => $estado) {
-                if ($estado['id'] == $rest['id_estado']) {
-                    $data['estados'][$k]['selected'] = true;
-                }
-            }
-        }
-
-
-        $cotacoes_sintese = $this->DB_COTACAO->select('cd_cotacao')
-            ->where('id_fornecedor', $this->session->id_fornecedor)
-            ->where("dt_fim_cotacao > now()")
-            ->group_by('cd_cotacao')
-            ->order_by('cd_cotacao ASC')
-            ->get('cotacoes')
-            ->result_array();
-
-        $cotacoes_bionexo = $this->bio->select('cd_cotacao')
-            ->where('id_fornecedor', $this->session->id_fornecedor)
-            ->where("dt_fim_cotacao > now()")
-            ->group_by('cd_cotacao')
-            ->order_by('cd_cotacao ASC')
-            ->get('cotacoes')
-            ->result_array();
-
-        $cotacoes_apoio = $this->apoio->select('cd_cotacao')
-            ->where('id_fornecedor', $this->session->id_fornecedor)
-            ->where("dt_fim_cotacao > now()")
-            ->group_by('cd_cotacao')
-            ->order_by('cd_cotacao ASC')
-            ->get('cotacoes')
-            ->result_array();
-
-        $cotacoes_huma = $this->huma->select('cd_cotacao')
-            ->where('id_fornecedor', $this->session->id_fornecedor)
-            ->where("dt_fim_cotacao > now()")
-            ->group_by('cd_cotacao')
-            ->order_by('cd_cotacao ASC')
-            ->get('cotacoes')
-            ->result_array();
-
-
-        $data['cotacoes'] = array_merge($cotacoes_sintese, $cotacoes_bionexo, $cotacoes_apoio, $cotacoes_huma);
-
-        if (in_array($this->session->id_fornecedor, explode(',', ONCOPROD))) {
-            $data['url_cotacao'] = base_url("fornecedor/cotacoes_oncoprod/detalhes");
-        } elseif (in_array($this->session->id_fornecedor, explode(',', ONCOEXO))) {
-            $data['url_cotacao'] = base_url("fornecedor/cotacoes_oncoexo/detalhes");
-        } else {
-            $data['url_cotacao'] = base_url("fornecedor/cotacoes/detalhes");
-        }
-
-        $data['url_info'] = base_url("fornecedor/cotacoes/info_cotacao/");
-
-        $data['url_ocultar'] = "{$this->route}/ocultarCotacao";
-        $data['url_review'] = base_url("fornecedor/cotacoes/review/");
 
         $data['header'] = $this->template->header([
             'title' => $page_title,
@@ -373,9 +266,6 @@ class Dashboard extends MY_Controller
                 THIRD_PARTY . 'plugins/jquery.vmap/jqvmap.min.css'
             ]
         ]);
-
-        # Session
-        $this->session->set_userdata(['perfil_comercial' => 1]);
 
         $data['navbar'] = $this->template->navbar();
         $data['sidebar'] = $this->template->sidebar();
@@ -390,31 +280,105 @@ class Dashboard extends MY_Controller
             ]
         ]);
 
+        $this->load->view("fornecedor/dashboard/vendas", $data);
+    }
 
-        if (in_array($this->session->id_fornecedor, $this->oncoprod)) {
+    /**
+     * Exibe o dashboard de vendas do fornecedor
+     *
+     * @return view
+     */
+    private function dashboard_hospitais()
+    {
+      //  $this->generateMapConfig();
 
-            $this->DB_COTACAO->select('*');
-            $this->DB_COTACAO->where("id_fornecedor in (" . ONCOPROD . ")");
-            $this->DB_COTACAO->order_by('data_criacao DESC');
-            $this->DB_COTACAO->limit(1);
-            $data['dt_cotacaoes'] = $this->DB_COTACAO->get('cotacoes')->row_array()['data_criacao'];
-        } else {
+        $page_title = 'Dashboard Hospitais';
 
-            $this->DB_COTACAO->select('*');
-            $this->DB_COTACAO->where('id_fornecedor', $this->session->id_fornecedor);
-            $this->DB_COTACAO->order_by('data_criacao DESC');
-            $this->DB_COTACAO->limit(1);
-            $data['dt_cotacaoes'] = $this->DB_COTACAO->get('cotacoes')->row_array()['data_criacao'];
-        }
+        $data['header'] = $this->template->header([
+            'title' => $page_title,
+            'styles' => [
+                THIRD_PARTY . 'plugins/jquery.vmap/jqvmap.min.css'
+            ]
+        ]);
 
+        $data['navbar'] = $this->template->navbar();
+        $data['sidebar'] = $this->template->sidebar();
+        $data['heading'] = $this->template->heading(['page_title' => $page_title]);
+        $data['scripts'] = $this->template->scripts([
+            'scripts' => [
+                THIRD_PARTY . 'plugins/jquery.vmap/jquery.vmap.min.js',
+                THIRD_PARTY . 'plugins/jquery.vmap/maps/jquery.vmap.brazil.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.pie.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.tooltip.js',
+                THIRD_PARTY . 'plugins/simplemapJS/mapdata.js',
+                THIRD_PARTY . 'plugins/simplemapJS/countrymap.js',
 
-        $data['updateCotacoes'] = $this->db->query("
-                                                select (select max(data_criacao) as SINTESE from cotacoes_sintese.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) as SINTESE,
-                                                (select max(dt_criacao) as BIONEXO from cotacoes_bionexo.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) AS BIONEXO,
-                                                (select max(dt_criacao) as APOIO from cotacoes_apoio.cotacoes where id_fornecedor = {$this->session->id_fornecedor}) AS APOIO
-                                                ")->row_array();
+            ]
+        ]);
 
+        $data['indicadores'] = [
+            'totalOfertado' => 1288,
+            'totalCotacoesAberto' => 570,
+            'totalOc' => '657.800,87',
+            'valorTotalOfertado' => '8.349.579,87'
+        ];
 
+        $this->load->view("fornecedor/dashboard/main", $data);
+    }
+
+    private function dashboard_regionais()
+    {
+
+        $page_title = 'Dashboard Regionais';
+
+        $data['header'] = $this->template->header([
+            'title' => $page_title,
+            'styles' => [
+                THIRD_PARTY . 'plugins/jquery.vmap/jqvmap.min.css'
+            ]
+        ]);
+
+        $data['navbar'] = $this->template->navbar();
+        $data['sidebar'] = $this->template->sidebar();
+        $data['heading'] = $this->template->heading(['page_title' => $page_title]);
+        $data['scripts'] = $this->template->scripts([
+            'scripts' => [
+                THIRD_PARTY . 'plugins/jquery.vmap/jquery.vmap.min.js',
+                THIRD_PARTY . 'plugins/jquery.vmap/maps/jquery.vmap.brazil.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.pie.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.tooltip.js'
+            ]
+        ]);
+
+        $this->load->view("fornecedor/dashboard/vendas", $data);
+    }
+
+    private function dashboard_governo()
+    {
+
+        $page_title = 'Dashboard Governo';
+
+        $data['header'] = $this->template->header([
+            'title' => $page_title,
+            'styles' => [
+                THIRD_PARTY . 'plugins/jquery.vmap/jqvmap.min.css'
+            ]
+        ]);
+
+        $data['navbar'] = $this->template->navbar();
+        $data['sidebar'] = $this->template->sidebar();
+        $data['heading'] = $this->template->heading(['page_title' => $page_title]);
+        $data['scripts'] = $this->template->scripts([
+            'scripts' => [
+                THIRD_PARTY . 'plugins/jquery.vmap/jquery.vmap.min.js',
+                THIRD_PARTY . 'plugins/jquery.vmap/maps/jquery.vmap.brazil.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.pie.js',
+                THIRD_PARTY . 'theme/plugins/flot/jquery.flot.tooltip.js'
+            ]
+        ]);
 
         $this->load->view("fornecedor/dashboard/vendas", $data);
     }
@@ -816,8 +780,8 @@ class Dashboard extends MY_Controller
                 $dataGrafico = array(
                     'ano' => $ano,
                     'mes' => $i,
-                    'id_fornecedor' =>   $id_fornecedor,
-                    'total_cotacao' =>   $totalCot[$i],
+                    'id_fornecedor' => $id_fornecedor,
+                    'total_cotacao' => $totalCot[$i],
                     'cotacao_produto' => $cotProd[$i],
                     'cotacao_enviada' => $cotEnv[$i],
                 );
@@ -973,12 +937,49 @@ class Dashboard extends MY_Controller
 
     public function ocultarCotacao($id_cotacao, $integrador = 'SINTESE')
     {
-        if ($integrador == "SINTESE") {
 
-            $updt = $this->DB_COTACAO->where('id', $id_cotacao)->update('cotacoes', ['oculto' => 1, 'data_atualizacao' => date("Y-m-d H:i:s")]);
-        } else {
+        $idForns = "{$this->session->id_fornecedor}";
+        $forn = $this->db
+            ->where('id_matriz', $_SESSION['id_matriz'])
+            ->get('fornecedores')
+            ->result_array();
 
-            $updt = $this->bio->where('id', $id_cotacao)->update('cotacoes', ['oculto' => 1]);
+        if (!empty($forn)) {
+            unset($idForns);
+            foreach ($forn as $f) {
+                $idForns[] = intval($f['id']);
+            }
+
+            if (!empty($idForns)) {
+                $idForns = implode(',', $idForns);
+            }
+        }
+
+        switch (strtolower($integrador)) {
+            case 'sintese':
+                $updt = $this->DB_COTACAO
+                    ->where('cd_cotacao', $id_cotacao)
+                    ->where("id_fornecedor in ({$idForns})")
+                    ->update('cotacoes', ['oculto' => 1, 'data_atualizacao' => date("Y-m-d H:i:s")]);
+                break;
+            case 'bionexo':
+                $updt = $this->bio
+                    ->where('cd_cotacao', $id_cotacao)
+                    ->where_in('id_fornecedor', $idForns)
+                    ->update('cotacoes', ['oculto' => 1]);
+                break;
+            case 'apoio':
+                $updt = $this->apoio
+                    ->where('cd_cotacao', $id_cotacao)
+                    ->where_in('id_fornecedor', $idForns)
+                    ->update('cotacoes', ['oculto' => 1]);
+                break;
+            case 'huma':
+                $updt = $this->huma
+                    ->where('cd_cotacao', $id_cotacao)
+                    ->where_in('id_fornecedor', $idForns)
+                    ->update('cotacoes', ['oculto' => 1]);
+                break;
         }
 
         if ($updt) {
@@ -1041,6 +1042,124 @@ class Dashboard extends MY_Controller
     function porcentagem_nx($parcial, $total)
     {
         return ($parcial * 100) / $total;
+    }
+
+    function generateMapConfig()
+    {
+        $estados = $this->db->get('estados')->result_array();
+        $legendas = "";
+
+        foreach ($estados as $estado){
+            $cots = rand(12,888);
+            $lic = rand(1,50);
+
+            $legendas += "
+             {$estados['id_map']}: {
+                          name: {$estado['descricao']},
+                          description: '{$cots} COT <br> $lic LIC',
+                          zoomable: 'no',
+                          url: 'https://pharmanexo.com.br/angola/fornecedor/cotacoes?reg={$estado['uf']}'
+                        }
+             ";
+
+        }
+
+
+        $config = " {
+                      main_settings: {
+                       //General settings
+                        width: '400', //'700' or 'responsive'
+                        background_color: '#FFFFFF',
+                        background_transparent: 'yes',
+                        border_color: '#ffffff',
+                        
+                        //State defaults
+                        state_description: 'State description',
+                        state_color: '#a2a5a7',
+                        state_hover_color: '#f5a937',
+                        state_url: '',
+                        border_size: 1.5,
+                        all_states_inactive: 'no',
+                        all_states_zoomable: 'yes',
+                        
+                        //Location defaults
+                        location_description: 'Location description',
+                        location_url: '',
+                        location_color: '#FF0067',
+                        location_opacity: 0.8,
+                        location_hover_opacity: 1,
+                        location_size: 25,
+                        location_type: 'square',
+                        location_image_source: 'frog.png',
+                        location_border_color: '#FFFFFF',
+                        location_border: 2,
+                        location_hover_border: 2.5,
+                        all_locations_inactive: 'no',
+                        all_locations_hidden: 'no',
+                        
+                        //Label defaults
+                        label_color: '#d5ddec',
+                        label_hover_color: '#d5ddec',
+                        label_size: 22,
+                        label_font: 'Arial',
+                        hide_labels: 'no',
+                        hide_eastern_labels: 'no',
+                       
+                        //Zoom settings
+                        zoom: 'yes',
+                        manual_zoom: 'no',
+                        back_image: 'no',
+                        initial_back: 'no',
+                        initial_zoom: '-1',
+                        initial_zoom_solo: 'no',
+                        region_opacity: 1,
+                        region_hover_opacity: 0.6,
+                        zoom_out_incrementally: 'yes',
+                        zoom_percentage: 0.99,
+                        zoom_time: 0.5,
+                        
+                        //Popup settings
+                        popup_color: 'white',
+                        popup_opacity: 0.9,
+                        popup_shadow: 1,
+                        popup_corners: 5,
+                        popup_font: '12px/1.5 Verdana, Arial, Helvetica, sans-serif',
+                        popup_nocss: 'no',
+                        
+                        //Advanced settings
+                        div: 'map',
+                        auto_load: 'yes',
+                        url_new_tab: 'no',
+                        images_directory: 'default',
+                        fade_time: 0.1,
+                        link_text: 'View Website',
+                        popups: 'detect',
+                        state_image_url: '',
+                        state_image_position: '',
+                        location_image_url: ''
+                      },
+                      state_specific: {
+                      ${$legendas}
+                      },
+                      locations: {
+                        '0': {
+                          lat: '-8.836804',
+                          lng: '13.233174',
+                          name: 'Luanda'
+                        }
+                      },
+                      labels: {},
+                      legend: {
+                        entries: []
+                      },
+                      regions: {}
+                    };
+        ";
+
+        $f = fopen('cofigMap.js', 'w');
+        fwrite($f, $config);
+        fclose($f);
+
     }
 }
 

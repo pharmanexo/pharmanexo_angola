@@ -12,7 +12,9 @@ class Home extends CI_Controller
     public function index()
     {
 
-        $data['header'] = $this->template->homeheader([]);
+        $data['header'] = $this->template->homeheader([
+            'page_title' => 'Pharmanexo Angola :: Home'
+        ]);
         $data['navbar'] = $this->template->homenavbar([]);
         $data['banner'] = $this->template->homebanner([]);
         $data['scripts'] = $this->template->homescripts([]);
@@ -23,21 +25,8 @@ class Home extends CI_Controller
         unset($files[0], $files[1]);
 
         $data['marcas'] = $files;
-        $data['faq'] = $this->db->get('faq_questions')->result_array();
-
-       /* $mes = date('Y-m', time());
-        $data['totalCotacoesMes'] = $this->db
-            ->select('count(distinct cot.cd_cotacao) as total')
-            ->where("date_format(cot.data_cotacao, '%Y-%m') = '$mes'")
-            ->get('cotacoes_produtos cot')
-            ->row_array();
-        $data['totalItensMes'] = $this->db
-            ->select('count(cot.cd_cotacao) as total')
-            ->where("date_format(cot.data_cotacao, '%Y-%m') = '{$mes}'")
-            ->get('cotacoes_produtos cot')
-            ->row_array();
-
-        $data['totalEstoque'] = $this->views($this->getTotal()['total']);*/
+       // $data['faq'] = $this->db->get('faq_questions')->result_array();
+        $data['page_title'] = "Pharmanexo Angola";
 
         $this->load->view('home2', $data, FALSE);
 

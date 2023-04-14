@@ -14,7 +14,6 @@ class Template
 
         $default = [];
 
-
         return $this->CI->load->view('templates/header', array_merge($default, $data), TRUE);
     }
 

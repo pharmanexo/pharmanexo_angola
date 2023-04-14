@@ -80,23 +80,16 @@ class Resgatadas extends MY_Controller
         $data['oc']['cancelada'] = false;
         $status = $this->db->where('cancel', '1')->where('codigo', $data['oc']['Status_OrdemCompra'])->get('ocs_sintese_status')->result_array();
 
+
         if (!empty($status)) $data['oc']['cancelada'] = true;
 
 
-        if (isset($data['oc']['Cd_Condicao_Pagamento']) && !empty($data['oc']['Cd_Condicao_Pagamento'])) {
+        $fp = $this->oc->getCotFormaPagamento($data['oc']['id_fornecedor'], $data['oc']['Cd_Cotacao'], $data['oc']['integrador']);
 
-            $id = $data['oc']['Cd_Condicao_Pagamento'];
-            if (is_numeric($id)) {
-                $select = $this->db->where('id', $id)->get('formas_pagamento')->row_array();
-
-                if (!empty($select)) {
-                    $data['oc']['fp'] = $select['descricao'];
-                } else {
-                    $data['oc']['fp'] = $id;
-                }
-
-            }
-
+        if ($fp !== false) {
+            $data['oc']['fp'] = $fp;
+        } else {
+            $data['oc']['fp'] = 'Não informado';
         }
 
         $data['usuario_resgate'] = $this->db->select('id, nome')->where('id', $data['oc']['id_usuario_resgate'])->get('usuarios')->row_array();
@@ -156,6 +149,28 @@ class Resgatadas extends MY_Controller
 
     public function to_datatable()
     {
+
+        $id_fornecedor = [$this->session->id_fornecedor];
+
+        if (isset($_SESSION['id_matriz'])) {
+            $fornecedores = $this->db
+                ->select('id')
+                ->where('id_matriz', $_SESSION['id_matriz'])
+                ->get('fornecedores')->result_array();
+            if (!empty($fornecedores)) {
+
+                $id_fornecedor = [];
+
+                foreach ($fornecedores as $fornecedor) {
+                    $id_fornecedor[] = $fornecedor['id'];
+                }
+            }
+        }
+
+        if (!empty($id_fornecedor)){
+            $id_fornecedor = implode(",", $id_fornecedor);
+        }
+
         $r = $this->datatable->exec(
             $this->input->post(),
             'ocs_sintese',
@@ -178,11 +193,13 @@ class Resgatadas extends MY_Controller
                 }],
                 ['db' => 'compradores.id', 'dt' => 'id_cliente'],
                 ['db' => 'ocs_sintese.integrador', 'dt' => 'id_integrador'],
+                ['db' => 'f.nome_fantasia', 'dt' => 'loja'],
             ],
             [
                 ['compradores', 'compradores.id = ocs_sintese.id_comprador'],
+                ['fornecedores f', 'f.id = ocs_sintese.id_fornecedor'],
             ],
-            'ocs_sintese.pendente = 0 and ocs_sintese.id_fornecedor = ' . $this->session->id_fornecedor
+            "ocs_sintese.pendente = 0 and id_fornecedor in ({$id_fornecedor})"
         );
 
         $this->output->set_content_type('application/json')->set_output(json_encode($r));
@@ -292,12 +309,13 @@ class Resgatadas extends MY_Controller
 
 
             if (!empty($codigo)) {
-                $prod = $this->db->select('nome_comercial, apresentacao')
+                $prod = $this->db->select('nome_comercial, apresentacao, marca')
                     ->where('id_fornecedor', $oc['id_fornecedor'])
                     ->where('codigo', $codigo)
                     ->get('produtos_catalogo')
                     ->row_array();
-                $oc['produtos'][$kk]['produto_catalogo'] = "{$prod['nome_comercial']}";
+                $oc['produtos'][$kk]['produto_catalogo'] = "{$prod['nome_comercial']} {$prod['apresentacao']}";
+                $oc['produtos'][$kk]['Ds_Marca'] = "{$prod['marca']}";
             }
 
 

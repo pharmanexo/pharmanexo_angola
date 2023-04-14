@@ -34,6 +34,19 @@ class M_grupo_usuario_rota extends MY_Model
         return $this->db->get($this->table)->result_array();
     }
 
+    public function get_routes_grupo($grupo)
+    {
+        if (!isset($grupo)) return false;
+
+        $this->db->select("r.*");
+        $this->db->from("grupos_usuarios_rotas gr");
+        $this->db->join("rotas r", "gr.id_rota = r.id");
+        $this->db->where("gr.id_grupo = {$grupo} and r.situacao = 1");
+        $this->db->order_by('r.posicao', 'ASC');
+
+        return $this->db->get()->result_array();
+    }
+
     /**
      * obtem as rotas por fornecedor
      *

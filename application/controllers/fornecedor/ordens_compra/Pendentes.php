@@ -68,7 +68,7 @@ class Pendentes extends MY_Controller
                 [
                     'type' => 'a',
                     'id' => 'btnVoltar',
-                   'url' => "javascript:history.back(1)",
+                    'url' => "javascript:history.back(1)",
                     'class' => 'btn-secondary',
                     'icone' => 'fa-arrow-left',
                     'label' => 'Retornar'
@@ -144,6 +144,7 @@ class Pendentes extends MY_Controller
         $page_title = "Ordem de Compra";
 
         $data['oc'] = $this->getOC($idOC);
+
         if (!empty($data['oc']['id_usuario_cancelamento'])) {
             $data['oc']['usuario_cancelamento'] = $this->db
                 ->select('id, nickname, email')
@@ -153,12 +154,7 @@ class Pendentes extends MY_Controller
         }
 
 
-        /*  $status = $this->oc->get_status($data['oc']['Status_OrdemCompra']);
-
-          $data['oc']['situacao'] = (!empty($status) && !empty($status['descricao'])) ? $status['descricao'] : '';*/
-
-
-        $fp = $this->oc->getCotFormaPagamento($data['oc']['id_fornecedor'], $data['oc']['Cd_Cotacao']);
+        $fp = $this->oc->getCotFormaPagamento($data['oc']['id_fornecedor'], $data['oc']['Cd_Cotacao'], $data['oc']['integrador']);
 
         if ($fp !== false) {
             $data['oc']['fp'] = $fp;
@@ -418,7 +414,7 @@ class Pendentes extends MY_Controller
 
             $post = $this->input->post();
 
-            $idForn = $this->session->id_fornecedor;
+            $idForn = $post['id_fornecedor'];
             $oc = $this->oc->find('*', "id = '{$oc}' and id_fornecedor = {$idForn}", true);
 
             $ocProds = $this->db->select("*")
@@ -600,7 +596,7 @@ class Pendentes extends MY_Controller
 
             if (isset($data['ordem_compra']['integrador'])) {
                 $integrador = $this->db->where('id', $data['ordem_compra']['integrador'])->get('integradores')->row_array();
-                if (!empty($integrador)){
+                if (!empty($integrador)) {
                     $assunto = "PEDIDO {$integrador['desc']} {$data['ordem_compra']['Cd_Ordem_Compra']} - {$nome_hospital}";
                 }
             }
@@ -629,6 +625,28 @@ class Pendentes extends MY_Controller
      */
     public function to_datatable()
     {
+        $id_fornecedor = [$this->session->id_fornecedor];
+
+        if (isset($_SESSION['id_matriz'])) {
+            $fornecedores = $this->db
+                ->select('id')
+                ->where('id_matriz', $_SESSION['id_matriz'])
+                ->get('fornecedores')->result_array();
+            if (!empty($fornecedores)) {
+
+                $id_fornecedor = [];
+
+                foreach ($fornecedores as $fornecedor) {
+                    $id_fornecedor[] = $fornecedor['id'];
+                }
+            }
+        }
+
+        if (!empty($id_fornecedor)) {
+            $id_fornecedor = implode(",", $id_fornecedor);
+        }
+
+
         $r = $this->datatable->exec(
             $this->input->post(),
             'ocs_sintese',
@@ -646,18 +664,20 @@ class Pendentes extends MY_Controller
                 ['db' => 'ocs_sintese.Dt_Previsao_Entrega', 'dt' => 'Dt_Previsao_Entrega', 'formatter' => function ($d) {
                     return date("d/m/Y", strtotime($d));
                 }],
-                ['db' => 'compradores.razao_social', 'dt' => 'razao_social'],
+                ['db' => 'c.razao_social', 'dt' => 'razao_social'],
                 ['db' => '(select sum(Qt_Produto * Vl_Preco_Produto) from ocs_sintese_produtos where id_ordem_compra = ocs_sintese.id and resgatado = 0)', 'dt' => 'valor', 'formatter' => function ($d) {
                     return number_format($d, 4, ',', '.');
                 }],
-                ['db' => 'compradores.id', 'dt' => 'id_cliente'],
-                ['db' => 'compradores.estado', 'dt' => 'estado'],
+                ['db' => 'c.id', 'dt' => 'id_cliente'],
+                ['db' => 'c.estado', 'dt' => 'estado'],
                 ['db' => 'ocs_sintese.integrador', 'dt' => 'id_integrador'],
+                ['db' => 'f.nome_fantasia', 'dt' => 'loja'],
             ],
             [
-                ['compradores', 'compradores.id = ocs_sintese.id_comprador'],
+                ['compradores c', 'c.id = ocs_sintese.id_comprador'],
+                ['fornecedores f', 'f.id = ocs_sintese.id_fornecedor'],
             ],
-            'ocs_sintese.pendente = 1 and id_fornecedor = ' . $this->session->id_fornecedor
+            "ocs_sintese.pendente = 1 and id_fornecedor in ({$id_fornecedor})"
         );
 
         $this->output->set_content_type('application/json')->set_output(json_encode($r));
@@ -673,7 +693,7 @@ class Pendentes extends MY_Controller
     {
         $oc = $this->oc->findById($idOC);
 
-        $oferta = $this->db->select("prazo_entrega, id_forma_pagamento, valor_minimo, id_usuario")
+        $oferta = $this->db->select("prazo_entrega, id_forma_pagamento, valor_minimo, id_usuario, obs_produto")
             ->where('id_fornecedor', $oc['id_fornecedor'])
             ->where('Cd_Cotacao', $oc['Cd_Cotacao'])
             ->get('cotacoes_produtos')
@@ -735,7 +755,6 @@ class Pendentes extends MY_Controller
             $total = $total + (intval($row['Qt_Produto']) * $row['Vl_Preco_Produto']);
 
             if (empty($row['codigo'])) {
-
                 $this->db->select("id_pfv AS codigo, obs_produto");
                 $this->db->where('cd_cotacao', $oc['Cd_Cotacao']);
                 $this->db->where('id_fornecedor', $oc['id_fornecedor']);
@@ -751,7 +770,6 @@ class Pendentes extends MY_Controller
                 $item = $this->db->get('cotacoes_produtos')->row_array();
 
                 if (isset($item) && !empty($item)) {
-
                     # Atualiza o codigo do produto
                     $this->db->where('id_ordem_compra', $row['id_ordem_compra']);
                     $this->db->where("cd_produto_comprador = '{$row['Cd_Produto_Comprador']}' ");
@@ -759,14 +777,25 @@ class Pendentes extends MY_Controller
                     $this->db->where('Id_Sintese', $row['Id_Sintese']);
                     $this->db->where("codigo is null");
                     $this->db->update('ocs_sintese_produtos', ['codigo' => $item['codigo']]);
-
                     $oc['produtos'][$kk]['codigo'] = $item['codigo'];
                     $oc['produtos'][$kk]['obs_cot_produto'] = $item['obs_produto'];
-                } else {
-
+                }else{
                     $hasNoCode = 1;
                 }
+
+
+            } else {
+                $this->db->select("obs_produto");
+                $this->db->where('cd_cotacao', $oc['Cd_Cotacao']);
+                $this->db->where('id_fornecedor', $oc['id_fornecedor']);
+                $this->db->where('id_pfv', $row['codigo']);
+
+                $item = $this->db->get('cotacoes_produtos')->row_array();
+
+                $oc['produtos'][$kk]['obs_cot_produto'] = $item['obs_produto'];
+
             }
+
 
             if (!empty($oc['produtos'][$kk]['codigo'])) {
 
@@ -778,13 +807,15 @@ class Pendentes extends MY_Controller
 
 
             if (!empty($codigo)) {
-                $prod = $this->db->select('nome_comercial, apresentacao')
+                $prod = $this->db->select('nome_comercial, apresentacao, marca')
                     ->where('id_fornecedor', $oc['id_fornecedor'])
                     ->where('codigo', $codigo)
                     ->get('produtos_catalogo')
                     ->row_array();
-                $oc['produtos'][$kk]['produto_catalogo'] = "{$prod['nome_comercial']}";
+                $oc['produtos'][$kk]['produto_catalogo'] = "{$prod['nome_comercial']} {$prod['apresentacao']}";
+                $oc['produtos'][$kk]['Ds_Marca'] = "{$prod['marca']}";
             }
+
         }
 
 
@@ -1174,4 +1205,8 @@ class Pendentes extends MY_Controller
 
     }
 
+    private function resgateHuma()
+    {
+
+    }
 }

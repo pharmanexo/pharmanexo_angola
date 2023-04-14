@@ -6,14 +6,15 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
 
-        $this->load->model('Grupo_usuario_rota', 'gur');
+      /*  $this->load->model('Grupo_usuario_rota', 'gur');
 
         date_default_timezone_set('America/Sao_Paulo');
         $this->form_validation->set_error_delimiters('<span>', '</span>');
 
-       // $this->defineMatriz();
+        // $this->defineMatriz();
 
         $logado = $this->session->userdata("logado");
+
         if ($logado != 1) {
             $this->session->sess_destroy();
             redirect(base_url('login'));
@@ -26,18 +27,16 @@ class MY_Controller extends CI_Controller
 
         foreach ($routes as $route) {
 
-            if (strpos($url, $route['url']) > 0) {
-                $check = true;
-                break;
-            }
-
             //exceções
-            if ($url == '/fornecedor/usuarios/perfil'){
+            if (strpos($url, '/fornecedor/usuarios/perfil')) {
                 $check = true;
                 break;
+            } else {
+                if (strpos($url, $route['url']) > 0) {
+                    $check = true;
+                    break;
+                }
             }
-
-
 
         }
 
@@ -50,7 +49,7 @@ class MY_Controller extends CI_Controller
             $this->session->set_userdata('warning', $array);
 
             redirect(base_url('dashboard'));
-        }
+        }*/
 
     }
 
@@ -66,7 +65,7 @@ class Adesao extends CI_Controller
     {
         parent::__construct();
 
-        if (!isset($_SESSION['dados']) || $_SESSION['validLogin'] == false ){
+        if (!isset($_SESSION['dados']) || $_SESSION['validLogin'] == false) {
             redirect(base_url());
         }
 

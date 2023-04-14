@@ -35,7 +35,8 @@
                             <div class="form-group text-center">
                                 <label for=""></label><br>
                                 <button type="submit" form="filters" id="btnBuscar"
-                                        class="btn pull-right mt-2 btn-primary">Solicitar</button>
+                                        class="btn pull-right mt-2 btn-primary">Solicitar
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -45,6 +46,47 @@
 
         </form>
 
+        <div class="card">
+            <div class="card-header">
+                <p class="card-title">Ultimos relatórios emitidos</p>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($reportsHistory)) { ?>
+                    <table class="table">
+                        <tr>
+                            <th>Emitido em</th>
+                            <th>Emitido para</th>
+                            <th>Data Inicial / Data Final</th>
+                            <th>Arquivo</th>
+                        </tr>
+                        <?php foreach ($reportsHistory as $report) { ?>
+                            <?php if ($report['extra']['report-name'] == 'cbf') { ?>
+                                <tr>
+                                    <td><?php echo $report['data']; ?></td>
+                                    <td><?php echo implode(',', $report['extra']['sent_to']); ?></td>
+                                    <td><?php echo date('d/m/Y', strtotime($report['extra']['data-inicial'])); ?> /
+                                        <?php echo date('d/m/Y', strtotime($report['extra']['data-final'])); ?></td>
+                                    <td>
+                                        <?php $i = 1;
+                                        foreach ($report['arquivos'] as $k => $file) { ?>
+                                            <a target="_blank" href="<?php echo "http://reports2.pharmanexo.com.br/reports/" . $file; ?>"
+                                               data-href=""
+                                               class="btnDownload"><?php echo "Arquivo {$i}" ?></a>
+                                            <?php $i++;
+                                        } ?>
+
+
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        <?php } ?>
+                    </table>
+
+                <?php } else { ?>
+                    <p>Não encontramos relatórios solicitados</p>
+                <?php } ?>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -59,6 +101,11 @@
         $('#uf').selectpicker();
         $('#clientes').selectpicker();
 
+       /* $('.btnDownload').click(function (e) {
+            e.preventDefault();
+
+            downloadFile($(this).data('href'));
+        });*/
 
         $('#data_fim, #loja').change(function (e) {
 
@@ -85,8 +132,8 @@
             var action = '<?php if (isset($dataTable)) echo $dataTable?>';
             $('#msg').html("<i class='fa fa-spin fa-spinner'></i> Enviando solicitação... ")
 
-            $.post(action, $('#filters').serialize(), function (xhr){
-                if (xhr.type == 'success'){
+            $.post(action, $('#filters').serialize(), function (xhr) {
+                if (xhr.type == 'success') {
                     $('#msg').html("<strong>Relatório solicitado com sucesso!</strong> <br> Esse relatório processa inúmeras informações em nossa base de dados envolvendo todos portais integrados, para não prejudicar a capacidade de processamento de nossa aplicação e gerar lentidão em seu usuário, estamos enviando por email o relatório solicitado. Obrigado.")
                 }
             }, 'JSON');
@@ -101,6 +148,21 @@
         })
 
     })
-    ;
+
+    function downloadFile(urlToSend) {
+        var req = new XMLHttpRequest();
+        req.open("GET", urlToSend, true);
+        req.responseType = "blob";
+        req.onload = function (event) {
+            var blob = req.response;
+            var fileName = req.getResponseHeader("fileName") //if you have the fileName header available
+            var link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+            link.click();
+        };
+
+        req.send();
+    }
 </script>
 </body>

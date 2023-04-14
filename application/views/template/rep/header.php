@@ -26,6 +26,7 @@
 
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style type="text/css">
         .nencontrado { background-color: #ffaeae !important; }
@@ -43,11 +44,15 @@
     </style>
 
 
-<?php if (isset($warning)) { ?>
-    <script>
-        formWarning(JSON.parse('<?php echo $warning;?>'));
-    </script>
-<?php } ?>
+    <?php if (isset($warning)) { ?>
+        <script>
+            var warn = JSON.parse('<?php echo $warning; ?>');
+            Swal.fire({
+                icon: warn.type,
+                text: warn.message,
+            });
+        </script>
+    <?php } ?>
 
     <link rel="stylesheet" href="<?php echo THIRD_PARTY . 'theme/plugins/pace-1.0.2/themes/blue/pace-theme-corner-indicator.css' ?>">
 </head>

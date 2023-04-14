@@ -26,47 +26,6 @@ class Produtos extends MY_Controller
         $this->oncoprod = explode(',', ONCOPROD);
     }
 
-    public function import()
-    {
-        $dados = [];
-
-        $file = fopen('planilha_dados.csv', 'r');
-
-        while (($line = fgetcsv($file, 30000, ',')) !== false) {
-            $dados[] = [
-                "substancia" => $line[0],
-                "laboratorio" => $line[1],
-                "codigo_ggrem" => $line[2],
-                "registro" => $line[3],
-                "ean1" => $line[4],
-                "ean2" => $line[5],
-                "produto" => $line[6],
-                "apresentacao" => $line[7],
-                "pf_sem_impostos" => !empty($line[8]) ? number_format(floatval($line[8]), 2, ",", ".") : 0.00,
-                "pf0" => !empty($line[9]) ? number_format(floatval($line[9]), 2, ",", ".") : 0.00,
-                "pf12" => !empty($line[10]) ? number_format(floatval($line[10]), 2, ",", ".") : 0.00,
-                "pf17" => !empty($line[11]) ? number_format(floatval($line[11]), 2, ",", ".") : 0.00,
-                "pf17alc" => !empty($line[12]) ? number_format(floatval($line[12]), 2, ",", ".") : 0.00,
-                "pf175" => !empty($line[13]) ? number_format(floatval($line[13]), 2, ",", ".") : 0.00,
-                "pf175alc" => !empty($line[14]) ? number_format(floatval($line[14]), 2, ",", ".") : 0.00,
-                "pf18" => !empty($line[15]) ? number_format(floatval($line[15]), 2, ",", ".") : 0.00,
-                "pf18alc" => !empty($line[16]) ? number_format(floatval($line[16]), 2, ",", ".") : 0.00,
-                "pf20" => !empty($line[17]) ? number_format(floatval($line[17]), 2, ",", ".") : 0.00,
-                "pmc0" => !empty($line[18]) ? number_format(floatval($line[18]), 2, ",", ".") : 0.00,
-                "pmc12" => !empty($line[19]) ? number_format(floatval($line[19]), 2, ",", ".") : 0.00,
-                "pmc17" => !empty($line[20]) ? number_format(floatval($line[20]), 2, ",", ".") : 0.00,
-                "pmc17alc" => !empty($line[21]) ? number_format(floatval($line[21]), 2, ",", ".") : 0.00,
-                "pmc175" => !empty($line[22]) ? number_format(floatval($line[22]), 2, ",", ".") : 0.00,
-                "pmc175alc" => !empty($line[23]) ? number_format(floatval($line[23]), 2, ",", ".") : 0.00,
-                "pmc18" => !empty($line[24]) ? number_format(floatval($line[24]), 2, ",", ".") : 0.00,
-                "pmc18alc" => !empty($line[25]) ? number_format(floatval($line[25]), 2, ",", ".") : 0.00,
-                "pmc20" => !empty($line[26]) ? number_format(floatval($line[26]), 2, ",", ".") : 0.00,
-            ];
-        }
-        fclose($file);
-
-        $this->db->insert_batch('produtos_anvisa', $dados);
-    }
 
     public function index()
     {
@@ -92,8 +51,23 @@ class Produtos extends MY_Controller
                 'quantidade_unidade' => $post['qtd_unidade']
             ];
 
+            if (isset($_SESSION['id_matriz'])) {
+                $forns = $this->db
+                    ->where('id_matriz', $_SESSION['id_matriz'])
+                    ->get('fornecedores')
+                    ->result_array();
+                $id_fornecedor = [];
+
+                foreach ($forns as $f) {
+                    $id_fornecedor[] = $f['id'];
+                }
+            }else{
+                $id_fornecedor = [$this->session->id_fornecedor];
+            }
+
+
             $this->db->where('codigo', $codigo);
-            $this->db->where('id_fornecedor', $this->session->id_fornecedor);
+            $this->db->where_in('id_fornecedor', $id_fornecedor);
 
             if ($this->db->update('produtos_catalogo', $update)) {
 
@@ -109,9 +83,6 @@ class Produtos extends MY_Controller
         }
     }
 
-    public function delete()
-    {
-    }
 
     public function block_product($codigo = null, $ativar = 0)
     {
@@ -196,7 +167,7 @@ class Produtos extends MY_Controller
                 [
                     'type' => 'a',
                     'id' => 'btnVoltar',
-                   'url' => "javascript:history.back(1)",
+                    'url' => "javascript:history.back(1)",
                     'class' => 'btn-secondary',
                     'icone' => 'fa-arrow-left',
                     'label' => 'Retornar'
@@ -211,9 +182,9 @@ class Produtos extends MY_Controller
                 ],
                 [
 
-                    'type'  => 'a',
-                    'id'    => 'btnInsert',
-                    'url'   => "{$this->route}insert",
+                    'type' => 'a',
+                    'id' => 'btnInsert',
+                    'url' => "{$this->route}insert",
                     'class' => 'btn-primary',
                     'icone' => 'fa-plus',
                     'label' => 'Novo Registro'
@@ -225,7 +196,7 @@ class Produtos extends MY_Controller
                 [
                     'type' => 'a',
                     'id' => 'btnVoltar',
-                   'url' => "javascript:history.back(1)",
+                    'url' => "javascript:history.back(1)",
                     'class' => 'btn-secondary',
                     'icone' => 'fa-arrow-left',
                     'label' => 'Retornar'
@@ -260,7 +231,6 @@ class Produtos extends MY_Controller
 
     private function form($codigo = null)
     {
-
         $page_title = "Cadastro de Produtos";
 
         $data['slct_marcas'] = "{$this->route}to_select2_marcas";
@@ -268,12 +238,6 @@ class Produtos extends MY_Controller
         $data['form_action_produto'] = "{$this->route}saveProduct";
         $data['form_action_precosLotes'] = "{$this->route}savePriceLot";
         $view = "create";
-
-        if (isset($this->session->id_fornecedor) && $this->session->id_fornecedor == '5007' && isset($this->session->grupo) && $this->session->grupo == '2') {
-            $data['qtd_disabled'] = true;
-        } else {
-            $data['qtd_disabled'] = false;
-        }
 
         if (isset($codigo) && !empty($codigo)) {
             $page_title = "Edição de Produtos";
@@ -287,7 +251,8 @@ class Produtos extends MY_Controller
             $data['url_delete'] = "{$this->route}deleteLote/{$codigo}";
             $data['dtbl_lotes'] = "{$this->route}to_datatables_lotes/{$codigo}";
             $data['dtbl_precos'] = "{$this->route}to_datatables_precos/{$codigo}";
-            $data['produto'] = $this->catalogo->find("*", "codigo = {$codigo} and id_fornecedor = {$this->session->id_fornecedor}", true);
+            $data['produto'] = $this->catalogo->catalogo_distribuidor("c.codprod = {$codigo} and cd.id_distribuidor = {$this->session->id_empresa}", true);
+
         }
 
 
@@ -307,9 +272,9 @@ class Produtos extends MY_Controller
                 ],
                 [
 
-                    'type'  => 'submit',
-                    'id'    => 'btnSave',
-                    'form'  => 'formPrecosLotes',
+                    'type' => 'submit',
+                    'id' => 'btnSave',
+                    'form' => 'formPrecosLotes',
                     'class' => 'btn-primary',
                     'icone' => 'fa-save',
                     'label' => 'Salvar Alterações'
@@ -330,28 +295,18 @@ class Produtos extends MY_Controller
     {
         $r = $this->datatable->exec(
             $this->input->get(),
-            'produtos_catalogo',
+            'catalogo_distribuidor cd',
             [
-                ['db' => 'codigo', 'dt' => 'codigo'],
-                ['db' => 'nome_comercial', 'dt' => 'nome_comercial'],
-                ['db' => 'marca', 'dt' => 'marca'],
-                ['db' => 'bloqueado', 'dt' => 'bloqueado'],
-                ['db' => 'descricao', 'dt' => 'descricao'],
-                ['db' => 'ativo', 'dt' => 'ativo'],
-                [
-                    'db' => 'apresentacao',
-                    'dt' => 'produto_descricao', "formatter" => function ($d, $r) {
-                        if (empty($r['descricao'])) {
-                            return $r['nome_comercial'] . " - " . $d;
-                        } else {
-                            return $r['nome_comercial'] . " - " . $r['descricao'];
-                        }
-                    }
-                ],
+                ['db' => 'c.codprod', 'dt' => 'codigo'],
+                ['db' => 'c.nome', 'dt' => 'nome'],
+                ['db' => 'c.substancia', 'dt' => 'descricao'],
+                ['db' => 'cd.situacao', 'dt' => 'ativo'],
             ],
-            null,
-            "id_fornecedor = {$this->session->userdata('id_fornecedor')}",
-            "codigo"
+            [
+                ['catalogo c', 'c.codprod = cd.codprod']
+            ],
+            "cd.id_distribuidor = {$this->session->userdata('id_empresa')}",
+            "cd.codprod"
         );
 
 
@@ -362,18 +317,17 @@ class Produtos extends MY_Controller
     {
         $r = $this->datatable->exec(
             $this->input->get(),
-            'produtos_lote',
+            'estoque',
             [
-                ['db' => 'codigo', 'dt' => 'codigo'],
+                ['db' => 'codprod', 'dt' => 'codprod'],
                 ['db' => 'lote', 'dt' => 'lote'],
-                ['db' => 'local', 'dt' => 'local'],
                 ['db' => 'estoque', 'dt' => 'estoque'],
                 ['db' => 'validade', 'dt' => 'validade', 'formatter' => function ($d) {
                     return date("d/m/Y", strtotime($d));
                 }],
             ],
             null,
-            "codigo = {$codigo} AND id_fornecedor = {$this->session->userdata('id_fornecedor')}"
+            "codprod = {$codigo} AND id_fornecedor = {$this->session->userdata('id_empresa')}"
         );
 
 
@@ -384,24 +338,14 @@ class Produtos extends MY_Controller
     {
         $r = $this->datatable->exec(
             $this->input->get(),
-            'produtos_preco_max p',
+            'tabela_precos p',
             [
                 ['db' => 'estados.uf', 'dt' => 'estado'],
-                ['db' => 'p.id_estado', 'dt' => 'id_estado'],
+                ['db' => 'p.id_regiao', 'dt' => 'id_estado'],
                 ['db' => 'p.id_fornecedor', 'dt' => 'id_fornecedor'],
-                ['db' => 'pc.quantidade_unidade', 'dt' => 'quantidade_unidade'],
                 ['db' => 'p.preco_unitario', 'dt' => 'preco_unitario', 'formatter' => function ($value, $row) {
 
-                    if (in_array($row['id_fornecedor'], $this->oncoprod)) {
-
-                        $preco = ($value / $row['quantidade_unidade']);
-                    } else if (($row['id_fornecedor'] == 20) || ($row['id_fornecedor'] == 104)) {
-
-                        $preco = ($value / $row['quantidade_unidade']);
-                    } else {
-
-                        $preco = $value;
-                    }
+                    $preco = $value;
 
                     return number_format($preco, 4, ',', '.');
                 }],
@@ -411,10 +355,10 @@ class Produtos extends MY_Controller
                 }],
             ],
             [
-                ['estados', 'estados.id = p.id_estado', 'LEFT'],
-                ['produtos_catalogo pc', 'pc.codigo = p.codigo AND pc.id_fornecedor = p.id_fornecedor'],
+                ['estados', 'estados.id = p.id_regiao', 'LEFT'],
+                ['catalogo pc', 'pc.codprod = p.codprod'],
             ],
-            "p.codigo = {$codigo} AND p.id_fornecedor = {$this->session->userdata('id_fornecedor')}"
+            "p.codprod = {$codigo} AND p.id_fornecedor = {$this->session->userdata('id_fornecedor')}"
         );
 
 
@@ -481,7 +425,7 @@ class Produtos extends MY_Controller
             $data['ativo'] = 1;
             $data['aprovado'] = 1;
             $data['bloqueado'] = 0;
-            $data['marca'] =  $post['marca'];
+            $data['marca'] = $post['marca'];
             $data['id_marca'] = $post['id_marca'];
             $data['ean'] = $post['ean'];
             $data['rms'] = $post['rms'];
@@ -718,8 +662,8 @@ class Produtos extends MY_Controller
     /**
      * Abre modal de preço ou lote
      *
-     * @param   int codigo
-     * @param   int tipoCadastro do form (cadastro ou update)
+     * @param int codigo
+     * @param int tipoCadastro do form (cadastro ou update)
      * @return  json
      */
     public function open_modal($codigo, $tipoCadastro = null)

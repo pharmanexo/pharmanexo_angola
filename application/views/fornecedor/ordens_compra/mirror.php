@@ -207,7 +207,7 @@
                                     <td><?php echo number_format($oc['Vl_Preco_Produto'] * $oc['Qt_Produto'], 4, ',', '.'); ?></td>
                                     <td><?php if (isset($oc['programacao']['Data'])) echo $oc['programacao']['Data']; ?>
                                         <?php if (isset($oc['programacao']['Quantidade'])) echo 'Qtd.: ' . intval($oc['programacao']['Quantidade']) ?></td>
-                                    <td><?php echo ($oc['situacao'] == 9 ) ? 'Rejeitado' : 'Aprovado' ?></td>
+                                        <td><?php echo ($oc['situacao'] == 9 ) ? 'Rejeitado' : 'Aprovado' ?></td>
                                 </tr>
                                 <?php if (isset($oc['obs_cot_produto'])) { ?>
                                     <tr>

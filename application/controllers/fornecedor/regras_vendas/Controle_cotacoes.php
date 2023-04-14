@@ -24,7 +24,7 @@ class Controle_cotacoes extends MY_Controller
      */
     public function index()
     {
-        $page_title = "Controle de Cotações";
+        $page_title = "Configuração de Regiões";
 
         $data['to_datatable_estado'] = "{$this->route}/to_datatable_estado";
         $data['to_datatable_cnpj'] = "{$this->route}/to_datatable_cnpj";
@@ -66,7 +66,7 @@ class Controle_cotacoes extends MY_Controller
                     'id' => 'btnExport',
                     'url' => "{$this->route}/exportar",
                     'class' => 'btn-primary',
-                    'icone' => 'fa-file-excel', 
+                    'icone' => 'fa-file-excel',
                     'label' => 'Exportar Excel'
                 ],
                 [
@@ -151,7 +151,7 @@ class Controle_cotacoes extends MY_Controller
             }
 
             $this->output->set_content_type('application/json')->set_output(json_encode($response));
-        } 
+        }
     }
 
     /**
@@ -223,7 +223,7 @@ class Controle_cotacoes extends MY_Controller
 
                 $output = ['type'    => 'warning', 'message' => notify_failed];
             } else {
-                
+
                 $this->db->trans_commit();
 
                 $output = ['type'    => 'success', 'message' => notify_delete];
@@ -249,14 +249,12 @@ class Controle_cotacoes extends MY_Controller
                     return ($value == '0' ? 'Manual' : ($value == '1' ? 'Automática' : 'Manual e Automática' ));
                 }],
                 ['db' => 'estados.uf', 'dt' => 'uf'],
-                ['db' => 'i.desc', 'dt' => 'integrador'],
                 ['db' => 'estados.descricao', 'dt' => 'descricao', 'formatter' => function ($value, $row) {
                     return "{$row['uf']} - {$value}";
                 }]
             ],
             [
-                ['estados', 'estados.id = controle_cotacoes.id_estado'],
-                ['integradores i', 'controle_cotacoes.integrador = i.id'],
+                ['estados', 'estados.id = controle_cotacoes.id_estado']
             ],
             'controle_cotacoes.id_fornecedor = ' . $this->session->userdata('id_fornecedor')
         );
@@ -327,7 +325,7 @@ class Controle_cotacoes extends MY_Controller
 
         $query_estados = $this->db->get()->result_array();
 
-       
+
         $this->db->select(" 
             CONCAT(c.cnpj, ' - ', c.razao_social) AS cnpj,
             (CASE 

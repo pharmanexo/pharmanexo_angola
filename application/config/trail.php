@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Set [TRUE/FALSE] to use of audit trail
 |
 */
-$config['audit_enable'] = true;
+$config['audit_enable'] = false;
 
 /*
 |--------------------------------------------------------------------------

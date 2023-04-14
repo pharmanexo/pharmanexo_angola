@@ -14,7 +14,12 @@ class ImportDeivis extends CI_Controller
 
     public function corrigirCatalogoOncoprod()
     {
-        $produtos = $this->db->where('id_fornecedor', 126)->get('produtos_catalogo')->result_array();
+        $produtos = $this->db
+            ->where('quantidade_unidade is not null')
+            ->where_in('id_fornecedor', [12, 112, 115, 123, 125, 126, 127])
+            ->group_by('codigo')
+            ->get('produtos_catalogo')
+            ->result_array();
 
         foreach ($produtos as $produto) {
 
@@ -24,7 +29,7 @@ class ImportDeivis extends CI_Controller
 
             $this->db
                 ->where('codigo', $produto['codigo'])
-                ->where('id_fornecedor', 125)
+                ->where_in('id_fornecedor', [12, 112, 115, 123, 125, 126, 127])
                 ->update('produtos_catalogo', $update);
 
         }
@@ -258,13 +263,12 @@ class ImportDeivis extends CI_Controller
 
             $i = $this->db->insert("temp_produtos_ofertas", $insert);
 
-            if (!$i){
+            if (!$i) {
                 var_dump($this->db->error());
                 exit();
             }
         }
         fclose($file);
-
 
 
     }
@@ -323,33 +327,110 @@ class ImportDeivis extends CI_Controller
 
     public function importCatalogo()
     {
-        $_SESSION['id_usuario'] = 15;
-
-        $file = fopen('produtos_gemmini.csv', 'r');
+        $file = fopen('material_angola.csv', 'r');
         $linhas = [];
 
-        while (($line = fgetcsv($file, null, ',')) !== false) {
+        while (($line = fgetcsv($file, null, ';')) !== false) {
+
+
+            if ($line[0] == "codprod") {
+                continue;
+            }
+
 
             $linhas[] = [
-                'codigo' => $line[0],
-                'codigo_externo' => $line[1],
-                'nome_comercial' => "{$line[2]} - {$line[1]}",
-                'marca' => $line[4],
-                'rms' => $line[6],
-                'ean' => $line[7],
-                'unidade' => $line['8'],
-                'quantidade_unidade' => 1,
-                'ativo' => 1,
-                'id_fornecedor' => 5054
+                'codprod' => $line[0],
+                //'substancia' => $line[1],
+                'nome' => "$line[6]",
+                /* 'forma_farmaceutica' => $line[3],
+                 'dosagem' => $line[4],
+                 'embalagem' => $line[5],
+                 'cnpem' => $line[6],*/
+                'tipo' => $line[1],
+                'fabricante' => $line[2],
+                'referencia' => $line[3],
+                'modelo' => $line[4],
+                'marca' => $line[5],
+                'descricao' => $line[7],
+                'distribuidor' => $line[8]
             ];
 
         }
         fclose($file);
 
 
-        $this->db->insert_batch("produtos_catalogo", $linhas);
+        $this->db->insert_batch("catalogo", $linhas);
     }
 
+    public function relatorioGeral()
+    {
+        $cotacoesAbertas = $this->db->query("select c.estado, count(cot.cd_cotacao) as total
+                                                from cotacoes_sintese.cotacoes cot
+                                                         join pharmanexo.compradores c on c.id = cot.id_cliente
+                                                where cot.id_fornecedor = 5018
+                                                  and cot.dt_inicio_cotacao between '2023-03-01 00:00:00' and '2023-03-31 23:59:59'
+                                                group by c.estado
+                                                order by c.estado ASC;
+                                                ")->result_array();
+
+        $ufs = [];
+
+        foreach ($cotacoesAbertas as $k => $cotacoes) {
+            $ufs[$cotacoes['estado']]['cotacoesAbertas'] = $cotacoes['total'];
+        }
+
+        $cotacoesRespondidas = $this->db->query("select e.uf,
+                                                       count(distinct cd_cotacao)                as total,
+                                                       (sum(cp.preco_marca * cp.qtd_solicitada)) as total_cotacao,
+                                                       count(cp.id)                              as itens_cotados
+                                                from pharmanexo.cotacoes_produtos cp
+                                                         join pharmanexo.compradores c on c.id = cp.id_cliente
+                                                         right join estados e on e.uf = c.estado
+                                                where cp.id_fornecedor = 5018
+                                                  and cp.data_criacao between '2023-03-01 00:00:00' and '2023-03-31 23:59:59'
+                                                group by c.estado
+                                                order by c.estado ASC;")->result_array();
+
+
+        foreach ($cotacoesRespondidas as $cotR) {
+            $ufs[$cotR['uf']]['cotacoesRespondidas'] = $cotR['total'];
+            $ufs[$cotR['uf']]['cotacoesRespondidasTotal'] = $cotR['total_cotacao'];
+            $ufs[$cotR['uf']]['cotacoesRespondidasItens'] = $cotR['itens_cotados'];
+        }
+
+        $ocsEmitidas = $this->db->query("select c.estado, count(oc.Cd_Ordem_Compra) as total
+                                            from pharmanexo.ocs_sintese oc
+                                                     join pharmanexo.compradores c on c.id = oc.id_comprador
+                                            where oc.id_fornecedor = 5018
+                                              and oc.Dt_Gravacao between '2023-03-01 00:00:00' and '2023-03-31 23:59:59'
+                                            group by c.estado
+                                            order by c.estado ASC;")->result_array();
+
+        foreach ($ocsEmitidas as $oc) {
+            $ufs[$oc['estado']]['ocs'] = $oc['total'];
+        }
+
+
+        $ocsProdutos = $this->db->query("select c.estado, count(ocp.id) as total_itens, sum(ocp.Vl_Preco_Produto * ocp.Qt_Produto) as total
+                                            from pharmanexo.ocs_sintese oc
+                                                     join pharmanexo.ocs_sintese_produtos ocp on ocp.id_ordem_compra = oc.id
+                                                     join pharmanexo.compradores c on c.id = oc.id_comprador
+                                            where oc.id_fornecedor = 5018
+                                              and oc.Dt_Gravacao between '2023-03-01 00:00:00' and '2023-03-31 23:59:59'
+                                            group by c.estado
+                                            order by c.estado ASC;")->result_array();
+
+
+        foreach ($ocsProdutos as $ocp) {
+            $ufs[$ocp['estado']]['ocsItens'] = $ocp['total_itens'];
+            $ufs[$ocp['estado']]['ocsTotal'] = $ocp['total'];
+        }
+
+
+        var_dump($ufs);
+        exit();
+
+    }
 
     public function regra4bio()
     {

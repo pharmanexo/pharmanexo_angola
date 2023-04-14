@@ -29,8 +29,6 @@
                         <tr>
                             <th>Código</th>
                             <th>Descrição</th>
-                            <th>Marca</th>
-                            <th></th>
                             <th></th>
                         </tr>
                         </thead>
@@ -57,11 +55,10 @@
                 dataType: 'json'
             },
             columns: [
-                { name: 'codigo', data: 'codigo'},
-                { name: 'produto_descricao', data: 'produto_descricao' },
-                { name: 'marca', data: 'marca' },
+                { name: 'c.codprod', data: 'codigo'},
+                { name: 'c.nome', data: 'nome' },
                 { defaultContent: '', orderable: false, searchable: false },
-                { name: 'bloqueado', data: 'bloqueado', visible: false },
+                { name: 'cd.situacao', data: 'ativo', visible: false },
             ],
             order: [[ 1, 'asc' ]],
             rowCallback: function (row, data) {

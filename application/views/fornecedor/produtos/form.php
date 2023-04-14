@@ -19,13 +19,13 @@
                             <div id="novo-produto-row-0" class="row">
                                 <div class="col-12 col-lg-12 form-group ">
                                     <label>Produto</label>
-                                    <input type="text" id="nome_comercial" name="nome_comercial" value="<?php echo $produto['nome_comercial']; ?>" class="form-control" readonly>
+                                    <input type="text" id="nome_comercial" name="nome_comercial" value="<?php echo $produto['nome']; ?>" class="form-control" readonly>
                                     <!--                                    <select id="id_produto" name="id_produto" class="form-control" data-src="--><?php //if (isset($slct2_produtos)) echo $slct2_produtos; ?><!--" data-value="--><?php //if (isset($produto['id_produto'])) echo $produto['id_produto']; ?><!--" style="width: 100%"></select>-->
                                 </div>
 
                                 <div class="col-12 col-lg-6 form-group ">
-                                    <label>Apresentação </label>
-                                    <input type="text" id="apresentacao" class="form-control" value="<?php if (isset($produto['apresentacao'])) echo $produto['apresentacao'] ?>" placeholder="" maxlength="45" name="apresentacao" readonly>
+                                    <label>Substância </label>
+                                    <input type="text" id="apresentacao" class="form-control" value="<?php if (isset($produto['substancia'])) echo $produto['substancia'] ?> <?php if (isset($produto['dosagem'])) echo $produto['dosagem'] ?>" placeholder="" maxlength="45" name="apresentacao" readonly>
                                 </div>
 
                                 <div class="col-12 col-lg-6  form-group">
@@ -45,7 +45,7 @@
 
                                 <div class="col-12 col-lg-2 form-group">
                                     <label>Código Interno <span class="mr-0 text-right d-inline-block" data-toggle="tooltip" title="Código de identificação no fornecedor"><i class="fas fa-info-circle"></i></span></label>
-                                    <input type="text" id="codigo" class="form-control" value="<?php if (isset($produto['codigo'])) echo $produto['codigo'] ?>" placeholder="" maxlength="45" name="codigo" readonly>
+                                    <input type="text" id="codigo" class="form-control" value="<?php if (isset($produto['codprod'])) echo $produto['codprod'] ?>" placeholder="" maxlength="45" name="codigo" readonly>
                                 </div>
 
                                 <div class="col-12 col-md-6 col-lg-2 form-group ">
@@ -55,7 +55,7 @@
 
                                 <div class="col-12 col-md-6 col-lg-3 form-group">
                                     <label>Quantidade na embalagem</label>
-                                    <input type="number" id="qtd_unidade" value="<?php if (isset($produto['quantidade_unidade'])) echo $produto['quantidade_unidade'] ?>" class="form-control" placeholder="" maxlength="45" name="qtd_unidade" readonly>
+                                    <input type="number" id="qtd_unidade" value="<?php if (isset($produto['embalagem'])) echo preg_replace('/[^0-9]/', '', $produto['embalagem']) ?>" class="form-control" placeholder="" maxlength="45" name="qtd_unidade" readonly>
                                 </div>
                             </div>
                         </div>

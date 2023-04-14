@@ -26,7 +26,7 @@ class Valor_minimo extends MY_Controller
      */
     public function index()
     {
-        $page_title = "Desconto e Valor Mínimo";
+        $page_title = "Valor Mínimo de Venda";
 
         $data['to_datatable_estado'] = "{$this->route}/to_datatable_estado";
         $data['to_datatable_cnpj'] = "{$this->route}/to_datatable_cnpj";

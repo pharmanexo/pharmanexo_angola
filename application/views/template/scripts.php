@@ -50,10 +50,13 @@ if (isset($scripts))
 
 <?php if (isset($warning)) { ?>
     <script>
-        formWarning(JSON.parse('<?php echo $warning; ?>'));
+        var warn = JSON.parse('<?php echo $warning; ?>');
+        Swal.fire({
+            icon: warn.type,
+            text: warn.message,
+        });
     </script>
-<?php } ?>
-<script>
+<?php } ?><script>
     window.fwSettings = {
         'widget_id': 73000002652
     };

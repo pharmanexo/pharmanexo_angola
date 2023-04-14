@@ -15,6 +15,7 @@
 
         <div class="card">
             <div class="card-body">
+                <input type="hidden" name="idFornecedor" id="idFornecedor" value="<?php if (isset($oc['id_fornecedor'])) echo $oc['id_fornecedor']; ?>">
                 <?php if (isset($matriz) && $matriz == 1) { ?>
                     <h4 class="card-title">Selecione uma forma de pagamento para efeturar resgate</h4>
 
@@ -360,6 +361,7 @@
             var cnpj = $("#produtos").data('cnpj');
             var forma_pagto = $("#forma_pagto").val();
             var usuario = $("#usuario_resgate").val();
+            var idForn = $("#idFornecedor").val();
 
             if ($('#produtos').data('has_no_code') == 0) {
 
@@ -370,6 +372,7 @@
                         cnpj: cnpj,
                         forma_pagto: forma_pagto,
                         usuario_resgate: usuario,
+                        id_fornecedor: idForn,
                     },
                     beforeSend: function (jqXHR, settings) {
                         $("#btnResgate").html('<i class="fas fa-spinner"></i>');

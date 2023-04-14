@@ -44,7 +44,7 @@
                         <div class="col-12">
                             <div class="col-12">
                                 <div class="cot-info" style="width: 15px; height: 15px; border-radius: 20%; border: 1px solid; display: inline-block; "></div>
-                                Cliente Oncoprod
+                                Comprador já é cliente
 
                             </div>
                         </div>

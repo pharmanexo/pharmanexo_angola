@@ -98,7 +98,7 @@
                         cd_produto: item.codigo,
                         id_sintese: $('#data-table').data('sintese'),
                         id_cliente: $('#id_cliente').val(),
-                        id_produto_cotado: $('#id_prod_cot').val(), //produto cotado
+                        id_produto_comprado: $('#id_prod_cot').val(), //produto cotado
                     });
                 });
 

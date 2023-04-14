@@ -75,7 +75,9 @@
                             <th>Valor (R$)</th>
                             <th>Entrega Acordada</th>
                             <th>Cotação</th>
-                            <th></th>
+                            <th>Loja</th>
+                            <th>Loja</th>
+                            <th>Loja</th>
                         </tr>
                         </thead>
                     </table>
@@ -140,6 +142,7 @@
                 {name: 'ocs_sintese.Cd_Cotacao', data: 'Cd_Cotacao'},
                 {name: 'ocs_sintese.Dt_Ordem_Compra', data: 'Dt_Ordem_Compra', visible: false},
                 {name: 'compradores.id', data: 'id_cliente', visible: false},
+                {name: 'f.nome_fantasia', data: 'loja'},
                 {name: 'ocs_sintese.integrador', data: 'id_integrador', visible: false},
             ],
             columnDefs: [

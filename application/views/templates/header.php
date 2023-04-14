@@ -14,13 +14,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Portal Pharmanexo</title>
+    <title> <?php if (isset($page_title)) echo $page_title; ?> </title>
     <meta content="A Pharmanexo intermediadora de negócios, é um projeto disruptivo que utiliza tecnologia de ponta e inteligência artificial para buscar as melhores oportunidades de negócio" name="descriptison">
     <meta content="pharmanexo, negocios, tecnlogia, produtos hospitalares, hospital, oportunidades, intermediação de negócios, leilão reverso, medicamentos, melhore medicamentos, oncoprod, exomed, oncoexo, biohosp, sintese, bionexo, apoio, integração sintese, integracao sintese, integração bionexo, integracao bionexo, integração apoio, integrador, integrador sintese, integrador apoio, integrador bionexo" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo ASSETS_PATH ?>/img/main-master-favicon.ico" rel="icon">
-    <link href="<?php echo ASSETS_PATH ?>/img/main-master-favicon.ico" rel="apple-touch-icon">
+    <link href="<?php echo ASSETS_PATH ?>/img/ubuntu-icone.png" rel="icon">
+    <link href="<?php echo ASSETS_PATH ?>/img/ubuntu-icone.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">

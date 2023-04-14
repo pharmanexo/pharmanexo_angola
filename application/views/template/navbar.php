@@ -11,53 +11,9 @@
         <h1><a href="<?php echo base_url('dashboard') ?>"><img style="width: 70%;" class="img-fluid" src="<?php echo base_url('images/img/logo-branca.png'); ?>" alt=""></a></h1>
     </div>
     <ul class="top-nav text-right">
-        <li class="hidden-lg-down" id="search-cot">
-            <div class="input-group" style="margin-top: 20px !important;">
-                <?php
-                $tempo = $this->db->select("timestamp")->from('ci_sessions')->where("id= '{$this->session->id_sessao}'")->get()->row_array();
-                ?>
-                <div class="input-group-prepend">
-                    <select name="s_integrador" data-toggle="tooltip" title="Selecione qual integrador da cotação" id="s_integrador" style="" class="form-control py-5">
-                        <option value="SINTESE">SINTESE</option>
-                        <option value="BIONEXO">BIONEXO</option>
-                        <option value="APOIO">APOIO</option>
-                    </select>
-                </div>
-                <input type="text" class="form-control busca" data-toggle="tooltip" title="Ex. COT9999-8899" id="inptGetCotacao" placeholder="Buscar Cotacão">
 
-                <div class="input-group-append">
-                    <button class="btn btn-light" id="btnGetCotacao" type="button"><i class="fas fa-search" style="font-size: 20px;
-                    color: #868e96"></i></button>
-                </div>
-            </div>
-        </li>
         <li class="hidden-xl-up"><a href="" data-ma-action="search-open"><i class="zmdi zmdi-search"></i></a></li>
-        <?php if ($this->session->administrador == 0) { ?>
-            <li class="" data-toggle="tooltip" <?php if (isset($_SESSION['empresas']) && $this->session->administrador == 0) { ?> title="Clique na seta para trocar de empresa" data-placement="top" <?php } ?>>
-                <strong>CNPJ:</strong> <?php echo $this->session->cnpj ?> <br>
-                <strong>Empresa:</strong> <?php echo $this->session->nome_fantasia ?> <br>
-            </li>
-        <?php } ?>
-        <?php if (isset($_SESSION['empresas']) && $this->session->administrador == 0) { ?>
-            <li>
-                <div class="dropdown">
-                    <a href="#" class="btn btn-link text-white" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-chevron-down"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" style="height: auto; overflow: scroll; max-height: 400px" aria-labelledby="dropdownMenuButton">
 
-                        <?php foreach ($_SESSION['empresas'] as $empresa) { ?>
-                            <a class="dropdown-item" href="<?php echo base_url("login/selecionar_empresa/{$empresa['id']}") ?>">
-                                <?php echo $empresa['cnpj']; ?> - <?php echo $empresa['nome_fantasia']; ?> <br>
-                                <?php echo $empresa['razao_social']; ?> <br>
-                                <?php echo $empresa['cidade']; ?> - <?php echo $empresa['estado']; ?>
-                            </a>
-                        <?php } ?>
-
-                    </div>
-                </div>
-            </li>
-        <?php } ?>
 
         <!-- Icone de notiicações -->
         <li class="dropdown top-nav__notifications">
@@ -103,12 +59,7 @@
                 <i class="fas fa-sign-out-alt"></i>
             </a>
         </li>
-        <li class="top-nav">
-            <a class="renovarSessao" id="tempo_sessao" value="<?php $tempo['timestamp'] ?>" title="Sessão expira as <?php echo date('H:i:s', $tempo['timestamp'] + 3600) ?> ">
-                <?php echo date('h:i:s', strtotime('-1hour')) ?>
-            </a>
 
-        </li>
     </ul>
 </div>
 <aside class="chat">

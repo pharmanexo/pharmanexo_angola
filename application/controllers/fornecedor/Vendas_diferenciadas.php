@@ -9,6 +9,7 @@ class Vendas_diferenciadas extends MY_Controller
 
     public function __construct()
     {
+
         parent::__construct();
 
         $this->route = base_url('fornecedor/vendas_diferenciadas');
@@ -21,6 +22,7 @@ class Vendas_diferenciadas extends MY_Controller
         $this->load->model('m_estados', 'estado');
         $this->load->model('m_estoque', 'estoque');
         $this->oncoprod = explode(',', ONCOPROD);
+
     }
 
     /**
@@ -297,10 +299,9 @@ class Vendas_diferenciadas extends MY_Controller
 
             $d = $this->fornecedor->findById($this->session->id_fornecedor);
 
-            if (isset($d) && $d['id_tipo_venda'] == 4) {
+            if ($this->session->grupo == 4) {
                 $data['options'] = ['4' => 'Distribuidor x Distribuidor'];
             } else {
-
                 $data['options'] = [
                     '0' => 'Todos os tipos',
                     '1' => 'Manual',

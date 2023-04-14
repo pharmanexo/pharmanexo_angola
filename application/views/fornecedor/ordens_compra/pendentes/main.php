@@ -97,6 +97,8 @@
                             <th>Entrega Acordada</th>
                             <th>Cotação</th>
                             <th></th>
+                            <th></th>
+                            <th>Loja</th>
                         </tr>
                         </thead>
                     </table>
@@ -146,8 +148,8 @@
 
                     if ( $("#id_integrador").val() != '' ) {
 
-                        data.columns[10].search.value = $('#id_integrador').val();
-                        data.columns[10].search.type = 'equal';
+                        data.columns[11].search.value = $('#id_integrador').val();
+                        data.columns[11].search.type = 'equal';
                     }
 
                     if ($('#estados').val() !== '') {
@@ -163,13 +165,14 @@
                 {defaultContent: '', width: '100px', orderable: false, searchable: false},
                 {name: 'ocs_sintese.Dt_Ordem_Compra', data: 'data', width: '150px'},
                 {name: 'ocs_sintese.Cd_Ordem_Compra', data: 'Cd_Ordem_Compra'},
-                {name: 'compradores.razao_social', data: 'razao_social'},
-                {name: 'compradores.estado', data: 'estado'},
+                {name: 'c.razao_social', data: 'razao_social'},
+                {name: 'c.estado', data: 'estado'},
                 {name: 'valor', data: 'valor', searchable: false},
                 {name: 'ocs_sintese.Dt_Previsao_Entrega', data: 'Dt_Previsao_Entrega', visible: false},
                 {name: 'ocs_sintese.Cd_Cotacao', data: 'Cd_Cotacao'},
                 {name: 'ocs_sintese.Dt_Ordem_Compra', data: 'Dt_Ordem_Compra', visible: false},
-                {name: 'compradores.id', data: 'id_cliente', visible: false},
+                {name: 'c.id', data: 'id_cliente', visible: false},
+                {name: 'f.nome_fantasia', data: 'loja'},
                 {name: 'ocs_sintese.integrador', data: 'id_integrador', visible: false},
             ],
             columnDefs: [
@@ -179,7 +182,7 @@
                 style: 'multi',
                 selector: 'td:first-child'
             },
-            order: [[8, "desc"]],
+            order: [[9, "desc"]],
             rowCallback: function (row, data) {
                 $(row).css('cursor', 'pointer');
 

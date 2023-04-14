@@ -20,6 +20,7 @@ class M_login extends CI_Model
         # Obtem o registro do usuario com o email informado
         $q = $this->db->select('*')->where("email", $data['login'])->get("usuarios")->row_array();
 
+
         if ( !is_null($q)) {
 
             #verifica se o usuario está dentro do horario permitido
@@ -50,17 +51,6 @@ class M_login extends CI_Model
                         $this->session->mark_as_temp('access_try', 120);
 
                         $this->db->where('id', $q['id'])->update('usuarios', ['validade_token' => null]);
-                    }
-
-                    # Se não for administrador, adiciona os fornecedores do usuario
-                    if ($q['administrador'] != 1 && $q['tipo_usuario'] == 1 ) {
-
-                        $this->db->select('f.id, f.cnpj, f.razao_social, f.tipo, f.nome_fantasia, f.estado, f.cidade, f.compra_distribuidor');
-                        $this->db->from('usuarios_fornecedores uf');
-                        $this->db->join('fornecedores f', 'f.id = uf.id_fornecedor', 'INNER');
-                        $this->db->where('uf.id_usuario', $q['id']);
-                        $this->db->order_by('f.nome_fantasia ASC');
-                        $q['empresas'] = $this->db->get()->result_array();
                     }
 
                     return $q;

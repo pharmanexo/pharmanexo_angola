@@ -23,7 +23,7 @@ class GeralAnalitico extends CI_Controller
 
     public function index()
     {
-        $page_title = 'Relatório Geral';
+        $page_title = 'Relatório Geral de cotações';
 
         $data['dataTable'] = "{$this->route}/solicitar";
 
@@ -41,7 +41,7 @@ class GeralAnalitico extends CI_Controller
         $data['scripts'] = $this->template->scripts();
         $data['estados'] = $this->estados->find();
         $data['clientes'] = $this->comprador->find();
-
+        $data['reportsHistory'] = $this->getHistoryReports();
 
         $this->load->view("{$this->views}/main", $data);
 
@@ -95,7 +95,49 @@ class GeralAnalitico extends CI_Controller
     private function _req($data)
     {
 
-        $url = 'http://reports2.pharmanexo.com.br/cotacoes-by-fornecedores';
+        //  $url = 'http://reports2.pharmanexo.com.br/cotacoes-by-fornecedores';
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'http://reports2.pharmanexo.com.br/cotacoes-by-fornecedor',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+            CURLOPT_POSTFIELDS => json_encode($data),
+            CURLOPT_HTTPHEADER => array(
+                'X-AUTH-TOKEN: pharma@ish#2022!',
+                'Content-Type: application/json'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        var_dump($response);
+        exit();
+
+
+        if (curl_errno($curl)) {
+            $error_msg = curl_error($curl);
+
+            return ['type' => false, 'message' => $error_msg];
+
+        } else {
+            return ['type' => true];
+        }
+
+        curl_close($curl);
+
+    }
+
+    private function getHistoryReports()
+    {
+        $url = "http://reports2.pharmanexo.com.br/search/by-fornecedor/{$this->session->id_fornecedor}";
 
         $curl = curl_init();
 
@@ -108,7 +150,6 @@ class GeralAnalitico extends CI_Controller
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_POSTFIELDS => json_encode($data),
             CURLOPT_SSL_VERIFYPEER => false,
             CURLOPT_HTTPHEADER => array(
                 'Content-Type: application/json',
@@ -117,17 +158,9 @@ class GeralAnalitico extends CI_Controller
         ));
 
         $response = curl_exec($curl);
-
-        if (curl_errno($curl)) {
-            $error_msg = curl_error($curl);
-
-            return ['type' => false, 'message' => $error_msg];
-
-        } else {
-            return ['type' => true];
-        }
-
         curl_close($curl);
+
+        return json_decode($response, true);
 
     }
 

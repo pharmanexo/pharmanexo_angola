@@ -43,7 +43,7 @@ class Ofertas_recebidas extends MY_Controller
                     'id' => 'btnExport',
                     'url' => "{$this->route}/exportar",
                     'class' => 'btn-primary',
-                    'icone' => 'fa-file-excel', 
+                    'icone' => 'fa-file-excel',
                     'label' => 'Exportar Excel'
                 ]
             ]
@@ -68,7 +68,7 @@ class Ofertas_recebidas extends MY_Controller
             ->where('id_solicitacao', $id_solicitacao)->where('aprovado_em is not null')->get('ofertas_b2b_itens')->row_array();
 
 
-        if ( $data['dados']['id_fornecedor_oferta'] != $this->session->id_fornecedor) {
+        if ($data['dados']['id_fornecedor_oferta'] != $this->session->id_fornecedor) {
             $warning = [
                 "type" => "error",
                 "message" => "Distribuidor não autorizado!"
@@ -99,7 +99,7 @@ class Ofertas_recebidas extends MY_Controller
                     'id' => 'btnExport',
                     'url' => "{$this->route}/exportar_itens/{$id_solicitacao}",
                     'class' => 'btn-primary',
-                    'icone' => 'fa-file-excel', 
+                    'icone' => 'fa-file-excel',
                     'label' => 'Exportar'
                 ],
                 [
@@ -247,12 +247,12 @@ class Ofertas_recebidas extends MY_Controller
 
         $destinatarios = "marlon.boecker@pharmanexo.com.br, ericlempe1994@gmail.com";
 
-        if ( !empty($solicitante['emails_config']) ) {
+        if (!empty($solicitante['emails_config'])) {
 
             $emails = json_decode($solicitante['emails_config']);
 
-            if ( !empty($emails->distribuidor_distribuidor) ) {
-                $destinatarios .=  ", {$emails->distribuidor_distribuidor}";
+            if (!empty($emails->distribuidor_distribuidor)) {
+                $destinatarios .= ", {$emails->distribuidor_distribuidor}";
             }
         }
 
@@ -260,28 +260,69 @@ class Ofertas_recebidas extends MY_Controller
 
             $date = date('d/m/Y', $id_solicitacao);
 
+            // gerar ordem de compra
+
+            $codigoOC = "DIST_PHX_{$id_solicitacao}";
+
+            //verifica se ja foi gerado oc para o solicitação
+            $oc = $this->db->where('id_solicitacao', $id_solicitacao)->get('b2b_ocs');
+            if ($oc->num_rows() == 0) {
+                $oc = [
+                    'id_solicitacao' => $id_solicitacao,
+                    'id_fornecedor' => $dist['id'],
+                    'id_comprador' => $solicitante['id'],
+                    'id_forma_pagamento' => $solicitacao['id_forma_pagamento'],
+                    'prazo_entrega' => $solicitacao['id_prazo_entrega'],
+                    'situacao' => 1
+                ];
+
+                $this->db->insert('b2b_ocs', $oc);
+                $idOc = $this->db->insert_id();
+            }else{
+                $oc = $oc->row_array();
+                $idOc =  $oc['id'];
+            }
+
+            $produtos = $this->db
+                ->where('id_solicitacao', $id_solicitacao)
+                ->where('status', 1)
+                ->get('ofertas_b2b_itens')
+                ->result_array();
+
+            $ocProdutos = [];
+            foreach ($produtos as $produto) {
+                $ocProdutos[] = [
+                    'id_ordem_compra' => $idOc,
+                    'codigo' => $produto['codigo'],
+                    'preco' => $produto['valor_maximo'],
+                    'quantidade' => $produto['quantidade'],
+                ];
+            }
+
+            $this->db->insert_batch('b2b_ocs_produtos', $ocProdutos);
+
             #noticar por e-mail
-            $noticar = [
-                "to" => $destinatarios,
-                "greeting" => "Distribuidor x Distribuidor",
-                "subject" => "Proposta aprovada - {$id_solicitacao}",
-                "message" => "A proposta #{$id_solicitacao} enviada em {$date} foi aprovada. 
-                                <br><br> Entre em contato com o distribuidor: 
-                                <br> Telefone: {$dist['telefone']} - {$dist['celular']} 
-                                <br> E-mail: {$dist['email']} <br><br> Aprovado por: {$logado['nome']} - {$logado['telefone']}  {$logado['celular']} <br> E-mail: {$logado['email']}"
-            ];
+            /*   $noticar = [
+                   "to" => $destinatarios,
+                   "greeting" => "Distribuidor x Distribuidor",
+                   "subject" => "Proposta aprovada - {$id_solicitacao}",
+                   "message" => "A proposta #{$id_solicitacao} enviada em {$date} foi aprovada.
+                                   <br><br> Entre em contato com o distribuidor:
+                                   <br> Telefone: {$dist['telefone']} - {$dist['celular']}
+                                   <br> E-mail: {$dist['email']} <br><br> Aprovado por: {$logado['nome']} - {$logado['telefone']}  {$logado['celular']} <br> E-mail: {$logado['email']}"
+               ];
 
-            $this->notify->send($noticar);
+               $this->notify->send($noticar);
 
-            #noticar por notifações pharmanexo
-            $alert = [
-                "id_usuario" => $usuario['id'],
-                "id_fornecedor" => $solicitante['id'],
-                "message" => "Prosposta #{$id_solicitacao} Distribuidor x Distribuidor foi aprovada. clique para ver mais",
-                "url" => base_url("fornecedor/b2b/ofertas_enviadas/{$id_solicitacao}")
-            ];
+               #noticar por notifações pharmanexo
+               $alert = [
+                   "id_usuario" => $usuario['id'],
+                   "id_fornecedor" => $solicitante['id'],
+                   "message" => "Prosposta #{$id_solicitacao} Distribuidor x Distribuidor foi aprovada. clique para ver mais",
+                   "url" => base_url("fornecedor/b2b/ofertas_enviadas/{$id_solicitacao}")
+               ];
 
-            $this->notify->alert($alert);
+               $this->notify->alert($alert);*/
 
 
             $warning = [
@@ -327,7 +368,7 @@ class Ofertas_recebidas extends MY_Controller
                     'db' => 'vw_ofertas_b2b.id_solicitacao',
                     'dt' => 'status',
                     'formatter' => function ($value, $row) {
-                       
+
                         return $this->getStatus($value, $row['itens']);
 
 
@@ -399,16 +440,16 @@ class Ofertas_recebidas extends MY_Controller
 
         if ($ofertas['aprovados'] == $total) {
             $status = "Aprovado";
-        } elseif($ofertas['rejeitados'] == $total) {
+        } elseif ($ofertas['rejeitados'] == $total) {
             $status = "Rejeitado";
-        } elseif($ofertas['resto'] == $total) {
+        } elseif ($ofertas['resto'] == $total) {
             $status = "Aguardando";
         } else {
             if ($ofertas['aprovados'] > 0 && $ofertas['rejeitados'] > 0) {
-               $status = "Aprovado Parcialmente";
+                $status = "Aprovado Parcialmente";
             }
         }
-       
+
         return $status;
     }
 
@@ -426,8 +467,8 @@ class Ofertas_recebidas extends MY_Controller
 
         $query = $this->db->get()->result_array();
 
-        if ( count($query) < 1 ) {
-           
+        if (count($query) < 1) {
+
             $query[] = [
                 'data_oferta' => '',
                 'status' => '',
@@ -443,15 +484,15 @@ class Ofertas_recebidas extends MY_Controller
                 $status = $this->getStatus($oferta['status'], $oferta['total_itens']);
 
                 $query[$k]['status'] = $status;
-                $query[$k]['data_oferta'] = date('d/m/Y',  $oferta['data_oferta']);
+                $query[$k]['data_oferta'] = date('d/m/Y', $oferta['data_oferta']);
             }
         }
 
-        $dados_page = ['dados' => $query , 'titulo' => 'Ofertas'];
+        $dados_page = ['dados' => $query, 'titulo' => 'Ofertas'];
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
 
-        if ( $exportar['status'] == false ) {
+        if ($exportar['status'] == false) {
 
             $warning = ['type' => 'warning', 'message' => $exportar['message']];
         } else {
@@ -481,8 +522,8 @@ class Ofertas_recebidas extends MY_Controller
 
         $query = $this->db->get()->result_array();
 
-        if ( count($query) < 1 ) {
-           
+        if (count($query) < 1) {
+
             $query[] = [
                 'produto' => '',
                 'forma_pagamento' => '',
@@ -490,13 +531,13 @@ class Ofertas_recebidas extends MY_Controller
                 'quantidade' => '',
                 'valor_maximo' => ''
             ];
-        } 
+        }
 
-        $dados_page = ['dados' => $query , 'titulo' => 'Ofertas'];
+        $dados_page = ['dados' => $query, 'titulo' => 'Ofertas'];
 
         $exportar = $this->export->excel("planilha.xlsx", $dados_page);
 
-        if ( $exportar['status'] == false ) {
+        if ($exportar['status'] == false) {
 
             $warning = ['type' => 'warning', 'message' => $exportar['message']];
         } else {
@@ -507,5 +548,5 @@ class Ofertas_recebidas extends MY_Controller
         $this->session->set_userdata('warning', $warning);
 
         redirect($this->route);
-    } 
+    }
 }

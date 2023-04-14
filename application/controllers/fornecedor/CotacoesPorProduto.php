@@ -218,16 +218,15 @@ class CotacoesPorProduto extends MY_Controller
 
         if (!empty($codigo) && !empty($nome)) {
 
-            $where = "(pc.codigo = {$codigo} or pc.nome_comercial LIKE '%$nome%')";
+            $where = "(pc.codigo = {$codigo} or pc.nome_comercial LIKE '%{$nome}%')";
 
         } elseif (!empty($codigo) && empty($nome)) {
 
             $where = "pc.codigo = {$codigo}";
         } elseif (empty($codigo) && !empty($nome)) {
 
-            $where = "pc.nome_comercial LIKE '%$nome%'";
+            $where = "(pc.nome_comercial LIKE '%{$nome}%' or pc.apresentacao LIKE '%{$nome}%')";
         }
-
 
         $cotacoes = $this->db
             ->select('ct.cd_cotacao, ct.ds_cotacao, ct.dt_inicio_cotacao, ct.dt_fim_cotacao, cp.qt_produto_total, c.cnpj, c.razao_social, c.estado')

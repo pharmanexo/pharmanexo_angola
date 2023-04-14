@@ -16,7 +16,7 @@
             <div class="quick-stats__item" style="background-image: linear-gradient(#3b85ce, #41b0eb);border-radius: 15px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
                 <div class="quick-stats__info">
                     <h3 style="color: white"><?php if (isset($indicadores['totalOfertado'])) echo $indicadores['totalOfertado']; ?></h3>
-                    <small class="text-white">Total Ofertado</small>
+                    <small class="text-white">Total Cotações Respondidas</small>
                 </div>
 
                 <div class="quick-stats__chart sparkline-bar-stats text-white">
@@ -72,9 +72,9 @@
         </div>
     </div>
 
-    <div id="graficos" data-url="<?php echo $urlCharts; ?>">
+    <div id="graficos" data-url="">
 
-        <div class="row">
+        <div hidden class="row">
             <div class="col-md-12">
                 <div class="card" style="border-radius: 15px;!Important">
                     <div class="card-header text-center" style="background-image: linear-gradient(#757779,#868e96);border-radius: 15px 15px 0px 0px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
@@ -105,12 +105,13 @@
             <div class="col-md-6">
                 <div class="card" style="height: 550px;border-radius: 15px;!Important">
                     <div class="card-header bg-secondary text-center" style="background-image: linear-gradient(#757779,#868e96);height: 550px;padding: 10px;border-radius: 15px 15px 0px 0px;box-shadow: 3px 5px 19px 0px rgba(0,0,0,0.32);">
-                        <h5 class="text-white font-weight-bold">COTAÇÕES EM ABERTO POR ESTADO</h5>
+                        <h5 class="text-white font-weight-bold">COTAÇÕES EM ABERTO POR REGIÃO</h5>
                     </div>
 
                     <div class="card-body">
-                        <div class="chart-container">
-                            <div id="chartMap" style="height: 360px;" data-url="<?php echo $url_info_mapa; ?>"></div>
+                        <div class="chart-container text-center">
+                            <div id="map"></div>
+                            <div id="chartMap" style="height: 360px;" data-url=""></div>
                         </div>
                         <br>
                         <p class="small">Clique sobre o estado para listar as cotações.
@@ -166,12 +167,12 @@
 <script>
     var chartLine;
 
-    var urlLine = "<?php echo $urlLine; ?>";
-    var urlProdutosVencer = "<?php echo $urlProdutosVencer; ?>";
+    var urlLine = "<?php if (isset($urlLine)) echo $urlLine; ?>";
+    var urlProdutosVencer = "<?php if (isset($urlProdutosVencer)) echo $urlProdutosVencer; ?>";
 
     $(function() {
 
-        main();
+       // main();
 
         $("#filtroAno").on('change', function() {
 
