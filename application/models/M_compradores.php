@@ -22,7 +22,6 @@ class M_compradores extends MY_Model
         parent::__construct();
         $this->load->helper("file");
 
-        $this->bio = $this->load->database('bionexo', true);
     }
 
     /**
