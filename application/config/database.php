@@ -73,6 +73,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+
+
+
 $db['default'] = array(
     'dsn'	=> '',
     'hostname' => 'ubuntu-do-user-12598691-0.g.db.ondigitalocean.com:25060',
