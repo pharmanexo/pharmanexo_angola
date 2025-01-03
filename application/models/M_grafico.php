@@ -8,7 +8,6 @@ class M_grafico extends MY_Model
     {
         parent::__construct();
 
-        $this->DB_COTACAO = $this->load->database('sintese', TRUE);
     }
 
     /**
