@@ -161,7 +161,7 @@ class Produtos extends MY_Controller
 
         $fornecedor = $this->fornecedor->findByID($this->session->id_fornecedor);
 
-        if ($fornecedor['permitir_cadastro_prod'] == 1) {
+        if (isset($fornecedor['permitir_cadastro_prod']) && $fornecedor['permitir_cadastro_prod'] == 1) {
 
             $buttons = [
                 [
