@@ -85,7 +85,7 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 // CUSTOM CONSTANTS
-defined('THIRD_PARTY')      OR define('THIRD_PARTY', '/angola/public/third_party/');
+defined('THIRD_PARTY')      OR define('THIRD_PARTY', '/pharmanexo_angola/public/third_party/');
 defined('DOCUMENTOS_PATH')      OR define('DOCUMENTOS_PATH', '/public/third_party/documentos');
 defined('PUBLIC_PATH')      OR define('PUBLIC_PATH', 'public/');
 defined('UPLOAD_PATH')      OR define('UPLOAD_PATH', 'uploads/');
