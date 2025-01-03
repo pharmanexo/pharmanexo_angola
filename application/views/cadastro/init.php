@@ -219,7 +219,7 @@
 
 <script type="text/javascript" src="<?php echo HOME_PATH ?>js/inputmask/jquery.inputmask.js"></script>
 <!-- google recaptcha -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Le5i60qAAAAAKHqfRAWymsBeoyGiSf-BSIOhIvU"></script>
 <script>
     $(function (e) {
 
@@ -271,7 +271,7 @@
             grecaptcha.ready(function () {
                 // do request for recaptcha token
                 // response is promise with passed token
-                grecaptcha.execute('6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn', {
+                grecaptcha.execute('6Le5i60qAAAAAKHqfRAWymsBeoyGiSf-BSIOhIvU', {
                     action: 'validate_captcha'
                 }).then(function (token) {
 

@@ -57,7 +57,7 @@ if (isset($header)) echo $header;
 </div>
 
 <?php if (isset($scripts)) echo $scripts; ?>
-<script src="https://www.google.com/recaptcha/api.js?render=6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Le5i60qAAAAAKHqfRAWymsBeoyGiSf-BSIOhIvU"></script>
 <script>
     $(function () {
 
@@ -81,7 +81,7 @@ if (isset($header)) echo $header;
             grecaptcha.ready(function () {
                 // do request for recaptcha token
                 // response is promise with passed token
-                grecaptcha.execute('6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn', {
+                grecaptcha.execute('6Le5i60qAAAAAKHqfRAWymsBeoyGiSf-BSIOhIvU', {
                     action: 'login'
                 }).then(function (token) {
                     // add token to form
@@ -117,7 +117,7 @@ if (isset($header)) echo $header;
             grecaptcha.ready(function () {
                 // do request for recaptcha token
                 // response is promise with passed token
-                grecaptcha.execute('6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn', {
+                grecaptcha.execute('6Le5i60qAAAAAKHqfRAWymsBeoyGiSf-BSIOhIvU', {
                     action: 'login'
                 }).then(function (token) {
                     // add token to form
@@ -155,7 +155,7 @@ if (isset($header)) echo $header;
             grecaptcha.ready(function () {
                 // do request for recaptcha token
                 // response is promise with passed token
-                grecaptcha.execute('6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn', {
+                grecaptcha.execute('6Le5i60qAAAAAKHqfRAWymsBeoyGiSf-BSIOhIvU', {
                     action: 'login'
                 }).then(function (token) {
                     // add token to form

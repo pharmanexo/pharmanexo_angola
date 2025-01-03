@@ -50,7 +50,7 @@ if (isset($header)) echo $header;
     </div>
 
     <?php if (isset($scripts)) echo $scripts; ?>
-    <script src="https://www.google.com/recaptcha/api.js?render=6LcSlLkUAAAAAKocRTGaJgQeId06vGmoVwyTIspn"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le5i60qAAAAAKHqfRAWymsBeoyGiSf-BSIOhIvU"></script>
     <script>
         $(function() {
            
