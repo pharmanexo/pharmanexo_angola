@@ -34,20 +34,7 @@ if (isset($header)) echo $header;
                             <h3 class="text-center"
                                 style="border-bottom: 1px solid #F5AA37; color: #F5AA37; padding: 20px; margin-bottom: 20px">
                                 Login</h3>
-                            <div class="form-group">
-                                <label for="">Selecione o perfil</label>
-                                <select name="grupo" id="grupo" required class="form-control">
-                                    <option value="">Selecione...</option>
-                                    <option value="">Governo Federal</option>
-                                    <option value="">Regionais de Saúde</option>
-                                    <option value="">Hospitais</option>
-                                    <option value="">Postos de Saúde</option>
-                                    <option value="">Portais de Concurso</option>
-                                    <option value="">Fornecedores</option>
 
-
-                                </select>
-                            </div>
                             <div class="form-group">
                                 <label for="">Usuário</label>
                                 <input type="text" id="login" name="login" class="form-control">
