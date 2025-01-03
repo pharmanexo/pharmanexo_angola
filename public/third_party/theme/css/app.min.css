@@ -11415,7 +11415,7 @@ button, input, optgroup, select, textarea {
     }
 
     .content:not(.content--boxed):not(.content--full) {
-        padding: 102px 30px 0 320px
+        padding: 102px 30px 0 270px
     }
 
     .header__logo {
@@ -12237,8 +12237,7 @@ button, input, optgroup, select, textarea {
     padding: 102px 2rem .5rem;
     height: 100%;
     overflow: hidden;
-    z-index: 19;
-    background-color: #444;
+    z-index: 19
 }
 
 .navigation > li > a, .navigation__sub .navigation__active, .user {
@@ -12348,18 +12347,13 @@ button, input, optgroup, select, textarea {
 }
 
 .navigation li:not(.navigation__active):not(.navigation__sub--active) a:hover {
-    background-color: #F2A936 !important;
-    color: #fff
-}
-
-.navigation li:not(.navigation__active):not(.navigation__sub--active) a:hover i{
-    color: #fff !important;
+    background-color: rgba(0, 0, 0, .04);
+    color: #5c6165
 }
 
 .navigation > li > a {
     padding: .85rem .5rem;
-    border-radius: 2px;
-    color: #fff;
+    border-radius: 2px
 }
 
 .navigation > li > a > i {
@@ -12368,11 +12362,8 @@ button, input, optgroup, select, textarea {
     position: relative;
     top: .1rem;
     width: 1.5rem;
-    margin-right: .6rem;
-    color: #F2A936 !important;
+    margin-right: .6rem
 }
-
-
 
 .navigation__sub > ul {
     border-radius: 2px;
@@ -12381,8 +12372,7 @@ button, input, optgroup, select, textarea {
 }
 
 .navigation__sub > ul > li > a {
-    padding: .6rem 1rem .6rem 2.75rem;
-    color: #fff !important;
+    padding: .6rem 1rem .6rem 2.75rem
 }
 
 .navigation__sub > ul > li:last-child {
