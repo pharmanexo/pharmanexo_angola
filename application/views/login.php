@@ -20,15 +20,6 @@ if (isset($header)) echo $header;
                     <div class="logo">
                         <img src="public/home/assets/images/ubuntu.png" style="width: 40%; margin-top: 10%; float: right; margin-right: 50px" class="img-fluid" alt="">
                     </div>
-                    <h3 class="textLogin">
-                        <p class="bluepharma"> O MAIOR PORTAL DE INTEGRAÇÃO PARA PRODUTOS FARMACÊUTICOS DO CONTINENTE
-                            AFRICANO</p><br>
-                        <a href="<?php echo base_url('home') ?>" class="btn1">Conheça a Pharmanexo Angola</a>
-                    </h3>
-                    <div class="text-center w-100 position-absolute" style="bottom: 0">
-                        <p class="bluepharma text-center">©
-                            2019 - <?php echo date('Y', time()); ?> - Pharmanexo Intermediação de Negócios</p>
-                    </div>
                 </div>
             </div>
             <div class="col-12 col-lg-6" style="padding-top: 100px">
