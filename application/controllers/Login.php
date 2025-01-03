@@ -510,7 +510,7 @@ class Login extends CI_Controller
         $post = $this->input->post();
 
         if ($_SERVER['HTTP_HOST'] != 'localhost') {
-            $url = 'https://www.google.com/recaptcha/api/siteverify';
+           /* $url = 'https://www.google.com/recaptcha/api/siteverify';
             $data = array('secret' => '6LcSlLkUAAAAACT-qSeWEd0nrNRzgYJaUqwHuZkR', 'response' => $post['token']);
 
             $options = array(
@@ -523,7 +523,9 @@ class Login extends CI_Controller
             $context = stream_context_create($options);
             $response = file_get_contents($url, false, $context);
             $responseKeys = json_decode($response, true);
-            header('Content-type: application/json');
+            header('Content-type: application/json');*/
+            $responseKeys["success"] = true;
+            $responseKeys["score"] = 10;
         } else {
             $responseKeys["success"] = true;
             $responseKeys["score"] = 10;
