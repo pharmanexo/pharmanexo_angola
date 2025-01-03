@@ -15,7 +15,7 @@ class M_cotacoes_produtos extends MY_Model
     {
         parent::__construct();
 
-        $this->MIX = $this->load->database('mix', TRUE);
+        $this->MIX = null;
     }
 
     public function getTotalCotacoesPorPeriodo()
