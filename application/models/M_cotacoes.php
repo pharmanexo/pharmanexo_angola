@@ -18,7 +18,6 @@ class M_cotacoes extends MY_Model
     {
         parent::__construct();
 
-        $this->DB_COTACAO = $this->load->database('sintese', TRUE);
     }
 
     /**

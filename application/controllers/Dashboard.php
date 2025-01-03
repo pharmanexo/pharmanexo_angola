@@ -39,11 +39,7 @@ class Dashboard extends MY_Controller
         $this->oncoexo = explode(',', ONCOEXO);
         $this->oncoprod = explode(',', ONCOPROD);
 
-        $this->DB_COTACAO = $this->load->database('sintese', TRUE);
-        $this->MIX = null;
-        $this->bio = $this->load->database('bionexo', TRUE);
-        $this->huma = $this->load->database('huma', TRUE);
-        $this->apoio = $this->load->database('apoio', TRUE);
+
     }
 
     /**
