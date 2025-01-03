@@ -13,12 +13,12 @@ if (isset($header)) echo $header;
 </div>
 <div class="supreme-container">
     <div class="container-fluid" id="frameLogin">
-        <div class="row" style="height: 100vh">
+        <div class="row" style="height: 100vh; margin-top: 100px;">
             <div class="col-12 col-lg-6"
                  style="background:url(<?php echo base_url('images/img/bglogin.jpeg'); ?>); background-repeat: no-repeat; background-size: cover;">
                 <div class="row my-3">
                     <div class="logo">
-                        <img src="public/home/assets/images/ubuntu.png" style="width: 40%; margin-top: 10%; float: right; margin-right: 50px" class="img-fluid" alt="">
+                        <img src="public/home/assets/images/ubuntu.png" style="width: 100%; margin-top: 10%; float: right; margin-right: 50px" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
