@@ -13,7 +13,6 @@ class M_bi extends MY_Model
         $this->load->model('m_fornecedor', 'fornecedor');
         $this->load->model('m_configAnaliseMercado', 'analiseMercado');
 
-        $this->DB_COTACAO = $this->load->database('sintese', TRUE);
     }
 
     /**
